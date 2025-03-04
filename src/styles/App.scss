@@ -1,0 +1,77 @@
+/* General Body Styling */
+body {
+  background-color: var(--bg); /* Background color based on theme */
+  color: var(--text-color); /* Text color based on theme */
+
+
+
+
+
+
+  font-size: var(--font-size-base); /* Base font size */
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* Background Styling */
+body {
+  background-color: var(--bg); /* Light or dark background */
+  color: var(--text-color); /* Light or dark text */
+  font-family: "Newsreader", serif;
+}
+
+/* Standardizing Text */
+h1, h2, h3, h4, h5, h6, p, span {
+  color: var(--text-color); /* Ensure text color is consistent */
+//   font-family: "Newsreader", serif;
+
+  
+}
+
+h1, h2, h3{
+    
+  font-style: italic;
+  font-weight: 300;
+  font-family: "Newsreader", serif;
+  }
+
+  
+
+/* Links and Hover Effects */
+a {
+  color: var(--primary-color); /* Link color based on theme */
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+
+
+
+
+  
+}
+
+
+
+/* Standardizing Card-like Components */
+.card {
+  background-color: var(--card-bg); /* Light or dark card background */
+  border: 1px solid var(--border-color); /* Border color */
+  border-radius: var(--border-radius);
+  padding: var(--padding-medium);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional Elements */
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--padding-small) var(--padding-medium);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover-text-color);
+}

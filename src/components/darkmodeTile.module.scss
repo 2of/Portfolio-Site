@@ -1,0 +1,369 @@
+// Define the global animation duration variable
+$animation-duration: 0.5s; // Set the desired animation duration
+
+// Grayscale mode
+.grayscale {
+  filter: grayscale(100%);
+}
+
+// Additional styles for animations
+.spotlightContainer {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.base {
+  position: absolute;
+  bottom: 0%;
+  left: 18px;
+  width: 8px;
+  height: 10px;
+  background: #0808089e;
+  border-radius: 8px 8px 0px 0px;
+  z-index: 14;
+}
+
+.spotlightLight {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 4px;
+  border-radius: 12px;
+  height: 20rem;
+  background: linear-gradient(180deg, rgba(255, 255, 0, 0) 0%, rgba(255, 255, 0, 0.335) 80%);
+  filter: blur(4px);
+  transform-origin: bottom center;
+  pointer-events: none;
+  z-index: 12;
+}
+
+// Define keyframes for rotating the spotlight light
+@keyframes rotateLight {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-60deg);
+  }
+  75% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+// Apply the rotation animation to the spotlight when `animate` prop is true
+.animateSpotlight {
+  animation: rotateLight infinite 10s linear;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--nav-color);
+
+  .instructionText {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    height: 25%;
+    width: 100%;
+    padding: 12px;
+    color: var(--muted-text-color);
+    z-index: 11;
+  }
+
+  // Day mode styles
+  &.day {
+    .sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 75%;
+      width: 100%;
+      background: radial-gradient(ellipse 100% 80% at center bottom, #d5e6f2 0%, #bbd6ea 35%, rgba(172, 196, 216, 0) 100%);
+      z-index: 1;
+      transition: background-color $animation-duration ease;
+    }
+
+    .land {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 35%;
+      width: 100%;
+      background: linear-gradient(135deg, #f7d79e, #e9a97e);
+      border-top: 1px solid #b4ac9dcb;
+      z-index: 10;
+      transition: background-color $animation-duration ease;
+    }
+
+    .water {
+      background: linear-gradient(to left, rgb(30, 178, 212), rgba(30, 178, 212, 0.5), rgba(29, 188, 220, 0.5));
+    }
+  }
+
+  .prompt_mobile {
+    position: absolute;
+    color: var(--muted-text-color);
+    top: 48%;
+    opacity: 0.5;
+    z-index: 10;
+  }
+
+  // Night mode styles
+  &.night {
+    .sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 75%;
+      width: 100%;
+      background: radial-gradient(ellipse 100% 80% at center bottom, #34495e 0%, #2c3e50a4 40%, rgba(44, 62, 80, 0) 90%);
+      z-index: 1;
+      transition: background-color $animation-duration ease;
+    }
+
+    .land {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 35%;
+      width: 100%;
+      background: linear-gradient(135deg, #4f4a59, #3b2e2c);
+      border-top: 1px solid #3f5367;
+      z-index: 10;
+      transition: background-color $animation-duration ease;
+    }
+
+    .water {
+      margin-left: 20%;
+      background: linear-gradient(to left, rgb(12, 28, 41), rgba(12, 28, 41, 0.7), rgba(8, 45, 60, 0.6));
+    }
+  }
+}
+
+.prompt {
+  background: linear-gradient(to top, rgba(39, 37, 37, 0.452) 0%, rgba(39, 37, 37, 0) 40%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.showPrompt {
+  opacity: 1;
+}
+
+.water {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  transition: all $animation-duration ease;
+  clip-path: polygon(72% 0%, 100% 0%, 100% 100%, 0% 100%, 9% 69%, 31% 42%, 49% 18%);
+}
+
+// Moon (Initially hidden in the day, shown at night)
+.moon {
+  position: absolute;
+  height: 6rem;
+  width: 6rem;
+  left: 55%;
+  top: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f0e68c, #f9d769);
+  box-shadow: 0 0 30px rgba(240, 230, 140, 0.6), 0 0 60px rgba(240, 230, 140, 0.4), 0 0 90px rgba(240, 230, 140, 0.2);
+  opacity: 1;
+
+  &.animateMoonEnter {
+    animation: moonEnter $animation-duration forwards;
+    opacity: 1;
+  }
+
+  &.animateMoonExit {
+    animation: moonExit $animation-duration forwards;
+  }
+
+  @keyframes moonEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(10rem) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes moonExit {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(10rem) scale(0.5);
+    }
+  }
+}
+
+.sun {
+  position: absolute;
+  height: 6rem;
+  width: 6rem;
+  left: 25%;
+  top: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5ed0c, #ffeda5);
+  box-shadow: 0 0 20px rgba(255, 223, 89, 0.7), 0 0 40px rgba(255, 223, 89, 0.5), 0 0 60px rgba(255, 223, 89, 0.3);
+  z-index: 9;
+  opacity: 1;
+
+  &.animateSunEnter {
+    animation: SunEnter $animation-duration forwards;
+    opacity: 1;
+  }
+
+  &.animateSunExit {
+    animation: SunExit $animation-duration forwards;
+  }
+
+  @keyframes SunEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(10rem) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes SunExit {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(30vh) scale(3);
+    }
+  }
+}
+
+.clouds {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+
+  .cloud {
+    position: absolute;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.166);
+    border-radius: 50%;
+
+    &.move {
+      animation: moveCloud linear infinite;
+    }
+  }
+
+  @keyframes moveCloud {
+    0% {
+      left: -150px;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  filter: brightness(0.7);
+  clip-path: circle(50% at 50% 50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.CrowdContainer {
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  margin-left: 1rem;
+}
+
+.spotlights {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+
+  & > div:nth-child(1) {
+    margin-right: 10px;
+    padding-bottom: 20px;
+  }
+
+  & > div:nth-child(2) {
+    margin-right: 20px;
+    padding-bottom: 30px;
+  }
+
+  & > div:nth-child(3) {
+    margin-right: 30px;
+    padding-bottom: 40px;
+  }
+}
+
+.animateStandardEnter {
+  animation: StandardEnter $animation-duration forwards;
+  opacity: 1;
+}
+
+.animateStandardExit {
+  animation: StandardExit $animation-duration forwards;
+}
+
+@keyframes StandardEnter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes StandardExit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}

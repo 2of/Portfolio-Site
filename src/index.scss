@@ -1,0 +1,23 @@
+/* Import variables first */
+@import './styles/_variables.scss';
+
+/* Variables */
+$primary-color: #3498db; // You can define additional variables here if needed
+$secondary-color: #2ecc71;
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Theming */
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
+}

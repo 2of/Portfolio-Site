@@ -1,0 +1,64 @@
+{
+    "title": "Noah's Little Portfolio Website",
+    "subtitle": "There's a couple of writeups here for projects I've messed with",
+    "featuredProject": {
+      "title": "Deep Learning For GeoLocalization",
+      "description": "This is my master's Project,Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed minima minus quidem, quasi voluptatem sit ea accusantium tempore? Fugit odit necessitatibus ducimus dolor ipsum quaerat vitae odio! Libero nostrum voluptas maxime iure mollitia eius adipisci quasi id quia, aliquam reiciendis sapiente ex ut suscipit doloremque fugit facilis nam harum placeat? Est minus assumenda tempore reiciendis veritatis itaque quaerat illum? Tempora sit quas itaque sapiente repellendus eaque quos nemo numquam voluptas voluptates, eligendi dignissimos cupiditate nam, fugiat illo nesciunt! Tenetur sapiente in quod veritatis! Incidunt, officia suscipit? Modi dolorem optio consequuntur quos vero nihil, dolores vel nisi sapiente dignissimos, quisquam molestiae id. Rem totam nisi, recusandae corrupti minima et debitis enim, atque impedit doloribus corporis voluptate adipisci aliquid. Libero exercitationem numquam repellat asperiores laboriosam magni, vero at facilis natus quaerat? Mollitia quam possimus perspiciatis repellendus laborum facilis animi nihil, accusantium repudiandae eligendi, aliquid, quidem odio corporis quia amet eum. Quae suscipit exercitationem debitis consectetur, repudiandae sit autem! Quod provident aut ea odit eos sed eum magni repudiandae omnis exercitationem consectetur, possimus nihil quae. Alias laudantium iure odio corrupti dicta animi tenetur velit distinctio, temporibus quia consequuntur. Provident qui, ipsam odit aut amet consectetur voluptatum minima maxime assumenda tempora? Obcaecati, quis culpa.",
+      "image": "./assets/ecotrack.jpg",
+      "link": "https://ecotrack.example.com"
+    },
+
+
+    "interactiveArea": {
+  "title": "Hello!",
+  "description": "Explore my work and projects, interact with graphics, and learn more about what I do.",
+  "ctaText": "Click Here to Start"
+},
+
+
+    "qualifications": {
+      "title": "Why Work With Me?",
+      "items": [
+        "5+ years of experience in **front-end development**"
+      
+      ]
+    },
+    "socialMedia": {
+      "title": "Let’s Connect",
+      "items": [
+        { "name": "GitHub", "url": "https://github.com/yourusername" },
+        { "name": "LinkedIn", "url": "https://linkedin.com/in/yourusername" },
+        { "name": "Twitter", "url": "https://twitter.com/yourusername" },
+        { "name": "Dribbble", "url": "https://dribbble.com/yourusername" }
+      ]
+    },
+    "aboutMe": {
+      "title": "About Me",
+      "content": [
+        "I’m a **creative developer** with a passion for building beautiful, functional digital experiences. My work is driven by a commitment to **innovation**, **elegance**, and **user-centric design**.",
+        "With a background in both design and development, I bridge the gap between aesthetics and functionality. Whether it’s a sleek web app or a robust backend system, I strive for excellence in every detail.",
+        "Let’s collaborate and bring your vision to life!"
+      ]
+    },
+    "recentWork": {
+      "title": "Recent Work",
+      "items": [
+        {
+          "title": "Artify: Digital Art Marketplace",
+          "description": "A platform for artists to showcase and sell their work. Built with **Next.js** and **Stripe** integration.",
+          "image": "./assets/artify.jpg"
+        },
+        {
+          "title": "HealthTrack: Fitness Tracker",
+          "description": "A mobile-first fitness app that tracks workouts, nutrition, and progress. Built with **React Native** and **Firebase**.",
+          "image": "./assets/healthtrack.jpg"
+        },
+        {
+          "title": "CodeCraft: Developer Tools",
+          "description": "A suite of tools for developers, including a code formatter and API tester. Built with **Electron** and **TypeScript**.",
+          "image": "./assets/codecraft.jpg"
+        }
+      ]
+    }
+  }
+

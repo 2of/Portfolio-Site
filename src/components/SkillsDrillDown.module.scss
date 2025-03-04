@@ -1,0 +1,78 @@
+.skillsDrillDown { 
+    padding: 20px;
+    // background-color: var(--background-color);
+    // border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Soft shadow for depth
+    margin-bottom: 32px; // Spacing between sections
+
+
+
+    .sectionTitle {
+        text-align: center;
+        margin-bottom: 24px;
+    
+        h2 {
+          font-size: 1.5rem;
+          color: var(--text-color); // Use text color variable
+          font-weight: bold;
+        }
+  
+        .dotDivider {
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-color); // Use text color variable for divider
+            margin: 8px auto;
+            border-radius: 50px;
+            // margin: 100px;
+            // padding: 100px;
+          }
+
+    }
+    .spacer {
+        display: inline-block;
+        width: 6px;  // Small size for the dot
+        
+        height: 6px;
+        background-color: var(--text-color);  // Use the text color, or adjust as needed
+        border-radius: 50%;  // To make it round
+        margin: 0 10px;  // Space around the dot, adjust as needed
+      }
+    .skillsContainer { 
+        background-color: red;
+    }
+.introText{ 
+    text-align: center;
+}
+    .skillSet{ 
+        // background-color: orange;
+        width: 100%;
+
+        h3 { 
+        //    color: red;
+        }
+
+        .tags { 
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+            max-height: 3rem; /* Limit height to create overflow effect */
+
+
+            .tag { 
+                background-color: var(--accent-color);
+                padding: 4px;
+                padding: 6px 12px 6px 12px;
+                border-radius: 36px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,34 @@
+/* MainLayout.module.scss */
+
+.mainLayout {
+    height: 100vh;
+    // overflow: scroll;
+  }
+  
+  .mainContent {
+    position: relative;
+    width: 100%;
+    // height: 100%;
+  }
+  
+  .pageTransitionEnter {
+    opacity: 0;
+    transform: translateY(10px); /* Reduced initial movement */
+    // filter: blur(22px);
+    // transform: scale(1.1);
+  }
+  
+  .pageTransitionEnterActive {
+    opacity: 1;
+    transform: translateY(0);
+    // filter: blur(20px);
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out; /* Adjusted transition */
+  }
+  
+  .pageTransitionExit {
+
+
+  }
+  
+  .pageTransitionExitActive {
+    }

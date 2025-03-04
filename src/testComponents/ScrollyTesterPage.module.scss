@@ -1,0 +1,63 @@
+.scrollyTesterPage {
+    width: 100%;
+    min-height: 200vh; // Ensure the page is scrollable
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Large Interactive Area */
+  .largeInteractiveArea {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50vh; // Adjust height to ensure scrolling
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease; // Smooth transition for fading
+    z-index: 1;
+    pointer-events: none; // Prevents the area from blocking mouse events like scrolling
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Text overlay */
+  .textContainer {
+    position: absolute;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5); // Darken for readability
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+  
+  .textContainer h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .textContainer p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Grid Area */
+  .gridArea {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-top: 50vh; // Start the grid area from below the large interactive area
+    min-height: 100vh; // Ensure the grid area is scrollable
+    z-index: 2;
+    padding-left: 36px; // Initial padding, will be dynamically adjusted
+    padding-right: 36px; // Initial padding, will be dynamically adjusted
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.3); // Darker and more prominent shadow
+    border-radius: 8px; // Rounded corners for a softer look
+    border: 1px solid magenta;
+  }
+  
+  .content {
+    padding: 20px;
+  }

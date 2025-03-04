@@ -1,0 +1,222 @@
+.homePage {
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// Tile span classes for larger screens
+
+
+.tile-1x1 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.tile-1x2 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.tile-1x3 {
+    grid-column: span 1;
+    grid-row: span 3;
+}
+
+.tile-1x4 {
+    grid-column: span 1;
+    grid-row: span 4;
+}
+
+.tile-2x1 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.tile-2x2 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.tile-2x3 {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.tile-2x4 {
+    grid-column: span 2;
+    grid-row: span 4;
+}
+
+.tile-3x1 {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.tile-3x2 {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.tile-3x3 {
+    grid-column: span 3;
+    grid-row: span 3;
+}
+
+.tile-3x4 {
+    grid-column: span 3;
+    grid-row: span 4;
+}
+
+.tile-4x1 {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
+.tile-4x2 {
+    grid-column: span 4;
+    grid-row: span 2;
+}
+
+.tile-4x3 {
+    grid-column: span 4;
+    grid-row: span 3;
+}
+
+.tile-4x4 {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+ 
+// LG (Large Screen) styles
+.lg {
+    background-color: rgb(0, 0, 0);
+
+    .gridArea {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        // background: var(--bg);
+        max-height: 100vh;
+        height: 100vh;
+        font-family: 'Droid Serif', serif;
+        font-size: 14px;
+        // color: #2f2f2f;
+        max-width: 1500px;
+        // background-color: #121212;
+        overflow: hidden;
+        padding: 36px;
+
+        
+        
+        box-sizing: border-box;
+        
+
+            transform: rotate(0deg);
+    
+        .gridTile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg);
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            // border-left: 2px solid var(--text-color);
+            // border-bottom: 2px solid var(--text-color);
+            
+
+            & > * {
+                max-width: 100%;
+                max-height: 100%;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+// MD (Medium Screen) styles
+.md {
+    background-color: orange;
+
+    .gridArea {
+        background-color: salmon;
+    }
+
+    .gridTile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bg);
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .gridTile > * {
+        max-width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .gridTile img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+
+.sm { 
+    // display: grid;
+
+    .gridArea{ 
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+    grid-auto-rows: minmax(50vh, auto); /* Ensures rows adjust dynamically */
+    padding: 0px;
+    // background-color: yellow;
+    // row-gap: 8px; /* Add vertical space between items */
+    scroll-snap-type: y mandatory; /* Snap in vertical direction */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 100vh; /* Full viewport height to limit visible area */
+    width: 100vw;
+    // height: 100vh;
+    gap: 0px;
+    border-radius: 0px;
+    border: none;
+    margin: 0;
+
+    }
+    .gridTile { 
+        aspect-ratio: 1;
+      width: 100%;
+      border: none;
+      outline: none;
+      scroll-snap-align: start; 
+      // min-height: 50vh;
+      height: 100%;
+      grid-row: span 2;
+    }
+
+    .full { 
+        // border: 2px solid red;
+        // background-color: yellow;
+        height: 100vh;
+    }
+
+    .half { 
+        height: 50vh;
+    }
+}

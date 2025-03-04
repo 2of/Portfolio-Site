@@ -1,0 +1,121 @@
+/* Tiles.module.scss */
+
+.section {
+ 
+   position: relative;
+    width: 100%;
+    // background-color: red;
+    height: 100%;
+    // padding: 10px;
+
+    display:flex;
+    flex-direction: column;
+    outline: 1px solid wheat;
+    justify-content: center;
+    // padding: 12px;
+    // padding: 1rem;
+}
+  
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; /* Set the positioning context */
+    overflow: hidden; /* Prevent any overflow */
+    background-color: var(--accent-color); /* Goldenrod Yellow */
+
+
+    padding: var(--padding-large); /* Use defined padding */
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    color: var(--text-color); /* Dynamic text color */
+}
+
+  
+  .title {
+    font-style: italic;
+    text-align: center;
+    font-size: 36px;
+    padding: var(--padding-large) var(--padding-medium); /* Horizontal padding */
+    box-sizing: border-box; /* Ensures padding doesn't affect width calculation */
+    color: var(--text-color);   }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    color: #f0f0f0; /* Light gray color for the subtitle */
+    margin-top: 10px; /* Adds spacing between subtitle and title */
+  }
+  
+  .pointingHand {
+    width: 60px;  /* Adjust image size */
+    height: 60px;
+    margin-top: 20px; /* Space between image and title */
+    animation: bounce 1s infinite;  /* Optional: Add a bouncing effect for the hand */
+  }
+  
+  /* Optional: Add a bounce animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  
+  .featuredProjectTitle,
+  .qualificationsTitle,
+  .socialMediaTitle,
+  .aboutMeTitle,
+  .recentWorkTitle {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .featuredProjectDescription,
+  .recentWorkItemDescription {
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .featuredProjectLink {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .qualificationsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .qualificationsList li {
+    font-size: 1rem;
+  }
+  
+  .socialMedia a {
+    margin-right: 10px;
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .recentWorkItem {
+    margin-bottom: 20px;
+  }
+  
+  .recentWorkItemTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .recentWorkItemDescription {
+    font-size: 1rem;
+    color: #555;
+  }
+  
