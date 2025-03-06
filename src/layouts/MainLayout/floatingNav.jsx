@@ -58,7 +58,7 @@ const FloatingNav = () => {
             </NavLink>
           </li>
         ))}
-        <li className={styles.darkModeItem}>
+        <li className={styles.navItem}>
           <DarkModeToggle />
         </li>
       </ul>

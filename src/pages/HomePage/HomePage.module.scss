@@ -1,13 +1,48 @@
 .homePage {
     width: 100%;
     min-height: 100vh;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; // Centers inset in the middle
+    // margin: 12px;
+    // background-color: red;
 }
 
 // Tile span classes for larger screens
+
+.inset {
+    border: 2px solid var(--text-color);
+    // border-radius: 24px;
+    overflow: hidden;
+    width: calc(100% - 36px); // Account for margin
+    height: calc(100vh - 64px); // Keep spacing from viewport edges
+    display: flex; // Allows centering gridArea inside if needed
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    position: relative;
+
+
+    // transform: skewX(1deg)  ;
+
+
+}
+
+
+.glassOverlay { 
+    position: absolute;
+    z-index: 12;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.16);
+    // border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 100%;
+    pointer-events: none;
+}
 
 
 .tile-1x1 {
@@ -92,30 +127,15 @@
  
 // LG (Large Screen) styles
 .lg {
-    background-color: rgb(0, 0, 0);
+    // background-color: rgb(0, 0, 0);
 
     .gridArea {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
-        // background: var(--bg);
-        max-height: 100vh;
-        height: 100vh;
-        font-family: 'Droid Serif', serif;
-        font-size: 14px;
-        // color: #2f2f2f;
-        max-width: 1500px;
-        // background-color: #121212;
-        overflow: hidden;
-        padding: 36px;
-
-        
-        
+        width: 100%;
+        height: 100%;
         box-sizing: border-box;
-        
-
-            transform: rotate(0deg);
-    
         .gridTile {
             display: flex;
             justify-content: center;
@@ -133,7 +153,7 @@
             & > * {
                 max-width: 100%;
                 max-height: 100%;
-                overflow: hidden;
+                // overflow: hidden;
                 box-sizing: border-box;
             }
 

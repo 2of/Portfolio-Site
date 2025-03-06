@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Column.module.scss";
 
-const ColumnComponentContainer = ({ title, subtitle, colTitle, component }) => {
+const ColumnComponentContainer = ({ title, subtitle, colTitle, component, leftDivider}) => {
   return (
-    <div className={styles.column}>
-
+    <div className={`${styles.column}, `}>
+{/* ${leftDivider ? styles.dividerLeft : "" }` */}
         { colTitle && <div className={styles.columnTitle}>{colTitle}</div>}
       {/* Title */}
       {title && <h2 className={styles.title}>{title}</h2>}

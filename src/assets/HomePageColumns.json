@@ -1,6 +1,6 @@
 [
     {
-      "title": "Deep Learning For GeoLocating Street Level Imagery",
+      "title": "Deep Learning For GeoLocassting Street Level Imagery",
 
       "subtitle": "2024-2025 Master's Project",
       "items": [
@@ -12,7 +12,7 @@
 
         {
             "type": "paragraph",
-            "text": "Existing Models focus on broader scales, this psuedo ensemble of models 'slots in' as a final step in a broader GeoLocalization model. We analyse text, objects and colour space (using a bunch of convieniently great pre-existing models) to generate intermediary embeddings and train our model(s) therein. "
+            "text": "Existing Models focus on broader scales, this psuedo ensemble of models forms a last hop in a broader GeoLocalization Model"
           },
         {
           "type": "image",
@@ -46,7 +46,7 @@
       }
     },
     {
-      "title": "Climate Change: A Global Crisis",
+      "title": "Empty Space",
       "subtitle": "The urgent need for action",
       "items": [
         {
@@ -84,11 +84,11 @@
 
     {
         "title": "About Me",
-        "subtitle": "Technologist & Problem Solver",
+        "subtitle": "Thingies",
         "items": [
           {
             "type": "paragraph",
-            "text": "I’m a machine learning enthusiast with expertise in Python, TensorFlow, and Keras. I specialize in applying AI to real-world challenges, such as geolocation and computer vision. My work focuses on creating innovative, ethical, and impactful solutions."
+            "text": "Ipplying AI to real-world challenges, such asblh blah blah."
           },
           {"type" :  "pills",
             "pills" : ["Full Stack", "Data Processing", "Big Data", "Machine Learning", "Model Development and Analysis", "M365", "Azure Appliances", "Google Admin", "Network Design"]

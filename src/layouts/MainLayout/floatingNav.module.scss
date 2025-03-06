@@ -8,12 +8,14 @@
     transform: translateX(-50%); /* Only translate X-axis for centering */
     background-color: var(--bg);
     border-radius: var(--border-radius);
+    
 
-    padding: var(--padding-small) var(--padding-large);
+    // padding: 4px var(--padding-small);
     z-index: 1000;
     backdrop-filter: blur(var(--blur-radius));
     -webkit-backdrop-filter: blur(var(--blur-radius));
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    
     border: 2px solid var(--text-color);
   
     /* Fixed width to prevent resizing */
@@ -23,6 +25,10 @@
     box-sizing: border-box; /* Ensure padding does not affect the overall width */
     box-shadow: 
     0 0 0 2px var(--bg); /* White border outside the black border */
+
+    // -webkit-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
+    // -moz-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
+    // box-shadow: 0px 0px 25px 10px var(--bg);
     &.dark-mode {
       background-color: var(--dark-nav-bg);
     }
@@ -64,6 +70,7 @@
   
   .navItem {
     margin: 0 var(--spacing-small); /* Space between each nav item horizontally */
+    // border: 1px solid red;
   }
   
   .link {

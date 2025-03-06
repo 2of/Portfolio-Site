@@ -1,0 +1,163 @@
+[{
+    "name": "geo-localization-project",
+    "title": "Deep Learning For GeoLocating Street Level Imagery",
+    "subtitle": "2024-2025 Master's Project",
+    "sections": [
+      {
+        "name": "Overview",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "It turns out that there's enough pre-trained models floating around that we can skip to the fun stuff. This project creates a pseudo-ensemble of Machine Learning Models for GeoLocalization of street-level imagery at the multi-neighborhood scale."
+          },
+          {
+            "type": "paragraph",
+            "text": "Existing models focus on broader scales. This pseudo-ensemble of models 'slots in' as a final step in a broader GeoLocalization pipeline. We analyze text, objects, and color space (using a bunch of conveniently great pre-existing models) to generate intermediary embeddings and train our model(s) therein."
+          }
+        ]
+      },
+      {
+        "name": "",
+        "type": "text",
+        "items": [
+          {
+            "type": "image",
+            "src": "assets/images/home_vintage.gif",
+            "alt": "Street level imagery"
+          },
+          {
+            "type": "paragraph",
+            "text": "The methodology involves extracting and analyzing GeoInformative Features using fine-tuned object detection models to identify geographic indicators, such as signage, crosswalks, and architectural elements."
+          },
+          {
+            "type": "paragraph",
+            "text": "Optical Character Recognition (OCR) is used to extract text, which is then transformed into higher-dimensional embeddings using a pre-trained text embedding model. Color distributions, indicative of geographic location, are captured using HSV histogram embeddings."
+          },
+          {
+            "type": "paragraph",
+            "text": "Three machine learning models are employed to geolocate an unseen image: K-means clustering, a CNN with Attention, and a Multi-Dense Network with Attention."
+          },
+          {
+            "type": "pills",
+            "pills": ["python","Attention","CNN", "Fine Tuning"]
+          }
+        ]
+      },
+      {
+        "name": "Results",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "From a dataset of 150,510 images, we achieved an accuracy of 1.3km (approx) for a 20km² candidate area. The overall project was graded as an A through the University of Canterbury."
+          }
+        ]
+      },
+      {
+        "name": "Considerations",
+        "type": "text",
+        "items": [
+          {
+            "type": "image",
+            "src": "/assets/images/default.png",
+            "alt": "AI in Finance"
+          },
+          {
+            "type": "paragraph",
+            "text": "As AI continues to evolve, it is essential to address the ethical implications of its use. Issues such as data privacy, bias in algorithms, and job displacement need to be carefully managed."
+          },
+          {
+            "type": "link",
+            "text": "Read the full report",
+            "url": "https://example.com/ai-report"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "text": "View the complete project",
+      "url": "https://example.com/project-overview"
+    }
+  },
+  {
+    "name": "ai-climate-modeling",
+    "title": "AI-Powered Climate Modeling",
+    "subtitle": "Using Machine Learning to Predict Climate Change Trends",
+    "sections": [
+      {
+        "name": "Introduction",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Climate change is one of the biggest challenges of our time. With the increasing availability of environmental data, AI-driven models can help us predict temperature shifts, extreme weather patterns, and long-term climate trends."
+          }
+        ]
+      },
+      {
+        "name": "Methodology",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "We utilize recurrent neural networks (RNNs) and convolutional neural networks (CNNs) trained on satellite imagery and historical weather data to forecast future climate conditions with high accuracy."
+          },
+          {
+            "type": "image",
+            "src": "/assets/images/climate_ai.jpg",
+            "alt": "AI-powered climate prediction"
+          },
+          {
+            "type": "paragraph",
+            "text": "Our approach also integrates transfer learning from existing climate simulation models, improving predictions for specific regions vulnerable to climate change."
+          },
+          {
+            "type": "highlight",
+            "text": "Python, TensorFlow, Climate Data API"
+          }
+        ]
+      },
+      {
+        "name": "Findings",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Using this AI-driven model, we achieved a **92% accuracy** in predicting heatwave occurrences and a **78% accuracy** in long-term precipitation trends."
+          }
+        ]
+      },
+      {
+        "name": "Impact & Ethics",
+        "type": "text",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "While AI in climate science is powerful, it also raises concerns about bias in datasets, computational energy usage, and the ethical responsibility of AI-generated predictions."
+          },
+          {
+            "type": "link",
+            "text": "Read the full research paper",
+            "url": "https://example.com/ai-climate-paper"
+          }
+        ]
+      },
+      {
+        "name": "Qualifications",
+        "type": "qualifications",
+        "items": [
+          {
+            "title": "Master of Artificial Intelligence",
+            "institution": "University of Canterbury",
+            "year": "2025"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "text": "Explore the AI Climate Model",
+      "url": "https://example.com/ai-climate-model"
+    }
+  }]  
+  

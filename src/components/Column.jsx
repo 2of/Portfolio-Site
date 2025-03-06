@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Column.module.scss";
-
-const Column = ({ data, title, columns = 1 }) => {
+import clsx from "clsx";
+import { FaExchangeAlt, FaMoon, FaSun } from "react-icons/fa";
+const Column = ({ data, title, columns = 1, fullLink }) => {
   const [imageStatus, setImageStatus] = useState({});
 
   const handleImageLoad = (index) => {
@@ -20,14 +21,30 @@ const Column = ({ data, title, columns = 1 }) => {
       items.slice(middle), // Second column
     ];
   };
+  const [isMouseOver, setIsMouseOver] = useState(false); // State to track mouse hover
+  const handleMouseEnter = () => setIsMouseOver(true); // Mouse enters the container
+  const handleMouseLeave = () => setIsMouseOver(false); // Mouse leaves the container
 
   // Split the items if columns=2, otherwise just use the original items
   const [leftColumn, rightColumn] =
     columns === 2 ? splitIntoColumns(data.items) : [data.items, []];
 
   return (
-    <div className={styles.column}>
-      {title && <div className={styles.columnTitle}>{title}</div>}
+    <div className={`${styles.column} ${fullLink ? styles.fullLink : ""}`}
+    
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+    
+    >
+        <div
+          className={clsx(styles.overlayLink, { [styles.showoverlayLink]: isMouseOver })}
+        >
+          <h2> <FaMoon/> <FaExchangeAlt/> <FaSun/> </h2>
+        </div>
+
+
+      {fullLink && <div className={styles.overlay}> test </div>}
+      {/* {title && <div className={styles.columnTitle}>{title}</div>} */}
 
       {/* Title */}
       {data.title && <h2 className={styles.title}>{data.title}</h2>}

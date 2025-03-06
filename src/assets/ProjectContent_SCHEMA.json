@@ -1,0 +1,182 @@
+[
+    {
+      "name": "geo-localization-project",
+      "title": "Deep Learning For GeoLocating Street Level Imagery",
+      "subtitle": "2024-2025 Master's Project",
+      "sections": [
+        {
+          "name": "Overview",
+          "type": "text",
+          "items": [
+            {
+              "type": "paragraph",
+              "text": "It turns out that there's enough pre-trained models floating around that we can skip to the fun stuff. This project creates a pseudo-ensemble of Machine Learning Models for GeoLocalization of street-level imagery at the multi-neighborhood scale."
+            },
+            {
+              "type": "paragraph",
+              "text": "Existing models focus on broader scales. This pseudo-ensemble of models 'slots in' as a final step in a broader GeoLocalization pipeline. We analyze text, objects, and color space (using a bunch of conveniently great pre-existing models) to generate intermediary embeddings and train our model(s) therein."
+            }
+          ]
+        },
+        {
+          "name": "Methodology",
+          "type": "text",
+          "items": [
+            {
+              "type": "image",
+              "src": "assets/images/home_vintage.gif",
+              "alt": "Street level imagery"
+            },
+            {
+              "type": "paragraph",
+              "text": "The methodology involves extracting and analyzing GeoInformative Features using fine-tuned object detection models to identify geographic indicators, such as signage, crosswalks, and architectural elements."
+            },
+            {
+              "type": "paragraph",
+              "text": "Optical Character Recognition (OCR) is used to extract text, which is then transformed into higher-dimensional embeddings using a pre-trained text embedding model. Color distributions, indicative of geographic location, are captured using HSV histogram embeddings."
+            },
+            {
+              "type": "highlight",
+              "text": "Three machine learning models are employed to geolocate an unseen image: K-means clustering, a CNN with Attention, and a Multi-Dense Network with Attention."
+            },
+            {
+              "type": "pills",
+              "pills": ["python", "Attention", "CNN", "Fine Tuning"]
+            }
+          ]
+        },
+        {
+          "name": "Results",
+          "type": "text",
+          "items": [
+            {
+              "type": "paragraph",
+              "text": "From a dataset of 150,510 images, we achieved an accuracy of 1.3km (approx) for a 20km² candidate area. The overall project was graded as an A through the University of Canterbury."
+            }
+          ]
+        },
+        {
+          "name": "Considerations",
+          "type": "text",
+          "items": [
+            {
+              "type": "image",
+              "src": "/assets/images/default.png",
+              "alt": "AI in Finance"
+            },
+            {
+              "type": "paragraph",
+              "text": "As AI continues to evolve, it is essential to address the ethical implications of its use. Issues such as data privacy, bias in algorithms, and job displacement need to be carefully managed."
+            },
+            {
+              "type": "link",
+              "text": "Read the full report",
+              "url": "https://example.com/ai-report"
+            }
+          ]
+        }
+      ],
+      "link": {
+        "text": "View the complete project",
+        "url": "https://example.com/project-overview"
+      }
+    },  
+    {
+      "name": "short-story",
+      "title": "Schema Overview",
+      "subtitle": "To appear like a NewsPaper",
+      "sections": [
+        {
+          "name": "Introduction",
+          "type": "text",
+          "items": [
+            {
+              "type": "paragraph",
+              "text": "I got a bit carried away with this one and implemented a bit of a framework for writing articles / explanations into JSON. Essentially, we define sections with a variety of items therein"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "type": "text",
+          "items": [
+            {
+              "type": "paragraph",
+              "text": "Of course, we can embed images, just supply an absolute path, that's the easiest, it's not served by any API, although adding that is trivial too (just pass a URI instead of a local ref)"
+            },
+            {
+              "type": "image",
+              "src": "/assets/images/home_vintage.gif",
+              "alt": "We can subtitle these guys"
+            },
+            {
+                "type": "paragraph",
+                "text": "So Black and white is totally optional"
+              },
+            {
+              "type": "highlight",
+              "text": "You miss 100% of the shots you dont take - Wayne Gretzky - Michael Scott"
+            }
+          ]
+        },
+        {
+            "name": "Section Titles are totally optional",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "Of course, we can embed images, just supply an absolute path, that's the easiest, it's not served by any API, although adding that is trivial too (just pass a URI instead of a local ref)"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/home_vintage.gif",
+                "alt": "We can subtitle these guys"
+              },
+              {
+                  "type": "paragraph",
+                  "text": "So Black and white is totally optional"
+                },
+              {
+                "type": "highlight",
+                "text": "You miss 100% of the shots you dont take - Wayne Gretzky - Michael Scott"
+              },
+              {
+                "type": "pills",
+                "pills": ["Happiness", "Smiling", "Other Pill", "Something"]
+              },
+              {
+                "type": "paragraph",
+                "text": "While AI in climate science is powerful, it also raises concerns about bias in datasets, computational energy usage, and the ethical responsibility of AI-generated predictions."
+              }
+
+            ]
+          },
+    
+
+        {
+            "name": "Qualifications",
+            "type": "qualifications",
+            "items": [
+              {
+                "title": "Master of Artificial Intelligence",
+                "institution": "University of Canterbury",
+                "year": "2025"
+              }, {
+                "title": "Official Hamburger",
+                "institution": "University of Canterbury",
+                "year": "2025"
+              }, {
+                "title": "Master of Artificial Intelligence",
+                "institution": "University of Canterbury",
+                "year": "2025"
+              }
+            ]
+          }
+      ],
+      "link": {
+        "text": "Read the full story",
+        "url": "https://example.com/last-light"
+      }
+    }
+  ]
+  
