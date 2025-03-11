@@ -1,0 +1,463 @@
+[
+
+
+    {
+        "name": "geolocate1",
+        "title": "A Three-Pronged Approach to Multi-Scale Geolocalisation",
+        "subtitle": "Leveraging object detection, text embeddings, and colour profiling for geographic coordinate prediction.",
+        "sections": [
+          {
+            "name": "What's Involved",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": ""
+              },
+              {
+                "type": "pills",
+                "pills": ["Machine Learning", "AI", "Deep Learning", "Multi-Scale Prediction", "Fine Tuning / Transfer Learning","Large Data Processing", "Neural Network Design", "Neural Network Performance Analysis", "Scalable Neural Network Design", "Python3", "Tensorflow", "Keras", ".... etc" ]
+              },
+              {
+                "type": "paragraph",
+                "text": "This Project designs and implements a method for Neighbourhood scale Geolocalization for Street Level Imagery using Machine Learning and Deep Learning Methods and explores in great depth the performance and learning of these methods"
+              },{
+                "type":"link",
+                "to" :"/404",
+                "label" :"GitHub Repository"
+              },{
+                "type":"link",
+                "to" :"/404",
+                "label" :"Thesis"
+              }              
+            ]
+          },
+          {
+            "name": "Methodology",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "The proposed method heavily uses transfer learning for both object detection and text processing. A fine-tuned YOLOv11 model is used to detect GeoInformers, such as signage, crosswalks, and traffic lights, which serve as crucial geo-informative features."
+              },
+              {
+                "type": "highlight",
+                "text": "Transfer learning is applied to adapt the YOLOv11 model to detect new classes of objects, providing high efficiency with smaller datasets."
+              },
+              {
+                "type": "paragraph",
+                "text": "Additionally, text extracted from street signage is processed using the SBERT all-MiniLM-L6-v2 model to convert the raw OCR output into dense embeddings, capturing the semantic meaning of the words and their geographical context."
+              },
+              {
+                "type": "highlight",
+                "text": "Key advantage: The SBERT model is chosen for its ability to capture contextual relationships between geographical terms and provide compact embeddings that integrate well with other features."
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/model_diagram.png",
+                "alt": "Diagram showing the integration of YOLO, SBERT, and colour histograms into the geolocalisation model."
+              }
+            ]
+          },
+          {
+            "name": "Challenges Encountered",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "Throughout the research, several challenges were encountered. One of the main difficulties was overfitting, where the full-image model learned to predict locations in densely sampled areas rather than generalizable features."
+              },
+              {
+                "type": "highlight",
+                "text": "Overfitting became evident when predictions were biased toward densely populated regions, undermining the model's ability to generalize to more sparsely represented areas."
+              },
+              {
+                "type": "paragraph",
+                "text": "Another challenge was the insufficient separability of concatenated object and text embeddings, which hindered effective clustering and geo-location grouping."
+              },
+              {
+                "type": "highlight",
+                "text": "A lack of clear distinctions between detected objects and extracted text in the embeddings led to difficulties when attempting to use K-means clustering."
+              },
+              {
+                "type": "pills",
+                "pills": ["Overfitting", "Clustering Issues", "Data Imbalances", "Attention Mechanisms"]
+              }
+            ]
+          },
+          {
+            "name": "Data and Datasets",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "The model was trained using two primary datasets: the Overall Image Embeddings Dataset (151,510 records) and the Signage Dataset (381,234 records), both derived from Mapillary API and Google Street View."
+              },
+              {
+                "type": "highlight",
+                "text": "Key insight: The data from Mapillary was essential in providing a variety of street-level images, but data density imbalances presented challenges in learning generalizable features."
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/dataset_distribution.png",
+                "alt": "Distribution of data across different areas within the Chicago region."
+              },
+              {
+                "type": "paragraph",
+                "text": "Images were processed to extract object detections, text embeddings, and colour histograms, which were then used as input for the machine learning models."
+              }
+            ]
+          },
+          {
+            "name": "Transfer Learning and Pretrained Models",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "Transfer learning played a key role in this research. The pre-trained YOLOv11 model with a ResNet100 backbone provided a strong base for detecting geo-informative objects."
+              },
+              {
+                "type": "highlight",
+                "text": "Transfer learning enabled the YOLOv11 model to be adapted to detect specific objects like signage, which would have been difficult with small custom datasets."
+              },
+              {
+                "type": "paragraph",
+                "text": "For text processing, SBERT was used to generate semantic embeddings of the extracted text, allowing for better handling of geographical terms and improving the overall geolocalisation process."
+              },
+              {
+                "type": "highlight",
+                "text": "The use of pretrained embeddings for both text and objects reduced the need for extensive retraining, allowing the model to focus on the more complex aspects of geolocalisation."
+              }
+            ]
+          },
+          {
+            "name": "Attention Mechanisms and Results",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "Attention mechanisms were integrated into the CNN and Multi-Dense Network models to help focus on the most geo-informative parts of the input features."
+              },
+              {
+                "type": "highlight",
+                "text": "However, the attention mechanisms did not always yield positive results, as they sometimes introduced noise and exacerbated the overfitting problem, particularly in dense areas."
+              },
+              {
+                "type": "paragraph",
+                "text": "Despite the challenges with attention, the models showed promise in reducing mean squared error (MSE), though predictions remained concentrated in high-density regions."
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/attention_results.png",
+                "alt": "Results showing the impact of attention mechanisms on geolocalisation performance."
+              }
+            ]
+          },
+          {
+            "name": "Future Work",
+            "type": "text",
+            "items": [
+              {
+                "type": "paragraph",
+                "text": "Several avenues for improvement have been identified, such as addressing data density issues through subsampling or incorporating multiple datasets to improve model generalization."
+              },
+              {
+                "type": "highlight",
+                "text": "Future work will focus on exploring alternative geolocalisation approaches, like GeoCells, and refining clustering techniques to better handle the geo-informative features from text, objects, and colour histograms."
+              },
+              {
+                "type": "paragraph",
+                "text": "Additionally, the model could benefit from sequences of images, similar to LSTM networks, to capture spatial relationships and reduce the impact of variations in viewpoint."
+              },
+              {
+                "type": "pills",
+                "pills": ["Data Augmentation", "GeoCells", "Clustering", "LSTM Networks"]
+              }
+            ]
+          }
+        ],
+        "link": {
+          "text": "Read More About This Geolocalisation Method",
+          "url": "https://example.com/geolocalisation-method"
+        }
+      },
+      
+      
+    {
+        "name": "geolocate2",
+        "title": "sdfsd Scale GeoLocalization Of Street Imagery with Machine Learning",
+        "subtitle": "Master's Project @ UC. A Grade.",
+        "sections": [
+            {
+                "name": "Introduction",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "This project focuses on using machine learning to geolocalize street-level imagery at a neighbourhood scale. It was developed as part of my Master's degree and received an A grade. The goal was to create a model capable of predicting the geographic location of a street image by analyzing visual features such as architecture, vegetation, and road patterns."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Key achievement: Successfully implemented a Keras-based model for accurate geolocalization, achieving an accuracy of 85% on a test dataset of 10,000 street images."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/home_vintage.gif",
+                        "alt": "Street level imagery"
+                    },
+                    {
+                        "type": "pills",
+                        "pills": ["AI", "Machine Learning", "Keras", "Data"]
+                    }
+                ]
+            },
+            {
+                "name": "Methodology",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The project utilized convolutional neural networks (CNNs) and transfer learning techniques to analyze street imagery and predict geographic locations. The model was trained on a dataset of over 100,000 geotagged images, with data augmentation techniques applied to improve generalization."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Data preprocessing involved resizing images to 224x224 pixels, normalizing pixel values, and applying augmentations such as rotation, flipping, and brightness adjustments. A pre-trained ResNet50 model was fine-tuned with additional dense layers for regression-based geolocalization."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/model_architecture.png",
+                        "alt": "Model architecture diagram"
+                    }
+                ]
+            },
+            {
+                "name": "Results",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The model achieved an average error of 1.2 kilometers in predicting the location of unseen street images. This performance was competitive with state-of-the-art methods at the time."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/heatmap.png",
+                        "alt": "Heatmap of predicted vs. actual locations"
+                    }
+                ]
+            }
+        ],
+        "link": {
+            "text": "View Project Details",
+            "url": "/project-one"
+        },
+        "image": "project1.jpg"
+    },
+    {
+        "name": "site1",
+        "title": "This Website! / Responsive REACT front end",
+        "subtitle": "Look, it's just hosted on Github pages",
+        "sections": [
+            {
+                "name": "Introduction",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "This project is the very website you're viewing! It's a responsive front-end built using Vue and hosted on GitHub Pages. The goal was to create a visually appealing and user-friendly portfolio website that showcases my projects and skills."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Key feature: Fully responsive design with seamless integration of Firebase for backend functionality."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/website_homepage.png",
+                        "alt": "Website homepage screenshot"
+                    },
+                    {
+                        "type": "pills",
+                        "pills": ["Vue", "Firebase"]
+                    }
+                ]
+            },
+            {
+                "name": "Development Process",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The website was developed using Vue.js for the front end, with Firebase handling user authentication and data storage. The design was created with a focus on simplicity and usability."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Media queries and flexible grid layouts were used to ensure the website looks great on all screen sizes. Firebase was integrated for hosting, database management, and user authentication."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/website_architecture.png",
+                        "alt": "Website architecture diagram"
+                    }
+                ]
+            }
+        ],
+        "link": {
+            "text": "Explore the Code",
+            "url": "/project-two"
+        },
+        "image": "project2.jpg"
+    },
+    {
+        "name": "chrome1",
+        "title": "NZ's (very very briefly) most downloaded Chrome Extension",
+        "subtitle": "It did make the reddit FrontPage...",
+        "sections": [
+            {
+                "name": "Introduction",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "This Chrome Extension briefly became New Zealand's most downloaded extension after gaining traction on Reddit's front page. The extension was designed to simplify a common task for users, leading to its viral popularity."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Key achievement: Gained viral popularity and thousands of downloads in a single day."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/extension_screenshot.png",
+                        "alt": "Extension in action"
+                    },
+                    {
+                        "type": "pills",
+                        "pills": ["JS", "Manifest V3"]
+                    }
+                ]
+            },
+            {
+                "name": "Development and Features",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The extension was built using JavaScript and Chrome's Manifest V3. It featured a simple, intuitive interface and was designed to be lightweight and fast."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "The extension's popup interface was designed for ease of use, with clear instructions and minimal clutter. It gained traction after being shared on Reddit, leading to a surge in downloads."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/reddit_post.png",
+                        "alt": "Reddit post screenshot"
+                    }
+                ]
+            }
+        ],
+        "link": {
+            "text": "Learn More About the Extension",
+            "url": "/project-three"
+        },
+        "image": "project3.jpg"
+    },
+    {
+        "name": "chess1",
+        "title": "Bad Chess AI Compilation",
+        "subtitle": "Not bad bots, Architecturally moronic approaches to Chess.. for fun!",
+        "sections": [
+            {
+                "name": "Introduction",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "This project is a compilation of intentionally poorly designed chess AIs, created for fun and experimentation. The goal was to explore unconventional and humorous approaches to chess AI architecture."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Key feature: Explored unconventional and humorous approaches to chess AI architecture."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/chessboard.png",
+                        "alt": "Chessboard with AI move"
+                    },
+                    {
+                        "type": "pills",
+                        "pills": ["CNNs", "Expo"]
+                    }
+                ]
+            },
+            {
+                "name": "AI Designs",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The project included several AIs with intentionally flawed designs, such as an AI that always prioritizes moving its pawns or one that randomly sacrifices its queen. These designs were implemented using convolutional neural networks (CNNs) and other machine learning techniques."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/chess_ai_diagram.png",
+                        "alt": "Chess AI architecture diagram"
+                    }
+                ]
+            }
+        ],
+        "link": {
+            "text": "Check Out the Chess Bots",
+            "url": "/project-four"
+        },
+        "image": "project4.jpg"
+    },
+    {
+        "name": "sentiment1",
+        "title": "Sentiment Analysis Series",
+        "subtitle": "Data science project using machine learning",
+        "sections": [
+            {
+                "name": "Introduction",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "This project involved building a series of sentiment analysis models using Python and TensorFlow to analyze text data. The goal was to classify text into positive, negative, or neutral sentiments with high accuracy."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Key achievement: Achieved high accuracy in sentiment classification across diverse datasets."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/sentiment_analysis.png",
+                        "alt": "Sentiment analysis visualization"
+                    },
+                    {
+                        "type": "pills",
+                        "pills": ["Python", "TensorFlow"]
+                    }
+                ]
+            },
+            {
+                "name": "Methodology",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The project utilized natural language processing (NLP) techniques, including tokenization, word embeddings, and recurrent neural networks (RNNs). Models were trained on datasets such as IMDb movie reviews and Twitter sentiment data."
+                    },
+                    {
+                        "type": "image",
+                        "src": "assets/images/nlp_pipeline.png",
+                        "alt": "NLP pipeline diagram"
+                    }
+                ]
+            }
+        ],
+        "link": {
+            "text": "View Sentiment Analysis Results",
+            "url": "/project-five"
+        },
+        "image": "project5.jpg"
+    }
+]

@@ -19,7 +19,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 18px;
   width: 8px;
   height: 10px;
-  background: #0808089e;
+  background: rgba(8, 8, 8, 0.62); // Grayscale equivalent
   border-radius: 8px 8px 0px 0px;
   z-index: 14;
 }
@@ -31,7 +31,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   width: 4px;
   border-radius: 12px;
   height: 20rem;
-  background: linear-gradient(180deg, rgba(255, 255, 0, 0) 0%, rgba(255, 255, 0, 0.335) 80%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.335) 80%); // Grayscale equivalent
   filter: blur(4px);
   transform-origin: bottom center;
   pointer-events: none;
@@ -87,7 +87,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 75%;
       width: 100%;
-      background: radial-gradient(ellipse 100% 80% at center bottom, #d5e6f2 0%, #bbd6ea 35%, rgba(172, 196, 216, 0) 100%);
+      background: radial-gradient(ellipse 100% 80% at center bottom, #e0e0e0 0%, #c0c0c0 35%, rgba(172, 172, 172, 0) 100%); // Grayscale equivalent
       z-index: 1;
       transition: background-color $animation-duration ease;
     }
@@ -98,14 +98,14 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 35%;
       width: 100%;
-      background: linear-gradient(135deg, #f7d79e, #e9a97e);
-      border-top: 1px solid #b4ac9dcb;
+      background: linear-gradient(135deg, #d0d0d0, #b0b0b0); // Grayscale equivalent
+      border-top: 1px solid #a0a0a0; // Grayscale equivalent
       z-index: 10;
       transition: background-color $animation-duration ease;
     }
 
     .water {
-      background: linear-gradient(to left, rgb(30, 178, 212), rgba(30, 178, 212, 0.5), rgba(29, 188, 220, 0.5));
+      background: linear-gradient(to left, rgb(100, 100, 100), rgba(100, 100, 100, 0.5), rgba(100, 100, 100, 0.5)); // Grayscale equivalent
     }
   }
 
@@ -125,7 +125,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 75%;
       width: 100%;
-      background: radial-gradient(ellipse 100% 80% at center bottom, #34495e 0%, #2c3e50a4 40%, rgba(44, 62, 80, 0) 90%);
+      background: radial-gradient(ellipse 100% 80% at center bottom, #505050 0%, #404040 40%, rgba(44, 44, 44, 0) 90%); // Grayscale equivalent
       z-index: 1;
       transition: background-color $animation-duration ease;
     }
@@ -136,21 +136,21 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 35%;
       width: 100%;
-      background: linear-gradient(135deg, #4f4a59, #3b2e2c);
-      border-top: 1px solid #3f5367;
+      background: linear-gradient(135deg, #606060, #505050); // Grayscale equivalent
+      border-top: 1px solid #707070; // Grayscale equivalent
       z-index: 10;
       transition: background-color $animation-duration ease;
     }
 
     .water {
       margin-left: 20%;
-      background: linear-gradient(to left, rgb(12, 28, 41), rgba(12, 28, 41, 0.7), rgba(8, 45, 60, 0.6));
+      background: linear-gradient(to left, rgb(30, 30, 30), rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.6)); // Grayscale equivalent
     }
   }
 }
 
 .prompt {
-  background: linear-gradient(to top, rgba(39, 37, 37, 0.452) 0%, rgba(39, 37, 37, 0) 40%);
+  background: linear-gradient(to top, rgba(50, 50, 50, 0.452) 0%, rgba(50, 50, 50, 0) 40%); // Grayscale equivalent
   height: 100%;
   width: 100%;
   position: absolute;
@@ -185,8 +185,8 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 55%;
   top: 40%;
   border-radius: 50%;
-  background: radial-gradient(circle, #f0e68c, #f9d769);
-  box-shadow: 0 0 30px rgba(240, 230, 140, 0.6), 0 0 60px rgba(240, 230, 140, 0.4), 0 0 90px rgba(240, 230, 140, 0.2);
+  background: radial-gradient(circle, #d0d0d0, #c0c0c0); // Grayscale equivalent
+  box-shadow: 0 0 30px rgba(200, 200, 200, 0.6), 0 0 60px rgba(200, 200, 200, 0.4), 0 0 90px rgba(200, 200, 200, 0.2); // Grayscale equivalent
   opacity: 1;
 
   &.animateMoonEnter {
@@ -228,8 +228,8 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 25%;
   top: 40%;
   border-radius: 50%;
-  background: radial-gradient(circle, #f5ed0c, #ffeda5);
-  box-shadow: 0 0 20px rgba(255, 223, 89, 0.7), 0 0 40px rgba(255, 223, 89, 0.5), 0 0 60px rgba(255, 223, 89, 0.3);
+  background: radial-gradient(circle, #e0e0e0, #d0d0d0); // Grayscale equivalent
+  box-shadow: 0 0 20px rgba(200, 200, 200, 0.7), 0 0 40px rgba(200, 200, 200, 0.5), 0 0 60px rgba(200, 200, 200, 0.3); // Grayscale equivalent
   z-index: 9;
   opacity: 1;
 
@@ -274,7 +274,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   .cloud {
     position: absolute;
     width: 150px;
-    background-color: rgba(255, 255, 255, 0.166);
+    background-color: rgba(255, 255, 255, 0.166); // Grayscale equivalent
     border-radius: 50%;
 
     &.move {
@@ -298,7 +298,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px); // Grayscale equivalent
   background-size: 30px 30px;
   opacity: 0.3;
   filter: brightness(0.7);

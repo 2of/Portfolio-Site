@@ -1,121 +1,154 @@
 /* floatingNav.module.scss */
 
-
 .navContainer {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%); /* Only translate X-axis for centering */
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  z-index: 1000;
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid var(--text-color);
+  width: auto; /* Let it adapt based on content */
+  max-width: 100%; /* Allow full width, but cap at 100% of the screen */
+  box-sizing: border-box; /* Ensure padding does not affect the overall width */
+  box-shadow: 0 0 0 2px var(--bg); /* White border outside the black border */
+
+  &.dark-mode {
+    background-color: var(--dark-nav-bg);
+  }
+
+  /* Slide-in animation */
+ 
+
+  &.float { 
+    /* Add styles for float if needed */
+  }
+
+  &.sm { 
+    bottom: 0;
+    border-radius: 0;
+    width: 100%;   
+    height: 120px; // iphone safe ?!??!
+  }
+
+  &.rightAlignFloat { 
+    left: 5%;
+    top: 5%;
+    height: fit-content;
+    border-radius: 0;
+    transition: left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    .navList { 
+      flex-direction: column;
+    }
+  }
+
+  &.jump {
+    animation: jump 0.6s ease-in-out;
+    will-change: transform;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-50%) translateY(100vh); /* Start from below the screen */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0); /* End at its final position at the bottom */
+  }
+}
+
+@keyframes jump {
+  0%, 100% {
+    // opacity: 1;
+    // transform: translateX(-50%) translateY(0) scale(1);
+    // box-shadow: 0 0 0 rgba(0, 0, 0, 0.3); /* Initial shadow (barely visible) */
+  }
+  50% {
+    // opacity: 0;
+    filter: blur(4px);
+    // ?box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Larger shadow for depth */
+  }
+  
+}
+.navList {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Center the nav items horizontally */
+}
+
+.navItem {
+  margin: 0 var(--spacing-small); /* Space between each nav item horizontally */
+}
+
+.link {
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  padding: var(--padding-small) var(--padding-medium);
+  border-radius: var(--border-radius);
+  display: inline-block;
+  box-sizing: border-box; /* Prevents padding from affecting width */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  flex-shrink: 0; /* Prevent shrinking of the link */
+}
+
+.activeLink {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: var(--padding-small) var(--padding-medium);
+  border-radius: var(--border-radius);
+  display: inline-block;
+  color: var(--accent-color);
+  box-sizing: border-box;
+  flex-shrink: 0; /* Prevent shrinking of the link */
+}
+
+.link:hover {
+  color: var(--hover-text-color);
+}
+
+.darkModeItem {
+  margin-top: var(--spacing-medium); /* Add space between the nav links and the dark mode toggle */
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    padding: var(--padding-small);
+  }
+
+  .navContainer {
     position: fixed;
     bottom: 12px;
     left: 50%;
-    transform: translateX(-50%); /* Only translate X-axis for centering */
-    background-color: var(--bg);
-    border-radius: var(--border-radius);
-    
-
-    // padding: 4px var(--padding-small);
-    z-index: 1000;
-    backdrop-filter: blur(var(--blur-radius));
-    -webkit-backdrop-filter: blur(var(--blur-radius));
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    
-    border: 2px solid var(--text-color);
-  
-    /* Fixed width to prevent resizing */
-    width: auto; /* Let it adapt based on content */
-    // min-width: 300px; /* Ensure the minimum width is adequate to prevent any layout break */
-    max-width: 100%; /* Allow full width, but cap at 100% of the screen */
-    box-sizing: border-box; /* Ensure padding does not affect the overall width */
-    box-shadow: 
-    0 0 0 2px var(--bg); /* White border outside the black border */
-
-    // -webkit-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
-    // -moz-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
-    // box-shadow: 0px 0px 25px 10px var(--bg);
-    &.dark-mode {
-      background-color: var(--dark-nav-bg);
-    }
-  
-    /* Slide-in animation */
-    &.isWiggling {
-      animation: slideIn 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-    }
-
-    &.float { 
-
-    }
-
-    &.sm { 
-     bottom: 0;
-     border-radius: 0;
-     width: 100%;   
-     height: 120px; // iphone safe ?!??!
-    }
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: red;
   }
-  
-  @keyframes slideIn {
-    0% {
-      transform: translateX(-50%) translateY(100vh); /* Start from below the screen */
-    }
-    100% {
-      transform: translateX(-50%) translateY(0); /* End at its final position at the bottom */
-    }
-  }
-  
+
   .navList {
     display: flex;
-    flex-direction: row; /* Align items horizontally */
+    flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
-    align-items: center; /* Center the nav items horizontally */
+    align-items: center;
+    width: 100%; // Initial width
   }
-  
-  .navItem {
-    margin: 0 var(--spacing-small); /* Space between each nav item horizontally */
-    // border: 1px solid red;
-  }
-  
-  .link {
-    text-decoration: none;
-    font-size: var(--font-size-base);
-    color: var(--text-color);
-    // transition: background-color 0.3s ease, color 0.3s ease;
-    padding: var(--padding-small) var(--padding-medium);
-    border-radius: var(--border-radius);
-    display: inline-block;
-    box-sizing: border-box; /* Prevents padding from affecting width */
-    white-space: nowrap; /* Prevent text from wrapping to the next line */
-    flex-shrink: 0; /* Prevent shrinking of the link */
-  }
-  
-  .activeLink {
-    // color: var(--accent-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    padding: var(--padding-small) var(--padding-medium);
-    border-radius: var(--border-radius);
-    display: inline-block;
-    color: var(--accent-color);
-    box-sizing: border-box;
-    // text-decoration: underline;
-    flex-shrink: 0; /* Prevent shrinking of the link */
- 
-  }
-  
-  .link:hover {
-    color: var(--hover-text-color);
-  }
-  
-  .darkModeItem {
-    margin-top: var(--spacing-medium); /* Add space between the nav links and the dark mode toggle */
-  }
-  
-  @media (max-width: 768px) {
-    .navContainer {
-      padding: var(--padding-small);
-    }
-  }
-  
 
-  .sm { 
-    // background-color: red;
-    border: none;
-    box-shadow: none;
+  .visibleButton {
+    display: block;
   }
+}
+
+.sm { 
+  // background-color: red;
+  border: none;
+  box-shadow: none;
+}

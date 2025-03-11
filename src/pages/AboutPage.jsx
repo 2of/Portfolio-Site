@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // Import the JSON file directly
 import projectContentSchema from "../assets/ProjectContent_SCHEMA.json";
-import ColumnWithSections from "../components/ColumnWithSections";
+import ColumnWithSections from "../components/Column/ColumnWithSections";
 
 export const AboutPage = () => {
   // State to hold the JSON content
@@ -53,6 +53,10 @@ export const AboutPage = () => {
           </section>
         )}
       </section>
+
+      <footer>
+  Photo by <a href="https://unsplash.com/@pawel_czerwinski" target="_blank" rel="noopener noreferrer">Pawel Czerwinski</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-black-and-white-pattern-upjMhfYKfdc" target="_blank" rel="noopener noreferrer">Unsplash</a>
+</footer>
     </div>
   );
 };

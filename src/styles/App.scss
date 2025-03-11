@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 h1, h2, h3{
     
-  font-style: italic;
+  // font-style: italic;
   font-weight: 300;
   font-family: "Newsreader", serif;
   }
@@ -63,8 +63,8 @@ a {
 
 /* Additional Elements */
 button {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text-color);
   border: none;
   border-radius: var(--border-radius);
   padding: var(--padding-small) var(--padding-medium);
@@ -83,7 +83,8 @@ button:hover {
   max-width: 1200px; // Limit the width for better readability
   margin: 0 auto; // Center the container
   padding: 20px; // Add padding around the entire container
- 
+  // background-color: red;
+
   section {
     margin-bottom: 40px; // Add space between sections
 
@@ -124,4 +125,11 @@ button:hover {
 }
 .codeEmbed { 
 
+}
+
+.ScrollSpacer { 
+  height: 3rem;
+}
+h1{
+  font-size: 48px;
 }

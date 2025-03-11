@@ -13,6 +13,14 @@ export const GlobalProvider = ({ children }) => {
   const [basename, setBasename] = useState(""); // Store basename in state
   const [isBlurPage, setBlurPage] = useState(true);
   const [isMenuOpenforNav, setisMenuOpenforNav] = useState(false);
+  const [hopNav, setHopNav] = useState(false);
+  const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true)
+  // Store function and label
+  const [navReplacementButtonFunc, setNavReplacementButtonFunc] = useState({
+    callback: () => console.log("TEST"), // Initially null
+    label: "", // Initially empty
+  });
+
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
@@ -27,17 +35,24 @@ export const GlobalProvider = ({ children }) => {
   }, [isDarkMode]);
 
   return (
-    <GlobalContext.Provider
-      value={{
-        isDarkMode,
-        toggleTheme,
-        basename,
-        isBlurPage,
-        setBlurPage, // Include setBlurPage in the context
-        isMenuOpenforNav,
-        setisMenuOpenforNav
-      }}
-    >
+<GlobalContext.Provider
+  value={{
+    isDarkMode,
+    toggleTheme,
+    basename,
+    isBlurPage,
+    setBlurPage,
+    isMenuOpenforNav,
+    setisMenuOpenforNav,
+    floatingNavisOnRight, // Add this
+    setFloatingNavisOnRight, // If you need to update it elsewhere
+    navReplacementButtonFunc,
+    setNavReplacementButtonFunc,
+    hopNav,
+    setHopNav
+  }}
+>
+
       {children}
     </GlobalContext.Provider>
   );

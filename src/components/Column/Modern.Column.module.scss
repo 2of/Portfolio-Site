@@ -1,0 +1,292 @@
+// Component styles
+
+.title {
+  text-align: center;
+  color: orange;
+  font-size: 36px;
+  // margin-bottom: 0;
+} 
+
+
+.article {
+  position: relative;
+  overflow: auto;
+  .titleContainer { 
+    // background-color: red;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  
+    .collapsedTitle { 
+      background-color: green;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+  
+      h2 { 
+        background-color: orange;
+        width: 100%;
+        margin: 0; // Remove margin to avoid shifting
+        padding: 12px; // Use padding for spacing
+      }
+    }
+  }}
+
+
+.divider { 
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2px;
+  width: 90%;
+  background-color: red; /* Change color to background-color for horizontal dividers */
+  // margin: 24px;
+  flex-shrink: 0;  /* Prevent collapse if inside a flexbox */
+  position: static;
+}
+
+.subtitle {
+  position: relative;
+  background-color: red;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+.highlight {
+  font-size: 1.2rem;
+  text-align: start;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  margin-left: 28px;
+  padding: 12px;
+  padding-right: 21px;
+  cursor: pointer;
+
+  /* Add the vertical line to the left using the ::before pseudo-element */
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px; /* Adjust to move the line to the left */
+    top: 0;
+    height: 100%; /* Full height of the parent element */
+    width: 2px; /* Set width of the vertical line */
+    background-color: var(--text-color); /* Line color */
+  }
+
+  /* Optional: Keep the horizontal lines as you had before */
+  &:hover { 
+    background-color: var(--accent-color);
+    transform: translateX(12px);
+    color: var(--bg);
+  }
+}
+
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 4px;
+}
+
+.image {
+  max-width: 80%;
+  border: 1px solid var(--text-color);
+
+  &:hover{
+    cursor: pointer;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
+.link {
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  position: relative;
+ 
+}
+
+.pillsContainer { 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  border-radius: 120px;
+  // background-color: orange;
+  border: 1px solid var(--border-color);
+  // text-transform: uppercase;
+
+  position: relative;
+ 
+
+  &:hover { 
+    background-color: var(--border-color);
+    color: var(--bg);
+  }
+}
+
+.overlayLink {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.showOverlayLink {
+  opacity: 1;
+}
+
+/* Component Box */
+.componentBox {
+  width: 80%;
+  height: 400px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+.fullLink {
+  cursor: pointer;
+  position: relative;
+}
+
+.linkItem {
+  display: block;
+  width: 100%;
+  padding: var(--padding-small) 0;
+  font-weight: bold;
+  margin: 12px 0;
+  position: relative;
+  &:hover{
+    cursor: pointer;
+    // transform: translateX(8px);
+  text-decoration: underline;
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  &::after {
+    content: ' →';
+    font-size: 16px;
+    margin-left: 8px;
+  }
+}
+
+/* Formatting */
+.column { 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--padding-medium);
+  overflow: auto;
+}
+
+.dividerLeft::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  z-index: 1000;
+}
+
+.dividerTopDouble::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 22px;
+  width: 100%;
+}
+
+.dividerTop{
+  border-top: 2px solid;
+}
+
+.twoColumns { 
+
+  // margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 100%;
+  width: 100%;
+    // background-color: red;
+  .columnSection {
+    column-width: 450px; 
+    column-gap: 10px;
+  }
+  
+  .section {
+    break-inside: avoid;
+    margin-bottom: 10px;
+  }
+}
+
+.singleColumn {
+  padding: 24px;
+}
+
+.containerColumn {
+  &.overlayTitle { 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    .content {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    .componentBox { 
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .title {
+      position: absolute;
+      z-index: 4;
+    }
+  }
+
+  .componentBox { 
+    width: 100px;
+    height: auto;
+  }
+}
