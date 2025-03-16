@@ -16,7 +16,7 @@ const routes = [
     //   mobile_fullNav: false,
     // },
     {
-      path: "/home2",
+      path: "/",
       label: "home",
       element: <HomePage2/>,
       fullscreen_fullNav: false,
