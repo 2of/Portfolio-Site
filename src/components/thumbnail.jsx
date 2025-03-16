@@ -13,10 +13,12 @@ export const Thumbnail = ({ data, fullLinkCallBack, asFS = true }) => {
             {/* Cover div that fades out on hover */}
             <div className={styles.cover}></div>
 
-            <div className={styles.icon}>{getIcon("star")}</div>
+            {/* <div className={styles.icon}>{getIcon("star")}</div> */}
             <p className={styles.toprighticon}>{getIcon("star")}</p>
             <h2 className={styles.title}>{data.title}</h2>
             <p className={styles.subtitle}>{data.subtitle}</p>
+
+            
 
         {data.tools && 
         

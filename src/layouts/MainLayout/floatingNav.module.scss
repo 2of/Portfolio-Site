@@ -10,14 +10,14 @@
   z-index: 1000;
   backdrop-filter: blur(var(--blur-radius));
   -webkit-backdrop-filter: blur(var(--blur-radius));
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  // transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid var(--text-color);
   width: auto; /* Let it adapt based on content */
   max-width: 100%; /* Allow full width, but cap at 100% of the screen */
   box-sizing: border-box; /* Ensure padding does not affect the overall width */
   box-shadow: 0 0 0 2px var(--bg); /* White border outside the black border */
  * { 
-  transition: all 0.5s ease;
+  // transition: all 0.5s ease;
  }
   &.dark-mode {
     background-color: var(--dark-nav-bg);
@@ -151,9 +151,7 @@ justify-content: center;
         font-size: 24px
       }
     }
-    &::after { 
-      content:"IN PROGRESS"
-     }
+
    &.onlyButton { 
     // background-color: green;
     width: 36px;

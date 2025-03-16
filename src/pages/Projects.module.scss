@@ -53,20 +53,30 @@
 
 }
 .lg {
+    // background-color: red;
+    padding: 120px;
+    position: relative;
+
+    .divider { 
+        height: 2px;
+        width: 128px;
+        background-color: var(--text-color);
+    }
     .ProjectContainer {
       display: flex;
       flex-wrap: wrap;
       
       /* Optional: You can specify a gap between the cells */
-      gap: 1rem; 
+      gap: 12px; 
   
       .ProjectCell {
-        flex: 1 1 48%; /* Ensures each cell takes up 48% of the container width and wraps when necessary */
+        flex: 1 1 43%; /* Ensures each cell takes up 48% of the container width and wraps when necessary */
         /* You can adjust the min-width if you'd like to add more control */
-        min-width: 200px; /* Optional: to ensure a minimum size for each cell */
+        // min-width: 200px; /* Optional: to ensure a minimum size for each cell */
       }
     }
   }
-  .textSection {
-    // background-color: green;
-  }
+.textSection { 
+    // background-color: red;
+    position: static;
+}

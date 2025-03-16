@@ -78,7 +78,8 @@ export const NewProjectPage = () => {
 
 
 
-            <section className={`${styles.sm_fp} `}>
+            <section className={`${styles.sm_fp} ${styles.textSection}`}>
+
                 <h1 className={styles.title}>Projects</h1>
                 {screenSize === "sm" ? <p className={styles.subtitle}>
                    Scroll down for <span className={styles.highlight}>projects</span> and{' '}
@@ -87,11 +88,13 @@ export const NewProjectPage = () => {
                 
                 <p className={styles.subtitle}>
                 Explore my work with <span className={styles.highlight}>Python</span> and{' '}
-                <span className={styles.highlight}>bold ideas</span>.
+                <span className={styles.highlight}>bold things</span>.
+                
             </p>
             
             }
                 {screenSize === "sm" ? <BouncyArrows /> : ""}
+                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
             </section>
 
             <div className={styles.ProjectContainer}>
@@ -137,7 +140,7 @@ export const NewProjectPage = () => {
                 <p className={styles.subtitle}>
                     These are actually just the most recent repos from the github rest api...
                 </p>
-
+                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
             </section>
 
             {/* Handle error and loading states */}
@@ -164,7 +167,7 @@ export const NewProjectPage = () => {
                 <p className={styles.subtitle}>
                     just find the rest on my github {getIcon("github")} and medium
                 </p>
-
+                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
             </section>
 
         </div>

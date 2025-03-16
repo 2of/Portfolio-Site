@@ -3,126 +3,160 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    // background-color: red;
+    background-color: var(--accent-color);
     min-height: 100vh;
     width: 100vw;
-
-    // top: 50vh;
-    // transform: translateY(30%);
-    // background-color: red;
-}
-
-.HeroSection {
+  
+    // Responsive classes
+    &.sm {
+      // Styles for small screens
+      .HeroSection {
+        flex-direction: column;
+        padding: var(--padding-medium);
+ 
+  
+        .HeroTextSection {
+            position: absolute;
+            top: 48px;
+            right: 24px;
+                 
+          max-width: 100%;
+          text-align: flex-end;
+          align-items: flex-end;
+          width: 60%;
+          display: flex;
+          gap: 12px;
+        }
+  
+        .HeroTitle {
+          font-size: 64px; // Smaller font size for small screens
+        }
+        .HeroSubtitle { 
+            font-size: 18px;
+            // font-weight: bolder;
+            font-style: ita;
+        }
+        .HeroP { 
+            font-size: 16px;
+            
+        }
+        .HeroArt {
+            // padding: 24px;
+            position: absolute;
+            left: -140px;
+            // transform: translateX(-10px);
+            bottom: 0px;
+                padding: 0;
+                margin: 0;
+        
+            img {
+              height: 70vh;
+              width: 100%;
+            }
+          }
+      }
+    }
+  
+    &.lg {
+      // Styles for large screens
+      .HeroSection {
+        max-width: 1000px;
+        padding: var(--padding-large);
+  
+        .HeroTextSection {
+          max-width: 60%;
+          text-align: start;
+          align-items: start;
+        }
+  
+        .HeroTitle {
+          font-size: 64px; // Larger font size for large screens
+        }
+  
+        .HeroArt {
+          padding: 24px;
+        }
+        .HeroArt {
+            // padding: 24px;
+          
+        
+            img {
+              height: 70vh;
+              width: 100%;
+            }
+          }
+      }
+    }
+  }
+  
+  .HeroSection {
     display: flex;
-    // border: 1px solid var(--text-color);
-    // min-height: 80vh;
     max-width: 1000px;
-
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    align-items: center;
     padding: var(--padding-large);
-    // background-color: red;
+  
     .HeroTextSection {
-        display: flex;
-        flex-direction: column;
-        // text-align: start;
-        align-items: start;
-        justify-content: start;
-        text-align: center;
-        // background-color: orange;
-        max-width: 60%;
-        // background-color: red;
-        padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      text-align: center;
+      max-width: 60%;
+      padding: 12px;
     }
-    .HeroTitle { 
-        font-weight: 100;
-
-        font-size: 64px;
+  
+    .HeroTitle {
+      font-weight: 100;
+      font-size: 64px;
     }
-
-        .HeroP { 
-            text-align: left;
-            // padding-left: 3px;
-            // background-color: green ;
-        }
-        .HeroSubtitle { 
-            // padding-left: 3px;
-        }
-        .socials { 
+  
+    .HeroP {
+      text-align: left;
+    }
+  
+    .HeroSubtitle {
+      text-align: left;
+    }
+  
+    .socials {
       padding: 0;
       list-style: none;
-      align-items: start;
       display: flex;
       align-items: start;
-      padding: 0;
-    //   background-color: red;
-      
-    
-        }
-    .HeroArt {
-        padding: 24px;
-        // width: 0px;
-        // height: 120px;
-        // background-color: red;
-        img { 
-            // background-color: red;
-            height: 100%;
-            width: 100%;
-        }
+      color: var(--text-color);
     }
-}
-
-.socials {
-   
+  
+    
+  }
+  
+  .socials {
     li {
-        // background-color: red;
-        // height: 64px;
-        // width: 64px;
-        padding: 12px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        // background-color: ;
-        font-size: 24px;
-        color: white;
-
-    
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--text-color);
     }
-}
-
-.HeroTitle {
-    * {
-    }
-}
-
-.HeroSubtitle {
-    * {
-    }
-}
-
-.HeroP {
-    p {
-    }
-}
-
-.ProjSection {
+  }
+  
+  .ProjSection {
     h2 {
     }
-
+  
     .ProjectCards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .ProjectCard {
-            h3 {
-            }
-
-            p {
-            }
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  
+      .ProjectCard {
+        h3 {
         }
+  
+        p {
+        }
+      }
     }
-}
+  }

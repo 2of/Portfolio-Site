@@ -21,6 +21,7 @@ const routes = [
       element: <HomePage2/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
+      transparentnav: true
     },
 
     // {
@@ -36,6 +37,7 @@ const routes = [
       element:<NewProjectPage/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
+      transparentnav: false
     },
     {
       path: "/about",
@@ -43,6 +45,7 @@ const routes = [
       element: <AboutPage/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
+      transparentnav: false
     }
     
   ];
