@@ -40,10 +40,10 @@ const AppContent = () => {
         </Route>
 
         {/* 404 Route (doesn't use MainLayout) */}
-        <Route path="/404" element={<NotFoundPage />} />
+        {/* <Route path="/404" element={<NotFoundPage />} /> */}
 
         {/* If the route doesn't match any, redirect to the /404 route */}
-        <Route path="*" element={<Navigate to="/404" />} />
+        {/* <Route path="*" element={<Navigate to="/404" />} /> */}
       </Routes>
     </Router>
   );
