@@ -8,13 +8,13 @@ import { ProjectsPage } from "../pages/ProjectsPage";
 import ScrollyTesterPage from "../testComponents/scrollyTesterPage";
 
 const routes = [
-    {
-      path: "/",
-      label: "home",
-      element: <HomePage/>,
-      fullscreen_fullNav: false,
-      mobile_fullNav: false,
-    },
+    // {
+    //   path: "/",
+    //   label: "home",
+    //   element: <HomePage/>,
+    //   fullscreen_fullNav: false,
+    //   mobile_fullNav: false,
+    // },
     {
       path: "/home2",
       label: "home",
@@ -23,13 +23,13 @@ const routes = [
       mobile_fullNav: false,
     },
 
-    {
-      path: "/junk",
-      label: "junk",
-      element:<JunkPage/>,
-      fullscreen_fullNav: false,
-      mobile_fullNav: false,
-    },
+    // {
+    //   path: "/junk",
+    //   label: "junk",
+    //   element:<JunkPage/>,
+    //   fullscreen_fullNav: false,
+    //   mobile_fullNav: false,
+    // },
     {
       path: "/Projects",
       label: "projects",

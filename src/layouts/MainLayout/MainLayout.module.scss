@@ -8,6 +8,12 @@
   .mainContent {
     position: relative;
     width: 100%;
+    align-items: center;
+    // background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     // height: 100%;
   }
   

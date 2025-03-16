@@ -52,7 +52,21 @@
 
 
 }
-
-.textSection{ 
+.lg {
+    .ProjectContainer {
+      display: flex;
+      flex-wrap: wrap;
+      
+      /* Optional: You can specify a gap between the cells */
+      gap: 1rem; 
+  
+      .ProjectCell {
+        flex: 1 1 48%; /* Ensures each cell takes up 48% of the container width and wraps when necessary */
+        /* You can adjust the min-width if you'd like to add more control */
+        min-width: 200px; /* Optional: to ensure a minimum size for each cell */
+      }
+    }
+  }
+  .textSection {
     // background-color: green;
-}
+  }

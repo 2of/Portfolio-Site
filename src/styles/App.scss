@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-
+  
   font-size: var(--font-size-base); /* Base font size */
   margin: 0;
   padding: 0;
@@ -82,10 +82,13 @@ button:hover {
 
 // AboutPage.module.scss
 .GenericPageContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
   max-width: 1200px; // Limit the width for better readability
   margin: 0 auto; // Center the container
   padding: 20px; // Add padding around the entire container
-
+  margin: 120px;
   section {
     margin-bottom: 40px; // Add space between sections
 

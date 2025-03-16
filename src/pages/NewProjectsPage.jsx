@@ -71,12 +71,13 @@ export const NewProjectPage = () => {
 
     return (
 
-        <div className={`${screenSize == "sm" ? styles.sm : styles.lg}`}>
+        <div className={`${screenSize == "sm" ? styles.sm : styles.lg}
+        ${screenSize == "sm" ? "" : "GenericPageContainer"}
+        `}>
 
 
 
             <section className={`${styles.sm_fp} `}>
-
                 <h1 className={styles.title}>Projects</h1>
                 <p className={styles.subtitle}>
                     Explore my work with <span className={styles.highlight}>Python</span> and{' '}
@@ -93,7 +94,7 @@ export const NewProjectPage = () => {
                             fullLinkCallBack={() => handleOpenModal(project)}
                             twoColumns={id === 0}
                             fullLink={true}
-                            style="NewsPaper"
+                            asFS={screenSize == "sm"}
                         />
                     </div>
                 ))}
@@ -110,6 +111,7 @@ export const NewProjectPage = () => {
                             AsArticle={true}
                             extratext={selectedProject.extratext} // Pass the extratext prop if it exists
                             style="modern"
+                            
                         />
                     }
                     onClose={handleCloseModal}
@@ -121,7 +123,7 @@ export const NewProjectPage = () => {
             )}
 
 
-            <section className={`${styles.sm_25} `}>
+            <section className={`${styles.sm_half} `}>
 
                 <h1 className={styles.title}>Less Documented Projects...</h1>
                 <p className={styles.subtitle}>
@@ -132,7 +134,7 @@ export const NewProjectPage = () => {
 
             {/* Handle error and loading states */}
             {githubprojects && (
-                <>
+                <div className={styles.ProjectContainer}>
                     {console.log(githubprojects)}
                     {githubprojects.map((proj, id) => (
                         <div key={id} className={`${styles.ProjectCell} ${styles.sm_fp}`}>
@@ -141,22 +143,23 @@ export const NewProjectPage = () => {
                                     title: proj.name,
                                     subtitle: proj.description,
                                 }}
+                                asFS={false}
                             />
                         </div>
                     ))}
-                </>
+               </div>
             )}
-           
+
             <section className={`${styles.sm_half} `}>
 
-<h1 className={styles.title}>This is not all...</h1>
-<p className={styles.subtitle}>
-just find the rest on my github {getIcon("github")} and medium
-</p>
+                <h1 className={styles.title}>This is not all...</h1>
+                <p className={styles.subtitle}>
+                    just find the rest on my github {getIcon("github")} and medium
+                </p>
 
-</section>
+            </section>
 
         </div>
-        
+
     );
 };
