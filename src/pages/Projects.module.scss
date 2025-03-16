@@ -1,74 +1,20 @@
-.ProjectContainer {
-    display: grid;
+.sm {
+    background-color: red;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; // Enables vertical snap behavior
 
-    // margin: 100px;
-    // margin: 100px;
-
-    // background-color: red;
-    background-color: var(--text-color);
-
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust min-width as needed */
-    // gap: 40px; /* Add space between grid items */
-    // outline: 2px solid red;
-
-    padding: 2px;
-    gap:2px;
-    animation: fadeInUp 1s ease-out forwards; 
-}
-
-.ProjectCell {
-    // background-color: green;
-    background-color: var(--bg);
-    // border-top: 2px solid var(--text-color);
-    // height: 100%;
-    // background-color: red;
-    // max-height: 500px;
-    overflow: hidden;
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Start slightly down */
-    animation: fadeInUp 0.5s ease-out forwards; /* Animation details */
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .sm_fp {
+        height: 100vh;
+        background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: start; // Ensures each section aligns perfectly when scrolling
     }
 }
 
-/* Make the first cell double-wide */
-.ProjectCell:first-child {
-    grid-column: span 2; /* Spans across two columns */
-}
-
-/* Add staggered delay to each cell */
-.ProjectCell:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.ProjectCell:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.ProjectCell:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.ProjectCell:nth-child(4) {
-    animation-delay: 0.4s;
-}
-.ProjectCell:nth-child(4) {
-    animation-delay: 0.5s;
-}
-
-/* You can continue the pattern for more cells or use a loop if desired */
-.title{
-    font-size: 2.5rem; /* Larger font size for the title */
-    font-weight: var(--font-weight-bold); /* Use CSS variable for font weight */
-    margin-bottom: var(--spacing-small); /* Use CSS variable for spacing */
-    font-style: italic;
-}
-
-.highlght { 
-    font-weight: 700;
+.textSection{ 
+    // background-color: green;
 }

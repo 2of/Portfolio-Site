@@ -5,11 +5,18 @@ import routes from "./routes/routes"; // Import routes
 import MainLayout from "./layouts/MainLayout/MainLayout"; // Import MainLayout
 import { NotFoundPage } from "./pages/NotFoundPage"; // Import NotFoundPage
 import './styles/App.scss'
+import { TooltipProvider } from "./contexts/tooltip";
+import { ProjectProvider } from "./contexts/ContentContext";
 function App() {
   return (
     // Wrap the entire app with GlobalProvider to provide global state
     <GlobalProvider> 
+      <ProjectProvider>
+      <TooltipProvider>
       <AppContent />
+      
+      </TooltipProvider>
+      </ProjectProvider>
     </GlobalProvider>
   );
 }

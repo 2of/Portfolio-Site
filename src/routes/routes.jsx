@@ -1,4 +1,5 @@
 import { AboutPage } from "../pages/AboutPage";
+import { Carousel } from "../pages/CarouselPage";
 import { HomePage } from "../pages/HomePage/HomePage";
 import { JunkPage } from "../pages/JunkPage";
 import { NewProjectPage } from "../pages/NewProjectsPage";
@@ -32,6 +33,12 @@ const routes = [
       path: "/about",
       label: "about",
       element: <AboutPage/>,
+      fullscreen_fullNav: false,
+      mobile_fullNav: false,
+    }, {
+      path: "/carousel",
+      label: "carousel",
+      element: <Carousel/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
     },

@@ -3,10 +3,21 @@ body {
   background-color: var(--bg); /* Background color based on theme */
   color: var(--text-color); /* Text color based on theme */
 
-
-
-
-
+  background-image: linear-gradient(
+    35deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(293deg 100% 21%) 13%,
+    hsl(319deg 100% 30%) 25%,
+    hsl(332deg 100% 39%) 37%,
+    hsl(346deg 83% 51%) 50%,
+    hsl(10deg 100% 60%) 63%,
+    hsl(30deg 100% 55%) 75%,
+    hsl(44deg 100% 50%) 87%,
+    hsl(55deg 100% 50%) 100%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 
   font-size: var(--font-size-base); /* Base font size */
   margin: 0;
@@ -24,33 +35,38 @@ body {
 /* Standardizing Text */
 h1, h2, h3, h4, h5, h6, p, span {
   color: var(--text-color); /* Ensure text color is consistent */
-//   font-family: "Newsreader", serif;
-
-  
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
-h1, h2, h3{
-    
-  // font-style: italic;
+.glass {
+  background: var(--glass-bg);
+  border-radius: var(--glass-border-radius);
+  box-shadow: var(--glass-box-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-border);
+}
+.glassButton {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  
+  border-radius: 8px;
+  
+
+}
+
+h1, h2, h3 {
   font-weight: 300;
   font-family: "Newsreader", serif;
-  }
-
-  
+}
 
 /* Links and Hover Effects */
 a {
   color: var(--primary-color); /* Link color based on theme */
   text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease;
-
-
-
-
-  
 }
-
-
 
 /* Standardizing Card-like Components */
 .card {
@@ -76,14 +92,11 @@ button:hover {
   background-color: var(--hover-text-color);
 }
 
-
 // AboutPage.module.scss
-
 .GenericPageContainer {
   max-width: 1200px; // Limit the width for better readability
   margin: 0 auto; // Center the container
   padding: 20px; // Add padding around the entire container
-  // background-color: red;
 
   section {
     margin-bottom: 40px; // Add space between sections
@@ -112,10 +125,8 @@ button:hover {
   }
 } 
 
-
 .horizontalContainer { 
   display: flex;
-  // background-color: red;
 
   > * { 
     overflow: hidden;
@@ -123,13 +134,15 @@ button:hover {
     width: auto; // Optional, but ensures width is determined by flex
   }
 }
-.codeEmbed { 
 
+.codeEmbed { 
+  // Add styles for code embed if needed
 }
 
 .ScrollSpacer { 
   height: 3rem;
 }
-h1{
+
+h1 {
   font-size: 48px;
 }

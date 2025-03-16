@@ -1,39 +1,44 @@
+
+
 :root {
-    /* Light Mode Colors */
-    --light-nav-bg: #101357; /* Mountain Shadow Blue */
-    --light-nav-text: #BFC0C0; /* Light gray text for links */
-    --hover-bg-color: rgba(251, 175, 8, 0.2); /* Hover background color using Goldenrod Yellow */
-    --hover-text-color: #FBaf08; /* Goldenrod Yellow */
-    --active-link-bg: rgba(251, 175, 8, 0.4); /* Active link background using Goldenrod Yellow */
-  
-    /* General Light Mode Colors */
-    --light-bg: #fffbeb; /* White background for light mode */
-    --light-text: #33363d; /* Dark text for light mode */
-    --light-card-bg: #F7F7F7; /* Light card background */
-    --light-border: #2a2929; /* Light borders */
-  
-    /* Dark Mode Colors */
-    --dark-nav-bg: rgba(18, 18, 18, 0.8); /* Dark transparent background */
-    --dark-nav-text: #E0E0E0; /* Light text for dark mode */
-  
-    /* General Dark Mode Colors */
-    --dark-bg: #07091e; /* Dark background for dark mode */
-    --dark-text: #E0E0E0; /* Light text for dark mode */
-    --dark-card-bg: #2C2C2C; /* Dark card background */
-    --dark-border: #555555; /* Dark borders */
-  
-    /* General Colors */
-    --primary-color: #101357; /* Mountain Shadow Blue */
-    --secondary-color: #555; /* Secondary gray color */
-    --accent-color: #FBaf08; /* Goldenrod Yellow for accents */
-    --link-color: #00a0a0; /* Bluebell Light Blue for links */
-  
+    /* Light Mode */
+    --light-bg: #F9F9F9;
+    --light-text: #2E2E2E;
+    --light-secondary-text: #6C6C6C;
+    --light-card-bg: #FFFFFF;
+    --light-border: #E0E0E0;
+    --light-accent: #D4A373;
+    --light-link: #4A90E2;
+
+    /* Dark Mode */
+    --dark-bg: #1A1A1A;
+    --dark-text: #E0E0E0;
+    --dark-secondary-text: #A0A0A0;
+    --dark-card-bg: #262626;
+    --dark-border: #404040;
+    --dark-accent: #D4A373;
+    --dark-link: #6BB9F0;
     /* Spacing (Padding and Margins) */
     --padding-small: 10px;
     --padding-medium: 15px;
     --padding-large: 36px;
     --spacing-small: 10px; /* Spacing for items (e.g., between nav buttons) */
   
+/* glass town */
+
+    --glass-bg: rgba(158, 158, 158, 0.742);
+    --glass-border-radius: 16px;
+    --glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --glass-blur: 5px;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+ 
+
+    --dark-glass-bg: rgba(0, 0, 0, 0.71); /* Darker glass effect */
+    --dark-glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --dark-glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    --dark-glass-blur: 5px;
+
+
     /* Font Size */
     --font-size-base: 16px;
     --font-size-lg: 18px; /* Larger font size for headings */
@@ -45,28 +50,37 @@
     /* Blur Effect */
     --blur-radius: 15px; /* For frosted glass effect */
   
+    /* General Colors */
+    --primary-color: #2E2E2E;
+    --secondary-color: #6C6C6C;
+    --accent-color: #D4A373;
+    --link-color: #4A90E2;
+
     /* Default Theme (Light Mode) */
-    --nav-bg: var(--light-nav-bg);
-    --nav-text: var(--light-nav-text);
     --bg: var(--light-bg);
     --text-color: var(--light-text);
+    --secondary-text: var(--light-secondary-text);
     --card-bg: var(--light-card-bg);
     --border-color: var(--light-border);
+    --accent: var(--light-accent);
+    --link: var(--light-link);
 }
 
 [data-theme="dark"] {
     /* Dark Mode Overrides */
-    --nav-bg: var(--dark-nav-bg);
-    --nav-text: var(--dark-nav-text);
     --bg: var(--dark-bg);
     --text-color: var(--dark-text);
+    --secondary-text: var(--dark-secondary-text);
     --card-bg: var(--dark-card-bg);
     --border-color: var(--dark-border);
-  
-    /* Dark Mode General Colors */
-    --hover-bg-color: rgba(251, 175, 8, 0.2); /* Darker hover effect using Goldenrod Yellow */
-    --hover-text-color: #FBaf08; /* Goldenrod Yellow */
-    --active-link-bg: rgba(251, 175, 8, 0.4); /* Lighter active link background using Goldenrod Yellow */
-    --primary-color: #101357; /* Mountain Shadow Blue for dark mode */
-    --link-color: #00a0a0; /* Bluebell Light Blue for links */
+    --accent: var(--dark-accent);
+    --link: var(--dark-link);
+
+
+    /* Dark Glass Mode Overrides */
+    --glass-bg: var(--dark-glass-bg);
+    --glass-border: var(--dark-glass-border);
+    --glass-box-shadow: var(--dark-glass-box-shadow);
+    --glass-blur: var(--dark-glass-blur);
+
 }

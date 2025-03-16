@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from './Modal.module.scss'; // Ensure you have the corresponding SCSS module
 import { useGlobalContext } from "../contexts/GlobalContext";
-
-import { FaExpandAlt, FaCompressAlt,FaTimesCircle  } from 'react-icons/fa';
+import { TooltipProvider, useTooltip } from "../contexts/tooltip";
+import useScreenSize from "../utils/screensize";
+import { FaExpandAlt, FaCompressAlt, FaTimesCircle } from 'react-icons/fa';
+import getIcon from "../utils/Iconifier";
 export const Modal = ({ component, onClose, size = "small", title, buttons = [], isOpen }) => {
     const [isVisible, setIsVisible] = useState(false);
     const { setNavReplacementButtonFunc, setHopNav } = useGlobalContext();
-
+    const { showTooltip, hideTooltip } = useTooltip();
+    const screenSize = useScreenSize();
     const [isFullScreen, setIsFullScreen] = useState(false);
 
     const handlefs = () => {
@@ -30,7 +33,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
         setNavReplacementButtonFunc({
             callback: null,
             label: "",
-          });
+        });
         setTimeout(onClose, 500); // Wait for the animation to complete before calling onClose
     };
 
@@ -43,42 +46,50 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
     };
     const myCallbackFunction = () => {
         handleClose()
-      };
+    };
 
-    const testthing = () => { 
-       
+    const testthing = () => {
+
     }
 
     useEffect(() => {
         const myCallbackFunction = () => {
-          console.log("Custom action executed!");
+            console.log("Custom action executed!");
         };
-      
+
         setNavReplacementButtonFunc({
             callback: handleClose,
-            label: "Close",
-          });
-      }, []); // Empty dependency array ensures it runs only once on mount
+            label: getIcon("close")
+        });
+    }, []); // Empty dependency array ensures it runs only once on mount
     // Don't render the modal if it's not open and not visible
     if (!isOpen && !isVisible) return null;
 
     return (
         <div
-            className={`${styles.modalOverlay} ${isVisible ? styles.visible : ""}`}
+            className={`${styles.modalOverlay} 
+            ${isVisible ? styles.visible : ""} 
+            ${screenSize === "lg" ? styles.lg : screenSize === "md" ? styles.md : styles.sm}`}
             onClick={handleOverlayClick} // Handle clicks on the overlay
         >
 
-         
+
             <div
                 className={`${styles.modalContent} ${size === "large" ? styles.large : styles.small} ${isFullScreen ? styles.full : ""} `}
                 onClick={(e) => e.stopPropagation()} // Prevent clicks inside the modal from closing it
             >
-                   <div className={styles.buttonPalette}>
-             
-             <button className={styles.modalNav} onClick={handlefs}>{!isFullScreen ? <FaExpandAlt/> : <FaCompressAlt/>}</button>
-             <button className={styles.modalNav} onClick={handleClose}><FaTimesCircle/></button>
-         </div>
-                
+                <div className={styles.buttonPalette}>
+
+                    <button className={styles.modalNav}
+                        onMouseMove={(e) => showTooltip("Fullscreen", e)}
+                        onMouseLeave={hideTooltip}
+                        onClick={handlefs}>{!isFullScreen ? <FaExpandAlt /> : <FaCompressAlt />}</button>
+                    <button className={styles.modalNav}
+                        onMouseMove={(e) => showTooltip("Closies", e)}
+                        onMouseLeave={hideTooltip}
+                        onClick={handleClose}><FaTimesCircle /></button>
+                </div>
+
                 {/* Modal Header */}
                 {/* {title && (
                     <div className={styles.modalHeader}>
@@ -88,7 +99,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
 
                 {/* Modal Body */}
                 <div className={styles.modalBody}>{component}</div>
-                
+
 
                 {/* Modal Footer */}
                 <div className={styles.modalFooter}>
@@ -105,8 +116,8 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
                         )
                     )} */}
 
- 
-                  
+
+
                 </div>
             </div>
         </div>

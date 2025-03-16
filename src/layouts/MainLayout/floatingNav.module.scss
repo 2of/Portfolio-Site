@@ -16,7 +16,9 @@
   max-width: 100%; /* Allow full width, but cap at 100% of the screen */
   box-sizing: border-box; /* Ensure padding does not affect the overall width */
   box-shadow: 0 0 0 2px var(--bg); /* White border outside the black border */
-
+ * { 
+  transition: all 0.5s ease;
+ }
   &.dark-mode {
     background-color: var(--dark-nav-bg);
   }
@@ -118,37 +120,149 @@
   margin-top: var(--spacing-medium); /* Add space between the nav links and the dark mode toggle */
 }
 
-@media (max-width: 768px) {
-  .navContainer {
-    padding: var(--padding-small);
-  }
-
-  .navContainer {
-    position: fixed;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000;
-    background-color: red;
-  }
-
-  .navList {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    width: 100%; // Initial width
-  }
-
-  .visibleButton {
-    display: block;
-  }
-}
 
 .sm { 
   // background-color: red;
   border: none;
   box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  // background-color: red;
+
+    .navList { 
+      // background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .link { 
+        font-size: 24px;
+      }
+      .activeLink { 
+        font-size: 24px
+      }
+    }
+
+   &.onlyButton { 
+    // background-color: green;
+    .navItem { display: none;}
+    .menuButton { display: none;}
+    .navContainer { 
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+
+    
+
+      * { 
+        border: 1px solid pink;
+      }
+
+    }
+
+    
+    .visibleButton { 
+      background:none;
+      // font-size: 40px;
+      width: 100px;
+      height: 100px;
+      align-items: start;
+      display: flex;
+      justify-content: center;
+      font-weight: 100;
+      padding: 12px;
+      font-style: italic;
+      
+    }
+
+
+   }
+
+   &.expandedMenu{
+    height: 50vh;
+   }
+   
 }
+.expandMenuPlatter {
+  opacity: 0;
+  padding: 24px;
+  gap: 12px;
+
+  height: 50%;
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: repeat(3, 1fr); // Three equal columns
+  grid-template-rows: repeat(2, minmax(100px, auto)); // Ensures rows grow naturally
+
+  .expandednavitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .darkmodeExpandtile {
+    grid-column: 1 / span 2; // Spans two columns
+    grid-row: 1 / span 2; // Spans two rows
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.minilink,
+.miniactiveLink { 
+
+  // background-color: red;
+  display: flex;
+  gap: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 36px;
+  padding: 12px;
+  gap: 2px;
+  &::after {
+    content: ""; // Create an empty pseudo-element
+    position: absolute;
+    bottom: 0; // Place it at the bottom of the link
+    left: 0;
+    width: 0%; // Initially, no width
+    height: 2px; // Set the thickness of the underline
+    background-color: var(--text-color); // Set the color of the underline
+    transition: width 0.3s ease; // Smooth transition for width change
+    
+  }
+  &.miniactiveLink::after {
+    width: 100%; // On hover, the underline expands to full width
+  }
+  font-size: 16px;
+  .miniLinkIcon { 
+    font-size: 12px;
+  }
+}
+
+.miniactiveLink {
+  position: relative; // Ensure the pseudo-element positions correctly
+
+  
+
+ 
+}
+
+
+.expandedMenu { 
+  * .menuButton { 
+    * { 
+      // transition: all 3s ease;
+     }
+    .miniLinkIcon { 
+      transform: rotate(180deg);
+    }
+   } 
+
+  }
+

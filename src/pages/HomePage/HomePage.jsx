@@ -13,10 +13,12 @@ import ColumnComponentContainer from "../../components/Column/ColumnComponentCon
 import ProjectContent from "../../assets/ProjectContent.json"
 import ColumnWithSections from "../../components/Column/ColumnWithSections";
 
+import { TooltipProvider,useTooltip } from "../../contexts/tooltip";
 // Mouse position tracking for distortion
 export const HomePage = () => {
   const { isDarkMode } = useGlobalContext();
   const screenSize = useScreenSize();
+    const { showTooltip, hideTooltip } = useTooltip();
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -56,14 +58,15 @@ export const HomePage = () => {
       )}
     >
       {/* Grid Area with Mouse Distortion */}
-      <div className={styles.inset} style={{
+      <div className={`${styles.inset} `} style={{
         transform: `perspective(500px) rotateY(${rotation.y}deg) rotateX(${rotation.x}deg)`,
       }}>
-        <div className={styles.glassOverlay}></div>
-        <div className={styles.gridArea}>
+        {/* <div className={styles.glassOverlay}></div> */}
+        <div className={`${styles.gridArea}`}>
           {/* Hero Section */}
           <div
             className={clsx(
+              
               styles.gridTile,
               screenSize === "sm"
                 ? styles["full"]
@@ -85,6 +88,10 @@ export const HomePage = () => {
                   ? styles["tile-1x2"]
                   : styles["tile-1x1"]
             )}
+            onMouseMove={(e) => showTooltip("Toggle Dark Mode", e)}
+            onMouseLeave={hideTooltip}
+        
+
           >
             <ColumnComponentContainer
               title={isDarkMode ? "Where is the Sun?!?!" : "Where is the Moon?!?"}

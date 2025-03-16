@@ -3,11 +3,11 @@ import styles from "./MainLayout.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import FloatingNav from "./floatingNav";
-
+import { useGlobalContext } from "../../contexts/GlobalContext";
 const MainLayout = () => {
   const location = useLocation();
   const nodeRef = useRef(null);
-
+const {    disableForPopup, setDisableForPopUp} = useGlobalContext() 
   return (
     <div className={styles.mainLayout}>
       <main className={styles.mainContent}>
@@ -26,7 +26,7 @@ const MainLayout = () => {
               exitActive: styles.pageTransitionExitActive,
             }}
           >
-            <div ref={nodeRef}>
+            <div ref={nodeRef} className={disableForPopup ? styles.disable : ""}>
               <Outlet />
             </div>
           </CSSTransition>

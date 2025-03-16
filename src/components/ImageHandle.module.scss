@@ -1,0 +1,68 @@
+.thumbnail {
+    cursor: pointer;
+    width: 16rem; /* 64px * 4 */
+    height: auto;
+    transition: all 0.5s ease-in-out; // Smooth transition for the thumbnail
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+
+  .fullscreenOverlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.952);
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+.fullscreenImage {
+    max-width: 90%; // Slightly smaller than full screen
+    max-height: 90%;
+    transform: scale(0.8); // Start smaller for zoom-in effect
+    transition: transform 0.3s ease-in-out; // Smooth transition for image
+
+    .active & {
+      transform: scale(1); // Zoom to full size
+    }
+  }
+
+.subtitle {
+    max-width: 90%; // Slightly smaller than full screen
+    max-height: 90%;
+    opacity: 0; // Start smaller for zoom-in effect
+    transition: opacity 0.3s ease-in-out; // Smooth transition for subtitle
+
+    .active & {
+      opacity: 1; // Show subtitle
+    }
+  }
+
+.closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3333;
+    cursor: pointer;
+
+    &:hover {
+      background: #555;
+    }
+  }
+
+  

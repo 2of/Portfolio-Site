@@ -15,6 +15,7 @@ export const GlobalProvider = ({ children }) => {
   const [isMenuOpenforNav, setisMenuOpenforNav] = useState(false);
   const [hopNav, setHopNav] = useState(false);
   const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true)
+  const [disableForPopup, setDisableForPopUp] = useState(false)
   // Store function and label
   const [navReplacementButtonFunc, setNavReplacementButtonFunc] = useState({
     callback: () => console.log("TEST"), // Initially null
@@ -49,7 +50,9 @@ export const GlobalProvider = ({ children }) => {
     navReplacementButtonFunc,
     setNavReplacementButtonFunc,
     hopNav,
-    setHopNav
+    setHopNav,
+    disableForPopup,
+    setDisableForPopUp
   }}
 >
 

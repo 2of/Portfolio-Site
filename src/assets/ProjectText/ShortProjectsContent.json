@@ -1,8 +1,9 @@
 [
     {
         "name": "geolocate1",
-        "title": "Neighbourhood Scale GeoLocalization Of Street Imagery with Machine Learning",
+        "title": "Neighbourhood Scale GeoLocalization",
         "subtitle": "Master's Project @ UC. A Grade.",
+         "bgimage": "assets/images/home_vintage.gif",
         "sections": [
             {
                 "name": "Introduction",
@@ -10,30 +11,7 @@
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This project focuses on using machine learning to geolocalize street-level imagery at a neighbourhood scale. It was developed as part of my Master's degree and received an A grade."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key achievement: Successfully implemented a Keras-based model for accurate geolocalization."
-                    },
-                    {
-                        "type": "image",
-                        "src": "assets/images/home_vintage.gif",
-                        "alt": "Street level imagery"
-                      },
-                    {
-                        "type": "pills",
-                        "pills": ["AI", "Machine Learning", "Keras", "Data"]
-                    }
-                ]
-            },
-            {
-                "name": "Methodology",
-                "type": "text",
-                "items": [
-                    {
-                        "type": "paragraph",
-                        "text": "The project utilized convolutional neural networks (CNNs) and transfer learning techniques to analyze street imagery and predict geographic locations."
+                        "text": "Used machine learning to geolocalize street-level imagery at a neighbourhood scale."
                     }
                 ]
             }
@@ -46,8 +24,8 @@
     },
     {
         "name": "site1",
-        "title": "This Website! / Responsive REACT front end",
-        "subtitle": "Look, it's just hosted on Github pages",
+        "title": "This Website!",
+        "subtitle": "Responsive REACT front end hosted on GitHub Pages.",
         "sections": [
             {
                 "name": "Introduction",
@@ -55,15 +33,7 @@
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This project is the very website you're viewing! It's a responsive front-end built using Vue and hosted on GitHub Pages."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key feature: Fully responsive design with seamless integration of Firebase for backend functionality."
-                    },
-                    {
-                        "type": "pills",
-                        "pills": ["Vue", "Firebase"]
+                        "text": "A responsive front-end built with React and hosted on GitHub Pages."
                     }
                 ]
             }
@@ -76,8 +46,8 @@
     },
     {
         "name": "chrome1",
-        "title": "NZ's (very very briefly) most downloaded Chrome Extension",
-        "subtitle": "It did make the reddit FrontPage...",
+        "title": "NZ's Most Downloaded Chrome Extension",
+        "subtitle": "Briefly went viral on Reddit.",
         "sections": [
             {
                 "name": "Introduction",
@@ -85,21 +55,13 @@
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This Chrome Extension briefly became New Zealand's most downloaded extension after gaining traction on Reddit's front page."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key achievement: Gained viral popularity and thousands of downloads in a single day."
-                    },
-                    {
-                        "type": "pills",
-                        "pills": ["JS", "Manifest V3"]
+                        "text": "A Chrome Extension that became New Zealand's most downloaded after going viral on Reddit."
                     }
                 ]
             }
         ],
         "link": {
-            "text": "Learn More About the Extension",
+            "text": "Learn More",
             "url": "/project-three"
         },
         "image": "project3.jpg"
@@ -107,7 +69,8 @@
     {
         "name": "chess1",
         "title": "Bad Chess AI Compilation",
-        "subtitle": "Not bad bots, Architecturally moronic approaches to Chess.. for fun!",
+        "subtitle": "Unconventional and humorous chess AIs.",
+        "bgimage": "assets/images/chess.gif",
         "sections": [
             {
                 "name": "Introduction",
@@ -115,21 +78,13 @@
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This project is a compilation of intentionally poorly designed chess AIs, created for fun and experimentation."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key feature: Explored unconventional and humorous approaches to chess AI architecture."
-                    },
-                    {
-                        "type": "pills",
-                        "pills": ["CNNs", "Expo"]
+                        "text": "A collection of intentionally poorly designed chess AIs for fun and experimentation."
                     }
                 ]
             }
         ],
         "link": {
-            "text": "Check Out the Chess Bots",
+            "text": "Check It Out",
             "url": "/project-four"
         },
         "image": "project4.jpg"
@@ -137,7 +92,7 @@
     {
         "name": "sentiment1",
         "title": "Sentiment Analysis Series",
-        "subtitle": "Data science project using machine learning",
+        "subtitle": "Machine learning models for text analysis.",
         "sections": [
             {
                 "name": "Introduction",
@@ -145,21 +100,13 @@
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This project involved building a series of sentiment analysis models using Python and TensorFlow to analyze text data."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key achievement: Achieved high accuracy in sentiment classification across diverse datasets."
-                    },
-                    {
-                        "type": "pills",
-                        "pills": ["Python", "TensorFlow"]
+                        "text": "Built sentiment analysis models using Python and TensorFlow to classify text data."
                     }
                 ]
             }
         ],
         "link": {
-            "text": "View Sentiment Analysis Results",
+            "text": "View Results",
             "url": "/project-five"
         },
         "image": "project5.jpg"

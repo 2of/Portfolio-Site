@@ -3,21 +3,48 @@
 
     {
         "name": "geolocate1",
-        "title": "A Three-Pronged Approach to Multi-Scale Geolocalisation",
+        "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features",
         "subtitle": "Leveraging object detection, text embeddings, and colour profiling for geographic coordinate prediction.",
+       
+       
+        "heroLinks": [
+          {
+            "title" : "Medium",
+            "type" : "Article",
+            "to" :  "/404"
+          },{
+            "title" : "Github",
+            "type" : "Code",
+            "to" :  "/404"
+          },{
+            "title" : "Thesis",
+            "type" : "Academic",
+            "to" :  "/404"
+          }
+          ,{
+            "title" : "Video",
+            "type" : "Video",
+            "to" :  "/404"
+          }
+        ],
         "sections": [
           {
             "name": "What's Involved",
             "type": "text",
+            "boost": true,
             "items": [
               {
                 "type": "paragraph",
                 "text": ""
+              },{
+                "type": "image",
+                "src": "assets/images/home_vintage.gif",
+                "alt": "Street level imagery"
               },
               {
                 "type": "pills",
                 "pills": ["Machine Learning", "AI", "Deep Learning", "Multi-Scale Prediction", "Fine Tuning / Transfer Learning","Large Data Processing", "Neural Network Design", "Neural Network Performance Analysis", "Scalable Neural Network Design", "Python3", "Tensorflow", "Keras", ".... etc" ]
-              },
+              }, 
               {
                 "type": "paragraph",
                 "text": "This Project designs and implements a method for Neighbourhood scale Geolocalization for Street Level Imagery using Machine Learning and Deep Learning Methods and explores in great depth the performance and learning of these methods"
@@ -182,96 +209,37 @@
         }
       },
       
-      
-    {
-        "name": "geolocate2",
-        "title": "sdfsd Scale GeoLocalization Of Street Imagery with Machine Learning",
-        "subtitle": "Master's Project @ UC. A Grade.",
+    
+      {
+        "name": "site1",
+        "title": "This Website! / Responsive REACT Front End",
+        "subtitle": "Look, it's just hosted on GitHub Pages",
+       
         "sections": [
             {
                 "name": "Introduction",
                 "type": "text",
+                "boost": true,
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "This project focuses on using machine learning to geolocalize street-level imagery at a neighbourhood scale. It was developed as part of my Master's degree and received an A grade. The goal was to create a model capable of predicting the geographic location of a street image by analyzing visual features such as architecture, vegetation, and road patterns."
-                    },
-                    {
-                        "type": "highlight",
-                        "text": "Key achievement: Successfully implemented a Keras-based model for accurate geolocalization, achieving an accuracy of 85% on a test dataset of 10,000 street images."
-                    },
-                    {
-                        "type": "image",
-                        "src": "assets/images/home_vintage.gif",
-                        "alt": "Street level imagery"
+                        "text": "This is the website you're on right now! It's built entirely with React and serves as a playground for experimenting with front-end development. The goal was to keep things simple and fun while exploring React's capabilities."
                     },
                     {
                         "type": "pills",
-                        "pills": ["AI", "Machine Learning", "Keras", "Data"]
-                    }
-                ]
-            },
-            {
-                "name": "Methodology",
-                "type": "text",
-                "items": [
-                    {
-                        "type": "paragraph",
-                        "text": "The project utilized convolutional neural networks (CNNs) and transfer learning techniques to analyze street imagery and predict geographic locations. The model was trained on a dataset of over 100,000 geotagged images, with data augmentation techniques applied to improve generalization."
+                        "pills": ["React", "SCSS", "React-Router-Dom"]
                     },
                     {
                         "type": "paragraph",
-                        "text": "Data preprocessing involved resizing images to 224x224 pixels, normalizing pixel values, and applying augmentations such as rotation, flipping, and brightness adjustments. A pre-trained ResNet50 model was fine-tuned with additional dense layers for regression-based geolocalization."
-                    },
-                    {
-                        "type": "image",
-                        "src": "assets/images/model_architecture.png",
-                        "alt": "Model architecture diagram"
-                    }
-                ]
-            },
-            {
-                "name": "Results",
-                "type": "text",
-                "items": [
-                    {
-                        "type": "paragraph",
-                        "text": "The model achieved an average error of 1.2 kilometers in predicting the location of unseen street images. This performance was competitive with state-of-the-art methods at the time."
-                    },
-                    {
-                        "type": "image",
-                        "src": "assets/images/heatmap.png",
-                        "alt": "Heatmap of predicted vs. actual locations"
-                    }
-                ]
-            }
-        ],
-        "link": {
-            "text": "View Project Details",
-            "url": "/project-one"
-        },
-        "image": "project1.jpg"
-    },
-    {
-        "name": "site1",
-        "title": "This Website! / Responsive REACT front end",
-        "subtitle": "Look, it's just hosted on Github pages",
-        "sections": [
-            {
-                "name": "Introduction",
-                "type": "text",
-                "items": [
-                    {
-                        "type": "paragraph",
-                        "text": "This project is the very website you're viewing! It's a responsive front-end built using Vue and hosted on GitHub Pages. The goal was to create a visually appealing and user-friendly portfolio website that showcases my projects and skills."
+                        "text": "I intentionally avoided using too many libraries. Instead, I relied on SCSS for styling and React Router for navigation, alongside React's built-in hooks. This approach kept the project lightweight and allowed me to focus on learning and creativity."
                     },
                     {
                         "type": "highlight",
-                        "text": "Key feature: Fully responsive design with seamless integration of Firebase for backend functionality."
+                        "text": "The entire site is powered by React and SCSS, with minimal dependencies. It's a testament to how much you can do with just the basics."
                     },
                     {
                         "type": "image",
-                        "src": "assets/images/website_homepage.png",
+                        "src": "assets/images/default_other.jpeg",
                         "alt": "Website homepage screenshot"
                     },
                     {
@@ -281,21 +249,47 @@
                 ]
             },
             {
-                "name": "Development Process",
+                "name": "Things it Does",
                 "type": "text",
                 "items": [
                     {
                         "type": "paragraph",
-                        "text": "The website was developed using Vue.js for the front end, with Firebase handling user authentication and data storage. The design was created with a focus on simplicity and usability."
+                        "text": "One of the coolest features is the ability to click on images and 'portal' them to earlier in the DOM. This creates a dynamic, interactive experience that feels seamless and modern."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "Global contexts are used extensively throughout the site. For example, the navigation bar can jump and blur based on user interactions, and buttons can be added to the navigation bar from further up the React render stack. Props are passed around to manage state and functionality elegantly."
                     },
                     {
                         "type": "paragraph",
-                        "text": "Media queries and flexible grid layouts were used to ensure the website looks great on all screen sizes. Firebase was integrated for hosting, database management, and user authentication."
+                        "text": "The site is built with React and SCSS, and while there's a lot of CSS, it's intentionally not overly reused. The idea was to have fun and experiment with styles, though there are global styles and a standard set of utilities in the app.scss file for consistency."
                     },
                     {
                         "type": "image",
                         "src": "assets/images/website_architecture.png",
                         "alt": "Website architecture diagram"
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "Oh, and that tooltip you see? It's powered by a global context too. I thought it was a fun little addition to enhance the user experience."
+                    }
+                ]
+            },
+            {
+                "name": "Behind the Scenes",
+                "type": "text",
+                "items": [
+                    {
+                        "type": "paragraph",
+                        "text": "The entire article format you're reading is defined in a custom JSON markup language. Here's how it works: I write out the content in MS Word, use ChatGPT to convert it into the schema, and then fine-tune it manually. The schema itself lives in the /assets folder, and while it's currently blank, I plan to add support for raw JSON in the column renderer when I get the chance."
+                    },
+                    {
+                        "type": "highlight",
+                        "text": "The format supports a variety of elements, including links, qualification sections, pills (like the ones above!), highlights, inline images, and special 'boost sections' to emphasize key points."
+                    },
+                    {
+                        "type": "paragraph",
+                        "text": "This approach makes it easy to structure content dynamically and keep the site flexible for future updates. It's a bit unconventional, but it works perfectly for my needs."
                     }
                 ]
             }

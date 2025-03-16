@@ -4,155 +4,199 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.846);
-    // backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.378);
+    backdrop-filter: blur(12px);
     display: flex;
     justify-content: center;
     align-items: center;
-    // overflow: hidden;
-    z-index: 1000;
-    // opacity: 0;
-    // transform: scale(0);
+    z-index: 60;
+    opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease, visibility 0.3s ease;
 
     &.visible {
         opacity: 1;
         visibility: visible;
-        // transform: sca;
     }
 
-    * { 
+    * {
         transition: all 0.3s ease-in-out;
     }
 }
 
 .modalContent {
-    background: var(--bg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
+    filter: blur(10px);
+    transform: scale(1.1);
+    opacity: 0;
 
-    // opacity: 0;
-
-    // background-color: red;
-    // transition: all 0.8s ease, opacity 0.3s ease;
-    border: 2px solid var(--text-color);
-
-    box-shadow: 
-    0 0 0 2px var(--bg);
-
-    transform: translateY(150%);
-    // opacity: 0; // Hide it completely
-    
     .modalOverlay.visible & {
-        transform: translateY(0);
+        transform: scale(1);
+        filter: blur(0px);
         opacity: 1;
-        // border-radius: 24px 24px 0px 0px;
     }
+}
 
-    // Small size (default)
-    &.small {
-        max-width: 500px; // Adjust as needed
-        width: 90%; // Responsive width
-    }
 
-    // Large size
-    &.large {
-        height: calc(100% - 1rem);
-        // margin-top: 12px;
-        width: 80%; // Full width
-        max-width: 1800px; // Remove max-width restriction 4k displays bbbbtw
-        position: absolute;
-        bottom: 0;
+.sm { 
 
-        &.full { 
-            width: 100%;
+
+    .modalContent {
+        background: var(--bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        border: 2px solid var(--text-color);
+        box-shadow: 0 0 0 2px var(--bg);
+    
+        &.small {
+            max-width: 500px;
+            width: 90%;
+        }
+    
+        &.large {
             height: 100%;
+            width: 100%;
+            max-width: 1200px;
+            position: absolute;
+     
+    
         }
-
-   
-        // bottom: 0; // Align to the bottom of the screen
     }
-}
-
-.buttonPalette{
-    // background-color: red;
-    position: absolute;
-    top: 0;
-    // width: 100%;
-    background-color: none;
-    display: flex;
-    // display: none;
-    font-size: 18px;
-    right: 0;
-    z-index: 1000;
-    font-weight: bold;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 12px;
-    gap: 12px;
-
- 
-}
-.modalNav{
-    background-color: none;
-    padding: 0;
-
-    &:hover { 
+    
+    .buttonPalette {
+        display: none;
+     
+    }
+    
+    .modalNav {
         background-color: none;
-    }
-}
-.modalHeader {
-    padding: 16px;
-    border-bottom: 1px solid #ddd;
-    h2 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
-}
-
-.modalBody {
-    padding: 16px;
-    flex-grow: 1;
-
-    // transform: rotate(2deg);
-    overflow-y: hidden; // Enable scrolling for large content
-}
-
-.modalFooter {
-    padding: 16px;
-    border-top: 1px solid #ddd;
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-
-    .button {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-        text-decoration: none;
-
+        padding: 0;
+    
         &:hover {
-            background-color: #0056b3;
+            background-color: none;
         }
     }
+    
+    .modalHeader {
+        padding: 16px;
+        border-bottom: 1px solid #ddd;
+    
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    }
+    
+    .modalBody {
+        flex-grow: 1;
+        overflow-y: hidden;
+    }
+    
+    .modalFooter {
+        display: none;
+    
+    }
+}
 
-    .closeButton {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        background-color: #6c757d;
-        color: white;
-        cursor: pointer;
-
+.lg,
+.md { 
+    .modalContent {
+        background: var(--bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        border: 2px solid var(--text-color);
+        box-shadow: 0 0 0 2px var(--bg);
+    
+        &.small {
+            max-width: 500px;
+            width: 90%;
+        }
+    
+        &.large {
+            height: 90%;
+            width: 90%;
+            max-width: 1200px;
+            position: absolute;
+    
+            &.full {
+                max-width: 100%;
+                width: calc(100% - 24px);
+                height: calc(100% - 24px);
+            }
+        }
+    }
+    
+    .buttonPalette {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 70;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    .modalNav {
+        background-color: none;
+        padding: 0;
+    
         &:hover {
-            background-color: #5a6268;
+            background-color: none;
+        }
+    }
+    
+    .modalHeader {
+        padding: 16px;
+        border-bottom: 1px solid #ddd;
+    
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    }
+    
+    .modalBody {
+        flex-grow: 1;
+        overflow-y: hidden;
+    }
+    
+    .modalFooter {
+        padding: 16px;
+        border-top: 1px solid #ddd;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+    
+        .button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+    
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    
+        .closeButton {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #6c757d;
+            color: white;
+            cursor: pointer;
+    
+            &:hover {
+                background-color: #5a6268;
+            }
         }
     }
 }

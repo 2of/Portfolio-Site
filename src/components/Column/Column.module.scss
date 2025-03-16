@@ -11,6 +11,7 @@
 .article {
     position: relative;
     overflow: auto; /* Enables scrolling inside the article */
+    overflow-x: hidden;
   
     .title {
       text-align: start;
@@ -259,6 +260,7 @@ font-size: var(--font-size-base);
 align-items: center;
 padding: var(--padding-medium);
 overflow: auto;
+
 
 }
 

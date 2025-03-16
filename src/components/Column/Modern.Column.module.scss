@@ -1,72 +1,218 @@
 // Component styles
 
-.title {
-  text-align: center;
-  color: orange;
-  font-size: 36px;
-  // margin-bottom: 0;
-} 
+
+.lg,
+.md {
+  .title {
+    text-align: center;
+
+    font-size: 36px;
+    // margin-bottom: 0;
+  }
 
 
-.article {
-  position: relative;
-  overflow: auto;
-  .titleContainer { 
-    // background-color: red;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  
-    .collapsedTitle { 
-      background-color: green;
-      position: fixed;
-      top: 0;
-      width: 100%;
+  &.article {
+    position: relative;
+    overflow: auto;
+
+    .titleContainer {
+      // background-color: red;
       margin: 0;
       padding: 0;
-  
-      h2 { 
-        background-color: orange;
+      display: flex;
+      padding-top: 36px;
+      // background-color: red;
+      gap: 0;
+      width: 100%;
+      // background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--text-color);
+
+      * {
+        color: var(--bg);
+      }
+
+      * {
+        // border: 1px solid pink;
+      }
+
+      .title {
+        text-align: center;
+
+        // font-size: 36px;
+        margin-bottom: 0;
+        // background-color: red;
+        margin: 24px;
+      }
+
+
+
+      .subtitle {
+        position: relative;
+        // background-color: red;
+        font-size: 24px;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          height: 1px;
+          width: 50%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        &::before {
+          top: 0;
+        }
+
+        &::after {
+          bottom: 0;
+        }
+      }
+
+      .collapsedTitle {
+        background-color: var(--bg);
+        border-bottom: 1px solid var(--text-color);
+        border-top: 12px solid var(--text-color);
+        position: fixed;
+        top: 0;
         width: 100%;
-        margin: 0; // Remove margin to avoid shifting
-        padding: 12px; // Use padding for spacing
+        margin: 0;
+        padding: 0;
+        background-color: rgba(56, 51, 51, 0.758);
+        backdrop-filter: blur(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+        backdrop-filter: blur(12px);
+        z-index: 10;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        h2 {
+          // background-color: orange;
+          font-weight: 100;
+          font-style: italic;
+          // padding: 12;
+          // width: 100%;
+          font-size: 24px;
+          // margin: 0; // Remove margin to avoid shifting
+          // padding: var(--padding-large); // Use padding for spacing
+        }
+      }
+
+
+    }
+  }
+
+
+}
+.sm {
+  &.article {
+    /* Ensure the article container takes up the full height */
+    height: 100vh;
+
+    // overflow-y: scroll; /* Enable scrolling for the entire article */
+    // scroll-snap-type: y mandatory; /* Enable vertical scroll snapping for the entire container */
+
+    .titleContainer {
+      padding: 12px;
+      height: 100vh; /* Full viewport height */
+      // scroll-snap-align: start; /* Snap the title container to the top */
+
+      .title {
+        text-align: center;
+        height: 100vh; /* Take up full height of the container */
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        font-size: 24px;
+        gap: 36px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .collapsedTitle {
+        display: none;
+      }
+
+      .heroLinkContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .heroLink {
+          display: flex;
+          align-items: flex-start;
+          justify-content: start;
+          font-size: 16px;
+          height: 48px;
+          width: 120px;
+        }
       }
     }
-  }}
 
+    /* Disable scroll snapping for columns */
+    .twoColumns,
+    .singleColumn {
+      // background-color: red;
+      height: auto; /* Allow natural height based on content */
+      // scroll-snap-align: none; /* Disable snapping for these sections */
+      // overflow-y: auto; /* Allow free scrolling inside the columns */
+    }
 
-.divider { 
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  height: 2px;
-  width: 90%;
-  background-color: red; /* Change color to background-color for horizontal dividers */
-  // margin: 24px;
-  flex-shrink: 0;  /* Prevent collapse if inside a flexbox */
-  position: static;
-}
-
-.subtitle {
-  position: relative;
-  background-color: red;
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &::before {
-    top: 0;
-  }
-
-  &::after {
-    bottom: 0;
+    /* Add a snap point after the title container */
+    .snapAfterTitle {
+      scroll-snap-align: start; /* Snap this point after the title */
+      height: 1px; /* Minimal height to act as a snap point */
+    }
   }
 }
+
+.heroLinkContainer {
+  // background-color: red;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  display: flex;
+
+  .heroLink {
+    font-size: 12px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 41px;
+  }
+}
+
+.sectionName {
+  font-size: 24px;
+  margin-top: 24px;
+
+  // background-color: red;
+  &::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 2px; // Thickness of the underline
+    background-color: currentColor; // Matches text color
+    margin-top: 4px; // Adjust spacing from text
+  }
+
+}
+
 .highlight {
   font-size: 1.2rem;
   text-align: start;
@@ -82,15 +228,19 @@
   &::before {
     content: '';
     position: absolute;
-    left: -10px; /* Adjust to move the line to the left */
+    left: -10px;
+    /* Adjust to move the line to the left */
     top: 0;
-    height: 100%; /* Full height of the parent element */
-    width: 2px; /* Set width of the vertical line */
-    background-color: var(--text-color); /* Line color */
+    height: 100%;
+    /* Full height of the parent element */
+    width: 2px;
+    /* Set width of the vertical line */
+    background-color: var(--text-color);
+    /* Line color */
   }
 
   /* Optional: Keep the horizontal lines as you had before */
-  &:hover { 
+  &:hover {
     background-color: var(--accent-color);
     transform: translateX(12px);
     color: var(--bg);
@@ -111,7 +261,7 @@
   max-width: 80%;
   border: 1px solid var(--text-color);
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     transform: translateY(-4px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -122,14 +272,15 @@
   font-size: var(--font-size-base);
   text-decoration: none;
   position: relative;
- 
+
 }
 
-.pillsContainer { 
+.pillsContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .pill {
   display: inline-block;
   padding: 4px 12px;
@@ -143,9 +294,9 @@
   // text-transform: uppercase;
 
   position: relative;
- 
 
-  &:hover { 
+
+  &:hover {
     background-color: var(--border-color);
     color: var(--bg);
   }
@@ -189,14 +340,16 @@
   width: 100%;
   padding: var(--padding-small) 0;
   font-weight: bold;
-  margin: 12px 0;
+  margin: 2px 0;
   position: relative;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     // transform: translateX(8px);
-  text-decoration: underline;
+    text-decoration: underline;
     // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
   &::after {
     content: ' →';
     font-size: 16px;
@@ -205,14 +358,18 @@
 }
 
 /* Formatting */
-.column { 
+.column {
   height: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   position: relative;
   justify-content: flex-start;
   align-items: center;
-  padding: var(--padding-medium);
+  // padding: var(--padding-medium);
+
+  // margin: 10px;
+
   overflow: auto;
 }
 
@@ -235,25 +392,117 @@
   width: 100%;
 }
 
-.dividerTop{
+.dividerTop {
   border-top: 2px solid;
 }
 
-.twoColumns { 
+.sectionName {
+  padding-left: 24px;
+}
 
+.twoColumns {
   // margin-top: 4rem;
   margin-bottom: 4rem;
   height: 100%;
   width: 100%;
-    // background-color: red;
+  // background-color: red;
+
   .columnSection {
-    column-width: 450px; 
-    column-gap: 10px;
+    margin-top: 24px;
+    column-width: 450px;
+    column-gap: 24px;
+
+
+    &:nth-child(n+2) {
+      // background-color: red;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      height: 10px; // Adds a small gap before the second and subsequent columns
+    }
   }
-  
+
+
+  .sectionSpacer {
+    height: 1px;
+    width: 90%;
+    align-content: center;
+    display: flex;
+    // width: 40%;
+    margin: 12px;
+    background-color: var(--text-color);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px; // Thickness of the underline
+      background-color: currentColor; // Matches text color
+      margin-top: 4px; // Adjust spacing from text
+    }
+
+  }
+
   .section {
     break-inside: avoid;
     margin-bottom: 10px;
+    margin: 24px
+  }
+
+  .herosection {
+
+    background-color: var(--text-color);
+    padding-left: 24px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+    // border: 2px solid red; // Apply border to all sides
+    border-left: none; // Remove left border
+    margin-bottom: 48px;
+
+    .items {
+      // background-color: red;
+      display: flex;
+      // gap: 12px;
+      flex-direction: column;
+
+      .pills,
+      .paragraph,
+      .imageContainer {
+        margin-top: 12px;
+      }
+
+      .linkitem {
+        margin-top: 122px;
+      }
+
+    }
+
+
+
+    .sectionName {
+      padding-left: 0;
+      font-size: 32px;
+
+      padding: 8px; // Adjust padding if needed
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px; // Thickness of the underline
+        background-color: currentColor; // Matches text color
+        margin-top: 4px; // Adjust spacing from text
+      }
+
+    }
+
+    * {
+      color: var(--bg);
+    }
+
   }
 }
 
@@ -262,30 +511,33 @@
 }
 
 .containerColumn {
-  &.overlayTitle { 
+  &.overlayTitle {
     width: 100%;
     height: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
+
     .content {
       width: 100%;
       height: 100%;
       padding: 0;
       margin: 0;
     }
-    .componentBox { 
+
+    .componentBox {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     .title {
       position: absolute;
       z-index: 4;
     }
   }
 
-  .componentBox { 
+  .componentBox {
     width: 100px;
     height: auto;
   }

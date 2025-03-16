@@ -1,0 +1,25 @@
+.projCaroContainer {
+    display: flex;
+    overflow: hidden; // Hide overflow to prevent scrolling issues
+    transition: transform 0.6s ease-in-out;
+    will-change: transform;
+}
+
+.ProjectCell {
+    background-color: red;
+    flex: 0 0 30vw; // Set consistent size for each project
+    margin: 0 10px;
+    transition: transform 0.6s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0.6;
+}
+
+.ActiveProject {
+    background-color: orange;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.InactiveProject {
+    opacity: 0.4;
+    transform: scale(0.9); // Keep others visible, slightly smaller
+}
