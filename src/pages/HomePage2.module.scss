@@ -1,118 +1,187 @@
-.HomePageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: var(--accent-color);
-    min-height: 100vh;
-    width: 100vw;
-  
-    // Responsive classes
-    &.sm {
-      // Styles for small screens
 
-        height: 100vh;
-        width: 100vw;
-      .HeroSection {
-        flex-direction: column;
-        padding: var(--padding-medium);
- 
-  
-        .HeroTextSection {
-            position: absolute;
-            top: 48px;
-            right: 24px;
-                 
-          max-width: 100%;
-          text-align: flex-end;
-          align-items: flex-end;
-          width: 60%;
-          display: flex;
-          gap: 12px;
-        }
-  
-        .HeroTitle {
-          font-size: 64px; // Smaller font size for small screens
-        }
-        .HeroSubtitle { 
-            font-size: 18px;
-            // font-weight: bolder;
-            font-style: ita;
-        }
-        .HeroP { 
-            font-size: 16px;
-            
-        }
-        .HeroArt {
-            // padding: 24px;
-            position: absolute;
-            left: -140px;
-            // transform: translateX(-10px);
-            bottom: 12px;
-                padding: 0;
-                margin: 0;
-        
-            img {
-              height: 70vh;
-              width: 100%;
-            }
-          }
-      }
-    }
-  
-    &.lg {
-      // Styles for large screens
-      .HeroSection {
-        max-width: 1000px;
-        padding: var(--padding-large);
-  
-        .HeroTextSection {
-          max-width: 60%;
-          text-align: start;
-          align-items: start;
-        }
-  
-        .HeroTitle {
-          font-size: 64px; // Larger font size for large screens
-        }
-  
-        .HeroArt {
-          padding: 24px;
-        }
-        .HeroArt {
-            // padding: 24px;
-          
-        
-            img {
-              height: 70vh;
-              width: 100%;
-            }
-          }
-      }
-    }
-  }
-  
-  .HeroSection {
+  .buttonContainer {
     display: flex;
-    max-width: 1000px;
-    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    align-items: flex-end;
+    justify-content: end;
+    // background-color: red;
+ 
+    .fpbutton {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-around;
+        
+        border: 2px solid var(--text-color);
+        // flex-grow: 1; // Ensures they take equal space
+        text-align: center; // Centers text inside
+        padding: 8px; // Adds space inside
+    }
+}
+
+
+.HeroTextSection { 
+    display: flex;
+    flex-direction: column;
+    // background-color: red;
+    text-align: flex-end;
+    align-items: flex-end;
+    width: 60%;
+    gap: 12px;
+
+        .socials {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 12px;
+      align-items: start;
+      font-size: 24px;
+      margin: 0;
+      color: var(--text-color);
+    }
+    .HeroTitle {
+        font-size: 64px; // Smaller font size for small screens
+                }
+                
+        .HeroSubtitle { 
+                    font-size: 18px;
+                    // font-weight: bolder;
+                    font-style: ita;
+                }
+                .HeroP { 
+                    font-size: 12px;
+                    
+                }
+              
+            }
+
+.HomePageContainer { 
+ &.sm {
+    background-color: var(--accent-color);
+    // background-color: red;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; // Enables vertical snap behavior
+
+
+
+    .sm_fp {
+        height: 100vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // background-color: rebeccapurple;
+        justify-content: center;
+        scroll-snap-align: start; // Ensures each section aligns perfectly when scrolling
+    }
+    .HeroSection { 
+        // background-color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        height: 100vh; // Ensures full-screen height
+        
+        .HeroTextSection {
+            margin: 2rem;
+          align-self: flex-end; // Keeps text at the top
+          margin-right: 2rem; // Adjust spacing if needed
+        
+        
+        }
+      
+        .HeroArt {
+          position: absolute;
+          bottom: 0;
+          left: -140px;
+      
+          img {
+            height: 70vh;
+            width: auto; // Prevents unwanted stretching
+          }
+        }
+      }
+
+    .sm_half { 
+        height: 50vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--text-color);
+    
+        // color: red;
+        * { 
+            color: var(--bg);
+        }
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+    }
+
+    .sm_25 { 
+        height: 25vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--text-color);
+    
+        // color: red;
+        * { 
+            color: var(--bg);
+        }
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+    }
+
+    .textSection { 
+        // background-color: red;
+        position: static;
+        background-color: var(--accent-color);
+    }
+
+}
+
+
+&.lg { 
+    // background-color: red;
+    height: 100vh;
+    display: flex;
     align-items: center;
+    background-color: var(--accent-color);
     justify-content: center;
-    padding: var(--padding-large);
+
+    .HeroSection {
+        display: flex;
+        // background-color: orange;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+    }
   
     .HeroTextSection {
+        // background-color: green;
+        width: 120;
       display: flex;
       flex-direction: column;
       align-items: start;
       justify-content: start;
-      text-align: center;
+      text-align: start; // Changed from "center" to "start"
       max-width: 60%;
       padding: 12px;
+      flex: 1;
+      max-width: 500px;
     }
   
     .HeroTitle {
       font-weight: 100;
-      font-size: 64px;
+      font-size: 64px; // Larger font size for large screens
     }
   
     .HeroP {
@@ -130,36 +199,77 @@
       align-items: start;
       color: var(--text-color);
     }
-  
-    
-  }
-  
-  .socials {
-    li {
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--text-color);
-    }
-  }
-  
-  .ProjSection {
-    h2 {
+
+    .buttonContainer { 
+        // align-items: flex-start;
+        justify-content: flex-start;
     }
   
-    .ProjectCards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-  
-      .ProjectCard {
-        h3 {
-        }
-  
-        p {
-        }
+    .HeroArt {
+
+            // background-color: orange;
+            width: auto; // Prevents it from stretching
+            // max-width: 200px; // Limits it to the image size
+          
+      img {
+        height: 400px; // Adjusted for large screens
+        width: 400px;
       }
     }
-  }
+}
+}
+
+
+
+
+
+// .HomePageContainer { 
+//     background-color: var(--accent-color);
+// }
+
+// * { 
+//     border: 1px solid pink;
+// }
+
+// .lg { 
+//     background-color: red;
+//     display: flex;
+//     justify-content: space-between; // Ensures that space is distributed between the items
+//     align-items: center; // Centers the items vertically
+//     .HeroSection {
+//         display: flex;
+//         justify-content: space-between; /* Ensures the items are spaced evenly */
+//         align-items: center; /* Vertically centers the items */
+//         padding: var(--padding-large);
+//       }
+    
+//     // HeroTextSection - Add this to manage the other element
+//     .HeroTextSection {
+//       flex: 1; // Takes up the remaining space
+//       padding: 12px;
+//     }
+  
+//     .HeroArt {
+//       width: auto; // Keeps the natural width of the image container
+//       max-width: 132px; // Limits the image size
+      
+//       img { 
+//         height: 132px;
+//         width: 132px; // Matches the container width
+//       }
+//     }
+//   }
+
+//   .HomePageContainer {
+//     background-color: var(--accent-color);
+//     width: 100%;
+//   }
+  
+
+//   /* For smaller screens */
+
+//   .svgPositionCenter {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }

@@ -6,13 +6,13 @@
   }
   
   .mainContent {
-    position: relative;
-    width: 100%;
-    align-items: center;
-    // background-color: green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // position: relative;
+    // width: 100%;
+    // align-items: center;
+    // // background-color: green;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     flex-direction: column;
     // height: 100%;
   }
@@ -41,9 +41,9 @@
 
 
     .disable {
-      filter: blur(2px) brightness(0.6); 
+      filter: brightness(0.3); 
       
-      transform: scale(0.95);
+      // transform: scale(0.95);
       pointer-events: none;  // Disable clicks and interactions
       overflow: hidden;      // Prevent scrolling
       transition: transform 0.3s ease, filter 0.3s ease;

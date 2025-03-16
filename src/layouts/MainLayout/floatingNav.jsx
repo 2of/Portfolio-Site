@@ -66,7 +66,7 @@ const FloatingNav = () => {
         <nav
           className={`
             ${screenSize === "sm" ? styles.sm : styles.float}
-            ${screenSize === "sm" ? "glass" : ""}  
+            ${screenSize === "sm" ? "" : ""}  
             ${styles.navContainer} 
             ${navReplacementButtonFunc.label ? styles.onlyButton : ""} 
             ${doJump ? styles.jump : ""}`}
@@ -108,7 +108,7 @@ const FloatingNav = () => {
       ) : (
         <nav
           className={`${screenSize === "sm" ? styles.sm : styles.float} 
-            ${screenSize === "sm" ? "glass" : ""} 
+            ${screenSize === "sm" ? "" : ""} 
             ${styles.navContainer} 
             ${navReplacementButtonFunc.label ? styles.onlyButton : ""}
             ${showExpand ? styles.expandedMenu : ""}`}
@@ -144,7 +144,7 @@ const FloatingNav = () => {
 
           <div className={`${styles.expandMenuPlatter} ${showExpand ? styles.visible : ""}`}>
             {routes.map((route, i) => (
-              <li key={i} className={`${styles.expandednavitem} glassButton`}>
+              <li key={i} className={`${styles.expandednavitem} `}>
                 <div
                   onClick={() => handleLinkClick(route.path)} // Use custom handler
                   className={`${styles.link} ${location.pathname === route.path ? styles.activeLink : ""}`} // Apply active class manually
@@ -155,7 +155,7 @@ const FloatingNav = () => {
               </li>
             ))}
 
-            <li className={`${styles.darkmodeExpandtile} glassButton`}>
+            <li className={`${styles.darkmodeExpandtile} `}>
               <DarkModeTile />
             </li>
           </div>

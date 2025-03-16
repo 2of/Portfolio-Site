@@ -1,9 +1,10 @@
 import { 
-  FaHome, FaUser, FaCog, FaQuestion, 
+  FaHome, FaUser, FaCog, FaCircleNotch, 
   FaFileAlt, FaVideo, FaFilePdf, FaGithub, 
   FaTimes, FaStar, FaMoon, FaArrowLeft, 
   FaArrowRight, FaArrowCircleLeft, FaProjectDiagram, 
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
+  FaChevronCircleDown, FaQuestionCircle,
   FaBars, FaArrowUp, FaLinkedin, FaCode, FaRegEnvelope // Importing FaCode
 } from "react-icons/fa"; 
 
@@ -32,10 +33,11 @@ const getIcon = (iconName = "default") => {
       linkedin: <FaLinkedin />, // Added LinkedIn icon
       github: <FaGithub />, // GitHub icon
       projects:<FaCode />, // Added FaCode icon
-      mail:<FaRegEnvelope/>
+      mail:<FaRegEnvelope/>,
+      chevdown:<FaChevronCircleDown/>
   };
 
-  return iconMap[iconName] || <FaQuestion />; // Default to FaQuestion if not found
+  return iconMap[iconName] || <FaQuestionCircle />; // Default to FaQuestion if not found
 };
 
 export default getIcon;
