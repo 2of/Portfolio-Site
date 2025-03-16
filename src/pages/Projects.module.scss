@@ -1,18 +1,56 @@
 .sm {
-    background-color: red;
+    // background-color: red;
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
 
     .sm_fp {
         height: 100vh;
-        background-color: orange;
+        // background-color: orange;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         scroll-snap-align: start; // Ensures each section aligns perfectly when scrolling
     }
+
+    .sm_half { 
+        height: 50vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--text-color);
+    
+        color: red;
+        * { 
+            color: var(--bg);
+        }
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+    }
+
+    .sm_25 { 
+        height: 25vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--text-color);
+    
+        color: red;
+        * { 
+            color: var(--bg);
+        }
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+    }
+
+
 }
 
 .textSection{ 

@@ -27,7 +27,7 @@ export const TooltipProvider = ({ children }) => {
 
         // Prevent tooltip from going off the bottom edge
         if (y + tooltipHeight > window.innerHeight) {
-            y = event.clientY - tooltipHeight - 30; // Move above cursor if needed
+            y = event.clientY - tooltipHeight - 10; // Move above cursor if needed
         }
 
         setTooltip({

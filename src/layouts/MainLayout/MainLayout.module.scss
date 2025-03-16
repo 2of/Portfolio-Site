@@ -35,8 +35,9 @@
 
 
     .disable {
-      filter: blur(2px);
-      transform: scale(0.9) perspective(1500px) rotateX(10deg) rotateY(5deg);
+      filter: blur(2px) brightness(0.6); 
+      
+      transform: scale(0.95);
       pointer-events: none;  // Disable clicks and interactions
       overflow: hidden;      // Prevent scrolling
       transition: transform 0.3s ease, filter 0.3s ease;

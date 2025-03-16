@@ -9,6 +9,7 @@ import { useProjects } from "../contexts/ContentContext";
 import { Thumbnail } from "../components/thumbnail";
 
 import useScreenSize from "../utils/screensize";
+import getIcon from "../utils/Iconifier";
 export const NewProjectPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
@@ -76,11 +77,11 @@ export const NewProjectPage = () => {
 
             <section className={`${styles.sm_fp} `}>
 
-            <h1 className={styles.title}>Projects</h1>
-            <p className={styles.subtitle}>
-                Explore my work with <span className={styles.highlight}>Python</span> and{' '}
-                <span className={styles.highlight}>bold ideas</span>.
-            </p>
+                <h1 className={styles.title}>Projects</h1>
+                <p className={styles.subtitle}>
+                    Explore my work with <span className={styles.highlight}>Python</span> and{' '}
+                    <span className={styles.highlight}>bold ideas</span>.
+                </p>
 
             </section>
 
@@ -119,28 +120,43 @@ export const NewProjectPage = () => {
                 />
             )}
 
-            <h1 className={styles.title}>Recent Githubs</h1>
-            <p className={styles.subtitle}>
-                If the
-                <span className={styles.highlight}>Github API</span>
-                works
-            </p>
+
+            <section className={`${styles.sm_25} `}>
+
+                <h1 className={styles.title}>Less Documented Projects...</h1>
+                <p className={styles.subtitle}>
+                    These are actually just the most recent repos from the github rest api...
+                </p>
+
+            </section>
 
             {/* Handle error and loading states */}
             {githubprojects && (
                 <>
-
                     {console.log(githubprojects)}
-                    {githubprojects.map((proj, index) => {
-                        return <Thumbnail data={{
-                            "title": proj.name,
-                            "subtitle": proj.description
-
-                        }} ></Thumbnail>;
-                    })}
+                    {githubprojects.map((proj, id) => (
+                        <div key={id} className={`${styles.ProjectCell} ${styles.sm_fp}`}>
+                            <Thumbnail
+                                data={{
+                                    title: proj.name,
+                                    subtitle: proj.description,
+                                }}
+                            />
+                        </div>
+                    ))}
                 </>
             )}
-            <div className="ScrollSpacer"></div>
+           
+            <section className={`${styles.sm_half} `}>
+
+<h1 className={styles.title}>This is not all...</h1>
+<p className={styles.subtitle}>
+just find the rest on my github {getIcon("github")} and medium
+</p>
+
+</section>
+
         </div>
+        
     );
 };

@@ -11,22 +11,21 @@ export const HomePage2 = () => {
 
             <div className={styles.HeroTextSection}>
             <div className={styles.HeroTitle}>
-            <h1>Welcome to My Portfolio</h1>
+            <h1>Howdy</h1>
           </div>
           <div className={styles.HeroSubtitle}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolore recusandae odio natus alias quo, sequi nemo molestias unde officia excepturi! Voluptatibus, voluptatum aut? Unde veritatis repellat hic praesentium nemo.</p>
+            <p>I do things.</p>
           </div>
           <div className={styles.HeroP}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi dolore recusandae odio natus alias quo, sequi nemo molestias unde officia excepturi! Voluptatibus, voluptatum aut? Unde veritatis repellat hic praesentium nemo.</p>
           </div>
-          <div className={styles.Socials}>
-            <ul>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn {getIcon("linkedin")}</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub {getIcon("repo")}</a></li>
+          <ul className={styles.socials}>
+       
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">{getIcon("linkedin")}</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"> {getIcon("github")}</a></li>
 
             </ul>
 
-            </div>
          
           </div>
           <div className={styles.HeroArt}>

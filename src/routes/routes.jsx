@@ -43,13 +43,7 @@ const routes = [
       element: <AboutPage/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
-    }, {
-      path: "/carousel",
-      label: "carousel",
-      element: <Carousel/>,
-      fullscreen_fullNav: false,
-      mobile_fullNav: false,
-    },
+    }
     
   ];
   

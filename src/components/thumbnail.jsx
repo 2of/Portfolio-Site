@@ -18,7 +18,17 @@ export const Thumbnail = ({ data, fullLinkCallBack, asFS = true }) => {
             <h2 className={styles.title}>{data.title}</h2>
             <p className={styles.subtitle}>{data.subtitle}</p>
 
+        {data.tools && 
+        
+        <ul className={styles.PillContainer}>
+      {data.tools.map((p, i) => ( 
 
+    <li className={styles.pill}  key={i}>
+        {p} 
+    </li>
+))}
+            
+            </ul>}
             <div className={styles.linkContainer}>
                 <span className={styles.link} onClick={fullLinkCallBack}>
                     Read

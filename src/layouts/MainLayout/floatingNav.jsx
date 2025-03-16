@@ -7,7 +7,7 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";
 import getIcon from "../../utils/Iconifier";
 import { DarkModeTile } from "../../components/darkmodeTile";
-
+import { TooltipProvider, useTooltip } from "../../contexts/tooltip";
 const FloatingNav = () => {
   const [hasSlidIn, setHasSlidIn] = useState(false);
   const screenSize = useScreenSize();
@@ -16,7 +16,7 @@ const FloatingNav = () => {
   const [showExpand, setshowExpand] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // Hook to get the current route's path
-
+  const { showTooltip, hideTooltip } = useTooltip();
   useEffect(() => {
     const timer = setTimeout(() => {
       setHasSlidIn(true);
@@ -77,9 +77,17 @@ const FloatingNav = () => {
                 <div
                   onClick={() => handleLinkClick(route.path)} // Use custom handler
                   className={`${styles.link} ${location.pathname === route.path ? styles.activeLink : ""}`} // Apply active class manually
-                >
+                  onMouseMove={(e) => showTooltip(route.label, e)}
+                  onMouseLeave={hideTooltip}
+               
+               
+               >
+
+                  <p>
                   {getIcon(route.label)}
-                  {screenSize === "sm" ? "" : route.label}
+                  </p>
+        
+                 {/* <p> {screenSize === "sm" ? "" : route.label}</p> */}
                 </div>
               </li>
             ))}
@@ -123,7 +131,7 @@ const FloatingNav = () => {
             <li>
               <div className={`${styles.menuButton} ${styles.minilink}`} onClick={handleMenuButtonClick}>
                 <p className={styles.miniLinkIcon}> {getIcon("up")}</p>
-                <p className={styles.miniLinkText}> expand </p>
+                <p className={styles.miniLinkText}> {showExpand ? "back" : "more"} </p>
               </div>
 
               {navReplacementButtonFunc.label && (

@@ -1,18 +1,63 @@
-.HomePageContainer { 
-    background-color: red;
+.HomePageContainer {
 }
 
-
-.HeroTextSection { 
-    background-color: green;
+.HeroSection {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
+
+    .HeroTextSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .HeroArt {
+        img {
+        }
+    }
 }
 
-.socials { 
+.socials {
     display: flex;
+    list-style-type: none;
+
+    li {
+        a {
+        }
+    }
+}
+
+.HeroTitle {
+    * {
+    }
+}
+
+.HeroSubtitle {
+    * {
+    }
+}
+
+.HeroP {
+    p {
+    }
+}
+
+.ProjSection {
+    h2 {
+    }
+
+    .ProjectCards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .ProjectCard {
+            h3 {
+            }
+
+            p {
+            }
+        }
+    }
 }

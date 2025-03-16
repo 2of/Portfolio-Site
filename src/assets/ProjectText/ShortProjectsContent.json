@@ -3,7 +3,8 @@
         "name": "geolocate1",
         "title": "Neighbourhood Scale GeoLocalization",
         "subtitle": "Master's Project @ UC. A Grade.",
-         "bgimage": "assets/images/home_vintage.gif",
+        "bgimage": "assets/images/home_vintage.gif",
+        "tools": ["TensorFlow", "Python", "Keras", "OpenCV", "Google Street View API"],
         "sections": [
             {
                 "name": "Introduction",
@@ -26,6 +27,8 @@
         "name": "site1",
         "title": "This Website!",
         "subtitle": "Responsive REACT front end hosted on GitHub Pages.",
+        "bgimage": null,
+        "tools": ["React", "SCSS", "GitHub Pages", "JavaScript"],
         "sections": [
             {
                 "name": "Introduction",
@@ -48,6 +51,8 @@
         "name": "chrome1",
         "title": "NZ's Most Downloaded Chrome Extension",
         "subtitle": "Briefly went viral on Reddit.",
+        "bgimage": null,
+        "tools": ["JavaScript", "Chrome Extensions API", "Manifest v3"],
         "sections": [
             {
                 "name": "Introduction",
@@ -71,6 +76,7 @@
         "title": "Bad Chess AI Compilation",
         "subtitle": "Unconventional and humorous chess AIs.",
         "bgimage": "assets/images/chess.gif",
+        "tools": ["Python", "Pygame", "Stockfish", "TensorFlow"],
         "sections": [
             {
                 "name": "Introduction",
@@ -93,6 +99,8 @@
         "name": "sentiment1",
         "title": "Sentiment Analysis Series",
         "subtitle": "Machine learning models for text analysis.",
+        "bgimage": null,
+        "pills": ["Python", "TensorFlow", "NLTK", "Pandas", "Scikit-Learn"],
         "sections": [
             {
                 "name": "Introduction",
