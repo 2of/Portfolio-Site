@@ -34,7 +34,7 @@
     bottom: 0;
     border-radius: 0;
     width: 100%;   
-    height: 120px; // iphone safe ?!??!
+    height: 64px; // iphone safe ?!??!
   }
 
   &.rightAlignFloat { 
@@ -127,7 +127,7 @@
   box-shadow: none;
   transition: all 0.3s ease-in-out;
   // background-color: red;
-
+  height: 12000px;
     .navList { 
       // background-color: red;
       display: flex;
@@ -184,7 +184,7 @@
    
 }
 .expandMenuPlatter {
-  opacity: 0;
+  // opacity: 0;
   padding: 24px;
   gap: 12px;
 
