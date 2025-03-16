@@ -5,6 +5,7 @@
     gap: 12px;
     align-items: flex-end;
     justify-content: end;
+    flex-wrap: wrap;
     // background-color: red;
  
     .fpbutton {
@@ -94,7 +95,7 @@
       
         .HeroArt {
           position: absolute;
-          bottom: 0;
+          bottom: 24px;
           left: -140px;
       
           img {

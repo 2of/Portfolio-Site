@@ -189,12 +189,12 @@ export const DarkModeTile = ({grayscale = false}) => {
       >
        
 
-{devicetype === "mobile" && (
+{/* {devicetype === "mobile" && (
         <div
           className={clsx(styles.prompt_mobile)}
         >
           <h2> <FaMoon/> <FaExchangeAlt/> <FaSun/> </h2>
-        </div>)}
+        </div>)} */}
 
         {devicetype === "desktop" && (
         <div

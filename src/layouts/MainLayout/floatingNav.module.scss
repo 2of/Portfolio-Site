@@ -135,7 +135,7 @@ justify-content: center;
   border: none;
   box-shadow: none;
   transition: all 0.3s ease-in-out;
-  border-top: 1px solid black;
+  border-top: 1px solid var(--border-color);
   // background-color: red;
   height: 12000px;
     .navList { 
@@ -169,9 +169,7 @@ justify-content: center;
 
     
 
-      * { 
-        border: 1px solid pink;
-      }
+     
 
     }
 
@@ -213,7 +211,7 @@ justify-content: center;
 
   .expandednavitem {
     display: flex;
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
 
     align-items: center;
@@ -227,7 +225,7 @@ justify-content: center;
     width: 100%;
     overflow: hidden;
     display: flex;
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
   }
 

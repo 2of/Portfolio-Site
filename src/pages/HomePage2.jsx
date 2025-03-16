@@ -82,12 +82,12 @@ export const HomePage2 = () => {
           </ul>
         </div>
       </div>
-      {/* <div className={`${styles.HeroSection} ${styles.sm_fp}`}>
+      <div className={`${styles.HeroSection} ${styles.sm_fp}`}>
        test
         </div>
         <div className={`${styles.HeroSection} ${styles.sm_fp}`}>
        test
-        </div> */}
+        </div>
     </div>
   );
 };
