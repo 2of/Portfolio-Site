@@ -10,6 +10,7 @@ import { Thumbnail } from "../components/thumbnail";
 
 import useScreenSize from "../utils/screensize";
 import getIcon from "../utils/Iconifier";
+import { BouncyArrows } from "../components/UI_Extrasa/bouncyArrows";
 export const NewProjectPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
@@ -79,11 +80,18 @@ export const NewProjectPage = () => {
 
             <section className={`${styles.sm_fp} `}>
                 <h1 className={styles.title}>Projects</h1>
+                {screenSize === "sm" ? <p className={styles.subtitle}>
+                   Scroll down for <span className={styles.highlight}>projects</span> and{' '}
+                    <span className={styles.highlight}>what not</span>.
+                </p> :
+                
                 <p className={styles.subtitle}>
-                    Explore my work with <span className={styles.highlight}>Python</span> and{' '}
-                    <span className={styles.highlight}>bold ideas</span>.
-                </p>
-
+                Explore my work with <span className={styles.highlight}>Python</span> and{' '}
+                <span className={styles.highlight}>bold ideas</span>.
+            </p>
+            
+            }
+                {screenSize === "sm" ? <BouncyArrows /> : ""}
             </section>
 
             <div className={styles.ProjectContainer}>
@@ -111,7 +119,7 @@ export const NewProjectPage = () => {
                             AsArticle={true}
                             extratext={selectedProject.extratext} // Pass the extratext prop if it exists
                             style="modern"
-                            
+
                         />
                     }
                     onClose={handleCloseModal}
@@ -147,7 +155,7 @@ export const NewProjectPage = () => {
                             />
                         </div>
                     ))}
-               </div>
+                </div>
             )}
 
             <section className={`${styles.sm_half} `}>
