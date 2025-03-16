@@ -4,20 +4,22 @@ import { Outlet, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import FloatingNav from "./floatingNav";
 import { useGlobalContext } from "../../contexts/GlobalContext";
+
 const MainLayout = () => {
   const location = useLocation();
   const nodeRef = useRef(null);
-const {    disableForPopup, setDisableForPopUp} = useGlobalContext() 
+  const { disableForPopup } = useGlobalContext();
+
+  // Normalize the key for the root route
+  const normalizedKey = location.pathname === "/" ? "root" : location.pathname;
+
   return (
     <div className={styles.mainLayout}>
       <main className={styles.mainContent}>
-
-        {/* <Outlet/> */}
         <TransitionGroup component={null}>
-          {/* Apply transition only to the outlet content */}
           <CSSTransition
             nodeRef={nodeRef}
-            key={location.pathname}
+            key={normalizedKey} // Use normalized key
             timeout={300}
             classNames={{
               enter: styles.pageTransitionEnter,
@@ -25,6 +27,7 @@ const {    disableForPopup, setDisableForPopUp} = useGlobalContext()
               exit: styles.pageTransitionExit,
               exitActive: styles.pageTransitionExitActive,
             }}
+            appear={true} // Apply transition on initial mount
           >
             <div ref={nodeRef} className={disableForPopup ? styles.disable : ""}>
               <Outlet />

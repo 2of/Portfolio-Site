@@ -1,24 +1,17 @@
-/* transitions.css */
+.pageTransitionEnter {
+  opacity: 0;
+}
 
-/* Fade transition */
-.fade-enter {
-    opacity: 0;
-    transform: translateY(20px); /* Optional: Slide up slightly */
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transform: translateY(20px); /* Optional: Slide down slightly */
-    transition: opacity 300ms, transform 300ms;
-  }
+.pageTransitionEnterActive {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.pageTransitionExit {
+  opacity: 1;
+}
+
+.pageTransitionExitActive {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}

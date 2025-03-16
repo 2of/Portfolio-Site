@@ -50,6 +50,11 @@
         scroll-snap-align: start; 
     }
 
+    .textSection { 
+        // background-color: red;
+        position: static;
+        background-color: var(--accent-color);
+    }
 
 }
 .lg {
@@ -79,4 +84,5 @@
 .textSection { 
     // background-color: red;
     position: static;
+    // background-color: var(--accent-color);
 }
