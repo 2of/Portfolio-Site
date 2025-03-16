@@ -4,7 +4,7 @@ import {
   FaTimes, FaStar, FaMoon, FaArrowLeft, 
   FaArrowRight, FaArrowCircleLeft, FaProjectDiagram, 
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
-  FaBars, FaArrowUp // Importing up arrow icon
+  FaBars, FaArrowUp, FaLinkedin // Importing LinkedIn icon
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -29,7 +29,9 @@ const getIcon = (iconName = "default") => {
       back: <FaArrowCircleLeft />,
       next: <FaArrowRight />,
       up: <FaArrowUp />, // Added up arrow icon
-      overflow: <FaBars /> // Added hamburger menu icon
+      overflow: <FaBars />, // Added hamburger menu icon
+      linkedin: <FaLinkedin />, // Added LinkedIn icon
+      github: <FaGithub /> // GitHub icon
   };
 
   return iconMap[iconName] || <FaQuestion />; // Default to FaQuestion if not found

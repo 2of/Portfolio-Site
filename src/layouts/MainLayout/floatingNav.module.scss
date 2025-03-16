@@ -31,9 +31,14 @@
   }
 
   &.sm { 
+    overflow: hidden;
     bottom: 0;
-    border-radius: 0;
-    width: 100%;   
+    border-radius: 0 0 ;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    width: 100%;
+    // width: fit-content;
     height: 64px; // iphone safe ?!??!
   }
 
@@ -144,6 +149,10 @@
 
    &.onlyButton { 
     // background-color: green;
+    width: 36px;
+    height:36px;
+    bottom: 24px;
+    border-radius: 120px;
     .navItem { display: none;}
     .menuButton { display: none;}
     .navContainer { 
@@ -164,13 +173,13 @@
     .visibleButton { 
       background:none;
       // font-size: 40px;
-      width: 100px;
-      height: 100px;
+      // width: 100px;
+      // height: 100px;
       align-items: start;
       display: flex;
       justify-content: center;
       font-weight: 100;
-      padding: 12px;
+      padding: 6px;
       font-style: italic;
       
     }
@@ -186,9 +195,11 @@
 .expandMenuPlatter {
   // opacity: 0;
   padding: 24px;
-  gap: 12px;
+  gap: 8px;
 
   height: 50%;
+  // overflow: scroll;
+  
   display: grid;
   list-style-type: none;
   grid-template-columns: repeat(3, 1fr); // Three equal columns
@@ -196,6 +207,7 @@
 
   .expandednavitem {
     display: flex;
+
     align-items: center;
     justify-content: center;
     text-align: center;

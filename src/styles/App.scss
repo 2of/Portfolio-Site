@@ -3,18 +3,6 @@ body {
   background-color: var(--bg); /* Background color based on theme */
   color: var(--text-color); /* Text color based on theme */
 
-  background-image: linear-gradient(
-    35deg,
-    hsl(240deg 100% 20%) 0%,
-    hsl(293deg 100% 21%) 13%,
-    hsl(319deg 100% 30%) 25%,
-    hsl(332deg 100% 39%) 37%,
-    hsl(346deg 83% 51%) 50%,
-    hsl(10deg 100% 60%) 63%,
-    hsl(30deg 100% 55%) 75%,
-    hsl(44deg 100% 50%) 87%,
-    hsl(55deg 100% 50%) 100%
-  );
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
