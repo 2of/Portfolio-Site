@@ -47,13 +47,13 @@ export const TooltipProvider = ({ children }) => {
             {children}
             {tooltip.isVisible && screenSize !== "sm" && (
                 <div
-                className="glass"
+                // className="glass"
                     style={{
                         position: "fixed",
                         left: tooltip.position.x,
                         top: tooltip.position.y,
-                        // backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        // color: "#fff",
+                        backgroundColor: "rgba(0, 0, 0, 0.8)",
+                        color: "#fff",
                         padding: "10px 15px",
                         borderRadius: "12px",
                         fontSize: "14px",

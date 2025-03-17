@@ -67,13 +67,14 @@ a {
 
 /* Additional Elements */
 button {
-  background-color: var(--bg);
-  color: var(--text-color);
+  // background-color: var(--bg);
+  // color: var(--text-color);
   border: none;
+  background:none;
   border-radius: var(--border-radius);
   padding: var(--padding-small) var(--padding-medium);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  // transition: background-color 0.3s ease;
 }
 
 button:hover {

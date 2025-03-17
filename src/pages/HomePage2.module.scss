@@ -29,6 +29,8 @@
     text-align: flex-end;
     align-items: flex-end;
     width: 60%;
+    // width: 100vw;
+    // background-color: red;
     gap: 12px;
 
         .socials {
@@ -64,9 +66,19 @@
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
-
-
-
+    
+    width: 100vw;
+    overflow-x: hidden;
+    .sm_free { 
+        height: 100vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // background-color: rebeccapurple;
+        justify-content: center;
+        scroll-snap-align: start;
+    }
     .sm_fp {
         height: 100vh;
         // background-color: orange;
@@ -96,11 +108,11 @@
         .HeroArt {
           position: absolute;
           bottom: 24px;
-          left: -140px;
+          left: -130px;
       
           img {
-            height: 70vh;
-            width: auto; // Prevents unwanted stretching
+            height: 60vh;
+            // width: auto; // Prevents unwanted stretching
           }
         }
       }

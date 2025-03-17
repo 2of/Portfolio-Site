@@ -1,6 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useTooltip } from "../../contexts/tooltip";
-import { Navigate } from "react-router-dom";
 import styles from "./Button.module.scss";
 
 const validTypes = ['drop', 'link', 'text-only', 'basic_Expand']; // Include 'basic_Expand'
@@ -13,6 +13,7 @@ export const StandardButton = ({
     icon,
 }) => {
     const { showTooltip, hideTooltip } = useTooltip();
+    const navigate = useNavigate(); // Use the useNavigate hook
 
     // Validate 'type' prop to ensure it's one of the valid types
     const safeType = validTypes.includes(type) ? type : 'drop';
@@ -34,10 +35,10 @@ export const StandardButton = ({
 
     const handleClick = () => {
         if (link) {
-            return <Navigate to={link} />
+            navigate(link); // Use navigate for programmatic navigation
         }
         if (callback) {
-            callback();
+            callback(); // Execute the callback
         }
     };
 
@@ -52,11 +53,10 @@ export const StandardButton = ({
         <div
             onMouseMove={handleMouseMove}
             onMouseLeave={hideTooltip}
-            onClick={handleClick}
+            onClick={handleClick} // Attach the handleClick function
             className={setButtonClass()} // Apply the dynamically set class
         >
             {label}
-            {/* {type} */}
             {icon && <p className={styles.icon}>{icon}</p>} {/* Render icon conditionally */}
         </div>
     );

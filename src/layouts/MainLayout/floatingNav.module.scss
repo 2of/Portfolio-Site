@@ -137,7 +137,7 @@ justify-content: center;
   transition: all 0.3s ease-in-out;
   border-top: 1px solid var(--border-color);
   // background-color: red;
-  height: 12000px;
+  // height: 12000px;
     .navList { 
       // background-color: red;
       display: flex;
@@ -197,7 +197,9 @@ justify-content: center;
    
 }
 .expandMenuPlatter {
-  // opacity: 0;
+  opacity: 0;
+  height: 0;
+
   padding: 24px;
   gap: 8px;
 
@@ -231,6 +233,7 @@ justify-content: center;
 
   &.visible {
     opacity: 1;
+    height: auto;
   }
 }
 

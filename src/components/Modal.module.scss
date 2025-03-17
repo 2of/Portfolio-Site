@@ -121,8 +121,10 @@
     
             &.full {
                 max-width: 100%;
-                width: calc(100% - 24px);
-                height: calc(100% - 24px);
+                // width: calc(100% - 24px);
+                // height: calc(100% - 24px);
+                height: 100vh;
+                width: 100vw;
             }
         }
     }
