@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/2of/Portfolio-Site",
+"homepage": "https://2of.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
