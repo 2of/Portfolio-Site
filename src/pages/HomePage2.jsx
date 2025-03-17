@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { use, useRef, useState } from "react";
 import useScreenSize from "../utils/screensize";
-import { GlobalProvider } from "../contexts/GlobalContext";
+import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
 import styles from './HomePage2.module.scss'; // Import SCSS module
 import getIcon from "../utils/Iconifier";
 import ColumnWithSections from "../components/Column/ColumnWithSections";
@@ -9,6 +9,8 @@ import ProgrammerSVG from '../assets/svgs/undraw_programmer_raqr.svg';
 import dogsvg from "../assets/svgs/DrawKit_Vector_Illustrations_Dog call.svg"
 import { StandardButton } from "../components/UI/StandardButton";
 import HomeData from "../assets/HomeContent.json";
+import { Modal } from "../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage2 = () => {
   const screenSize = useScreenSize();
@@ -20,18 +22,25 @@ export const HomePage2 = () => {
 
   // Create a reference for the section you want to scroll to
   const featuresSectionRef = useRef(null);
-
+  const [showModal, setShowModal] = useState(false)
   const handleFeatClick = () => {
     // alert("TST")
     // Scroll to the target section
+    setShowModal(true)
     if (featuresSectionRef.current) {
-      featuresSectionRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      // featuresSectionRef.current.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      // });
     }
   };
-
+  const {getLink} = useGlobalContext()
+  console.log(getLink("linkedin"))
+  const navigate = useNavigate;
+//   const handleResumeClick = () => { 
+//     alert("TEST");
+//     window.open('https://github.com/2of/2of/blob/main/docs/CV_all.pdf', '_blank');  // Open link in new tab
+// };
   return (
     <div className={`${styles.HomePageContainer} ${screenSize === 'sm' ? styles.sm : styles.lg}`}>
       {/* Hero Section */}
@@ -45,7 +54,7 @@ export const HomePage2 = () => {
         <div className={styles.HeroTextSection}>
           <div className={styles.HeroTitle}>Howdy</div>
           <div className={styles.HeroSubtitle}>
-            <p>This is my little project catalogue</p>
+            <p>I'm Noah and is my little project catalogue</p>
           </div>
           <div className={styles.HeroP}>
             <p>
@@ -60,12 +69,13 @@ export const HomePage2 = () => {
   icon={getIcon("projects")}
   callback={handleFeatClick} // This will now work
 />
-<StandardButton
+<StandardButton 
   label="résumé"
   tooltip={"navigate to resume"}
   type="basic_Expand"
   icon={getIcon("")}
-  callback={handleFeatClick} // This will now work
+  // callback={handleResumeClick} // This will now work
+  link = {getLink("resume")}
 />
         </div>
         <div className={styles.HeroP}>
@@ -82,7 +92,7 @@ export const HomePage2 = () => {
                   tooltip={link.icon}
                   type="social"
                   icon={getIcon(link.icon)}
-                  callback={() => handleFeatClick}
+                  link = {getLink(link.icon)}
                 />
               </li>
             ))}
@@ -90,21 +100,24 @@ export const HomePage2 = () => {
         </div>
       </div>
 
-
+   
           
       {/* Target Section */}
 
-      {screenSize === "sm" && <>
-      <div ref={featuresSectionRef} className={`${styles.HeroSection} ${styles.sm_free}`}>
-        <ColumnWithSections data={HomeData[0]} style="newspaper" topDivideDouble={true} twoColumns={false}/>
-      </div>
-
-      {/* Additional sections */}
-      <div className={`${styles.HeroSection} ${styles.sm_fp}`}>
-        test
-      </div>
-
-      </>}
+      
+        {showModal && (
+    <>
+        {/* <h1>fuck</h1> */}
+        <Modal
+            component={ <ColumnWithSections data={HomeData[0]} style="newspaper" topDivideDouble={true} twoColumns={true}/>}
+            onClose={() => setShowModal(false)} // Move onClose inside the Modal component
+            size="large"
+            title={"meh"}
+            // buttons={getModalButtons(selectedProject)}
+            isOpen={showModal}
+        />
+    </>
+)}
     </div>
   );
 };

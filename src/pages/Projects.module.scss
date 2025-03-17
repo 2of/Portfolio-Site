@@ -61,12 +61,22 @@
     // background-color: red;
     padding: 120px;
     position: relative;
-
+    
     .divider { 
         height: 2px;
-        width: 128px;
+        width: 512px;
         background-color: var(--text-color);
     }
+    .headerImage { 
+    //    background-color: red;
+       position: absolute;
+       top: 0px;
+       transform: translateY(-135px);
+       z-index: 2;
+    
+       
+       height: 300px;
+      }
     .ProjectContainer {
       display: flex;
       flex-wrap: wrap;
@@ -79,10 +89,12 @@
         /* You can adjust the min-width if you'd like to add more control */
         // min-width: 200px; /* Optional: to ensure a minimum size for each cell */
       }
+    
+    }
+    .textSection { 
+        margin-top: 120px;
+        // background-color: red;
+        position: relative;
+        // background-color: var(--accent-color);
     }
   }
-.textSection { 
-    // background-color: red;
-    position: static;
-    // background-color: var(--accent-color);
-}

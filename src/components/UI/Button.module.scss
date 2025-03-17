@@ -46,12 +46,15 @@
     // width: 180px;
     border: 1px solid rgb(51, 51, 51);
     color: rgb(51, 51, 51);
+
     box-shadow: rgb(51, 51, 51) 4px 4px 0 0;
 
     left: 0;
     top: 0;
     transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
+* { 
+    color: black;
+}
     &:hover { 
         left: 4px;
         top: 4px;

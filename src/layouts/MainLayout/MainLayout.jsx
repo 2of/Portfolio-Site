@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import FloatingNav from "./floatingNav";
 import { useGlobalContext } from "../../contexts/GlobalContext";
+import { Disclaimer } from "../../components/disclaimer";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -15,7 +16,14 @@ const MainLayout = () => {
 
   return (
     <div className={styles.mainLayout}>
+             <Disclaimer
+        title={"🚧 🚧"}
+        text={"Work in Progress"}>
+
+          
+        </Disclaimer>
       <main className={styles.mainContent}>
+ 
         <TransitionGroup component={null}>
           <CSSTransition
             nodeRef={nodeRef}

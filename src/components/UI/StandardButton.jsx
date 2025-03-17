@@ -4,6 +4,7 @@ import { useTooltip } from "../../contexts/tooltip";
 import styles from "./Button.module.scss";
 
 const validTypes = ['drop', 'link', 'text-only', 'basic_Expand']; // Include 'basic_Expand'
+
 export const StandardButton = ({
     label = "no label",
     callback,
@@ -35,8 +36,24 @@ export const StandardButton = ({
 
     const handleClick = () => {
         if (link) {
-            navigate(link); // Use navigate for programmatic navigation
+            // Check if the link is a URL (external)
+            const isExternal = /^https?:\/\//.test(link);
+            const isEmail = /^mailto:/.test(link); // Check if it's already a mailto link
+            const isEmailAddress = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(link); // Check if it's a valid email address
+
+            if (isExternal) {
+                // Open in a new tab for external URL
+                window.open(link, '_blank');
+            } else if (isEmail || isEmailAddress) {
+                // Handle email links
+                const mailtoLink = isEmail ? link : `mailto:${link}`; // Add mailto: prefix if missing
+                window.location.href = mailtoLink; // Use window.location.href to open the email client
+            } else {
+                // Navigate internally using React Router for internal routes
+                navigate(link);
+            }
         }
+
         if (callback) {
             callback(); // Execute the callback
         }

@@ -7,7 +7,7 @@ import { getRecentRepos } from "../utils/githubFetch";
 import { TooltipProvider, useTooltip } from "../contexts/tooltip";
 import { useProjects } from "../contexts/ContentContext";
 import { Thumbnail } from "../components/thumbnail";
-
+import decor1 from "../assets/svgs/undraw_color-palette_5vtb.svg"
 import useScreenSize from "../utils/screensize";
 import getIcon from "../utils/Iconifier";
 import { BouncyArrows } from "../components/UI_Extrasa/bouncyArrows";
@@ -68,7 +68,7 @@ export const NewProjectPage = () => {
 
     // Get the list of short projects (small size) from the context
     const shortProjects = getListOfArticles();
-    console.log(shortProjects)
+
 
     return (
 
@@ -90,6 +90,7 @@ export const NewProjectPage = () => {
                 Explore my work with <span className={styles.highlight}>Python</span> and{' '}
                 <span className={styles.highlight}>bold things</span>.
                 
+                {screenSize !== "sm" ? <img className={styles.headerImage} src={decor1}/> : "test"}
             </p>
             
             }

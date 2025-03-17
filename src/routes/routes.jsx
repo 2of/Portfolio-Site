@@ -24,13 +24,13 @@ const routes = [
       transparentnav: true
     },
 
-    {
-      path: "/junk",
-      label: "junk",
-      element:<JunkPage/>,
-      fullscreen_fullNav: false,
-      mobile_fullNav: false,
-    },
+    // {
+    //   path: "/junk",
+    //   label: "junk",
+    //   element:<JunkPage/>,
+    //   fullscreen_fullNav: false,
+    //   mobile_fullNav: false,
+    // },
     {
       path: "/Projects",
       label: "projects",

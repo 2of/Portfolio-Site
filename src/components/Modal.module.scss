@@ -5,7 +5,9 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.378);
-    backdrop-filter: blur(12px);
+    background-color: var(--accent-color);
+    opacity: 0.6;
+    // backdrop-filter: blur(12px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,13 +27,14 @@
 }
 
 .modalContent {
-    filter: blur(10px);
+    // filter: blur(10px);
     transform: scale(1.1);
+    transform: translateY(2120px);
     opacity: 0;
 
     .modalOverlay.visible & {
         transform: scale(1);
-        filter: blur(0px);
+        // filter: blur(0px);
         opacity: 1;
     }
 }

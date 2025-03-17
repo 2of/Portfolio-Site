@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-
+import linksdict from "../assets/links.json"
 // Create context
 const GlobalContext = createContext();
 
@@ -16,6 +16,7 @@ export const GlobalProvider = ({ children }) => {
   const [hopNav, setHopNav] = useState(false);
   const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true)
   const [disableForPopup, setDisableForPopUp] = useState(false)
+  // const [links,setLinks] = useState()
   // Store function and label
   const [navReplacementButtonFunc, setNavReplacementButtonFunc] = useState({
     callback: () => console.log("TEST"), // Initially null
@@ -35,6 +36,9 @@ export const GlobalProvider = ({ children }) => {
     }
   }, [isDarkMode]);
 
+  const getLink = (linktitle) => {
+    return linksdict[linktitle] || null; // Return the link or null if not found
+  };
   return (
 <GlobalContext.Provider
   value={{
@@ -52,7 +56,8 @@ export const GlobalProvider = ({ children }) => {
     hopNav,
     setHopNav,
     disableForPopup,
-    setDisableForPopUp
+    setDisableForPopUp,
+    getLink
   }}
 >
 
