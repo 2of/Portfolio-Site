@@ -97,10 +97,11 @@ best way to convert text to the schema is using an LLM
 ```
 
 
-## 📸 Screenshots  
+## 📸 It's responsive, like all 2025 things  
 
+![Demo Video](./gitdocs/vid.gif)
 
-
+I like the 'tiktok' view though
 ### Large View  
 ![Large View](./gitdocs/large.png)  
 
