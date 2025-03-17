@@ -49,7 +49,7 @@
     },
     {
         "name": "chrome1",
-        "title": "NZ's Most Downloaded Chrome Extension",
+        "title": "NZ's Most Downloaded Chrome Extension For about an Evening",
         "subtitle": "Briefly went viral on Reddit.",
         "bgimage": null,
         "tools": ["JavaScript", "Chrome Extensions API", "Manifest v3"],
