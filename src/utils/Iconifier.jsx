@@ -5,8 +5,8 @@ import {
   FaArrowRight, FaArrowCircleLeft, FaProjectDiagram, 
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
   FaChevronCircleDown, FaQuestionCircle,
-  FaBars, FaArrowUp, FaLinkedin, FaCode, FaRegEnvelope,
-  FaExpandAlt, FaFile // Importing FaCode
+  FaBars, FaArrowUp, FaLinkedin, FaCode, FaRegEnvelope,FaChevronDown,
+  FaExpandAlt, FaFile, FaArrowDown, FaHandSpock // Importing FaCode
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -37,7 +37,10 @@ const getIcon = (iconName = "default") => {
       mail:<FaRegEnvelope/>,
       chevdown:<FaChevronCircleDown/>,
       expand: <FaExpandAlt/>,
-      file: <FaFile/>
+      file: <FaFile/>,
+      down: <FaChevronDown/>,
+      downArrow: <FaArrowDown/>,
+      junk: <FaHandSpock/>
   };
 
   return iconMap[iconName] || <FaQuestionCircle />; // Default to FaQuestion if not found

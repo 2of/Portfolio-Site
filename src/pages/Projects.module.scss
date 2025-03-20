@@ -2,17 +2,30 @@
     // background-color: red;
     height: 100vh;
     overflow-y: scroll;
+    position: relative;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
+    
 
     .sm_fp {
         height: 100vh;
-        // background-color: orange;
+        background-color: var(--accent-color);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        scroll-snap-align: start; // Ensures each section aligns perfectly when scrolling
-    }
+
+        scroll-snap-align: start; //
+        
+       .textSection { 
+        // background-color: red;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        top: 30%;
+       }
+}
 
     .sm_half { 
         height: 50vh;
@@ -41,7 +54,7 @@
         gap: 12px;
         background-color: var(--text-color);
     
-        color: red;
+        // color: red;
         * { 
             color: var(--bg);
         }
@@ -50,10 +63,25 @@
         scroll-snap-align: start; 
     }
 
+    .smHeaderImage { 
+        // width: 100%;
+        max-width: 600px;
+        position: absolute;
+        bottom: calc(var(--nav-height) - 64px);
+        // background-color: red;
+        // z-index: 501;
+        pointer-events: none;
+    }
+
     .textSection { 
         // background-color: red;
         position: static;
         background-color: var(--accent-color);
+    }
+
+    .title { 
+        font-weight: 100;
+        font-size: 64px; 
     }
 
 }

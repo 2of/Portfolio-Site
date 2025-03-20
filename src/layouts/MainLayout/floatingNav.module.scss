@@ -1,15 +1,18 @@
 /* floatingNav.module.scss */
 
 .navContainer {
+  z-index: 499;
   position: fixed;
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%); /* Only translate X-axis for centering */
   background-color: var(--bg);
+
   border-radius: var(--border-radius);
-  z-index: 1000;
-  backdrop-filter: blur(var(--blur-radius));
-  -webkit-backdrop-filter: blur(var(--blur-radius));
+
+  // // z-index: 1000;
+
+  // -webkit-backdrop-filter: blur(var(--blur-radius));
   // transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid var(--text-color);
   width: auto; /* Let it adapt based on content */
@@ -25,12 +28,33 @@
 
   /* Slide-in animation */
 
-
+  .activeLink {
+    background-color: var(--accent-color);
+    * { 
+      color: var(--text-color);
+     
+    }
+  
+  }
+  
   &.float { 
     /* Add styles for float if needed */
+    .activeLink {
+      background: none;
+      text-decoration: underline;
+      // background-color: var(--accent-color);
+      * { 
+        color: var(--accent-color);
+        text-decoration: underline;
+       
+      }
+    
+    }
   }
 
   &.sm { 
+    background-color: var(  --glass-bg);
+    backdrop-filter: blur(var(--blur-radius));
     overflow: hidden;
     bottom: 0;
     border-radius: 0 0 ;
@@ -38,8 +62,10 @@
     border-bottom: none;
     border-right: none;
     width: 100%;
+    border-top: 2px solid var(--text-color) ;
     // width: fit-content;
-    height: 64px; // iphone safe ?!??!
+    box-shadow: 0 -12px 24px rgba(0, 0, 0, 0.265);
+    height: var(--nav-height); // iphone safe ?!??!
   }
 
   &.rightAlignFloat { 
@@ -111,15 +137,15 @@ justify-content: center;
   display: flex;
   cursor: pointer;
   align-items: center;
+  // background-color: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
-.activeLink {
-  * { 
-    color: var(--accent-color);
-  }
-
-}
 
 .link:hover {
   color: var(--hover-text-color);
@@ -135,7 +161,7 @@ justify-content: center;
   border: none;
   box-shadow: none;
   transition: all 0.3s ease-in-out;
-  border-top: 1px solid var(--border-color);
+
   // background-color: red;
   // height: 12000px;
     .navList { 
@@ -159,13 +185,14 @@ justify-content: center;
     height:36px;
     bottom: 24px;
     border-radius: 120px;
+    border: none;
     .navItem { display: none;}
     .menuButton { display: none;}
     .navContainer { 
       display: flex;
       align-items: center;
       flex-direction: column;
-
+      
 
     
 
@@ -209,12 +236,13 @@ justify-content: center;
   display: grid;
   list-style-type: none;
   grid-template-columns: repeat(3, 1fr); // Three equal columns
-  grid-template-rows: repeat(2, minmax(100px, auto)); // Ensures rows grow naturally
+  grid-template-rows: repeat(3, minmax(80px, auto)); // Ensures rows grow naturally
 
   .expandednavitem {
     display: flex;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
+    border: 1px solid var(--text-color);
+    border-radius: 8px; 
+    overflow: hidden;
 
     align-items: center;
     justify-content: center;
@@ -227,7 +255,7 @@ justify-content: center;
     width: 100%;
     overflow: hidden;
     display: flex;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--text-color);
     border-radius: 8px;
   }
 

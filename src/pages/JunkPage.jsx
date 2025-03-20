@@ -1,33 +1,64 @@
+import React, { useState } from "react";
+import { useProjects } from "../contexts/ContentContext";
+import styles from "./JunkPage.module.scss"; // Import SCSS for styling
+import { RadialMenu } from "../components/RadialMenu";
+import { BackGround } from "../components/Misc/Background";
 import ImageHandle from "../components/ImageHandle";
+import { StandardButton } from "../components/UI/StandardButton";
 import image from "../assets/images/default.png"
 import image2 from "../assets/images/default_other.jpeg"
-
-import { useProjects } from "../contexts/ContentContext";
-
-import { useState, useEffect } from "react";
-import { StandardButton } from "../components/UI/StandardButton";
-
+import { DarkModeTile } from "../components/darkmodeTile";
 export const JunkPage = () => {
-  const { getArticle, getListOfArticles } = useProjects();
-  const [article, setArticle] = useState(null);
-  const [articlesList, setArticlesList] = useState([]);
+  const { getSkills } = useProjects();
+  const skills = getSkills(); // Get nested skills
+  const [currentPath, setCurrentPath] = useState([]); // Track the current path
 
-
-  useEffect(() => {
-    const list = getListOfArticles();
-    setArticlesList(list);
-    console.log(list)
-
-  }, [getListOfArticles]);
-  const handleButtonClick = () => {
-    console.log("Button clicked!"); // Log a message to the console
-    alert("You clicked the button!"); // Show an alert
-    // You can add any other logic here, such as updating state, making API calls, etc.
-  };
   return (
-    <>
-      <div className="GenericPageContainer">
-        <section>
+    <div className={styles.page}>
+     <div className={styles.centered}>
+     <h1>junk page</h1>
+<h1> Welcome 🔨👷🏻‍♂️</h1>
+
+<h2> this is the 'miscellaneous' page that's full of random components and test (woohoo!)</h2>
+
+<h3>There's oodles of random components in here, feel free to poke around</h3>
+    <h2>It's mostly exposed in the nav to prove i can make cool react stuff</h2>
+<h1> its fine that it's broken</h1>
+     </div>
+    
+
+        <div className={styles.centered}>
+          <RadialMenu
+            data={skills}
+            isRoot={true}
+            currentPath={currentPath} // Pass the current path
+            setCurrentPath={setCurrentPath} // Pass the setter for current path
+            initialRadius={150}
+          />
+        </div>
+
+        <div className={styles.centered}>
+          <p>the above is rendered using recursive component rendering from the following json</p>
+          <pre>
+            <code>
+              {JSON.stringify(skills, null, 2)} {/* This adds 2 spaces for indentation */}
+            </code>
+          </pre>
+
+
+
+
+      </div>
+      <div className={styles.centered}>
+      <BackGround/>
+      </div>
+      <div className={styles.centered}>
+     <DarkModeTile grayscale={false}/>
+      </div>
+  
+
+
+      <section>
           <h1>test</h1>
 
           <iframe
@@ -42,17 +73,13 @@ export const JunkPage = () => {
         </section>
         
         <secton>
-        <StandardButton
-          label="Do stuff"
-          callback={handleButtonClick}/>
+
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image2} alt="test" />
         
         </secton>
-      
- 
-      </div>
-    </>
+    </div>
   );
 };
+

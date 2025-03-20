@@ -105,12 +105,12 @@
 .md { 
     .modalContent {
         background: var(--bg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
-        border: 2px solid var(--text-color);
-        box-shadow: 0 0 0 2px var(--bg);
-    
+
+      border: 2px solid var(--text-color);
+  box-shadow: 4px 4px 0 ;
         &.small {
             max-width: 500px;
             width: 90%;

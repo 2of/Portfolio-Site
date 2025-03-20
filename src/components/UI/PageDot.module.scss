@@ -1,0 +1,33 @@
+.pageDotContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    position: absolute;
+    flex-direction: column;
+    left: 12px;
+    
+  }
+  
+  .dotContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; // Adjust spacing between dots
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #888;
+    }
+  
+    &.active {
+      background-color: var(--accent-color); // Change to match your theme
+    }
+  }

@@ -1,118 +1,122 @@
 import React, { useEffect, useState } from "react";
 import ColumnWithSections from "../components/Column/ColumnWithSections";
-import styles from './Projects.module.scss';
+import styles from "./Projects.module.scss";
 import { Modal } from "../components/Modal";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { getRecentRepos } from "../utils/githubFetch";
-import { TooltipProvider, useTooltip } from "../contexts/tooltip";
 import { useProjects } from "../contexts/ContentContext";
 import { Thumbnail } from "../components/thumbnail";
-import decor1 from "../assets/svgs/undraw_color-palette_5vtb.svg"
+import decor1 from "../assets/svgs/undraw_color-palette_5vtb.svg";
 import useScreenSize from "../utils/screensize";
 import getIcon from "../utils/Iconifier";
 import { BouncyArrows } from "../components/UI_Extrasa/bouncyArrows";
+import decor2 from "../assets/svgs/DrawKit_Vector_Illustrations_Video park.svg"
 export const NewProjectPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const { floatingNavisOnRight, setFloatingNavisOnRight } = useGlobalContext();
-    const { getArticle, getListOfArticles } = useProjects(); // Use the context
+    const { getArticle, getListOfArticles } = useProjects();
     const screenSize = useScreenSize();
-    // Initialize githubprojects as an empty array
-    const [githubprojects, setGithubProjects] = useState([]);
-    const [githubError, setGithubError] = useState(null); // New state to handle errors from the API
-    const [isLoading, setIsLoading] = useState(true); // Track loading state
+    const [githubProjects, setGithubProjects] = useState([]);
+    const [githubError, setGithubError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getRecentRepos("2of").then((repos) => {
             if (repos.error) {
-                setGithubError(repos.error); // Set error if one exists
-                setGithubProjects([]); // Empty array in case of error
+                setGithubError(repos.error);
+                setGithubProjects([]);
             } else {
-                setGithubProjects(repos); // Set repos if success
+                setGithubProjects(repos);
                 console.log(repos);
             }
-            setIsLoading(false); // Stop loading after the API call
+            setIsLoading(false);
         });
     }, []);
 
     const handleOpenModal = (project) => {
-        // Use getArticle to fetch the full project details
         const fullProject = getArticle(project.name, "large");
         setFloatingNavisOnRight(true);
-        setSelectedProject(fullProject ? fullProject : { ...project, extratext: 'Unable to find full text, showing descriptor' });
+        setSelectedProject(
+            fullProject || { ...project, extratext: "Unable to find full text, showing descriptor" }
+        );
         setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
         setFloatingNavisOnRight(false);
-        setSelectedProject(null); // Reset selected project when modal closes
+        setSelectedProject(null);
     };
 
-    const getModalButtons = (project) => {
-        const buttons = [];
-        if (project.link) {
-            buttons.push({
-                name: project.link.text,
-                link: project.link.url,
-            });
-        }
+    const getModalButtons = (project) => [
+        project.link && { name: project.link.text, link: project.link.url },
+        { name: "View Details", onClick: () => alert("View Details Clicked") },
+        { name: "Visit Website", link: "https://example.com" },
+    ].filter(Boolean);
 
-        buttons.push(
-            { name: "View Details", onClick: () => alert("View Details Clicked") },
-            { name: "Visit Website", link: "https://example.com" }
-        );
-
-        return buttons;
-    };
-
-    // Get the list of short projects (small size) from the context
     const shortProjects = getListOfArticles();
 
-
     return (
+        <div className={`${screenSize === "sm" ? styles.sm : styles.lg} ${screenSize !== "sm" ? "GenericPageContainer" : ""}`}>
+            <section className={`${styles.sm_fp} `}>
 
-        <div className={`${screenSize == "sm" ? styles.sm : styles.lg}
-        ${screenSize == "sm" ? "" : "GenericPageContainer"}
-        `}>
+                <div className={styles.textSection}>
 
-
-
-            <section className={`${styles.sm_fp} ${styles.textSection}`}>
-
+        
                 <h1 className={styles.title}>Projects</h1>
-                {screenSize === "sm" ? <p className={styles.subtitle}>
-                   Scroll down for <span className={styles.highlight}>projects</span> and{' '}
-                    <span className={styles.highlight}>what not</span>.
-                </p> :
-                
-                <p className={styles.subtitle}>
-                Explore my work with <span className={styles.highlight}>Python</span> and{' '}
-                <span className={styles.highlight}>bold things</span>.
-                
-                {screenSize !== "sm" ? <img className={styles.headerImage} src={decor1}/> : "test"}
-            </p>
-            
+                {screenSize === "sm" ? (
+                    <p className={styles.subtitle}>
+                        Scroll down for <span className={styles.highlight}>projects</span> and{' '}
+                        <span className={styles.highlight}>what not</span>.
+                    </p>
+                ) : (
+                    <p className={styles.subtitle}>
+                        Explore my work with <span className={styles.highlight}>Python</span> and{' '}
+                        <span className={styles.highlight}>bold things</span>.
+                        <img className={styles.headerImage} src={decor1} alt="decor" />
+                    </p>
+                )}
+
+
+{screenSize === "sm" &&  
+                 
+           
+
+                 <BouncyArrows />
+                 
             }
-                {screenSize === "sm" ? <BouncyArrows /> : ""}
-                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
+
+
+</div>
+
+                {screenSize === "sm" &&  (
+                 
+                <>
+                
+                <img className={styles.smHeaderImage} src={decor2} alt="decor" />
+      
+                
+                </>)}
+                {screenSize !== "sm" && <div className={styles.divider} />}
+
+           
             </section>
 
             <div className={styles.ProjectContainer}>
                 {shortProjects.map((project, id) => (
-                    <div key={id} className={`${styles.ProjectCell} ${styles.sm_fp} `}>
+                    <div key={id} className={`${styles.ProjectCell} ${styles.sm_fp}`}>
                         <Thumbnail
                             data={getArticle(project.name)}
                             fullLinkCallBack={() => handleOpenModal(project)}
                             twoColumns={id === 0}
                             fullLink={true}
-                            asFS={screenSize == "sm"}
+                            asFS={screenSize === "sm"}
                         />
                     </div>
                 ))}
             </div>
 
-            {/* Render the modal only if selectedProject is defined */}
             {selectedProject && (
                 <Modal
                     component={
@@ -121,9 +125,8 @@ export const NewProjectPage = () => {
                             twoColumns={true}
                             fullLink={false}
                             AsArticle={true}
-                            extratext={selectedProject.extratext} // Pass the extratext prop if it exists
+                            extratext={selectedProject.extratext}
                             style="modern"
-
                         />
                     }
                     onClose={handleCloseModal}
@@ -134,21 +137,15 @@ export const NewProjectPage = () => {
                 />
             )}
 
-
-            <section className={`${styles.sm_half} `}>
-
+            <section className={styles.sm_half}>
                 <h1 className={styles.title}>Less Documented Projects...</h1>
-                <p className={styles.subtitle}>
-                    These are actually just the most recent repos from the github rest api...
-                </p>
-                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
+                <p className={styles.subtitle}>These are actually just the most recent repos from the GitHub REST API...</p>
+                {screenSize !== "sm" && <div className={styles.divider} />}
             </section>
 
-            {/* Handle error and loading states */}
-            {githubprojects && (
+            {githubProjects && (
                 <div className={styles.ProjectContainer}>
-                    {console.log(githubprojects)}
-                    {githubprojects.map((proj, id) => (
+                    {githubProjects.map((proj, id) => (
                         <div key={id} className={`${styles.ProjectCell} ${styles.sm_fp}`}>
                             <Thumbnail
                                 data={{
@@ -162,16 +159,13 @@ export const NewProjectPage = () => {
                 </div>
             )}
 
-            <section className={`${styles.sm_half} `}>
-
+            <section className={styles.sm_half}>
                 <h1 className={styles.title}>This is not all...</h1>
                 <p className={styles.subtitle}>
-                    just find the rest on my github {getIcon("github")} and medium
+                    Just find the rest on my GitHub {getIcon("github")} and Medium.
                 </p>
-                {screenSize != "sm" ? <div className={styles.divider}/> : ""}
+                {screenSize !== "sm" && <div className={styles.divider} />}
             </section>
-
         </div>
-
     );
 };

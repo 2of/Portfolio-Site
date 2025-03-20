@@ -1,0 +1,26 @@
+.page {
+    background-color: olivedrab;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));  // Allows columns to adjust to fit content, with a minimum width
+    grid-gap: 20px;  // Adds space between grid items
+    align-items: center;
+    justify-items: center;  // Centers content horizontally
+    padding: 20px;
+    padding-top: 120px;
+    min-height: 100vh;  // Ensures the page takes at least the full height of the viewport
+  }
+  
+  .centered {
+    height: 500px;
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    overflow: auto;
+    border: 1px solid chartreuse;
+    padding: 20px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

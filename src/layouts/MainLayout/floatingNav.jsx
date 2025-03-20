@@ -99,7 +99,7 @@ const FloatingNav = () => {
             <li>
               {navReplacementButtonFunc.label && (
                 <button className={styles.visibleButton} onClick={navReplacementButtonFunc.callback}>
-                  <h2> {navReplacementButtonFunc.label}</h2>
+                  <p> {navReplacementButtonFunc.label}</p>
                 </button>
               )}
             </li>

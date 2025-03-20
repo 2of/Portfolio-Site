@@ -1,0 +1,42 @@
+{
+  "name": "Kitchen",
+  "skills": [
+    "Knife Skills",
+    {
+      "name": "Food Preparation",
+      "skills": [
+        {
+          "name": "Vegetable Cutting",
+          "skills": ["Chopping", "Slicing", "Dicing", "Julienne", "Mincing"]
+        },
+        {
+          "name": "Meat Preparation",
+          "skills": ["Butchering", "Trimming", "Deboning"]
+        }
+      ]
+    },
+    "Baking",
+    "Cleaning",
+    {
+      "name": "Cooking Techniques",
+      "skills": [
+        {
+          "name": "Grilling",
+          "skills": ["Direct Heat", "Indirect Heat", "Charcoal", "Gas"]
+        },
+        {
+          "name": "Sauteing",
+          "skills": ["High Heat", "Minimal Fat"]
+        },
+        {
+          "name": "Roasting",
+          "skills": ["Oven Roasting", "Pan Roasting"]
+        },
+        {
+          "name": "Boiling",
+          "skills": ["Simmering", "Rolling Boil"]
+        }
+      ]
+    }
+  ]
+}

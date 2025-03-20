@@ -40,13 +40,21 @@ const routes = [
       transparentnav: false
     },
     {
-      path: "/about",
-      label: "about",
-      element: <AboutPage/>,
+      path: "/Junk",
+      label: "junk",
+      element:<JunkPage/>,
       fullscreen_fullNav: false,
       mobile_fullNav: false,
       transparentnav: false
-    }
+    },
+    // {
+    //   path: "/about",
+    //   label: "about",
+    //   element: <AboutPage/>,
+    //   fullscreen_fullNav: false,
+    //   mobile_fullNav: false,
+    //   transparentnav: false
+    // }
     
   ];
   

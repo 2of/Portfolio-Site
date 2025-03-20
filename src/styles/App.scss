@@ -194,3 +194,17 @@ h1 {
   opacity: 0.7;
   pointer-events: none;
 }
+
+.doubleBorderRound { 
+  border: 2px solid var(--text-color);
+  width: auto; /* Let it adapt based on content */
+  // max-width: 100%; /* Allow full width, but cap at 100% of the screen */
+  box-sizing: border-box; /* Ensure padding does not affect the overall width */
+  box-shadow: 0 0 0 2px var(--bg);
+  background-color: var(--bg);
+  border-radius: 48px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
