@@ -32,6 +32,13 @@ export const AboutCell = ({ sz,scrollPosition }) => {
                     <p>
                         I've sorta done a bit of everything from  <span className={styles.highlight}>Google Cloud Admin and Azure Appliances and Azure Admin</span> to setting up <span className={styles.highlight}>Point-to-Point Mikrotiks</span> on top of dairy sheds.
                     </p>
+
+                    <br/>
+
+                    <p>
+                        But I'm looking to make that career switcheroo, IT to development. I know my way around  <span className={styles.highlight}>Python, JS, C, C++, Java, A lil Swift, </span> and tools such as  <span className={styles.highlight}>Tensorflow, Spark, R, Keras, PyTorch </span> and also libraries and frameworks like  <span className={styles.highlight}>React, Vue, Android Studio </span> ... not to mention all the things i'm forgetting! 
+                    </p>
+
                 </div>
 
             </div>
