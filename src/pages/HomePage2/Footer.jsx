@@ -13,16 +13,16 @@ export const FooterCell = ({ sz, scrollPosition }) => {
                 with pretty minimal extra libraries. 📦✨  
             </p>
 
-            <h3>
+            <h3 className={styles.workInProgress}>
                 🎭 It's a **work in progress**—some parts (like project writeups) use AI-generated filler content.  
             </h3>
 
-            <p>
+            <p className={styles.consoleInfo}>
                 🖥️ I'm actually pumping **a bunch** into the console 📜 just to show how things work.  
                 There are **providers for everything**—trust me, it's all in there. 😆🔌  
             </p>
 
-            <p>
+            <p className={styles.sourceCode}>
                 🔗 The **source code** is up on **GitHub**! 🏗️👨‍💻  
                 You can check it out here:  
                 <a 

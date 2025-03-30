@@ -24,7 +24,7 @@
     padding: 12px;
     align-items: center;
     justify-content: start;
-    gap: 48px;
+    // gap: 48px;
     * { 
         // border:  1px solid magenta;
     }
@@ -255,7 +255,7 @@ font-weight: 100;
         position: relative;
         // background-color: pink;
         overflow: visible;
-        transform: translateX(-120px);
+        transform: translateX(-100px);
         // transform: rotate(-90deg);
       }
 
