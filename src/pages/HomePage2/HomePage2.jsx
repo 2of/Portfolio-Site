@@ -49,7 +49,7 @@ export const HomePage2 = () => {
   };
 
   const handleFeatClick = () => {
-    alert("TEST")
+
     setShowModal(true);
   };
 
