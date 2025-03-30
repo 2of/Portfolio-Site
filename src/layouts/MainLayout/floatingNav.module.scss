@@ -169,7 +169,7 @@ justify-content: center;
       display: flex;
       align-items: center;
       justify-content: center;
-
+      
       .link { 
         font-size: 24px;
 
@@ -181,11 +181,20 @@ justify-content: center;
 
    &.onlyButton { 
     // background-color: green;
-    width: 36px;
-    height:36px;
+    // padding-left: 0;
+    width: 48px;
+    height:48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     bottom: 24px;
+    padding-left: 44px;
+    padding-top: 6px;
+    border: 1px solid black;
+
+ 
     border-radius: 120px;
-    border: none;
+    // border: none;
     .navItem { display: none;}
     .menuButton { display: none;}
     .navContainer { 

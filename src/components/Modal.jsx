@@ -7,7 +7,7 @@ import { FaExpandAlt, FaCompressAlt, FaTimesCircle } from 'react-icons/fa';
 import getIcon from "../utils/Iconifier";
 export const Modal = ({ component, onClose, size = "small", title, buttons = [], isOpen }) => {
     const [isVisible, setIsVisible] = useState(false);
-    const { setNavReplacementButtonFunc, setHopNav } = useGlobalContext();
+    const { pushNavReplacementButton, popNavReplacementButton, setHopNav } = useGlobalContext();
     const { showTooltip, hideTooltip } = useTooltip();
     const screenSize = useScreenSize();
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -30,10 +30,8 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
     // Handle the closing animation and delay the onClose callback
     const handleClose = () => {
         setIsVisible(false);
-        setNavReplacementButtonFunc({
-            callback: null,
-            label: "",
-        });
+        popNavReplacementButton()
+       
         setTimeout(onClose, 500); // Wait for the animation to complete before calling onClose
     };
 
@@ -57,7 +55,9 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
             console.log("Custom action executed!");
         };
 
-        setNavReplacementButtonFunc({
+    
+        pushNavReplacementButton({
+
             callback: handleClose,
             label: getIcon("close")
         });
@@ -102,7 +102,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
 
 
                 {/* Modal Footer */}
-                <div className={styles.modalFooter}>
+                {/* <div className={styles.modalFooter}>
                     {/* Render additional buttons */}
                     {/* {buttons.map((button, index) =>
                         button.link ? (
@@ -118,7 +118,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
 
 
 
-                </div>
+             {/*}   </div> */}
             </div>
         </div>
     );

@@ -1,6 +1,8 @@
 .thumbnail {
     cursor: pointer;
-    width: 16rem; /* 64px * 4 */
+    width: auto;
+    max-width: 500px;
+    // width: 16rem; /* 64px * 4 */
     height: auto;
     transition: all 0.5s ease-in-out; // Smooth transition for the thumbnail
 

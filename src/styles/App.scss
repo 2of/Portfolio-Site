@@ -44,6 +44,11 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 }
 
+.imageCaption { 
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
 h1, h2, h3 {
   font-weight: 300;
   font-family: "Newsreader", serif;
@@ -175,9 +180,10 @@ h1 {
 
   left: 0;
   top: 0;
+  background-color: var(--bg);
   transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 * { 
-  color: black;
+  color: var(--text-color);
 }
   
 }

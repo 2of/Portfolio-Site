@@ -46,11 +46,15 @@
       // transform: scale(0.95);
       pointer-events: none;  // Disable clicks and interactions
       overflow: hidden;      // Prevent scrolling
-      transition: transform 0.3s ease, filter 0.3s ease;
-    
+      transition: transform 0.5s ease, filter 0.3s ease;
+          transform: translateY(-20px);
       /* Optional: If you want the effect to appear and disappear smoothly on hover */
       &:hover {
         // transform: scale(1) perspective(1500px) rotateX(0deg) rotateY(0deg);
         filter: blur(0);
       }
+    }
+
+    .disable { 
+
     }

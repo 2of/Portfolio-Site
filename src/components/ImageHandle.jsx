@@ -4,10 +4,14 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import { TooltipProvider, useTooltip } from "../contexts/tooltip";
 import { FaTimesCircle } from "react-icons/fa";
 import Portal from "./Portal"; // Import the Portal component
+import getIcon from "../utils/Iconifier";
 
 const ImageHandle = ({ src, alt, onError }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const { setNavReplacementButtonFunc, setHopNav } = useGlobalContext();
+  const {  pushNavReplacementButton,
+    popNavReplacementButton, setHopNav,
+    
+   } = useGlobalContext();
   const { showTooltip, hideTooltip } = useTooltip();
 
   const toggleFullscreen = () => {
@@ -18,15 +22,12 @@ const ImageHandle = ({ src, alt, onError }) => {
     // Update the nav replacement button based on fullscreen state
     if (isFullscreen) {
       setHopNav(true);
-      setNavReplacementButtonFunc({
+      pushNavReplacementButton({
         callback: toggleFullscreen,
-        label: "close",
+        label: getIcon("close"),
       });
     } else {
-      setNavReplacementButtonFunc({
-        callback: null,
-        label: "",
-      });
+      popNavReplacementButton();
     }
   }, [isFullscreen]);
 

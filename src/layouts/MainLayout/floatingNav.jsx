@@ -11,7 +11,15 @@ import { TooltipProvider, useTooltip } from "../../contexts/tooltip";
 const FloatingNav = () => {
   const [hasSlidIn, setHasSlidIn] = useState(false);
   const screenSize = useScreenSize();
-  const { navReplacementButtonFunc, hopNav, setHopNav, disableForPopup, setDisableForPopUp } = useGlobalContext();
+  const { pushNavReplacementButton,
+    popNavReplacementButton,
+    getCurrentNavReplacementButton,
+    navReplacementButtonStack, 
+    hopNav, setHopNav, 
+    disableForPopup, setDisableForPopUp } = useGlobalContext();
+
+
+
   const [doJump, setDoJump] = useState(false);
   const [showExpand, setshowExpand] = useState(false);
   const navigate = useNavigate();
@@ -68,8 +76,9 @@ const FloatingNav = () => {
             ${screenSize === "sm" ? styles.sm : styles.float}
             ${screenSize === "sm" ? "" : ""}  
             ${styles.navContainer} 
-            ${navReplacementButtonFunc.label ? styles.onlyButton : ""} 
-            ${doJump ? styles.jump : ""}`}
+            ${getCurrentNavReplacementButton.label ? styles.onlyButton : ""} 
+            ${doJump ? styles.jump : ""}
+            ${false ? styles.rightAlignFloat : ""}`}
         >
           <ul className={styles.navList}>
             {routes.map((route, i) => (
@@ -79,15 +88,15 @@ const FloatingNav = () => {
                   className={`${styles.link} ${location.pathname === route.path ? styles.activeLink : ""}`} // Apply active class manually
                   onMouseMove={(e) => showTooltip(route.label, e)}
                   onMouseLeave={hideTooltip}
-               
-               
-               >
+
+
+                >
 
                   <p>
-                  {getIcon(route.label)}
+                    {getIcon(route.label)}
                   </p>
-        
-                 {/* <p> {screenSize === "sm" ? "" : route.label}</p> */}
+
+                  {/* <p> {screenSize === "sm" ? "" : route.label}</p> */}
                 </div>
               </li>
             ))}
@@ -97,9 +106,9 @@ const FloatingNav = () => {
 
             {/* Jump Button */}
             <li>
-              {navReplacementButtonFunc.label && (
-                <button className={styles.visibleButton} onClick={navReplacementButtonFunc.callback}>
-                  <p> {navReplacementButtonFunc.label}</p>
+              {getCurrentNavReplacementButton().label && (
+                <button className={styles.visibleButton} onClick={getCurrentNavReplacementButton().callback}>
+                  <p> {getCurrentNavReplacementButton().label}</p>
                 </button>
               )}
             </li>
@@ -110,7 +119,7 @@ const FloatingNav = () => {
           className={`${screenSize === "sm" ? styles.sm : styles.float} 
             ${screenSize === "sm" ? "" : ""} 
             ${styles.navContainer} 
-            ${navReplacementButtonFunc.label ? styles.onlyButton : ""}
+            ${getCurrentNavReplacementButton().label ? styles.onlyButton : ""}
             ${showExpand ? styles.expandedMenu : ""}`}
         >
           <ul className={styles.navList}>
@@ -127,20 +136,27 @@ const FloatingNav = () => {
                   </div>
                 </li>
               ))}
-
+        {/* <button
+        
+        onClick={() => { 
+          console.log(getCurrentNavReplacementButton())
+          console.log(getCurrentNavReplacementButton().label)
+        }}>test</button> */}
             <li>
               <div className={`${styles.menuButton} ${styles.minilink}`} onClick={handleMenuButtonClick}>
                 <p className={styles.miniLinkIcon}> {getIcon("up")}</p>
                 <p className={styles.miniLinkText}> {showExpand ? "back" : "more"} </p>
               </div>
 
-              {navReplacementButtonFunc.label && (
-                <div className={styles.visibleButton} onClick={navReplacementButtonFunc.callback}>
-                  <h2> {navReplacementButtonFunc.label}</h2>
+              {getCurrentNavReplacementButton().label && (
+                <div className={styles.visibleButton} onClick={getCurrentNavReplacementButton().callback}>
+                  <h2> {getCurrentNavReplacementButton().label}</h2>
                 </div>
               )}
             </li>
           </ul>
+
+  
 
           <div className={`${styles.expandMenuPlatter} ${showExpand ? styles.visible : ""}`}>
             {routes.map((route, i) => (

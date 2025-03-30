@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PageDot.module.scss";
-
-export const PageDots = ({ n_dots = 3, callback }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+import { TooltipProvider, useTooltip } from "../../contexts/tooltip"
+const PageDots = ({ n_dots = 12, currentPage = 0, callback }) => {
+  const [activeIndex, setActiveIndex] = useState(currentPage);
+    const { showTooltip, hideTooltip } = useTooltip();
+  // Sync with external currentPage prop
+  useEffect(() => {
+    setActiveIndex(currentPage);
+  }, [currentPage]);
 
   const handleClick = (index) => {
     setActiveIndex(index);
-    callback?.(index);
+    callback?.(index); // Notify parent component to scroll
   };
 
   return (
@@ -17,9 +22,13 @@ export const PageDots = ({ n_dots = 3, callback }) => {
             key={index}
             className={`${styles.dot} ${index === activeIndex ? styles.active : ""}`}
             onClick={() => handleClick(index)}
+            onMouseEnter={(e) => showTooltip(`Snap to Page ${index + 1} of ${n_dots}`, e)}
+            onMouseLeave={hideTooltip}
           ></div>
         ))}
       </div>
     </div>
   );
 };
+
+export default PageDots;

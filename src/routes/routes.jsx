@@ -1,7 +1,7 @@
 import { AboutPage } from "../pages/AboutPage";
 import { Carousel } from "../pages/CarouselPage";
 import { HomePage } from "../pages/HomePage/HomePage";
-import { HomePage2 } from "../pages/HomePage2";
+import { HomePage2 } from "../pages/HomePage2/HomePage2";
 import { JunkPage } from "../pages/JunkPage";
 import { NewProjectPage } from "../pages/NewProjectsPage";
 import { ProjectsPage } from "../pages/ProjectsPage";

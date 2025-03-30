@@ -5,7 +5,7 @@
         "name": "geolocate1",
         "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features",
         "subtitle": "Leveraging object detection, text embeddings, and colour profiling for geographic coordinate prediction.",
-       
+        "heroImage" :  "/assets/heroImages/geo.png",
        
         "heroLinks": [
           {
@@ -29,26 +29,48 @@
         ],
         "sections": [
           {
-            "name": "What's Involved",
+            "name": "A Brief Overview",
             "type": "text",
             "boost": true,
             "items": [
               {
                 "type": "paragraph",
-                "text": ""
+                "text": "Street level imagery is everywhere. Humans are kinda.. street - level sized afterall. Services such as Google Maps and Mapillary make are a particularly useful repository for obtaining street level imagery. "
+              },
+              
+              {"type": "paragraph",
+              "text":"Our goal, here, was to construct a Neural network based Machine Learning model, which if given an unseen street level image, can somewhat accurately predict its location at some scale. Here, we chose a 20km^2 area in Chicago and achieved about a 1.3km accuracy as an aggregate score across 3 discrete models. "
               },{
                 "type": "image",
-                "src": "assets/images/home_vintage.gif",
-                "alt": "Street level imagery"
+                "src": "assets/images/geo/preds.png",
+                "alt": "Introductory Prediction Heatmap"
               },
+
+              {"type":"paragraph",
+            "text":"A key underpinning idea is defining which features should inform the model(s). We chose an explicit approach in lieu of implicitly learning GeoLocators. We explicitly trained models to detect local image features such as signage, park benches, traffic lights, pedestrian crossings and so on. These inform feature vectors per image. We additionally extract text from the scene and the images and use a higher dimensional embedding as an associative (feature) informer for the model. Combining all of these together, and pumping it through a clustering K-means algorithm, we can usefully average the output to determine GeoLocalization."
+          },
+               
               {
-                "type": "pills",
-                "pills": ["Machine Learning", "AI", "Deep Learning", "Multi-Scale Prediction", "Fine Tuning / Transfer Learning","Large Data Processing", "Neural Network Design", "Neural Network Performance Analysis", "Scalable Neural Network Design", "Python3", "Tensorflow", "Keras", ".... etc" ]
-              }, 
+                "type": "image",
+                "src": "assets/images/geo/model.png",
+                "alt": "Aerial View of the Machine Learning Model(s) and psuedo-ensemble"
+              },
+
+              {"type":"paragraph",
+            "text" : "The whole she-bang is written in python and JS, using tensor flow and Keras and a bunch of industry standards. Very crucially it was trained over 6 or so hours (for 50 epochs, but the model had converged after about 30 on our limited selection of hyper parameters, as it was just a summer project) on a single, Bedroom-friendly GPU."
+          },
               {
                 "type": "paragraph",
                 "text": "This Project designs and implements a method for Neighbourhood scale Geolocalization for Street Level Imagery using Machine Learning and Deep Learning Methods and explores in great depth the performance and learning of these methods"
-              },{
+              },
+              
+              
+              {
+                "type": "pills",
+                "pills": ["Machine Learning", "AI", "Deep Learning", "Multi-Scale Prediction", "Fine Tuning / Transfer Learning","Large Data Processing", "Neural Network Design", "Neural Network Performance Analysis", "Scalable Neural Network Design", "Python3", "Tensorflow", "Keras", ".... etc" ]
+              },
+              
+              {
                 "type":"link",
                 "to" :"/404",
                 "label" :"GitHub Repository"
@@ -71,6 +93,23 @@
                 "type": "highlight",
                 "text": "Transfer learning is applied to adapt the YOLOv11 model to detect new classes of objects, providing high efficiency with smaller datasets."
               },
+
+              
+                {
+                  "type": "paragraph",
+                  "text": "This research integrates object detection as a preprocessing step for geolocation, utilizing YOLOv11 with a ResNet100 backbone. Transfer learning was employed to fine-tune models for detecting domain-specific GeoInformers such as signage, streetlights, and crosswalks, which serve as explicit spatial indicators."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Fine-tuned YOLO models were trained to detect geo-informative objects beyond the standard COCO classes, enabling more targeted feature extraction. The crosswalk and signage models demonstrated high detection accuracy, achieving mAP50 scores of approximately 0.986, while the streetlight model exhibited a comparatively lower mAP50 of 0.906."
+                },
+
+                {
+                  "type": "image",
+                  "src": "/assets/images/geo/YOLO.png",
+                  "alt": "Samples of signage from the transfer learned models"
+                },
+   
               {
                 "type": "paragraph",
                 "text": "Additionally, text extracted from street signage is processed using the SBERT all-MiniLM-L6-v2 model to convert the raw OCR output into dense embeddings, capturing the semantic meaning of the words and their geographical context."
@@ -116,6 +155,19 @@
             "name": "Data and Datasets",
             "type": "text",
             "items": [
+              {
+                "type": "paragraph",
+                "text": "Data is procured from Mapillary and Google Maps, we bind the area to 20km^2 about Chicago due tot the diversity of GeoInformative features and also the availability of imagery"
+              },
+              {
+                "type": "highlight",
+                "text": "The entire dataset reaches 150k images over about 30gb"
+              },
+              {
+                "type": "image",
+                "src": "/assets/images/geo/sampleImages.png",
+                "alt": "Diagram showing the integration of YOLO, SBERT, and colour histograms into the geolocalisation model."
+              },
               {
                 "type": "paragraph",
                 "text": "The model was trained using two primary datasets: the Overall Image Embeddings Dataset (151,510 records) and the Signage Dataset (381,234 records), both derived from Mapillary API and Google Street View."

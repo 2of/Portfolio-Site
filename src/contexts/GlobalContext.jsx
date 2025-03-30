@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import linksdict from "../assets/links.json"
+import linksdict from "../assets/links.json";
+
 // Create context
 const GlobalContext = createContext();
 
@@ -14,14 +15,28 @@ export const GlobalProvider = ({ children }) => {
   const [isBlurPage, setBlurPage] = useState(true);
   const [isMenuOpenforNav, setisMenuOpenforNav] = useState(false);
   const [hopNav, setHopNav] = useState(false);
-  const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true)
-  const [disableForPopup, setDisableForPopUp] = useState(false)
-  // const [links,setLinks] = useState()
-  // Store function and label
-  const [navReplacementButtonFunc, setNavReplacementButtonFunc] = useState({
-    callback: () => console.log("TEST"), // Initially null
-    label: "", // Initially empty
-  });
+  const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true);
+  const [disableForPopup, setDisableForPopUp] = useState(false);
+  
+  // Stack-based navigation replacement buttons
+  const [navReplacementButtonStack, setNavReplacementButtonStack] = useState([]);
+
+  const pushNavReplacementButton = (button) => {
+    setNavReplacementButtonStack((prevStack) => [...prevStack, button]);
+    console.log(button)
+    console.log(navReplacementButtonStack)
+    console.log(getCurrentNavReplacementButton())
+  };
+
+  const popNavReplacementButton = () => {
+    setNavReplacementButtonStack((prevStack) => prevStack.slice(0, -1));
+  };
+
+  const getCurrentNavReplacementButton = () => {
+    return navReplacementButtonStack.length > 0
+      ? navReplacementButtonStack[navReplacementButtonStack.length - 1]
+      : { label: "", callback: null };
+  };
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -39,28 +54,30 @@ export const GlobalProvider = ({ children }) => {
   const getLink = (linktitle) => {
     return linksdict[linktitle] || null; // Return the link or null if not found
   };
-  return (
-<GlobalContext.Provider
-  value={{
-    isDarkMode,
-    toggleTheme,
-    basename,
-    isBlurPage,
-    setBlurPage,
-    isMenuOpenforNav,
-    setisMenuOpenforNav,
-    floatingNavisOnRight, // Add this
-    setFloatingNavisOnRight, // If you need to update it elsewhere
-    navReplacementButtonFunc,
-    setNavReplacementButtonFunc,
-    hopNav,
-    setHopNav,
-    disableForPopup,
-    setDisableForPopUp,
-    getLink
-  }}
->
 
+  return (
+    <GlobalContext.Provider
+      value={{
+        isDarkMode,
+        toggleTheme,
+        basename,
+        isBlurPage,
+        setBlurPage,
+        isMenuOpenforNav,
+        setisMenuOpenforNav,
+        floatingNavisOnRight,
+        setFloatingNavisOnRight,
+        navReplacementButtonStack,
+        pushNavReplacementButton,
+        popNavReplacementButton,
+        getCurrentNavReplacementButton,
+        hopNav,
+        setHopNav,
+        disableForPopup,
+        setDisableForPopUp,
+        getLink,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

@@ -39,11 +39,11 @@ const getIcon = (iconName = "default") => {
       expand: <FaExpandAlt/>,
       file: <FaFile/>,
       down: <FaChevronDown/>,
-      downArrow: <FaArrowDown/>,
+      downarrow: <FaArrowDown/>,
       junk: <FaHandSpock/>
   };
 
-  return iconMap[iconName] || <FaQuestionCircle />; // Default to FaQuestion if not found
+  return iconMap[iconName.toLocaleLowerCase()] || <FaQuestionCircle />; // Default to FaQuestion if not found
 };
 
 export default getIcon;
