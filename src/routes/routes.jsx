@@ -11,7 +11,7 @@ const routes = [
     transparentnav: true
   },
   {
-    path: "/projects/:projectId?",  // Make parameter optional
+    path: "/projects",  // Make parameter optional
     label: "projects",
     element: <NewProjectPage />,
     fullscreen_fullNav: false,

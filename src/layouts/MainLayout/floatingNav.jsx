@@ -107,7 +107,7 @@ const FloatingNav = () => {
             {/* Jump Button */}
             <li>
               {getCurrentNavReplacementButton().label && (
-                <button className={styles.visibleButton} onClick={getCurrentNavReplacementButton().callback}>
+                <button className={styles.visibleButton} onClick={getCurrentNavReplacementButton.callback}>
                   <p> {getCurrentNavReplacementButton().label}</p>
                 </button>
               )}
@@ -143,7 +143,7 @@ const FloatingNav = () => {
           console.log(getCurrentNavReplacementButton().label)
         }}>test</button> */}
             <li>
-              <div className={`${styles.menuButton} ${styles.minilink}`} onClick={handleMenuButtonClick}>
+              <div className={`${styles.menuButton} ${styles.minilink} ${styles.noAfter}`} onClick={handleMenuButtonClick}>
                 <p className={styles.miniLinkIcon}> {getIcon("up")}</p>
                 <p className={styles.miniLinkText}> {showExpand ? "back" : "more"} </p>
               </div>

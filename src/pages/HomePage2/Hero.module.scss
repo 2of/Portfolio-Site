@@ -6,12 +6,14 @@
 
     .HeroArt {
         position: absolute;
-        bottom: calc(var(--nav-height) - 48px);
-        left: -130px;
+        bottom: calc(var(--nav-height) - 24px);
+        left: -100px;
+
         z-index: 1;
     
         img {
-          height: 60vh;
+          height: 50vh;
+
         }
       }
       .buttonContainer {

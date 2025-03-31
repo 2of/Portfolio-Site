@@ -59,7 +59,7 @@ export const AboutCell = ({ sz,scrollPosition }) => {
                             <p className={styles.QualificationField}>Artificial Intelligence</p>
                             <p className={styles.QualificationDetails}>[2025] [University of Canterbury]</p>
                         </div>
-                        <div className={styles.QualTitle}>
+                        {/* <div className={styles.QualTitle}>
                             <p>Experience</p>
                         </div>
                         <div className={`${styles.QualItem} flatStyleShadow_NO_INTERACT`}>
@@ -71,7 +71,7 @@ export const AboutCell = ({ sz,scrollPosition }) => {
                             <p className={styles.QualificationLevel}>Currently</p>
                             <p className={styles.QualificationField}>Short Term Projectect</p>
                             <p className={styles.QualificationDetails}>[IT Integration at HNZ]</p>
-                        </div>
+                        </div> */}
 
                     </div>
 
