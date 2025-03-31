@@ -7,20 +7,20 @@
 .HomePageContainer {
   &.sm {
     background-color: var(--accent-color);
-    height: 100vh;
+    height: var(--content-height);
     width: 100vw;
     position: relative;
     overflow-x: hidden;
 
     .ScrollContainer {
-      height: 100vh; // Make it fill the viewport height
+height: var(--content-height);// Make it fill the viewport height
       overflow-y: scroll; // Enable scrolling
       scroll-snap-type: y mandatory;
     }
 
     .sm_fp,
     .sm_free {
-      height: 100vh;
+height: var(--content-height);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -34,7 +34,7 @@
 
     .sm_free,
     .sm_fp {
-      height: 100vh;
+height: var(--content-height);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -76,14 +76,15 @@
   &.lg {
  
       height: 100vh;
+
       width: 100vw;
       background-color: var(--accent-color);
       display: flex;
       align-items: center;
       // background-color: red;
       justify-content: center;
-
-
+      // background-color: red;
+      height: 100vh;
       .ScrollContainer { 
         // background-color: red;
         // border: 1px solid red;

@@ -5,10 +5,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 800px;
+    background-color: red;
 }
 
 // Large Size Styles
 .lg {
+    // background-color: orange;
+    max-width: 900px;
     .Title { 
         // background-color: red;
     }
@@ -24,6 +28,7 @@
     padding: 12px;
     align-items: center;
     justify-content: start;
+
     // gap: 48px;
     * { 
         // border:  1px solid magenta;

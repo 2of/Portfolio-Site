@@ -1,7 +1,8 @@
 /* MainLayout.module.scss */
 
 .mainLayout {
-    height: 100vh;
+    height: 10vh;
+    height: 10px;
     // overflow: scroll;
   }
   
@@ -14,6 +15,11 @@
     // align-items: center;
     // justify-content: center;
     flex-direction: column;
+    // height: calc(100vh - var(--nav-height));
+    position: relative;
+    // background-color: red;
+    background-color: var(--bg);
+    overflow: hidden;
     // height: 100%;
   }
   

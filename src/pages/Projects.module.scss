@@ -1,13 +1,13 @@
 .sm {
     // background-color: red;
-    height: 100vh;
+height: var(--content-height);
     overflow-y: scroll;
     position: relative;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
     
 
     .sm_fp {
-        height: 100vh;
+        height: var(--content-height);
         background-color: var(--accent-color);
         display: flex;
         flex-direction: column;
@@ -28,7 +28,7 @@
 }
 
     .sm_half { 
-        height: 50vh;
+        height: var(--content-height-half);
         // background-color: orange;
         display: flex;
         flex-direction: column;

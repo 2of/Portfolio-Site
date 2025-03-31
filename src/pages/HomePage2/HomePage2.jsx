@@ -71,8 +71,11 @@ export const HomePage2 = () => {
           </div>
         ))}
       </div>
+        {screenSize !== 'sm' && 
+        
+        <PageDots n_dots={sections.length} currentPage={currentPage} callback={handlePageDotClick} />
 
-      <PageDots n_dots={sections.length} currentPage={currentPage} callback={handlePageDotClick} />
+        }
 
       {showModal && (
         <Modal

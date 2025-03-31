@@ -1,46 +1,45 @@
+
+
 .modalOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-   
-    opacity: 0.6;
+    inset: 0; // Shorthand for top:0, right:0, bottom:0, left:0
+    background: rgba(0, 0, 0, 0.6); // Semi-transparent black
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 60;
-
+    opacity: 0;
     visibility: hidden;
-    // transition: all 0.3s ease, visibility 0.3s ease;
-
-// background: repeating-linear-gradient( 45deg, #f4b581, #f4b581 7.5px, #f3ad74 7.5px, #f3ad74 37.5px );
-
-&.visible {
-        opacity: 1;
-        visibility: visible;
+    transition: 
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
+  
+    &.visible {
+      opacity: 1;
+      visibility: visible;
     }
-
-   > * {
-        transition: all 0.3s ease-in-out;
+  
+    // Avoid applying transitions to all children (better performance)
+    > * {
+    //   transition: 
+      transition: all 0.3s ease-in-out;
     }
-}
-
-.modalContent {
-    // filter: blur(10px);
-    transform: scale(1.1);
-    transform: translateY(2120px);
+  }
+  
+  .modalContent {
+    transform: translateY(20px) scale(0.95); // More natural slide-up effect
     opacity: 0;
     position: relative;
-
+    will-change: transform, opacity; // Optimizes animations
+  
     .modalOverlay.visible & {
-        transform: scale(1);
-        // filter: blur(0px);
-        opacity: 1;
-        position: relative;
+      transform: translateY(0) scale(1);
+      opacity: 1;
     }
-}
+  }
+
+
 
 
 .sm { 

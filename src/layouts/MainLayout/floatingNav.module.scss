@@ -53,8 +53,8 @@
   }
 
   &.sm { 
-    background-color: var(  --glass-bg);
-    backdrop-filter: blur(var(--blur-radius));
+    background-color: var(  --bg);
+    // backdrop-filter: blur(var(--blur-radius));
     overflow: hidden;
     bottom: 0;
     border-radius: 0 0 ;

@@ -8,6 +8,7 @@ import { StandardButton } from "../components/UI/StandardButton";
 import image from "../assets/images/default.png"
 import image2 from "../assets/images/default_other.jpeg"
 import { DarkModeTile } from "../components/darkmodeTile";
+import { DynamicNav } from "../layouts/MainLayout/dynamicNav";
 export const JunkPage = () => {
   const { getSkills } = useProjects();
   const skills = getSkills(); // Get nested skills
@@ -79,6 +80,10 @@ export const JunkPage = () => {
           <ImageHandle src={image2} alt="test" />
         
         </secton>
+
+        <div className={styles.centered}>
+      {/* <DynamicNav/> */}
+      </div>
     </div>
   );
 };

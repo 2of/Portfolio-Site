@@ -42,9 +42,15 @@
   --font-size-lg: 18px;
   --font-weight-bold: 600;
  
+  // HEIGHTS
+
+  --nav-height: 64px;
+  --content-height: calc(100vh - var(--nav-height));
+  --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
+
   /* Border Radius */
   --border-radius: 50px;
-  --nav-height: 64px;
+
   /* Blur Effect */
   --blur-radius: 15px;
 
@@ -84,3 +90,5 @@
   --glass-box-shadow: var(--dark-glass-box-shadow);
   --glass-blur: var(--dark-glass-blur);
 }
+
+

@@ -5,6 +5,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import FloatingNav from "./floatingNav";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import { Disclaimer } from "../../components/disclaimer";
+import { DynamicNav } from "./dynamicNav";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -44,6 +45,7 @@ const MainLayout = () => {
         </TransitionGroup>
 
         <FloatingNav />
+        {/* <DynamicNav/> */}
       </main>
     </div>
   );
