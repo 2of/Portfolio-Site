@@ -53,9 +53,31 @@ const MainLayout = () => {
             }}
             appear={true} // Apply transition on initial mount
           >
-            <div ref={nodeRef} className={disableForPopup ? styles.disable : ""}>
+
+{screenSize !== "sm" ? 
+
+
+
+            <div ref={nodeRef} className={disableForPopup ? styles.disable : ""} 
+            
+            
+       >
               <Outlet />
             </div>
+
+
+: 
+
+<div ref={nodeRef} className={disableForPopup ? styles.disable : ""} 
+            
+            
+style={blurStyle}>
+  <Outlet />
+</div>
+
+}
+
+
           </CSSTransition>
         </TransitionGroup>
       </main>
