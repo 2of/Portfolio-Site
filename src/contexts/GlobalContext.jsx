@@ -11,21 +11,20 @@ export const useGlobalContext = () => {
 // Provider component
 export const GlobalProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [basename, setBasename] = useState(""); // Store basename in state
+  const [basename, setBasename] = useState("");
   const [isBlurPage, setBlurPage] = useState(true);
   const [isMenuOpenforNav, setisMenuOpenforNav] = useState(false);
   const [hopNav, setHopNav] = useState(false);
   const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true);
-  const [disableForPopup, setDisableForPopUp] = useState(false);
-  
+
+  const [disableForPopup, setDisableForPopupState] = useState(false);
+  const [disablePopupClickOffCallback, setDisablePopupClickOffCallback] = useState(null);
+
   // Stack-based navigation replacement buttons
   const [navReplacementButtonStack, setNavReplacementButtonStack] = useState([]);
 
   const pushNavReplacementButton = (button) => {
     setNavReplacementButtonStack((prevStack) => [...prevStack, button]);
-    console.log(button)
-    console.log(navReplacementButtonStack)
-    console.log(getCurrentNavReplacementButton())
   };
 
   const popNavReplacementButton = () => {
@@ -42,7 +41,6 @@ export const GlobalProvider = ({ children }) => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  // Update the data-theme attribute on the <body> tag when dark mode is toggled
   useEffect(() => {
     if (isDarkMode) {
       document.body.setAttribute("data-theme", "dark");
@@ -52,7 +50,36 @@ export const GlobalProvider = ({ children }) => {
   }, [isDarkMode]);
 
   const getLink = (linktitle) => {
-    return linksdict[linktitle] || null; // Return the link or null if not found
+    return linksdict[linktitle] || null;
+  };
+
+  // Toggle disableForPopup
+  const toggleDisableForPopUp = () => {
+    setDisableForPopupState((prev) => !prev);
+  };
+
+  // Set popup disable with optional callback
+  const setDisableForPopupEnhanced = (isDisabled, clickOffCallback = null) => {
+    setDisableForPopupState(isDisabled);
+    if (clickOffCallback) {
+      setDisablePopupClickOffCallback(() => clickOffCallback);
+    } else {
+      setDisablePopupClickOffCallback(null);
+    }
+  };
+
+  // Clear the click-off callback
+  const clearDisablePopupClickOffCallback = () => {
+    setDisablePopupClickOffCallback(null);
+  };
+
+  // Execute the click-off callback if it exists and reset disable flag
+  const handlePopupClickOff = () => {
+    if (disablePopupClickOffCallback) {
+      disablePopupClickOffCallback();
+      setDisablePopupClickOffCallback(null);
+      setDisableForPopupState(false);
+    }
   };
 
   return (
@@ -74,7 +101,12 @@ export const GlobalProvider = ({ children }) => {
         hopNav,
         setHopNav,
         disableForPopup,
-        setDisableForPopUp,
+        setDisableForPopUp: setDisableForPopupState,
+        toggleDisableForPopUp,
+        setDisableForPopupEnhanced,
+        disablePopupClickOffCallback,
+        clearDisablePopupClickOffCallback,
+        handlePopupClickOff,
         getLink,
       }}
     >

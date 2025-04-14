@@ -1,66 +1,46 @@
-/* MainLayout.module.scss */
-
 .mainLayout {
-    height: 10vh;
-    height: 10px;
-    // overflow: scroll;
+  height: 10vh;
+  height: 10px;
+  // overflow: scroll; /* Uncomment if you want to enable scroll */
+}
+
+.mainContent {
+  flex-direction: column;
+  position: relative;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+
+.pageTransitionEnter {
+  opacity: 0;
+  transform: translateY(10px); /* Reduced initial movement */
+  // filter: blur(22px); /* Uncomment if you want the page to enter with blur */
+}
+
+.pageTransitionEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out; /* Adjusted transition */
+}
+
+.pageTransitionExit {
+  // You can add exit transition properties if needed
+}
+
+.pageTransitionExitActive {
+  // Add exit-active properties for the transition
+}
+
+.disable {
+  filter: brightness(0.3) blur(8px); /* Apply blur and brightness when disabled */
+  pointer-events: none;  /* Disable clicks and interactions */
+  overflow: hidden;      /* Prevent scrolling */
+  transition: filter 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition for both blur and transform */
+
+  /* Optional: If you want the effect to appear and disappear smoothly on hover */
+  &:hover {
+    // Optional transform effect on hover (for future use)
   }
-  
-  .mainContent {
-    // position: relative;
-    // width: 100%;
-    // align-items: center;
-    // // background-color: green;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    flex-direction: column;
-    // height: calc(100vh - var(--nav-height));
-    position: relative;
-    // background-color: red;
-    background-color: var(--bg);
-    overflow: hidden;
-    // height: 100%;
-  }
-  
-  .pageTransitionEnter {
-    opacity: 0;
-    transform: translateY(10px); /* Reduced initial movement */
-    // filter: blur(22px);
-    // transform: scale(1.1);
-  }
-  
-  .pageTransitionEnterActive {
-    opacity: 1;
-    transform: translateY(0);
-    // filter: blur(20px);
-    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out; /* Adjusted transition */
-  }
-  
-  .pageTransitionExit {
+}
 
 
-  }
-  
-  .pageTransitionExitActive {
-    }
-
-
-    .disable {
-      filter: brightness(0.3); 
-      
-      // transform: scale(0.95);
-      pointer-events: none;  // Disable clicks and interactions
-      overflow: hidden;      // Prevent scrolling
-      transition: transform 0.5s ease, filter 0.3s ease;
-          transform: translateY(-20px);
-      /* Optional: If you want the effect to appear and disappear smoothly on hover */
-      &:hover {
-        // transform: scale(1) perspective(1500px) rotateX(0deg) rotateY(0deg);
-        filter: blur(0);
-      }
-    }
-
-    .disable { 
-
-    }

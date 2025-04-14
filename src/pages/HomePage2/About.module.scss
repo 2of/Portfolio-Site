@@ -51,7 +51,7 @@
         font-weight: bold;
         // font-weight: bold;
         // transform: rotate(50deg);
-        fill: var(--primary-color); // Use your themed primary color
+        fill: var(--text-color); // Use your themed primary color
         padding: 0;
         text-align: left;
         
@@ -162,7 +162,7 @@ font-weight: 100;
     }
 
     .QualItem { 
-        background-color: var(--bg);
+        // background-color: var(--bg);
         padding: 12px;
         text-align: start;
         min-width: 100px;
@@ -265,8 +265,12 @@ font-weight: 100;
         position: relative;
         // background-color: pink;
         overflow: visible;
+    
         transform: translateX(-100px);
         // transform: rotate(-90deg);
+        * { 
+            color: orange;
+        }
       }
 
       .bottomSection {
@@ -307,8 +311,8 @@ font-weight: 100;
     }
 
     .QualItem { 
-        background-color: var(--bg);
-        padding: 12px;
+        // background-color: var(--bg);
+        padding: 24px 8px;
         text-align: start;
         min-width: 80px;
         min-height: 60px;

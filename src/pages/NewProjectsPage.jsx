@@ -72,8 +72,8 @@ export const NewProjectPage = () => {
                     </p>
                 ) : (
                     <p className={styles.subtitle}>
-                        Explore my work with <span className={styles.highlight}>Python</span> and{' '}
-                        <span className={styles.highlight}>bold things</span>.
+                        Gen.AI ussed to fill space, However <span className={styles.highlight}>these are all real over on github</span> 
+
                         <img className={styles.headerImage} src={decor1} alt="decor" />
                     </p>
                 )}

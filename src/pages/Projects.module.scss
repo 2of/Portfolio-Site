@@ -92,7 +92,8 @@ height: var(--content-height);
     
     .divider { 
         height: 2px;
-        width: 512px;
+        width: 1024;
+        min-width: 150%;
         background-color: var(--text-color);
     }
     .headerImage { 

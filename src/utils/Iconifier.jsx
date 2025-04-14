@@ -4,46 +4,51 @@ import {
   FaTimes, FaStar, FaMoon, FaArrowLeft, 
   FaArrowRight, FaArrowCircleLeft, FaProjectDiagram, 
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
-  FaChevronCircleDown, FaQuestionCircle,
-  FaBars, FaArrowUp, FaLinkedin, FaCode, FaRegEnvelope,FaChevronDown,
-  FaExpandAlt, FaFile, FaArrowDown, FaHandSpock // Importing FaCode
+  FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
+  FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
+  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, 
+  FaFile, FaHandSpock 
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
   const iconMap = {
-      home: <FaHome />,
-      about: <FaInfoCircle />,
-      user: <FaUser />,
-      settings: <FaCog />,
-      article: <FaFileAlt />,
-      video: <FaVideo />,
-      academic: <FaFilePdf />,
-      code: <FaGithub />, // Replacing projects with code
-      contact: <FaEnvelope />,
-      tools: <FaToolbox />,
-      tasks: <FaTasks />,
-      cross: <FaTimes />,
-      star: <FaStar />,
-      moon: <FaMoon />,
-      close: <FaTimes />,
-      return: <FaArrowLeft />,
-      back: <FaArrowCircleLeft />,
-      next: <FaArrowRight />,
-      up: <FaArrowUp />, // Added up arrow icon
-      overflow: <FaBars />, // Added hamburger menu icon
-      linkedin: <FaLinkedin />, // Added LinkedIn icon
-      github: <FaGithub />, // GitHub icon
-      projects:<FaCode />, // Added FaCode icon
-      mail:<FaRegEnvelope/>,
-      chevdown:<FaChevronCircleDown/>,
-      expand: <FaExpandAlt/>,
-      file: <FaFile/>,
-      down: <FaChevronDown/>,
-      downarrow: <FaArrowDown/>,
-      junk: <FaHandSpock/>
+    home: <FaHome />,
+    about: <FaInfoCircle />,
+    user: <FaUser />,
+    settings: <FaCog />,
+    article: <FaFileAlt />,
+    video: <FaVideo />,
+    academic: <FaFilePdf />,
+    code: <FaGithub />,
+    projects: <FaCode />,
+    contact: <FaEnvelope />,
+    mail: <FaRegEnvelope />,
+    tools: <FaToolbox />,
+    tasks: <FaTasks />,
+    star: <FaStar />,
+    moon: <FaMoon />,
+    close: <FaTimes />,
+    cross: <FaTimes />,
+    return: <FaArrowLeft />,
+    back: <FaArrowCircleLeft />,
+    next: <FaArrowRight />,
+    up: <FaArrowUp />,
+    uparrow: <FaArrowUp />,
+    down: <FaChevronDown />,
+    downarrow: <FaArrowDown />,
+    chevdown: <FaChevronCircleDown />,
+    chevup: <FaChevronCircleUp />,
+    overflow: <FaBars />,
+    menu: <FaBars />,
+    expand: <FaExpandAlt />,
+    file: <FaFile />,
+    github: <FaGithub />,
+    linkedin: <FaLinkedin />,
+    junk: <FaHandSpock />,
+    question: <FaQuestionCircle />
   };
 
-  return iconMap[iconName.toLocaleLowerCase()] || <FaQuestionCircle />; // Default to FaQuestion if not found
+  return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;
 };
 
 export default getIcon;

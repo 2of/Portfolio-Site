@@ -6,7 +6,7 @@
   --light-secondary-text: #6C6C6C;
   --light-card-bg: #FFFFFF;
   --light-border: #E0E0E0;
-  --light-accent: #f3ad74; /* Corrected variable name */
+  --light-accent: rgb(186, 99, 107); 
   --light-link: #4A90E2;
 
   /* Dark Mode */
@@ -16,7 +16,7 @@
   --dark-secondary-text: #A0A0A0;
   --dark-card-bg: #262626;
   --dark-border: #404040;
-  --dark-accent: #5a322f; /* Corrected variable name */
+  --dark-accent: #2a201d; /* Corrected variable name */
   --dark-link: #6BB9F0;
 
   /* Spacing (Padding and Margins) */
@@ -44,7 +44,7 @@
  
   // HEIGHTS
 
-  --nav-height: 48px;
+  --nav-height: 0px;
   --content-height: calc(100vh - var(--nav-height));
   --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
 

@@ -8,11 +8,16 @@ import { StandardButton } from "../components/UI/StandardButton";
 import image from "../assets/images/default.png"
 import image2 from "../assets/images/default_other.jpeg"
 import { DarkModeTile } from "../components/darkmodeTile";
-import { DynamicNav } from "../layouts/MainLayout/dynamicNav";
+import { DynamicNav } from "../layouts/MainLayout/MobileNav";
+import TextOnPath from "../components/Misc/TextPath";
 export const JunkPage = () => {
   const { getSkills } = useProjects();
   const skills = getSkills(); // Get nested skills
   const [currentPath, setCurrentPath] = useState([]); // Track the current path
+
+
+
+  const [currpathPoint, setCurrPathPoint] = useState(0)
 
   return (
     <div className={styles.page}>
@@ -82,7 +87,15 @@ export const JunkPage = () => {
         </secton>
 
         <div className={styles.centered}>
-      {/* <DynamicNav/> */}
+        <TextOnPath 
+      position={currpathPoint}  // Middle of the path
+pathData="M10,60 Q40,90 70,60 T130,60 T190,60 T250,60"
+      text="Follow me!"
+      width={200}
+      height={100}
+    />
+
+<button onClick={() => setCurrPathPoint((prev) => prev + 0.01)}>test</button>
       </div>
     </div>
   );
