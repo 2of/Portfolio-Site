@@ -3,11 +3,11 @@ import { useGlobalContext } from '../contexts/GlobalContext';
 import style from './darkmodeToggleSmallInline.module.scss'; 
 import { FaMoon, FaSun } from 'react-icons/fa';
 
-const DarkModeToggle = () => {
+const DarkModeToggle = ({mobile = true}) => {
   const { isDarkMode, toggleTheme } = useGlobalContext();
 
   return (
-    <div className={style.darkmodeToggle} onClick={toggleTheme}>
+    <div className={` ${mobile ? style.desktop : style.mobile} ${style.darkmodeToggle}`} onClick={toggleTheme}>
       <input
         type="checkbox"
         className={style.toggleCheckbox}

@@ -337,8 +337,10 @@ const ColumnWithSections = ({
                 
               </div>
                     <div className={styles.standardControls}>
-                    <div className={styles.leadingLine}/>
-                <StandardButton
+                    {/* <div className={styles.leadingLine}/> */}
+ 
+
+               <StandardButton
                   label="Share"
                   icon={getIcon("share")}
                   // tooltip="Load the selected model"
@@ -353,9 +355,12 @@ const ColumnWithSections = ({
                       data.title
                     );
                   }}
-                  type="text"
+                  type="article"
                 />
-<DarkModeToggle/>
+
+
+                    <div className={styles.leadingLine}/>
+                <DarkModeToggle mobile={screenSize != "sm"} />
                       </div>
                 
             </div>
