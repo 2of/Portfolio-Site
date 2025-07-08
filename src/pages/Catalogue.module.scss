@@ -1,0 +1,174 @@
+.sm {
+    // background-color: red;
+height: var(--content-height);
+    overflow-y: scroll;
+    position: relative;
+    scroll-snap-type: y mandatory; // Enables vertical snap behavior
+    
+
+    .sm_fp {
+        height: var(--content-height);
+        background-color: var(  --light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        scroll-snap-align: start; //
+        
+       .textSection { 
+        // background-color: red;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        top: 30%;
+       }
+}
+
+    .sm_half { 
+        height: var(--content-height-half);
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background-color: var(--text-color);
+    
+        color: red;
+       
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+    }
+
+    .sm_25 { 
+        height: 25vh;
+        // background-color: orange;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        // background-color: var(--text-color);
+    
+        // color: red;
+     
+        justify-content: center;
+        text-align: center;
+        scroll-snap-align: start; 
+ 
+    }
+
+  .smallheader {
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0); // warm gradient
+  padding: 2rem 1rem;
+  text-align: center;
+    display: flex;
+    // margin-top: 50%;
+    justify-content: flex-end;
+    align-items: center;
+//   transition: background 0.3s ease;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+
+ 
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #2e2e2e;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #4a4a4a;
+    max-width: 60ch;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .divider {
+    margin-top: 1.5rem;
+    height: 4px;
+    width: 80px;
+    background: #2e2e2e;
+    margin-inline: auto;
+    border-radius: 4px;
+  }
+}
+
+    .smHeaderImage { 
+        // width: 100%;
+        max-width: 600px;
+        position: absolute;
+        bottom: calc(var(--nav-height) - 64px);
+        // background-color: red;
+        // z-index: 501;
+        pointer-events: none;
+    }
+
+
+
+}
+.lg {
+    // background-color: red;
+    padding: 120px;
+    position: relative;
+      // background-color: var(--bg-transparent);
+    
+    .divider { 
+        height: 2px;
+        width: 100%;
+        min-width: 150%;
+        background-color: var(--text-color);
+    }
+    .headerImage { 
+    //    background-color: red;
+       position: absolute;
+       top: 0px;
+       transform: translateY(-135px);
+       z-index: 2;
+    
+       
+       height: 300px;
+      }
+.ProjectContainer {
+  display: grid;
+  width: 100%;
+//   background-color: red;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 12px;
+
+  .ProjectCell {
+    height: 248px; // fixed height for consistency (adjust as needed)
+    // optional styling
+    // background-color: red;
+  }
+}
+
+.ProjectContainerDense {
+  display: grid;
+    // background-color: red;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+
+
+  .ProjectCell {
+    height: 100%;
+    max-width: 300px;
+    flex: 0 0 calc((100% - (4 * 12px)) / 4);
+    // background-color: red;
+  }
+}
+    .textSection { 
+        margin-top: 120px;
+        // background-color: red;
+        position: relative;
+        // background-color: var(--accent-color);
+    }
+  }

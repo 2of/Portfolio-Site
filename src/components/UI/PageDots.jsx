@@ -15,7 +15,7 @@ const PageDots = ({ n_dots = 12, currentPage = 0, callback }) => {
   };
 
   return (
-    <div className={`${styles.pageDotContainer} doubleBorderRound`}>
+    <div className={`${styles.pageDotContainer} doubleBorderRound standardMouseOverBounce`}>
       <div className={styles.dotContainer}>
         {Array.from({ length: n_dots }).map((_, index) => (
           <div
@@ -26,6 +26,7 @@ const PageDots = ({ n_dots = 12, currentPage = 0, callback }) => {
             onMouseLeave={hideTooltip}
           ></div>
         ))}
+
       </div>
     </div>
   );

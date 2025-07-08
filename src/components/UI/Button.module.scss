@@ -1,63 +1,126 @@
-// Base styles for the button (common to all types)
 .button {
-    // padding: 10px 20px;
-    // font-size: 16px;
-    // font-weight: 500;
-    // border-radius: 5px;
-    cursor: pointer;
-    // display: inline-block;
-    // text-align: center;
-    // transition: background-color 0.3s, color 0.3s, border 0.3s;
+  cursor: pointer;
+  /* Uncomment and customize if needed */
+  // padding: 10px 20px;
+  // font-size: 16px;
+  // font-weight: 500;
+  // border-radius: 5px;
+  // display: inline-block;
+  // text-align: center;
 }
 
-// Styles for the 'drop' type (default)
+.fillContainer {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+}
 
-
-// Styles for the 'text-only' type
 .textOnly {
-    background-color: transparent;
-    color: #333; /* Dark gray text */
-    border: none;
-    font-weight: 500;
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-weight: 500;
 
-    &:hover {
-        color: #000; /* Black on hover */
-    }
+  &:hover {
+    color: #000;
+  }
 
-    &:active {
-        color: #444; /* Slightly lighter gray when clicked */
-    }
+  &:active {
+    color: #444;
+  }
 }
+
 .basic_Expand {
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  width: fit-content;
+  justify-content: space-around;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  padding: 20px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: 1px solid rgb(51, 51, 51);
+  box-shadow: rgb(51, 51, 51) 2px 2px 0 0;
+
+  left: 0;
+  top: 0;
+
+  * {
+    color: var(--text-color);
+  }
+
+  &:hover {
+    /* No hover animation */
+  }
+}
+
+.basic_small {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  width: fit-content;
+  justify-content: space-around;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  padding: 12px 12px 12px 20px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border: 1px solid rgb(51, 51, 51);
+  box-shadow: rgb(51, 51, 51) 2px 2px 0 0;
+  left: 0;
+  top: 0;
+
+  * {
+    color: var(--text-color);
+  }
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 10px 20px;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #333;
+  text-align: center;
+  left: 0;
+  top: 0;
+
+  .expandWrapper {
     display: flex;
     align-items: center;
-    width: fit-content;
-    // gap: 12px;
-    justify-content: space-around;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background: rgb(249, 250, 250);
-    padding: 20px;
-    // font-size: 0.9em;
-    // font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    // width: 180px;
-    border: 1px solid rgb(51, 51, 51);
-    color: rgb(51, 51, 51);
+    justify-content: center;
+    gap: 4px;
+  }
 
-    box-shadow: rgb(51, 51, 51) 4px 4px 0 0;
-
-    left: 0;
-    top: 0;
-    transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-* { 
-    color: black;
+  * {
+    color: var(--text-color);
+  }
 }
-    &:hover { 
-        left: 4px;
-        top: 4px;
-        box-shadow: rgb(255, 255, 255) 0 0 0 0;
-    }
+
+.externalCornerIcon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.5rem;
+  pointer-events: none;
+  z-index: 5;
+
+  svg {
+    font-size: inherit;
+    color: inherit;
+  }
 }

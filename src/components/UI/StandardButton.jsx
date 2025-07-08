@@ -1,80 +1,139 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { useTooltip } from "../../contexts/tooltip";
+import getIcon from "../../utils/Iconifier";
 import styles from "./Button.module.scss";
 
-const validTypes = ['drop', 'link', 'text-only', 'basic_Expand']; // Include 'basic_Expand'
+const validTypes = [
+  "drop",
+  "link",
+  "text-only",
+  "basic_Expand",
+  "withlabel",
+  "basic_small",
+  "article",
+];
 
 export const StandardButton = ({
-    label = "no label",
-    callback,
-    type = 'drop', // Default to 'drop' type
-    tooltip,
-    link,
-    icon,
+  label = "no label",
+  callback,
+  type = "drop",
+  tooltip,
+  link,
+  icon,
+  disable = false,
+  headertitle = "",
+  external = false,
+  fillContainer = false, // < lets go
 }) => {
-    const { showTooltip, hideTooltip } = useTooltip();
-    const navigate = useNavigate(); // Use the useNavigate hook
+  const { showTooltip, hideTooltip } = useTooltip();
+  const navigate = useNavigate();
+  const safeType = validTypes.includes(type) ? type : "drop";
+  const externalIcon = external ? getIcon("external") : null;
 
-    // Validate 'type' prop to ensure it's one of the valid types
-    const safeType = validTypes.includes(type) ? type : 'drop';
+  const setButtonClass = () => {
+    const baseClass = styles.button;
+    const typeClass = styles[safeType] || styles.drop;
+    const disabledClass = disable ? styles.disabled : "";
+    const fillClass = fillContainer ? styles.fillContainer : ""; // <-- apply class
+    return `${baseClass} ${typeClass} ${disabledClass} ${fillClass}`.trim();
+  };
 
-    // Set button class based on 'type' using switch statement
-    const setButtonClass = () => {
-        switch (safeType) {
-            case 'link':
-                return `${styles.button} ${styles.link}`;
-            case 'text-only':
-                return `${styles.button} ${styles.textOnly}`;
-            case 'basic_Expand':
-                return `${styles.button} ${styles.basic_Expand}`;
-            case 'drop':
-            default:
-                return `${styles.button} ${styles.drop}`;
-        }
-    };
+  const handleClick = () => {
+    if (disable) return;
 
-    const handleClick = () => {
-        if (link) {
-            // Check if the link is a URL (external)
-            const isExternal = /^https?:\/\//.test(link);
-            const isEmail = /^mailto:/.test(link); // Check if it's already a mailto link
-            const isEmailAddress = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(link); // Check if it's a valid email address
+    if (link) {
+      const isExternal = /^https?:\/\//.test(link);
+      const isEmail = /^mailto:/.test(link);
+      const isEmailAddress = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(link);
 
-            if (isExternal) {
-                // Open in a new tab for external URL
-                window.open(link, '_blank');
-            } else if (isEmail || isEmailAddress) {
-                // Handle email links
-                const mailtoLink = isEmail ? link : `mailto:${link}`; // Add mailto: prefix if missing
-                window.location.href = mailtoLink; // Use window.location.href to open the email client
-            } else {
-                // Navigate internally using React Router for internal routes
-                navigate(link);
-            }
-        }
+      if (isExternal) {
+        window.open(link, "_blank");
+      } else if (isEmail || isEmailAddress) {
+        const mailtoLink = isEmail ? link : `mailto:${link}`;
+        window.location.href = mailtoLink;
+      } else {
+        navigate(link);
+      }
+    }
 
-        if (callback) {
-            callback(); // Execute the callback
-        }
-    };
+    if (callback) callback();
+  };
 
-    // Conditionally show tooltip only if 'tooltip' prop is provided
-    const handleMouseMove = (e) => {
-        if (tooltip) {
-            showTooltip(tooltip, e);
-        }
-    };
+  const handleMouseMove = (e) => {
+    if (!disable && tooltip) {
+      showTooltip(tooltip, e);
+    }
+  };
 
-    return (
-        <div
-            onMouseMove={handleMouseMove}
-            onMouseLeave={hideTooltip}
-            onClick={handleClick} // Attach the handleClick function
-            className={setButtonClass()} // Apply the dynamically set class
-        >
-            {label}
-            {icon && <p className={styles.icon}>{icon}</p>} {/* Render icon conditionally */}
-        </div>
-    );
+  const renderContent = () => {
+    const Label = label && <span className={styles.label}>{label}</span>;
+    const Icon = icon && <span className={styles.icon}>{icon}</span>;
+
+    switch (safeType) {
+      case "text-only":
+        return <>{Label}</>;
+
+      case "link":
+        return (
+          <>
+            {Icon}
+            {Label}
+          </>
+        );
+
+      case "basic_Expand":
+        return (
+          <div className={`${styles.expandWrapper}`}>
+            {Label}
+            {Icon}
+          </div>
+        );
+
+      case "article":
+        return (
+          <div className={styles.expandWrapper}>
+            {headertitle && <span>{headertitle}</span>}
+            {Icon}
+            {Label}
+          </div>
+        );
+
+      case "withlabel":
+        return (
+          <div className={styles.expandWrapper}>
+            {headertitle && <span>{headertitle}</span>}
+            {Label}
+            {Icon}
+          </div>
+        );
+
+      case "drop":
+      default:
+        return (
+          <>
+            {Label}
+            {Icon}
+          </>
+        );
+    }
+  };
+
+  return (
+    <div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={hideTooltip}
+      onClick={handleClick}
+      className={`${setButtonClass()} standardMouseOverBounce`}
+      role="button"
+      aria-disabled={disable}
+      tabIndex={disable ? -1 : 0}
+      style={{ position: "relative" }}
+    >
+      {renderContent()}
+      {externalIcon && (
+        <span className={styles.externalCornerIcon}>{externalIcon}</span>
+      )}
+    </div>
+  );
 };

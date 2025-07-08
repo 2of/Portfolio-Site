@@ -1,48 +1,160 @@
 import React from "react";
 import styles from "./thumbnail.module.scss";
 import getIcon from "../utils/Iconifier";
+import { StandardButton } from "./UI/StandardButton";
+import useScreenSize from "../utils/screensize";
 
-export const Thumbnail = ({ data, fullLinkCallBack, asFS = true }) => {
-    // Define the inline style for the background image
+export const Thumbnail = ({
+  data,
+  fullLinkCallBack,
+  type = "large_thumb",
+  index = -1,
+}) => {
+  const screenSize = useScreenSize();
+  if (!data.details) data.details = data;
 
-    const handleClick = () => {
+  const details = data?.details ?? {};
+  const tags = Array.isArray(details.tags) ? details.tags : [];
 
+  const containerStyle = details.bgimage
+    ? {
+        backgroundImage: `url(${details.bgimage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }
+    : {};
+
+  const handleClick = () => {
+    if (typeof fullLinkCallBack === "function" && screenSize !== "sm") {
+      fullLinkCallBack();
     }
-    const containerStyle = data.bgimage
-        ? { backgroundImage: `url(${data.bgimage})`, backgroundSize: "cover", backgroundPosition: "center" }
-        : {};
+  };
 
-    return (
-        <div className={`${!asFS ? styles.smallContainer : styles.fs} ${!asFS ? "flatStyleShadow" : ""}`} style={containerStyle} 
-        onClick={fullLinkCallBack}>
-            {/* Cover div that fades out on hover */}
-            <div className={styles.cover}></div>
+  const renderByType = () => {
+    switch (type) {
+      case "large_thumb":
+        return (
+          <div
+            className={`${styles.large_thumb} subtleMouseOverBounce flatStyleShadow`}
+            style={containerStyle}
+            onClick={handleClick}
+          >
+            <div className={styles.cover} />
 
-            {/* <div className={styles.popOver}>
 
-                GO
-            </div> */}
+            <div className={styles.header}>
+            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
 
-            {/* <div className={styles.icon}>{getIcon("star")}</div> */}
-            <p className={styles.toprighticon}>{getIcon("star")}</p>
-            <h2 className={styles.title}>{data.title}</h2>
-            <p className={styles.subtitle}>{data.subtitle}</p>
-            {data.tools &&
-
-                <ul className={styles.PillContainer}>
-                    {data.tools.map((p, i) => (
-
-                        <li className={styles.pill} key={i}>
-                            {p}
-                        </li>
-                    ))}
-
-                </ul>}
-            <div className={styles.linkContainer}>
-                <span className={styles.link} onClick={fullLinkCallBack}>
-                    Open Article
-                </span>
             </div>
-        </div>
-    );
+
+
+
+            <div className={styles.content}>
+
+              
+
+       
+
+            {tags.length > 0 && (
+              <ul className={styles.PillContainer}>
+                {tags.map((tool, i) => (
+                  <li className={styles.pill} key={i}>
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+                 <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+            </div>
+          </div>
+        );
+
+      case "compact_thumb":
+        return (
+          <div
+            className={`${styles.compact_thumb} subtleMouseOverBounce flatStyleShadow`}
+            style={containerStyle}
+            onClick={handleClick}
+          >
+            <div className={styles.cover}>
+              <div className={styles.goIcon}>{getIcon("Go")}</div>
+            </div>
+
+            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
+            <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+
+            {tags.length > 0 && (
+              <ul className={styles.PillContainer}>
+                {tags.map((tool, i) => (
+                  <li className={styles.pill} key={i}>
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+
+      case "mobile_fullscreen":
+        return (
+          <div
+            className={styles.mobile_fullscreen}
+            style={containerStyle}
+            onClick={handleClick}
+          >
+            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
+            <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+
+            {tags.length > 0 && (
+              <ul className={styles.PillContainer}>
+                {tags.map((tool, i) => (
+                  <li className={styles.pill} key={i}>
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <div className={styles.linkContainer}>
+              {typeof fullLinkCallBack === "function" && (
+                <StandardButton
+                  label="More Info"
+                  icon={getIcon("open")}
+                  type="basic_Expand"
+                  callback={fullLinkCallBack}
+                />
+              )}
+            </div>
+          </div>
+        );
+
+      case "mobile_compact":
+        return (
+          <div
+            className={styles.mobile_compact}
+            style={containerStyle}
+            onClick={handleClick}
+          >
+            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
+            <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+          </div>
+        );
+
+      default:
+        return (
+          <div
+            className={`${styles.large_thumb} subtleMouseOverBounce flatStyleShadow`}
+            style={containerStyle}
+            onClick={handleClick}
+          >
+            <div className={styles.cover} />
+            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
+            <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+          </div>
+        );
+    }
+  };
+
+  return renderByType();
 };

@@ -7,12 +7,22 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import { Disclaimer } from "../../components/disclaimer";
 import { DynamicNav } from "./MobileNav";
 import useScreenSize from "../../utils/screensize";
+import ShareDialog from "../../components/Misc/ShareSheet";
 
 const MainLayout = () => {
   const location = useLocation();
   const nodeRef = useRef(null);
-  const { disableForPopup, disablePopupClickOffCallback } = useGlobalContext();
   const screenSize = useScreenSize();
+
+  const {
+    disableForPopup,
+    disablePopupClickOffCallback,
+    openShareSheet,
+    closeShareSheet,
+    shareSheetVisible,
+    shareURL,
+    shareService
+  } = useGlobalContext();
 
   const normalizedKey = location.pathname === "/" ? "root" : location.pathname;
 
@@ -20,70 +30,67 @@ const MainLayout = () => {
     if (disableForPopup && disablePopupClickOffCallback) {
       disablePopupClickOffCallback();
     }
+    if (shareSheetVisible) {
+      closeShareSheet();
+    }
   };
 
   const [blurEffect, setBlurEffect] = useState(disableForPopup);
-
   useEffect(() => {
     setBlurEffect(disableForPopup);
   }, [disableForPopup]);
 
   const blurStyle = {
-    filter: blurEffect ? "brightness(0.1) blur(24px)" : "none",
+    filter: blurEffect || shareSheetVisible ? "brightness(0.2) blur(12px)" : "none",
     pointerEvents: blurEffect ? "none" : "auto",
     overflow: "hidden",
-    transition: "filter 0.3s ease-out, pointer-events 0s linear 0.3s",
+    transition: "filter 0.2s ease-out, pointer-events 0s linear 0.3s",
   };
 
   return (
     <div className={styles.mainLayout}>
       <Disclaimer title={"🚧 🚧"} text={"Work in Progress"} />
 
+      {shareSheetVisible && (
+        <ShareDialog
+          url={shareURL}
+          service={shareService}
+          onClose={closeShareSheet}
+        />
+      )}
+
       <main className={styles.mainContent} onClick={handleMainClick}>
-      <TransitionGroup component={null}>
+        <TransitionGroup component={null}>
           <CSSTransition
             nodeRef={nodeRef}
-            key={normalizedKey} // Use normalized key
-            timeout={300}
+            key={normalizedKey}
+            timeout={320}
             classNames={{
               enter: styles.pageTransitionEnter,
               enterActive: styles.pageTransitionEnterActive,
               exit: styles.pageTransitionExit,
               exitActive: styles.pageTransitionExitActive,
             }}
-            appear={true} // Apply transition on initial mount
+            appear={true}
           >
-
-{screenSize !== "sm" ? 
-
-
-
-            <div ref={nodeRef} className={disableForPopup ? styles.disable : ""} 
-            
-            
-       >
-              <Outlet />
-            </div>
-
-
-: 
-
-<div ref={nodeRef} className={disableForPopup ? styles.disable : ""} 
-            
-            
-style={blurStyle}>
-  <Outlet />
-</div>
-
-}
-
-
+            {screenSize !== "sm" ? (
+              <div ref={nodeRef} className={disableForPopup ? styles.disable : ""}>
+                <Outlet context={{ openShareSheet}} />
+              </div>
+            ) : (
+              <div
+                ref={nodeRef}
+                className={disableForPopup ? styles.disable : ""}
+                style={blurStyle}
+              >
+                <Outlet context={{ openShareSheet }} />
+              </div>
+            )}
           </CSSTransition>
         </TransitionGroup>
       </main>
 
       {screenSize !== "sm" ? <FloatingNav /> : <DynamicNav />}
-    
     </div>
   );
 };

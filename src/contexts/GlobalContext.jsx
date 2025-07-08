@@ -23,11 +23,26 @@ export const GlobalProvider = ({ children }) => {
   // Stack-based navigation replacement buttons
   const [navReplacementButtonStack, setNavReplacementButtonStack] = useState([]);
 
+
+  //shaer land
+
+  const [shareSheetVisible, setShareSheetVisible] = useState(false);
+  const [shareURL, setShareURL] = useState("");
+  const [shareService, setShareService] = useState(null);
+
+
+  const [shareSheetData, setShareSheetData] = useState ( { 
+    URL : "",
+    initialDescription: "",
+    title : ""
+  })
+
   const pushNavReplacementButton = (button) => {
     setNavReplacementButtonStack((prevStack) => [...prevStack, button]);
-  };
 
+  };
   const popNavReplacementButton = () => {
+    // alert("POP")
     setNavReplacementButtonStack((prevStack) => prevStack.slice(0, -1));
   };
 
@@ -60,6 +75,8 @@ export const GlobalProvider = ({ children }) => {
 
   // Set popup disable with optional callback
   const setDisableForPopupEnhanced = (isDisabled, clickOffCallback = null) => {
+    
+
     setDisableForPopupState(isDisabled);
     if (clickOffCallback) {
       setDisablePopupClickOffCallback(() => clickOffCallback);
@@ -81,6 +98,32 @@ export const GlobalProvider = ({ children }) => {
       setDisableForPopupState(false);
     }
   };
+
+
+  const openShareSheet = (url, service = null, desc, title) => {
+//  setDisableForPopupEnhanced(true, () => console.log(test));
+  setShareURL(url);
+  setShareSheetData({
+    URL : url,
+    initialDescription:  desc,
+    title: title
+  })
+
+       
+  setShareSheetVisible(true);
+  // setDisableForPopupEnhanced(true, () => closeShareSheet); // also blocks background + adds click-off
+};
+
+const closeShareSheet = () => {
+  setShareSheetVisible(false);
+  setShareURL("");
+    toggleDisableForPopUp();
+  setShareService(null);
+  clearDisablePopupClickOffCallback(); // optional safety
+  setDisableForPopupState(false);
+};
+
+
 
   return (
     <GlobalContext.Provider
@@ -108,6 +151,12 @@ export const GlobalProvider = ({ children }) => {
         clearDisablePopupClickOffCallback,
         handlePopupClickOff,
         getLink,
+        openShareSheet,
+        closeShareSheet,
+        shareSheetData,
+        shareSheetVisible,
+        shareURL,
+        shareService
       }}
     >
       {children}

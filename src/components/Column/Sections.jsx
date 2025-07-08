@@ -49,3 +49,25 @@ export const LinkSection = ({ to, label, className, showTooltip, hideTooltip }) 
     </a>
   );
 };
+
+
+export const CodeSection = ({ language = "plaintext", content = "", className }) => {
+  return (
+    <div className={className}>
+      <pre className={`language-${language}`}>
+        <code>
+          {content}
+        </code>
+      </pre>
+    </div>
+  );
+};
+
+
+export const TitleSection = ({ text, className }) => {
+  return (
+    <div className={className}>
+      <h4>{text}</h4>
+    </div>
+  );
+};

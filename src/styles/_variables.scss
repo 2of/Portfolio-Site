@@ -1,14 +1,14 @@
 :root {
   /* Light Mode */
-  --light-bg: #F9F9F9;
+  --light-bg: #f2f2f2;
   --light-bg-transparent: #f9f9f9f1;
   --light-text: #2E2E2E;
   --light-secondary-text: #6C6C6C;
   --light-card-bg: #FFFFFF;
-  --light-border: #E0E0E0;
-  --light-accent: rgb(186, 99, 107); 
+  --light-border: #474747;
+  --light-accent: #d44742; /* Corrected variable name */
   --light-link: #4A90E2;
-
+  --light-hero-bg: rgb(175, 93, 100); 
   /* Dark Mode */
   --dark-bg: #1A1A1A;
   --dark-bg-transparent: #1a1a1af3;
@@ -16,8 +16,9 @@
   --dark-secondary-text: #A0A0A0;
   --dark-card-bg: #262626;
   --dark-border: #404040;
-  --dark-accent: #2a201d; /* Corrected variable name */
+  --dark-accent: #d44742; /* Corrected variable name */
   --dark-link: #6BB9F0;
+  --dark-hero-bg: #456882;
 
   /* Spacing (Padding and Margins) */
   --padding-small: 10px;
@@ -49,7 +50,7 @@
   --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
 
   /* Border Radius */
-  --border-radius: 50px;
+  --border-radius: 24px;
 
   /* Blur Effect */
   --blur-radius: 15px;
@@ -59,7 +60,7 @@
   --secondary-color: #6C6C6C;
   --accent-color: var(--light-accent); /* Use --light-accent as the default */
   --link-color: #4A90E2;
-
+  --herobg: var(--light-hero-bg);
   /* Default Theme (Light Mode) */
   --bg: var(--light-bg);
   --bg-transparent: var(--light-bg-transparent); /* Add transparent background for light mode */
@@ -81,7 +82,7 @@
   --border-color: var(--dark-border);
   --accent: var(--dark-accent); /* Use --dark-accent in dark mode */
   --link: var(--dark-link);
-  
+  --herobg: var(--dark-hero-bg);
   --accent-color: var(--dark-accent); /* Use --dark-accent for --accent-color */
 
   /* Dark Glass Mode Overrides */

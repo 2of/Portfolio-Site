@@ -1,53 +1,47 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import useScreenSize from "../utils/screensize";
-// Create the Tooltip Context
+
 const TooltipContext = createContext();
 
-// Tooltip Provider Component
 export const TooltipProvider = ({ children }) => {
     const [tooltip, setTooltip] = useState({
-        content: null, // Tooltip content (can be a string or JSX)
-        isVisible: false, // Tooltip visibility
-        position: { x: 0, y: 0 }, // Tooltip position (mouse coordinates)
+        content: null,
+        isVisible: false,
+        position: { x: 0, y: 0 },
     });
+
+    const [shouldRender, setShouldRender] = useState(false); // Keeps tooltip mounted
     const screenSize = useScreenSize();
 
-    // Show the tooltip at the mouse position
     const showTooltip = (content, event) => {
-        const tooltipWidth = 150; // Estimated width of the tooltip (adjust as needed)
-        const tooltipHeight = 50; // Estimated height of the tooltip
+        const tooltipWidth = 150;
+        const tooltipHeight = 50;
 
-        let x = event.clientX - 40; // Default position to the right of the cursor
-        let y = event.clientY + 20; // Default position below the cursor
+        let x = event.clientX - 40;
+        let y = event.clientY + 20;
 
-        // Prevent tooltip from going off the right edge
         if (x + tooltipWidth > window.innerWidth) {
-            x = window.innerWidth - tooltipWidth + 40; // Adjust to fit within bounds
+            x = window.innerWidth - tooltipWidth + 40;
         }
 
-        // Prevent tooltip from going off the bottom edge
         if (y + tooltipHeight > window.innerHeight) {
-            y = event.clientY - tooltipHeight - 10; // Move above cursor if needed
+            y = event.clientY - tooltipHeight - 10;
         }
 
-        setTooltip({
-            content,
-            isVisible: true,
-            position: { x, y },
-        });
+        setTooltip({ content, isVisible: true, position: { x, y } });
+        setShouldRender(true);
     };
 
-    // Hide the tooltip
     const hideTooltip = () => {
         setTooltip((prev) => ({ ...prev, isVisible: false }));
+        setTimeout(() => setShouldRender(false), 200); // Delay to allow exit animation
     };
 
     return (
         <TooltipContext.Provider value={{ showTooltip, hideTooltip }}>
             {children}
-            {tooltip.isVisible && screenSize !== "sm" && (
+            {shouldRender && screenSize !== "sm" && (
                 <div
-                // className="glass"
                     style={{
                         position: "fixed",
                         left: tooltip.position.x,
@@ -57,10 +51,12 @@ export const TooltipProvider = ({ children }) => {
                         padding: "10px 15px",
                         borderRadius: "12px",
                         fontSize: "14px",
-                        pointerEvents: "none", // Ensure the tooltip doesn't interfere with mouse events
-                        zIndex: 1000, // Ensure it's above other elements
-                        // boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                        whiteSpace: "nowrap", // Prevent text from wrapping
+                        pointerEvents: "none",
+                        zIndex: 1000,
+                        whiteSpace: "nowrap",
+                        transition: "opacity 0.2s ease, transform 0.2s ease",
+                        opacity: tooltip.isVisible ? 1 : 0,
+                        transform: tooltip.isVisible ? "scale(1)" : "scale(0.95)",
                     }}
                 >
                     {tooltip.content}

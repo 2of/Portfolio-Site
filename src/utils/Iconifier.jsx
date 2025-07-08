@@ -7,7 +7,9 @@ import {
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
   FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, 
-  FaFile, FaHandSpock 
+  FaFile, FaHandSpock, FaExternalLinkAlt,
+  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,
+  FaTwitter, FaFacebook, FaReddit // Added missing social media icons
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -22,7 +24,8 @@ const getIcon = (iconName = "default") => {
     code: <FaGithub />,
     projects: <FaCode />,
     contact: <FaEnvelope />,
-    mail: <FaRegEnvelope />,
+    mail: <FaRegEnvelope />, // Kept FaRegEnvelope for 'mail'
+    email: <FaRegEnvelope />, // Added 'email' alias pointing to FaRegEnvelope
     tools: <FaToolbox />,
     tasks: <FaTasks />,
     star: <FaStar />,
@@ -44,8 +47,20 @@ const getIcon = (iconName = "default") => {
     file: <FaFile />,
     github: <FaGithub />,
     linkedin: <FaLinkedin />,
-    junk: <FaHandSpock />,
-    question: <FaQuestionCircle />
+    junk: <FaFish />,
+    question: <FaQuestionCircle />,
+    chess: <FaChess />,
+    catalogue: <FaDumbbell/>,
+    thesis: <FaProjectDiagram />,
+    paper: <FaFile />,
+    complete: <FaNewspaper />,
+    share: <FaShareAlt />,
+    external: <FaExternalLinkAlt/>,
+    go: <FaHandPointRight/>,
+    // Missing Social Media Icons
+    twitter: <FaTwitter />,
+    facebook: <FaFacebook />,
+    reddit: <FaReddit />
   };
 
   return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;

@@ -1,4 +1,4 @@
-export async function getRecentRepos(username, count = 2) {
+export async function getRecentRepos(username, count = 6) {
     const url = `https://api.github.com/users/${username}/repos?sort=created&direction=desc`;
 
     try {

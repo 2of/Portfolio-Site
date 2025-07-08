@@ -20,7 +20,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
             // Trigger the opening animation after the modal is added to the DOM
             setTimeout(() => setIsVisible(true), 10);
             if (size == "large") setHopNav(true);
-            console.log(size)
+            // console.log(size)
         } else {
             // Trigger the closing animation before removing the modal from the DOM
             setIsVisible(false);
@@ -29,6 +29,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
 
     // Handle the closing animation and delay the onClose callback
     const handleClose = () => {
+        // alert("TEST")
         setIsVisible(false);
         popNavReplacementButton()
        
@@ -42,21 +43,13 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
             handleClose();
         }
     };
-    const myCallbackFunction = () => {
-        handleClose()
-    };
 
-    const testthing = () => {
-
-    }
 
     useEffect(() => {
-        const myCallbackFunction = () => {
-            console.log("Custom action executed!");
-        };
 
-    
-        pushNavReplacementButton({
+
+        // console.log("LOAD IN THE USEFFECT FOR MODAL")
+          pushNavReplacementButton({
 
             callback: handleClose,
             label: getIcon("close")

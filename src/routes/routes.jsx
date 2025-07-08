@@ -1,31 +1,56 @@
-import { HomePage2 } from "../pages/HomePage2/HomePage2";
+import { ChessPage } from "../pages/ChessRatingPage";
+import { HomePage } from "../pages/Home/HomePage";
 import { JunkPage } from "../pages/JunkPage";
-import { NewProjectPage } from "../pages/NewProjectsPage";
+import { CataloguePage } from "../pages/Catalogue";
+import { ProjectPage } from "../pages/ProjectPage";
+
 const routes = [
   {
     path: "/",
     label: "home",
-    element: <HomePage2/>,
+    icon: "home",
+    element: <HomePage />,
     fullscreen_fullNav: false,
     mobile_fullNav: false,
-    transparentnav: true
+    transparentnav: true,
   },
   {
-    path: "/projects",  // Make parameter optional
+    path: "/proj",
     label: "projects",
-    element: <NewProjectPage />,
+    element: <CataloguePage />,
+    icon: "Catalogue",
     fullscreen_fullNav: false,
     mobile_fullNav: false,
-    transparentnav: false
+    transparentnav: false,
   },
   {
     path: "/junk",
     label: "junk",
-    element: <JunkPage/>,
+    element: <JunkPage />,
+    icon: "junk",
     fullscreen_fullNav: false,
     mobile_fullNav: false,
-    transparentnav: false
-  }
+    transparentnav: false,
+  },
+  {
+    path: "/chess",
+    label: "elo estimator",
+    element: <ChessPage />,
+    icon: "chess",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: false,
+  },
+  {
+    path: "/proj/:projectId",
+    label: "project details",
+    element: <ProjectPage />,
+    icon: "Catalogue",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: true,
+    hide: true, // Hidden from nav menus
+  },
 ];
 
 export default routes;

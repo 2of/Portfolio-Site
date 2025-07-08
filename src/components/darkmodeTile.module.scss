@@ -1,12 +1,11 @@
 // Define the global animation duration variable
-$animation-duration: 0.5s; // Set the desired animation duration
+$animation-duration: 0.5s;
 
 // Grayscale mode
 .grayscale {
-  filter: grayscale(100%);
+  // filter: grayscale(100%);
 }
 
-// Additional styles for animations
 .spotlightContainer {
   position: relative;
   width: 40px;
@@ -19,7 +18,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 18px;
   width: 8px;
   height: 10px;
-  background: rgba(8, 8, 8, 0.62); // Grayscale equivalent
+  background: rgba(8, 8, 8, 0.62);
   border-radius: 8px 8px 0px 0px;
   z-index: 14;
 }
@@ -31,30 +30,20 @@ $animation-duration: 0.5s; // Set the desired animation duration
   width: 4px;
   border-radius: 12px;
   height: 20rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.335) 80%); // Grayscale equivalent
+  background: linear-gradient(180deg, transparent 0%, hsla(60, 100%, 85%, 0.4) 80%);
   filter: blur(4px);
   transform-origin: bottom center;
   pointer-events: none;
   z-index: 12;
 }
 
-// Define keyframes for rotating the spotlight light
 @keyframes rotateLight {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-60deg);
-  }
-  75% {
-    transform: rotate(60deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-60deg); }
+  75% { transform: rotate(60deg); }
+  100% { transform: rotate(0deg); }
 }
 
-// Apply the rotation animation to the spotlight when `animate` prop is true
 .animateSpotlight {
   animation: rotateLight infinite 10s linear;
 }
@@ -79,7 +68,6 @@ $animation-duration: 0.5s; // Set the desired animation duration
     z-index: 11;
   }
 
-  // Day mode styles
   &.day {
     .sky {
       position: absolute;
@@ -87,7 +75,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 75%;
       width: 100%;
-      background: radial-gradient(ellipse 100% 80% at center bottom, #e0e0e0 0%, #c0c0c0 35%, rgba(172, 172, 172, 0) 100%); // Grayscale equivalent
+      background: radial-gradient(ellipse 100% 80% at center bottom, hsl(200, 20%, 90%) 0%, hsl(200, 20%, 80%) 35%, rgba(172, 172, 172, 0) 100%);
       z-index: 1;
       transition: background-color $animation-duration ease;
     }
@@ -98,14 +86,14 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 35%;
       width: 100%;
-      background: linear-gradient(135deg, #d0d0d0, #b0b0b0); // Grayscale equivalent
-      border-top: 1px solid #a0a0a0; // Grayscale equivalent
+      background: linear-gradient(135deg, #d0d0d0, #b0b0b0);
+      border-top: 1px solid #a0a0a0;
       z-index: 10;
       transition: background-color $animation-duration ease;
     }
 
     .water {
-      background: linear-gradient(to left, rgb(100, 100, 100), rgba(100, 100, 100, 0.5), rgba(100, 100, 100, 0.5)); // Grayscale equivalent
+      background: linear-gradient(to left, hsl(210, 20%, 60%), hsla(210, 20%, 60%, 0.5), hsla(210, 20%, 60%, 0.5));
     }
   }
 
@@ -117,7 +105,6 @@ $animation-duration: 0.5s; // Set the desired animation duration
     z-index: 10;
   }
 
-  // Night mode styles
   &.night {
     .sky {
       position: absolute;
@@ -125,7 +112,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 75%;
       width: 100%;
-      background: radial-gradient(ellipse 100% 80% at center bottom, #505050 0%, #404040 40%, rgba(44, 44, 44, 0) 90%); // Grayscale equivalent
+      background: radial-gradient(ellipse 100% 80% at center bottom, hsl(240, 10%, 25%) 0%, hsl(240, 10%, 20%) 40%, rgba(44, 44, 44, 0) 90%);
       z-index: 1;
       transition: background-color $animation-duration ease;
     }
@@ -136,21 +123,21 @@ $animation-duration: 0.5s; // Set the desired animation duration
       left: 0;
       height: 35%;
       width: 100%;
-      background: linear-gradient(135deg, #606060, #505050); // Grayscale equivalent
-      border-top: 1px solid #707070; // Grayscale equivalent
+      background: linear-gradient(135deg, #606060, #505050);
+      border-top: 1px solid #707070;
       z-index: 10;
       transition: background-color $animation-duration ease;
     }
 
     .water {
       margin-left: 20%;
-      background: linear-gradient(to left, rgb(30, 30, 30), rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.6)); // Grayscale equivalent
+      background: linear-gradient(to left, hsl(220, 20%, 20%), hsla(220, 20%, 20%, 0.7), hsla(220, 20%, 20%, 0.6));
     }
   }
 }
 
 .prompt {
-  background: linear-gradient(to top, rgba(50, 50, 50, 0.452) 0%, rgba(50, 50, 50, 0) 40%); // Grayscale equivalent
+  background: linear-gradient(to top, rgba(50, 50, 50, 0.452) 0%, rgba(50, 50, 50, 0) 40%);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -177,7 +164,6 @@ $animation-duration: 0.5s; // Set the desired animation duration
   clip-path: polygon(72% 0%, 100% 0%, 100% 100%, 0% 100%, 9% 69%, 31% 42%, 49% 18%);
 }
 
-// Moon (Initially hidden in the day, shown at night)
 .moon {
   position: absolute;
   height: 6rem;
@@ -185,8 +171,8 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 55%;
   top: 40%;
   border-radius: 50%;
-  background: radial-gradient(circle, #d0d0d0, #c0c0c0); // Grayscale equivalent
-  box-shadow: 0 0 30px rgba(200, 200, 200, 0.6), 0 0 60px rgba(200, 200, 200, 0.4), 0 0 90px rgba(200, 200, 200, 0.2); // Grayscale equivalent
+  background: radial-gradient(circle, hsl(240, 10%, 80%), hsl(240, 10%, 60%));
+  box-shadow: 0 0 30px hsl(240, 10%, 70%), 0 0 60px hsl(240, 10%, 50%), 0 0 90px hsl(240, 10%, 30%);
   opacity: 1;
 
   &.animateMoonEnter {
@@ -199,25 +185,13 @@ $animation-duration: 0.5s; // Set the desired animation duration
   }
 
   @keyframes moonEnter {
-    0% {
-      opacity: 0;
-      transform: translateY(10rem) scale(0.5);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+    0% { opacity: 0; transform: translateY(10rem) scale(0.5); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   @keyframes moonExit {
-    0% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(10rem) scale(0.5);
-    }
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(10rem) scale(0.5); }
   }
 }
 
@@ -228,8 +202,8 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 25%;
   top: 40%;
   border-radius: 50%;
-  background: radial-gradient(circle, #e0e0e0, #d0d0d0); // Grayscale equivalent
-  box-shadow: 0 0 20px rgba(200, 200, 200, 0.7), 0 0 40px rgba(200, 200, 200, 0.5), 0 0 60px rgba(200, 200, 200, 0.3); // Grayscale equivalent
+  background: radial-gradient(circle, hsl(48, 100%, 85%), hsl(48, 100%, 65%));
+  box-shadow: 0 0 20px hsl(48, 100%, 70%), 0 0 40px hsl(48, 100%, 60%), 0 0 60px hsl(48, 100%, 50%);
   z-index: 9;
   opacity: 1;
 
@@ -243,25 +217,13 @@ $animation-duration: 0.5s; // Set the desired animation duration
   }
 
   @keyframes SunEnter {
-    0% {
-      opacity: 0;
-      transform: translateY(10rem) scale(0.5);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+    0% { opacity: 0; transform: translateY(10rem) scale(0.5); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   @keyframes SunExit {
-    0% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(30vh) scale(3);
-    }
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(30vh) scale(3); }
   }
 }
 
@@ -274,7 +236,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   .cloud {
     position: absolute;
     width: 150px;
-    background-color: rgba(255, 255, 255, 0.166); // Grayscale equivalent
+    background-color: hsla(0, 0%, 100%, 0.2);
     border-radius: 50%;
 
     &.move {
@@ -283,12 +245,8 @@ $animation-duration: 0.5s; // Set the desired animation duration
   }
 
   @keyframes moveCloud {
-    0% {
-      left: -150px;
-    }
-    100% {
-      left: 100%;
-    }
+    0% { left: -150px; }
+    100% { left: 100%; }
   }
 }
 
@@ -298,7 +256,7 @@ $animation-duration: 0.5s; // Set the desired animation duration
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px); // Grayscale equivalent
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 0.35) 1px, transparent 1px);
   background-size: 30px 30px;
   opacity: 0.3;
   filter: brightness(0.7);
@@ -321,20 +279,9 @@ $animation-duration: 0.5s; // Set the desired animation duration
   flex-direction: row;
   margin-left: 1rem;
 
-  & > div:nth-child(1) {
-    margin-right: 10px;
-    padding-bottom: 20px;
-  }
-
-  & > div:nth-child(2) {
-    margin-right: 20px;
-    padding-bottom: 30px;
-  }
-
-  & > div:nth-child(3) {
-    margin-right: 30px;
-    padding-bottom: 40px;
-  }
+  & > div:nth-child(1) { margin-right: 10px; padding-bottom: 20px; }
+  & > div:nth-child(2) { margin-right: 20px; padding-bottom: 30px; }
+  & > div:nth-child(3) { margin-right: 30px; padding-bottom: 40px; }
 }
 
 .animateStandardEnter {
@@ -347,21 +294,13 @@ $animation-duration: 0.5s; // Set the desired animation duration
 }
 
 @keyframes StandardEnter {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes StandardExit {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .hidden {

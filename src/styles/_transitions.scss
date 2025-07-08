@@ -15,3 +15,63 @@
   opacity: 0;
   transition: opacity 300ms ease;
 }
+
+
+
+@keyframes gentlePopIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Pop-out animation for elements disappearing (extracted from .dialog.exiting and .fullscreenImage/.closeButton when exiting) */
+@keyframes gentlePopOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Specific bounce for the copy success (extracted from .copied) */
+@keyframes bounceCheck {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Fade-in animation (extracted from .fullscreenOverlay.active) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fade-out animation (extracted from .overlay.exiting and .fullscreenOverlay.exiting) */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Fade-up and In animation (extracted from .subtitle.active) */
+@keyframes fadeUpIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

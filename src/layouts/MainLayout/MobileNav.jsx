@@ -42,7 +42,7 @@ const CollapsedButton = ({ isCollapsed, onClick, showTooltip, hideTooltip, inner
 
     return (
         <div
-            className={`${styles.collapsedTrigger} ${isCollapsed ? styles.visible : styles.hidden}`}
+            className={`${styles.collapsedTrigger} flatStyleShadow_NO_INTERACT ${isCollapsed ? styles.visible : styles.hidden}`}
             onClick={onClick}
             onMouseMove={(e) => showTooltip("Menu", e)}
             onMouseLeave={hideTooltip}
@@ -67,7 +67,7 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
     const { showTooltip, hideTooltip } = useTooltip();
     const navigate = useNavigate();
     const location = useLocation();
-    let animTime = 500;
+    let animTime = 650;
     const [state, setState] = useState("mini");
     const [isTemporarilyExpanded, setIsTemporarilyExpanded] = useState(false);
     const [isAnimatingIn, setIsAnimatingIn] = useState(false);
@@ -100,7 +100,7 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
             e.preventDefault();
             triggerExpandAnimation();
             pushNavReplacementButton({
-                callback: () => alert("test"),
+                // callback: () => alert("test"),
                 label: getIcon("close"),
               });
         }

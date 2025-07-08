@@ -3,33 +3,27 @@ import styles from "./ImageHandle.module.scss";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { TooltipProvider, useTooltip } from "../contexts/tooltip";
 import { FaTimesCircle } from "react-icons/fa";
-import Portal from "./Portal"; // Import the Portal component
+import Portal from "./Portal";
 import getIcon from "../utils/Iconifier";
 
 const ImageHandle = ({ src, alt, onError }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const {  pushNavReplacementButton,
-    popNavReplacementButton, setHopNav,
-    
-   } = useGlobalContext();
+  const { pushNavReplacementButton, popNavReplacementButton, setHopNav } = useGlobalContext();
   const { showTooltip, hideTooltip } = useTooltip();
 
-  const toggleFullscreen = () => {
-    setIsFullscreen((prev) => !prev);
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+    popNavReplacementButton();
   };
 
-  useEffect(() => {
-    // Update the nav replacement button based on fullscreen state
-    if (isFullscreen) {
-      setHopNav(true);
-      pushNavReplacementButton({
-        callback: toggleFullscreen,
-        label: getIcon("close"),
-      });
-    } else {
-      popNavReplacementButton();
-    }
-  }, [isFullscreen]);
+  const openFullscreen = () => {
+    setHopNav(true);
+    setIsFullscreen(true);
+    pushNavReplacementButton({
+      callback: closeFullscreen,
+      label: getIcon("close"),
+    });
+  };
 
   return (
     <div>
@@ -38,32 +32,34 @@ const ImageHandle = ({ src, alt, onError }) => {
         src={src}
         alt={alt}
         className={styles.thumbnail}
-        onClick={toggleFullscreen}
+        onClick={openFullscreen}
         onMouseMove={(e) => showTooltip("Fullscreen", e)}
         onMouseLeave={hideTooltip}
-        onError={onError} // Add the onError handler here
+        onError={onError}
       />
 
       {/* Fullscreen overlay (Always rendered via Portal) */}
       <Portal>
         <div
-          className={`${styles.fullscreenOverlay} ${
-            isFullscreen ? styles.active : ""
-          }`}
-          onClick={toggleFullscreen}
+          className={`${styles.fullscreenOverlay} ${isFullscreen ? styles.active : ""}`}
+          onClick={closeFullscreen}
         >
           <img
             src={src}
             alt={alt}
             className={styles.fullscreenImage}
-            onError={onError} // Add the onError handler here as well
+            onError={onError}
           />
           <h2 className={styles.subtitle}>{alt}</h2>
           <button
             className={styles.closeButton}
-            onClick={() => toggleFullscreen} // Fixed: Removed the arrow function
+            onClick={closeFullscreen}
             onMouseMove={(e) => showTooltip("Close", e)}
             onMouseLeave={hideTooltip}
+            onClick={(e) => {
+              e.stopPropagation(); // prevent click from bubbling and closing fullscreen
+              closeFullscreen();
+            }}
           >
             <FaTimesCircle />
           </button>

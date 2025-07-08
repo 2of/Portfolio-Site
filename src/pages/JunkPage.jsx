@@ -10,14 +10,42 @@ import image2 from "../assets/images/default_other.jpeg"
 import { DarkModeTile } from "../components/darkmodeTile";
 import { DynamicNav } from "../layouts/MainLayout/MobileNav";
 import TextOnPath from "../components/Misc/TextPath";
+import FlowChartComponent from "../components/Misc/FlowChart";
+import Background from "../components/background";
+import { useGlobalContext } from "../contexts/GlobalContext";
 export const JunkPage = () => {
   const { getSkills } = useProjects();
   const skills = getSkills(); // Get nested skills
   const [currentPath, setCurrentPath] = useState([]); // Track the current path
 
-
+    const {
+    disableForPopup,
+    disablePopupClickOffCallback,
+    openShareSheet,
+    closeShareDialog,
+    shareSheetVisible,
+    shareURL,
+    shareService,
+    shareSheetData
+  } = useGlobalContext();
 
   const [currpathPoint, setCurrPathPoint] = useState(0)
+const testData = {
+  nodes: [
+    { id: '1', label: 'Input' },
+    { id: '2', label: 'Process' },
+    { id: '3', label: 'Validate' },
+    { id: '4', label: 'Complete' }
+  ],
+  links: [
+    { source: '1', target: '2' },
+    { source: '2', target: '3' },
+    { source: '3', target: '4' }
+  ]
+};
+
+    <FlowChartComponent data={testData}/>
+
 
   return (
     <div className={styles.page}>
@@ -32,7 +60,30 @@ export const JunkPage = () => {
 <h1> its fine that it's broken</h1>
      </div>
     
+<section>
+  <button
+    onClick={() =>
+      openShareSheet(
+        "https://example.com",
+        "twitter",
+        "Testing description",
+        "Test title"
+      )
+    }
+  >
+    Share This
+  </button>
 
+  <p>Share Sheet is {shareSheetVisible ? "Open" : "Closed"}</p>
+
+  <p>URL: {shareSheetData.URL}</p>
+  <p>Description: {shareSheetData.initialDescription}</p>
+  <p>Title: {shareSheetData.title}</p>
+
+  <button onClick={() => console.log(shareSheetData)}>
+    Log Share Sheet Data
+  </button>
+</section>
         <div className={styles.centered}>
           <RadialMenu
             data={skills}
@@ -53,7 +104,6 @@ export const JunkPage = () => {
 
 
 
-
       </div>
       <div className={styles.centered}>
       <BackGround/>
@@ -65,7 +115,7 @@ export const JunkPage = () => {
 
 
       <section>
-          <h1>test</h1>
+    <FlowChartComponent data={testData}/>
 
           <iframe
             src="/"
@@ -78,13 +128,17 @@ export const JunkPage = () => {
           test
         </section>
         
-        <secton>
+
+        <section>
+          test test test
+        </section>
+        <section>
 
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image2} alt="test" />
         
-        </secton>
+        </section>
 
         <div className={styles.centered}>
         <TextOnPath 
@@ -97,7 +151,17 @@ pathData="M10,60 Q40,90 70,60 T130,60 T190,60 T250,60"
 
 <button onClick={() => setCurrPathPoint((prev) => prev + 0.01)}>test</button>
       </div>
+    <FlowChartComponent data={testData}/>
+      {/* <Background type={"stars"} /> */}
+      <h1>test</h1>
+
+
+
+      
     </div>
+
+
+
   );
 };
 

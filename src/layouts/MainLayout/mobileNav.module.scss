@@ -1,13 +1,20 @@
 .miniNav {
   z-index: 499;
   position: fixed;
-  bottom: 4px;
+  bottom: 0px;
   left: 0;
   right: 0;
+      // background-color: var(--accent-color);
   margin: 0 auto;
+  height: 102vh;
   width: 100%;
+display: flex;
+flex-direction: column;
+// align-items: flex-end;
+justify-content: end;
   transform-origin: center center;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
   .headerText { 
     padding: 24px;
     color: white;
@@ -28,7 +35,7 @@
 
     .navItem {
       // background-color: orange;
-      height: 20vh;
+      height: 15vh;
       list-style: none;
       // background-color: var(--bg);
       &.nobg {
@@ -53,7 +60,7 @@
           width: 4px;
           height: 4px;
           background-color: var(--text-color);
-          border-radius: 50%;
+          // border-radius: 50%;
           opacity: 0;
           transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -87,14 +94,14 @@
     background-color: var(--bg);
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    // border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--text-color);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    // transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     pointer-events: none;
 
@@ -158,7 +165,7 @@
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
-            animation-delay: 0.05s * $i;
+            animation-delay: 0.03s * $i;
           }
         }
       }
@@ -199,7 +206,7 @@
       animation: bounceOut 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     }
     &.animatingOut {
-      animation: bounceOut 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      animation: bounceOut 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     }
   }
 
@@ -215,7 +222,7 @@
     font-size: 10px;
     cursor: pointer;
     z-index: 500;
-    transition: all 0.2s ease;
+    // transition: all 0.2s ease;
 
     // &:hover {
     //   transform: translateX(-50%) scale(1.05);
@@ -243,15 +250,16 @@
 // Animations
 @keyframes bounceIn {
   0% {
-    transform: scale(0.4);
+    transform: scale(0.9);
     opacity: 0.8;
   }
   50% {
     transform: scale(1.05);
-    opacity: 1;
+    
   }
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -317,15 +325,11 @@
   justify-content: center;
   gap: 12px;
 
-  border: 2px solid var(--text-color);
-  border-radius: 120px;
-  background-color: var(--bg);
+  // border: 2px solid var(--text-color);
+  // border-radius: 120px;
+  // border-radius: var(--border-radius);
+  // background-color: var(--bg);
   box-sizing: border-box;
-
-  box-shadow:
-  0 0 0 2px var(--bg), // Soft white ring
-  0 12px 24px rgba(0, 0, 0, 0.25), // Main large soft shadow
-  0 6px 6px rgba(0, 0, 0, 0.15);   // Secondary mid-layer for extra depthSlight light reflection for texture
 
   z-index: 501;
 }
