@@ -47,6 +47,9 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getCurrentNavReplacementButton = () => {
+    // alert("TEST")
+    console.log(navReplacementButtonStack, " test")
+    console.log("++")
     return navReplacementButtonStack.length > 0
       ? navReplacementButtonStack[navReplacementButtonStack.length - 1]
       : { label: "", callback: null };

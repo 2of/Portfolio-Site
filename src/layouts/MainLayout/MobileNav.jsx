@@ -1,5 +1,4 @@
 // components/DynamicNav.jsx
-
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import routes from "../../routes/routes";
@@ -11,7 +10,6 @@ import getIcon from "../../utils/Iconifier";
 import { useTooltip } from "../../contexts/tooltip";
 import { DarkModeTile } from "../../components/darkmodeTile";
 import WigglyLine from "../../components/Misc/WigglyLine";
-// import CollapsedButton from "../../components/CollapsedButton"; // Import the collapsed button
 
 const CollapsedButton = ({
   isCollapsed,
@@ -21,24 +19,26 @@ const CollapsedButton = ({
   inner,
   expandLabel = "",
 }) => {
-  const [showTest, setShowTest] = useState(true); // starts visible
+  const [showTest, setShowTest] = useState(true);
+  const touchTimeout = useRef(null);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    onClick();
+  };
 
   useEffect(() => {
-    // First timeout to shrink it after initial display
     const initialTimeout = setTimeout(() => {
       setShowTest(false);
-    }, 3000); // Show for 3s initially
+    }, 3000);
 
-    // Loop to repeat visibility every 5s
     const interval = setInterval(() => {
       setShowTest(true);
       const timeout = setTimeout(() => {
         setShowTest(false);
-      }, 5000); // Show again for 3s
-
-      // Clean up timeout when component unmounts or interval fires again
+      }, 5000);
       return () => clearTimeout(timeout);
-    }, 18000); // Cycle every 8s (3s visible, 5s hidden)
+    }, 18000);
 
     return () => {
       clearTimeout(initialTimeout);
@@ -51,7 +51,9 @@ const CollapsedButton = ({
       className={`${styles.collapsedTrigger} flatStyleShadow_NO_INTERACT ${
         isCollapsed ? styles.visible : styles.hidden
       }`}
-      onClick={onClick}
+      onClick={handleClick}
+      onTouchStart={handleClick}
+      onTouchEnd={(e) => e.preventDefault()}
       onMouseMove={(e) => showTooltip("Menu", e)}
       onMouseLeave={hideTooltip}
     >
@@ -79,14 +81,16 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
   const { showTooltip, hideTooltip } = useTooltip();
   const navigate = useNavigate();
   const location = useLocation();
-  let animTime = 650;
+  const animTime = 650;
   const [state, setState] = useState("mini");
   const [isTemporarilyExpanded, setIsTemporarilyExpanded] = useState(false);
   const [isAnimatingIn, setIsAnimatingIn] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [testMode, setTestMode] = useState(false);
   const navRef = useRef(null);
+  const lastCallbackRef = useRef(null);
+  const isTransitioningRef = useRef(false);
+  const touchStartRef = useRef(null);
 
   useEffect(() => {
     const currentButton = getCurrentNavReplacementButton();
@@ -98,51 +102,60 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
   }, [screenSize, navReplacementButtonStack, getCurrentNavReplacementButton]);
 
   useEffect(() => {
+    const current = getCurrentNavReplacementButton();
+    if (current?.callback) {
+      lastCallbackRef.current = current.callback;
+    }
+  }, [getCurrentNavReplacementButton, navReplacementButtonStack]);
+
+  useEffect(() => {
     setIsTemporarilyExpanded(false);
   }, [isSmall]);
 
   const handleLinkClick = (path) => {
+    if (isTransitioningRef.current) return;
     triggerCollapseAnimation();
     navigate(path);
   };
 
-  const handleNavTouch = (e) => {
-    if ((isSmall || testMode) && !isTemporarilyExpanded && !isAnimating) {
-      e.preventDefault();
-      triggerExpandAnimation();
-      pushNavReplacementButton({
-        // callback: () => alert("test"),
-        label: getIcon("close"),
-      });
-    }
-  };
-  const menuOpenHandle = () => {
-    // console.log(getCurrentNavReplacementButton())
+  const menuOpenHandle = (e) => {
+    if (e) e.preventDefault();
     triggerExpandAnimation();
     pushNavReplacementButton({
       callback: triggerCollapseAnimation,
       label: getIcon("close"),
     });
   };
+
   const triggerExpandAnimation = () => {
+    if (isTransitioningRef.current) return;
+    isTransitioningRef.current = true;
+    
     setIsAnimatingIn(true);
     setIsVisible(true);
     setIsTemporarilyExpanded(true);
     setDisableForPopupEnhanced(true, () => triggerCollapseAnimation());
-    setTimeout(() => setIsAnimatingIn(false), animTime);
+    
+    setTimeout(() => {
+      setIsAnimatingIn(false);
+      isTransitioningRef.current = false;
+    }, animTime);
   };
 
   const triggerCollapseAnimation = () => {
+    if (isTransitioningRef.current) return;
+    isTransitioningRef.current = true;
+
     setIsAnimatingOut(true);
     popNavReplacementButton();
-    //   setIsTemporarilyExpanded(false);
-    //   setDisableForPopupEnhanced(false);
+
     setTimeout(() => {
       setIsAnimatingOut(false);
       setIsTemporarilyExpanded(false);
       setDisableForPopupEnhanced(false);
-      setIsVisible(false); // Hide it only after animation completes
-    }, animTime); // match CSS animation time
+      setIsVisible(false);
+      isTransitioningRef.current = false;
+    }, animTime);
   };
 
   const miniNavItems = () => (
@@ -151,35 +164,48 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
         direction === "vertical" ? styles.vertical : ""
       }`}
     >
-{routes.map((route, i) => {
-  if (route.hide) return null; 
+      {routes.map((route, i) => {
+        if (route.hide) return null;
 
-  return (
-    <li key={i} className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
-      <div
-        onClick={() => handleLinkClick(route.path)}
-        className={`${styles.link} ${
-          location.pathname === route.path ? styles.activeLink : ""
-        }`}
-        onMouseMove={(e) => showTooltip(route.label, e)}
-        onMouseLeave={hideTooltip}
-      >
-        <p>{getIcon(route.label)}</p>
-<p>&nbsp;</p>
-        <p>{route.label}</p>
-      </div>
-    </li>
-  );
-})}
+        return (
+          <li key={i} className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
+            <div
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(route.path);
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                touchStartRef.current = e.timeStamp;
+              }}
+              onTouchEnd={(e) => {
+                if (touchStartRef.current && e.timeStamp - touchStartRef.current < 500) {
+                  e.preventDefault();
+                  handleLinkClick(route.path);
+                }
+                touchStartRef.current = null;
+              }}
+              className={`${styles.link} ${
+                location.pathname === route.path ? styles.activeLink : ""
+              }`}
+              onMouseMove={(e) => showTooltip(route.label, e)}
+              onMouseLeave={hideTooltip}
+            >
+              <p>{getIcon(route.label)}</p>
+              <p>&nbsp;</p>
+              <p>{route.label}</p>
+            </div>
+          </li>
+        );
+      })}
       <li className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
         <DarkModeTile />
       </li>
     </ul>
   );
 
-  const isCollapsed = (isSmall || screenSize == "sm") && !isTemporarilyExpanded;
+  const isCollapsed = (isSmall || screenSize === "sm") && !isTemporarilyExpanded;
 
-  const MiniBar = () => {};
   return (
     <>
       <CollapsedButton
@@ -192,7 +218,11 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
         onClick={
           !getCurrentNavReplacementButton().label
             ? menuOpenHandle
-            : getCurrentNavReplacementButton().callback
+            : () => {
+                if (lastCallbackRef.current) {
+                  lastCallbackRef.current();
+                }
+              }
         }
         showTooltip={showTooltip}
         hideTooltip={hideTooltip}
@@ -207,16 +237,16 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
         }
       />
 
-      {(state === "mini" || state === "buttonOnly_mini") && 
+      {(state === "mini" || state === "buttonOnly_mini") && (
+        <div
+          className={`${styles.bgCover} ${
+            !isVisible || isAnimatingOut ? styles.hide : styles.show
+          }`}
+          onClick={triggerCollapseAnimation}
+          onTouchStart={triggerCollapseAnimation}
+        />
+      )}
 
-  
-<div
-  className={`${styles.bgCover} ${
-    !isVisible || isAnimatingOut ? styles.hide : styles.show
-  }`}
-/>
-  
-  }
       {(state === "mini" || state === "buttonOnly_mini") && isVisible && (
         <div
           ref={navRef}
@@ -224,24 +254,17 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
               ${isCollapsed ? styles.collapsed : styles.expanded} 
               ${direction === "vertical" ? styles.vertical : ""} 
               ${isAnimatingIn ? styles.animatingIn : ""}
-            ${isAnimatingOut ? styles.animatingOut : ""}
-            `}
-          onTouchStart={handleNavTouch}
-          onClick={isCollapsed ? triggerExpandAnimation : undefined}
+              ${isAnimatingOut ? styles.animatingOut : ""}
+          `}
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
         >
-
-          
           {!isCollapsed && (
             <>
               <div className={`${styles.headerText}
-              
-                            ${isAnimatingIn ? styles.animatingIn : ""}
-            ${isAnimatingOut ? styles.animatingOut : ""}
-            
-            `}
-              
-              
-              >
+                ${isAnimatingIn ? styles.animatingIn : ""}
+                ${isAnimatingOut ? styles.animatingOut : ""}
+              `}>
                 <h2>Thanks for checking out my things</h2>
                 <p>
                   The junk page is really just a testing spot. Feel free to
