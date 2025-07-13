@@ -7,9 +7,10 @@ import {
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
   FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, 
-  FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,
+  FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,FaWalking, FaChessKnight,
   FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
-  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter // Added missing social media icons
+  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, // Added missing social media icons
+  FaInfo
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -22,7 +23,7 @@ const getIcon = (iconName = "default") => {
     video: <FaVideo />,
     academic: <FaFilePdf />,
     code: <FaGithub />,
-    projects: <FaCode />,
+    projects: <FaWalking />,
     contact: <FaEnvelope />,
     mail: <FaRegEnvelope />, // Kept FaRegEnvelope for 'mail'
     email: <FaRegEnvelope />, // Added 'email' alias pointing to FaRegEnvelope
@@ -49,8 +50,8 @@ const getIcon = (iconName = "default") => {
     linkedin: <FaLinkedin />,
     junk: <FaFish />,
     question: <FaQuestionCircle />,
-    chess: <FaChess />,
-    catalogue: <FaDumbbell/>,
+    chess: <FaChessKnight />,
+    catalogue: <FaWalking/>,
     thesis: <FaProjectDiagram />,
     paper: <FaFile />,
     complete: <FaNewspaper />,
@@ -64,7 +65,7 @@ const getIcon = (iconName = "default") => {
     sun : <FaSun/>,
     columns: <FaColumns/>,
     listview: <FaAlignCenter/>,
-    about:  <FaAddressCard/>
+    about:  <FaInfo/>
   };
 
   return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;

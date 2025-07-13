@@ -160,7 +160,7 @@ button:hover {
   position: relative;
   overflow: hidden;
   border: 1px solid rgb(51, 51, 51);
-  color: rgb(51, 51, 51);
+  color: var(--text-color);
 
   box-shadow: rgb(51, 51, 51) 1px 1px 0 0;
 
@@ -265,16 +265,22 @@ backdrop-filter: blur(2px);
 }
 
 .disclaimer {
-  position:absolute;
+  position:fixed;
   // background-color: white;
-  top: 4px;
+  bottom: 4px;
   left: 4px;
   gap: 4px;
   display: flex;
   padding: 4px;
   align-items: center;
   opacity: 0.7;
+  padding: 4px 12px 4px 12px;
+  z-index: 100;
   pointer-events: none;
+  background-color: var(--bg-transparent);
+  backdrop-filter: blur(4px);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 .doubleBorderRound { 

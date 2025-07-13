@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProjects } from "../contexts/ContentContext";
-import ColumnWithSections from "../components/Column/ColumnWithSections";
+// import ColumnWithSections from "../components/Column/ColumnWithSections";
 import { Article } from "../components/Article/Article";
 
 const ProjectPage = () => {

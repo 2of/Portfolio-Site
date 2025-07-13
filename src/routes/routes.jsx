@@ -24,15 +24,15 @@ const routes = [
     mobile_fullNav: false,
     transparentnav: false,
   },
-  // {
-  //   path: "/junk",
-  //   label: "junk",
-  //   element: <JunkPage />,
-  //   icon: "junk",
-  //   fullscreen_fullNav: false,
-  //   mobile_fullNav: false,
-  //   transparentnav: false,
-  // },
+  {
+    path: "/junk",
+    label: "junk",
+    element: <JunkPage />,
+    icon: "junk",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: false,
+  },
   {
     path: "/chess",
     label: "elo estimator",
@@ -40,6 +40,7 @@ const routes = [
     icon: "chess",
     fullscreen_fullNav: false,
     mobile_fullNav: false,
+        hide: true, 
     transparentnav: false,
   },
   {
@@ -52,16 +53,16 @@ const routes = [
     transparentnav: true,
     hide: true, // Hidden from nav menus
   },
-    {
-    path: "/about",
-    label: "About",
-    element: <AboutPage />,
-    icon: "about",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: true,
-    hide: false, // Hidden from nav menus
-  },
+  //   {
+  //   path: "/about",
+  //   label: "About",
+  //   element: <AboutPage />,
+  //   icon: "about",
+  //   fullscreen_fullNav: false,
+  //   mobile_fullNav: false,
+  //   transparentnav: true,
+  //   hide: false, // Hidden from nav menus
+  // },
 ];
 
 export default routes;

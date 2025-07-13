@@ -42,18 +42,19 @@ export const TooltipProvider = ({ children }) => {
             {children}
             {shouldRender && screenSize !== "sm" && (
                 <div
+                className="flatStyleShadow"
                     style={{
                         position: "fixed",
                         left: tooltip.position.x,
                         top: tooltip.position.y,
-                        backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        color: "#fff",
+                        // backgroundColor: "rgba(0, 0, 0, 0.8)",
+                        // color: "#fff",
                         padding: "10px 15px",
-                        borderRadius: "12px",
-                        fontSize: "14px",
+                        // borderRadius: "12px",
+                        // fontSize: "14px",
                         pointerEvents: "none",
                         zIndex: 1000,
-                        whiteSpace: "nowrap",
+                        // whiteSpace: "nowrap",
                         transition: "opacity 0.2s ease, transform 0.2s ease",
                         opacity: tooltip.isVisible ? 1 : 0,
                         transform: tooltip.isVisible ? "scale(1)" : "scale(0.95)",

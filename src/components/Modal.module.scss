@@ -3,7 +3,7 @@
 .modalOverlay {
     position: fixed;
     inset: 0; // Shorthand for top:0, right:0, bottom:0, left:0
-    background: rgba(0, 0, 0, 0.6); // Semi-transparent black
+    background: rgba(0, 0, 0, 0.606); // Semi-transparent black
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
@@ -14,6 +14,8 @@
     transition: 
       opacity 0.3s ease-in-out,
       visibility 0.3s ease-in-out;
+    //   pointer-events: none;
+      
     
   
     &.visible {
@@ -23,6 +25,7 @@
   
     // Avoid applying transitions to all children (better performance)
    > * {
+    pointer-events: all;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
   }

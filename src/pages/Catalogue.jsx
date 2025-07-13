@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ColumnWithSections from "../components/Column/ColumnWithSections";
+// import ColumnWithSections from "../components/Column/ColumnWithSections";
 import styles from "./Catalogue.module.scss";
 import { Modal } from "../components/Modal";
 import { useGlobalContext } from "../contexts/GlobalContext";
@@ -12,6 +12,8 @@ import getIcon from "../utils/Iconifier";
 import { BouncyArrows } from "../components/UI_Extrasa/bouncyArrows";
 import decor2 from "../assets/svgs/DrawKit_Vector_Illustrations_Video park.svg";
 import { Article } from "../components/Article/Article";
+import { useNavigate } from "react-router-dom"; // ← Add this
+
 export const CataloguePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -65,13 +67,18 @@ export const CataloguePage = () => {
     ].filter(Boolean);
 
   const shortProjects = getAllMetaData();
-
+ const navigate = useNavigate(); 
   return (
     <div
       className={`${screenSize === "sm" ? styles.sm : styles.lg} ${
         screenSize !== "sm" ? "GenericPageContainer" : ""
       }`}
     >
+
+
+
+
+
       <section className={`${styles.sm_fp} `}>
         <div className={styles.textSection}>
           <h1 className={styles.title}>Main Showcase</h1>
@@ -158,9 +165,9 @@ export const CataloguePage = () => {
                 data={{
                   title: proj.name,
                   subtitle: proj.description,
-                  url: proj.url,
+                  ext_url: proj.url,
                 }}
-                fullLinkCallBack={() => navigate.to(project.url)}
+                // fullLinkCallBack={() => navigate(proj.url)}
                 //   asFS={screenSize === "sm"}
                 type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
               />
@@ -173,9 +180,9 @@ export const CataloguePage = () => {
             data={{
               title: "See All Repos",
               subtitle: "github.com/2of",
-              url: "www.github.com/2of",
+              ext_url: "www.github.com/2of",
             }}
-            fullLinkCallBack={() => navigate.to(project.url)}
+            // fullLinkCallBack={() => navigate.to(project.url)}
             //   asFS={screenSize === "sm"}
             type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
           />

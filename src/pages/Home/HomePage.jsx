@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import useScreenSize from "../../utils/screensize";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import styles from "./HomePage.module.scss"; // Import SCSS module
-import ColumnWithSections from "../../components/Column/ColumnWithSections";
+// import ColumnWithSections from "../../components/Column/ColumnWithSections";
 import { Modal } from "../../components/Modal";
 import { HeroCell } from "./Hero";
 import { AboutCell } from "./About";

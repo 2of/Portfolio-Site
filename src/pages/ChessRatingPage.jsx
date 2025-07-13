@@ -5,9 +5,10 @@ import { StandardButton } from "../components/UI/StandardButton";
 import { StandardRadioButtons } from "../components/UI/StandardRadioButtons";
 import getIcon from "../utils/Iconifier";
 import FlowChartComponent from "../components/Misc/FlowChart";
-import ColumnWithSections from "../components/Column/ColumnWithSections";
+// import ColumnWithSections from "../components/Column/ColumnWithSections";
 import { Modal } from "../components/Modal";
 import { useProjects } from "../contexts/ContentContext";
+import { Article } from "../components/Article/Article";
 
 
 export const ChessPage = () => {
@@ -185,12 +186,12 @@ Paste a valid PGN below (Valid syntactically, not necessarily as a plausible gam
       {showmodal && (
         <Modal
           component={
-            <ColumnWithSections
+            <Article
               metadata={getArticleMetaData("chessEloEstimator")}
-              style="modern"
-              topDivideDouble={true}
-              twoColumns={true}
-              AsArticle={true}
+              // style="modern"
+              // topDivideDouble={true}
+              // twoColumns={true}
+              // AsArticle={true}
             />
           }
           onClose={() => setShowModal(false)}

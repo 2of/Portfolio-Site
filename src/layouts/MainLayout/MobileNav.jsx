@@ -151,21 +151,26 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
         direction === "vertical" ? styles.vertical : ""
       }`}
     >
-      {routes.map((route, i) => (
-        <li key={i} className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
-          <div
-            onClick={() => handleLinkClick(route.path)}
-            className={`${styles.link} ${
-              location.pathname === route.path ? styles.activeLink : ""
-            }`}
-            onMouseMove={(e) => showTooltip(route.label, e)}
-            onMouseLeave={hideTooltip}
-          >
-            <p>{getIcon(route.label)}</p>
-            <p>{route.label}</p>
-          </div>
-        </li>
-      ))}
+{routes.map((route, i) => {
+  if (route.hide) return null; 
+
+  return (
+    <li key={i} className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
+      <div
+        onClick={() => handleLinkClick(route.path)}
+        className={`${styles.link} ${
+          location.pathname === route.path ? styles.activeLink : ""
+        }`}
+        onMouseMove={(e) => showTooltip(route.label, e)}
+        onMouseLeave={hideTooltip}
+      >
+        <p>{getIcon(route.label)}</p>
+<p>&nbsp;</p>
+        <p>{route.label}</p>
+      </div>
+    </li>
+  );
+})}
       <li className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
         <DarkModeTile />
       </li>

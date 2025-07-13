@@ -2,14 +2,15 @@
     // background-color: red;
 height: var(--content-height);
     overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
     .landingPage { 
-      background-color: red;
-      color: orange;
+      // background-color: red;
+      // color: orange;
 
       .title { 
-        background-color: orange;
+        // background-color: orange;
       }
       }
     
@@ -131,7 +132,7 @@ height: var(--content-height);
     .divider { 
         height: 2px;
         width: 100%;
-        min-width: 150%;
+        // min-width: 
         background-color: var(--text-color);
     }
     .headerImage { 

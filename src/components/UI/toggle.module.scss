@@ -95,40 +95,44 @@
 }
 
 }
-.box {
 
-//  width: 100% !important;/
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+
+.box {
+  height: 1090px;
+  // background-color: orange;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
-//   cursor: pointer;
-* { cursor: pointer;}
+
+
+  * {
+    cursor: pointer;
+    box-sizing: inherit;
+  }
 
   &.toggleContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 64px;
+    height: 100%;
+      // min-height: 1003px;
     position: relative;
-    // cursor: pointer;
-    // top: -2px;
     user-select: none;
     transition: all 0.3s ease;
-    // transform: translateY(2px);
   }
 
   .toggleCheckbox {
     opacity: 0;
     position: absolute;
-
-
-    width: 100%;
-    // height: 100%;
-    border: 31px solid var(--border-color);
+    inset: 0;
     margin: 0;
     z-index: 2;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
   }
 
   .toggleSlider {
@@ -136,45 +140,43 @@
     width: 100%;
     height: 100%;
     border: 1px solid var(--border-color);
-    background-color: var(--bg); // ← was text-color
+    background-color: var(--bg);
     border-radius: 4px;
     transition: background-color 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // padding: 0 8px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .toggleSlider::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0px;
+    left: -2px;
     width: 16px;
     height: 90%;
-    background-color: var(--border-color); // ← was bg
+    background-color: var(--border-color);
     border-radius: 2px;
     transform: translateY(-50%);
-    outline: 1px solid var(--text-color);
+    // outline: 1px solid var(--text-color);
     transition: transform 0.5s cubic-bezier(0.36, 0.66, 0.04, 1), background-color 0.3s ease;
     will-change: transform;
   }
 
-  @keyframes toggleWiggleRight {
-    0%   { transform: translate(2px, -50%) rotate(0deg); }
-    50%  { transform: translate(42px, -50%) rotate(12deg); }
-    70%  { transform: translate(40px, -50%) rotate(-4deg); }
-    100% { transform: translate(43px, -50%) rotate(0deg); }
-  }
+@keyframes toggleWiggleRight {
+  0%   { transform: translate(4px, -50%) rotate(0deg); }
+  50%  { transform: translate(46px, -50%) rotate(6deg); }
+  70%  { transform: translate(47px, -50%) rotate(-2deg); }
+  100% { transform: translate(46px, -50%) rotate(0deg); }
+}
 
-  @keyframes toggleWiggleLeft {
-    0%   { transform: translate(42px, -50%) rotate(0deg); }
-    50%  { transform: translate(2px, -50%) rotate(-12deg); }
-    70%  { transform: translate(4px, -50%) rotate(4deg); }
-    100% { transform: translate(2px, -50%) rotate(0deg); }
-  }
-
+@keyframes toggleWiggleLeft {
+  0%   { transform: translate(40px, -50%) rotate(0deg); }
+  50%  { transform: translate(4px, -50%) rotate(-6deg); }
+  70%  { transform: translate(6px, -50%) rotate(2deg); }
+  100% { transform: translate(4px, -50%) rotate(0deg); }
+}
   .toggleCheckbox:checked + .toggleSlider::before {
     animation: toggleWiggleRight 0.6s ease forwards;
   }
@@ -185,7 +187,7 @@
 
   .toggleIcon {
     position: absolute;
-    top: 50%;
+    top: 64%;
     font-size: 16px;
     transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 1;
@@ -194,19 +196,19 @@
 
   .moonIcon {
     left: 12px;
-    color: var(--text-color); // ← was bg
-    transform: translateY(-50%) rotate(0deg) scale(1);
+    color: var(--text-color);
+    transform: translateY(-50%) scale(1);
   }
 
   .sunIcon {
     right: 12px;
-    color: var(--text-color); // ← was bg
-    transform: translateY(-30%) rotate(0deg) scale(1);
+    color: var(--text-color);
+    transform: translateY(-40%) scale(1);
   }
 
   .toggleCheckbox:checked + .toggleSlider .moonIcon {
     opacity: 1;
-    transform: translateY(-30%) rotate(0deg) scale(1.1);
+    transform: translateY(-50%) scale(1.1);
   }
 
   .toggleCheckbox:checked + .toggleSlider .sunIcon {
@@ -216,11 +218,11 @@
 
   .toggleCheckbox:not(:checked) + .toggleSlider .moonIcon {
     opacity: 0;
-    transform: translateY(-20%) scale(0.8);
+    transform: translateY(-50%) scale(0.8);
   }
 
   .toggleCheckbox:not(:checked) + .toggleSlider .sunIcon {
     opacity: 1;
-    transform: translateY(-30%) rotate(0deg) scale(1.1);
+    transform: translateY(-50%) scale(1.1);
   }
 }

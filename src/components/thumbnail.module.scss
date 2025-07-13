@@ -35,12 +35,12 @@
     right: 0;
     bottom: 0;
     background-color: var(--bg);
-    opacity: 0.9;
+    opacity: 1;
     transition: opacity 0.3s ease;
   }
 
   &:hover .cover {
-    opacity: 0.4;
+    opacity: 0.8;
   }
 
   .icon {
@@ -139,6 +139,7 @@
   // background-color: red;
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   overflow: hidden; // make sure absolutely positioned elements stay inside
 
@@ -211,6 +212,7 @@
 .title {
   font-size: 1.2rem;
   letter-spacing: -0.01em;
+  color: var(--text-color);
   margin: 8px;
 }
 
@@ -219,6 +221,7 @@
   font-weight: 400;
   letter-spacing: 0;
   margin: 8px;
+    color: var(--text-color);
 }
 
 
@@ -232,31 +235,22 @@
     display: flex;
   width: 100%;
   height: 100vh;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-  transition: all 0.2s;
+  // box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  // transition: all 0.2s;
   position: relative;
-  border-radius: 0px;
+  // border-radius: 0px;
   flex-direction: column;
   overflow: hidden;
+  // background-color: ;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
+ align-items: center;
+ justify-content: center;
+  padding: 12px;
 
   &::before {
+
+      //laaazy dimming
     content: "";
     position: absolute;
     top: 0;
@@ -271,34 +265,25 @@
     display: none;
   }
 
-  .icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-    display: none;
-    color: white;
-    font-size: 2rem;
-  }
-
-  .toprighticon {
-    color: white;
-    z-index: 2;
-  }
-
   .title {
     z-index: 2;
-    text-align: center;
+    text-align: start;
+
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 100;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     padding: 10px;
   }
 
   .subtitle {
     z-index: 2;
+    // background-color: red;
+    // width: 100%;
+
     color: white;
-    font-size: 1.5rem;
+    text-align: start;
+    font-size: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     padding: 10px;
   }
@@ -358,7 +343,7 @@
 .mobile_compact { 
   // background-color: red;
   height: 100%;
-    background: linear-gradient(135deg, #ffafbd, #ffc3a0); // warm gradient
+    // background: linear-gradient(135deg, #ffafbd, #ffc3a0); // warm gradient
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -368,278 +353,3 @@
   border-bottom: 1px solid var(--border-color);  
 }
 
-
-
-
-// // Base styles for smallContainer, which seems to be the default non-full-screen thumbnail
-// .large_thumb {
-//   margin: 20px;
-//   padding: 20px;
-//   min-height: 200px;
-//   min-width:200px;
-  
-//   display: flex;
-//   flex-direction: column;
-//   border: 1px solid var(--border-color);
-//   transition: all 0.2s;
-//   overflow: hidden;
-//   cursor: pointer;
-
-//   .popOver {
-//     position: absolute;
-//     bottom: 5%;
-//     right: 0%;
-//     transform: translate(-50%, -50%) scale(0);
-//     opacity: 0.7;
-//     transition: all 0.3s ease-in-out;
-//     padding: 10px 20px;
-//     border-radius: 50%;
-//     color: white;
-//     font-weight: bold;
-//     cursor: pointer;
-//   }
-
-//   &:hover .popOver {
-//     transform: translate(-50%, -50%) scale(1);
-//     opacity: 1;
-//     border-radius: 10px;
-//   }
-
-//   .cover {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     background-color: var(--bg);
-//     opacity: 0.9;
-//     transition: opacity 0.3s ease;
-//   }
-
-//   &:hover .cover {
-//     opacity: 0.7;
-//   }
-
-//   .icon {
-//     position: absolute;
-//     top: 10px;
-//     left: 10px;
-//     z-index: 2;
-//     color: white;
-//   }
-
-//   .toprighticon {
-//     position: absolute;
-//     top: 10px;
-//     right: 10px;
-//     z-index: 2;
-//     color: var(--text-color);
-//   }
-
-//   .subtitle {
-//     position: absolute;
-//     bottom: 50px;
-//     left: 20px;
-//     z-index: 2;
-//     font-size: 1.2em;
-//     color: var(--text-color);
-//     transition: color 0.3s ease;
-//   }
-
-//   .linkContainer {
-//     position: absolute;
-//     bottom: 20px;
-//     left: 20px;
-//     z-index: 2;
-//   }
-
-//   .title {
-//     color: var(--text-color);
-//     cursor: pointer;
-//     z-index: 2;
-//     font-size: 2rem;
-//     transition: color 0.3s ease;
-//   }
-
-//   .link {
-//     color: var(--text-color);
-//     text-decoration: underline;
-//     cursor: pointer;
-//     font-size: 1em;
-//     transition: color 0.3s ease;
-//   }
-
-//   .PillContainer {
-//     list-style: none;
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-items: flex-start;
-//     justify-content: flex-start;
-//     gap: 4px;
-//     padding: 0;
-//   }
-
-//   .pill {
-//     z-index: 2;
-//     color: var(--text-color);
-//     font-size: 1rem;
-//     margin: 5px 0;
-//     text-decoration: none;
-//     transition: color 0.3s ease;
-
-//     &::after {
-//       content: " • ";
-//       color: inherit;
-//       margin-left: 4px;
-//     }
-
-//     &:last-child::after {
-//       content: "";
-//     }
-//   }
-// }
-
-// // Full Screen (fs) specific styles
-// .fs {
-//   display: flex;
-//   width: 100%;
-//   height: 100vh;
-//   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-//   transition: all 0.2s;
-//   position: relative;
-//   flex-direction: column;
-//   overflow: hidden;
-//   align-items: center;
-//   justify-content: center;
-//   background-image: linear-gradient(
-//     to right top,
-//     #d16ba5,
-//     #c777b9,
-//     #ba83ca,
-//     #aa8fd8,
-//     #9a9ae1,
-//     #8aa7ec,
-//     #79b3f4,
-//     #69bff8,
-//     #52cffe,
-//     #41dfff,
-//     #46eefa,
-//     #5ffbf1
-//   );
-
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: rgba(0, 0, 0, 0.5);
-//     z-index: 1;
-//   }
-
-//   .cover {
-//     display: none;
-//   }
-
-//   .icon {
-//     position: absolute;
-//     top: 10px;
-//     left: 10px;
-//     z-index: 2;
-//     display: none;
-//     color: white;
-//     font-size: 2rem;
-//   }
-
-//   .toprighticon {
-//     color: white;
-//     z-index: 2;
-//   }
-
-//   .title {
-//     z-index: 2;
-//     text-align: center;
-//     color: white;
-//     font-size: 3rem;
-//     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-//     padding: 10px;
-//   }
-
-//   .subtitle {
-//     z-index: 2;
-//     color: white;
-//     font-size: 1.5rem;
-//     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-//     padding: 10px;
-//   }
-
-//   .linkContainer {
-//     z-index: 2;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     margin-top: 20px;
-//   }
-
-//   .link {
-//     z-index: 2;
-//     color: white;
-//     font-size: 1.2rem;
-//     margin: 5px 0;
-//     text-decoration: none;
-//     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
-//     &:hover {
-//       color: #f39c12;
-//     }
-//   }
-
-//   .PillContainer {
-//     list-style: none;
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 4px;
-//   }
-
-//   .pill {
-//     z-index: 2;
-//     color: white;
-//     font-size: 1rem;
-//     margin: 5px 0;
-//     text-decoration: none;
-//     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
-//     &::after {
-//       content: " • ";
-//       color: inherit;
-//       margin-left: 4px;
-//     }
-
-//     &:last-child::after {
-//       content: "";
-//     }
-//   }
-// }
-
-// // Specific overrides for the "small" size variant used within ProjectCell
-// .smallSize {
-//   // Reset any conflicting min/max dimensions from .smallContainer if needed,
-//   // width: 100%;
-//   // height: 100%;
-//   min-width: unset;
-//   min-height: unset;
-//   position: absolute;
-//   // background-color: green;
-//   position: absolute;
-
-
-//    * { 
-//     height: unset;
-//     width: unset;
-//     display: none;
-//    }
-// }

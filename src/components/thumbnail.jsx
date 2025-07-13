@@ -24,12 +24,26 @@ export const Thumbnail = ({
       }
     : {};
 
-  const handleClick = () => {
-    if (typeof fullLinkCallBack === "function" && screenSize !== "sm") {
-      fullLinkCallBack();
-    }
-  };
+const handleClick = () => {
+  console.log(details.ext_url);
 
+  const isExternal =
+    details.ext_url &&
+    (details.ext_url.startsWith("http") || details.ext_url.startsWith("www."));
+
+  if (isExternal) {
+    const fullUrl = details.ext_url.startsWith("www.")
+      ? `https://${details.ext_url}`
+      : details.ext_url;
+    window.open(fullUrl, "_blank");
+    return; // prevent fallback callback if external
+  }
+
+  // If screen is not small and a callback is defined, use it
+  if (typeof fullLinkCallBack === "function" && screenSize !== "sm") {
+    fullLinkCallBack();
+  }
+};
   const renderByType = () => {
     switch (type) {
       case "large_thumb":
@@ -41,31 +55,22 @@ export const Thumbnail = ({
           >
             <div className={styles.cover} />
 
-
             <div className={styles.header}>
-            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
-
+              <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
             </div>
 
-
-
             <div className={styles.content}>
+              {tags.length > 0 && (
+                <ul className={styles.PillContainer}>
+                  {tags.map((tool, i) => (
+                    <li className={styles.pill} key={i}>
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-              
-
-       
-
-            {tags.length > 0 && (
-              <ul className={styles.PillContainer}>
-                {tags.map((tool, i) => (
-                  <li className={styles.pill} key={i}>
-                    {tool}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-                 <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
+              <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
             </div>
           </div>
         );
@@ -119,8 +124,8 @@ export const Thumbnail = ({
             <div className={styles.linkContainer}>
               {typeof fullLinkCallBack === "function" && (
                 <StandardButton
-                  label="More Info"
-                  icon={getIcon("open")}
+                  label="Open"
+                 
                   type="basic_Expand"
                   callback={fullLinkCallBack}
                 />

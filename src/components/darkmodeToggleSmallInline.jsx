@@ -7,7 +7,7 @@ const DarkModeToggle = ({mobile = true}) => {
   const { isDarkMode, toggleTheme } = useGlobalContext();
 
   return (
-    <div className={` ${mobile ? style.desktop : style.mobile} ${style.darkmodeToggle}`} onClick={toggleTheme}>
+    <div className={` ${mobile ? style.pill : style.box} ${style.darkmodeToggle}`} onClick={toggleTheme}>
       <input
         type="checkbox"
         className={style.toggleCheckbox}

@@ -1,5 +1,5 @@
 /* darkmodeToggle.module.scss */
-.desktop { 
+.pill { 
 
 &.darkmodeToggle {
   display: inline-block;
@@ -11,6 +11,7 @@
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+
 }
 
 .toggleCheckbox {

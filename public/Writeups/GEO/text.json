@@ -1,6 +1,6 @@
 {
   "name": "Noah King",
-  "title": "Neighbourhood Scale Geolocalization with latent image features using aggegate models and Attention",
+  "title": "Neighbourhood Scale Geolocalization w/ latent image features using aggregate models and Attention",
   "subtitle": "A Short Summary of my Geolocalization Project for a 20k^2 area, achieving ~1.3km precision; an improvement over the image distribution",
   "heroImage": "/public/Writeups/GEO/hero.png",
   "shortDesc" : "Noah King - Master's Project - GeoLocale Estimation using Machine Learning",
@@ -36,7 +36,7 @@
   ],
   "sections": [
     {
-      "name": "The Grand Unveiling: My Master's Magnum Opus (and why it's basically a fancy GeoGuessr bot)",
+      "name": "Essentially, It's an ML approach to GeoGuessr in two parts. Latent feature extraction + Psuedo Ensemble of ML/AI Models for GeoLocalization from explicit features ",
       "type": "text",
       "boost": true,
       "items": [

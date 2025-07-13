@@ -130,6 +130,8 @@
   font-family: var(--monospace-font, monospace);
   font-size: 0.9rem;
   background-color: color-mix(in srgb, var(--bg), black 5%);
+  white-space: pre-wrap;
+  word-break: break-word;
   border: 1px solid var(--border-color);
 }
 
@@ -139,7 +141,12 @@
   padding: 24px 12px 10vh;
   margin: 0 auto;
   max-width: 1400px;
+  overflow: hidden;
   background-color: var(--bg);
+//   width: 10px;
+  overflow: hidden;
 //   border: 1px solid var(--border-color);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+   
 }
