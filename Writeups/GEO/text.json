@@ -1,0 +1,434 @@
+{
+  "name": "Noah King",
+  "title": "Neighbourhood Scale Geolocalization w/ latent image features using aggregate models and Attention",
+  "subtitle": "A Short Summary of my Geolocalization Project for a 20k^2 area, achieving ~1.3km precision; an improvement over the image distribution",
+  "heroImage": "/public/Writeups/GEO/hero.png",
+  "shortDesc" : "Noah King - Master's Project - GeoLocale Estimation using Machine Learning",
+  "author" : "Noah King",
+  "date" : "February 2025" ,
+  "tools" : ["tools test"],
+  "extratext" : "Paper Graded Merit A @ University of Canterbury 2025",
+  "heroLinks": [
+    {
+      "title": "Proposal",
+      "type": "external_link",
+      "to": "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model/blob/main/proposal.pdf",
+      "icon" : "paper"
+    },
+    {
+      "title": "Thesis",
+      "type": "external_link",
+      "to": "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model/blob/main/THESIS_mini.pdf",
+      "icon" : "paper"
+    },
+    {
+      "title": "Code Repository ",
+      "type": "external_link",
+      "icon" :  "code",
+      "to": "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model"
+    },
+    {
+      "title": "Complete Article",
+      "type": "internal_link",
+      "icon": "complete",
+      "to": "/proj/geo"
+    }
+  ],
+  "sections": [
+    {
+      "name": "Essentially, It's an ML approach to GeoGuessr in two parts. Latent feature extraction + Psuedo Ensemble of ML/AI Models for GeoLocalization from explicit features ",
+      "type": "text",
+      "boost": true,
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Alright, gather 'round, fellow enthusiasts of obscure academic pursuits! My Master's thesis dives headfirst into the wonderfully perplexing world of geolocation from street-level images. And if you're thinking 'GeoGuessr bot,' you're not wrong. Essentially, that's what I set out to build, albeit with a *Master's-level* twist."
+        },
+        {
+          "type": "highlight",
+          "text": "While other geolocalization models aim for global domination (bless their ambitious hearts), often sacrificing precision for planetary scale, my approach hones in on the finer details. We're talking multi-neighborhood scale here. Think of it less as a satellite looking at the entire Earth, and more like a very focused, slightly quirky detective scrutinizing a single city block."
+        },
+        {
+          "type": "paragraph",
+          "text": "The small caveat? We're currently playing in a cozy $20~km^{2}$ area of Chicago, not the entire planet. Other models might call this a 'Geocell' – a tiny puzzle piece of the world. My work, therefore, positions itself as the ultimate 'final step' in a larger geolocalization pipeline. Someone else finds the continent, we pinpoint the exact lamppost. It's all about division of labor, really."
+        },
+        {
+          "type": "paragraph",
+          "text": "So, why bother? Well, our aggregate of models manages to achieve around ~1.3km precision. That's pretty neat for such a small scale, especially compared to the sparse geocell allocations of broader, planet-spanning models. It’s the difference between knowing you're in North America and knowing you're about to trip over a very specific fire hydrant on a very specific street."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Examples of geo-informative street-level images from Chicago, showing signage, urban layouts, and diverse contexts."
+        },
+        {
+          "type": "paragraph",
+          "text": "These are the types of scenes our model learns from. Each pixel, each sign, each object tells a story... or at least, provides a coordinate."
+        },
+        {
+          "type": "pills",
+          "pills": ["Geolocation", "Machine Learning", "Deep Learning", "Attention Mechanisms", "Object Detection", "OCR", "Chicago", "Multi-neighborhood scale", "Geoinformative Features"]
+        }
+      ]
+    },
+    {
+      "name": "So, How Does This Sorcery Work? (The Guts of the Operation)",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "At a high level, it's a two-stage process. First, we meticulously pull apart street-level images to extract all sorts of juicy 'geoinformative features.' Then, we feed those features into a collection of neural networks that try to make sense of where on Earth (or, more specifically, in Chicago) that image was taken."
+        },
+        {
+          "type": "highlight",
+          "text": "Unlike some of my predecessors who let their models 'implicitly' figure out what's important (which, let's be honest, can be a black box of 'magic'), I took a more direct route: explicitly defining what cues are useful. Because sometimes, you just need to tell the computer, 'Hey, that sign matters!'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Here's the breakdown of our explicit feature extraction toolkit:"
+        },
+        {
+          "type": "title",
+          "text": "Object Detection: YOLOv11, Because Efficiency Matters"
+        },
+        {
+          "type": "paragraph",
+          "text": "We employed fine-tuned YOLOv11 models. Why YOLOv11? Because if you're going to detect objects, why not use the latest and greatest? It's computationally efficient without sacrificing accuracy, even if its main job is identifying mundane things like traffic lights, crosswalks, and my personal favourite, streetlamps. Yes, even street furniture holds geographical secrets."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Conceptual diagram of a detection pipeline, showing CNN, transformer encoder-decoder, and bipartite matching loss."
+        },
+        {
+          "type": "paragraph",
+          "text": "The object detection stage is crucial. It’s where we identify those 'GeoInformers' – like a 'Stop Sign' or a 'Fire Hydrant'. These aren't just random objects; they're vital clues! For example, a simple frequency vector helps us quantify these detections:"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "content": "### Example Object Frequency Vector\n# Assuming a predefined order of object classes:\n# [Clock, Vase, Traffic Light, Fire Hydrant, Parking Meter, Bench, Signage, Crosswalks, Streetlamps]\n\n# If an image contains 3 traffic lights, 2 fire hydrants, and 1 sign:\nobject_vector = [0, 0, 3, 2, 0, 0, 1, 0, 0]\n\n# This vector then becomes part of the input to our main geolocation models."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic:** The decision to explicitly define these object classes as 'GeoInformers' was based on the intuitive understanding that certain fixed elements in an urban landscape provide strong geographic signals. While a 'vase' might seem odd, it's about the *presence* and *frequency* of such objects, rather than their individual semantic meaning. By discretely training YOLO models for specific object types (e.g., separate models for 'signage' and 'crosswalks'), we mitigated issues with class crossover and simplified development, even if it introduced some memory overhead. This was a practical heuristic to balance precision with development time."
+        },
+        {
+          "type": "title",
+          "text": "Optical Character Recognition (OCR) & Text Embeddings: The Whispers of the City"
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the real GeoGuessr pros, text on signs is gold. So, we used EasyOCR to extract all those wonderful words. Then, we turned those words into 'high-dimensional poetry' using Sentence-BERT (sBERT). This isn't just about reading words; it's about understanding their semantic relationships. Because 'Chicago' on a sign means more than just random letters!"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Illustration of CRAFT-based text detection in complex scenes, showing horizontal, curved, and arbitrary text examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "EasyOCR is robust, even handling tricky text in varying orientations. And because words can be noisy, we applied a little 'Generative AI magic' to correct common OCR misinterpretations. Think of it as an autocorrect for street signs:"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "content": "### Example OCR Correction Logic (Conceptual)\ndef correct_ocr_text(text):\n    corrections = {\n        'S!OP': 'STOP',\n        'ST0P': 'STOP',\n        'STQP': 'STOP',\n        '5TOP': 'STOP',\n        # ... more corrections from Generative AI-powered library\n    }\n    return corrections.get(text, text)\n\nraw_text = 'S!OP'\ncorrected_text = correct_ocr_text(raw_text)\n# corrected_text would be 'STOP'"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic:** The use of EasyOCR and sBERT 'as-is' (without fine-tuning) was a pragmatic heuristic. Given the computational and time constraints, leveraging robust pre-trained models for text extraction and embedding allowed us to focus resources on the core geolocation task. The generative AI correction layer was a quick heuristic to combat common OCR noise, assuming that a small post-processing step could significantly clean up text data before embedding."
+        },
+        {
+          "type": "title",
+          "text": "Color Analysis: The Subtle Hues of Location"
+        },
+        {
+          "type": "paragraph",
+          "text": "Even the colors of a cityscape can tell a story. We converted images to the HSV color space and generated histograms for each channel. Think of it as painting a statistical picture of the environment's palette – the building facades, the vegetation, the endless (sometimes grey) sky. It adds a dash of ambient context to our data stew, capturing 'implicit' geographic cues that you might not even consciously register."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic:** HSV color space was chosen over RGB because it better separates color (Hue), intensity (Value), and vibrancy (Saturation), making it more robust to lighting variations which are common in street-level imagery. The fixed bin size for histograms was a heuristic to create a consistent, embedded 'color fingerprint' for each image without incurring heavy computational costs for learning these distributions."
+        },
+        {
+          "type": "title",
+          "text": "The Brains of the Operation: Ensemble Learning"
+        },
+        {
+          "type": "paragraph",
+          "text": "Why trust one model when you can trust three? Our methodology employs a pseudo-ensemble of three distinct machine learning models: K-means clustering (for finding natural groupings), a CNN with Attention, and a Multi-Dense Network with Attention. Their predicted latitude and longitude outputs are simply averaged to get our final, hopefully precise, location. It’s like having a committee of very smart (and sometimes stubborn) experts all voting on where a photo was taken."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Diagram illustrating the overall learning process, from input image through embedding generation, multiple machine learning models (including attention), clustering, and final averaged output."
+        },
+        {
+          "type": "paragraph",
+          "text": "And for the mathematically inclined, while the Haversine distance is great for planetary scale, for our cozy Chicago $20~km^{2}$ area, simple Euclidean distance was sufficient for our loss function. My GPU thanked me."
+        },
+        {
+          "type": "code",
+          "language": "latex",
+          "content": "L = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic:** The choice of Euclidean distance as the loss function was a practical heuristic for our confined geographic area ($20~km^{2}$). While Haversine is more accurate globally (accounting for Earth's curvature), the difference over such a small area is negligible (approximately 15 meters). This trade-off prioritized computational efficiency and simplicity in a time-constrained project."
+        },
+        {
+          "type": "pills",
+          "pills": ["YOLOv11", "EasyOCR", "Sentence-BERT", "HSV Color Space", "K-means Clustering", "CNN", "Multi-Dense Network", "Ensemble Learning", "Euclidean Distance", "Feature Engineering", "Pragmatic Heuristics", "TensorFlow", "Scikit-learn", "Python", "Mapillary"]
+        }
+      ]
+    },
+    {
+      "name": "The Models: My Children (and their Quirks)",
+      "type": "text",
+      "items": [
+        {
+          "type": "highlight",
+          "text": "I essentially raised two main 'children' (networks) in this research, each with its own personality and, well, quirks."
+        },
+        {
+          "type": "title",
+          "text": "The Signage Sensation (My Favorite Child, Probably)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This model focused purely on the text and visual cues extracted from signage. And let me tell you, it performed admirably! It achieved a location accuracy of within 1 km over our $20~km^{2}$ Chicago area. Turns out, reading signs actually helps you figure out where you are. Who knew? This one gave us genuinely useful results and was far less moody than its sibling."
+        },
+        {
+          "type": "paragraph",
+          "text": "**[DIAGRAM: Signage Network Architecture goes here. This would typically show input layers for text embeddings and color histograms, followed by convolutional layers, flattening, dense layers, and an optional attention layer before the output layer for lat/lon.]**"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Diagram showing the architecture of the signage-only neural network, both with and without an attention layer, processing text and color histograms."
+        },
+        {
+          "type": "paragraph",
+          "text": "Here's a peek at the architecture for the signage model. Notice the elegant flow from input text and color data, through the attention layer (or not, depending on the ablation study!), into the convolutional and dense layers, eventually outputting those coveted latitude and longitude coordinates. Simple, yet effective (mostly!)."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Architecture Choices & Heuristics (Signage Model):**"
+        },
+        {
+          "type": "paragraph",
+          "text": "This network takes concatenated text embeddings and color histograms as input. We chose **Convolutional Neural Networks (CNNs)** (e.g., `Conv2D` layers as shown in the diagram) here because they excel at identifying hierarchical spatial patterns in structured data like our image-derived embeddings. The multiple filters (e.g., 64 then 128) allow for the learning of increasingly complex features. After the convolutional layers, the data is **Flattened** to prepare it for the **Dense layers** (e.g., 256 then 128 units). Dense layers are crucial for learning non-linear mappings from the extracted features to the final latitude and longitude coordinates. The progressive reduction in units (256 $\\rightarrow$ 128) is a common heuristic to refine features and mitigate overfitting."
+        },
+        {
+          "type": "paragraph",
+          "text": "The presence of an **Attention layer** in one variant was a key heuristic to test: the intuitive idea was that attention would dynamically weigh the most important parts of the combined text and color features, helping the model focus on the most 'geoinformative' aspects of a sign (e.g., the name of a business vs. generic advertising text). Our activation functions, like ReLU, were chosen for their ability to prevent vanishing gradients in deeper networks, promoting faster training."
+        },
+        {
+          "type": "title",
+          "text": "The Main Event (Suffered from Identity Crisis)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This was my grand vision: the comprehensive network integrating *all* the wonderful features – text, objects, colors. While it technically 'replicated the input dataset distribution' (which sounds fancy, right?), in reality, it developed a bit of a spatial bias. It loved the dense, bustling urban core areas a little *too* much, tending to overfit to those regions. Less 'world explorer,' more 'favorite armchair enthusiast who predicts everything is in their living room.'"
+        },
+        {
+          "type": "paragraph",
+          "text": "**[DIAGRAM: Full Image Model Architecture goes here. This would show separate input branches for text embeddings, object embeddings, and color histograms, which then merge. Followed by dense layers, batch normalization, multi-head attention, and output layer for lat/lon.]**"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Detailed diagram of the full image model with multi-head attention, showing text, class names, and color histogram inputs merging before batch normalization and dense layers."
+        },
+        {
+          "type": "paragraph",
+          "text": "This diagram shows the full complexity of the 'Main Event' model. Notice the 'MultiHeadAttention' layer, intended to be a superstar, but sometimes a bit of a diva. We even normalized our latitude and longitude values to keep things tidy, scaling them to a nice [0,1] range before feeding them to the hungry neural networks."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "content": "### Latitude/Longitude Normalization (Conceptual)\ndef normalize_coordinates(lat, lon, min_lat, max_lat, min_lon, max_lon):\n    normalized_lat = (lat - min_lat) / (max_lat - min_lat)\n    normalized_lon = (lon - min_lon) / (max_lon - min_lon)\n    return normalized_lat, normalized_lon\n\n# ... and denormalized later for actual prediction coordinates"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Architecture Choices & Heuristics (Main Model):**"
+        },
+        {
+          "type": "paragraph",
+          "text": "This model is a bit more complex, taking three distinct inputs: text embeddings, learned object embeddings (derived from the frequency vectors), and color histograms. The key design choice here was the strategic placement of **Dense layers** (e.g., 256 $\\rightarrow$ 128 $\\rightarrow$ 64 units) combined with **Batch Normalization** layers. Batch Normalization was a crucial heuristic for stabilizing and potentially accelerating training by reducing internal covariate shift, allowing the model to generalize better even with diverse input features. The progressive reduction in layer size helps the model capture increasingly refined features. The final layer uses a linear activation function, as this is a regression task predicting continuous latitude and longitude values."
+        },
+        {
+          "type": "paragraph",
+          "text": "A **Multi-Head Attention layer** (4-headed in our case) was again a key design element, based on the heuristic that complex inputs from multiple sources (textual, object frequencies, visual characteristics) would benefit from the model dynamically prioritizing different aspects. The intuition was that attention could better filter noise and emphasize relevant patterns. However, as noted in the 'Challenges' section, this didn't always pan out as expected."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Training Heuristics (for both models):** We employed the **Adam optimizer** due to its versatility and efficiency with complex models and sparse gradients, adapting learning rates per parameter. Our learning rate schedule involved an initial seed of 0.001 with a decay after 25 epochs. This heuristic aims to enable faster initial convergence followed by finer adjustments. A fixed **batch size of 512** was chosen as the maximum fitting into available memory, a pragmatic heuristic to maximize parallel processing, despite the known trade-off with generalization for large batches on non-uniform data. Early stopping was also an option, but for full training analysis, we often ran for 50 epochs."
+        },
+        {
+          "type": "title",
+          "text": "Clustering for Context: K-Means"
+        },
+        {
+          "type": "paragraph",
+          "text": "Our third branch involved K-means clustering. This method took concatenated text embeddings and one-hot encoded object class names. The primary heuristic here was that images with similar textual and object content should naturally cluster together geographically. We used the Elbow Method and Silhouette Scores to determine the optimal number of clusters, aiming for meaningful geographical groupings."
+        },
+        {
+          "type": "paragraph",
+          "text": "**[DIAGRAM: K-Means Clustering Pipeline Diagram. This would show the concatenation of text and one-hot object vectors, followed by normalization and the K-means algorithm leading to cluster assignments.]**"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Conceptual diagram of the K-means clustering pipeline, showing class names vector, one-hot encode, text embeddings, concatenation, normalization, and K-means training."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic:** While dimensionality reduction techniques (like PCA) could have been applied, the heuristic was to assume all contributing columns were important to preserve semantic and categorical information from the embeddings, even at the risk of 'the curse of dimensionality' impacting clustering performance. This was a direct trade-off between computational complexity and perceived information loss."
+        }
+      ]
+    },
+    {
+      "name": "The Unavoidable Truths: Challenges and Confessions",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "No research project is without its humbling moments. Here are a few of the delightful challenges and shortcomings I encountered:"
+        },
+        {
+          "type": "title",
+          "text": "Attention? More Like 'Distraction' (Sometimes)"
+        },
+        {
+          "type": "paragraph",
+          "text": "We thought attention layers were the bee's knees, helping the model focus on the most important bits. However, ablation studies showed they had a limited, and sometimes even detrimental, impact. Instead of enhancing generalization, they occasionally led to more concentrated (overfit) predictions or just generally impeded the learning process. It seems sometimes, less 'attention' is more. The charts comparing MSE with and without attention were quite telling – sometimes that MSE jumped *up* with attention!"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Graph showing the comparison of Test MSE over epochs for models with and without attention, often indicating higher MSE with attention."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic Reflection:** The initial heuristic for including attention was strong intuition from its success in other domains. However, our results suggest that when working with pre-trained embeddings (like sBERT) or learned embeddings (for objects), adding another attention layer might create redundancy or even introduce noise by over-emphasizing relationships already captured. This highlights a critical learning point: sometimes too much of a good thing (like attention) can be, well, too much."
+        },
+        {
+          "type": "title",
+          "text": "Clustering's Existential Crisis"
+        },
+        {
+          "type": "paragraph",
+          "text": "My attempts at K-means clustering revealed that the concatenated text and object embeddings were 'insufficiently separable.' This is a polite academic way of saying our data, bless its heart, just didn't want to form nice, neat little groups. It was more like a really lumpy, confused pudding than clearly defined geographic patterns. The Elbow Method graph showed no clear 'elbow,' which is never a good sign for a clean clustering!"
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Graph showing the SSD score per K for the Elbow Method, with a zig-zagging trend indicating poor separability and no clear optimal K."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic Reflection:** The heuristic was that meaningful geographic patterns would manifest as separable clusters in the embedding space. The poor clustering performance suggests that this specific combination of text embeddings and one-hot object vectors, without further dimensionality reduction or more sophisticated clustering algorithms, did not capture sufficiently distinct geographical signals. It implies the need for a re-evaluation of feature space or clustering methodology."
+        },
+        {
+          "type": "title",
+          "text": "The Data Didn't Play Fair (Data Density Bias)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A significant headache was the non-uniform distribution of our dataset (Mapillary, while amazing, isn't perfectly even). This led my models to learn the *distribution* of the data points rather than robust, generalizable local features. Essentially, they just learned to predict where most of the training photos were taken, which is less 'AI' and more 'educated guess.' You can really see this in the density plots of predictions, where they just clump around the most-photographed areas."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "Heatmap showing the density of predicted locations by the model, heavily concentrated in areas with high original dataset density."
+        },
+        {
+          "type": "paragraph",
+          "text": "**Heuristic Reflection:** Our implicit heuristic was that a sufficiently large dataset would naturally lead to generalization. However, the strong data density bias demonstrated that simply having 'more data' isn't enough if its distribution is highly skewed. The model optimized its loss by predicting \"the middle is always good enough for most of the data,\" rather than learning fine-grained features. This points to a need for more robust sampling heuristics or density-aware training methods in future work."
+        },
+        {
+          "type": "title",
+          "text": "My Laptop Cried (Computational Constraints)"
+        },
+        {
+          "type": "paragraph",
+          "text": "And, of course, the ever-present hardware limitations. My poor GPU made some valiant efforts, but certain architectural choices (like using discrete YOLO models instead of one massive conglomerate, and batch-based processing) were necessitated by memory constraints. Apologies to the purists, but sometimes you gotta work with what you've got! Batch size, in particular, proved to be a critical hyperparameter, often 'erasing' granular information in favor of optimizing for the average batch. My poor RAM could only take so much!"
+        },
+        {
+          "type": "pills",
+          "pills": ["Overfitting", "Data Bias", "Computational Limits", "Ablation Study", "Clustering Challenges", "Loss Functions", "Hardware Constraints", "Batch Size Impact", "Heuristic Reflection"]
+        }
+      ]
+    },
+    {
+      "name": "The Future is Bright (and Hopefully Less Overfit)",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Despite the aforementioned 'learning experiences,' this work lays a solid foundation. The future, as always, holds promise and more late nights. Here’s what’s next on the agenda for making this GeoGuessr bot truly shine:"
+        },
+        {
+          "type": "title",
+          "text": "Mitigating the Homebody Problem (Data Density Management)"
+        },
+        {
+          "type": "paragraph",
+          "text": "We need to teach the model to love *all* of Chicago, not just the popular bits. This means exploring strategies like subsampling for consistent density, or up-sampling through image swatches and combining multiple datasets. We'll make it an equal-opportunity geolocator!"
+        },
+        {
+          "type": "title",
+          "text": "Smarter Embeddings, Better Clustering"
+        },
+        {
+          "type": "paragraph",
+          "text": "My current embeddings and clustering approach showed limitations. Future work involves exploring dimensionality reduction techniques (to make that lumpy pudding more digestible) and optimizing text and object embeddings. Maybe even a philosophical discussion with the data on what 'separable' truly means."
+        },
+        {
+          "type": "title",
+          "text": "The Power of Sequences (Learning the Whole Story)"
+        },
+        {
+          "type": "paragraph",
+          "text": "A single image is just a snapshot. A sequence of images tells a story! Leveraging LSTMs (like PlaNet did) to capture temporal dynamics across sequences of frames will help overcome the 'single image' limitation and capture more robust patterns. Our bot needs to hear the whole saga, not just isolated whispers."
+        },
+        {
+          "type": "title",
+          "text": "Enhanced Analysis (More Graphs for the Nerds, and for Better Understanding)"
+        },
+        {
+          "type": "paragraph",
+          "text": "To truly diagnose what’s happening under the hood (especially with that tricky attention layer), future reporting will include more detailed metrics like gradient and relevance propagation. Because sometimes, you just need more data about your data. Observing how weights evolve across layers over epochs, for instance, can tell you if the model is truly learning or just memorizing."
+        },
+        {
+          "type": "image",
+          "src": "/Writeups/GEO/img/sampleImages.png",
+          "alt": "3D plot showing the evolution of weight distribution in a batch normalization layer over 50 epochs, indicating stability or learning patterns."
+        },
+        {
+          "type": "title",
+          "text": "The 'Responsible AI' Bit (Because Even GeoGuessr Bots Need a Moral Compass)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, and seriously, the ethical implications of geolocation data are significant. Data sovereignty, ownership, and privacy are paramount. While this project uses publicly available, licensed data, it's crucial to emphasize that predictions should never be solely relied upon for critical applications. We build smart tools, but always with a healthy dose of ethical caution. Our model isn't time-invariant either – a sign that existed yesterday might be gone tomorrow, affecting predictions. We're in a constantly changing world, and our models need to keep up!"
+        },
+        {
+          "type": "pills",
+          "pills": ["Future Work", "Data Augmentation", "Dimensionality Reduction", "LSTM Networks", "Responsible AI", "Time Invariance", "Scalability"]
+        }
+      ]
+    }
+  ],
+  "link": {
+    "text": "Check out the Repo for the code!",
+    "url": "https://www.your-university-thesis-repository.com/your-thesis-link"
+  }
+}
