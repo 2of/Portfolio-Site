@@ -8,6 +8,10 @@ This is still a **work in progress**, but it's **live** on GitHub Pages! 🎉
 
 More updates coming soon! 🚧  Absolutely a WIP but it's just for exploring React really atm.
 
+
+
+## Chrome (Happy) Webkit (mostly happy) Firefox (Very upset and causing me headaches)
+You might see bugs in FF
 ---
 # It's a lot more complex than it looks.
 There's a bunch of fancy contexts, react portals, providers and middleware in there. 
