@@ -1,6 +1,19 @@
 
 
 //BASE STYLES.... 
+
+/// tHIS IS A COLLOSSAL NONSENSE FILE 
+/// 
+/// IT WORKS LETS NOT QUESTION IT"S BEAUTY.
+/// 
+/// ITS HUGE
+/// 
+/// Lots of duplicates
+/// 
+/// 
+/// yay
+
+
 .lg,
 .md,
 .sm {
@@ -17,6 +30,7 @@
   height: 45%;
   display: flex;
   flex-direction: column;
+
   gap: 8px;
   align-items: start;
   justify-content: flex-end;
@@ -63,9 +77,17 @@
   background-repeat: repeat-x;
   background-size: 20px 4px;
 }
+
+.controlsDividerContainer{
+    flex-grow: 1;
+  height: 4px;
+  // background-image: url("data:image/svg+xml;utf8,<svg width='20' height='4' viewBox='0 0 20 4' xmlns='http://www.w3.org/2000/svg'><path d='M0 2 Q 5 0, 10 2 T 20 2' fill='transparent' stroke='black' stroke-width='1.5'/></svg>");
+  // background-repeat: repeat-x;
+  background-size: 20px 4px;
+}
 }
   .subtitle {
-    order: 3;  // will appear second
+    order: 2;  // will appear second
     font-weight: 450;
     margin: 0;
     opacity: 0.75;
@@ -327,14 +349,33 @@ background: radial-gradient(
 }
 
 
-    .heroLinkContainer {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      z-index: 4;
-      padding: 0 32px 32px;
-      // background-color: red;
-    }
+.heroLinkContainer {
+  display: flex;
+  flex-wrap: wrap; // allow multiple rows
+  align-items: center;
+  gap: 16px;
+  // width: 100%;
+  justify-content: center;
+  z-index: 4;
+  // padding: 0 32px 32px 32px;
+  padding-right: 64px;
+  padding-left: 32px;
+  // margin-right: 32px;
+  // background-color: red;
+}
+.controlsDividerContainer {
+  flex-grow: 1;
+  height: 43px;
+  // background-color: red;
+  min-width: 32px;
+  background-size: 20px 4px;
+  // background-image: url("data:image/svg+xml;utf8,<svg width='20' height='4' viewBox='0 0 20 4' xmlns='http://www.w3.org/2000/svg'><path d='M0 2 Q 5 0, 10 2 T 20 2' fill='transparent' stroke='black' stroke-width='1.5'/></svg>");
+  // background-repeat: repeat-x;
+  z-index: 100;
+display: flex;
+align-items: center;
+}
+
 
     .MultiColumn {
       padding-top: 12px;
@@ -411,24 +452,28 @@ background: radial-gradient(
       z-index: 5; /* Ensure title is above everything else */
    
       // background-color: red;
+      display: flex;
    
     }
 
     .titleText {
       padding-top: 350px;
       font-size: 2.25rem;
+      order: 4;
       max-width: 100%;
     }
 
     .subtitle {
       font-size: 1.125rem;
       max-width: 100%;
+      order: 1;
     }
 
     .bgImageContainer {
       position: fixed;
       top: 0;
       left: 0;
+
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -470,7 +515,7 @@ background: linear-gradient(
       display: none;
     }
 .standardControls {
-  order: 5;
+  order: 1;
   z-index: 4;
       // background-color: red;
   font-weight: 600;

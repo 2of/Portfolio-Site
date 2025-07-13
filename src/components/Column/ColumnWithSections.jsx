@@ -26,6 +26,7 @@ import Loader from "../Loader";
 import Feedback from "../FeedBack";
 import { Button } from "@react-pdf-viewer/core";
 import DarkModeToggle from "../darkmodeToggleSmallInline";
+import WigglyLine from "../Misc/WigglyLine";
 
 const HeroLinks = ({ linkData, styles }) => {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ const ColumnWithSections = ({
 
   const { showTooltip, hideTooltip } = useTooltip();
   const [state, setState] = useState(hasloaded);
-
+console.log("RENDER COLUMN")
   useEffect(() => {
     if (AsArticle && containerRef.current) {
       const handleScroll = () => {
@@ -321,26 +322,7 @@ const ColumnWithSections = ({
                 <>
                   <div className={styles.heroLinkContainer}>
                     <HeroLinks linkData={data.heroLinks} styles={styles} />
-                  </div>
-                </>
-              )}
-              <div className={styles.aboutTitle}>
-                <p> {data.author ? data.author : "Unknown Author"} </p>
-                <span className={styles.separator}>•</span>
-                <p>{data.date ? data.date : "Unknown Date"}</p>
-                <span className={styles.separator}>•</span>
-                <p>{data.extratext}</p>
-
-               
-               
-         
-                
-              </div>
-                    <div className={styles.standardControls}>
-                    {/* <div className={styles.leadingLine}/> */}
- 
-
-               <StandardButton
+                                <StandardButton
                   label="Share"
                   icon={getIcon("share")}
                   // tooltip="Load the selected model"
@@ -359,10 +341,55 @@ const ColumnWithSections = ({
                 />
 
 
-                    <div className={styles.leadingLine}/>
+<div className={styles.controlsDividerContainer}>
+
+<WigglyLine/>
+</div>
+                    
+                <DarkModeToggle mobile={false}/>
+                  </div>
+                </>
+              )}
+              <div className={styles.aboutTitle}>
+                <p> {data.author ? data.author : "Unknown Author"} </p>
+                <span className={styles.separator}>•</span>
+                <p>{data.date ? data.date : "Unknown Date"}</p>
+                <span className={styles.separator}>•</span>
+                <p>{data.extratext}</p>
+              </div>
+
+
+
+
+
+              {screenSize === "sm" &&
+              <div className={styles.standardControls}>
+                {/* <div className={styles.leadingLine}/> */}
+
+                <StandardButton
+                  label="Share"
+                  icon={getIcon("share")}
+                  // tooltip="Load the selected model"
+                  callback={() => {
+                    openShareSheet(
+                      window.location.href,
+                      "twitter",
+
+                      data.shortDesc ||
+                        data.subtitle ||
+                        "Noah's Portfolio @ 2of.io",
+                      data.title
+                    );
+                  }}
+                  type="article"
+                />
+
+                <div className={styles.controlsDividerContainer}>
+                  <WigglyLine />
+                </div>
+
                 <DarkModeToggle mobile={screenSize != "sm"} />
-                      </div>
-                
+              </div>}
             </div>
           )}
 

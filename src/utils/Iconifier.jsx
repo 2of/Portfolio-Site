@@ -7,9 +7,9 @@ import {
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
   FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, 
-  FaFile, FaHandSpock, FaExternalLinkAlt,
-  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,
-  FaTwitter, FaFacebook, FaReddit // Added missing social media icons
+  FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,
+  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
+  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter // Added missing social media icons
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -60,7 +60,11 @@ const getIcon = (iconName = "default") => {
     // Missing Social Media Icons
     twitter: <FaTwitter />,
     facebook: <FaFacebook />,
-    reddit: <FaReddit />
+    reddit: <FaReddit />,
+    sun : <FaSun/>,
+    columns: <FaColumns/>,
+    listview: <FaAlignCenter/>,
+    about:  <FaAddressCard/>
   };
 
   return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;

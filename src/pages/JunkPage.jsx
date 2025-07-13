@@ -13,6 +13,7 @@ import TextOnPath from "../components/Misc/TextPath";
 import FlowChartComponent from "../components/Misc/FlowChart";
 import Background from "../components/background";
 import { useGlobalContext } from "../contexts/GlobalContext";
+import WigglyLine from "../components/Misc/WigglyLine";
 export const JunkPage = () => {
   const { getSkills } = useProjects();
   const skills = getSkills(); // Get nested skills
@@ -134,6 +135,8 @@ const testData = {
         </section>
         <section>
 
+          
+
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image} alt="test" />
           <ImageHandle src={image2} alt="test" />
@@ -154,6 +157,8 @@ pathData="M10,60 Q40,90 70,60 T130,60 T190,60 T250,60"
     <FlowChartComponent data={testData}/>
       {/* <Background type={"stars"} /> */}
       <h1>test</h1>
+
+      <WigglyLine/>
 
 
 

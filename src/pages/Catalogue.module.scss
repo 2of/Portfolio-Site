@@ -4,11 +4,19 @@ height: var(--content-height);
     overflow-y: scroll;
     position: relative;
     scroll-snap-type: y mandatory; // Enables vertical snap behavior
+    .landingPage { 
+      background-color: red;
+      color: orange;
+
+      .title { 
+        background-color: orange;
+      }
+      }
     
 
     .sm_fp {
         height: var(--content-height);
-        background-color: var(  --light-bg);
+        // background-color: var(  --light-bg);
         display: flex;
         flex-direction: column;
         align-items: center;

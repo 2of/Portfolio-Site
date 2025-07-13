@@ -1,0 +1,183 @@
+.articleContainer {
+    overflow-y: auto;
+    max-height: 100vh;
+    text-align: start;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        // border: 1px solid pink;
+    }
+}
+
+.herosection {
+    padding: 20px;
+    margin-bottom: 36px;
+    background-color: color-mix(in srgb, var(--bg), black 5%);
+    border-radius: 14px;
+
+    // background-color: red;
+    .sectionName {
+        font-size: 1.75rem;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+
+    .items {
+        gap: 4px;
+    }
+}
+
+.titleSection {
+    max-width: 1400px;
+    margin-top: 30vh;
+
+    // display: flex;
+    // gap: 32px;
+    // background-color: red;
+
+    .header {
+        padding: 16px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        h1 {
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+            z-index: 3;
+        }
+
+        h2 {
+            font-weight: 200;
+            margin: 0;
+            //   opacity: 0.75;
+            font-size: 1rem;
+            z-index: 3;
+        }
+
+        .aboutText {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #555;
+            gap: 8px;
+
+            p {
+                margin: 0;
+            }
+
+            .separator {
+                user-select: none;
+                font-weight: 700;
+                color: #ccc;
+            }
+        }
+
+        .heroLinksContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+
+            .ToggleContainer {
+                align-self: stretch;
+            }
+        }
+    }
+}
+
+.titlePopup {
+    position: absolute;
+
+    width: 100%;
+    display: flex;
+
+    height: 48px;
+    align-items: center;
+    justify-content: flex-start;
+
+
+    padding-left: 8px;
+    z-index: 30;
+
+
+    .TitleContainer {
+        background-color: var(--bg);
+        // height: 48px;
+        height: 36px;
+        // top: 12px;
+        z-index: 8;
+        position: absolute;
+
+        
+
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+        padding: 2px 12px 0px 12px;
+        backdrop-filter: blur(4px);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        // padding
+        justify-content: center;
+
+        // margin-top: 3px;
+        // padding-bottom: 4px;
+        justify-content: center;
+        box-shadow: var(--drop-shadow);
+
+
+        p {
+            font-weight: 300;
+
+            // padding: 0;
+            // margin: 0;
+        }
+    }
+}
+
+.bgImage {
+    // background-color: red;
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+    width: 100%;
+}
+
+.gradientBG {
+    position: fixed;
+    top: -2px;
+
+    width: 300vw; // double screen width to make a full circle span across
+    height: 100vh; // makes a perfect circle, adjust as needed
+    background: radial-gradient(ellipse at center bottom,
+            var(--bg) 0%,
+            var(--bg) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.fullDivider {
+    // background-color: red;
+    margin: 24px;
+}
+
+.contentSection {
+    // background-color: orange;
+    // background-color: var(--bg);
+    // border-radius: var(--border-radius);
+
+    z-index: 5;
+}

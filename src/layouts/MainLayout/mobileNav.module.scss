@@ -1,33 +1,76 @@
+.bgCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 21;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s ease-in-out; // faster fade-in
+    transition-delay: 0s;
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; // slower fade-out
+    transition-delay: 0.2s;
+  }
+}
 .miniNav {
   z-index: 499;
   position: fixed;
   bottom: 0px;
   left: 0;
   right: 0;
-      // background-color: var(--accent-color);
+      // background-color: var(--bg);
   margin: 0 auto;
   height: 102vh;
   width: 100%;
 display: flex;
 flex-direction: column;
 // align-items: flex-end;
+// gap: 12px;
+// gap: -12px;
 justify-content: end;
-  transform-origin: center center;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
-              box-shadow 0.3s ease;
-  .headerText { 
-    padding: 24px;
-    color: white;
-    // background-color: red;
-    * {
-      color: white;
-    }
-    // background-color: orange;
+align-content: center;
+text-align: center;
+
+
+.headerText {
+  // background-color: red;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--text-color);
+  &.animatingIn {
+    animation: bounceIn 0.4s ease forwards;
   }
+
+  &.animatingOut {
+    animation: itemPopOut 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+}
+
+.dividerContainer { 
+  // background-color: red;
+  width: 80%;
+  // display: flex;
+  padding-top: 24px;
+}
   .navList {
     // background-color: red;
     margin: 0;
-    padding: 24px;
+    padding: 0px 24px 24px 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, auto);
@@ -126,6 +169,7 @@ justify-content: end;
       color: var(--text-color);
     }
   }
+  
 
   &.vertical {
     left: 12px;
@@ -263,17 +307,6 @@ justify-content: end;
   }
 }
 
-@keyframes bounceOut {
-  0% {
-    // transform: scale(1);
-    // opacity: 1;
-  }
-
-  100% {
-    // transform: scale(0.4);
-    // opacity: 0;
-  }
-}
 
 @keyframes itemPopIn {
   0% {

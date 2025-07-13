@@ -9,6 +9,7 @@ import { AboutCell } from "./About";
 import { FooterCell } from "./Footer";
 import PageDots from "../../components/UI/PageDots";
 import { useProjects } from "../../contexts/ContentContext";
+import { Article } from "../../components/Article/Article";
 
 export const HomePage = () => {
   const screenSize = useScreenSize();
@@ -108,12 +109,12 @@ export const HomePage = () => {
       {showModal && (
         <Modal
           component={
-            <ColumnWithSections
+            <Article
               metadata={getArticleMetaData("geo")}
-              style="modern"
-              topDivideDouble={true}
-              twoColumns={true}
-              AsArticle={true}
+              // style="modern"
+              // topDivideDouble={true}
+              // twoColumns={true}
+              // AsArticle={true}
             />
           }
           onClose={() => setShowModal(false)}

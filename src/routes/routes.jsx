@@ -3,6 +3,7 @@ import { HomePage } from "../pages/Home/HomePage";
 import { JunkPage } from "../pages/JunkPage";
 import { CataloguePage } from "../pages/Catalogue";
 import { ProjectPage } from "../pages/ProjectPage";
+import { AboutPage } from "../pages/AboutPage";
 
 const routes = [
   {
@@ -23,15 +24,15 @@ const routes = [
     mobile_fullNav: false,
     transparentnav: false,
   },
-  {
-    path: "/junk",
-    label: "junk",
-    element: <JunkPage />,
-    icon: "junk",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: false,
-  },
+  // {
+  //   path: "/junk",
+  //   label: "junk",
+  //   element: <JunkPage />,
+  //   icon: "junk",
+  //   fullscreen_fullNav: false,
+  //   mobile_fullNav: false,
+  //   transparentnav: false,
+  // },
   {
     path: "/chess",
     label: "elo estimator",
@@ -50,6 +51,16 @@ const routes = [
     mobile_fullNav: false,
     transparentnav: true,
     hide: true, // Hidden from nav menus
+  },
+    {
+    path: "/about",
+    label: "About",
+    element: <AboutPage />,
+    icon: "about",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: true,
+    hide: false, // Hidden from nav menus
   },
 ];
 

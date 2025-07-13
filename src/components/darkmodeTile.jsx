@@ -241,7 +241,7 @@ export const DarkModeTile = ({grayscale = false}) => {
               [styles.hidden]: animdir === "none" && localstate === false,
             })}
           >
-            t
+            
           </div>
           
           <div

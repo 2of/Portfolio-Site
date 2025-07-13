@@ -11,6 +11,7 @@ import useScreenSize from "../utils/screensize";
 import getIcon from "../utils/Iconifier";
 import { BouncyArrows } from "../components/UI_Extrasa/bouncyArrows";
 import decor2 from "../assets/svgs/DrawKit_Vector_Illustrations_Video park.svg";
+import { Article } from "../components/Article/Article";
 export const CataloguePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -109,7 +110,7 @@ export const CataloguePage = () => {
                 twoColumns={id === 0}
                 fullLink={true}
                 type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
-              index = {id}
+                index={id}
               />
               {/* test */}
               {/* {project.showcase ? "yes" : "no"} */}
@@ -120,15 +121,14 @@ export const CataloguePage = () => {
       {selectedProject && (
         <Modal
           component={
-            <ColumnWithSections
+            <Article
               // data={getArticle(selectedProject.name, "large")}
-              twoColumns={true}
-              fullLink={false}
+              // twoColumns={true}
+              // fullLink={false}
               metadata={getArticleMetaData(selectedProject.name)}
               AsArticle={true}
               extratext={selectedProject.extratext}
               style="modern"
-                    
             />
           }
           onClose={handleCloseModal}
@@ -138,15 +138,16 @@ export const CataloguePage = () => {
           isOpen={isModalOpen}
         />
       )}
-     <section className={`${styles.sm_25} ${styles.smallheader}`}>
+      <section className={`${styles.sm_25} ${styles.smallheader}`}>
         <h1 className={styles.textSection}>Most Recent Github Commits</h1>
         <p className={styles.subtitle}>
-          Is this here to fill space? Well... yeah it is, it's just the last 6 or so from the rest API
+          Is this here to fill space? Well... yeah it is, it's just the last 6
+          or so from the rest API
         </p>
         {screenSize !== "sm" && <div className={styles.divider} />}
-     
+
         {screenSize === "sm" && <BouncyArrows />}
-     </section>
+      </section>
       {githubProjects && (
         <div className={styles.ProjectContainerDense}>
           {githubProjects.map((proj, id) => (
@@ -158,99 +159,90 @@ export const CataloguePage = () => {
                   title: proj.name,
                   subtitle: proj.description,
                   url: proj.url,
-      
                 }}
-                 fullLinkCallBack={() => navigate.to(project.url)}
+                fullLinkCallBack={() => navigate.to(project.url)}
                 //   asFS={screenSize === "sm"}
                 type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
-         
-                           
               />
             </div>
           ))}
 
-           <Thumbnail
-                size="small"
-                randomcolor={true}
-                data={{
-                  title: "See All Repos",
-                  subtitle: "github.com/2of",
-                  url: "www.github.com/2of"
-                }}
-                 fullLinkCallBack={() => navigate.to(project.url)}
-                //   asFS={screenSize === "sm"}
-                type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
-         
-                           
-              />
-
-
+          <Thumbnail
+            size="small"
+            randomcolor={true}
+            data={{
+              title: "See All Repos",
+              subtitle: "github.com/2of",
+              url: "www.github.com/2of",
+            }}
+            fullLinkCallBack={() => navigate.to(project.url)}
+            //   asFS={screenSize === "sm"}
+            type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
+          />
         </div>
       )}
       {/* <h2>See more</h2> */}
-     <section className={`${styles.sm_25} ${styles.smallheader}`}>
+      <section className={`${styles.sm_25} ${styles.smallheader}`}>
         <h1 className={styles.textSection}>Notable University Work....</h1>
         <p className={styles.subtitle}>
-          This is predominatly course work, however where I have expanded on course material is outlined
+          This is predominatly course work, however where I have expanded on
+          course material is outlined
         </p>
         {screenSize !== "sm" && <div className={styles.divider} />}
-     
+
         {screenSize === "sm" && <BouncyArrows />}
-     </section>
+      </section>
 
-        {/* {screenSize !== "sm" && <div className={styles.divider} />} */}
+      {/* {screenSize !== "sm" && <div className={styles.divider} />} */}
 
-        <div className={styles.ProjectContainer}>
-          {shortProjects
-            .filter((project) => project.uniWorkShowcase)
-            .map((project, id) => (
-              <div key={id} className={`${styles.ProjectCell} ${styles.sm_half}`}>
-                <Thumbnail
-                  data={project}
-                  fullLinkCallBack={() => handleOpenModal(project)}
-                  
-            type={screenSize === "sm" ? "mobile_compact" : "large_thumb"}
-                />
-                {/* test */}
-                {/* {project.showcase ? "yes" : "no"} */}
-              </div>
-            ))}
-        </div>
+      <div className={styles.ProjectContainer}>
+        {shortProjects
+          .filter((project) => project.uniWorkShowcase)
+          .map((project, id) => (
+            <div key={id} className={`${styles.ProjectCell} ${styles.sm_half}`}>
+              <Thumbnail
+                data={project}
+                fullLinkCallBack={() => handleOpenModal(project)}
+                type={screenSize === "sm" ? "mobile_compact" : "large_thumb"}
+              />
+              {/* test */}
+              {/* {project.showcase ? "yes" : "no"} */}
+            </div>
+          ))}
+      </div>
 
-
-       <section className={`${styles.sm_25} ${styles.smallheader}`}>
+      <section className={`${styles.sm_25} ${styles.smallheader}`}>
         <h1 className={styles.textSection}>Miscellaneous</h1>
         <p className={styles.subtitle}>
-          This is predominatly course work, however where I have expanded on course material is outlined
+          This is predominatly course work, however where I have expanded on
+          course material is outlined
         </p>
         {screenSize !== "sm" && <div className={styles.divider} />}
-     
+
         {screenSize === "sm" && <BouncyArrows />}
-     </section>
+      </section>
 
-        {/* {screenSize !== "sm" && <div className={styles.divider} />} */}
+      {/* {screenSize !== "sm" && <div className={styles.divider} />} */}
 
-        <div className={styles.ProjectContainer}>
-          {shortProjects
-            .filter((project) => project.name === "schemaOverview")
-            .map((project, id) => (
-              <div key={id} className={`${styles.ProjectCell} ${styles.sm_half}`}>
-                <Thumbnail
-                  data={project}
-                  fullLinkCallBack={() => handleOpenModal(project)}
-                  twoColumns={id === 0}
-                  fullLink={true}
-                  
-                    asFS={screenSize === "sm"}
-                          type={screenSize === "sm" ? "mobile_compact" : "large_thumb"}
+      <div className={styles.ProjectContainer}>
+        {shortProjects
+          .filter((project) => project.name === "schemaOverview")
+          .map((project, id) => (
+            <div key={id} className={`${styles.ProjectCell} ${styles.sm_half}`}>
+              <Thumbnail
+                data={project}
+                fullLinkCallBack={() => handleOpenModal(project)}
+                twoColumns={id === 0}
+                fullLink={true}
+                asFS={screenSize === "sm"}
+                type={screenSize === "sm" ? "mobile_compact" : "large_thumb"}
                 //   asFS={false}
-                />
-                {/* test */}
-                {/* {project.showcase ? "yes" : "no"} */}
-              </div>
-            ))}
-        </div>
-   
+              />
+              {/* test */}
+              {/* {project.showcase ? "yes" : "no"} */}
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

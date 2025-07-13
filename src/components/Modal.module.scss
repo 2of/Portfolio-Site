@@ -22,10 +22,9 @@
     }
   
     // Avoid applying transitions to all children (better performance)
-    > * {
-    //   transition: 
-      transition: all 0.3s ease-in-out;
-    }
+   > * {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
   }
   
   .modalContent {
@@ -142,7 +141,7 @@
       border: 1px solid var(--border-color);
 
 
-        border-radius: 16px;
+        border-radius: var(--border-radius);
 
 
 //   box-shadow: 4px 4px 0 ;
@@ -169,21 +168,37 @@
     
     .buttonPalette {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 4px;
+        right: 4px;
         z-index: 70;
         font-size: 18px;
         font-weight: bold;
         padding: 12px;
+        max-height: 12px;
+
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 12px;
-    }
+        border-radius: var(--border-radius);
+        background-color: var(--bg-transparent);
+        backdrop-filter: blur(4px);
+        border: 1px solid var(--border-color);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // ← drop shadow added
+         * { 
+          color: var(--text-color);
+         }
     
+    }
+
+
     .modalNav {
         background-color: none;
+        // padding: 12px;
         padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     
         &:hover {
             background-color: none;

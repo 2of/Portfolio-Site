@@ -37,7 +37,7 @@ const MainLayout = () => {
 
   const [blurEffect, setBlurEffect] = useState(disableForPopup);
   useEffect(() => {
-    setBlurEffect(disableForPopup);
+    // setBlurEffect(disableForPopup);
   }, [disableForPopup]);
 
   const blurStyle = {

@@ -16,7 +16,7 @@ export const GlobalProvider = ({ children }) => {
   const [isMenuOpenforNav, setisMenuOpenforNav] = useState(false);
   const [hopNav, setHopNav] = useState(false);
   const [floatingNavisOnRight, setFloatingNavisOnRight] = useState(true);
-
+  const [prefersCol, setPrefersCol] = useState(true);  
   const [disableForPopup, setDisableForPopupState] = useState(false);
   const [disablePopupClickOffCallback, setDisablePopupClickOffCallback] = useState(null);
 
@@ -55,6 +55,11 @@ export const GlobalProvider = ({ children }) => {
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
+
+  const togglePrefersColumnView = () => {
+    console.log("TESTSTE")
+    setPrefersCol((prev) => !prev);
+  }
 
   useEffect(() => {
     if (isDarkMode) {
@@ -130,6 +135,8 @@ const closeShareSheet = () => {
       value={{
         isDarkMode,
         toggleTheme,
+        prefersCol,
+        togglePrefersColumnView,
         basename,
         isBlurPage,
         setBlurPage,

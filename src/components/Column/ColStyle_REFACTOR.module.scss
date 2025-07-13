@@ -198,7 +198,7 @@
     }
 
     .titleText {
-        padding-top: 350px;
+        padding-top: 30vh;
         font-size: 2.25rem;
         max-width: 100%;
         font-weight: 300;
@@ -266,7 +266,9 @@
         margin: 24px auto;
     }
 
-
+    .controlsDividerContainer { 
+    flex-grow: 1;
+    }
 
     .collapsedTitleContainer {
         display: none;

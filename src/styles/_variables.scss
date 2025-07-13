@@ -1,50 +1,40 @@
 :root {
   /* Light Mode */
-  --light-bg: #f2f2f2;
-  --light-bg-transparent: #f9f9f9f1;
+  --light-bg: #f2f0e3;
+  --light-bg-transparent: #f2f0e3d6;
   --light-text: #2E2E2E;
   --light-secondary-text: #6C6C6C;
   --light-card-bg: #FFFFFF;
   --light-border: #474747;
-  --light-accent: #d44742; /* Corrected variable name */
+  --light-accent: #d44742;
   --light-link: #4A90E2;
-  --light-hero-bg: rgb(175, 93, 100); 
-  /* Dark Mode */
-  --dark-bg: #1A1A1A;
-  --dark-bg-transparent: #1a1a1af3;
-  --dark-text: #E0E0E0;
+  --light-hero-bg: rgb(175, 93, 100);
+  --light-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  /* Dark Mode Base Values */
+  --dark-bg: #121212;
+  --dark-bg-transparent: #1a1a1ac7;
+  --dark-text: #f2f0e3;
   --dark-secondary-text: #A0A0A0;
   --dark-card-bg: #262626;
   --dark-border: #404040;
-  --dark-accent: #d44742; /* Corrected variable name */
+  --dark-accent: #d44742;
   --dark-link: #6BB9F0;
   --dark-hero-bg: #456882;
+  --dark-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
 
-  /* Spacing (Padding and Margins) */
+  /* Spacing */
   --padding-small: 10px;
   --padding-medium: 15px;
   --padding-large: 36px;
   --spacing-small: 10px;
 
-  /* Glass Effect */
-  --glass-bg: #f9f9f9ce;
-  --glass-border-radius: 16px;
-  --glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  --glass-blur: 5px;
-  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-
-  --dark-glass-bg: rgba(0, 0, 0, 0.71);
-  --dark-glass-border: 1px solid rgba(255, 255, 255, 0.4);
-  --dark-glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  --dark-glass-blur: 5px;
-
-  /* Font Size */
+  /* Font */
   --font-size-base: 16px;
   --font-size-lg: 18px;
   --font-weight-bold: 600;
- 
-  // HEIGHTS
 
+  /* Heights */
   --nav-height: 0px;
   --content-height: calc(100vh - var(--nav-height));
   --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
@@ -52,44 +42,46 @@
   /* Border Radius */
   --border-radius: 24px;
 
-  /* Blur Effect */
+  /* Blur */
   --blur-radius: 15px;
 
   /* General Colors */
   --primary-color: #2E2E2E;
   --secondary-color: #6C6C6C;
-  --accent-color: var(--light-accent); /* Use --light-accent as the default */
+  --accent-color: var(--light-accent);
   --link-color: #4A90E2;
   --herobg: var(--light-hero-bg);
-  /* Default Theme (Light Mode) */
+
+  /* Active Theme Defaults (Light) */
   --bg: var(--light-bg);
-  --bg-transparent: var(--light-bg-transparent); /* Add transparent background for light mode */
+  --bg-transparent: var(--light-bg-transparent);
   --text-color: var(--light-text);
   --secondary-text: var(--light-secondary-text);
   --card-bg: var(--light-card-bg);
   --border-color: var(--light-border);
-  --accent: var(--light-accent); /* Use --light-accent as the default */
+  --accent: var(--light-accent);
   --link: var(--light-link);
+  --drop-shadow: var(--light-drop-shadow);
+
+  /* Inverse */
+  --inverse-transparent: var(--dark-bg-transparent);
+  --inverse-shadow: var(--dark-drop-shadow);
 }
 
 [data-theme="dark"] {
-  /* Dark Mode Overrides */
   --bg: var(--dark-bg);
-  --bg-transparent: var(--dark-bg-transparent); /* Add transparent background for dark mode */
+  --bg-transparent: var(--dark-bg-transparent);
   --text-color: var(--dark-text);
   --secondary-text: var(--dark-secondary-text);
   --card-bg: var(--dark-card-bg);
   --border-color: var(--dark-border);
-  --accent: var(--dark-accent); /* Use --dark-accent in dark mode */
+  --accent: var(--dark-accent);
   --link: var(--dark-link);
   --herobg: var(--dark-hero-bg);
-  --accent-color: var(--dark-accent); /* Use --dark-accent for --accent-color */
+  --accent-color: var(--dark-accent);
+  --drop-shadow: var(--dark-drop-shadow);
 
-  /* Dark Glass Mode Overrides */
-  --glass-bg: var(--dark-glass-bg);
-  --glass-border: var(--dark-glass-border);
-  --glass-box-shadow: var(--dark-glass-box-shadow);
-  --glass-blur: var(--dark-glass-blur);
+  /* Inverse */
+  --inverse-transparent: var(--light-bg-transparent);
+  --inverse-shadow: var(--light-drop-shadow);
 }
-
-
