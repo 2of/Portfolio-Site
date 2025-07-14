@@ -4,6 +4,8 @@ import { JunkPage } from "../pages/JunkPage";
 import { CataloguePage } from "../pages/Catalogue";
 import { ProjectPage } from "../pages/ProjectPage";
 import { AboutPage } from "../pages/AboutPage";
+import { SettingsPage } from "../pages/SettingsPage";
+
 
 const routes = [
   {
@@ -27,6 +29,7 @@ const routes = [
   {
     path: "/junk",
     label: "junk",
+    hide: true,
     element: <JunkPage />,
     icon: "junk",
     fullscreen_fullNav: false,
@@ -53,16 +56,26 @@ const routes = [
     transparentnav: true,
     hide: true, // Hidden from nav menus
   },
-  //   {
-  //   path: "/about",
-  //   label: "About",
-  //   element: <AboutPage />,
-  //   icon: "about",
-  //   fullscreen_fullNav: false,
-  //   mobile_fullNav: false,
-  //   transparentnav: true,
-  //   hide: false, // Hidden from nav menus
-  // },
+    {
+    path: "/about",
+    label: "About",
+    element: <AboutPage />,
+    icon: "about",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: true,
+    hide: false, // Hidden from nav menus
+  },
+   {
+    path: "/settings",
+    label: "Preferences",
+    element: <SettingsPage />,
+    icon: "settings",
+    fullscreen_fullNav: false,
+    mobile_fullNav: false,
+    transparentnav: true,
+    hide: false, // Hidden from nav menus
+  }
 ];
 
 export default routes;

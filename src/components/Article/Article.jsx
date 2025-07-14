@@ -18,7 +18,7 @@ import useScreenSize from "../../utils/screensize";
 const StandardControls = ({ data, mobile =  false}) => {
   //   console.log("STANDARD", data);
 
-  const { prefersCol, togglePrefersColumnView, openShareSheet } =
+  const { themeOverride, toggleThemeOverride, openShareSheet } =
     useGlobalContext();
 
   return (
@@ -215,6 +215,7 @@ export const Article = ({ metadata }) => {
               ? {
                   backgroundImage: `url(${data.heroImage})`,
                   backgroundAttachment: "fixed",
+                              filter: `blur(${(bgModifiervalue) * 8}px)`, // starts blurry and sharpens
                   transform: `scale(${1.2 - bgModifiervalue * 0.2})`, // Adjust scale based on scrollOpacity
                   // transition: "transform 0.1s ease-out, filter 0.1s ease-out", // Smooth transition
                 }

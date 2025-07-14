@@ -8,6 +8,7 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 export const AboutCell = ({ sz,scrollPosition }) => {
     const { getLink } = useGlobalContext();
 
+
     return (
         <div className={sz === "sm" ? styles.sm : styles.lg}>
             {/* About Me Section */}

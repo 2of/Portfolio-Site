@@ -1,0 +1,93 @@
+{
+  "title": "welcome",
+  "subtitle": "This is a little website I made",
+  "description": "Short and sweet, the other pages are for flair",
+  "areatitle": "Here's the things you pm me about",
+  "web": {
+    "title": "Firstly, actually I put a lot of time into this site, Let's talk about Web...",
+    "subtitle": "Aside from REACT's inbuilt stuff, some icon libs and react-router-dom this is all done from scratch",
+    "paragraph1": "So, there's about 90% of a full UI framework in here too, sans padding, margin predone things like you'd find in bootstrap and others.",
+    "paragraph2": "There's also a full writeup, using the inbuilt fancy-pants article renderer thingie (that I made, thingie is totally valid)",
+    "data": [
+      { "title": "React" },
+      { "title": "SCSS" },
+      { "title": "Webpack" },
+      { "title": "Vite" },
+      { "title": "React Router" },
+      { "title": "Custom Implemented Markdown rendering" },
+      { "title": "Almsot a whole component lib" },
+      { "title": "Component-first layout engine" },
+      { "title": "State management via A unch of react Contexts" }
+      
+    ]
+  },
+
+  "Machine Learning": {
+    "title": "Skip here for AI",
+    "subtitle": "I'm pretty good at doing Machine Learning things",
+    "paragraph1": "I have this Master's in Artificial Intelligence (with merit, might I add). The capstone project is below",
+    "paragraph2": "I focussed pretty heavily on the data science end of things. That is, regression analysis, Big data processing, distributed machine learning, Machine learning again, Network design and architecture analysis, heuristic analysis",
+    "data": [
+      { "title": "Python" },
+      { "title": "R" },
+      { "title": "TensorFlow" },
+      { "title": "PyTorch" },
+      { "title": "scikit-learn" },
+      { "title": "pandas" },
+      { "title": "NumPy" },
+      { "title": "Matplotlib & seaborn" },
+      { "title": "Jupyter Notebooks" },
+      { "title": "Spark (MLlib)" },
+      { "title": "SQL (for data wrangling)" },
+      { "title": "Keras" },
+      { "title": "XGBoost" },
+      { "title": "LangChain" },
+      { "title": "HuggingFace Transformers" }
+    ],
+    "lastline": "The values are mostly based on how much I enjoy the animation"
+  },
+
+  "IT": {
+    "title": "I'm also an IT person",
+    "subtitle": "Actually that's what im currently up to",
+    "paragraph1": "MSP work, Healthcare and Education IT. Shaping user support, implementing networks, I've done my share of IT support",
+    "paragraph2": "My favourite anecdote was a $100m+ firm who run an expired server 2012 trial that has to be reset every 6 or so months. But aside from that I've been front and center for Cloud First transformations in our secondary schools",
+    "data": [
+      { "title": "Active Directory (on-prem & Azure)" },
+      { "title": "Microsoft Entra ID" },
+      { "title": "Microsoft Exchange / Exchange Online" },
+      { "title": "Microsoft Intune" },
+            { "title": "Google Admin" },
+      { "title": "Microsoft 365 (Admin Center, Teams, SharePoint)" },
+      { "title": "Group Policy / GPO" },
+      { "title": "Windows Server (2016–2022)" },
+      { "title": "DNS / DHCP / Networking fundamentals" },
+      { "title": "PowerShell (begrudgingly)" },
+      { "title": "VPN + firewall config (FortiGate, UniFi, Mikrotik (Including climbing roofs for point to points) etc.)" },
+      { "title": "SaaS troubleshooting across environments" },
+      { "title": "License & asset management" }
+
+    ],
+    "lastline": "and so on"
+  },
+  "Softeng": {
+    "title": "Finally, Softeng & Programming bits",
+    "subtitle": "Actually that's what im currently up to",
+    "paragraph1": "A few other bits and bobs that are important to all of the above",
+    "paragraph2": "My favourite anecdote was a $100m+ firm who run an expired server 2012 trial that has to be reset every 6 or so months. But aside from that I've been front and center for Cloud First transformations in our secondary schools",
+    "data": [
+      { "title": "GIT / Version Control" },
+      { "title": "OOP Design" },
+      { "title": "TDD" },
+      { "title": "Java, Kotlin too" },
+      { "title": "C++ & C" },
+      { "title": "Python" },
+      { "title": "Web (see above), throw in Manifest V3" },
+      { "title": "JS & node JS" },
+            { "title": "Vue" },
+                  { "title": "React Native" },
+      { "title": "A little swift" }
+    ],
+    "lastline": "Also all of the things that go with algorithm analysis, tractability, implementation and memory space, can't forget those"
+  }
+}

@@ -12,6 +12,7 @@ import WigglyLine from "../components/Misc/WigglyLine";
 import image from "../assets/images/default.png";
 import image2 from "../assets/images/default_other.jpeg";
 import { DarkModeWrapper } from "../components/UI/DarkModeWrapper";
+import ProgressBar from "../components/UI/ProgressBar";
 
 export const JunkPage = () => {
   const { getSkills } = useProjects();
@@ -75,6 +76,36 @@ export const JunkPage = () => {
         </button>
       </div>
 
+      <div className={styles.chunk}>
+
+ <ProgressBar
+  style="linear"
+  animated
+  val={68}
+  lowerBound={50}
+  upperBound={100}
+  showVal
+  showBounds
+/>
+<ProgressBar
+  style="round"
+  animated
+  val={199}
+  lowerBound={50}
+  upperBound={550}
+  showVal
+  showBounds
+/> <ProgressBar
+  style="linear"
+  animated
+  val={6833}
+  lowerBound={50}
+  upperBound={10033}
+  showVal
+  showBounds
+/>
+  
+      </div>
       <div className={`${styles.chunk} ${styles.centered}`}>
         <RadialMenu
           data={skills}
@@ -148,6 +179,7 @@ export const JunkPage = () => {
 
         <DarkModeWrapper/>
       </div>
+
 
     </div>
   );

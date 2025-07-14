@@ -1,0 +1,158 @@
+{
+  "name": "exampleProject",
+  "title": "Example Project",
+  "subtitle": "A demonstration of all supported content types.",
+  "heroImage": "/assets/images/example-hero.png",
+  "heroLinks": [
+    {
+      "title": "View Article",
+      "type": "Article",
+      "to": "/articles/example"
+    },
+    {
+      "title": "Source Code",
+      "type": "Code",
+      "to": "https://github.com/example/project"
+    }
+  ],
+  "sections": [
+    {
+      "name": "Paragraph Section",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum."
+        }
+      ]
+    },
+    {
+      "name": "Image Section",
+      "items": [
+        {
+          "type": "image",
+          "src": "/assets/images/sample-image.jpg",
+          "alt": "Sample image showing lorem ipsum context."
+        }
+      ]
+    },
+     {
+      "name": "Data Section",
+
+      "items": [
+        {
+          "type": "data",
+          "datapoints": [
+            {
+              "overallLabel": "first Sample",
+              "type": "linear_bar",
+              "data" : 
+              [{
+                "label": "label 1 ",
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 13},
+            
+            {
+                "label": "another" ,
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 33}
+            ]
+            },  {
+              "overallLabel": "second area",
+              "type": "radial",
+              "data" : 
+              [{
+                "label": "radial 1",
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 33},
+            
+            {
+                "label": "radial 2",
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 62}
+            ]
+            },            {
+              "overallLabel": "first Sample",
+              "type": "linear_bar",
+              "data" : 
+              [{
+                "label": "label 1 ",
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 13},
+            
+            {
+                "label": "another" ,
+              "upperBound": 100,
+              "lowerBound": 0,
+              "value": 33}
+            ]
+            }
+          ]
+        }
+      ]
+    } ,
+    {
+      "name": "Pills Section",
+      "items": [
+        {
+          "type": "pills",
+          "pills": ["Lorem", "Ipsum", "Dolor", "Sit", "Amet"]
+        }
+      ]
+    }, {
+      "name": "Grid Section",
+      "items": [
+        {
+          "type": "grid",
+          "rows": [{
+            "label":"Label Here",
+            "value" : 123
+          },{
+            "label":"Label Here",
+            "value" : 123
+          }]
+        }
+      ]
+    },
+    {
+      "name": "Highlight Section",
+      "items": [
+        {
+          "type": "highlight",
+          "text": "This is a highlighted phrase meant to draw attention."
+        }
+      ]
+    },
+    {
+      "name": "Link Section",
+      "items": [
+        {
+          "type": "link",
+          "text": "Read more about lorem ipsum here:",
+          "label": "Click Here",
+          "to": "https://example.com/lorem-ipsum"
+        }
+      ]
+    },
+    {
+      "name": "Code Section",
+
+      "items": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function loremIpsum() {\n  console.log('Lorem ipsum dolor sit amet.');\n}"
+        }
+      ]
+    }
+   
+  ],
+  "link": {
+    "text": "Back to projects",
+    "url": "/projects"
+  }
+}

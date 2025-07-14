@@ -1,0 +1,131 @@
+:root {
+  --fill-percent: 0;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column; // stack label + bar
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+// ─── LABEL ───────────────────────────────
+.headerlabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  bottom: -32px;
+  // background-color: red;
+
+  // background-color: red;
+  color: var(--text-color);
+  text-align: start;
+}
+
+// ─── LINEAR STYLE ───────────────────────────────
+.linear {
+  width: 100%;
+
+  .bounds {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.75rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+  }
+
+  .bar {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    overflow: visible;
+  }
+
+  .fillBar {
+    position: absolute;
+    top: -4px;
+    height: 8px;
+    width: calc(var(--fill-percent, 0) * 1%);
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    transition: width 0.8s ease-in-out;
+    z-index: 1;
+
+    .valueLabel {
+      position: absolute;
+      top: -1.5rem;
+      right: 0;
+      transform: translateX(50%);
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--text-color);
+      white-space: nowrap;
+    }
+  }
+}
+
+// ─── ROUND STYLE ───────────────────────────────
+.round {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  // height: 164px;
+  // background-color: yellow;
+
+  .circleWrapper {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    // background-color: red;
+  }
+
+  .circle {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .track {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: 4;
+  }
+
+  .fill {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: 8;
+    stroke-dasharray: 282;
+    stroke-dashoffset: calc(282 - (var(--fill-percent, 0) * 2.82));
+    transition: stroke-dashoffset 0.8s ease-in-out;
+  }
+
+  .centerValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-color);
+    pointer-events: none;
+  }
+
+  .belowLabel {
+    // margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    // background-color: green;
+    text-align: center;
+  }
+}

@@ -6,7 +6,8 @@ import {
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
-  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, 
+  FaGrinBeamSweat,FaSmile,FaWrench,
+  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH,
   FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,FaWalking, FaChessKnight,
   FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
   FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, // Added missing social media icons
@@ -65,7 +66,11 @@ const getIcon = (iconName = "default") => {
     sun : <FaSun/>,
     columns: <FaColumns/>,
     listview: <FaAlignCenter/>,
-    about:  <FaInfo/>
+    about:  <FaInfo/>,
+    joke: <FaGrinBeamSweat/>,
+    smile: <FaSmile/>,
+    settings: <FaWrench/>
+    
   };
 
   return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;

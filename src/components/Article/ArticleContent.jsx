@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import singleCol from "../Article/ArticleContent-Vomit-Desktop.module.scss"
-import multiCol from "../Article/ArticleContentMultiCol.module.scss" 
+import reg_styles from "./ArticleContentMultiCol.module.scss";
+import odd_styles from "./ArticleContent-Vomit-Desktop.module.scss"
 import { useTooltip } from "../../contexts/tooltip";
 import {
   ParagraphSection,
@@ -10,6 +10,8 @@ import {
   LinkSection,
   CodeSection,
   TitleSection,
+  DataSection,
+  GridSection
 } from "./Sections";
 import WigglyLine from "../Misc/WigglyLine";
 import { useGlobalContext } from "../../contexts/GlobalContext";
@@ -37,6 +39,28 @@ const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
           }}
         />
       );
+
+
+    case "grid" : 
+    return ( 
+    <GridSection
+      rows={item.rows}
+      styles={styles}
+
+    />
+    )
+    case "data" : 
+        return ( 
+          
+        <DataSection
+            key={index}
+            title={item.title}
+            datapoints={item.datapoints}
+            className={styles.DataSection}
+            styles={styles}
+        
+        />
+        )
     case "highlight":
       return (
         <HighlightSection
@@ -89,47 +113,60 @@ const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
 
 // Individual section renderer
 const Section_ = React.memo(({ data, styles, showTooltip, hideTooltip }) => {
-  return (
-    <>
-      {data.boost ? (
-        <div className={styles.HighLightSection}>
-          {data.name && <h3 className={styles.sectionName}>{data.name}</h3>}
+  
+  
+return (
+  <>
+    {data.boost ? (
+      <div className={styles.HighLightSection}>
+        {data.name && <h3 className={styles.sectionName}>{data.name}</h3>}
+        {Array.isArray(data.items) && data.items.length > 0 && (
           <div className={styles.items}>
             {data.items.map((item, index) =>
               renderItem(item, index, styles, showTooltip, hideTooltip)
             )}
           </div>
-        </div>
-      ) : (
-        <>
-          {data.name && (
-            <div>
-              <h3 className={styles.sectionTitle}>{data.name}</h3>
-            </div>
-          )}
+        )}
+      </div>
+    ) : (
+      <>
+        {data.name && (
+          <div>
+            <h3 className={styles.sectionTitle}>{data.name}</h3>
+          </div>
+        )}
+        {Array.isArray(data.items) && data.items.length > 0 && (
           <div className={styles.sectionItems}>
             {data.items.map((item, index) =>
               renderItem(item, index, styles, showTooltip, hideTooltip)
             )}
           </div>
-        </>
-      )}
-    </>
-  );
+        )}
+      </>
+    )}
+  </>
+);
 });
 
 export const ArticleContent = ({ data }) => {
+  
 
   const { showTooltip, hideTooltip } = useTooltip();
      const {
-     prefersCol,
-     togglePrefersColumnView,
+     themeoverride,
+     togglethemeOverride,
      openShareSheet
    } = useGlobalContext();
 
-     const styles = prefersCol ? multiCol : singleCol
+   const styles = !themeoverride ? reg_styles : odd_styles
   return (
-    <div className={`${styles.ContentContainer}`}>
+    <div className={`${true ? styles.ContentContainer : ""   }`}>
+      {themeoverride && (
+
+            <h3> Ridiculous mode is on by the way </h3>
+      )
+    
+      }
       {data?.sections?.map((section, sectionIndex) => (
         <>
           <div className={styles.sectionContainer}>

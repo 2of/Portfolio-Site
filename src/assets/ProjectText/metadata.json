@@ -31,13 +31,8 @@
     "details": {
       "subtitle": "for about an afternoon",
       "tags": [
-        "Machine Learning",
-        "Tensorflow",
-        "Transfer Learning",
-        "Regression Analysis",
-        "Model Analysis",
-        "CNN",
-        "Tensorflow"
+        "Manifest V3",
+        "Web"
       ],
 
       "type": "url",
@@ -82,25 +77,25 @@
       "tags": ["REACT", "JS", "SCSS", "Custom Markup"],
       "type": "file",
       "url": "/Writeups/PortfolioSite/text.json",
-      "file": "Chess1.json",
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/ChessELOEstimator/thumb.gif",
       "title": "Portfolio Website (this one!)"
     }
   },
 
+
   {
-    "name": "SAMPLE SAMPLE",
-    "showcase": false,
+    "name": "sample",
+    "showcase": true,
     "uniWorkShowcase": true,
     "details": {
       "subtitle": "A demonstration of the Possible Article Format",
       "tags": ["We can add tags", "sample"],
       "type": "url",
-      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
-      "file": "Chess1.json",
+      "url": "/Writeups/template.json",
+
       "bgimage": "/Writeups/GEO/thumb.gif",
-      "title": "*! Overview of for uni Schema *!"
+      "title": "*! Overview of for uni Schema <LOCAL> *!"
     }
   },
   {
@@ -115,7 +110,7 @@
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
       "file": "Chess1.json",
       "bgimage": "/Writeups/GEO/thumb.gif",
-      "title": "*! Overview of for uni Schema *!"
+      "title": "*! Overview of for uni Schema <API> *!"
     }
   }
 ]
