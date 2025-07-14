@@ -110,7 +110,7 @@
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
       "file": "Chess1.json",
       "bgimage": "/Writeups/GEO/thumb.gif",
-      "title": "*! Overview of for uni Schema <API> *!"
+      "title": "Sample loaded from another repo"
     }
   }
 ]
