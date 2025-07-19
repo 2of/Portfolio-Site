@@ -3,12 +3,12 @@
   "name": "2of.io Showcase Article",
   "title": "Unveiling 2of.io: A Deep Dive into a Dynamic Portfolio Showcase",
   "subtitle": "Discover the innovative design and intelligent content management behind this React-powered web experience.",
-  "heroImage": "https://via.placeholder.com/1200x600?text=2of.io+Portfolio+Showcase",
+
   "shortDesc": "Explore 2of.io, a cutting-edge portfolio showcase built with React, JS, HTML, and SCSS, featuring dynamic interactions and AI-integrated content management.",
   "author": "Your Name/2of Team",
   "date": "July 3, 2025",
   "tools": ["test" , "test2"],
-    "heroImage": "/public/Writeups/PortfolioSite/bg.png",
+    "heroImage": "/Writeups/PortfolioSite/bg.png",
   "extratext": "This article highlights the key features and underlying architecture of the 2of.io portfolio site.",
   "heroLinks": [
     {
