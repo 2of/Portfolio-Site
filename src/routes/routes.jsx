@@ -5,6 +5,9 @@ import { CataloguePage } from "../pages/Catalogue";
 import { ProjectPage } from "../pages/ProjectPage";
 import { AboutPage } from "../pages/AboutPage";
 import { SettingsPage } from "../pages/SettingsPage";
+// import { TEST_ScrollViewGeneric } from "../components/Test/TestPages/ScrollViewGeneric1";
+// import { TEST_cataloguePage } from "../components/Test/TestPages/TEST_Catalogue";
+// import { TEST_AboutPage } from "../components/Test/TestPages/TEST_About";
 
 
 const routes = [
@@ -76,6 +79,9 @@ const routes = [
     transparentnav: true,
     hide: false, // Hidden from nav menus
   }
+
+
+
 ];
 
 export default routes;

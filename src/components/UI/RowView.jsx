@@ -11,9 +11,9 @@ import clsx from "clsx";
  *    disable?: boolean
  *  }
  */
-const RowView = ({ rows = [] }) => {
+const RowView = ({ rows = [], mobile }) => {
   return (
-    <div className={styles.rowViewPlatter}>
+    <div className={`${styles.rowViewPlatter} ${mobile && styles.mobile }`}>
       {rows.map((item, index) => {
         const hasComponent = !!item.component;
         const hasParagraph = !!item.paragraph;

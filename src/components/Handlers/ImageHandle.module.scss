@@ -1,0 +1,142 @@
+.thumbnailWrapper {
+  position: relative;
+  display: inline-block;
+  // overflow: hidden;
+    margin: 1rem;
+  
+}
+
+.thumbnail {
+  cursor: zoom-in;
+  width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+  // background-color: red;
+
+  height: auto;
+  position: relative;
+  z-index: 1;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+
+  &:hover {
+    // transform: scale(1.025);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+}
+.thumbnailOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 12px);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  z-index: 2;
+  pointer-events: none;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--border-color) 0,
+    var(--border-color) 1px,
+    var(--bg) 1px,
+    var(--bg) 20px
+  );
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0);
+  transition: background 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlayVisible {
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: all;
+  backdrop-filter: blur(2px);
+}
+
+.cloneWrapper {
+  position: absolute;
+  z-index: 10000;
+  cursor: zoom-out;
+  // do NOT set border-radius or overflow here
+}
+
+.cloneImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+
+
+}
+.label {
+  position: fixed;
+  bottom: 20px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  z-index: 10001;
+  pointer-events: none;
+  padding: 0 1rem;
+}
+
+.closeButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 10001;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.fallbackImage {
+  width: 300px;
+  height: 180px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: block;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--border-color) 0,
+    var(--border-color) 1px,
+    var(--bg) 1px,
+    var(--bg) 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+span {
+  background-color: var(--bg);
+  display: flex;
+  font-size: 0.8rem;
+  gap: 12px;
+  align-items: center;    /* vertically center flex children */
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: var(--border-color);
+  border: 1px solid var(--border-color);
+
+  /* Ensure icons inside are aligned well */
+  i, svg, img {
+    display: block;       /* prevents baseline shift */
+    height: 1em;          /* match text size */
+    width: auto;          /* keep aspect ratio */
+  }
+}
+}

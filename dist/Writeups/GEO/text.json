@@ -70,6 +70,159 @@
           "pills": ["Geolocation", "Machine Learning", "Deep Learning", "Attention Mechanisms", "Object Detection", "OCR", "Chicago", "Multi-neighborhood scale", "Geoinformative Features"]
         }
       ]
+    },{
+  "name": "Chicago Dataset Characteristics",
+  "items": [
+    {
+      "type": "grid",
+      "rows": [
+        {
+          "label": "Chicago Mapillary Coverage (%)",
+          "value": 92
+        },
+        {
+          "label": "Candidate Area Size (km²)",
+          "value": 20.5
+        },
+        {
+          "label": "Images in Candidate Area (Thousands)",
+          "value": 151.51
+        },
+        {
+          "label": "Average Image Density (images/km²)",
+          "value": 7391
+        },
+        {
+          "label": "Signage Detection Rate (%)",
+          "value": 73.83
+        },
+        {
+          "label": "Proportion of Dataset with Non-Sign Detections (%)",
+          "value": 33.15
+        }
+      ]
+    }
+  ]
+},
+
+    { "name": "Key Metrics and Performance",
+      "items": [
+        {
+          "type": "data",
+          "datapoints": [
+            {
+              "overallLabel": "Model Scope and General Performance",
+              "type": "linear_bar",
+              "data": [
+                {
+                  "label": "Location Accuracy within (km)",
+                  "upperBound": 5,
+                  "lowerBound": 0,
+                  "value": 1
+                },
+                {
+                  "label": "Area Size Covered (km²)",
+                  "upperBound": 50,
+                  "lowerBound": 0,
+                  "value": 20
+                },
+                {
+                  "label": "Images Used for Training (Thousands)",
+                  "upperBound": 200,
+                  "lowerBound": 0,
+                  "value": 150
+                },
+                {
+                  "label": "Average Prediction Error (km)",
+                  "upperBound": 5,
+                  "lowerBound": 0,
+                  "value": 1.25
+                },
+                {
+                  "label": "Earth's Curvature Delta in Candidate Area (meters)",
+                  "upperBound": 50,
+                  "lowerBound": 0,
+                  "value": 15
+                }
+              ]
+            },
+           
+            {
+              "overallLabel": "YOLO Object Detection Model Performance",
+              "type": "linear_bar",
+              "data": [
+                {
+                  "label": "YOLOv11 mAP (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 73.8
+                },
+                {
+                  "label": "YOLOv9 mAP (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 72.5
+                },
+                {
+                  "label": "YOLOv3 mAP (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 57.9
+                },
+                {
+                  "label": "YOLOv2 mAP (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 48.1
+                },
+                {
+                  "label": "YOLOv1 mAP (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 33.4
+                },
+                {
+                  "label": "YOLOv11 Fewer Parameters vs YOLOv8m (%)",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 22
+                }
+              ]
+            },
+            {
+              "overallLabel": "Model Performance Metrics",
+              "type": "linear_bar",
+              "data": [
+                {
+                  "label": "Full Image Pass With Attention - Test MSE",
+                  "upperBound": 1,
+                  "lowerBound": 0,
+                  "value": 0.082532
+                },
+                {
+                  "label": "Full Image Pass Without Attention - Test MSE",
+                  "upperBound": 1,
+                  "lowerBound": 0,
+                  "value": 0.747200
+                },
+                {
+                  "label": "Signage-Only With Attention - Test MSE (LAT)",
+                  "upperBound": 1,
+                  "lowerBound": 0,
+                  "value": 0.061974
+                },
+                {
+                  "label": "Signage-Only Without Attention - Test MSE (LAT)",
+                  "upperBound": 1,
+                  "lowerBound": 0,
+                  "value": 0.071141
+                }
+              ]
+            }
+            
+          ]
+        }
+      ]
     },
     {
       "name": "So, How Does This Sorcery Work? (The Guts of the Operation)",

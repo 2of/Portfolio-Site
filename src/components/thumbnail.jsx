@@ -16,14 +16,14 @@ export const Thumbnail = ({
   const details = data?.details ?? {};
   const tags = Array.isArray(details.tags) ? details.tags : [];
 
-  const containerStyle = details.bgimage
+const containerStyle =
+  details.bgimage && screenSize !== "sm"
     ? {
         backgroundImage: `url(${details.bgimage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }
     : {};
-
 const handleClick = () => {
   console.log(details.ext_url);
 

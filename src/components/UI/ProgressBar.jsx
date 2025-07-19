@@ -11,7 +11,8 @@ const ProgressBar = ({
   upperBound = 100,
   showVal = false,
   showBounds = false,
-label
+label,
+mappedtoinput
 }) => {
   const ref = useRef();
   const [inView, setInView] = useState(false);
@@ -74,7 +75,7 @@ label
             </div>
           )}
           <div className={styles.bar}>
-            <div className={styles.fillBar}>
+            <div className={`${styles.fillBar} ${!mappedtoinput && styles.smooth}`}>
               {showVal && (
                 <span className={styles.valueLabel}>{val}</span>
               )}
@@ -97,6 +98,29 @@ label
           )}
         </div>
       )}
+
+{style === "marker" && (
+  <div className={styles.dotWrapper}>
+    {label && <div className={styles.headerlabel}>{label}</div>}
+    <div className={styles.dotTrack}>
+      <div className={styles.dotCapLeft} />
+<div
+  className={clsx(styles.dotMarker, {
+    [styles.smooth]: !mappedtoinput,
+  })}
+  style={{ left: `calc(${finalPercent}% - 1px)` }} // half the width of the marker
+/>
+      <div className={styles.dotCapRight} />
+    </div>
+    {showBounds && (
+      <div className={styles.bounds}>
+        <span>{lowerBound}</span>
+        <span>{upperBound}</span>
+      </div>
+    )}
+    {showVal && <div className={styles.dotValue}>{val}</div>}
+  </div>
+)}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { Disclaimer } from "../../components/disclaimer";
 import { DynamicNav } from "./MobileNav";
 import useScreenSize from "../../utils/screensize";
 import ShareDialog from "../../components/Misc/ShareSheet";
+import BackgroundArt from "../../components/background";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -59,7 +60,9 @@ const MainLayout = () => {
         />
       )}
 
-      <main className={styles.mainContent} onClick={handleMainClick}>
+      <main className={styles.mainContent}>
+
+    {/* <BackgroundArt/> */}
         <TransitionGroup component={null}>
           <CSSTransition
             nodeRef={nodeRef}

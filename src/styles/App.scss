@@ -174,10 +174,10 @@ button:hover {
     border-radius: 8px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgb(51, 51, 51);
+  border: 1px solid var(--border-color);
   color: var(--text-color);
 
-  box-shadow: rgb(51, 51, 51) 1px 1px 0 0;
+  box-shadow: var(--border-color) 1px 1px 0 0;
 
   left: 0;
   top: 0;
@@ -290,7 +290,7 @@ backdrop-filter: blur(2px);
   align-items: center;
   opacity: 0.7;
   padding: 4px 12px 4px 12px;
-  z-index: 100;
+  z-index: 999;
   pointer-events: none;
   background-color: var(--bg-transparent);
   backdrop-filter: blur(4px);

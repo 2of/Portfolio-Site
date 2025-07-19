@@ -1,0 +1,31 @@
+.bouncyArrows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: var(--text-color);
+  animation: bounce var(--loop-speed, 1.5s) infinite;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+// Bounce animation (vertical or horizontal still works)
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Staggered animation delays
+.arrow:nth-child(1) { animation-delay: 0s; }
+.arrow:nth-child(2) { animation-delay: 0.3s; }
+.arrow:nth-child(3) { animation-delay: 0.6s; }
+.arrow:nth-child(4) { animation-delay: 0.9s; }
+.arrow:nth-child(5) { animation-delay: 1.2s; }

@@ -3,7 +3,7 @@ import { useProjects } from "../contexts/ContentContext";
 import styles from "./JunkPage.module.scss";
 import { RadialMenu } from "../components/RadialMenu";
 import { BackGround } from "../components/Misc/Background";
-import ImageHandle from "../components/ImageHandle";
+
 import { DarkModeTile } from "../components/darkmodeTile";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import TextOnPath from "../components/Misc/TextPath";
@@ -13,6 +13,8 @@ import image from "../assets/images/default.png";
 import image2 from "../assets/images/default_other.jpeg";
 import { DarkModeWrapper } from "../components/UI/DarkModeWrapper";
 import ProgressBar from "../components/UI/ProgressBar";
+import BackgroundArt from "../components/background";
+import ImageHandle from "../components/Handlers/ImageHandle";
 
 export const JunkPage = () => {
   const { getSkills } = useProjects();
@@ -106,6 +108,11 @@ export const JunkPage = () => {
 />
   
       </div>
+            <div className={`${styles.chunk} ${styles.centered}`}>
+
+
+              {/* <BackgroundArt/> */}
+            </div>
       <div className={`${styles.chunk} ${styles.centered}`}>
         <RadialMenu
           data={skills}

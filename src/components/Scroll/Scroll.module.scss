@@ -1,0 +1,39 @@
+.scrollContainer {
+  height: 100dvh; // or 100vh as fallback
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // enables momentum + bounce on iOS/macOS Safari
+  scroll-behavior: smooth;
+  width: 100%;
+  background-color: orange;
+
+  // Optional padding or box model rules
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+// Optional: add fallback for older browsers
+@supports not (height: 100dvh) {
+  .scrollContainer {
+    height: 100vh;
+  }
+}
+
+// Snap scrolling support
+.snapScroll {
+  scroll-snap-type: y mandatory;
+
+  > * {
+    scroll-snap-align: start;
+  }
+}
+
+// Sticky headers support
+.stickyHeaders {
+  .sticky {
+    position: sticky;
+    top: 0;
+    // z-index: 10;
+    background: inherit;
+  }
+}
+

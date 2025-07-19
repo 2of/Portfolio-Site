@@ -19,6 +19,8 @@ export const SettingsPage = () => {
     openShareSheet,
     themeoverride,
     toggleThemeOverride,
+    isDev,
+    ToggleIsDev
   } = useGlobalContext();
   const { getAboutData } = useProjects();
   const [about, setAbout] = useState(null);
@@ -30,6 +32,9 @@ export const SettingsPage = () => {
     <div className="GenericPageContainer centered">
       <section>
         <RowView
+          mobile = { 
+            screenSize === "sm"
+          }
           rows={[
             {
               label: " Miscellaneous Settings",
@@ -37,13 +42,13 @@ export const SettingsPage = () => {
 
             {
               label: " Dark Mode Again",
-              component: <DarkModeWrapper type={!mobile ? "box" : "pill"} />,
+              component: <DarkModeWrapper type={!mobile ? "box" : "box"} />,
             },
 
             {
               disable: true,
               label: " Reduce Motion (coming soon)",
-              component: <StandardToggle type={!mobile ? "box" : "pill"} />,
+              component: <StandardToggle type={!mobile ? "box" : "box"} />,
             }, {
               label: " Random Things Area",
             },
@@ -68,11 +73,23 @@ export const SettingsPage = () => {
               }`,
               component: (
                 <StandardToggle
-                  type={!mobile ? "box" : "pill"}
+                  type={!mobile ? "box" : "box"}
                   callback={() => toggleThemeOverride}
                   checked={themeoverride}
                   firsticon={getIcon("joke")}
                   secondicon={getIcon("smile")}
+                />
+              ),
+            },
+             {
+              label: `Enable all the development stuff`,
+              component: (
+                <StandardToggle
+                  type={!mobile ? "box" : "box"}
+                  callback={() => ToggleIsDev}
+                  checked={isDev}
+                  firsticon={getIcon("projects")}
+                  secondicon={getIcon("yeti")}
                 />
               ),
             },

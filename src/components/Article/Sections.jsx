@@ -1,9 +1,10 @@
 // SectionComponents.js
 import React from "react";
-import ImageHandle from "../ImageHandle";
+
 import ProgressBar from "../UI/ProgressBar";
 import { classNames } from "@react-pdf-viewer/core";
 import clsx from "clsx";
+import ImageHandle from "../Handlers/ImageHandle";
 
 // Paragraph Section
 export const ParagraphSection = ({ text, className }) => {
@@ -139,7 +140,7 @@ export const DataSection = ({
 
 
 export const GridSection = ({ rows = [], className, styles }) => {
-  console.log(rows, "here");
+  // console.log(rows, "here");
   return (
     <div className={clsx(styles.gridSection, className)}>
 

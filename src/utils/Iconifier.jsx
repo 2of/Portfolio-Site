@@ -6,12 +6,14 @@ import {
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
-  FaGrinBeamSweat,FaSmile,FaWrench,
+  FaGrinBeamSweat,FaSmile,FaWrench,FaTheRedYeti,
   FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH,
   FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,FaWalking, FaChessKnight,
   FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
   FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, // Added missing social media icons
-  FaInfo
+  FaInfo, FaGraduationCap,
+  FaMap,
+  FaSkullCrossbones
 } from "react-icons/fa"; 
 
 const getIcon = (iconName = "default") => {
@@ -69,11 +71,15 @@ const getIcon = (iconName = "default") => {
     about:  <FaInfo/>,
     joke: <FaGrinBeamSweat/>,
     smile: <FaSmile/>,
-    settings: <FaWrench/>
+    settings: <FaWrench/>,
+    yeti: <FaTheRedYeti/>,
+    school: <FaGraduationCap/>,
+    misc: <FaMap/>,
+    fail: <FaSkullCrossbones/>
     
   };
 
-  return iconMap[iconName.toLowerCase()] || <FaQuestionCircle />;
+  return iconMap[iconName.toLowerCase()] || <FaMap />;
 };
 
 export default getIcon;

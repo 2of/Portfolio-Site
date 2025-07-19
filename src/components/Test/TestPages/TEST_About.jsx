@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useProjects } from "../contexts/ContentContext";
-import ProgressBar from "../components/UI/ProgressBar";
-import styles from "./AboutPage.module.scss";
-import { useGlobalContext } from "../contexts/GlobalContext";
-import { StandardChips } from "../components/UI/Chips";
-import { Section, ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
-import useScreenSize from "../utils/screensize";
+import { useProjects } from "../../../contexts/ContentContext";
+import ProgressBar from "../../UI/ProgressBar";
+import styles from "./TestAboutPage.module.scss";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { StandardChips } from "../../UI/Chips";
+import { Section } from "../../Scroll/ScrollableViews/ScrollableVerticalView";
+import { ScrollableVerticalView } from "../../Scroll/ScrollableViews/ScrollableVerticalView";
+import useScreenSize from "../../../utils/screensize";
+
+export const TEST_AboutPage = () => {
 
 
-
-export const AboutPage = () => {
- 
   const screenSize = useScreenSize();
 
   const { getAboutData } = useProjects();

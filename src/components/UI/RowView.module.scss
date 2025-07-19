@@ -3,12 +3,18 @@
   flex-direction: column;
   width: 100%;
   max-width: 800px;
-  background-color: var(--bg);
+  // background-color: var(--bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin: 0 auto;
+
+  &.mobile { 
+    border: none;
+    width: 100%;
+    border-radius: 0;
+  }
 }
 
 .row { 
@@ -50,7 +56,10 @@
   }
 
   &.justLabel {
+    padding-top: 2rem;
+    font-style: italic;
     justify-content: flex-start;
+    
 
     .label {
       width: 100%;

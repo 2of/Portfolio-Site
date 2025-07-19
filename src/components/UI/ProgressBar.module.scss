@@ -46,6 +46,8 @@
     background-color: var(--text-color);
     border-radius: 2px;
     overflow: visible;
+
+   
   }
 
   .fillBar {
@@ -56,9 +58,12 @@
     background-color: var(--bg);
     border: 1px solid var(--border-color);
     border-radius: 2px;
-    transition: width 0.8s ease-in-out;
+
     z-index: 1;
 
+    &.smooth { 
+    transition: width 0.8s ease-in-out;
+    }
     .valueLabel {
       position: absolute;
       top: -1.5rem;
@@ -128,4 +133,64 @@
     // background-color: green;
     text-align: center;
   }
+}
+
+
+
+
+// dot
+.dotWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dotTrack {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 2px;
+  background-color: var(--border-color);
+  margin: 0.75rem 0;
+}
+
+.dotMarker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 8px;
+  background-color: var(--text-color);
+  // border: 1px solid var(--bg);
+  left: 0;
+  transform: translateX(0%); // REMOVE centering
+  z-index: 2;
+
+  &.smooth {
+    transition: left 0.4s cubic-bezier(0.45, 0, 0.2, 1);
+  }
+}
+
+.dotCapLeft,
+.dotCapRight {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 10px;
+  background-color: var(--border-color);
+  transform: translateX(-50%);
+}
+
+.dotCapLeft {
+  left: 0;
+}
+
+.dotCapRight {
+  left: 100%;
+}
+
+.dotValue {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  margin-top: 0.25rem;
 }

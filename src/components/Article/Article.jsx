@@ -5,7 +5,7 @@ import { useTooltip } from "../../contexts/tooltip";
 import getIcon from "../../utils/Iconifier";
 import Loader from "../Loader";
 import { StandardButton } from "../UI/StandardButton";
-import Feedback from "../FeedBack";
+
 import { ArticleContent } from "./ArticleContent";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../contexts/GlobalContext";
@@ -200,9 +200,13 @@ export const Article = ({ metadata }) => {
   if (loadingState === "wait") return <Loader />;
   if (loadingState === "fail")
     return (
-      <Feedback
-        button={<button onClick={() => {}}>Go to Original Link</button>}
-      />
+
+      <>
+      <h1>failed to load </h1>
+      </>
+      // <Feedback
+      //   button={<button onClick={() => {}}>Go to Original Link</button>}
+      // />
     );
 
   return (

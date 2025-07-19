@@ -1,151 +1,4 @@
-.sm {
-    // background-color: red;
-height: var(--content-height);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: relative;
-    scroll-snap-type: y mandatory; // Enables vertical snap behavior
-    .landingPage { 
-      // background-color: red;
-      // color: orange;
-
-      .title { 
-        // background-color: orange;
-      }
-      }
-    
-
-    .sm_fp {
-        height: var(--content-height);
-        // background-color: var(  --light-bg);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        scroll-snap-align: start; //
-        
-       .textSection { 
-        // background-color: red;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-        align-items: center;
-        top: 30%;
-       }
-}
-
-    .sm_half { 
-        height: var(--content-height-half);
-        // background-color: orange;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        background-color: var(--text-color);
-    
-        color: red;
-       
-        justify-content: center;
-        text-align: center;
-        scroll-snap-align: start; 
-    }
-
-    .sm_25 { 
-        height: 25vh;
-        // background-color: orange;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        // background-color: var(--text-color);
-    
-        // color: red;
-     
-        justify-content: center;
-        text-align: center;
-        scroll-snap-align: start; 
- 
-    }
-
-  .smallheader {
-  background: linear-gradient(135deg, #ffafbd, #ffc3a0); // warm gradient
-  padding: 2rem 1rem;
-  text-align: center;
-    display: flex;
-    // margin-top: 50%;
-    justify-content: flex-end;
-    align-items: center;
-//   transition: background 0.3s ease;
-  position: relative;
-  border-bottom: 1px solid var(--border-color);
-  overflow: hidden;
-
- 
-
-  h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #2e2e2e;
-    margin-bottom: 0.5rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    color: #4a4a4a;
-    max-width: 60ch;
-    margin: 0 auto;
-    opacity: 0.9;
-  }
-
-  .divider {
-    margin-top: 1.5rem;
-    height: 4px;
-    width: 80px;
-    background: #2e2e2e;
-    margin-inline: auto;
-    border-radius: 4px;
-  }
-}
-
-    .smHeaderImage { 
-        // width: 100%;
-        max-width: 600px;
-        position: absolute;
-        bottom: calc(var(--nav-height) - 64px);
-        // background-color: red;
-        // z-index: 501;
-        pointer-events: none;
-    }
-
-
-
-}
-.lg {
-    // background-color: red;
-    padding: 120px;
-    position: relative;
-      // background-color: var(--bg-transparent);
-    
-    .divider { 
-        height: 2px;
-        width: 100%;
-        // min-width: 
-        background-color: var(--text-color);
-    }
-    .headerImage { 
-    //    background-color: red;
-       position: absolute;
-       top: 0px;
-       transform: translateY(-135px);
-       z-index: 2;
-    
-       
-       height: 300px;
-      }
-.ProjectContainer {
+.LargeThumbGrid {
   display: grid;
   width: 100%;
 //   background-color: red;
@@ -159,6 +12,105 @@ height: var(--content-height);
   }
 }
 
+.StandardHeaderDesktop { 
+
+    background-color: var(--bg-transparent);
+    border-bottom: 2px solid var(--border-color);
+    backdrop-filter: blur(4px);
+
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    padding-top: 1rem;
+    // color: #2e2e2e;
+    margin-bottom: 0.5rem;
+      box-shadow: 0 4px 10px var(--bg);
+    
+    h1 { 
+     font-weight: 700;
+     font-size: 2rem;
+  fill: var(--primary-color, #111);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+    }
+    .subtitle { 
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+
+    .headerImage { 
+    //    background-color: red;
+       position: absolute;
+       top: 0px;
+       right: 0;
+       transform: translateY(-123px);
+    //    z-index: 2;
+    
+       
+       height: 200px;
+      }
+
+}
+.MainHeader { 
+    background-color: var(--bg-transparent);
+    border-bottom: 2px solid var(--border-color);
+    backdrop-filter: blur(4px);
+
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    padding-top: 1rem;
+    // color: #2e2e2e;
+    margin-bottom: 0.5rem;
+      box-shadow: 0 4px 10px var(--bg);
+    
+    h1 { 
+     font-weight: 700;
+     font-size: 2rem;
+  fill: var(--primary-color, #111);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+    }
+    .subtitle { 
+        font-weight: 400;
+        font-size: 1.5rem;
+    }
+
+    .headerImage { 
+    //    background-color: red;
+       position: absolute;
+       top: 0px;
+       right: 0;
+       transform: translateY(-123px);
+    //    z-index: 2;
+    
+       
+       height: 200px;
+      }
+
+}
+.StandardHeaderMobileWrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  overflow: hidden;
+
+  .headerBg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    // z-index: 0;
+    opacity: 0.2; // tweak for your design
+  }
+}
+
 .ProjectContainerDense {
   display: grid;
     // background-color: red;
@@ -166,6 +118,7 @@ height: var(--content-height);
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
 
+//   background-color: red;
 
   .ProjectCell {
     height: 100%;
@@ -174,10 +127,62 @@ height: var(--content-height);
     // background-color: red;
   }
 }
-    .textSection { 
-        margin-top: 120px;
-        // background-color: red;
-        position: relative;
-        // background-color: var(--accent-color);
-    }
+
+.StandardHeaderMobile {
+  position: relative;
+//   z-index: 1;
+  text-align: center;
+
+  .title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
   }
+
+  .subtitle {
+    font-weight: 300;
+    font-size: 1.3rem;
+    letter-spacing: 0;
+    text-transform: none;
+    // opacity: 0.85;
+    margin-bottom: 1rem;
+  }
+}
+.MainHeaderMobileWrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+
+  overflow: hidden;
+
+
+}
+
+
+.ArcSVGWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.CurvedTextSVG {
+  width: 100%;
+  height: 120px;
+  overflow: visible;
+}
+
+.CurvedText {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  fill: var(--text-color);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}

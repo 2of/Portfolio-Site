@@ -1,0 +1,89 @@
+.pagedScroll {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain; // 💥 prevents bounce on iOS
+  -webkit-overflow-scrolling: touch; // for iOS momentum
+  overflow-x: hidden;
+  width: 100vw;
+  
+}
+
+.pagedSection {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: hidden;
+  border-bottom: 1px solid black;
+    width: 100vw;
+    margin: 0;
+  // Prevent extra scroll space
+  &:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+
+.halfSection {
+  height: 50vh;
+}
+
+
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120%; // more than 100% for parallax
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateY(-10%); // parallax effect
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pageContent {
+  position: relative;
+  z-index: 1;
+}
+
+.pagedSection::before,
+.pagedSection::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+// .pagedSection::before {
+//   top: 0;
+//   background: linear-gradient(
+//     to bottom,
+//    black 0%,
+//     black 30%,
+//     transparent 100%
+//   );
+// }
+
+// .pagedSection::after {
+//   bottom: 0;
+//   background: linear-gradient(
+//     to top,
+//     black 0%,
+//     black 30%,
+//     transparent 50%
+//   );
+// }
+

@@ -102,6 +102,7 @@
     "name": "schemaOverview",
     "showcase": true,
     "uniWorkShowcase": true,
+    "misccategory" : true,
     "details": {
       "subtitle": "A demonstration of the Possible Article Format",
       "tags": "",

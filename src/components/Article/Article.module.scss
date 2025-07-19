@@ -8,7 +8,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        overflow-x: hidden;
         * {
             // border: 1px solid pink;
         }
@@ -142,15 +142,20 @@
         }
     }
 
+    .bgImageContainer { 
+  position: absolute;
+  width: 100vw;
+         overflow: hidden;
+         height: 100vh;
+    z-index: -1;
+    }
+
     .bgImage {
         // background-color: red;
-        position: absolute;
         height: 100%;
-        overflow: hidden;
-        // background-color: var(--bg);
-        z-index: -1;
-        left: 0;
-        width: 100vw;
+        width: 100%;
+ 
+    
     }
 
     .gradientBG {

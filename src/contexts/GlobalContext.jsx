@@ -19,6 +19,7 @@ export const GlobalProvider = ({ children }) => {
   const [prefersCol, setPrefersCol] = useState(true);  
     const [themeoverride, setThemeOverride  ] = useState(false);  
   const [disableForPopup, setDisableForPopupState] = useState(false);
+  const [isDev, setisDev] = useState(false)
   const [disablePopupClickOffCallback, setDisablePopupClickOffCallback] = useState(null);
 
   // Stack-based navigation replacement buttons
@@ -31,7 +32,9 @@ export const GlobalProvider = ({ children }) => {
   const [shareURL, setShareURL] = useState("");
   const [shareService, setShareService] = useState(null);
 
-
+const ToggleIsDev = () => { 
+    setisDev((prevMode) => !prevMode);
+}
   const [shareSheetData, setShareSheetData] = useState ( { 
     URL : "",
     initialDescription: "",
@@ -49,8 +52,8 @@ export const GlobalProvider = ({ children }) => {
 
   const getCurrentNavReplacementButton = () => {
     // alert("TEST")
-    console.log(navReplacementButtonStack, " test")
-    console.log("++")
+    // console.log(navReplacementButtonStack, " test")
+    // console.log("++")
     return navReplacementButtonStack.length > 0
       ? navReplacementButtonStack[navReplacementButtonStack.length - 1]
       : { label: "", callback: null };
@@ -171,7 +174,9 @@ const closeShareSheet = () => {
         shareSheetData,
         shareSheetVisible,
         shareURL,
-        shareService
+        shareService,
+        isDev,
+        ToggleIsDev
       }}
     >
       {children}
