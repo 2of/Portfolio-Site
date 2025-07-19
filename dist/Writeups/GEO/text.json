@@ -2,7 +2,7 @@
   "name": "Noah King",
   "title": "Neighbourhood Scale Geolocalization w/ latent image features using aggregate models and Attention",
   "subtitle": "A Short Summary of my Geolocalization Project for a 20k^2 area, achieving ~1.3km precision; an improvement over the image distribution",
-  "heroImage": "/public/Writeups/GEO/hero.png",
+  "heroImage": "/Writeups/GEO/hero.png",
   "shortDesc" : "Noah King - Master's Project - GeoLocale Estimation using Machine Learning",
   "author" : "Noah King",
   "date" : "February 2025" ,
@@ -147,48 +147,7 @@
               ]
             },
            
-            {
-              "overallLabel": "YOLO Object Detection Model Performance",
-              "type": "linear_bar",
-              "data": [
-                {
-                  "label": "YOLOv11 mAP (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 73.8
-                },
-                {
-                  "label": "YOLOv9 mAP (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 72.5
-                },
-                {
-                  "label": "YOLOv3 mAP (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 57.9
-                },
-                {
-                  "label": "YOLOv2 mAP (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 48.1
-                },
-                {
-                  "label": "YOLOv1 mAP (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 33.4
-                },
-                {
-                  "label": "YOLOv11 Fewer Parameters vs YOLOv8m (%)",
-                  "upperBound": 100,
-                  "lowerBound": 0,
-                  "value": 22
-                }
-              ]
-            },
+            
             {
               "overallLabel": "Model Performance Metrics",
               "type": "linear_bar",
