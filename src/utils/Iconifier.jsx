@@ -7,14 +7,18 @@ import {
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
   FaGrinBeamSweat,FaSmile,FaWrench,FaTheRedYeti,
-  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH,
+  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH, FaCodeBranch,
   FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,FaWalking, FaChessKnight,
   FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
   FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, // Added missing social media icons
   FaInfo, FaGraduationCap,
   FaMap,
-  FaSkullCrossbones
+  FaSkullCrossbones,
+  FaAward,
+  FaCheck,
+  FaBan
 } from "react-icons/fa"; 
+import { FaPencil } from "react-icons/fa6";
 
 const getIcon = (iconName = "default") => {
   const iconMap = {
@@ -75,7 +79,12 @@ const getIcon = (iconName = "default") => {
     yeti: <FaTheRedYeti/>,
     school: <FaGraduationCap/>,
     misc: <FaMap/>,
-    fail: <FaSkullCrossbones/>
+    fail: <FaSkullCrossbones/>,
+    award: <FaAward/>,
+    grad: <FaUser-FaGraduationCap/>,
+    editor: <FaPencil/>,
+    tick: <FaCheck/>,
+    cross: <FaBan/>
     
   };
 

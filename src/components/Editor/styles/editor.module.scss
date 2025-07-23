@@ -1,0 +1,129 @@
+/* Base layout styles */
+.pageWrapper {
+  padding: 1.25rem; /* 20px */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* 12px */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Typography */
+.pageTitle {
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin: -0.5rem 0 1.5rem 0; /* -8px 0 24px */
+  line-height: 1.4;
+}
+
+/* Grid layout */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem; /* 24px */
+  align-items: flex-start;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebysidecells {
+  padding: 4px;
+  display: flex;
+
+  gap: 4px;
+  > * {
+    flex: 1;
+  }
+}
+.jsonColumn {
+  position: sticky;
+  top: 1.25rem;
+  height: calc(100vh - 2.5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* Input and preview boxes */
+.inputBox,
+.previewBox {
+  // border: 1px solid var(--border-color);
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.75rem; /* 12px */
+  background: var(--background-secondary);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  min-height: 200px;
+}
+
+.inputBox textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem; /* 8px */
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem; /* 4px */
+  background: var(--background-primary);
+  color: var(--text-normal);
+  flex-grow: 1;
+}
+
+/* JSON specific styles */
+.jsonBox {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.75rem; /* 12px */
+  background: var(--background-secondary);
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.jsonOutput {
+  font-family: var(--font-monospace);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Controls */
+.controlsRow {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.75rem; /* 12px */
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .jsonColumn {
+    position: static;
+    height: auto;
+  }
+  
+  .headerGrid,
+  .sectionGrid {
+    grid-template-columns: 1fr;
+  }
+}

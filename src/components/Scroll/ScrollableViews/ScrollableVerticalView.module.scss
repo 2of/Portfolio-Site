@@ -1,98 +1,104 @@
 // ScrollableVerticalView.module.scss
 
 .scrollContainer {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-//   background: #fafafa;
-max-width: 100vw;
-overflow-x: hidden ;
-height: 100vh;
-  padding: 0 1rem;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    max-width: 100vw;
+    overflow-x: hidden;
+    height: 100vh;
+    // padding: 0 1rem;
 }
+
 .staggerSpacer {
-  height: 10vh;
-  flex-shrink: 0;
+    height: 10vh;
+    flex-shrink: 0;
 }
+
 .scrollContainerVelocity {
-  height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .scrollContainerBounce {
-  height: auto;
-  overflow-y: visible;
+    height: auto;
+    overflow-y: visible;
 }
 
 .velocityInfo {
-  position: fixed;
-  bottom: 0;
-  z-index: 999;
-  background: #ffffff;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: #333;
-  border-top: 1px solid #ddd;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #333;
+    border-top: 1px solid #ddd;
 }
 
 .contentColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: var(--maxWidth);
-//   background-color: orange;
-  width: 100%;
-  margin: 0 auto;
-  padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: var(--maxWidth);
+    //   background-color: orange;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 5rem;
 }
+
 /* Section styling */
 .narrow {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 0 1rem;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
+
 .section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-//   background-color: orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    //   background-color: orange;
 }
 
 .sectionHeader {
-  font-size: 1.25rem;
-  font-weight: 600;
-  width: 100%;
-//   padding: 0.75rem 1rem;
-z-index: 119;
-//   background: #fafafa;
-//   border-bottom: 1px solid #e0e0e0;
-  transition: background 0.3s ease;
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 100%;
+    //   padding: 0.75rem 1rem;
+
+    z-index: 119;
+    //   background: #fafafa;
+    //   border-bottom: 1px solid #e0e0e0;
+    transition: background 0.3s ease;
+
 }
 
 .stickyHeader {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .sectionContent {
-  padding: 1rem 0;
+    padding: 1rem 0;
     width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.progressBarOverlay { 
+.progressBarOverlay {
     position: absolute;
     top: 28px;
     display: flex;
     right: 12px;
     width: 96px;
     height: 20px;
-// background-color: red;
-// z-index: 10000;
-z-index: 120;
+    // background-color: red;
+    // z-index: 10000;
+    z-index: 120;
 }

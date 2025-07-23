@@ -1,347 +1,128 @@
-// Base Styles
-.AboutPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-    background-color: red;
-}
-
-// Large Size Styles
-.lg {
-    // background-color: orange;
-    max-width: 900px;
-    .Title { 
-        // background-color: red;
-    }
-}
-
-// Small Size Styles
 .sm {
-    position: relative;
-    height: 100%;
+    // background-color: red;
     display: flex;
-    width: 90%;
-    flex-direction: column;
-    padding: 12px;
-    align-items: center;
-    justify-content: start;
+    align-items: flex-start;
+    height: 100vh;
+    // background-color: orange;
+    justify-content: flex-start;
 
-    // gap: 48px;
-    * { 
-        // border:  1px solid magenta;
-    }
-    .Title { 
+    .TextSection {
+        // background-color: orange;
+        padding: 1rem;
+        padding-top: 3rem;
+        // padding-top: var(--mobileTopNavSafeArea);
+        gap: 12px;
+        display: flex;
+        flex-direction: column;
         // background-color: red;
     }
+
     .TitleSVG {
         width: 100%;
         max-width: 400px;
-        height: 10px;
         transform: translateY(-50px);
-        // background-color: red;
         height: auto;
         overflow: visible;
-      }
-      
-      .TitleText {
+    }
+
+    .TitleText {
         font-size: 2rem;
         font-weight: bold;
-        // font-weight: bold;
-        // transform: rotate(50deg);
-        fill: var(--text-color); // Use your themed primary color
+        fill: var(--text-color);
         padding: 0;
-        text-align: left;
-        
+        // background-color: red;
         margin: 0;
-        
-        }
-    .TextSection { 
-        // position: absolute;
-        // background-color: red;
-
-        display: flex;
-        flex-direction: column;
-
-        margin: 0;  
-        width: 100%;
-
-        right: 0;
-
-        display: flex;
-        // max-width: 80%;
-        // width: 1000px;
-    }
-
-
-
-    .customShapeDivider {
-        // position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-
-        svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 46px;
-        }
-
-        .shapeFill {
-            fill: var(--accent-color);
-        }
-    }
-
-
-    .bottomSection { 
-        position: absolute;
-        bottom: 0;
-        // background-color: red;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        height: 30vh; /* Set the height of the bottomSection to 50% of the viewport */
-    }
-    
-    .art {
-        padding: 0;
-    
-        // background-color: red($color: #000000);
-        margin: 0;
-        width: 390px;
-        padding-bottom: 0px;
-        transform: translateY(6px);
-        display: inline-block; /* Adjust width if needed */
-        // height: 200px; /* Keep the height of the art fixed */
-        flex-shrink: 0; /* Prevent shrinking of the .art when the container resizes */
-    }
-    
-    .darkContainer { 
-        background-color: var(--text-color);
-
-
-        width: 100%;
-        display: flex;
-        border-top: 1px solid var(--bg);
-        
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 0;
-        flex-grow: 1; /* This makes the darkContainer fill the remaining space */
-        overflow: hidden; /* Optional: This ensures content inside .darkContainer doesn't overflow */
-    }
-    .QualsList { 
-        // background-color: red;
-        padding-top: 12px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); // 2-column layout
-        grid-template-rows: auto auto; // Two rows, dynamically sized
-        gap: 10px; // Space between items
-        // margin: 12px;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-        // max-width:90%;
-    }
-
-    .QualTitle { 
-        grid-column: span 2; // Makes it stretch across both columns
         text-align: left;
-font-weight: 100;
-        font-size: 16px;
-         * {font-weight: 600;
-        padding: 0};
-    }
-
-    .QualItem { 
-        // background-color: var(--bg);
-        padding: 12px;
-        text-align: start;
-        min-width: 100px;
-        min-height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        gap: 2px;
-        flex-direction: column;
-        height: 80px;
-        
-
-
-        .QualificationLevel {
-            font-size: 0.8rem;
-            // font-weight: bold;
-
-          }
-        .QualificationField {
-            font-size: 0.9rem;
-            font-weight: 300;
-            // background-color: red;
-            text-transform: uppercase;
-
-          }
-          
-          .QualificationDetails {
-            font-size: 0.8rem;
-            // font-weight: bold;
-
-          }
-    }
-}
-
-/////
-.Title {
-    font-size: 64px;
-    font-weight: 100;
-}
-
-.highlight { 
-    font-weight: bold;
-}
-.Subtitle {
-    font-size: 18px;
-    margin-top: -24px;
-    font-style: italic;
-}
-
-.para {
-    font-size: 12px;
-}
-
-.socials {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    gap: 12px;
-    align-items: start;
-    font-size: 24px;
-    margin: 0;
-    color: var(--text-color);
-}
-
-.lg,
-.md { 
-    // background-color: red;
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    gap: 24px;
-
-    .TextSection { 
-        overflow: hidden;
-        height: 100%;
-        position: relative;
-        order: 0;
-        // background-color: red;
-        width: 50%;
-    ;
-    }
-    .Subtitle { 
-        // background-color: red;
-        width: 30%;
     }
 
 
-.para { 
-    // width: 40%;
-}
-    .TitleSVG {
-        width: 100%;
-        font-size: 24px;
-        max-width: 500px;
+    .Title {
+        font-size: 64px;
+        font-weight: 100;
+    }
+
+    .Subtitle {
+        font-size: 18px;
+        margin-top: -24px;
+        font-style: italic;
+    }
+
+    .para {
+        font-size: 12px;
+    }
+
+    .highlight {
         font-weight: bold;
-        height: auto;
-        position: relative;
-        // background-color: pink;
-        overflow: visible;
-    
-        transform: translateX(-100px);
-        // transform: rotate(-90deg);
-        * { 
-            color: orange;
-        }
-      }
+    }
+
 
       .bottomSection {
-        width: 500px;
+    position: absolute;
+    bottom: 0;
     
-        position: absolute; 
-        right: 5%;
-        bottom: 5px;
-        // background-color: green;
-        // height: 500px;
-      }
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+    // background-color: red;
+  }
 
-      .QualsList { 
-        // background-color: green;
-        order: -1;
-        // background-color: red;
-        // padding-top: 12px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); // 2-column layout
-        grid-template-rows: auto auto; // Two rows, dynamically sized
-        gap: 10px; // Space between items
-        // margin: 12px;
-        justify-content: center;
-        align-items: center;
-        max-width: 300px;
-        // margin-top: 10px;
-        // height: 100%;
-        // max-width:90%;
-    }
+  .art {
+    margin: 0;
+    padding: 0 0 0 0;
+    width: 390px;
+    transform: translateY(6px);
+    display: inline-block;
+    flex-shrink: 0;
+  }
 
-    .QualTitle { 
-        grid-column: span 2; // Makes it stretch across both columns
-        text-align: left;
-font-weight: 100;
-        font-size: 16px;
-         * {font-weight: 600;
-        padding: 0};
-    }
+  .darkContainer {
+    background-color: var(--border-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    border-top: 1px solid var(--bg);
+  }
 
-    .QualItem { 
-        // background-color: var(--bg);
-        padding: 24px 8px;
-        text-align: start;
-        min-width: 80px;
-        min-height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        gap: 2px;
-        flex-direction: column;
-        height: 60px;
-        
+  .QualsList { 
+    // background-color: blue;
+    display: flex;
+    gap: 1rem;
 
 
-        .QualificationLevel {
-            font-size: 0.8rem;
-            // font-weight: bold;
+    .QualItem {
+  padding: 12px;
+  text-align: start;
+  min-width: 80px;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2px;
 
-          }
-        .QualificationField {
-            font-size: 0.9rem;
-            font-weight: 300;
-            // background-color: red;
-            text-transform: uppercase;
+  .QualificationLevel {
+    font-size: 0.8rem;
+  }
+  .QualificationField {
+    font-size: 0.9rem;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .QualificationDetails {
+    font-size: 0.8rem;
+  }
+}
 
-          }
-          
-          .QualificationDetails {
-            font-size: 0.8rem;
-            // font-weight: bold;
 
-          }}
-      
+
+}
+
+
 }

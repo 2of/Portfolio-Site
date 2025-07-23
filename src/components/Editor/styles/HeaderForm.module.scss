@@ -1,0 +1,63 @@
+.headerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+max-height: 30vh;
+  font-size: 0.9rem;
+
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: -12px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  background: var(--bg2);
+
+  legend {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    padding: 0 6px;
+  }
+}
+
+.heroLinkItem {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  padding: 14px;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--bg2);
+  font-size: 0.85rem;
+
+  h4 {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+
+  button {
+    margin-top: 4px;
+    grid-column: 1 / -1;
+  }
+}
+
+p {
+  font-size: 0.85rem;
+  margin: 0;
+}

@@ -25,7 +25,7 @@ export const Section = ({ Header, children, sticky = false, narrow }) => {
 export const ScrollableVerticalView = ({
   children,
   trackVelocity = true,
-  trackScrollPercent = true,
+  trackScrollPercent,
   staggerStart = false,
 }) => {
   const scrollRef = useRef(null);

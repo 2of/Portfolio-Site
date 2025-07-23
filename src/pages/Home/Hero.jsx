@@ -3,7 +3,9 @@ import styles from "./Hero.module.scss"; // Ensure correct SCSS import
 import dogsvg from "../../assets/svgs/DrawKit_Vector_Illustrations_Dog call.svg"; // Import the image properly
 import { StandardButton } from "../../components/UI/StandardButton";
 import getIcon from "../../utils/Iconifier";
+import { BouncyArrows } from "../../components/UI/bouncyArrows";
 import { useGlobalContext } from "../../contexts/GlobalContext";
+// import birdpng from "../../assets/sbg"
 export const HeroCell = ({sz, featureButtonCallback}) => {
     const handleFeatClick = () => {
         featureButtonCallback()
@@ -53,6 +55,7 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
                 </div>
                 <div className={styles.HeroP}>
                     <p>Feel free to reach out {getIcon("smile")}</p>
+                    <BouncyArrows direction="down"/>
                 </div>
 
                 {/* Social Links */}

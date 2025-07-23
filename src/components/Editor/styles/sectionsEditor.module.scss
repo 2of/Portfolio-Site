@@ -1,0 +1,97 @@
+.sectionsEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg);
+  color: var(--text-color);
+}
+
+.addControls {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.sectionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionContainer {
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: background 0.2s ease, opacity 0.2s ease;
+
+  &.dragging {
+    opacity: 0.4;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-color);
+}
+
+.dragHandle {
+  margin-right: 0.75rem;
+  cursor: grab;
+  padding: 0.25rem;
+  font-size: 1.2rem;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.sectionTitle {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sectionActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggleButton,
+.deleteButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-color);
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--border-color);
+  }
+}
+
+.deleteButton {
+  color: var(--text-color); // optional: override with alert-color if you add it later
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.sectionContent {
+  padding: 1rem;
+  background: var(--bg);
+  color: var(--text-color);
+}

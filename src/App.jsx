@@ -7,13 +7,18 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import './styles/App.scss'
 import { TooltipProvider } from "./contexts/tooltip";
 import { ProjectProvider } from "./contexts/ContentContext";
+import { AlertMenuProvider } from "./contexts/AlertMenuContext";
 
 function App() {
   return (
     <GlobalProvider>
       <ProjectProvider>
         <TooltipProvider>
+          <AlertMenuProvider>
+
           <AppContent />
+          </AlertMenuProvider>
+
         </TooltipProvider>
       </ProjectProvider>
     </GlobalProvider>

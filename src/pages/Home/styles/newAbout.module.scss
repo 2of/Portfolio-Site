@@ -1,0 +1,416 @@
+/* --- Small Screen Styling --- */
+.sm {
+    background-color: var(--bg);
+    height: 100%;
+    display: flex;
+    // background-color: red;
+    // align-items: center;
+    padding-top: 2rem;
+    justify-content: center;
+    padding: 1rem;
+    // gap: 10px;
+
+    .ContentContainer {
+        display: flex;
+        // background-color: beige;
+        // * {    border: 1px solid red;}
+        flex-direction: column;
+        // align-items: center;
+        gap: 1rem;
+    }
+
+    .highlight {
+        font-weight: bold;
+    }
+
+
+    .titleContainer {
+        // background-color: green;
+        margin-top: 3rem;
+        // position: absolute;
+        top: 0;
+        left: 25%;
+        // background-color: rebeccapurple;
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+
+        .TitleSVG {
+            // background-color: orange;
+            //  width: 100%;
+            max-width: 400px;
+            transform: translateY(-50px);
+            height: auto;
+            overflow: visible;
+        }
+
+        .TitleText {
+            font-size: 2rem;
+            font-weight: bold;
+            fill: var(--text-color);
+            padding: 0;
+            // background-color: red;
+            margin: 0;
+            text-align: left;
+        }
+    }
+
+    .Subtitle {
+        font-style: italic;
+
+        p {
+            font-size: 1.2rem;
+        }
+    }
+
+    .paraContainer {
+        // background-color: green;
+        // height: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .QualTitle {
+        margin-top: 4px;
+        width: 100%;
+
+
+        font-style: italic;
+        padding-top: 1rem;
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        // background-color: red;
+        // text-decoration: underline;
+    }
+
+    .QualsList {
+        width: 40vw;
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        // background-color: red;
+        align-items: center;
+        justify-content: center;
+        // background-color: orange;
+        // flex-direction: column;
+        z-index: 4;
+
+        .QualItem {
+            padding: 12px;
+            min-width: 80px;
+            min-height: 96px;
+            height: 96px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2px;
+            text-align: start;
+
+            .QualificationLevel {
+                font-size: 0.8rem;
+            }
+
+            .QualificationField {
+                font-size: 0.9rem;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+
+            .QualificationDetails {
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    .art1,
+    .art2,
+    .art3,
+    .artbg1 {
+        position: absolute;
+        background-color: transparent;
+        user-select: none;
+        pointer-events: none;
+
+
+        img {
+            display: block;
+            max-width: none;
+            height: auto;
+        }
+    }
+
+    .art1 {
+        bottom: -25%;
+        left: 45%;
+        z-index: 5;
+
+        display: none;
+
+        img {
+            // height: auto;
+            //   width:55vw;
+            width: 100vh;
+            aspect-ratio: 1/1;
+            //   max-height: 60vh;
+        }
+    }
+
+    .art2 {
+        bottom: -25%;
+        // left: 25%;
+
+        z-index: 0;
+        opacity: 20%;
+
+        // display: none;
+        img {
+            width: 100vw;
+        }
+    }
+
+    .art3 {
+        bottom: -20px;
+        left: 1%;
+        display: none;
+        z-index: 5;
+
+        //   opacity: 0.5;
+        img {
+            height: 40vh;
+        }
+    }
+
+    .artbg1 {
+        bottom: -180px;
+        right: 0%;
+        z-index: 1;
+        opacity: 10%;
+        display: none;
+
+        img {
+            width: 150vw;
+            height: 40vh;
+            object-fit: cover;
+        }
+    }
+
+    .artbg2 {
+        position: absolute;
+        bottom: -20vh; // push it downward so the top intrudes more
+        left: 10%; // center horizontally
+        //   transform: translateX(-10%);
+        z-index: 0; // ensure it's behind all others
+        opacity: 10%;
+        pointer-events: none;
+        display: none;
+
+        img {
+            width: 300vw; // make it *very* wide
+            height: 200vh; // and *very* tall
+            object-fit: cover;
+        }
+    }
+}
+
+.lg {
+  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+//   padding: 24px 48px;
+  overflow: visible;
+//   background-color: red;
+width: 100%;
+  .ContentContainerL {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+    
+    gap: 0.2rem;
+    // justify-content: flex-start;
+    // background-color: green;
+    width: 50%;
+    // width: 100 %;
+    padding: 12px;
+  }
+
+  .VerticalDivider { 
+    height: 100%;
+    width: 2px;
+    background-color: var(--border-color);
+  }
+
+  .ContentContainerR { 
+
+    display: flex;
+    gap: 1rem;
+    // background-color: red;
+    flex-direction: column;
+    padding: 12px;
+    padding-top: 3rem;
+  }
+
+  .para { 
+    * {
+        padding: 4px;
+    }
+  }
+
+  .titleContainer {
+
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        .TitleSVG {
+            // background-color: orange;
+            //  width: 100%;
+            max-width: 400px;
+            transform: translateY(-50px);
+            height: auto;
+            overflow: visible;
+        }
+
+        .TitleText {
+            font-size: 2rem;
+            font-weight: bold;
+            fill: var(--text-color);
+            padding: 0;
+            // background-color: red;
+            margin: 0;
+            text-align: left;
+        }
+    }
+
+  .highlight {
+    font-weight: bold;
+  }
+
+  .QualTitle {
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .QualsList {
+    display: flex;
+    height: 5rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-between;
+    z-index: 4;
+
+    .QualItem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+        padding: 4px;
+      .QualificationLevel {
+        font-size: 1rem;
+      }
+
+      .QualificationField {
+        font-size: 1rem;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+
+      .QualificationDetails {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .art1,
+  .art2,
+  .art3,
+  .artbg1,
+  .artbg2 {
+    position: absolute;
+    background-color: transparent;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+
+    img {
+      display: block;
+      max-width: none;
+      height: auto;
+    }
+  }
+
+  .art1 {
+    bottom: -20%;
+    left: 55%;
+    z-index: 2;
+
+    img {
+      width: 6vh;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .art2 {
+    bottom: -10rem;
+    right: 10%;
+    opacity: 0.5;
+
+    img {
+      width: 400px;
+    }
+  }
+
+  .art3 {
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+
+    img {
+      height: 50vh;
+    }
+  }
+
+  .artbg1 {
+    bottom: -120px;
+    right: 0;
+    opacity: 0.08;
+
+    img {
+      width: 150vw;
+      height: 40vh;
+      object-fit: cover;
+    }
+  }
+
+  .artbg2 {
+    bottom: -30vh;
+    left: 15%;
+    opacity: 0.08;
+
+    img {
+      width: 300vw;
+      height: 200vh;
+      object-fit: cover;
+    }
+  }
+
+  .Subtitle {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .para {
+    max-width: 800px;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}

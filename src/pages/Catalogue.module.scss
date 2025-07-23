@@ -20,22 +20,22 @@
 
     font-size: 1.8rem;
     padding-bottom: 1rem;
-    font-weight: 700;
+    font-weight: 200;
     letter-spacing: -0.5px;
     padding-top: 1rem;
     // color: #2e2e2e;
     margin-bottom: 0.5rem;
       box-shadow: 0 4px 10px var(--bg);
-    
+        padding-left: 1rem;
     h1 { 
-     font-weight: 700;
+     font-weight: 200;
      font-size: 2rem;
   fill: var(--primary-color, #111);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
     }
     .subtitle { 
-        font-weight: 400;
+        font-weight: 100;
         font-size: 1.5rem;
     }
 
@@ -65,16 +65,16 @@
     // color: #2e2e2e;
     margin-bottom: 0.5rem;
       box-shadow: 0 4px 10px var(--bg);
-    
+    padding-left: 1rem;
     h1 { 
-     font-weight: 700;
+     font-weight: 200;
      font-size: 2rem;
   fill: var(--primary-color, #111);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
     }
     .subtitle { 
-        font-weight: 400;
+        font-weight: 100;
         font-size: 1.5rem;
     }
 
@@ -135,7 +135,7 @@
 
   .title {
     font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
+    font-weight: 100;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     color: var(--text-color);

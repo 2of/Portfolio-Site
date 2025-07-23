@@ -184,7 +184,7 @@ export const CataloguePage = () => {
     );
   };
   const renderMobileView = () => (
-    <PagedScrollContainer staggerStart>
+    <PagedScrollContainer staggerStart borders>
       <div sectionHeight="half" key="standard-header-1">
         <MainHeaderMobile />
       </div>
@@ -211,7 +211,7 @@ export const CataloguePage = () => {
   );
 
   const renderDesktopView = () => (
-    <ScrollableVerticalView staggerStart>
+    <ScrollableVerticalView staggerStart trackScrollPercent>
       <Section Header={() => <Header1 />}>
         <div className={styles.LargeThumbGrid}>
           {showcaseProjects.map(renderThumb)}

@@ -1,0 +1,46 @@
+.backgroundWrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  /* Ensure stacking context */
+  display: block;
+  background: transparent;
+}
+
+/* Base style for all backgrounds */
+.backgroundWrapper > div {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+
+@keyframes veilFadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Background variants */
+
+.regularbg {
+  background: var(--bg, #111);
+  z-index: 1;
+}
+
+.herobg {
+  background: var(--herobg, #223344);
+  z-index: 2;
+}
+
+
+
+.physicsShapes {
+  z-index: 4;
+  /* You can add any additional style for PhysicsShapes wrapper here */
+}

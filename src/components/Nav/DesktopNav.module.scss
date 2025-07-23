@@ -1,0 +1,141 @@
+.navContainer {
+  z-index: 499;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 48px;
+
+  background-color: var(--bg-transparent);
+  backdrop-filter: blur(4px);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 12px;
+
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateX(-50%) scale(1.1); // maintain centering while scaling
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+.navList {
+    // background-color: red;
+    padding: 0;
+    width: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  /* Increase height for better spacing */
+//   height: 36px; 
+  gap: 12px;
+  padding: 4px 2px 2px 22px;
+//   align-items: center;
+//   justify-content: center;
+}
+
+.navItem {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.2);
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--hover-text-color);
+  }
+}
+@keyframes jump {
+  0%, 100% {
+    /* static */
+  }
+  50% {
+    filter: blur(4px);
+  }
+}
+
+
+
+.navItem {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.2);
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--hover-text-color);
+  }
+}
+
+.activeLink {
+ 
+  * {
+    color: var(--accent-color);
+  }
+}
+
+.routeItem {
+  display: flex;
+  align-items: center;
+
+  svg {
+    display: block;
+  }
+}
+
+/* Animations for icon wiggle & boop */
+
+@keyframes wiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  15%  { transform: rotate(-10deg) scale(1.1); }
+  30%  { transform: rotate(10deg) scale(1.4); }
+  45%  { transform: rotate(-6deg) scale(1.1); }
+  60%  { transform: rotate(6deg) scale(1.05); }
+  75%  { transform: rotate(-3deg) scale(1.025); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.wiggleIcon {
+  animation: wiggle 0.8s ease-in-out;
+  display: inline-block;
+  will-change: transform;
+}
+
+@keyframes boop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(0.8); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.boopIcon {
+  animation: boop 0.8s ease-in-out;
+  display: inline-block;
+  will-change: transform;
+}

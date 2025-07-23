@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   overflow-y: hidden;
-  border-bottom: 1px solid black;
+
     width: 100vw;
     margin: 0;
   // Prevent extra scroll space
@@ -28,11 +28,16 @@
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
+&.bottomBorder {
+  border-bottom: 1px solid black;
 }
+}
+
 
 
 .halfSection {
   height: 50vh;
+  position: relative;
 }
 
 
@@ -54,8 +59,13 @@
 .pageContent {
   position: relative;
   z-index: 1;
-}
+  flex: 1; // fills height of parent, even if 50vh
+  display: flex;
+  flex-direction: column;
 
+  // optional: center children
+  justify-content: center;
+}
 .pagedSection::before,
 .pagedSection::after {
   content: "";

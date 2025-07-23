@@ -8,12 +8,19 @@ const StandardToggle = ({
   secondicon: SecondIcon,
   checked = false,
 }) => {
+  const handleClick = () => {
+    if (typeof callback === "function") {
+      const result = callback();
+      if (typeof result === "function") {
+        result();
+      }
+    }
+  };
+
   return (
     <div
-      className={` ${type === "box" ? style.box : style.pill} ${
-        style.toggleContainer
-      }`}
-      onClick={callback()}
+      className={`${type === "box" ? style.box : style.pill} ${style.toggleContainer}`}
+      onClick={handleClick}
     >
       <input
         type="checkbox"
@@ -22,12 +29,10 @@ const StandardToggle = ({
         readOnly
       />
       <div className={style.toggleSlider}>
-        <span className={style.toggleIcon + " " + style.moonIcon}>
-          {/* <FaMoon /> */}
+        <span className={`${style.toggleIcon} ${style.moonIcon}`}>
           {FirstIcon}
         </span>
-        <span className={style.toggleIcon + " " + style.sunIcon}>
-          {/* <FaSun /> */}
+        <span className={`${style.toggleIcon} ${style.sunIcon}`}>
           {SecondIcon}
         </span>
       </div>

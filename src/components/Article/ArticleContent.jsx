@@ -17,7 +17,7 @@ import WigglyLine from "../Misc/WigglyLine";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 
 // Render one item (paragraph, image, link, etc.)
-const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
+export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
   switch (item.type) {
     case "paragraph":
       return (

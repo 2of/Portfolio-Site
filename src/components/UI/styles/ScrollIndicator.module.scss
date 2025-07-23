@@ -1,0 +1,148 @@
+.ScrollIndicatorContainer {
+  background-color: var(--bg);
+  z-index: 1000;
+  height: 36px;
+  width: 160px;
+  border: 2px solid var(--border-color);
+  position: relative;          // relative for fadeItem positioning
+  border-radius: var(--border-radius);
+  padding: 4px 10px;           // slightly less horizontal padding
+  font-size: 0.875rem;
+  display: flex;               // flex container for horizontal centering
+  justify-content: center;     // center horizontally
+  align-items: center;         // center vertically
+
+  animation: popInBounce 450ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    box-shadow: rgb(255, 255, 255) 0 0 0 0;
+ 
+ &.exiting {
+  animation: popOutApple 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+    &.bottom { 
+    position: absolute;        // keep positioning modifiers absolute
+    bottom: 20px;              // move up a bit to reduce gap
+    left: 25%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -9px;            // smaller gap under the bubble
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid var(--border-color);
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;            // slightly above border triangle
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid var(--bg);
+    }
+  }
+
+  &.top { 
+    position: absolute;        // keep positioning modifiers absolute
+    top: 20px;
+    left: 25%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -9px;               // smaller gap above bubble
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid var(--border-color);
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -7px;               // slightly below border triangle
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid var(--bg);
+    }
+  }
+}
+
+
+
+.fadeItem {
+  transition: opacity 0.6s ease-in-out;
+  opacity: 0;
+  position: absolute;
+  top: 0;                // pin top & left for proper positioning
+  left: 0;
+  width: 100%;
+  height: 100%;          // fill container height for vertical centering
+  display: flex;
+  justify-content: center;
+  align-items: center;   // vertical centering inside fadeItem
+  pointer-events: none;  /* avoid interaction when hidden */
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  opacity: 0; /* fully hidden */
+  pointer-events: none;
+}
+
+
+
+@keyframes popInBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popOutApple {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}

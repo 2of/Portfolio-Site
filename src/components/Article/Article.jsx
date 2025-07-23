@@ -60,44 +60,78 @@ const StandardControls = ({ data, mobile =  false}) => {
     </>
   );
 };
-const TitleSection = ({ data, mobile = false}) => (
-  <div className={styles.header}>
-    <h1>{data.title}</h1>
-    <h2>{data.subtitle}</h2>
 
-      {mobile  && ( 
-           <div className={styles.standardControlsContainer}>
-      {/* <span className={styles.separator}>•</span> */}
-      <WigglyLine/>
-      <StandardControls data={data}  mobile={mobile}/>
- </div>
-      )}
-    <div className={styles.aboutText}>
-      <p>{data.author || "Unknown Author"}</p>
-      <span className={styles.separator}>•</span>
-      <p>{data.date || "Unknown Date"}</p>
-      <span className={styles.separator}>•</span>
-      <p>{data.extratext}</p>
+export const TitleSectionPortable = ({ data, variant = "desktop" }) => {
+  const screenSize = useScreenSize();
+  const isMobile = variant === "mobile"; // fix this — previously inverted
+
+  return (
+    <div className={`${styles.articleContainer} ${isMobile ? styles.mobile : styles.desktop}`}>
+      <div className={styles.bgImageContainer}>
+        <div
+          className={styles.bgImage}
+          style={
+            data?.heroImage
+              ? {
+                  backgroundImage: `url(${data.heroImage})`,
+                  backgroundAttachment: "fixed",
+                  filter: "blur(4px)", // static default, or make it responsive
+                  transform: `scale(1.1)`,
+                }
+              : {}
+          }
+        />
+      </div>
+
+      <div className={styles.titleSection}>
+        <TitleSection data={data} mobile={isMobile} />
+      </div>
+
+      <div className={styles.gradientBG} />
     </div>
-    <div className={styles.heroLinksContainer}>
-      <HeroLinks linkData={data.heroLinks} />
+  );
+};
+export const TitleSection = ({ data, mobile = false }) => {
 
-      {!mobile  && ( 
-        <>
-      <StandardControls data={data} />
-</>
+  return (
+    <div className={styles.header}>
+      <h1>{data.title}</h1>
+      <h2>{data.subtitle}</h2>
+
+      {mobile && (
+        <div className={styles.standardControlsContainer}>
+          {/* <span className={styles.separator}>•</span> */}
+          <WigglyLine />
+          <StandardControls data={data} mobile={mobile} />
+        </div>
       )}
 
-    </div>
+      <div className={styles.aboutText}>
+        <p>{data.author || "Unknown Author"}</p>
+        <span className={styles.separator}>•</span>
+        <p>{data.date || "Unknown Date"}</p>
+        <span className={styles.separator}>•</span>
+        <p>{data.extratext}</p>
+      </div>
+
+      <div className={styles.heroLinksContainer}>
+        <HeroLinks linkData={data.heroLinks} />
+
+        {!mobile && (
+          <>
+            <StandardControls data={data} />
+          </>
+        )}
+      </div>
+
       {/* {mobile ? "YES" : "NO"} */}
 
-
-     
-    <div className={styles.fullDivider}>
-      <WigglyLine />
+      <div className={styles.fullDivider}>
+        <WigglyLine />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const HeroLinks = ({ linkData }) => {
   const navigate = useNavigate();
@@ -142,7 +176,7 @@ const HeroLinks = ({ linkData }) => {
   );
 };
 
-export const Article = ({ metadata }) => {
+export const Article = ({ metadata, fixeddata }) => {
   const { getArticle } = useProjects();
   const { showTooltip, hideTooltip } = useTooltip();
   const [loadingState, setLoadingState] = useState("wait");
@@ -177,6 +211,11 @@ export const Article = ({ metadata }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (fixeddata)  { 
+setData(fixeddata)
+setLoadingState("ready")
+return
+      }
       if (!metadata) {
         console.warn("[useEffect] No metadata provided");
         setLoadingState("fail");

@@ -1,8 +1,19 @@
 .smContainer { 
     // background-color: red;
-    height: 100%;
-    position: relative;
+    height: 100vh;
+    // position: relative;
+    // padding: 0px;
+    // margin: 0px;
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    // background-color: red;
+    align-items: center;
+    justify-content: start;
+    padding-top: 3rem;
+    // background-color: red;
+
 
     .HeroArt {
         position: absolute;
@@ -10,7 +21,7 @@
         left: -100px;
 
         z-index: 1;
-    
+    // display: none;
         img {
           height: 50vh;
 

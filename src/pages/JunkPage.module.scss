@@ -1,5 +1,5 @@
 .page {
-    background-color: olivedrab;
+    // background-color: olivedrab;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));  // Allows columns to adjust to fit content, with a minimum width
     grid-gap: 20px;  // Adds space between grid items

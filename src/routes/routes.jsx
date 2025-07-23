@@ -5,6 +5,9 @@ import { CataloguePage } from "../pages/Catalogue";
 import { ProjectPage } from "../pages/ProjectPage";
 import { AboutPage } from "../pages/AboutPage";
 import { SettingsPage } from "../pages/SettingsPage";
+import { PlaygroundPage } from "../components/Test/TestPages/TEST_Playground";
+
+import { EditorPage } from "../components/Editor/EditorPage";
 // import { TEST_ScrollViewGeneric } from "../components/Test/TestPages/ScrollViewGeneric1";
 // import { TEST_cataloguePage } from "../components/Test/TestPages/TEST_Catalogue";
 // import { TEST_AboutPage } from "../components/Test/TestPages/TEST_About";
@@ -16,47 +19,41 @@ const routes = [
     label: "home",
     icon: "home",
     element: <HomePage />,
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: true,
+    mobileMenuBg: true,
+    bg: "shapes",
+
   },
   {
     path: "/proj",
     label: "projects",
     element: <CataloguePage />,
-    icon: "Catalogue",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: false,
+    icon: "Catalogue",    mobileMenuBg: true,
+    bg: "shapes",
   },
   {
     path: "/junk",
     label: "junk",
     hide: true,
     element: <JunkPage />,
-    icon: "junk",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: false,
+    icon: "junk",    mobileMenuBg: true,
+
+
   },
   {
     path: "/chess",
     label: "elo estimator",
     element: <ChessPage />,
     icon: "chess",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-        hide: true, 
-    transparentnav: false,
+      hide: true,     
+      mobileMenuBg: true,
+
   },
   {
     path: "/proj/:projectId",
     label: "project details",
     element: <ProjectPage />,
     icon: "Catalogue",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: true,
+    
     hide: true, // Hidden from nav menus
   },
     {
@@ -64,21 +61,26 @@ const routes = [
     label: "About",
     element: <AboutPage />,
     icon: "about",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: true,
     hide: false, // Hidden from nav menus
+        bg: "shapes"
   },
    {
     path: "/settings",
     label: "Preferences",
     element: <SettingsPage />,
     icon: "settings",
-    fullscreen_fullNav: false,
-    mobile_fullNav: false,
-    transparentnav: true,
     hide: false, // Hidden from nav menus
-  }
+    bg: "shapes",
+  },    {
+    path: "/editor",
+    label: "editor",
+    element: <EditorPage />,
+    icon: "smile",
+    hide: true, // Hidden from nav menus
+    bg: "bg",
+  },  
+
+
 
 
 

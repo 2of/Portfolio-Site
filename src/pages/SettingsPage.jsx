@@ -12,6 +12,7 @@ import RowView from "../components/UI/RowView";
 import DarkModeToggle from "../components/darkmodeToggleSmallInline";
 import useScreenSize from "../utils/screensize";
 import { Navigate } from "react-router-dom";
+import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
 export const SettingsPage = () => {
   const {
     prefersCol,
@@ -20,7 +21,9 @@ export const SettingsPage = () => {
     themeoverride,
     toggleThemeOverride,
     isDev,
-    ToggleIsDev
+    ToggleIsDev,
+    animatebg, setAnimateBg, toggleAnimateBg
+    
   } = useGlobalContext();
   const { getAboutData } = useProjects();
   const [about, setAbout] = useState(null);
@@ -29,7 +32,7 @@ export const SettingsPage = () => {
   const mobile = screenSize === "sm";
   const navigate = useNavigate();
   return (
-    <div className="GenericPageContainer centered">
+    <ScrollableVerticalView staggerStart>
       <section>
         <RowView
           mobile = { 
@@ -50,6 +53,18 @@ export const SettingsPage = () => {
               label: " Reduce Motion (coming soon)",
               component: <StandardToggle type={!mobile ? "box" : "box"} />,
             }, {
+              label: `Enable BG Animation`,
+              component: (
+                <StandardToggle
+                  type={!mobile ? "box" : "box"}
+                  callback={() => toggleAnimateBg}
+                  checked={animatebg}
+                  firsticon={getIcon("tick")}
+                  secondicon={getIcon("cross")}
+                />
+              ),
+            },
+{
               label: " Random Things Area",
             },
             {
@@ -93,14 +108,34 @@ export const SettingsPage = () => {
                 />
               ),
             },
+
+              {
+              label: "Article to JSON Editor",
+              component: (
+                <StandardButton
+                  label="Go"
+                  type="article"
+                  icon={getIcon("editor")}
+
+                  callback={() => {
+                    navigate("/editor");
+                  }}
+                />
+              ),
+            },
             {
               label: " That's all",
               paragraph:
                 "Well thanks for having a look around. This is my little hand done website",
             },
+             {
+              label: " Attribution",
+              paragraph:
+                "SVGS: https://github.com/MariaLetta/mega-doodles-pack Mega Doodles Pack ",
+            },
           ]}
         />
       </section>
-    </div>
+    </ScrollableVerticalView>
   );
 };

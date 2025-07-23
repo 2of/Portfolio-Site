@@ -1,0 +1,55 @@
+.standardForm {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 150px;
+  background-color: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gridItem {
+
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.input {
+  padding: 6px 8px;
+  font-size: 14px;
+
+  border-radius: 4px;
+  min-width: 120px;
+}
+
+.addButton {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #d33;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+}

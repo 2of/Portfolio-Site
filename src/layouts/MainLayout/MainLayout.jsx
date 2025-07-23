@@ -8,13 +8,18 @@ import { Disclaimer } from "../../components/disclaimer";
 import { DynamicNav } from "./MobileNav";
 import useScreenSize from "../../utils/screensize";
 import ShareDialog from "../../components/Misc/ShareSheet";
-import BackgroundArt from "../../components/background";
+// import BackgroundArt from "../../components/Background/PhysicsShapes";
+import { Background } from "../../components/Background/background";
 
+import { useAlertMenu } from "../../contexts/AlertMenuContext";
+import Alert from "../../components/UI/Alert";
+import { ScrollIndicator } from "../../components/UI/ScrollIndicator";
 const MainLayout = () => {
   const location = useLocation();
   const nodeRef = useRef(null);
   const screenSize = useScreenSize();
 
+  const {alertVisible} = useAlertMenu();
   const {
     disableForPopup,
     disablePopupClickOffCallback,
@@ -22,7 +27,8 @@ const MainLayout = () => {
     closeShareSheet,
     shareSheetVisible,
     shareURL,
-    shareService
+    shareService,
+    scrollIndicatorStatus
   } = useGlobalContext();
 
   const normalizedKey = location.pathname === "/" ? "root" : location.pathname;
@@ -51,7 +57,15 @@ const MainLayout = () => {
   return (
     <div className={styles.mainLayout}>
       <Disclaimer title={"🚧 🚧"} text={"Work in Progress"} />
+    {alertVisible && (
+      <Alert/>
+    )}
+    {scrollIndicatorStatus.display && (
+       <ScrollIndicator/>
+    )}
 
+
+    {/* <Alert/> */}
       {shareSheetVisible && (
         <ShareDialog
           url={shareURL}
@@ -60,9 +74,11 @@ const MainLayout = () => {
         />
       )}
 
+      {}
+
       <main className={styles.mainContent}>
 
-    {/* <BackgroundArt/> */}
+    <Background/>
         <TransitionGroup component={null}>
           <CSSTransition
             nodeRef={nodeRef}

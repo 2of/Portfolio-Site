@@ -1,0 +1,274 @@
+/* components/Nav/MobileNavMenu.module.scss */
+
+.bgCover {
+  position: fixed;
+  top: 0;
+  left: 0;
+//   width: 100vw;
+//   height: 100vh;
+  background-color: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 21;
+  display: none;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.2s ease-in-out; // faster fade-in
+    transition-delay: 0s;
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; // slower fade-out
+    transition-delay: 0.2s;
+  }
+}
+
+.miniNav {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 102vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
+  text-align: center;
+  z-index: 499;
+
+  .headerText {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+
+    &.animatingIn {
+      animation: bounceIn 0.4s ease forwards;
+    }
+    &.animatingOut {
+      animation: itemPopOut 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+  }
+
+  .dividerContainer {
+    width: 80%;
+    padding-top: 24px;
+  }
+
+  .navList {
+    margin: 0;
+    padding: 0 24px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 24px;
+
+    .navItem {
+      height: 15vh;
+      list-style: none;
+
+      &.nobg {
+        background: none !important;
+        box-shadow: none;
+      }
+
+      .link {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -6px;
+          left: 50%;
+          transform: translateY(-8px) scale(0);
+          width: 4px;
+          height: 4px;
+          background-color: var(--text-color);
+          opacity: 0;
+          transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+      }
+    }
+
+    &.vertical {
+      flex-direction: column;
+      padding: 12px 8px;
+
+      .navItem {
+        .link::after {
+          bottom: 50%;
+          left: -6px;
+          transform: translateY(50%) scale(0);
+        }
+
+        .link.activeLink::after {
+          transform: translateY(50%) scale(1);
+        }
+      }
+    }
+  }
+
+  &.expanded {
+    transform: scale(1);
+    transform-origin: center;
+    opacity: 1;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    .navItem {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &.animatingIn {
+      animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      .navItem {
+        animation: itemPopIn 0.5s both;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            animation-delay: 0.03s * $i;
+          }
+        }
+      }
+    }
+
+    &.animatingOut {
+      animation: bounceOut 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      .navItem {
+        animation: itemPopOut 0.3s both;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            animation-delay: 0.05s * $i;
+          }
+        }
+      }
+    }
+  }
+
+  &.collapsed {
+    position: absolute;
+    bottom: 64px;
+    transform: scale(1);
+    opacity: 1;
+
+    .navList {
+      display: none;
+    }
+  }
+}
+
+/* Collapsed Menu Button */
+.collapsedTrigger {
+  min-width: 36px;
+  height: 36px;
+
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  padding-top: 4px;
+  padding-left: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  box-sizing: border-box;
+  z-index: 501;
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  &.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  .menuIcon {
+    font-size: 20px;
+    color: var(--text-color);
+  }
+}
+
+/* Explainer text for collapsed button */
+.explainerText {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  transition: max-width 1s ease, opacity 1s ease;
+  opacity: 0;
+}
+
+.visibleText {
+  max-width: 100px; // adjust as needed
+  opacity: 1;
+  padding-right: 12px;
+}
+
+/* Animations */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes itemPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes itemPopOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
