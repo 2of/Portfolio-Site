@@ -263,6 +263,36 @@
           "text": "A short disclaimer is that not everything is using these robust components (yet) they sorta came along as the scope of this site grew..."
         }
   ] },
+  {
+      "name": "Other Versions",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "This is the second go at this that I've had. The first one was very much in the 'i'm going to learn react now' category "
+        }, {
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/old_desktop.png",
+          "alt": "Old styled site with desktop grid view mosaic"
+        },
+         {
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/old_mobile.png",
+          "alt": "Screenshot of a few of the mobile shots of old site"
+        }, {
+          "type": "paragraph",
+          "text": "Essentially it got too messy to continue working on, although I thought the nav and things were kinda cool... so hey, they made their way over.. as did that ott dark mode toggle"
+        }, 
+
+        {
+          "type" : "link",
+          "to": "https://2of.github.io/site/",
+          "label" : "Link to the old site (live)"
+        }
+      
+
+      ]
+    },
+
     {
       "name": "An Aside: Checkout the Nav",
       "items": [
@@ -283,8 +313,9 @@
           "src": "/Writeups/PortfolioSite/img/mobilenav.gif",
           "alt": "Mobile Nav"
         },  {
-          "type": "paragraph",
-          "text": "Also do notice that tiktok view there.... and the ridiculous darkmode toggle"
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/settings.png",
+          "alt": "Screenshot of the portfolio's settings page with various toggles."
         }
 
       ]

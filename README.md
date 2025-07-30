@@ -1,5 +1,8 @@
 # 🚀 My Portfolio Site
 
+
+
+
 [![GitHub Pages](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=live&url=https%3A%2F%2F2of.github.io%2FPortfolio-Site%2F)](https://2of.github.io/Portfolio-Site/)
 
 Welcome to my portfolio site — a project that started out simple but spiraled into something a lot more complex (in a fun way). It's still a **work in progress**, but it's **live**, it's **React-based**, and it's already hosting articles and tools.
