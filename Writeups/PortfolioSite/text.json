@@ -1,184 +1,311 @@
-
 {
-  "name": "2of.io Showcase Article",
-  "title": "Unveiling 2of.io: A Deep Dive into a Dynamic Portfolio Showcase",
-  "subtitle": "Discover the innovative design and intelligent content management behind this React-powered web experience.",
-
-  "shortDesc": "Explore 2of.io, a cutting-edge portfolio showcase built with React, JS, HTML, and SCSS, featuring dynamic interactions and AI-integrated content management.",
-  "author": "Your Name/2of Team",
-  "date": "July 3, 2025",
-  "tools": ["test" , "test2"],
-    "heroImage": "/Writeups/PortfolioSite/bg.png",
-  "extratext": "This article highlights the key features and underlying architecture of the 2of.io portfolio site.",
+  "name": "portfoliowebsite",
+  "title": "That's this website!",
+  "subtitle": "A deep dive into the architecture and features of a custom-built React application.",
+  "author" : "Noah King",
+  "date" : "February 2025" ,  "extratext" : "Portfolio Website.. and then some",
+            "heroImage": "/Writeups/PortfolioSite/img/bg.jpg",
   "heroLinks": [
+
     {
-      "title": "Visit 2of.io",
-      "type": "external",
-      "to": "https://2of.io",
-      "icon": "external-link"
+      "title": "Code ",
+      "type": "external_link",
+      "icon" :  "code",
+      "to": "https://github.com/2of/Portfolio-Site/tree/main"
     },
     {
-      "title": "GitHub Repo",
-      "type": "external",
-      "to": "https://github.com/2of/site",
-      "icon": "github"
+      "title": "Complete Article",
+      "type": "internal_link",
+      "icon": "complete",
+      "to": "/proj/portfoliosite"
     }
   ],
   "sections": [
     {
-      "name": "Introduction",
-      "type": "text-block",
-      "boost": false,
+      "name": "Overview of Development",
+      "boost": "true",
       "items": [
         {
           "type": "paragraph",
-          "text": "Ever wondered what goes into building a truly dynamic and responsive web experience? Look no further than 2of.io, a cutting-edge portfolio showcase meticulously crafted with **React, JavaScript, HTML, and SCSS**. Hosted at 2of.io and openly available on GitHub at **github.com/2of/site**, this project is a testament to modern web development practices, showcasing not just projects, but also innovative design and intelligent content management."
+          "text": "I built this entire portfolio website from scratch, leveraging **React**, **JavaScript**, and **SCSS**. My goal here was to imrpove my REACT skills (i've made bits and bobs before, and also done a bit of vue), so I intentionally minimized external library dependencies. Aside from `clsx` for conditional styling and `react-router-dom` for navigation, I haven't really made use of any other significant libraries. Tempting tho"
+        },
+        {
+          "type": "highlight",
+          "text": "This project was a hands-on exercise in building a modern web application with a strong emphasis on core web technologies."
         }
       ]
     },
     {
-      "name": "Engaging Interactions",
-      "type": "text-block",
-      "boost": true,
+      "name": "Article Rendering Complexity",
       "items": [
         {
-          "type": "heading-2",
-          "text": "Beyond Static Pages: A Feast for the Eyes with Engaging Interactions"
+          "type": "paragraph",
+          "text": "The sorta origin of this entire system stemmed from a need to effectively host my Master's Thesis. It turns out, displaying a 68MB PDF directly in a browser is a slight pain. To circumvent this, I developed a custom **JSON template** for creating articles. There's even a rough-and-ready editor available at `/editor` to facilitate content creation."
+        },    {
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/json.png",
+          "alt": "Example of the custom JSON article template structure."
         },
         {
-          "type": "paragraph",
-          "text": "What truly sets 2of.io apart is its commitment to a fluid and interactive user experience. The site isn't just responsive; it's alive with subtle yet impactful interactions designed to delight visitors."
-        },
-        {
-          "type": "paragraph",
-          "text": "For instance, you'll find:"
+"type":"paragraph",
+"text" : " ... the JSON is rendered as... "
         },
         {
           "type": "image",
-          "src": "/Writeups/PortfolioSite/dock.gif",
-          "alt": "GIF demonstrating the dock effect",
-          "text": "**A Smooth Dock Effect:** Watch as the navigation dock elegantly appears/disappears or transforms, providing a seamless browsing experience."
+          "src": "/Writeups/PortfolioSite/img/renderedarticle.png",
+          "alt": "Rendered article given the structure"
+        },
+        {
+"type" : "link", 
+"label" : "Direct Link to JSON Template (Github)",
+"to" : "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/template.json"
+
+        },
+        {
+          "type": "paragraph",
+          "text": "Articles must adhere to this template, though it's perfectly valid to pass in empty or incomplete, yet syntactically valid, JSON objects. These can be read either from the `/public` directory or from any external host (examples are hosted on another repository)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Images are handled similarly; they're typically hosted in `public/assets`."
+        },
+        {
+          "type": "paragraph",
+          "text": "Articles fundamentally consist of two parts: a **heading** and a list of **sections**. The heading contains essential metadata like the title, identifier, URL, background image URL, and pertinent links. The 'sections' list holds the actual content. We didn't take a purely object-oriented approach; instead, 'chunks' of the JSON get passed around. This was largely a result of it being a personal project, and it works well for my specific use case, though a more prudent approach for larger systems would obviously be object-oriented."
+        },
+
+{
+  "type": "paragraph",
+  "text": "Paragraph items support formatting: use **double asterisks** for italics, and wrap math like subscripts or superscripts in $...$ using LaTeX-style syntax (e.g. H_{2} for subscript, mc^{2} for superscript)."
+},
+        {
+          "type": "data",
+          "datapoints": [
+            {
+              "overallLabel": "Article Structure Breakdown",
+              "type": "radial",
+              "data": [
+                {
+                  "label": "Heading Metadata",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 40
+                },
+                {
+                  "label": "Content Sections",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Each section contains **items**. These items are **React components** that are programmatically rendered based on the contents of that section. Sections can contain arbitrarily many items of any type, offering immense flexibility."
+        },
+     
+        {
+          "type": "pills",
+          "pills": ["paragraph", "highlight", "rows", "data", "image", "pills", "code embeds", "links"]
+        },   {"type":"paragraph",
+      "text" : "We can mix and match items within sections ... "},
+        {
+          "type": "highlight",
+          "text": "The dynamic rendering of components from a JSON structure provides a highly flexible and maintainable content management system."
+        }
+      ]
+    },
+    {
+      "name": "React Implementation Details",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "I wanted to build a portfolio site, and **React** just seemed like a great fit for the job. I've worked with Vue.js before, but this was a new challenge. The application makes extensive use of custom hooks and custom context components, demonstrating a deep dive into React's core capabilities."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": " function getScreenSize() {\n    const width = window.innerWidth;\n    if (width < 768) return 'sm';\n    if (width >= 768 && width < 1024) return 'md';\n    return 'lg';\n  }"
+        },
+        {
+          "type": "paragraph",
+          "text": "This responsive design incorporates a simple screen size check, as shown above, which is conveniently wrapped up in a **GlobalContext**. However, this means that most responsive elements are, in part, programmatically determined. While we do utilize CSS Flexbox and other standard techniques for responsive layouts, you might notice that the view for mobile devices is quite distinct from the desktop experience."
+        },    {
+          "type": "paragraph",
+          "text": "This approach is a bit lazy, but it's a lot mroe fun that doing media queries all about the place (which is obviously not the ideal way either... but ... anywhoo.... "
+        },
+        {
+          "type": "data",
+          "datapoints": [
+            {
+              "overallLabel": "Custom Component Usage",
+              "type": "linear_bar",
+              "data": [
+                {
+                  "label": "Custom Hooks",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 75
+                },
+                {
+                  "label": "Custom Context",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 60
+                },
+                {
+                  "label": "Standard Libraries",
+                  "upperBound": 100,
+                  "lowerBound": 0,
+                  "value": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type" : "paragraph",
+          "text": "The values above are made up for the purpose of showing the component"
+        }
+      ]
+    },
+    {
+      "name": "Mobile",
+    "boost" : "true",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Phones are fun! This site is as much mobile-oriented as it is desktop-oriented. In the mobile view, the traditional home and projects views are replaced with **paginated, TikTok-esque scrolling cells**. This TikTok scrolling container can optionally supply a 'percent visible' prop, which determines how far into the viewport each cell is (for full-height cells only)."
+        },
+        {
+          "type": "highlight",
+          "text": "It's essentially thoughtful details like this that made the development process so engaging and enjoyable."
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
-          "alt": "GIF demonstrating the mobile menu effect",
-          "text": "**Intuitive Mobile Menu:** The mobile menu offers a user-friendly and visually appealing way to navigate on smaller screens, sliding in/out with a pleasing animation."
+          "src": "/Writeups/PortfolioSite/img/MobileHome.png",
+          "alt": "Screenshot of the mobile TikTok-style scrolling interface."
+        }
+      ]
+    },
+    {
+      "name": "Additional Features (Bits and Bobs)",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "The site includes a **share sheet** and a global **alert system**, both accessible by calling functions from the `GlobalContext` (e.g., `setAlert({... display: true, title: \"Lorem Ipsum\", text: \"Lorem Ipsum\", buttons: [...]})`)."
+        },
+        {
+          "type": "paragraph",
+          "text": "An interesting note is that **modals** are not a global context feature; I intentionally made them child components (or perhaps unintentionally at first, but it proved more sensible). This design allows for arbitrarily many child modals. Since articles are typically rendered in modals unless the absolute path is directly to an article (e.g., `/proj/articleId`), this structure makes quite a bit of sense."
+        },
+        {
+          "type": "grid",
+          "rows": [
+            {"label": "Alert System Access", "value": "Global Context"},
+            {"label": "Modal Implementation", "value": "Child Components"},
+            {"label": "Article Display Modes", "value": "Modal or Direct Path"}
+          ]
+        },
+
+        {
+          "type": "paragraph",
+          "text": "Finally, the `/junk` directory serves as a catalogue of essentially all the individual components used throughout the site. It's a bit janky, but useful for quick reference during development."
+        },
+        {
+          "type": "highlight",
+          "text": "These additional features demonstrate the breadth of functionality and customizability built into the portfolio website."
+        }
+      ]
+    }, {
+      "name": "Custom Hooks Utilized",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "A significant portion of the site's logic and state management is handled through a variety of **custom React Hooks**. These encapsulate reusable behaviors and improve code readability and maintainability across the application."
+        },
+        {
+          "type": "pills",
+          "pills": ["useGlobalContext", "useArticleLoader", "useScreenSize", "useThemeToggle", "useAnimationControl", "useModalState"]
+        },
+        {
+          "type": "highlight",
+          "text": "The liberal use of custom hooks has been instrumental in creating a modular and efficient codebase."
+        }
+      ]
+    },
+
+    {"name": "The Settings Page... ",
+    "boost" : "true",
+  "items" : [
+
+            {
+          "type": "paragraph",
+          "text": "There's this settings page (which also houses some fun links and fun global toggles, but it shows the nice and robust sorta framework I built to render out things... "
         },
         {
           "type": "image",
-          "src": "https://via.placeholder.com/600x350?text=Dark+Mode+Effect+GIF",
-          "alt": "GIF demonstrating the ridiculous dark mode effect",
-          "text": "**A \"Ridiculous\" Dark Mode:** Prepare for a truly unique dark mode transition that goes beyond a simple color swap, offering a surprisingly immersive experience."
-        },
-        {
+          "src": "/Writeups/PortfolioSite/img/settings.png",
+          "alt": "Screenshot of the portfolio's settings page with various toggles."
+        },    {
           "type": "paragraph",
-          "text": "These subtle touches enhance usability and demonstrate a keen eye for detail, making the browsing experience genuinely enjoyable."
+          "text": "The above is the product of the following nice and robust mix, also fwiw the following code block has the 'truncatable' flag set to true... so it can scroll! "
+        },
+{
+  "type": "code",
+  "language": "javascript",
+  "truncatable" : true,
+  "content": "const screenSize = useScreenSize();\n  const mobile = screenSize === \"sm\";\n  const navigate = useNavigate();\n  return (\n    <ScrollableVerticalView staggerStart>\n      <section>\n        <RowView\n          mobile={screenSize === \"sm\"}\n          rows={[\n            {\n              label: \" Miscellaneous Settings\",\n            },\n\n            {\n              label: \" Dark Mode Again\",\n              component: <DarkModeWrapper type={!mobile ? \"box\" : \"box\"} />, \n            },\n\n            {\n              disable: true,\n              label: \" Reduce Motion (coming soon)\",\n              component: <StandardToggle type={!mobile ? \"box\" : \"box\"} />, \n            },\n            {\n              label: `Enable BG Animation`,\n              component: (\n                <StandardToggle\n                  type={!mobile ? \"box\" : \"box\"}\n                  callback={() => toggleAnimateBg}\n                  checked={animatebg}\n                  firsticon={getIcon(\"tick\")}\n                  secondicon={getIcon(\"cross\")}\n                />\n              ),\n            },"
+},{
+          "type": "paragraph",
+          "text": "A short disclaimer is that not everything is using these robust components (yet) they sorta came along as the scope of this site grew..."
         }
-      ]
-    },
+  ] },
     {
-      "name": "Global Context",
-      "type": "text-block",
-      "boost": false,
+      "name": "An Aside: Checkout the Nav",
       "items": [
         {
-          "type": "heading-2",
-          "text": "The Power Within: Global Context and Smart Content Management"
-        },
-        {
           "type": "paragraph",
-          "text": "Under the hood, 2of.io leverages the power of a **global context** to efficiently manage various functionalities. This includes handling extra effects, optimizing caching, and more, ensuring a smooth and performant experience for users."
+          "text": "I had some fun with the navigation on this one. There are distinct paradigms for Mobile and Desktop going on... "
+        },
+       {
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/dock.gif",
+          "alt": "The desktop nav"
+        },      {
+          "type": "paragraph",
+          "text": "Yeah, alright it's not that complex, but it looks cool"
+        },
+       {
+          "type": "image",
+          "src": "/Writeups/PortfolioSite/img/mobilenav.gif",
+          "alt": "Mobile Nav"
+        },  {
+          "type": "paragraph",
+          "text": "Also do notice that tiktok view there.... and the ridiculous darkmode toggle"
         }
+
       ]
-    },
-    {
-      "name": "JSON Content System",
-      "type": "text-block",
-      "boost": true,
+    },{
+      "name": "So that's about it for now",
       "items": [
         {
-          "type": "heading-2",
-          "text": "Revolutionizing Content: JSON-Driven Articles with AI Integration"
-        },
-        {
           "type": "paragraph",
-          "text": "One of the most impressive features of 2of.io, particularly for content creators, is its innovative approach to rendering articles. The site utilizes a **custom 'markup' JSON structure**, allowing for the creation of sophisticated-looking articles from a simple JSON template."
-        },
-        {
-          "type": "code-block",
-          "language": "json",
-          "content": "{\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"subtitle\": \"string\",\n  \"heroImage\": \"string\",\n  \"shortDesc\": \"string\",\n  \"author\": \"string\",\n  \"date\": \"string\",\n  \"extratext\": \"string\",\n  \"heroLinks\": [\n    {\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"to\": \"string\",\n      \"icon\": \"string\"\n    }\n  ],\n  \"sections\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"boost\": \"boolean\",\n      \"items\": [\n        {\n          \"type\": \"string\",\n          \"text\": \"string\",\n          \"src\": \"string\",\n          \"alt\": \"string\",\n          \"pills\": [\"string\"],\n          \"language\": \"string\",\n          \"content\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"link\": {\n    \"text\": \"string\",\n    \"url\": \"string\"\n  }"
-        },
-        {
+          "text": "I will add more to this with time! But for now, enjoy poking aroud"
+        }, {
           "type": "paragraph",
-          "text": "This JSON template provides a flexible and powerful way to structure content, enabling the creation of diverse article layouts. The true magic, however, lies in its potential integration with AI. You can **load this template (found in `public/template.json`) and raw text directly into a tool like ChatGPT**, and let the AI format your content to fit within the predefined structure. This significantly streamlines the content creation process, though you'll need to be mindful of the AI adding unnecessary stylistic \"flairs.\""
-        },
-        {
-          "type": "paragraph",
-          "text": "The schema also cleverly incorporates **\"pills\" sections** for categorizing content, tagging technologies, or highlighting key takeaways."
-        },
-        {
-          "type": "paragraph",
-          "text": "Example Pills:"
-        },
-        {
-          "type": "list-item",
-          "text": "Content Management",
-          "pills": ["JSON", "ChatGPT Integration", "Dynamic Content"]
-        },
-        {
-          "type": "list-item",
-          "text": "Technologies Used",
-          "pills": ["React", "JavaScript", "SCSS", "HTML"]
+          "text": "For the code investigators in here: Yeah, there's a lot of 'debt' inside this application. The scope kinda blew out and it wasn't super well architected in the beginning (it was literally just going to be a page to show links to my github repos and a cv afterall...) . Things like functional screen checks instead of contexts and a pretty sloppy core scss are a problem, however, as you see above in that settings page section, there's a robust library of bits in here to get everything working nicely together. Some components use a custom, safe image loader and some just bang the url into src, it's inconsistent but I will obviously fix thsi with time. Similarly the project view and nav are actually just swapping entire components over for screen device switches. This is obviosuly not ideal and there's redundancy because the old components do handle mobile / desktop cases. However this is the easeist for 'getting it out the window'; we jsut ignore what we don't need..... (great idea) "
         }
-      ]
-    },
-    {
-      "name": "Content Updates and SEO",
-      "type": "text-block",
-      "boost": false,
-      "items": [
-        {
-          "type": "heading-2",
-          "text": "Dynamic Content Updates and SEO Considerations"
-        },
-        {
-          "type": "paragraph",
-          "text": "Maintaining and expanding the content on 2of.io is a streamlined process. The site primarily relies on a `metadata.json` file and the contents of the `/public/writeups` directory for content updates. While the site does support loading content from external sources (with a separate GitHub repository housing some write-ups), all content is consolidated locally for SEO purposes. Given the minimal file size (a few kilobytes at most), the performance impact is negligible, making it a pragmatic choice for optimizing search engine visibility."
-        }
-      ]
-    },
-    {
-      "name": "Additional Features",
-      "type": "text-block",
-      "boost": true,
-      "items": [
-        {
-          "type": "heading-2",
-          "text": "Explore and Discover: More Than Just a Portfolio"
-        },
-        {
-          "type": "paragraph",
-          "text": "Beyond the main showcase, 2of.io offers some hidden gems for the curious explorer:"
-        },
-        {
-          "type": "list-item",
-          "text": "**Weird Widgets in `/junk`:** Dive into the `/junk` directory to uncover a collection of fascinating and unconventional widgets, from experimental UI elements to playful interactive tools."
-        },
-        {
-          "type": "list-item",
-          "text": "**In-Browser Chess ELO Estimator in `/elo`:** Head over to `/elo` to experience a unique feature: a chess ELO estimator that runs a **TensorFlow model directly in your browser**. An ELO estimator calculates a player's skill level in chess based on their game results. The model is compact enough that hosting it client-side is a remarkably efficient and intelligent solution, avoiding unnecessary server-side processing."
-        },
-        {
-          "type": "paragraph",
-          "text": "As the developer, you're continuously adding new features and refining the experience. So, take your time, explore every corner of 2of.io, and witness a masterclass in modern web development and intelligent design!"
-        }
+      
+
       ]
     }
+
   ],
   "link": {
-    "text": "Discover more at 2of.io",
-    "url": "https://2of.io"
+    "text": "Explore other projects",
+    "url": "/projects"
   }
 }

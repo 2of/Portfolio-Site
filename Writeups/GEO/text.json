@@ -26,12 +26,6 @@
       "type": "external_link",
       "icon" :  "code",
       "to": "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model"
-    },
-    {
-      "title": "Complete Article",
-      "type": "internal_link",
-      "icon": "complete",
-      "to": "/proj/geo"
     }
   ],
   "sections": [
