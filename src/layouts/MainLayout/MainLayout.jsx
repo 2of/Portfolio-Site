@@ -1,10 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
+import { useLocation, Outlet } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styles from "./MainLayout.module.scss";
-import { Outlet, useLocation } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import FloatingNav from "./floatingNav";
 import { useGlobalContext } from "../../contexts/GlobalContext";
-import { Disclaimer } from "../../components/disclaimer";
+import FloatingNav from "./floatingNav";
 import { DynamicNav } from "./MobileNav";
 import ShareDialog from "../../components/Misc/ShareSheet";
 import { Background } from "../../components/Background/background";
@@ -12,13 +11,13 @@ import { useScreenSize } from "../../contexts/ScreenSizeProvider";
 import { useAlertMenu } from "../../contexts/AlertMenuContext";
 import Alert from "../../components/UI/Alert";
 import { ScrollIndicator } from "../../components/UI/ScrollIndicator";
+import { Disclaimer } from "../../components/disclaimer";
 
 const MainLayout = () => {
   const location = useLocation();
-  const nodeRef = useRef(null);
   const screenSize = useScreenSize();
-
   const { alertVisible } = useAlertMenu();
+
   const {
     disableForPopup,
     disablePopupClickOffCallback,
@@ -30,8 +29,6 @@ const MainLayout = () => {
     scrollIndicatorStatus,
   } = useGlobalContext();
 
-  const normalizedKey = location.pathname === "/" ? "root" : location.pathname;
-
   const handleMainClick = () => {
     if (disableForPopup && disablePopupClickOffCallback) {
       disablePopupClickOffCallback();
@@ -42,11 +39,16 @@ const MainLayout = () => {
   };
 
   const blurStyle = {
-    filter: shareSheetVisible || disableForPopup ? "brightness(0.2) blur(12px)" : "none",
+    filter:
+      shareSheetVisible || disableForPopup
+        ? "brightness(0.2) blur(12px)"
+        : "none",
     pointerEvents: disableForPopup ? "none" : "auto",
     overflow: "hidden",
     transition: "filter 0.2s ease-out, pointer-events 0s linear 0.3s",
   };
+
+  const nodeRef = useRef(null);
 
   return (
     <>
@@ -54,7 +56,6 @@ const MainLayout = () => {
 
       {alertVisible && <Alert />}
       {scrollIndicatorStatus.display && <ScrollIndicator />}
-
       {shareSheetVisible && (
         <ShareDialog
           url={shareURL}
@@ -63,24 +64,26 @@ const MainLayout = () => {
         />
       )}
 
+
+
       <main className={styles.mainContent} onClick={handleMainClick}>
         <Background />
 
         <TransitionGroup component={null}>
           <CSSTransition
-            nodeRef={nodeRef}
-            key={normalizedKey}
-            timeout={320}
+            key={location.pathname}
             classNames={{
               enter: styles.pageTransitionEnter,
               enterActive: styles.pageTransitionEnterActive,
               exit: styles.pageTransitionExit,
               exitActive: styles.pageTransitionExitActive,
             }}
+            timeout={400}
+            nodeRef={nodeRef}
           >
             <div
               ref={nodeRef}
-              className={disableForPopup ? styles.disable : ""}
+              className={disableForPopup ? styles.disable : styles.ContentContainer}
               style={screenSize === "sm" ? blurStyle : undefined}
             >
               <Outlet context={{ openShareSheet }} />

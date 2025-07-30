@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom"; // if you use react-router
-import styles from "./styles/Standard_Large.module.scss";
+import base_styles from "./styles/CardLarge.module.scss";
+import ridiculous_styles from "./styles/CardLarge_Ridiculous.module.scss";
 import { cardPropShape } from "./PropTypes";
 import getIcon from "../../utils/Iconifier";
 import { ImageLoader } from "../ImageLoader";
 import FeatherRevealImage from "../Misc/FeatherImageMouseTracked";
-
+import { useGlobalContext } from "../../contexts/GlobalContext";
 const LargeThumbCard = ({ data = {}, tags = [], to, onClick }) => {
+  const {themeoverride} = useGlobalContext();
+    const styles = !themeoverride ? base_styles : ridiculous_styles;
   const navigate = useNavigate();
 
   const handleClick = () => {

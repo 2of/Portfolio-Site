@@ -20,7 +20,7 @@ import { getRecentRepos } from "../utils/githubFetch";
 import { useEffect } from "react";
 import Loader from "../components/Loader";
 import getIcon from "../utils/Iconifier";
-import LargeThumbCard from "../components/Cards/Standard_Large";
+import LargeThumbCard from "../components/Cards/CardLarge";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
 import GlassPushOverlay from "../components/UI/GlassContainer";
 
@@ -63,11 +63,10 @@ export const CataloguePage = () => {
 
   const renderCard = (project, id) => {
     /// render thumb used for legacy (mobile view) currently. Cards for dektstop
- const bgImage = project.details?.thumbbg;
+    const bgImage = project.details?.thumbbg;
     return (
       <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
-  
-  {/* <h1>test {screenSize}</h1> */}
+        {/* <h1>test {screenSize}</h1> */}
         <GlassPushOverlay>
           <LargeThumbCard
             // title=?
@@ -76,7 +75,6 @@ export const CataloguePage = () => {
             to={getProjURL(project.name)}
             onClick={() => console.log("Open Study Space")}
           />
-  
         </GlassPushOverlay>
       </div>
     );
@@ -94,8 +92,6 @@ export const CataloguePage = () => {
           type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
           index={id}
         />
-
-        
       </div>
     );
   };

@@ -1,0 +1,25 @@
+// PageWrapper.module.scss
+.pageWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.pageTransitionEnter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.pageTransitionEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 320ms ease;
+}
+
+.pageTransitionExit {
+  opacity: 1;
+}
+
+.pageTransitionExitActive {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}

@@ -1,5 +1,5 @@
 .pageTransitionEnter {
-  animation: funPopSlideIn 320ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: funPopSlideIn 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .pageTransitionEnterActive {
@@ -26,4 +26,11 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+.mainContent{
+overflow-x: hidden;
+}
+
+.ContentContainer{
+  // transform: scale(2);
 }
