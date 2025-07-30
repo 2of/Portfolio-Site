@@ -312,10 +312,6 @@
           "type": "image",
           "src": "/Writeups/PortfolioSite/img/mobilenav.gif",
           "alt": "Mobile Nav"
-        },  {
-          "type": "image",
-          "src": "/Writeups/PortfolioSite/img/settings.png",
-          "alt": "Screenshot of the portfolio's settings page with various toggles."
         }
 
       ]
