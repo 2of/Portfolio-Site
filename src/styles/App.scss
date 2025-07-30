@@ -13,12 +13,12 @@ body {
   padding: 0;
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/* Background Styling */
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
+// /* Background Styling */
 body {
   background-color: var(--bg); /* Light or dark background */
   color: var(--text-color); /* Light or dark text */
