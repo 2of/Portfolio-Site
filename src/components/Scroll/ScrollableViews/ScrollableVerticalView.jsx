@@ -3,8 +3,10 @@ import clsx from "clsx";
 import styles from "./ScrollableVerticalView.module.scss";
 import ProgressBar from "../../UI/ProgressBar";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
+import useScreenSize from "../../../utils/screensize";
 export const Section = ({ Header, children, sticky = false, narrow }) => {
-  const headerClass = clsx(styles.sectionHeader, {
+  const screenSize = useScreenSize()
+  const headerClass = clsx(styles.sectionHeaderContainer, {
     [styles.stickyHeader]: sticky,
     [styles.narrow]: narrow,
   });
@@ -13,10 +15,15 @@ export const Section = ({ Header, children, sticky = false, narrow }) => {
     [styles.narrow]: narrow,
   });
 
-
   return (
     <section className={styles.section}>
-      {Header && <div className={headerClass}><Header /></div>}
+      {Header && (
+        <div className={headerClass}>
+          <div className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}>
+            <Header />
+          </div>
+        </div>
+      )}
       <div className={contentClass}>{children}</div>
     </section>
   );
@@ -32,7 +39,7 @@ export const ScrollableVerticalView = ({
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
   const [direction, setDirection] = useState("None");
   const [scrollPercent, setScrollPercent] = useState(0);
-  const {isDev} = useGlobalContext;
+  const { isDev } = useGlobalContext;
   const MAX_SCROLL_VELOCITY = 3000;
 
   useEffect(() => {
@@ -76,7 +83,9 @@ export const ScrollableVerticalView = ({
 
   const containerClass = clsx(
     styles.scrollContainer,
-    trackVelocity ? styles.scrollContainerVelocity : styles.scrollContainerBounce
+    trackVelocity
+      ? styles.scrollContainerVelocity
+      : styles.scrollContainerBounce
   );
 
   const enhancedChildren = React.Children.map(children, (child) => {
@@ -93,23 +102,32 @@ export const ScrollableVerticalView = ({
 
   return (
     <div ref={scrollRef} className={containerClass}>
-   {isDev && (trackVelocity || trackScrollPercent) && (
-  <div className={styles.velocityInfo}>
-    {trackVelocity && <>Velocity: {normalizedVelocity} | Direction: {direction}</>}
-    {trackVelocity && trackScrollPercent && <span style={{ margin: "0 0.5rem" }}>|</span>}
-    {trackScrollPercent && <>Scrolled: {scrollPercent}%</>}
-  </div>
-)}
+      {isDev && (trackVelocity || trackScrollPercent) && (
+        <div className={styles.velocityInfo}>
+          {trackVelocity && (
+            <>
+              Velocity: {normalizedVelocity} | Direction: {direction}
+            </>
+          )}
+          {trackVelocity && trackScrollPercent && (
+            <span style={{ margin: "0 0.5rem" }}>|</span>
+          )}
+          {trackScrollPercent && <>Scrolled: {scrollPercent}%</>}
+        </div>
+      )}
 
-      {trackScrollPercent && ( 
-
+      {trackScrollPercent && (
         <div className={styles.progressBarOverlay}>
-  <ProgressBar lowerBound={0} upperBound={100} style={"marker"} val={scrollPercent} mappedtoinput/>
+          <ProgressBar
+            lowerBound={0}
+            upperBound={100}
+            style={"marker"}
+            val={scrollPercent}
+            mappedtoinput
+          />
           {/* <h1>test</h1> */}
           {/* {scrollPercent} */}
-
-          </div>
-
+        </div>
       )}
       <div className={styles.contentColumn}>
         {staggerStart && <div className={styles.staggerSpacer} />}

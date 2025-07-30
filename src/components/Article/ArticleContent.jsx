@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import reg_styles from "./ArticleContentMultiCol.module.scss";
-import odd_styles from "./ArticleContent-Vomit-Desktop.module.scss"
+import odd_styles from "./ArticleContent-Vomit-Desktop.module.scss";
 import { useTooltip } from "../../contexts/tooltip";
 import {
   ParagraphSection,
@@ -11,7 +11,7 @@ import {
   CodeSection,
   TitleSection,
   DataSection,
-  GridSection
+  GridSection,
 } from "./Sections";
 import WigglyLine from "../Misc/WigglyLine";
 import { useGlobalContext } from "../../contexts/GlobalContext";
@@ -40,27 +40,18 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
         />
       );
 
-
-    case "grid" : 
-    return ( 
-    <GridSection
-      rows={item.rows}
-      styles={styles}
-
-    />
-    )
-    case "data" : 
-        return ( 
-          
+    case "grid":
+      return <GridSection rows={item.rows} styles={styles} />;
+    case "data":
+      return (
         <DataSection
-            key={index}
-            title={item.title}
-            datapoints={item.datapoints}
-            className={styles.DataSection}
-            styles={styles}
-        
+          key={index}
+          title={item.title}
+          datapoints={item.datapoints}
+          className={styles.DataSection}
+          styles={styles}
         />
-        )
+      );
     case "highlight":
       return (
         <HighlightSection
@@ -82,6 +73,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
       return (
         <LinkSection
           key={index}
+          truncatable={item.truncatable}
           to={item.to}
           label={item.label}
           className={styles.linkItem}
@@ -103,7 +95,10 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
           key={index}
           language={item.language}
           content={item.content}
-          className={styles.codeBlock}
+          className={`${styles.codeBlock} ${
+            item.truncatable && styles.truncate
+          }`}
+            styles={styles}
         />
       );
     default:
@@ -113,60 +108,48 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
 
 // Individual section renderer
 const Section_ = React.memo(({ data, styles, showTooltip, hideTooltip }) => {
-  
-  
-return (
-  <>
-    {data.boost ? (
-      <div className={styles.HighLightSection}>
-        {data.name && <h3 className={styles.sectionName}>{data.name}</h3>}
-        {Array.isArray(data.items) && data.items.length > 0 && (
-          <div className={styles.items}>
-            {data.items.map((item, index) =>
-              renderItem(item, index, styles, showTooltip, hideTooltip)
-            )}
-          </div>
-        )}
-      </div>
-    ) : (
-      <>
-        {data.name && (
-          <div>
-            <h3 className={styles.sectionTitle}>{data.name}</h3>
-          </div>
-        )}
-        {Array.isArray(data.items) && data.items.length > 0 && (
-          <div className={styles.sectionItems}>
-            {data.items.map((item, index) =>
-              renderItem(item, index, styles, showTooltip, hideTooltip)
-            )}
-          </div>
-        )}
-      </>
-    )}
-  </>
-);
+  return (
+    <>
+      {data.boost ? (
+        <div className={styles.HighLightSection}>
+          {data.name && <h3 className={styles.sectionName}>{data.name}</h3>}
+          {Array.isArray(data.items) && data.items.length > 0 && (
+            <div className={styles.items}>
+              {data.items.map((item, index) =>
+                renderItem(item, index, styles, showTooltip, hideTooltip)
+              )}
+            </div>
+          )}
+        </div>
+      ) : (
+        <>
+          {data.name && (
+            <div>
+              <h3 className={styles.sectionTitle}>{data.name}</h3>
+            </div>
+          )}
+          {Array.isArray(data.items) && data.items.length > 0 && (
+            <div className={styles.sectionItems}>
+              {data.items.map((item, index) =>
+                renderItem(item, index, styles, showTooltip, hideTooltip)
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </>
+  );
 });
 
 export const ArticleContent = ({ data }) => {
-  
-
   const { showTooltip, hideTooltip } = useTooltip();
-     const {
-     themeoverride,
-     togglethemeOverride,
-     openShareSheet
-   } = useGlobalContext();
+  const { themeoverride, togglethemeOverride, openShareSheet } =
+    useGlobalContext();
 
-   const styles = !themeoverride ? reg_styles : odd_styles
+  const styles = !themeoverride ? reg_styles : odd_styles;
   return (
-    <div className={`${true ? styles.ContentContainer : ""   }`}>
-      {themeoverride && (
-
-            <h3> Ridiculous mode is on by the way </h3>
-      )
-    
-      }
+    <div className={`${true ? styles.ContentContainer : ""}`}>
+      {themeoverride && <h3> Ridiculous mode is on by the way </h3>}
       {data?.sections?.map((section, sectionIndex) => (
         <>
           <div className={styles.sectionContainer}>

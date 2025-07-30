@@ -2,77 +2,36 @@
   display: grid;
   width: 100%;
 //   background-color: red;
-  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 12px;
 
   .ProjectCell {
-    height: 248px; // fixed height for consistency (adjust as needed)
-    // optional styling
-    // background-color: red;
+    // border: 2px solid green;
+    // overflow: hidden;
+    // height: 202rem;
+    max-height: 400px;
+
   }
 }
 
-.StandardHeaderDesktop { 
+.StandardHeaderDesktop,
+.MainHeader {
+  width: 100%;
+  // max-width: var(--maxWidth);
+  // padding: 2rem 0 0 2rem;
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(4px);
+  background-color: var(--bg-transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 
-    background-color: var(--bg-transparent);
-    border-bottom: 2px solid var(--border-color);
-    backdrop-filter: blur(4px);
-
-    font-size: 1.8rem;
-    padding-bottom: 1rem;
+  h1 {
     font-weight: 200;
-    letter-spacing: -0.5px;
-    padding-top: 1rem;
-    // color: #2e2e2e;
-    margin-bottom: 0.5rem;
-      box-shadow: 0 4px 10px var(--bg);
-        padding-left: 1rem;
-    h1 { 
-     font-weight: 200;
-     font-size: 2rem;
-  fill: var(--primary-color, #111);
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-    }
-    .subtitle { 
-        font-weight: 100;
-        font-size: 1.5rem;
-    }
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
 
-    .headerImage { 
-    //    background-color: red;
-       position: absolute;
-       top: 0px;
-       right: 0;
-       transform: translateY(-123px);
-    //    z-index: 2;
-    
-       
-       height: 200px;
-      }
-
-}
-.MainHeader { 
-    background-color: var(--bg-transparent);
-    border-bottom: 2px solid var(--border-color);
-    backdrop-filter: blur(4px);
-
-    font-size: 1.8rem;
-    padding-bottom: 1rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    padding-top: 1rem;
-    // color: #2e2e2e;
-    margin-bottom: 0.5rem;
-      box-shadow: 0 4px 10px var(--bg);
-    padding-left: 1rem;
-    h1 { 
-     font-weight: 200;
-     font-size: 2rem;
-  fill: var(--primary-color, #111);
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-    }
     .subtitle { 
         font-weight: 100;
         font-size: 1.5rem;

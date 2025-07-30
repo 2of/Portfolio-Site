@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTooltip } from "../../contexts/tooltip";
 import getIcon from "../../utils/Iconifier";
 import styles from "./Button.module.scss";
+import { useScreenSize } from "../../contexts/ScreenSizeProvider";
 
 const validTypes = [
   "drop",
@@ -24,8 +25,11 @@ export const StandardButton = ({
   disable = false,
   headertitle = "",
   external = false,
-  fillContainer = false, // < lets go
+  fillContainer = false,
 }) => {
+  const screenSize = useScreenSize(); // 'sm' | 'md' | 'lg'
+  const isMobile = screenSize === "sm";
+
   const { showTooltip, hideTooltip } = useTooltip();
   const navigate = useNavigate();
   const safeType = validTypes.includes(type) ? type : "drop";
@@ -35,8 +39,9 @@ export const StandardButton = ({
     const baseClass = styles.button;
     const typeClass = styles[safeType] || styles.drop;
     const disabledClass = disable ? styles.disabled : "";
-    const fillClass = fillContainer ? styles.fillContainer : ""; // <-- apply class
-    return `${baseClass} ${typeClass} ${disabledClass} ${fillClass}`.trim();
+    const fillClass = fillContainer ? styles.fillContainer : "";
+    const mobileClass = isMobile ? styles.mobile : "";
+    return `${baseClass} ${typeClass} ${disabledClass} ${fillClass} ${mobileClass}`.trim();
   };
 
   const handleClick = () => {
@@ -61,8 +66,20 @@ export const StandardButton = ({
   };
 
   const handleMouseMove = (e) => {
-    if (!disable && tooltip) {
+    if (!isMobile && !disable && tooltip) {
       showTooltip(tooltip, e);
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    // Optional: showTooltip on touch if you ever make mobile tooltips
+    // Currently we just suppress it
+  };
+
+  const handleKeyDown = (e) => {
+    if (!disable && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      handleClick();
     }
   };
 
@@ -84,7 +101,7 @@ export const StandardButton = ({
 
       case "basic_Expand":
         return (
-          <div className={`${styles.expandWrapper}`}>
+          <div className={styles.expandWrapper}>
             {Label}
             {Icon}
           </div>
@@ -122,11 +139,14 @@ export const StandardButton = ({
   return (
     <div
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
       onMouseLeave={hideTooltip}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`${setButtonClass()} standardMouseOverBounce`}
       role="button"
       aria-disabled={disable}
+      aria-label={label}
       tabIndex={disable ? -1 : 0}
       style={{ position: "relative" }}
     >

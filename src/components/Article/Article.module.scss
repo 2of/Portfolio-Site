@@ -1,3 +1,52 @@
+.LoaderStatusContainer { 
+    // background-color: red;
+    height: 100%;
+    width: 100%;
+}
+
+
+.WIPalert { 
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0px 24px 0px 24px;
+}
+
+.tagContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;         // vertically center items
+  gap: 0.5rem;
+//   background-color: red;
+
+  // Optional padding if you want a little breathing room
+  // padding: 0.5rem 1rem;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;       // centers the text vertically
+    background-color: var(--bg);
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+}
 .desktop {
 
     &.articleContainer {
@@ -39,7 +88,7 @@
         // display: flex;
         // gap: 32px;
         // background-color: red;
-
+        width: 100%;
         .header {
             padding: 16px 24px;
             display: flex;
@@ -180,9 +229,11 @@
     }
 
     .contentSection {
-        // background-color: orange;
-        // background-color: var(--bg);
-        // border-radius: var(--border-radius);
+        background-color: orange;
+        // padding: 3rem;
+        padding-bottom: 4rem;
+        background-color: var(--bg);
+        border-radius: var(--border-radius);
 
         z-index: 5;
     }

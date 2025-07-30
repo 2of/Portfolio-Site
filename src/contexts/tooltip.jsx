@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext, useEffect, useRef } from "react";
 import useScreenSize from "../utils/screensize";
 
 const TooltipContext = createContext();
@@ -10,10 +10,16 @@ export const TooltipProvider = ({ children }) => {
         position: { x: 0, y: 0 },
     });
 
-    const [shouldRender, setShouldRender] = useState(false); // Keeps tooltip mounted
+    const [shouldRender, setShouldRender] = useState(false);
     const screenSize = useScreenSize();
+    const hideTimeoutRef = useRef(null); // 🆕 Track timeout
 
     const showTooltip = (content, event) => {
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+            hideTimeoutRef.current = null;
+        }
+
         const tooltipWidth = 150;
         const tooltipHeight = 50;
 
@@ -33,28 +39,47 @@ export const TooltipProvider = ({ children }) => {
     };
 
     const hideTooltip = () => {
+        // 🧹 Clear previous timeout just in case
+        if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+        }
+
         setTooltip((prev) => ({ ...prev, isVisible: false }));
-        setTimeout(() => setShouldRender(false), 200); // Delay to allow exit animation
+
+        // Delay unmount for transition (or cancel if buggy)
+        hideTimeoutRef.current = setTimeout(() => {
+            setShouldRender(false);
+            hideTimeoutRef.current = null;
+        }, 200);
+
+        // 🔐 Failsafe: forcibly remove tooltip if it's stuck after 500ms
+        setTimeout(() => {
+            setTooltip({ content: null, isVisible: false, position: { x: 0, y: 0 } });
+            setShouldRender(false);
+        }, 500);
     };
+
+    useEffect(() => {
+        return () => {
+            if (hideTimeoutRef.current) {
+                clearTimeout(hideTimeoutRef.current);
+            }
+        };
+    }, []);
 
     return (
         <TooltipContext.Provider value={{ showTooltip, hideTooltip }}>
             {children}
             {shouldRender && screenSize !== "sm" && (
                 <div
-                className="flatStyleShadow"
+                    className="flatStyleShadow"
                     style={{
                         position: "fixed",
                         left: tooltip.position.x,
                         top: tooltip.position.y,
-                        // backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        // color: "#fff",
                         padding: "10px 15px",
-                        // borderRadius: "12px",
-                        // fontSize: "14px",
                         pointerEvents: "none",
                         zIndex: 1000,
-                        // whiteSpace: "nowrap",
                         transition: "opacity 0.2s ease, transform 0.2s ease",
                         opacity: tooltip.isVisible ? 1 : 0,
                         transform: tooltip.isVisible ? "scale(1)" : "scale(0.95)",

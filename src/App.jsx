@@ -8,6 +8,7 @@ import './styles/App.scss'
 import { TooltipProvider } from "./contexts/tooltip";
 import { ProjectProvider } from "./contexts/ContentContext";
 import { AlertMenuProvider } from "./contexts/AlertMenuContext";
+import { ScreenSizeProvider } from "./contexts/ScreenSizeProvider";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
       <ProjectProvider>
         <TooltipProvider>
           <AlertMenuProvider>
+            <ScreenSizeProvider>
 
           <AppContent />
+          </ScreenSizeProvider>
           </AlertMenuProvider>
 
         </TooltipProvider>

@@ -15,7 +15,7 @@ import StandardToggle from "../UI/StandardToggle";
 import { DarkModeWrapper } from "../UI/DarkModeWrapper";
 import useScreenSize from "../../utils/screensize";
 
-const StandardControls = ({ data, mobile =  false}) => {
+const StandardControls = ({ data, mobile = false }) => {
   //   console.log("STANDARD", data);
 
   const { themeOverride, toggleThemeOverride, openShareSheet } =
@@ -41,7 +41,7 @@ const StandardControls = ({ data, mobile =  false}) => {
           );
         }}
         type="article"
-        fillContainer= {mobile}
+        fillContainer={mobile}
       />
       {useScreenSize !== "sm" && (
         <> </>
@@ -66,7 +66,11 @@ export const TitleSectionPortable = ({ data, variant = "desktop" }) => {
   const isMobile = variant === "mobile"; // fix this — previously inverted
 
   return (
-    <div className={`${styles.articleContainer} ${isMobile ? styles.mobile : styles.desktop}`}>
+    <div
+      className={`${styles.articleContainer} ${
+        isMobile ? styles.mobile : styles.desktop
+      }`}
+    >
       <div className={styles.bgImageContainer}>
         <div
           className={styles.bgImage}
@@ -91,12 +95,26 @@ export const TitleSectionPortable = ({ data, variant = "desktop" }) => {
     </div>
   );
 };
-export const TitleSection = ({ data, mobile = false }) => {
-
+export const TitleSection = ({ data, tags, mobile = false }) => {
   return (
     <div className={styles.header}>
       <h1>{data.title}</h1>
       <h2>{data.subtitle}</h2>
+ {tags && (
+        <div className={styles.tagContainer}>
+          <p> {getIcon("tag")} </p>
+          {tags.map((tag, i) => (
+            <span key={i}>{tag}</span>
+          ))}
+        </div>
+      )}
+          <div className={styles.aboutText}>
+        <p>{data.author || "Unknown Author"}</p>
+        <span className={styles.separator}>•</span>
+        <p>{data.date || "Unknown Date"}</p>
+        <span className={styles.separator}>•</span>
+        <p>{data.extratext}</p>
+      </div>
 
       {mobile && (
         <div className={styles.standardControlsContainer}>
@@ -106,14 +124,7 @@ export const TitleSection = ({ data, mobile = false }) => {
         </div>
       )}
 
-      <div className={styles.aboutText}>
-        <p>{data.author || "Unknown Author"}</p>
-        <span className={styles.separator}>•</span>
-        <p>{data.date || "Unknown Date"}</p>
-        <span className={styles.separator}>•</span>
-        <p>{data.extratext}</p>
-      </div>
-
+  
       <div className={styles.heroLinksContainer}>
         <HeroLinks linkData={data.heroLinks} />
 
@@ -125,7 +136,7 @@ export const TitleSection = ({ data, mobile = false }) => {
       </div>
 
       {/* {mobile ? "YES" : "NO"} */}
-
+     
       <div className={styles.fullDivider}>
         <WigglyLine />
       </div>
@@ -183,9 +194,9 @@ export const Article = ({ metadata, fixeddata }) => {
   const [data, setData] = useState({});
   const [bgModifiervalue, setbgModifiervalue] = useState(0);
   const containerRef = useRef(null);
-
+  const iswip = metadata.wip;
   const screenSize = useScreenSize();
-
+  console.log("ARTICLE METADATA", metadata);
   useEffect(() => {
     if (containerRef.current) {
       const handleScroll = () => {
@@ -211,10 +222,10 @@ export const Article = ({ metadata, fixeddata }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (fixeddata)  { 
-setData(fixeddata)
-setLoadingState("ready")
-return
+      if (fixeddata) {
+        setData(fixeddata);
+        setLoadingState("ready");
+        return;
       }
       if (!metadata) {
         console.warn("[useEffect] No metadata provided");
@@ -236,12 +247,16 @@ return
     fetchData();
   }, [metadata, getArticle]);
 
-  if (loadingState === "wait") return <Loader />;
+  if (loadingState === "wait")
+    return (
+      <div className={styles.LoaderStatusContainer}>
+        <Loader />
+      </div>
+    );
   if (loadingState === "fail")
     return (
-
       <>
-      <h1>failed to load </h1>
+        <h1>failed to load </h1>
       </>
       // <Feedback
       //   button={<button onClick={() => {}}>Go to Original Link</button>}
@@ -249,7 +264,12 @@ return
     );
 
   return (
-    <div className={`${styles.articleContainer} ${screenSize==="sm" ? styles.mobile : styles.desktop}` } ref={containerRef}>
+    <div
+      className={`${styles.articleContainer} ${
+        screenSize === "sm" ? styles.mobile : styles.desktop
+      }`}
+      ref={containerRef}
+    >
       <div className={`${styles.bgImageContainer} `}>
         <div
           className={styles.bgImage}
@@ -258,7 +278,7 @@ return
               ? {
                   backgroundImage: `url(${data.heroImage})`,
                   backgroundAttachment: "fixed",
-                              filter: `blur(${(bgModifiervalue) * 8}px)`, // starts blurry and sharpens
+                  filter: `blur(${bgModifiervalue * 8}px)`, // starts blurry and sharpens
                   transform: `scale(${1.2 - bgModifiervalue * 0.2})`, // Adjust scale based on scrollOpacity
                   // transition: "transform 0.1s ease-out, filter 0.1s ease-out", // Smooth transition
                 }
@@ -289,8 +309,18 @@ return
       )}
 
       <div className={styles.titleSection}>
-        <TitleSection data={data} mobile={screenSize === "sm"}/>
+        <TitleSection
+          data={data}
+          tags={metadata.details.tags}
+          mobile={screenSize === "sm"}
+        />
       </div>
+
+      {iswip && (
+        <div className={styles.WIPalert}>
+          <h3> • this article is flagged as a work in progress or filler •</h3>
+        </div>
+      )}
       <div
         className={styles.gradientBG}
         // style={{

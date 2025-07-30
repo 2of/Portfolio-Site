@@ -28,7 +28,7 @@ export const AboutPage = () => {
 
   const { title, subtitle, description, ...sections } = about;
 
-  const sectionHeaderClass = `${styles.sectionHeader}${screenSize==="sm" ? ` ${styles.mobile}` : ""}`;
+  const sectionHeaderClass = `${styles._sectionHeader}${screenSize==="sm" ? ` ${styles.mobile}` : ""}`;
 
   return (
     <ScrollableVerticalView staggerStart trackScrollPercent>

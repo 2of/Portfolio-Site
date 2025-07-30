@@ -1,14 +1,17 @@
-
 import React, { useState } from "react";
 import styles from "./Catalogue.module.scss";
 
-import { ScrollableVerticalView,Section } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import {
+  ScrollableVerticalView,
+  Section,
+} from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
 import { useProjects } from "../contexts/ContentContext";
 
-
+import { getProjURL } from "../utils/getURL";
 
 import { Thumbnail } from "../components/thumbnail";
-import useScreenSize from "../utils/screensize";
+// import useScreenSize from "../utils/screensize";
+import { useScreenSize } from "../contexts/ScreenSizeProvider";
 import { Modal } from "../components/Modal";
 import { Article } from "../components/Article/Article";
 import { PagedScrollContainer } from "../components/Scroll/ScrollableViews/TikTokView";
@@ -17,6 +20,9 @@ import { getRecentRepos } from "../utils/githubFetch";
 import { useEffect } from "react";
 import Loader from "../components/Loader";
 import getIcon from "../utils/Iconifier";
+import LargeThumbCard from "../components/Cards/Standard_Large";
+import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
+import GlassPushOverlay from "../components/UI/GlassContainer";
 
 export const CataloguePage = () => {
   const { getAllMetaData } = useProjects();
@@ -55,15 +61,31 @@ export const CataloguePage = () => {
   const uniProjects = shortProjects.filter((p) => p.uniWorkShowcase);
   const miscProjects = shortProjects.filter((p) => p.misccategory);
 
-  const renderThumb = (project, id) => {
+  const renderCard = (project, id) => {
+    /// render thumb used for legacy (mobile view) currently. Cards for dektstop
+ const bgImage = project.details?.thumbbg;
+    return (
+      <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
+  
+  {/* <h1>test {screenSize}</h1> */}
+        <GlassPushOverlay>
+          <LargeThumbCard
+            // title=?
+            data={project.details}
+            icon={getIcon("test")}
+            to={getProjURL(project.name)}
+            onClick={() => console.log("Open Study Space")}
+          />
+  
+        </GlassPushOverlay>
+      </div>
+    );
+  };
+  const renderThumb = (project, id, mobile) => {
     const bgImage = project.details?.thumbbg;
 
     return (
-      <div
-        key={id}
-        bgImage={bgImage}
-        className={`${styles.ProjectCell} ${styles.sm_fp}`}
-      >
+      <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
         <Thumbnail
           data={project}
           fullLinkCallBack={() => handleOpenModal(project)}
@@ -72,6 +94,8 @@ export const CataloguePage = () => {
           type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
           index={id}
         />
+
+        
       </div>
     );
   };
@@ -114,21 +138,25 @@ export const CataloguePage = () => {
 
   const Header1 = () => (
     <div className={styles.MainHeader}>
-      <h1 className={styles.title}> ★ Featured Work</h1>
-      <p className={styles.subtitle}>
-        Small writeups for highlighted projects. Scroll further to see a raw
-        list
-        {/* <img className={styles.headerImage} src={decor2} alt="decor" /> */}
-      </p>
+      <AnimatedHeader
+        title={"Featured Work..."}
+        icon={getIcon("star")}
+        replacementText={"The cool stuff"}
+        animate
+        subtitle={
+          "Small writeups for highlighted projects. Scroll further to see a raw list"
+        }
+      />
     </div>
   );
 
   const StandardHeaderDesktop = ({ title, subtitle, icon }) => (
     <div className={styles.StandardHeaderDesktop}>
-      <h1 className={styles.title}>
+      <AnimatedHeader title={title} icon={icon} subtitle={subtitle} />
+      {/* <h1 className={styles.title}>
         {icon} {title}
       </h1>
-      {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+      {subtitle && <p className={styles.subtitle}>{subtitle}</p>} */}
     </div>
   );
 
@@ -212,11 +240,13 @@ export const CataloguePage = () => {
 
   const renderDesktopView = () => (
     <ScrollableVerticalView staggerStart trackScrollPercent>
+      {/* title={"new"} subtitle={"test"}/> */}
       <Section Header={() => <Header1 />}>
         <div className={styles.LargeThumbGrid}>
-          {showcaseProjects.map(renderThumb)}
+          {showcaseProjects.map(renderCard)}
         </div>
       </Section>
+
       <Section
         Header={() => (
           <StandardHeaderDesktop
@@ -227,7 +257,7 @@ export const CataloguePage = () => {
         )}
       >
         <div className={styles.LargeThumbGrid}>
-          {uniProjects.map(renderThumb)}
+          {uniProjects.map(renderCard)}
         </div>
       </Section>
       <Section
@@ -252,7 +282,7 @@ export const CataloguePage = () => {
         )}
       >
         <div className={styles.LargeThumbGrid}>
-          {miscProjects.map(renderThumb)}
+          {miscProjects.map(renderCard)}
         </div>
       </Section>
     </ScrollableVerticalView>

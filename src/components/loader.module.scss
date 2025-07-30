@@ -1,11 +1,14 @@
 .loaderContainer {
   display: flex;
   flex-direction: row;
+  // background-color: red;
   gap: 12px;
   align-items: end;
   justify-content: center;
-  height: 100px;
-  width: 100px;
+  
+  height: 100%;
+  width: 100%;
+  align-items: center;
 }
 
 .barLoader {

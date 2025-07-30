@@ -16,7 +16,8 @@ import {
   FaSkullCrossbones,
   FaAward,
   FaCheck,
-  FaBan
+  FaBan,
+  FaTag
 } from "react-icons/fa"; 
 import { FaPencil } from "react-icons/fa6";
 
@@ -84,7 +85,9 @@ const getIcon = (iconName = "default") => {
     grad: <FaUser-FaGraduationCap/>,
     editor: <FaPencil/>,
     tick: <FaCheck/>,
-    cross: <FaBan/>
+    cross: <FaBan/>,
+    portfolio: <FaCode/>,
+    tag: <FaTag/>
     
   };
 

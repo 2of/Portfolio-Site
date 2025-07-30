@@ -1,6 +1,6 @@
 // SectionComponents.js
 import React from "react";
-
+import { useState } from "react";
 import ProgressBar from "../UI/ProgressBar";
 import { classNames } from "@react-pdf-viewer/core";
 import clsx from "clsx";
@@ -8,9 +8,40 @@ import ImageHandle from "../Handlers/ImageHandle";
 
 // Paragraph Section
 export const ParagraphSection = ({ text, className }) => {
-  return <p className={className}>{text}</p>;
-};
+  const parseMath = (expr) => {
+    // Replace superscripts: x^{2} to x<sup>2</sup> 
+    expr = expr.replace(/([a-zA-Z0-9]+)\^\{([^}]+)\}/g, (_, base, sup) => {
+      return `${base}<sup>${sup}</sup>`;
+    });
 
+    // Replace subscripts: x_{2} to x<sub>2</sub>
+    expr = expr.replace(/([a-zA-Z0-9]+)_\{([^}]+)\}/g, (_, base, sub) => {
+      return `${base}<sub>${sub}</sub>`;
+    });
+
+    // Replace ~ with a non-breaking space too, seems a bit breaky
+    expr = expr.replace(/~/g, '\u00A0');
+
+    return <span dangerouslySetInnerHTML={{ __html: expr }} />;
+  };
+
+  const parseText = (input) => {
+    const parts = input.split(/(\$\$.*?\$\$|\$.*?\$|\*\*[^*]+\*\*)/g);
+
+    return parts.map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <em key={i}>{part.slice(2, -2)}</em>;
+      } else if (part.startsWith("$") && part.endsWith("$")) {
+        const math = part.slice(1, -1);
+        return <span key={i} className="math">{parseMath(math)}</span>;
+      } else {
+        return part;
+      }
+    });
+  };
+
+  return <p className={className}>{parseText(text)}</p>;
+};
 // Image Section
 export const ImageSection = ({ src, alt, className, onError }) => {
   return (
@@ -159,16 +190,36 @@ export const CodeSection = ({
   language = "plaintext",
   content = "",
   className,
+  truncatable = false,
+  styles
 }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(content);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  // Split into lines and number them
+  const lines = content.split("\n");
+
   return (
-    <div className={className}>
-      <pre className={`language-${language}`}>
-        <code>{content}</code>
+    <div className={`${styles.codeBlock} ${truncatable ? styles.truncate : ""} ${className} "standardMouseOverBounce"`}>
+      <button className={styles.copyButton} onClick={handleCopy}>
+        {copied ? "✓ Copied" : "Copy"}
+      </button>
+      <pre className={styles.pre}>
+        {lines.map((line, idx) => (
+          <div key={idx} className={styles.line}>
+            <span className={styles.lineNumber}>{idx + 1}</span>
+            <span className={styles.codeContent}>{line || " "}</span>
+          </div>
+        ))}
       </pre>
     </div>
   );
 };
-
 export const TitleSection = ({ text, className }) => {
   return (
     <div className={className}>

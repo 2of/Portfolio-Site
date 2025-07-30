@@ -1,7 +1,14 @@
 :root {
   /* Light Mode */
-  --light-bg: #f2f0e3;
-  --light-bg-transparent: #f2f0e3d6;
+  --light-bg: #efede2;
+
+
+  --light-bg-l1: #e5e4e3;
+  --light-bg-l2: #bababa;
+  --light-bg-l3: #a1a09f;
+
+
+  --light-bg-transparent: #efede2e1;
   --light-text: #2E2E2E;
   --light-secondary-text: #6C6C6C;
   --light-card-bg: #FFFFFF;
@@ -13,7 +20,12 @@
 
   /* Dark Mode Base Values */
   --dark-bg: #121212;
-  --dark-bg-transparent: #121212cb;
+
+
+  --dark-bg-l1: #727272;
+  --dark-bg-l2: #302f2f;
+  --dark-bg-l3: #666464;
+  --dark-bg-transparent: #121212d3;
   --dark-text: #f2f0e3;
   --dark-secondary-text: #A0A0A0;
   --dark-card-bg: #262626;
@@ -40,7 +52,7 @@
   --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
 
 
---mobileTopNavSafeArea: 82px;
+  --mobileTopNavSafeArea: 82px;
   --maxWidth: 1400px;
   /* Border Radius */
   --border-radius: 24px;
@@ -57,7 +69,7 @@
 
   /* Active Theme Defaults (Light) */
   --bg: var(--light-bg);
-  --bg-transparent: var(--light-bg-transparent);
+  --bg-l1: var(var(--light-bg-l1)) --bg-l2: var(var(--light-bg-l2)) --bg-l3: var(var(--light-bg-l3)) --bg-transparent: var(--light-bg-transparent);
   --text-color: var(--light-text);
   --secondary-text: var(--light-secondary-text);
   --card-bg: var(--light-card-bg);
@@ -65,6 +77,7 @@
   --accent: var(--light-accent);
   --link: var(--light-link);
   --drop-shadow: var(--light-drop-shadow);
+  --bg-transparent: var(--light-bg-transparent);
 
   /* Inverse */
   --inverse-transparent: var(--dark-bg-transparent);
@@ -73,6 +86,10 @@
 
 [data-theme="dark"] {
   --bg: var(--dark-bg);
+  --bg: var(--dark-bg);
+  --bg-l1: var(var(--light-bg-l1));
+  --bg-l2: var(var(--light-bg-l2));
+  --bg-l3: var(var(--light-bg-l3));
   --bg-transparent: var(--dark-bg-transparent);
   --text-color: var(--dark-text);
   --secondary-text: var(--dark-secondary-text);

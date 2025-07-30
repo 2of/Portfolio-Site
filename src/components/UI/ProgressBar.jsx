@@ -85,7 +85,7 @@ mappedtoinput
       )}
 
       {style === "round" && (
-        <div className={styles.circleWrapper}>
+        <div className={`${styles.circleWrapper}   ${mappedtoinput && styles.smooth}`}>
           <svg className={styles.circle} viewBox="0 0 100 100">
             <circle className={styles.track} cx="50" cy="50" r="45" />
             <circle className={styles.fill} cx="50" cy="50" r="45" />

@@ -36,7 +36,7 @@ const ProjectPage = () => {
   }
 
   return (
-    <div>
+<div className="GenericPageContainer full">
 
         
       <Article

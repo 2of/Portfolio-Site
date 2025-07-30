@@ -28,7 +28,7 @@ const routes = [
     label: "projects",
     element: <CataloguePage />,
     icon: "Catalogue",    mobileMenuBg: true,
-    bg: "shapes",
+    bg: "bg",
   },
   {
     path: "/junk",
@@ -62,7 +62,7 @@ const routes = [
     element: <AboutPage />,
     icon: "about",
     hide: false, // Hidden from nav menus
-        bg: "shapes"
+        bg: "bg"
   },
    {
     path: "/settings",

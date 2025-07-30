@@ -18,6 +18,9 @@ import { StandardTextField } from "../components/UI/StandardTextField";
 import { StandardCollapsableRow } from "../components/UI/CollapsableSection";
 import getIcon from "../utils/Iconifier";
 import { useAlertMenu } from "../contexts/AlertMenuContext";
+import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
+import GlassPushOverlay from "../components/UI/GlassContainer";
+import FeatherRevealImage from "../components/Misc/FeatherImageMouseTracked";
 
 export const JunkPage = () => {
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
@@ -83,8 +86,9 @@ export const JunkPage = () => {
 
         {alertVisible ? "YES " : "no"}alertVisible
       </div>
-
-      {/* Share Sheet Section */}
+<img src="/Writeups/PortfolioSite/thumb.gif" />
+<img src="/Writeups/PortfolioSite/thumb.png" />
+      <img src="/Writeups/PortfolioSite/thumb.png" />
       <div className={styles.chunk}>
         <h3>Share Sheet</h3>
         <button
@@ -109,7 +113,12 @@ export const JunkPage = () => {
       </div>
 
       <div className={styles.chunk}>
-
+        feathered image
+<FeatherRevealImage
+  BaseImage="/Writeups/ChessELOEstimator/thumb.png"
+  RevealedImage="/Writeups/ChessELOEstimator/thumbColour.png"
+  radius={120}
+/>
 
         <button onClick={showScrollIndicator}>
           show scroll indicator
@@ -121,7 +130,23 @@ export const JunkPage = () => {
           hide scroll indicator
         </button>
       </div>
-        
+         <div className={styles.chunk}>
+ <AnimatedHeader title={"blah blah"} subtitle={"test"} replacementText={"spooky"} animate></AnimatedHeader>
+
+          <AnimatedHeader title={"blah blah"} subtitle={"test"} animate></AnimatedHeader>
+         </div>
+
+
+               <div className={styles.chunk}>
+Here is glass
+
+<GlassPushOverlay>
+  <div style={{ padding: "2rem", color: "red", backgroundColor: "green" }}>
+    <img src="/Writeups/PortfolioSite/thumb.gif" />
+  </div>
+</GlassPushOverlay>
+
+                </div>
       {/* UI Components Section */}
       <div className={styles.chunk}>
         <h3>UI Components</h3>
