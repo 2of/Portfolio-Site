@@ -10,6 +10,7 @@ import getIcon from "../../utils/Iconifier";
 import { useTooltip } from "../../contexts/tooltip";
 import { DarkModeTile } from "../../components/darkmodeTile";
 import WigglyLine from "../../components/Misc/WigglyLine";
+import { ZuneTextBG } from "../../components/Background/ZuneText";
 
 const CollapsedButton = ({
   isCollapsed,
@@ -245,8 +246,10 @@ export const DynamicNav = ({ isSmall, direction = "horizontal" }) => {
           onClick={triggerCollapseAnimation}
           onTouchStart={triggerCollapseAnimation}
         />
-      )}
 
+
+      )}
+      
       {(state === "mini" || state === "buttonOnly_mini") && isVisible && (
         <div
           ref={navRef}

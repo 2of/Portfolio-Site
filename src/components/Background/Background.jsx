@@ -4,6 +4,7 @@ import routes from "../../routes/routes";
 import styles from "./Background.module.scss";
 import PhysicsShapes from "./PhysicsShapes";
 import { useGlobalContext } from "../../contexts/GlobalContext";
+import { ZuneTextBG } from "./ZuneText";
 export const Background = () => {
   const location = useLocation();
   const [bgType, setBgType] = useState(() => getBgFromPath(location.pathname));
@@ -37,12 +38,18 @@ export const Background = () => {
       >
         Particles!
       </div>
+     <div
+        className={styles.textBgAanimated}
+        style={{ opacity: bgType === "particles" ? 1 : 0 }}
+      >
+
+      </div>
       <div
         className={styles.physicsShapes}
         style={{ opacity: bgType === "shapes" ? 1 : 0 }}
       >
         {animatebg ? 
-        <PhysicsShapes /> :   <div
+      <PhysicsShapes/>:   <div
         className={styles.regularbg}
         style={{ opacity: bgType === "default" || bgType === "bg" ? 1 : 0 }}
       />}

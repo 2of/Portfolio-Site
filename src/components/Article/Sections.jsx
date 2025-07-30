@@ -5,7 +5,7 @@ import ProgressBar from "../UI/ProgressBar";
 import { classNames } from "@react-pdf-viewer/core";
 import clsx from "clsx";
 import ImageHandle from "../Handlers/ImageHandle";
-
+import { useNavigate } from "react-router-dom";
 // Paragraph Section
 export const ParagraphSection = ({ text, className }) => {
   const parseMath = (expr) => {
@@ -70,6 +70,8 @@ export const PillsSection = ({ pills, className, pillStyle }) => {
   );
 };
 // Link Section
+
+
 export const LinkSection = ({
   to,
   label,
@@ -77,20 +79,40 @@ export const LinkSection = ({
   showTooltip,
   hideTooltip,
 }) => {
+  const navigate = useNavigate();
+
+  const isExternal = /^https?:\/\//.test(to);
+
+  const handleShowTooltip = (e) => showTooltip?.(to, e);
+  const handleHideTooltip = () => hideTooltip?.();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isExternal) {
+      window.open(to, "_blank", "noopener,noreferrer");
+    } else {
+      navigate(to);
+    }
+  };
+
   return (
-    <a
-      href={to}
-      onMouseMove={(e) => showTooltip(to, e)}
-      onMouseLeave={hideTooltip}
+    <div
       className={className}
-      target="_blank"
-      rel="noopener noreferrer"
+      onMouseMove={handleShowTooltip}
+      onMouseLeave={handleHideTooltip}
+      onTouchStart={handleShowTooltip}
+      onTouchEnd={(e) => {
+        handleHideTooltip();
+        handleClick(e); // Ensures mobile tap triggers nav instantly
+      }}
+      onClick={handleClick}
+      role="link"
+      tabIndex={0}
     >
-      {label}
-    </a>
+      <span>{label} →</span>
+    </div>
   );
 };
-
 
 export const DataSection = ({
   title,
