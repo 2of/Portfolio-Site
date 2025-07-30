@@ -13,6 +13,81 @@ import DarkModeToggle from "../components/darkmodeToggleSmallInline";
 import useScreenSize from "../utils/screensize";
 import { Navigate } from "react-router-dom";
 import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+
+// settingsConfig.js
+const settingsConfig = [
+  { type: "label", label: "Miscellaneous Settings" },
+
+  {
+    type: "toggle",
+    label: "Dark Mode Again",
+    component: "DarkModeWrapper",
+  },
+  {
+    type: "toggle",
+    label: "Reduce Motion (coming soon)",
+    disabled: true,
+  },
+  {
+    type: "toggle",
+    label: "Enable BG Animation",
+    prop: "animatebg",
+    toggle: "toggleAnimateBg",
+    firsticon: "tick",
+    secondicon: "cross",
+  },
+  { type: "label", label: "Random Things Area" },
+  {
+    type: "button",
+    label: "See Junk Page",
+    buttonLabel: "Go",
+    icon: "sun",
+    route: "/junk",
+  },
+  {
+    type: "toggle",
+    label: "Ridiculous Article Mode",
+    prop: "themeoverride",
+    toggle: "toggleThemeOverride",
+    firsticon: "joke",
+    secondicon: "smile",
+  },
+  {
+    type: "toggle",
+    label: "Enable all the development stuff",
+    prop: "isDev",
+    toggle: "ToggleIsDev",
+    firsticon: "projects",
+    secondicon: "yeti",
+  },
+  {
+    type: "button",
+    label: "Article to JSON Editor",
+    buttonLabel: "Go",
+    icon: "editor",
+    route: "/editor",
+  },
+  {
+    type: "button",
+    label: "Open Legacy Site",
+    buttonLabel: "Open Site",
+    icon: "editor",
+    external: "https://2of.github.io/site/",
+  },
+  {
+    type: "label",
+    label: "That's all",
+    paragraph: "Well thanks for having a look around. This is my little hand done website",
+  },
+  {
+    type: "label",
+    label: "Attribution",
+    paragraph: "SVGS: https://github.com/MariaLetta/mega-doodles-pack Mega Doodles Pack ",
+  },
+];
+
+
+
 export const SettingsPage = () => {
   const {
     prefersCol,
@@ -22,119 +97,58 @@ export const SettingsPage = () => {
     toggleThemeOverride,
     isDev,
     ToggleIsDev,
-    animatebg, setAnimateBg, toggleAnimateBg
-    
+    animatebg,
+    toggleAnimateBg,
   } = useGlobalContext();
-  const { getAboutData } = useProjects();
-  const [about, setAbout] = useState(null);
 
+  const navigate = useNavigate();
   const screenSize = useScreenSize();
   const mobile = screenSize === "sm";
-  const navigate = useNavigate();
+
+  const renderComponent = (row) => {
+    switch (row.type) {
+      case "toggle":
+        if (row.component === "DarkModeWrapper")
+          return <DarkModeWrapper type="box" />;
+        if (row.disabled)
+          return <StandardToggle type="box" disabled />;
+        return (
+          <StandardToggle
+            type="box"
+            callback={() => eval(row.toggle)}
+            checked={eval(row.prop)}
+            firsticon={getIcon(row.firsticon)}
+            secondicon={getIcon(row.secondicon)}
+          />
+        );
+      case "button":
+        return (
+          <StandardButton
+            label={row.buttonLabel}
+            type="article"
+            icon={getIcon(row.icon)}
+            callback={() => {
+              if (row.route) navigate(row.route);
+              if (row.external) window.open(row.external, "_blank");
+            }}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
+  const mappedRows = settingsConfig.map((row) => ({
+    label: row.label,
+    paragraph: row.paragraph,
+    disable: row.disabled,
+    component: renderComponent(row),
+  }));
+
   return (
     <ScrollableVerticalView staggerStart>
       <section>
-        <RowView
-          mobile = { 
-            screenSize === "sm"
-          }
-          rows={[
-            {
-              label: " Miscellaneous Settings",
-            },
-
-            {
-              label: " Dark Mode Again",
-              component: <DarkModeWrapper type={!mobile ? "box" : "box"} />,
-            },
-
-            {
-              disable: true,
-              label: " Reduce Motion (coming soon)",
-              component: <StandardToggle type={!mobile ? "box" : "box"} />,
-            }, {
-              label: `Enable BG Animation`,
-              component: (
-                <StandardToggle
-                  type={!mobile ? "box" : "box"}
-                  callback={() => toggleAnimateBg}
-                  checked={animatebg}
-                  firsticon={getIcon("tick")}
-                  secondicon={getIcon("cross")}
-                />
-              ),
-            },
-{
-              label: " Random Things Area",
-            },
-            {
-              label: " See Junk Page",
-              component: (
-                <StandardButton
-                  label="Go"
-                  type="article"
-                  icon={getIcon("sun")}
-
-                  callback={() => {
-                    navigate("/junk");
-                  }}
-                />
-              ),
-            },
-           
-            {
-              label: `Ridiculous Article Mode:  ${
-                themeoverride ? "on, go open an article" : "off"
-              }`,
-              component: (
-                <StandardToggle
-                  type={!mobile ? "box" : "box"}
-                  callback={() => toggleThemeOverride}
-                  checked={themeoverride}
-                  firsticon={getIcon("joke")}
-                  secondicon={getIcon("smile")}
-                />
-              ),
-            },
-             {
-              label: `Enable all the development stuff`,
-              component: (
-                <StandardToggle
-                  type={!mobile ? "box" : "box"}
-                  callback={() => ToggleIsDev}
-                  checked={isDev}
-                  firsticon={getIcon("projects")}
-                  secondicon={getIcon("yeti")}
-                />
-              ),
-            },
-
-              {
-              label: "Article to JSON Editor",
-              component: (
-                <StandardButton
-                  label="Go"
-                  type="article"
-                  icon={getIcon("editor")}
-
-                  callback={() => {
-                    navigate("/editor");
-                  }}
-                />
-              ),
-            },
-            {
-              label: " That's all",
-              paragraph:
-                "Well thanks for having a look around. This is my little hand done website",
-            },
-             {
-              label: " Attribution",
-              paragraph:
-                "SVGS: https://github.com/MariaLetta/mega-doodles-pack Mega Doodles Pack ",
-            },
-          ]}
-        />
+        <RowView mobile={mobile} rows={mappedRows} />
       </section>
     </ScrollableVerticalView>
   );
