@@ -100,7 +100,6 @@ export const LinkSection = ({
       className={className}
       onMouseMove={handleShowTooltip}
       onMouseLeave={handleHideTooltip}
-      onTouchStart={handleShowTooltip}
       onTouchEnd={(e) => {
         handleHideTooltip();
         handleClick(e); // Ensures mobile tap triggers nav instantly

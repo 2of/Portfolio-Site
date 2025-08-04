@@ -54,23 +54,23 @@
   {
     "name": "Chrome",
     "showcase": true,
-        "wip": true,
     "uniWorkShowcase": false,
     "details": {
            "icon" : "award",
       "subtitle": "For about an afternoon, in New Zealand...",
       "tags": [
         "Manifest V3",
-        "Web"
+        "Web", "Javascript","Social Media Outrage I guess"
       ],
 
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/NoMoreMarketplace/Main_Text.json",
+      
+      "type": "file",
+      "url": "/Writeups/Chrome/text.json",
       "file": "",
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/Chrome/thumb.png",
 
-      "title": "I wrote a Chrome Extension that was on the FrontPage of reddit"
+      "title": "I totally  wrote a Chrome Extension that was on the FrontPage of reddit"
     }
   },
   {

@@ -52,6 +52,7 @@
   margin-bottom: 24px;
   border-radius: var(--border-radius);
   background-color: transparent;
+    break-inside: avoid;
   
 }
 
@@ -131,7 +132,7 @@ width: 100%;
   }
 }
 .DataSection {
-  padding-bottom: 3rem;
+  padding-bottom: 3rem; break-inside: avoid;
   .block { 
     margin-top: 24px;
   }

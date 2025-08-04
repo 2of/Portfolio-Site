@@ -108,7 +108,7 @@ export const SettingsPage = () => {
   const renderComponent = (row) => {
     switch (row.type) {
       case "toggle":
-        if (row.component === "DarkModeWrapper")
+        if (row.component === "DarkModeWrapper") //kinda being lazy here...
           return <DarkModeWrapper type="box" />;
         if (row.disabled)
           return <StandardToggle type="box" disabled />;
@@ -146,7 +146,7 @@ export const SettingsPage = () => {
   }));
 
   return (
-    <ScrollableVerticalView staggerStart>
+    <ScrollableVerticalView  staggerStart>
       <section>
         <RowView mobile={mobile} rows={mappedRows} />
       </section>
