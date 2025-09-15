@@ -34,6 +34,7 @@ export const ScrollableVerticalView = ({
   trackVelocity = true,
   trackScrollPercent,
   staggerStart = false,
+  alignCenter = false
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
@@ -81,16 +82,17 @@ export const ScrollableVerticalView = ({
     return () => el?.removeEventListener("scroll", handleScroll);
   }, [trackVelocity, trackScrollPercent]);
 
-  const containerClass = clsx(
-    styles.scrollContainer,
-    trackVelocity
-      ? styles.scrollContainerVelocity
-      : styles.scrollContainerBounce
-  );
+ const containerClass = clsx(
+  styles.scrollContainer,
+  trackVelocity
+    ? styles.scrollContainerVelocity
+    : styles.scrollContainerBounce,
+  alignCenter && styles.alignCenter 
+);
 
   const enhancedChildren = React.Children.map(children, (child) => {
     if (!React.isValidElement(child)) return child;
-
+    // witchcraft to make sure sections are sticky
     const isSection = child.type?.name === "Section";
     return isSection
       ? React.cloneElement(child, {
@@ -129,7 +131,12 @@ export const ScrollableVerticalView = ({
           {/* {scrollPercent} */}
         </div>
       )}
-      <div className={styles.contentColumn}>
+      <div 
+      className={clsx(
+    styles.contentColumn,
+    alignCenter && styles.alignCenter
+  )}
+  >
         {staggerStart && <div className={styles.staggerSpacer} />}
         {enhancedChildren}
       </div>

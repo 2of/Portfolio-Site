@@ -23,9 +23,10 @@ import getIcon from "../utils/Iconifier";
 import LargeThumbCard from "../components/Cards/CardLarge";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
 import GlassPushOverlay from "../components/UI/GlassContainer";
+import SmallCard from "../components/Cards/SmallCard";
 
 export const CataloguePage = () => {
-  const { getAllMetaData } = useProjects();
+  const { getAllMetaData,getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
   const screenSize = useScreenSize();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,8 +58,8 @@ export const CataloguePage = () => {
     setActivemetadata(null);
   };
 
-  const showcaseProjects = shortProjects.filter((p) => p.showcase);
-  const uniProjects = shortProjects.filter((p) => p.uniWorkShowcase);
+  const showcaseProjects = getMetadata({ which: "feat" });
+  const uniProjects = getMetadata({ which: "uni" });
   const miscProjects = shortProjects.filter((p) => p.misccategory);
 
   const renderCard = (project, id) => {
@@ -72,9 +73,10 @@ export const CataloguePage = () => {
             // title=?
             data={project.details}
             icon={getIcon("test")}
-            to={getProjURL(project.name)}
-            onClick={() => console.log("Open Study Space")}
+            to={project.externalLink || getProjURL(project.name)}
+            isExternal={project.externalLink || false}
           />
+          {/* test {project.externalLink && "external"} */}
         </GlassPushOverlay>
       </div>
     );
@@ -101,29 +103,36 @@ export const CataloguePage = () => {
       <div className={styles.ProjectContainerDense}>
         {githubProjects.map((proj, id) => (
           <div key={id} className={`${styles.ProjectCell} ${styles.sm_25}`}>
-            <Thumbnail
-              size="small"
+                <GlassPushOverlay>
+            <SmallCard
+              type="compact_thumb"
               randomcolor={true}
               data={{
                 title: proj.name,
                 subtitle: proj.description,
                 ext_url: proj.url,
               }}
+              to={proj.url}
+              isExternal={true}
               // fullLinkCallBack={() => navigate(proj.url)}
               //   asFS={screenSize === "sm"}
-              type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
+              // type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
             />
+            {/* test {proj.url} */}
+            </GlassPushOverlay>
           </div>
         ))}
 
-        <Thumbnail
+        <SmallCard
           size="small"
           randomcolor={true}
           data={{
             title: "See All Repos",
             subtitle: "github.com/2of",
-            ext_url: "www.github.com/2of",
+         
           }}
+          to={"www.github.com/2of"}
+          isExternal={true}
           // fullLinkCallBack={() => navigate.to(project.url)}
           //   asFS={screenSize === "sm"}
           type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}

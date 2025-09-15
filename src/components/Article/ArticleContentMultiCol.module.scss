@@ -47,21 +47,7 @@
     }
   }
 }
-.sectionContainer {
-  padding: 12px 16px;
-  margin-bottom: 24px;
-  border-radius: var(--border-radius);
-  background-color: transparent;
-    break-inside: avoid;
-  
-}
 
-.sectionDivider {
-  padding: 0 20%;
-  height: 1px;
-//   background-color: var(--border-color);
-  margin: 24px 0;
-}
 
 .paragraph { 
     // background-color: red;
@@ -257,19 +243,34 @@ overflow: scroll;
   word-break: break-word;
 }
 }
-
 .ContentContainer {
-  column-width: 420px;
-  column-gap: 32px;
-  padding: 24px 12px 10vh;
-  margin: 0 auto;
+  column-count: 2;              // number of columns
+  column-gap: 24px;             // spacing between columns
   max-width: 1400px;
-  overflow: hidden;
-  background-color: var(--bg);
-//   width: 10px;
-  overflow: hidden;
-//   border: 1px solid var(--border-color);
+  margin: 0 auto;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 
-   
+   @media (max-width: 900px) {   
+    column-count: 1;        // fallback to single column as different from the usual method... lazy but smooth@
+  }
+
+
+}
+
+.sectionContainer {
+  display: inline-block;        // important so sections respect column flow
+  width: 100%;
+  // margin: 0 0 24px;       
+        // spacing between blocks
+  padding: 4px 16px;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+        // prevent a section from splitting between columns
+}
+
+.sectionDivider {
+  // grid-column: 1 / -1; // spans across both columns
+  // height: 1px;
+  // margin: 24px 0;
+  // background-color: var(--border-color);
 }

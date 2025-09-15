@@ -1,0 +1,87 @@
+.headerDesktopDoc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.headerHeroImage {
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.headerMain {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.headerIcon {
+  font-size: 2rem;
+}
+
+.headerTitle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.headerSubtitle {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+}
+
+.headerExtraText {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.headerMeta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 1rem;
+}
+
+.headerTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.headerTag {
+  background: var(--tag-bg, #f0f0f0);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.headerHeroLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.headerLink {
+  color: var(--link-color, #007bff);
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

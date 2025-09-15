@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useLocation, Outlet } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styles from "./MainLayout.module.scss";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import FloatingNav from "./floatingNav";
@@ -12,12 +11,12 @@ import { useAlertMenu } from "../../contexts/AlertMenuContext";
 import Alert from "../../components/UI/Alert";
 import { ScrollIndicator } from "../../components/UI/ScrollIndicator";
 import { Disclaimer } from "../../components/disclaimer";
+import { NavWrapper } from "../../components/Nav/NavWrapper";
 
 const MainLayout = () => {
   const location = useLocation();
   const screenSize = useScreenSize();
   const { alertVisible } = useAlertMenu();
-
   const {
     disableForPopup,
     disablePopupClickOffCallback,
@@ -38,22 +37,20 @@ const MainLayout = () => {
     }
   };
 
-  const blurStyle = {
-    filter:
-      shareSheetVisible || disableForPopup
-        ? "brightness(0.2) blur(12px)"
-        : "none",
-    pointerEvents: disableForPopup ? "none" : "auto",
-    overflow: "hidden",
-    transition: "filter 0.2s ease-out, pointer-events 0s linear 0.3s",
-  };
-
+  const blurStyle ={}
   const nodeRef = useRef(null);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  // Trigger fade-in on route change
+  useEffect(() => {
+    setFadeIn(false);
+    const timeout = setTimeout(() => setFadeIn(true), 10); // next tick
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
   return (
     <>
       <Disclaimer title={"🚧 🚧"} text={"Work in Progress"} />
-
       {alertVisible && <Alert />}
       {scrollIndicatorStatus.display && <ScrollIndicator />}
       {shareSheetVisible && (
@@ -63,36 +60,23 @@ const MainLayout = () => {
           onClose={closeShareSheet}
         />
       )}
-
-
-
+   <NavWrapper/>
       <main className={styles.mainContent} onClick={handleMainClick}>
         <Background />
 
-        <TransitionGroup component={null}>
-          <CSSTransition
-            key={location.pathname}
-            classNames={{
-              enter: styles.pageTransitionEnter,
-              enterActive: styles.pageTransitionEnterActive,
-              exit: styles.pageTransitionExit,
-              exitActive: styles.pageTransitionExitActive,
-            }}
-            timeout={400}
-            nodeRef={nodeRef}
-          >
-            <div
-              ref={nodeRef}
-              className={disableForPopup ? styles.disable : styles.ContentContainer}
-              style={screenSize === "sm" ? blurStyle : undefined}
-            >
-              <Outlet context={{ openShareSheet }} />
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
+        <div
+          key={location.pathname}
+          ref={nodeRef}
+          className={`${disableForPopup ? styles.disable : styles.ContentContainer} ${
+            fadeIn ? styles.fadeIn : ""
+          }`}
+          style={screenSize === "sm" ? blurStyle : undefined}
+        >
+          <Outlet context={{ openShareSheet }} />
+        </div>
       </main>
-
-      {screenSize !== "sm" ? <FloatingNav /> : <DynamicNav />}
+       
+      {/* {screenSize !== "sm" ? <FloatingNav /> : <DynamicNav />} */}
     </>
   );
 };

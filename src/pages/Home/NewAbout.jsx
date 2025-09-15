@@ -5,6 +5,7 @@ import img3 from "../../assets/HomeParallaxResources/6.png";
 import bg from "../../assets/HomeParallaxResources/bg.png";
 import styles from "./styles/newAbout.module.scss";
 import { BouncyArrows } from "../../components/UI/bouncyArrows";
+import getIcon from "../../utils/Iconifier";
 
 export const aboutText = {
   title: "Yeah, so About Me",
@@ -85,9 +86,12 @@ export const NewAboutCell = ({ sz, percentVisible }) => {
             key={i}
             className={`${styles.QualItem} flatStyleShadow_NO_INTERACT`}
           >
-            <p className={styles.QualificationLevel}>{level}</p>
+
+            <div className={styles.QualIcon}>{getIcon("school")}</div>  
+            <div className={styles.QualsText}>     <p className={styles.QualificationLevel}>{level}</p>
             <p className={styles.QualificationField}>{field}</p>
-            <p className={styles.QualificationDetails}>{details}</p>
+            <p className={styles.QualificationDetails}>{details}</p> </div>
+       
           </div>
         ))}
       </div>
@@ -179,37 +183,39 @@ const renderTitleSVG_Desktop = () => (
       <div className={styles.ContentContainerL}>
 
           <div className={styles.titleContainer}>
-        {renderTitleSVG_Desktop()}
+        {/* {renderTitleSVG_Desktop()} */}
         </div>
         <div
           className={styles.Subtitle}
           style={{ transform: `translateY(${(1 - clamped) * 30}px)` }}
         >
           <p>{aboutText.subtitle}</p>
-        </div>
+        </div>       {renderQuals()}
         
         <div
           className={styles.para}
           style={{ transform: `translateY(${clamped * 10}px)` }}
         >
           {renderParagraphs()}
+   
         </div>
+                <BouncyArrows direction="down" />
         </div>
-
+{/* 
         <div className={styles.VerticalDivider}/>
         <div className={styles.ContentContainerR}>
-        {renderQuals()}
+ 
         <BouncyArrows direction="down" />
    
-</div>
-      <div
+</div> */}
+      {/* <div
         className={styles.art2}
         style={{
           transform: `translateY(${50 - clamped * 200}px) `,
         }}
       >
         <img src={img2} alt="Art Two" />
-      </div>
+      </div> */}
     </div>
   );
 

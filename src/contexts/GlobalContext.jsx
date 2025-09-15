@@ -21,6 +21,7 @@ export const GlobalProvider = ({ children }) => {
   const [disableForPopup, setDisableForPopupState] = useState(false);
   const [isDev, setisDev] = useState(false);
   const [animatebg, setAnimateBg] = useState(true);
+  const [solidNavBar, setSolidNavBar] = useState(false);
   const [disablePopupClickOffCallback, setDisablePopupClickOffCallback] =
     useState(null);
   const [scrollIndicatorStatus, setShowScrollIndicator] = useState({
@@ -32,7 +33,6 @@ export const GlobalProvider = ({ children }) => {
     []
   );
 
-  //shaer land
 
   const [shareSheetVisible, setShareSheetVisible] = useState(false);
   const [shareURL, setShareURL] = useState("");
@@ -52,6 +52,9 @@ export const GlobalProvider = ({ children }) => {
     console.log(scrollIndicatorStatus)
   };
 
+
+  
+
   const toggleAnimateBg = () => { 
     setAnimateBg((prevmode) => !prevmode);
   };
@@ -66,6 +69,8 @@ export const GlobalProvider = ({ children }) => {
 
   const pushNavReplacementButton = (button) => {
     setNavReplacementButtonStack((prevStack) => [...prevStack, button]);
+
+    console.log(navReplacementButtonStack, " pushed");
   };
   const popNavReplacementButton = () => {
     // alert("POP")

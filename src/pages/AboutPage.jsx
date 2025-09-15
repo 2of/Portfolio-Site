@@ -4,34 +4,40 @@ import ProgressBar from "../components/UI/ProgressBar";
 import styles from "./AboutPage.module.scss";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { StandardChips } from "../components/UI/Chips";
-import { Section, ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import {
+  Section,
+  ScrollableVerticalView,
+} from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
 import useScreenSize from "../utils/screensize";
-
-
+import { StandardButton } from "../components/UI/StandardButton";
+import getIcon from "../utils/Iconifier";
 
 export const AboutPage = () => {
- 
   const screenSize = useScreenSize();
-
-  const { getAboutData } = useProjects();
+  const { getLink } = useGlobalContext();
+  const { getPageData } = useProjects();
   const [about, setAbout] = useState(null);
 
-  useEffect(() => {
-    const load = async () => {
-      const data = await getAboutData();
-      setAbout(data);
-    };
-    load();
-  }, [getAboutData]);
+useEffect(() => {
+  const load = async () => {
+    const data = await getPageData({ pagename: "about" }); 
+    setAbout(data);
+  };
+  load();
+}, [getPageData]);
+
+
 
   if (!about) return <p>Loading...</p>;
 
   const { title, subtitle, description, ...sections } = about;
 
-  const sectionHeaderClass = `${styles._sectionHeader}${screenSize==="sm" ? ` ${styles.mobile}` : ""}`;
+  const sectionHeaderClass = `${styles._sectionHeader}${
+    screenSize === "sm" ? ` ${styles.mobile}` : ""
+  }`;
 
   return (
-    <ScrollableVerticalView staggerStart trackScrollPercent>
+    <ScrollableVerticalView  staggerStart={screenSize!== "sm"}>
       <Section
         narrow
         Header={() => <h2 className={sectionHeaderClass}>{title}</h2>}
@@ -42,24 +48,47 @@ export const AboutPage = () => {
           <ProgressBar
             style="linear"
             animated={true}
-            
             beginAnimate={true}
             val={10}
           />
           <p>{about.areatitle}..</p>
+          <span className={styles.buttonContainer}>
+            <StandardButton
+              label="Résumé"
+              // tooltip="Navigate to resume"
+              type="subtle"
+              icon={getIcon("resume")}
+              link={getLink("resume")}
+              external={true}
+            />
+            <StandardButton
+              label="Github"
+              type="subtle"
+              icon={getIcon("github")}
+              link={getLink("github")}
+              external
+            />
+            <StandardButton
+              label="LinkedIn"
+              type="subtle"
+              icon={getIcon("linkedin")}
+              link={getLink("linkedin")}
+              external
+            />
+          </span>
         </div>
-
       </Section>
 
       {Object.entries(sections)
-        .filter(([_, content]) =>
-          content &&
-          (content.title ||
-            content.subtitle ||
-            content.paragraph1 ||
-            content.paragraph2 ||
-            content.lastline ||
-            (Array.isArray(content.data) && content.data.length > 0))
+        .filter(
+          ([_, content]) =>
+            content &&
+            (content.title ||
+              content.subtitle ||
+              content.paragraph1 ||
+              content.paragraph2 ||
+              content.lastline ||
+              (Array.isArray(content.data) && content.data.length > 0))
         )
         .map(([sectionKey, content]) => (
           <Section

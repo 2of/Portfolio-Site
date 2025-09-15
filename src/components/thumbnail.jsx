@@ -26,7 +26,9 @@ const containerStyle =
     : {};
 const handleClick = () => {
   console.log(details.ext_url);
-
+console.log("SDFDSFDSF")
+alert("Clicked Thumbnail")
+  
   const isExternal =
     details.ext_url &&
     (details.ext_url.startsWith("http") || details.ext_url.startsWith("www."));
@@ -78,7 +80,7 @@ const handleClick = () => {
       case "compact_thumb":
         return (
           <div
-            className={`${styles.compact_thumb} subtleMouseOverBounce flatStyleShadow`}
+            className={`${styles.compact_thumb}  flatStyleShadow`}
             style={containerStyle}
             onClick={handleClick}
           >

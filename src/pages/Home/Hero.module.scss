@@ -17,9 +17,9 @@
 
     .HeroArt {
         position: absolute;
-        bottom: calc(var(--nav-height) - 24px);
+        
         left: -100px;
-
+      bottom: 0px;
         z-index: 1;
     // display: none;
         img {

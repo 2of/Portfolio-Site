@@ -1,47 +1,22 @@
-.pageTransitionEnter {
-  animation: fadeInSlideUp 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.pageTransitionEnterActive {
-  /* No extra styles needed */
-}
-
-.pageTransitionExit {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.pageTransitionExitActive {
+.ContentContainer {
   opacity: 0;
-  transform: translateY(8px) scale(0.98) rotateZ(1deg);
-  transition: opacity 300ms ease, transform 300ms ease;
-}
-@keyframes funPopSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(8px) scale(1.01);
-  }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  min-height: var(--content-height);
+
+  height: fit-content;
+  // min-height: 100vh;
+  margin-top: var(--navHeight);
+// height: 100vh;
+// padding: 0;
+
 }
 
-@keyframes fadeInSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End in its original position */
-  }
-}
-.mainContent{
-overflow-x: hidden;
+.ContentContainer.fadeIn {
+  opacity: 1;
+  transform: translateY(0);
+
 }
 
-.ContentContainer{
-  // transform: scale(2);
-}
+

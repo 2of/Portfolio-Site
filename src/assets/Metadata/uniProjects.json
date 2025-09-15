@@ -1,0 +1,111 @@
+[
+  {
+    "name": "weather",
+    "externalLink": "https://github.com/2of/University-Of-Canterbury-DATA420-2024/tree/main",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "title": "Massive Data for weather analysis"
+    }
+  },
+  {
+    "name": "NodeJSServer",
+     "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "title": "NodeJS Server for Petition Website"
+    }
+  },
+  {
+    "name": "HTTPDownloader",
+     "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "C",
+        "Low Level Programming",
+        "Race Conditions, Semaphores and Mutexes",
+        "Memory Management"
+      ],
+
+      "title": "C HTTP 1.0 File Downloader from Scratch"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+      "title": "1 Million Song Dataset Prediction and Recommendation Model"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "It's easier to clump these together",
+      "tags": [
+        "R",
+        "Machine Learning",
+        "Big Data Processing",
+        "Regression Analysis",
+        "Data Processing",
+        "Model Heuristics and Selection",
+        "Python",
+        "Keras",
+        "TensorFlow"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "Regression Models and Statistics"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+
+
+      "type": "file",
+      "url": "/Writeups/RGBHands/text.json",
+      "title": "Hand tracked User Interface using a single RGB camera and Machine Learning"
+    }
+  }
+]

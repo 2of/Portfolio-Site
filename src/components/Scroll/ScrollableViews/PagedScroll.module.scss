@@ -1,9 +1,9 @@
 .pagedScroll {
-  height: 100vh;
+  height:var(--content-height);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overscroll-behavior: contain; // 💥 prevents bounce on iOS
+  // overscroll-behavior: contain; // 💥 prevents bounce on iOS
   -webkit-overflow-scrolling: touch; // for iOS momentum
   overflow-x: hidden;
   width: 100vw;
@@ -11,7 +11,7 @@
 }
 
 .pagedSection {
-  height: 100vh;
+  height:var(--content-height);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
@@ -22,6 +22,7 @@
   overflow-y: hidden;
 
     width: 100vw;
+    overflow-x: hidden;
     margin: 0;
   // Prevent extra scroll space
   &:last-child {

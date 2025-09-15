@@ -1,22 +1,36 @@
 import React, { createContext, useContext } from "react";
 import metadata from "../assets/ProjectText/metadata.json";
+import uniMetadata from "../assets/Metadata/uniProjects.json";
+import featMetadata from "../assets/Metadata/featuredProjects.json";
+
+
 import NestSkills from "../assets/About/NestedSkills.json";
 // import AboutData from "../assets/about/about.json";
 const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
+  const getPageData = async ({ pagename }) => {
+    const mapping = {
+      about: "/assets/text/about.json",
+      home: "/assets/text/home.json",
+      skills: "/assets/text/skills.json",
+    };
 
-const getAboutData = async () => {
-  // yeah had to do this 
-  try {
-    const response = await fetch("/assets/about/about.json"); // absolute path
-    if (!response.ok) throw new Error("Failed to fetch about.json");
-    return await response.json();
-  } catch (err) {
-    console.error("[getAboutData] Failed to load:", err);
-    return null;
-  }
-};
+    if (!mapping[pagename]) {
+      console.error(`[getPageData] Unknown page: ${pagename}`);
+      return null;
+    }
+
+    try {
+      const response = await fetch(mapping[pagename]);
+      if (!response.ok) throw new Error(`Failed to fetch ${mapping[pagename]}`);
+      return await response.json();
+    } catch (err) {
+      console.error("[getPageData] Failed to load:", err);
+      return null;
+    }
+  };
+
   const getArticleMetaData = (name) => {
     console.log("[getArticleMetaData] Looking up metadata for:", name);
 
@@ -82,6 +96,22 @@ const getAboutData = async () => {
     return metadata.map(({ name }) => ({ name }));
   };
 
+
+  const getMetadata = ({which}) => { 
+    //accepts 'uni', 'showcase', 'all' as props
+    switch (which) {
+      case "uni":
+        return uniMetadata;
+      case "feat":
+        return featMetadata;
+      case "all":
+        return metadata;
+      default:
+        return null
+    }
+
+
+  }
   const getSkills = () => NestSkills;
 
   return (
@@ -92,7 +122,8 @@ const getAboutData = async () => {
         getAllMetaData,
         getListOfArticles,
         getSkills,
-        getAboutData
+        getPageData,
+        getMetadata,
       }}
     >
       {children}

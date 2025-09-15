@@ -1,41 +1,31 @@
-import React, { useEffect, useRef, useState, memo } from "react";
-import styles from "./MobileIcon.module.scss";
+import React, { useEffect, useState, memo } from "react";
 import clsx from "clsx";
+import styles from "./styles/MobileIcon.module.scss";
 
-const NavMenuIconMobile = ({ label, icon, bgColor, currentCallback, showbg=true }) => {
-  const [cachedLabel, setCachedLabel] = useState(label);
-  const [cachedIcon, setCachedIcon] = useState(icon);
-  const [animate, setAnimate] = useState(false);
-  const prevCallbackRef = useRef(currentCallback);
+const NavMenuIconMobile = ({ label, icon, currentCallback, isFloating = false }) => {
+  const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
-    if (prevCallbackRef.current !== currentCallback) {
-      setAnimate(true);
-      prevCallbackRef.current = currentCallback;
-
-      const timeout = setTimeout(() => {
-        setAnimate(false);
-        setCachedLabel(label);
-        setCachedIcon(icon);
-      }, 300); // match CSS transition duration
-
-      return () => clearTimeout(timeout);
-    }
-  }, [label, icon, currentCallback]);
+    requestAnimationFrame(() => setAnimateIn(true));
+  }, []);
 
   return (
     <div
       className={clsx(
-        styles.navMenuIconMobile,
-        {
-          [styles.animateOut]: animate,
-        },
-        showbg && "flatStyleShadow_NO_INTERACT"
+        styles.mobileIconContainer,
+        isFloating ? styles.floating : styles.fixed,
+        isFloating && "flatStyleShadow_NO_INTERACT"
       )}
-
+      onClick={currentCallback}
     >
-      <div className={styles.iconWrapper}>{cachedIcon}</div>
-      {cachedLabel && <div className={styles.label}>{cachedLabel}</div>}
+      <div className={clsx(styles.iconWrapper, animateIn && styles.popIn)}>
+        {icon}
+      </div>
+      {label && isFloating &&  (
+        <div className={clsx(styles.label, animateIn && styles.popIn)}>
+          {label}
+        </div>
+      )}
     </div>
   );
 };

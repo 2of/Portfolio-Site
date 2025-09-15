@@ -16,7 +16,7 @@
 
 .scrollContainer {
   height: 60vh;
-  overflow: hidden;
+  // overflow: hidden;
   width: 100%;
   max-width: 1200px;
   // margin: 5rem;
@@ -34,7 +34,7 @@
 }
 
 .section {
-  overflow: hidden;
+  // overflow: hidden;
   scroll-snap-align: start;
   height: 60vh;
   display: flex;
@@ -43,6 +43,7 @@
   padding: 24px;
   box-sizing: border-box;
   margin: 3rem;
+
 }
 
 .PageDots {

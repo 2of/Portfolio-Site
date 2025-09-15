@@ -1,8 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./styles/GlassContainer.module.scss";
-
-const GlassPushOverlay = ({ children }) => {
+const GlassPushOverlay = ({
+  children,
+  spiciness = 0.5, // 0 to 1, the intensity of the deform 
+  showHover = true, // whether the effect shows on hover
+}) => {
   const containerRef = useRef(null);
   const glassRef = useRef(null);
 
@@ -20,14 +23,13 @@ const GlassPushOverlay = ({ children }) => {
     const percentX = virtual.current.x - 0.5;
     const percentY = virtual.current.y - 0.5;
 
-    const rotateX = percentY * -10;
-    const rotateY = percentX * 10;
+    // Apply spiciness multiplier
+    const rotateX = percentY * -10 * spiciness;
+    const rotateY = percentX * 10 * spiciness;
 
     containerRef.current.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-    // Move the glass effect under the cursor
-    const container = containerRef.current;
-    const rect = container.getBoundingClientRect();
+    const rect = containerRef.current.getBoundingClientRect();
     const glassX = pointer.current.x * rect.width;
     const glassY = pointer.current.y * rect.height;
 
@@ -40,6 +42,7 @@ const GlassPushOverlay = ({ children }) => {
   };
 
   const handleMouseEnter = (e) => {
+    if (!showHover) return; // skip effect if disabled
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
@@ -55,16 +58,18 @@ const GlassPushOverlay = ({ children }) => {
   };
 
   const handleMouseMove = (e) => {
+    if (!showHover) return;
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-
-    pointer.current = { x, y };
+    pointer.current = {
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    };
   };
 
   const handleMouseLeave = () => {
+    if (!containerRef.current) return;
     isActive.current = false;
     cancelAnimationFrame(raf.current);
 
@@ -94,9 +99,4 @@ const GlassPushOverlay = ({ children }) => {
     </div>
   );
 };
-
-GlassPushOverlay.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default GlassPushOverlay;

@@ -76,7 +76,7 @@ height: var(--content-height);
 
   &.lg {
  
-      height: 100vh;
+    height: var(--content-height);
 
       width: 100vw;
       background-color: var( --herobg);
@@ -86,7 +86,7 @@ height: var(--content-height);
       justify-content: center;
       // background-color: red;
       // background-color: red;
-      height: 100vh;
+    height: var(--content-height);
       .ScrollContainer { 
         // background-color: red;
         // border: 1px solid red;

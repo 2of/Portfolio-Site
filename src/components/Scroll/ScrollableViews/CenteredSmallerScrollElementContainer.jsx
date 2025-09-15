@@ -64,7 +64,7 @@ export const CenteredSmallerScrollElementContainer = ({ children }) => {
       </div>
 
       <div className={styles.outerWrapper}>
-      <div className={styles.topFade}/>
+      {/* <div className={styles.topFade}/> */}
         <div ref={containerRef} className={styles.scrollContainer}>
 
        
@@ -83,7 +83,7 @@ export const CenteredSmallerScrollElementContainer = ({ children }) => {
             ))}
           </div>
         </div>
-      <div className={styles.bottomFade}/>
+      {/* <div className={styles.bottomFade}/> */}
              
       </div>
     </>

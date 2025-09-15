@@ -93,6 +93,8 @@
   .QualsList { 
     // background-color: blue;
     display: flex;
+    flex-direction: column;
+    background-color: red;
     gap: 1rem;
 
 

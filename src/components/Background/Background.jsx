@@ -5,6 +5,7 @@ import styles from "./Background.module.scss";
 import PhysicsShapes from "./PhysicsShapes";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import { ZuneTextBG } from "./ZuneText";
+import BlurArtBackground from "./BlurBg";
 export const Background = () => {
   const location = useLocation();
   const [bgType, setBgType] = useState(() => getBgFromPath(location.pathname));
@@ -49,7 +50,7 @@ export const Background = () => {
         style={{ opacity: bgType === "shapes" ? 1 : 0 }}
       >
         {animatebg ? 
-      <PhysicsShapes/>:   <div
+      <BlurArtBackground/>:   <div
         className={styles.regularbg}
         style={{ opacity: bgType === "default" || bgType === "bg" ? 1 : 0 }}
       />}

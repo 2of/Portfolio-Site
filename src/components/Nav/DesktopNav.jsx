@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import routes from "../../routes/routes";
-import styles from "./DesktopNav.module.scss";
+import styles from "./styles/DesktopNav.module.scss";
 import DarkModeToggle from "../../components/darkmodeToggleSmallInline";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";
@@ -11,18 +11,13 @@ import { DarkModeWrapper } from "../UI/DarkModeWrapper";
 
 const DesktopNav = () => {
   const screenSize = useScreenSize();
-  const {
-    getCurrentNavReplacementButton,
-    navReplacementButtonStack,
-  } = useGlobalContext();
-  const navigate = useNavigate();
+  const { getCurrentNavReplacementButton } = useGlobalContext();
   const location = useLocation();
   const { showTooltip, hideTooltip } = useTooltip();
 
   const [routeChangeAnimating, setRouteChangeAnimating] = useState(false);
   const [activePath, setActivePath] = useState(location.pathname);
   const [wiggleTarget, setWiggleTarget] = useState(null);
-  const [doJump, setDoJump] = useState(false);
 
   // Detect route change animation trigger
   useEffect(() => {
@@ -40,18 +35,13 @@ const DesktopNav = () => {
     }
   }, [location.pathname, activePath]);
 
-  const handleLinkClick = (path) => {
-    navigate(path);
-  };
-
   if (screenSize === "sm") return null; // Do not render on small screens
 
   return (
     <nav
       className={`
-        ${styles.navContainer} 
-        ${getCurrentNavReplacementButton().label ? styles.onlyButton : ""} 
-        ${doJump ? styles.jump : ""}
+        ${styles.navContainer}
+        ${getCurrentNavReplacementButton().label ? styles.onlyButton : ""}
       `}
     >
       <ul className={styles.navList}>
@@ -60,10 +50,20 @@ const DesktopNav = () => {
 
           return (
             <li key={i} className={styles.navItem}>
-              <div
-                onClick={() => handleLinkClick(route.path)}
+              <Link
+                to={route.path}
+                viewTransition
                 className={`${styles.link} ${
                   location.pathname === route.path ? styles.activeLink : ""
+
+
+                } ${routeChangeAnimating
+                        ? location.pathname === route.path
+                          ? styles.wiggleIcon
+                          : styles.boopIcon
+                        : ""
+
+                }
                 }`}
                 onMouseMove={(e) => showTooltip(route.label, e)}
                 onMouseLeave={hideTooltip}
@@ -71,22 +71,15 @@ const DesktopNav = () => {
                 <p className={styles.routeItem}>
                   <span
                     key={route.path + (routeChangeAnimating ? "-anim" : "")}
-                    className={
-                      routeChangeAnimating
-                        ? location.pathname === route.path
-                          ? styles.wiggleIcon
-                          : styles.boopIcon
-                        : ""
-                    }
+                 
                   >
                     {getIcon(route.icon ?? "home")}
                   </span>
                 </p>
-              </div>
+              </Link>
             </li>
           );
         })}
-
         <li className={styles.navItem}>
           <DarkModeWrapper type="pill" />
         </li>

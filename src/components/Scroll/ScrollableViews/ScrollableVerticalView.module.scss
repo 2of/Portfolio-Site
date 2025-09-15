@@ -4,8 +4,11 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   max-width: 100vw;
+  // background-color: red;
+  // border: 2px solid yellow;
   overflow-x: hidden;
-  height: 100vh;
+
+
 }
 
 .staggerSpacer {
@@ -14,7 +17,8 @@
 }
 
 .scrollContainerVelocity {
-  height: 100vh;
+  height: var(--content-height);
+  // height: auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -41,6 +45,9 @@
   flex-direction: column;
   margin: 0 auto;
   padding-bottom: 5rem;
+  min-width: 60vw;
+  max-width: var(--maxWidth);
+
 }
 
 .section {
@@ -98,9 +105,18 @@
   position: absolute;
   top: 2rem;
   display: flex;
-  background-color: var(--bg-transparent);
+  // background-color: var(--bg-transparent);
   right: 1rem;
   width: 96px;
   height: 20px;
   z-index: 120;
+}
+
+
+.alignCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center */
+  justify-content: center; /* vertical center */
+  text-align: center; /* optional if you want text centered too */
 }

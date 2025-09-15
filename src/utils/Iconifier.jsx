@@ -6,18 +6,23 @@ import {
   FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
   FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
   FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
-  FaGrinBeamSweat,FaSmile,FaWrench,FaTheRedYeti,
+  FaGrinBeamSweat, FaSmile, FaWrench, FaTheRedYeti,
   FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH, FaCodeBranch,
-  FaFile, FaHandSpock, FaExternalLinkAlt,FaSun,FaWalking, FaChessKnight,
-  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper,FaHandPointRight,FaAddressCard,
-  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, // Added missing social media icons
+  FaFile, FaHandSpock, FaExternalLinkAlt, FaSun, FaWalking, FaChessKnight,
+  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper, FaHandPointRight, FaAddressCard,
+  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, 
   FaInfo, FaGraduationCap,
   FaMap,
   FaSkullCrossbones,
   FaAward,
   FaCheck,
   FaBan,
-  FaTag
+  FaTag,
+  FaRegStar,
+  FaRegMoon,
+  FaRegFileAlt,
+  FaRegFile,
+  FaRegCircle
 } from "react-icons/fa"; 
 import { FaPencil } from "react-icons/fa6";
 
@@ -27,20 +32,20 @@ const getIcon = (iconName = "default") => {
     about: <FaInfoCircle />,
     user: <FaUser />,
     settings: <FaCog />,
-    article: <FaFileAlt />,
+    article: <FaRegFileAlt />,  // Outline
     video: <FaVideo />,
     academic: <FaFilePdf />,
     code: <FaGithub />,
     projects: <FaWalking />,
     contact: <FaEnvelope />,
-    mail: <FaRegEnvelope />, // Kept FaRegEnvelope for 'mail'
-    email: <FaRegEnvelope />, // Added 'email' alias pointing to FaRegEnvelope
+    mail: <FaRegEnvelope />,
+    email: <FaRegEnvelope />,
     tools: <FaToolbox />,
     tasks: <FaTasks />,
-    star: <FaStar />,
-    moon: <FaMoon />,
+    star: <FaRegStar />,         // Outline star
+    moon: <FaRegMoon />,         // Outline moon
     close: <FaTimes />,
-    cross: <FaTimes />,
+    cross: <FaBan />,
     return: <FaArrowLeft />,
     back: <FaArrowCircleLeft />,
     next: <FaArrowRight />,
@@ -53,45 +58,43 @@ const getIcon = (iconName = "default") => {
     overflow: <FaBars />,
     menu: <FaBars />,
     expand: <FaExpandAlt />,
-    file: <FaFile />,
+    file: <FaRegFile />,         // Outline file
     github: <FaGithub />,
     linkedin: <FaLinkedin />,
     junk: <FaFish />,
     question: <FaQuestionCircle />,
     chess: <FaChessKnight />,
-    catalogue: <FaWalking/>,
+    catalogue: <FaWalking />,
     thesis: <FaProjectDiagram />,
-    paper: <FaFile />,
+    paper: <FaRegFile />,        // Outline file
     complete: <FaNewspaper />,
     share: <FaShareAlt />,
-    external: <FaExternalLinkAlt/>,
-    go: <FaHandPointRight/>,
-    // Missing Social Media Icons
+    external: <FaExternalLinkAlt />,
+    go: <FaHandPointRight />,
     twitter: <FaTwitter />,
     facebook: <FaFacebook />,
     reddit: <FaReddit />,
-    sun : <FaSun/>,
-    columns: <FaColumns/>,
-    listview: <FaAlignCenter/>,
-    about:  <FaInfo/>,
-    joke: <FaGrinBeamSweat/>,
-    smile: <FaSmile/>,
-    settings: <FaWrench/>,
-    yeti: <FaTheRedYeti/>,
-    school: <FaGraduationCap/>,
-    misc: <FaMap/>,
-    fail: <FaSkullCrossbones/>,
-    award: <FaAward/>,
-    grad: <FaUser-FaGraduationCap/>,
-    editor: <FaPencil/>,
-    tick: <FaCheck/>,
-    cross: <FaBan/>,
-    portfolio: <FaCode/>,
-    tag: <FaTag/>
-    
+    sun: <FaSun />,
+    columns: <FaColumns />,
+    listview: <FaAlignCenter />,
+    about: <FaInfo />,
+    joke: <FaGrinBeamSweat />,
+    smile: <FaSmile />,
+    settings: <FaWrench />,
+    yeti: <FaTheRedYeti />,
+    school: <FaGraduationCap />,
+    misc: <FaMap />,
+    fail: <FaSkullCrossbones />,
+    award: <FaAward />,
+    grad: <FaGraduationCap />,
+    editor: <FaPencil />,
+    tick: <FaCheck />,
+    cross: <FaBan />,
+    portfolio: <FaCode />,
+    tag: <FaTag />
   };
 
-  return iconMap[iconName.toLowerCase()] || <FaMap />;
+  return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;
 };
 
 export default getIcon;

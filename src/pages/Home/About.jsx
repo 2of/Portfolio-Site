@@ -54,7 +54,7 @@ export const AboutCell = ({ sz, percentVisible }) => {
             transform: `translateY(${subtitleY}px)`,
           }}
         >
-          <p>Kinda a bunch of stuff...</p>
+          {/* <p>Kinda a bunch of stuff...</p> */}
         </div>
 
         {/* Paragraphs */}

@@ -17,12 +17,14 @@ import WigglyLine from "../Misc/WigglyLine";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 
 // Render one item (paragraph, image, link, etc.)
-export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
+export const renderItem = (item, index, styles, showTooltip, hideTooltip, key) => {
+  const finalKey = key || item.id || item.name || index;
+
   switch (item.type) {
     case "paragraph":
       return (
         <ParagraphSection
-          key={index}
+          key={finalKey}
           text={item.text}
           className={styles.paragraph}
         />
@@ -30,7 +32,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "image":
       return (
         <ImageSection
-          key={index}
+          key={finalKey}
           src={item.src}
           alt={item.alt}
           className={styles.imageContainer}
@@ -41,11 +43,11 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
       );
 
     case "grid":
-      return <GridSection rows={item.rows} styles={styles} />;
+      return <GridSection key={finalKey} rows={item.rows} styles={styles} />;
     case "data":
       return (
         <DataSection
-          key={index}
+          key={finalKey}
           title={item.title}
           datapoints={item.datapoints}
           className={styles.DataSection}
@@ -55,7 +57,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "highlight":
       return (
         <HighlightSection
-          key={index}
+          key={finalKey}
           text={item.text}
           className={styles.highlight}
         />
@@ -63,7 +65,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "pills":
       return (
         <PillsSection
-          key={index}
+          key={finalKey}
           pills={item.pills}
           pillStyle={styles.pill}
           className={styles.pillsContainer}
@@ -72,7 +74,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "link":
       return (
         <LinkSection
-          key={index}
+          key={finalKey}
           truncatable={item.truncatable}
           to={item.to}
           label={item.label}
@@ -84,7 +86,7 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "title":
       return (
         <TitleSection
-          key={index}
+          key={finalKey}
           text={item.text}
           className={styles.titleinline}
         />
@@ -92,50 +94,54 @@ export const renderItem = (item, index, styles, showTooltip, hideTooltip) => {
     case "code":
       return (
         <CodeSection
-          key={index}
+          key={finalKey}
           language={item.language}
           content={item.content}
           className={`${styles.codeBlock} ${
             item.truncatable && styles.truncate
           }`}
-            styles={styles}
+          styles={styles}
         />
       );
     default:
       return null;
   }
 };
-
 // Individual section renderer
 const Section_ = React.memo(({ data, styles, showTooltip, hideTooltip }) => {
+  // Helper to generate unique keys per item
+  const getItemKey = (item, index) => item.id || item.name || `item-${index}`;
+
   return (
     <>
       {data.boost ? (
         <div className={styles.HighLightSection}>
           {data.name && <h3 className={styles.sectionName}>{data.name}</h3>}
+
           {Array.isArray(data.items) && data.items.length > 0 && (
             <div className={styles.items}>
               {data.items.map((item, index) =>
-                renderItem(item, index, styles, showTooltip, hideTooltip)
+                renderItem(item, index, styles, showTooltip, hideTooltip, getItemKey(item, index))
               )}
             </div>
           )}
         </div>
       ) : (
-        <>
+        <div>
           {data.name && (
             <div>
               <h3 className={styles.sectionTitle}>{data.name}</h3>
             </div>
           )}
+
           {Array.isArray(data.items) && data.items.length > 0 && (
             <div className={styles.sectionItems}>
               {data.items.map((item, index) =>
-                renderItem(item, index, styles, showTooltip, hideTooltip)
+                renderItem(item, index, styles, showTooltip, hideTooltip, getItemKey(item, index))
               )}
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );
@@ -147,25 +153,25 @@ export const ArticleContent = ({ data }) => {
     useGlobalContext();
 
   const styles = !themeoverride ? reg_styles : odd_styles;
+
   return (
     <div className={`${true ? styles.ContentContainer : ""}`}>
       {themeoverride && <h3> Ridiculous mode is on by the way </h3>}
-      {data?.sections?.map((section, sectionIndex) => (
-        <>
-          <div className={styles.sectionContainer}>
-            <Section_
-              key={sectionIndex}
-              data={section}
-              styles={styles}
-              showTooltip={showTooltip}
-              hideTooltip={hideTooltip}
-            />
-          </div>
-          <div className={styles.sectionDivider}>
-            <WigglyLine />
-          </div>
-        </>
-      ))}
+{data?.sections?.map((section, sectionIndex) => (
+  <React.Fragment key={`section-${sectionIndex}`}>
+    <div className={styles.sectionContainer}>
+      <Section_
+        data={section}
+        styles={styles}
+        showTooltip={showTooltip}
+        hideTooltip={hideTooltip}
+      />
+    </div>
+    <div className={styles.sectionDivider}>
+      {/* <WigglyLine /> */}
+    </div>
+  </React.Fragment>
+))}
 
       <div className={styles.sectionDivider}>
         <WigglyLine />

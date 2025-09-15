@@ -1,0 +1,151 @@
+[
+  {
+    "name": "geo",
+    "showcase": true,
+    "uniWorkShowcase": false,
+    "details": {
+      "icon": "map",
+      "subtitle": "Master of Artifical Intelligence Thesis (Condensed)",
+      "tags": [
+        "Machine Learning",
+        "Tensorflow",
+        "Transfer Learning",
+        "Regression Analysis",
+        "Model Analysis",
+        "Pytorch",
+        "Object Detection",
+        "Embeddings",
+        "Large Data Processing",
+        "Heuristic Analysis",
+        "Attention Models",
+        "Convolutional Neural Networks",
+        "Neural Networks",
+        "Cooking my GPU",
+        "Psuedo Model Ensemble",
+        "Clustering Analysis"
+      ],
+      "showcase": true,
+      "uniWorkShowcase": false,
+      "type": "file",
+      "url": "/Writeups/GEO/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "thumbbg": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/GEO/hero.png",
+      "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
+    }
+  },
+  {
+    "name": "portfoliosite",
+    "showcase": true,
+    "uniWorkShowcase": false,
+
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I turned my Portfolio Site into a UI Library"
+    }
+  },
+  {
+    "name": "RGBHands",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Computer Vision Project @ UC ",
+      "tags": ["Computer Vision", "Tensorflow", "Python", "Neural Network Design", "OpenCV", "MediaPipe", "PyTorch", "Machine Learning", "PyAutoGUI"],
+      "type": "file",
+      "url": "/Writeups/RGBHands/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/RGBHands/thumb.png",
+      "title": "I created Neural Networks to recognize hand gestures from an RGB camera"
+    }
+  },
+
+  {
+    "name": "portfoliosite",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I made a bunch of chess bots using 'the wrong' Machine Learning approaches"
+    }
+  },
+  {
+    "name": "portfoliosite",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I built a chess website where you can play against my terrible bots!"
+    }
+  },
+  {
+    "name": "UILIB",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "Responsive Modern Portfolio Website (this one!)"
+    }
+  },
+
+  {
+    "name": "Chrome",
+    "details": {
+      "icon": "award",
+      "subtitle": "For about an afternoon, in New Zealand...",
+      "tags": [
+        "Manifest V3",
+        "Web",
+        "Javascript",
+        "Social Media Outrage I guess"
+      ],
+
+      "type": "file",
+      "url": "/Writeups/Chrome/text.json",
+      "file": "",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/Chrome/thumb.png",
+      "title": "I totally  wrote a Chrome Extension that was on the FrontPage of reddit"
+    }
+  },
+  {
+    "name": "chessEloEstimator",
+    "details": {
+      "icon": "chess",
+      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
+      "tags": [
+        "Machine Learning",
+        "LSTM",
+        "Large Data Processing",
+        "Model Analysis",
+        "CNN",
+        "Tensorflow"
+      ],
+
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
+      "file": "Chess1.json",
+      "bgimage": "/Writeups/ChessELOEstimator/thumb.png",
+      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
+      "title": "Free Chess ELO Estimator"
+    }
+  }
+]

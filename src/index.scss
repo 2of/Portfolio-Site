@@ -9,4 +9,11 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+ 
 
+ body, #root {
+  overflow: hidden;      // prevent scrollbars
+  touch-action: none;    // prevent touch scrolling on mobile
+  overscroll-behavior: none; // stop overscroll bounce
+  height: 100%;
+}

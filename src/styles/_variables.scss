@@ -1,6 +1,6 @@
 :root {
   /* Light Mode */
-  --light-bg: #efede2;
+  --light-bg: #f8f7f6;
 
 
   --light-bg-l1: #e5e4e3;
@@ -8,7 +8,7 @@
   --light-bg-l3: #a1a09f;
 
 
-  --light-bg-transparent: #efede2e1;
+  --light-bg-transparent: #f8f7f6c1;
   --light-text: #2E2E2E;
   --light-secondary-text: #6C6C6C;
   --light-card-bg: #FFFFFF;
@@ -47,10 +47,10 @@
   --font-weight-bold: 600;
 
   /* Heights */
-  --nav-height: 0px;
-  --content-height: calc(100vh - var(--nav-height));
-  --content-height-half: calc(0.5 * (100vh - var(--nav-height)));
-
+  --navHeight: 4rem;
+  --content-height: calc(100vh - var(--navHeight));
+  --content-height-half: calc(0.5 * (100vh - var(--navHeight)));
+  
 
   --mobileTopNavSafeArea: 82px;
   --maxWidth: 1400px;

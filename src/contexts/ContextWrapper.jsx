@@ -1,0 +1,54 @@
+import React from "react";
+import { ProjectProvider } from "./ContentContext";
+import { AlertMenuProvider } from "./AlertMenuContext";
+import { ScreenSizeProvider, useScreenSize } from "./ScreenSizeProvider";
+import { TooltipProvider } from "./tooltip";
+import { GlobalProvider } from "./GlobalContext";
+import { RouteProvider, useIsMenuFloating } from "./RouteContext";
+import { DarkModeProvider, useDarkMode } from "./DarkModeContext";
+import { baseTheme, darkTheme, hiddenNavHeight, inlineNavHeight, lightTheme } from "../styles/Themes";
+import { ThemeProvider } from "./ThemeProvider";
+
+function InnerThemeWrapper({ children }) {
+  const { darkMode: isDark } = useDarkMode();
+  const floatingNav = useIsMenuFloating(); // safe now
+  const screenSize = useScreenSize();
+
+  const theme = React.useMemo(() => {
+    let navTheme;
+    if (floatingNav) {
+      navTheme = hiddenNavHeight;
+    } else {
+      navTheme = screenSize !== "sm" ? hiddenNavHeight : inlineNavHeight;   
+    }
+
+return {
+  ...baseTheme,
+  ...navTheme,
+  ...(isDark ? darkTheme : lightTheme),
+};
+  }, [screenSize, floatingNav, isDark]);
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+}
+
+export const ContextWrapper = ({ children }) => {
+      const screenSize = useScreenSize();
+  return (
+    <GlobalProvider>
+      <DarkModeProvider>
+        <ProjectProvider>
+          <RouteProvider>
+            <TooltipProvider>
+              <AlertMenuProvider>
+                <ScreenSizeProvider>
+  <InnerThemeWrapper>{children}</InnerThemeWrapper>
+</ScreenSizeProvider>
+              </AlertMenuProvider>
+            </TooltipProvider>
+          </RouteProvider>
+        </ProjectProvider>
+      </DarkModeProvider>
+    </GlobalProvider>
+  );
+};

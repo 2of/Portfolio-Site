@@ -2,17 +2,19 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 800px;
+  // max-width: 99%;
   // background-color: var(--bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
+  
   overflow: hidden;
   // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin: 0 auto;
 
   &.mobile { 
     border: none;
-    width: 100%;
+    width: 100vw;
+
     border-radius: 0;
   }
 }
@@ -25,6 +27,7 @@
   border-bottom: 1px solid var(--border-color);
   transition: background 0.2s ease;
 
+  background-color: var(--bg);
   &:last-child {
     border-bottom: none;
   }
@@ -56,13 +59,15 @@
   }
 
   &.justLabel {
-    padding-top: 2rem;
+    padding-top: 1rem;
     font-style: italic;
     justify-content: flex-start;
-    
+  background-color: var(--text-color);
+
 
     .label {
       width: 100%;
+        color: var(--bg);
     }
   }
 

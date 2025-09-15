@@ -1,0 +1,72 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.lightBlob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+
+  transform: translate3d(0, 0, 0);
+  transition: opacity 2s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+
+  animation-name: float;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(20px, -10px) scale(1.05);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-15px, 20px) scale(0.95);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(10px, -15px) scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+
+.roundedNone { border-radius: 0; }
+.roundedSm { border-radius: 0.25rem; }
+.roundedMd { border-radius: 0.5rem; }
+.roundedLg { border-radius: 1rem; }
+.roundedXl { border-radius: 1.5rem; }
+.rounded2xl { border-radius: 2rem; }
+.rounded3xl { border-radius: 3rem; }
+
+.content {
+  position: relative;
+  z-index: 10;
+  transition: opacity 1s ease;
+}
+
+.contentVisible { opacity: 1; }
+.contentHidden { opacity: 0; }

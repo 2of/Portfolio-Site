@@ -41,7 +41,7 @@ export const Modal = ({ component, onClose, size = "small", title, buttons = [],
     useEffect(() => {
         pushNavReplacementButton({
             callback: handleClose,
-            label: getIcon("close"),
+            label: "Close",
         });
     }, []);
 

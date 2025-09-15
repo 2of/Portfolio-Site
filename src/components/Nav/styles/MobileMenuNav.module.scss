@@ -1,40 +1,39 @@
-/* components/Nav/MobileNavMenu.module.scss */
-
 .bgCover {
   position: fixed;
-  top: 0;
+  bottom: 0px;
   left: 0;
-//   width: 100vw;
-//   height: 100vh;
+  width: 100vw;
+
+  height: var(--content-height);
   background-color: var(--bg);
+// background-color: red;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 21;
-  display: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 400;
 
   &.show {
     opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.2s ease-in-out; // faster fade-in
-    transition-delay: 0s;
+    // pointer-events: auto;
   }
 
   &.hide {
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in-out; // slower fade-out
-    transition-delay: 0.2s;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: auto; // keep pointer events during fade out
   }
 }
-
 .miniNav {
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
-  height: 102vh;
+  
+  overflow: hidden;
+  z-index: 501;
+  // background-color: rebeccapurple;
+  // height: 102vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,6 +42,7 @@
   text-align: center;
   z-index: 499;
 
+  // background-color: red;
   .headerText {
     padding: 24px;
     display: flex;
@@ -231,14 +231,14 @@
 /* Animations */
 @keyframes bounceIn {
   0% {
-    transform: scale(0.9);
+    // transform: scale(0.9);
     opacity: 0.8;
   }
   50% {
-    transform: scale(1.05);
+    // transform: scale(1.05);
   }
   100% {
-    transform: scale(1);
+    // transform: scale(1);
     opacity: 1;
   }
 }

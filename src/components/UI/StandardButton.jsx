@@ -13,6 +13,7 @@ const validTypes = [
   "withlabel",
   "basic_small",
   "article",
+  "subtle"
 ];
 
 export const StandardButton = ({
@@ -113,6 +114,13 @@ export const StandardButton = ({
             {headertitle && <span>{headertitle}</span>}
             {Icon}
             {Label}
+          </div>
+        );
+  case "subtle":
+        return (
+          <div className={styles.subtleWrapper}>
+            {Icon}
+            <p> {Label}</p>
           </div>
         );
 

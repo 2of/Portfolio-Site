@@ -10,6 +10,8 @@ import { AboutPage } from "../pages/AboutPage";
 import { SettingsPage } from "../pages/SettingsPage";
 import { PlaygroundPage } from "../components/Test/TestPages/TEST_Playground";
 import { EditorPage } from "../components/Editor/EditorPage";
+// import { NewHomePage2 } from "../pages/NewHome/NewHome";
+// import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
 const routes = [
   {
@@ -35,6 +37,7 @@ const routes = [
     element: <JunkPage />,
     icon: "junk",
     mobileMenuBg: true,
+    floatingNavMobile: true,
   },
   {
     path: "/chess",
@@ -43,6 +46,7 @@ const routes = [
     icon: "chess",
     hide: true,
     mobileMenuBg: true,
+
   },
   {
     path: "/proj/:projectId",
@@ -57,7 +61,8 @@ const routes = [
     element: <AboutPage />,
     icon: "about",
     hide: false,
-    bg: "bg",
+    bg: "shapes",
+        floatingNavMobile: false,
   },
   {
     path: "/settings",
@@ -66,6 +71,7 @@ const routes = [
     icon: "settings",
     hide: false,
     bg: "shapes",
+    floatingNavMobile: false,
   },
   {
     path: "/editor",
@@ -73,8 +79,8 @@ const routes = [
     element: <EditorPage />,
     icon: "smile",
     hide: true,
-    bg: "bg",
-  },
+    bg: "bg",    floatingNavMobile: false,
+  }
 ];
 
 

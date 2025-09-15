@@ -21,17 +21,19 @@ import { useAlertMenu } from "../contexts/AlertMenuContext";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
 import GlassPushOverlay from "../components/UI/GlassContainer";
 import FeatherRevealImage from "../components/Misc/FeatherImageMouseTracked";
+import { useIsMenuFloating, useIsNavHidden, useRoute } from "../contexts/RouteContext";
 
 export const JunkPage = () => {
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
   const { getSkills } = useProjects();
   const skills = getSkills();
-  
+  const location = useRoute();
+  const shouldHideNav = useIsMenuFloating();
   const [currentPath, setCurrentPath] = useState([]);
   const [currpathPoint, setCurrPathPoint] = useState(0);
   const [selected, setSelected] = useState("apple");
   const [text, setText] = useState("blah blah");
-  
+  const pathname = useRoute();
   const {
     openShareSheet,
     shareSheetVisible,
@@ -331,6 +333,21 @@ Here is glass
           height="500px"
           style={{ border: "none" }}
         />
+      </div>
+
+
+
+       <div className={styles.chunk}>
+        <h3>use route </h3>
+     
+
+         <h1>Route Info</h1>
+      <p>Current Path: {location.pathname}</p>
+      <p>Search Query: {location.search}</p>
+      <p>Hash: {location.hash}</p>
+      {location.icon} "test"
+          {shouldHideNav ? "HIDE NAV" : "SHOW NAV"}
+
       </div>
     </div>
   );

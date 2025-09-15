@@ -13,6 +13,7 @@ import DarkModeToggle from "../components/darkmodeToggleSmallInline";
 import useScreenSize from "../utils/screensize";
 import { Navigate } from "react-router-dom";
 import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import GlassPushOverlay from "../components/UI/GlassContainer";
 
 // settingsConfig.js
 const settingsConfig = [
@@ -37,13 +38,7 @@ const settingsConfig = [
     secondicon: "cross",
   },
   { type: "label", label: "Random Things Area" },
-  {
-    type: "button",
-    label: "See Junk Page",
-    buttonLabel: "Go",
-    icon: "sun",
-    route: "/junk",
-  },
+ 
   {
     type: "toggle",
     label: "Ridiculous Article Mode",
@@ -60,6 +55,10 @@ const settingsConfig = [
     firsticon: "projects",
     secondicon: "yeti",
   },
+  
+
+  { type: "label", label: "Links" },
+
   {
     type: "button",
     label: "Article to JSON Editor",
@@ -74,16 +73,15 @@ const settingsConfig = [
     icon: "editor",
     external: "https://2of.github.io/site/",
   },
-  {
-    type: "label",
-    label: "That's all",
-    paragraph: "Well thanks for having a look around. This is my little hand done website",
+ {
+    type: "button",
+    label: "See Junk Page",
+    buttonLabel: "Go",
+    icon: "sun",
+    route: "/junk",
   },
-  {
-    type: "label",
-    label: "Attribution",
-    paragraph: "SVGS: https://github.com/MariaLetta/mega-doodles-pack Mega Doodles Pack ",
-  },
+
+
 ];
 
 
@@ -146,10 +144,27 @@ export const SettingsPage = () => {
   }));
 
   return (
-    <ScrollableVerticalView  staggerStart>
-      <section>
+<ScrollableVerticalView alignCenter={screenSize!== "sm"}>
+
+        {screenSize === "sm" ? (
+
+          <>
+          <div className={styles.spacer}/>
+
+
+           <RowView mobile={mobile} rows={mappedRows} />
+
+           </>
+        ) :    
         <RowView mobile={mobile} rows={mappedRows} />
-      </section>
+
+
+}
+
+       
+
+
+
     </ScrollableVerticalView>
   );
 };

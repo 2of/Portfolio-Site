@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useScreenSize from "../../utils/screensize";
 import { PagedScrollContainer } from "../../components/Scroll/ScrollableViews/TikTokView";
 import { HeroCell } from "./Hero";
+import otherart from "../../assets/HomeParallaxResources/1.png"
 import { AboutCell } from "./About";
 import AboutBG from "../../assets/images/stars.gif"
 import { Modal } from "../../components/Modal";
@@ -10,6 +11,8 @@ import { NewAboutCell } from "./NewAbout";
 import { useProjects } from "../../contexts/ContentContext";
 import { CenteredSmallerScrollElementContainer } from "../../components/Scroll/ScrollableViews/CenteredSmallerScrollElementContainer";
 import { Article } from "../../components/Article/Article";
+import { Link } from "react-router-dom";
+import { LandingPageScrollContainer } from "../../components/Scroll/ScrollableViews/LandingPageScrollContainer";
 export const HomePage = () => {
   const screenSize = useScreenSize();
     const { getArticle,getArticleMetaData } = useProjects();
@@ -41,7 +44,9 @@ const mobileView = () => (
   </PagedScrollContainer>
 );
   const desktopView = () => (
-    <CenteredSmallerScrollElementContainer>
+    <CenteredSmallerScrollElementContainer
+    
+>
       <HeroCell sz={screenSize}             featureButtonCallback={handleFeatClick}/>
       <NewAboutCell sz={screenSize} />
       <FooterCell sz={screenSize} />
@@ -58,7 +63,11 @@ const mobileView = () => (
           title={"Project Features"}
           isOpen={showModal}
         />
+
+        
       )}
+
+
       {mobile ? mobileView() : desktopView()}
     </>
   );

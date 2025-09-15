@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Hero.module.scss"; // Ensure correct SCSS import
 import dogsvg from "../../assets/svgs/DrawKit_Vector_Illustrations_Dog call.svg"; // Import the image properly
 import { StandardButton } from "../../components/UI/StandardButton";
+import otherart from "../../assets/HomeParallaxResources/1.png"
 import getIcon from "../../utils/Iconifier";
 import { BouncyArrows } from "../../components/UI/bouncyArrows";
 import { useGlobalContext } from "../../contexts/GlobalContext";
@@ -19,9 +20,9 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
     return (
         <div className={`${sz === "sm" ? styles.smContainer : styles.lgContainer}`}>
             {/* Hero Art */}
-            <div className={`${styles.HeroArt} ${styles.svgPositionCenter}`}>
-                <img src={dogsvg} alt="Hero Art" />
-            </div>
+            {/* <div className={`${styles.HeroArt} ${styles.svgPositionCenter}`}>
+                <img src={otherart} alt="Hero Art" />
+            </div> */}
 
             {/* Hero Text Section */}
             <div className={styles.HeroTextSection}>
@@ -31,9 +32,15 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
                 </div>
                 <div className={styles.HeroP}>
                     <p>
-                        This site is a little WIP, but have a poke around. Check out Projects below. The site is
-                        written in React, and I've had some deployment issues, so if something is broken, that's it.
-                        I know of a few bugs, and there's a lot of CSS issues around at the moment.
+            Okay so, I wrote this site from scratch so it's a bit hodge-podge, but essentially just use the nav to look at projects. There's fun things accessible from /settings.
+            If I sent this link to you as a prospective employer, hello! Ignore the bugs! (Im slowly ironing them out and moving this site from to something a bit more structured)
+
+            </p><p>See below for a featured project and my CV.
+
+
+                            </p><p>Also 2of.io is far cooler on mobile...
+
+
                     </p>
                 </div>
                 <div className={styles.buttonContainer}>
@@ -52,14 +59,34 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
                         link={getLink("resume")}
                         external={true}
                     />
-                </div>
+     </div>
+                  
+                                 <div className={styles.buttonContainer}>
+                      <StandardButton
+                        label="Github"
+                        tooltip="Navigate to resume"
+                        type="article"
+                        icon={getIcon("github")}
+                        link={getLink("github")}
+                        external={true}
+                    />
+                      <StandardButton
+                        label="LinkedIn"
+                        tooltip="Navigate to LinkedIn"
+                        type="article"
+                        icon={getIcon("linkedin")}
+                        link={getLink("linkedin")}
+                        external={true}
+                    />
+                   </div>
+           
                 <div className={styles.HeroP}>
-                    <p>Feel free to reach out {getIcon("smile")}</p>
+                    Scroll down
                     <BouncyArrows direction="down"/>
                 </div>
 
                 {/* Social Links */}
-                <ul className={styles.socials}>
+                {/* <ul className={styles.socials}>
                     {socialLinks.map((link, index) => (
                         <li key={index}>
                             <StandardButton
@@ -71,7 +98,7 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
                             />
                         </li>
                     ))}
-                </ul>
+                </ul> */}
    
             </div>
         </div>

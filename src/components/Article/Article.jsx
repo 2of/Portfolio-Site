@@ -294,7 +294,7 @@ export const Article = ({ metadata, fixeddata }) => {
             opacity: bgModifiervalue, // fades in
             transform: `scale(${0.98 + bgModifiervalue * 0.02})`, // scales from 0.98 → 1
             transform: `translateY(${(1 - bgModifiervalue) * 24}px)`, // moves up slightly as it appears
-            filter: `blur(${(1 - bgModifiervalue) * 8}px)`, // starts blurry and sharpens
+            // filter: `blur(${(1 - bgModifiervalue) * 8}px)`, // starts blurry and sharpens
             // transition: 'opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease',
           }}
         >
