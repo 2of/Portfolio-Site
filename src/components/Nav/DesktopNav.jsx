@@ -38,6 +38,7 @@ const DesktopNav = () => {
   if (screenSize === "sm") return null; // Do not render on small screens
 
   return (
+    
     <nav
       className={`
         ${styles.navContainer}

@@ -101,7 +101,7 @@
       "type": "file",
       "url": "/Writeups/PortfolioSite/text.json",
       "heroImage": "/assets/heroImages/geo.png",
-      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "bgimage": "/Writeups/PortfolioSite/thumb.png",
       "title": "Responsive Modern Portfolio Website (this one!)"
     }
   },
@@ -143,7 +143,7 @@
       "type": "url",
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
       "file": "Chess1.json",
-      "bgimage": "/Writeups/ChessELOEstimator/thumb.png",
+      "bgimage": "/Writeups/ChessELOEstimator/betterthumb.png",
       "revealbgimage": "/Writeups/Chrome/thumbColour.png",
       "title": "Free Chess ELO Estimator"
     }

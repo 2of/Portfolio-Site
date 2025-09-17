@@ -32,11 +32,9 @@ export const EditorPage = () => {
 useEffect(() => {
   const timer = setTimeout(() => {
     if (screenSize === "sm") {
-      triggerAlert({
-        title: "Small screen detected",
-        message: "You're using a small device!",
-        buttons: [{ label: "OK" }],
-      });
+      triggerAlert(
+
+      );
     }
   }, 2000); // 2 seconds
 

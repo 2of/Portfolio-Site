@@ -3,15 +3,20 @@
 let modelLoaded = false;
 
 
-export async function loadModel() {
-  return new Promise((resolve) => {
+export async function loadModel({ modelType = "undefined", shouldFail = false }) {
+
+  // just weird lazt for now ... 
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      modelLoaded = true;
-      resolve({ status: "success", message: "Model loaded successfully (mock)." });
-    }, 500);
+      if (shouldFail) {
+        reject({ status: "error", message: `Failed to load model: ${modelType}` });
+      } else {
+        const modelLoaded = true;
+        resolve({ status: "success", message: `Model: ${modelType} Loaded` });
+      }
+    }, 1000);
   });
 }
-
 export async function predict(inputData) {
   if (!modelLoaded) {
     return {

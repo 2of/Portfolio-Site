@@ -8,10 +8,9 @@ import { RouteProvider, useIsMenuFloating } from "./RouteContext";
 import { DarkModeProvider, useDarkMode } from "./DarkModeContext";
 import { baseTheme, darkTheme, hiddenNavHeight, inlineNavHeight, lightTheme } from "../styles/Themes";
 import { ThemeProvider } from "./ThemeProvider";
-
 function InnerThemeWrapper({ children }) {
   const { darkMode: isDark } = useDarkMode();
-  const floatingNav = useIsMenuFloating(); // safe now
+  const floatingNav = useIsMenuFloating();
   const screenSize = useScreenSize();
 
   const theme = React.useMemo(() => {
@@ -19,14 +18,22 @@ function InnerThemeWrapper({ children }) {
     if (floatingNav) {
       navTheme = hiddenNavHeight;
     } else {
-      navTheme = screenSize !== "sm" ? hiddenNavHeight : inlineNavHeight;   
+      navTheme = screenSize !== "sm" ? hiddenNavHeight : inlineNavHeight;
     }
 
-return {
-  ...baseTheme,
-  ...navTheme,
-  ...(isDark ? darkTheme : lightTheme),
-};
+    const result = {
+      ...baseTheme,
+      ...navTheme,
+      ...(isDark ? darkTheme : lightTheme),
+    };
+
+    console.log(
+      "%c[Theme Updated]",
+      "color: hotpink; font-weight: bold;",
+      { floatingNav, screenSize, isDark, theme: result }
+    );
+
+    return result;
   }, [screenSize, floatingNav, isDark]);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;

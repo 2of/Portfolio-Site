@@ -24,6 +24,13 @@
     animation: fadeOut 0.3s ease-in forwards;
   }
 }
+
+.message {
+  white-space: pre-line;  /* respects \n as line breaks */
+  line-height: 1.5;       /* optional, improves readability */
+}
+
+
 .fulldialogue {
   &.dialog,
   &.dialogAnimatingOut {

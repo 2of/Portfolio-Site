@@ -10,6 +10,7 @@ import { AboutPage } from "../pages/AboutPage";
 import { SettingsPage } from "../pages/SettingsPage";
 import { PlaygroundPage } from "../components/Test/TestPages/TEST_Playground";
 import { EditorPage } from "../components/Editor/EditorPage";
+import { NewChessPage } from "../pages/NewChess";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -28,7 +29,7 @@ const routes = [
     element: <CataloguePage />,
     icon: "Catalogue",
     mobileMenuBg: true,
-    bg: "bg",
+    bg: "shapes",
   },
   {
     path: "/junk",
@@ -46,6 +47,7 @@ const routes = [
     icon: "chess",
     hide: true,
     mobileMenuBg: true,
+    bg: "herobg"
 
   },
   {
@@ -60,6 +62,15 @@ const routes = [
     label: "About",
     element: <AboutPage />,
     icon: "about",
+    hide: false,
+    bg: "shapes",
+        floatingNavMobile: false,
+  },
+    {
+    path: "/newchess",
+    label: "chess2",
+    element: <NewChessPage />,
+    icon: "chess",
     hide: false,
     bg: "shapes",
         floatingNavMobile: false,

@@ -122,7 +122,7 @@ export const CataloguePage = () => {
             </GlassPushOverlay>
           </div>
         ))}
-
+      <GlassPushOverlay>
         <SmallCard
           size="small"
           randomcolor={true}
@@ -137,6 +137,7 @@ export const CataloguePage = () => {
           //   asFS={screenSize === "sm"}
           type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
         />
+        </GlassPushOverlay>
       </div>
     );
   };
@@ -247,6 +248,7 @@ export const CataloguePage = () => {
     <ScrollableVerticalView staggerStart trackScrollPercent>
       {/* title={"new"} subtitle={"test"}/> */}
       <Section Header={() => <Header1 />}>
+
         <div className={styles.LargeThumbGrid}>
           {showcaseProjects.map(renderCard)}
         </div>

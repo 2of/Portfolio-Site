@@ -29,8 +29,12 @@ export const DarkModeProvider = ({ children }) => {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
-
+  const toggleDarkMode = () => {
+    console.log("TOGGLEDARKMODE")
+    
+    
+    setDarkMode((prev) => !prev);
+  }
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
       {children}

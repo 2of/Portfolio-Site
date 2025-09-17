@@ -32,7 +32,7 @@ export const lightTheme = {
   "--accent": "#d44742",
   "--accent-color": "#d44742",
   "--link": "#4A90E2",
-  "--herobg": "rgb(175, 93, 100)",
+  "--herobg": "rgba(221, 224, 210, 1)",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
 
@@ -43,7 +43,7 @@ export const lightTheme = {
 
 
 export const darkTheme = {
-  "--bg": "#121212",
+  "--bg": "#161616ff",
   "--bg-l1": "#727272",
   "--bg-l2": "#302f2f",
   "--bg-l3": "#666464",
@@ -55,8 +55,8 @@ export const darkTheme = {
   "--border-color": "#404040",
   "--accent": "#d44742",
   "--accent-color": "#d44742",
-  "--link": "#6BB9F0",
-  "--herobg": "#456882",
+  "--link": "#003153",
+  "--herobg": "#111813ff",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)",
 

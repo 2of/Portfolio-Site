@@ -1,107 +1,107 @@
-:root {
-  /* Light Mode */
-  --light-bg: #f8f7f6;
+// :root {
+//   /* Light Mode */
+//   --light-bg: #f8f7f6;
 
 
-  --light-bg-l1: #e5e4e3;
-  --light-bg-l2: #bababa;
-  --light-bg-l3: #a1a09f;
+//   --light-bg-l1: #e5e4e3;
+//   --light-bg-l2: #bababa;
+//   --light-bg-l3: #a1a09f;
 
 
-  --light-bg-transparent: #f8f7f6c1;
-  --light-text: #2E2E2E;
-  --light-secondary-text: #6C6C6C;
-  --light-card-bg: #FFFFFF;
-  --light-border: #474747;
-  --light-accent: #d44742;
-  --light-link: #4A90E2;
-  --light-hero-bg: rgb(175, 93, 100);
-  --light-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+//   --light-bg-transparent: #f8f7f6c1;
+//   --light-text: #2E2E2E;
+//   --light-secondary-text: #6C6C6C;
+//   --light-card-bg: #FFFFFF;
+//   --light-border: #474747;
+//   --light-accent: #d44742;
+//   --light-link: #4A90E2;
+//   --light-hero-bg: rgb(61, 44, 45);
+//   --light-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
 
-  /* Dark Mode Base Values */
-  --dark-bg: #121212;
+//   /* Dark Mode Base Values */
+//   --dark-bg: #121212;
 
 
-  --dark-bg-l1: #727272;
-  --dark-bg-l2: #302f2f;
-  --dark-bg-l3: #666464;
-  --dark-bg-transparent: #121212d3;
-  --dark-text: #f2f0e3;
-  --dark-secondary-text: #A0A0A0;
-  --dark-card-bg: #262626;
-  --dark-border: #404040;
-  --dark-accent: #d44742;
-  --dark-link: #6BB9F0;
-  --dark-hero-bg: #456882;
-  --dark-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
+//   --dark-bg-l1: #727272;
+//   --dark-bg-l2: #302f2f;
+//   --dark-bg-l3: #666464;
+//   --dark-bg-transparent: #121212d3;
+//   --dark-text: #f2f0e3;
+//   --dark-secondary-text: #A0A0A0;
+//   --dark-card-bg: #262626;
+//   --dark-border: #404040;
+//   --dark-accent: #d44742;
+//   --dark-link: #6BB9F0;
+//   --dark-hero-bg: #19242c;
+//   --dark-drop-shadow: 0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
 
-  /* Spacing */
-  --padding-small: 10px;
-  --padding-medium: 15px;
-  --padding-large: 36px;
-  --spacing-small: 10px;
+//   /* Spacing */
+//   --padding-small: 10px;
+//   --padding-medium: 15px;
+//   --padding-large: 36px;
+//   --spacing-small: 10px;
 
-  /* Font */
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-weight-bold: 600;
+//   /* Font */
+//   --font-size-base: 16px;
+//   --font-size-lg: 18px;
+//   --font-weight-bold: 600;
 
-  /* Heights */
-  --navHeight: 4rem;
-  --content-height: calc(100vh - var(--navHeight));
-  --content-height-half: calc(0.5 * (100vh - var(--navHeight)));
+//   /* Heights */
+//   --navHeight: 4rem;
+//   --content-height: calc(100vh - var(--navHeight));
+//   --content-height-half: calc(0.5 * (100vh - var(--navHeight)));
   
 
-  --mobileTopNavSafeArea: 82px;
-  --maxWidth: 1400px;
-  /* Border Radius */
-  --border-radius: 24px;
+//   --mobileTopNavSafeArea: 82px;
+//   --maxWidth: 1400px;
+//   /* Border Radius */
+//   --border-radius: 24px;
 
-  /* Blur */
-  --blur-radius: 15px;
+//   /* Blur */
+//   --blur-radius: 15px;
 
-  /* General Colors */
-  --primary-color: #2E2E2E;
-  --secondary-color: #6C6C6C;
-  --accent-color: var(--light-accent);
-  --link-color: #4A90E2;
-  --herobg: var(--light-hero-bg);
+//   /* General Colors */
+//   --primary-color: #2E2E2E;
+//   --secondary-color: #6C6C6C;
+//   --accent-color: var(--light-accent);
+//   --link-color: #4A90E2;
+//   // --herobg: var(--light-hero-bg);
 
-  /* Active Theme Defaults (Light) */
-  --bg: var(--light-bg);
-  --bg-l1: var(var(--light-bg-l1)) --bg-l2: var(var(--light-bg-l2)) --bg-l3: var(var(--light-bg-l3)) --bg-transparent: var(--light-bg-transparent);
-  --text-color: var(--light-text);
-  --secondary-text: var(--light-secondary-text);
-  --card-bg: var(--light-card-bg);
-  --border-color: var(--light-border);
-  --accent: var(--light-accent);
-  --link: var(--light-link);
-  --drop-shadow: var(--light-drop-shadow);
-  --bg-transparent: var(--light-bg-transparent);
+//   /* Active Theme Defaults (Light) */
+//   --bg: var(--light-bg);
+//   --bg-l1: var(var(--light-bg-l1)) --bg-l2: var(var(--light-bg-l2)) --bg-l3: var(var(--light-bg-l3)) --bg-transparent: var(--light-bg-transparent);
+//   --text-color: var(--light-text);
+//   // --secondary-text: var(--light-secondary-text);
+//   --card-bg: var(--light-card-bg);
+//   --border-color: var(--light-border);
+//   --accent: var(--light-accent);
+//   --link: var(--light-link);
+//   --drop-shadow: var(--light-drop-shadow);
+//   --bg-transparent: var(--light-bg-transparent);
 
-  /* Inverse */
-  --inverse-transparent: var(--dark-bg-transparent);
-  --inverse-shadow: var(--dark-drop-shadow);
-}
+//   /* Inverse */
+//   --inverse-transparent: var(--dark-bg-transparent);
+//   --inverse-shadow: var(--dark-drop-shadow);
+// }
 
-[data-theme="dark"] {
-  --bg: var(--dark-bg);
-  --bg: var(--dark-bg);
-  --bg-l1: var(var(--light-bg-l1));
-  --bg-l2: var(var(--light-bg-l2));
-  --bg-l3: var(var(--light-bg-l3));
-  --bg-transparent: var(--dark-bg-transparent);
-  --text-color: var(--dark-text);
-  --secondary-text: var(--dark-secondary-text);
-  --card-bg: var(--dark-card-bg);
-  --border-color: var(--dark-border);
-  --accent: var(--dark-accent);
-  --link: var(--dark-link);
-  --herobg: var(--dark-hero-bg);
-  --accent-color: var(--dark-accent);
-  --drop-shadow: var(--dark-drop-shadow);
+// [data-theme="dark"] {
+//   --bg: var(--dark-bg);
+//   --bg: var(--dark-bg);
+//   --bg-l1: var(var(--light-bg-l1));
+//   --bg-l2: var(var(--light-bg-l2));
+//   --bg-l3: var(var(--light-bg-l3));
+//   --bg-transparent: var(--dark-bg-transparent);
+//   --text-color: var(--dark-text);
+//   --secondary-text: var(--dark-secondary-text);
+//   --card-bg: var(--dark-card-bg);
+//   --border-color: var(--dark-border);
+//   --accent: var(--dark-accent);
+//   --link: var(--dark-link);
+//   --herobg: var(--dark-hero-bg);
+//   --accent-color: var(--dark-accent);
+//   --drop-shadow: var(--dark-drop-shadow);
 
-  /* Inverse */
-  --inverse-transparent: var(--light-bg-transparent);
-  --inverse-shadow: var(--light-drop-shadow);
-}
+//   /* Inverse */
+//   --inverse-transparent: var(--light-bg-transparent);
+//   --inverse-shadow: var(--light-drop-shadow);
+// }

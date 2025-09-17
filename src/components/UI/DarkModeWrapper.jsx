@@ -3,9 +3,11 @@ import StandardToggle from "./StandardToggle";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import { FaMoon, FaSun } from "react-icons/fa";
 import getIcon from "../../utils/Iconifier";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 export const DarkModeWrapper = ({type = "box"}) => {
   const { isDarkMode, toggleTheme } = useGlobalContext();
+ const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
 
@@ -15,8 +17,8 @@ export const DarkModeWrapper = ({type = "box"}) => {
     {/* <div onClick={toggleTheme}>test </div> */}
     <StandardToggle
       type={type}
-      checked={isDarkMode}
-      callback={() => toggleTheme}
+      checked={darkMode}
+      callback={() => toggleDarkMode}
       firsticon={getIcon("moon")}
       secondicon={getIcon("sun")}
     />

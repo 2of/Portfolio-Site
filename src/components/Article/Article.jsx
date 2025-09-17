@@ -61,7 +61,7 @@ const StandardControls = ({ data, mobile = false }) => {
   );
 };
 
-export const TitleSectionPortable = ({ data, variant = "desktop" }) => {
+export const TitleSectionPortable = ({ data, variant = "desktop", hiderows }) => {
   const screenSize = useScreenSize();
   const isMobile = variant === "mobile"; // fix this — previously inverted
 
@@ -95,7 +95,7 @@ export const TitleSectionPortable = ({ data, variant = "desktop" }) => {
     </div>
   );
 };
-export const TitleSection = ({ data, tags, mobile = false }) => {
+export const TitleSection = ({ data, tags, mobile = false,hiderows = false }) => {
   return (
     <div className={styles.header}>
       <h1>{data.title}</h1>
@@ -124,7 +124,7 @@ export const TitleSection = ({ data, tags, mobile = false }) => {
         </div>
       )}
 
-  
+      {!hiderows && ( 
       <div className={styles.heroLinksContainer}>
         <HeroLinks linkData={data.heroLinks} />
 
@@ -133,7 +133,7 @@ export const TitleSection = ({ data, tags, mobile = false }) => {
             <StandardControls data={data} />
           </>
         )}
-      </div>
+      </div>)}
 
       {/* {mobile ? "YES" : "NO"} */}
      
@@ -278,7 +278,8 @@ export const Article = ({ metadata, fixeddata }) => {
               ? {
                   backgroundImage: `url(${data.heroImage})`,
                   backgroundAttachment: "fixed",
-                  filter: `blur(${bgModifiervalue * 8}px)`, // starts blurry and sharpens
+                     opacity: `${1 - (bgModifiervalue)-0.1}`,
+                  // filter: `blur(${bgModifiervalue * 8}px)`, // starts blurry and sharpens
                   transform: `scale(${1.2 - bgModifiervalue * 0.2})`, // Adjust scale based on scrollOpacity
                   // transition: "transform 0.1s ease-out, filter 0.1s ease-out", // Smooth transition
                 }
@@ -291,9 +292,9 @@ export const Article = ({ metadata, fixeddata }) => {
         <div
           className={styles.titlePopup}
           style={{
-            opacity: bgModifiervalue, // fades in
-            transform: `scale(${0.98 + bgModifiervalue * 0.02})`, // scales from 0.98 → 1
-            transform: `translateY(${(1 - bgModifiervalue) * 24}px)`, // moves up slightly as it appears
+            // opacity: bgModifiervalue, // fades in
+            // transform: `scale(${0.98 + bgModifiervalue * 0.02})`, // scales from 0.98 → 1
+            transform: `translateY(${-64 +  (  bgModifiervalue) * 64}px)`, // moves up slightly as it appears
             // filter: `blur(${(1 - bgModifiervalue) * 8}px)`, // starts blurry and sharpens
             // transition: 'opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease',
           }}
@@ -304,15 +305,22 @@ export const Article = ({ metadata, fixeddata }) => {
             <span className={styles.separator}>•</span>
 
             <DarkModeWrapper type="pill" />
+          </div>  <div className={`${styles.TitleContainer} `}>
+            <p>{data.title}</p>
+            
+            <span className={styles.separator}>•</span>
+
+            <DarkModeWrapper type="pill" />
           </div>
         </div>
       )}
-
+      
       <div className={styles.titleSection}>
         <TitleSection
           data={data}
           tags={metadata.details.tags}
           mobile={screenSize === "sm"}
+          // hiderows = {bgModifiervalue}
         />
       </div>
 

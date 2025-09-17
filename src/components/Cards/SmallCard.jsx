@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import base_styles from "./styles/SmallCard.module.scss";
 
 import getIcon from "../../utils/Iconifier";
 import { ImageLoader } from "../ImageLoader";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 
-const SmallCard = ({ data = {}, tags = [], to, isExternal, onClick, hoverAnimate = true }) => {
+const SmallCard = ({
+  data = {},
+  tags = [],
+  to,
+  isExternal,
+  onClick,
+  hoverAnimate = true,
+}) => {
   const { themeoverride } = useGlobalContext();
   const styles = !themeoverride ? base_styles : ridiculous_styles;
   const [isAnimateOpen, setIsAnimateOpen] = useState(false);
@@ -21,10 +28,12 @@ const SmallCard = ({ data = {}, tags = [], to, isExternal, onClick, hoverAnimate
 
     setTimeout(() => {
       if (isExternal && to) {
-  const url = to.startsWith("http://") || to.startsWith("https://") ? to : "https://" + to;
-  window.open(url, "_blank", "noopener,noreferrer");
-  return;
-   
+        const url =
+          to.startsWith("http://") || to.startsWith("https://")
+            ? to
+            : "https://" + to;
+        window.open(url, "_blank", "noopener,noreferrer");
+        return;
       }
 
       if (to) {
@@ -48,7 +57,7 @@ const SmallCard = ({ data = {}, tags = [], to, isExternal, onClick, hoverAnimate
         if (e.key === "Enter" || e.key === " ") handleClick(e);
       }}
     >
-        {isExternal && "YES"} {to}
+      {/* {isExternal && "YES"} {to} */}
       {data.bgimage && (
         <div className={styles.cover}>
           <ImageLoader src={data.bgimage} alt={data.title ?? "cover image"} />
@@ -59,8 +68,12 @@ const SmallCard = ({ data = {}, tags = [], to, isExternal, onClick, hoverAnimate
 
       <div className={styles.header}>
         <p className={styles.title}>
-          {data.icon && <span className={styles.icon}>{getIcon(data.icon)}</span>}
-          {isExternal && <span className={styles.external}>{getIcon("external")}</span>}
+          {data.icon && (
+            <span className={styles.icon}>{getIcon(data.icon)}</span>
+          )}
+          {isExternal && (
+            <span className={styles.external}>{getIcon("external")}</span>
+          )}
           {data.title ?? "Untitled"}
         </p>
       </div>
