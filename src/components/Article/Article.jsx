@@ -302,15 +302,15 @@ export const Article = ({ metadata, fixeddata }) => {
           <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
 
-            <span className={styles.separator}>•</span>
+            {/* <span className={styles.separator}>•</span> */}
 
-            <DarkModeWrapper type="pill" />
+            {/* <DarkModeWrapper type="pill" /> */}
           </div>  <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
             
-            <span className={styles.separator}>•</span>
+            {/* <span className={styles.separator}>•</span>
 
-            <DarkModeWrapper type="pill" />
+            <DarkModeWrapper type="pill" /> */}
           </div>
         </div>
       )}

@@ -15,7 +15,6 @@ const validTypes = [
   "article",
   "subtle"
 ];
-
 export const StandardButton = ({
   label = "no label",
   callback,
@@ -27,6 +26,7 @@ export const StandardButton = ({
   headertitle = "",
   external = false,
   fillContainer = false,
+  styles: customStyles = {}, // <-- new prop for custom inline styles
 }) => {
   const screenSize = useScreenSize(); // 'sm' | 'md' | 'lg'
   const isMobile = screenSize === "sm";
@@ -116,11 +116,12 @@ export const StandardButton = ({
             {Label}
           </div>
         );
-  case "subtle":
+
+      case "subtle":
         return (
           <div className={styles.subtleWrapper}>
             {Icon}
-            <p> {Label}</p>
+            <p>{Label}</p>
           </div>
         );
 
@@ -156,7 +157,7 @@ export const StandardButton = ({
       aria-disabled={disable}
       aria-label={label}
       tabIndex={disable ? -1 : 0}
-      style={{ position: "relative" }}
+      style={{ position: "relative", ...customStyles }} // <-- merge custom styles here
     >
       {renderContent()}
       {externalIcon && (

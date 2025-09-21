@@ -6,26 +6,60 @@ import { CHESS_Board } from "../components/chess/CHESS_Board";
 import { useAlertMenu } from "../contexts/AlertMenuContext";
 import { Modal } from "../components/Modal";
 import { useProjects } from "../contexts/ContentContext";
-import { isValidPGN } from "../components/chess/chessutils";
+import { isValidPGN, parsePGNtoRawMoves, samplePGN } from "../components/chess/chessutils";
 import { Article } from "../components/Article/Article";
 import { loadModel, predict } from "../utils/Model";
 import { StandardRadioButtons } from "../components/UI/StandardRadioButtons";
 import getIcon from "../utils/Iconifier";
 import Loader from "../components/Loader";
+import { CHESS_Container } from "../components/chess/CHESS_Container";
+import { ChessTracker } from "../components/chess/gametracker";
 export const NewChessPage = () => {
   const [pgn, setpgn] = useState("");
   const [showmodal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("dense");
+const [game, setGame] = useState(new ChessTracker());
+
 
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
   const [modelStatus, setModelStatus] = useState("Not loaded");
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
+//   const game = new ChessTracker();
+  const [version, setVersion] = useState(0); // dummy for chess being broken ish 
 
   const handleOpenModal = () => {
     setShowModal(true);
   };
 
+
+const sampleBoard = [
+  ["r", "n", "b", "q", "k", "b", "n", "r"], // Rank 8 - Black back rank
+  ["p", "p", "p", "p", "p", "p", "p", "p"], // Rank 7 - Black pawns
+  [null, null, null, null, null, null, null, null], // Rank 6
+  [null, null, null, null, null, null, null, null], // Rank 5
+  [null, null, null, null, null, null, null, null], // Rank 4
+  [null, null, null, null, null, null, null, null], // Rank 3
+  ["P", "P", "P", "P", "P", "P", "P", "P"], // Rank 2 - White pawns
+  ["R", "N", "B", "Q", "K", "B", "N", "R"], // Rank 1 - White back rank
+];
+const handleLoadSampleClick = () => { 
+  setpgn(samplePGN);
+  updateClick(samplePGN); // pass it directly
+}
+
+const updateClick = (currentPGN = pgn) => {
+  if (!isValidPGN(currentPGN)) { 
+    showAlert({
+      title: "Your PGN sucks",
+      message:"From a formatting POV, check it's correct pls"
+    })
+    return
+  }
+
+  const moves = parsePGNtoRawMoves(currentPGN);
+  setGame(new ChessTracker(moves));
+};
   const triggerAlert = (title, desc) => {
     showAlert({
       title: title,
@@ -111,7 +145,7 @@ const handleComputeClick = () => {
 
         <div className={styles.twocol}>
           <div className={styles.gameArea}>
-            <CHESS_Board />
+            <CHESS_Container  key={version}  game={game}/>
           </div>
 
           <div className={styles.controlArea}>
@@ -123,16 +157,26 @@ const handleComputeClick = () => {
               placeholder="Paste PGN here"
               className={`flatStyleShadow_NO_INTERACT ${styles.Textarea}`}
             />
-
+<div className={styles.buttonRow}>
             <StandardButton
-              label="Submit"
+              label="Update"
               tooltip="White prediction"
-              type="subtle"
-              callback={handleComputeClick}
+          type="subtle"
+              callback={updateClick}
+            />
+       
+    <StandardButton
+              label="Load Sample"
+              tooltip="White prediction"
+            //   type="subtle"
+              callback={handleLoadSampleClick}
+          type="subtle"
             >
               Submit
             </StandardButton>
 
+
+            </div>
             <div className={styles.divider} />
 
             <div className={styles.ControlsSection}>
@@ -154,20 +198,20 @@ const handleComputeClick = () => {
                 selectedValue={selectedModel}
                 onChange={setSelectedModel}
                 layout="horizontal"
-                tooltip="Choose the model type"
+               
               />
               <span className={styles.buttonRow}>
                 <StandardButton
                   label="Load Model"
-                  tooltip="White prediction"
-                  type="subtle"
+            
+          type="subtle"
                   callback={handleLoadModel}
                 />
                 <StandardButton
                   label={modelStatus === "Loaded" ? "" : "Compute"}
-                  tooltip="White prediction"
+
                   disable={modelStatus === "Loaded"}
-                  type="subtle"
+          type="subtle"
                   callback={handleComputeClick}
                 />
 
@@ -186,7 +230,7 @@ const handleComputeClick = () => {
             <div className={styles.divider} />
 
             <div className={styles.movesList}>
-              {pgn === "" ? "No moves yet" : "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6"}
+              {pgn === "" ? "No moves yet" : parsePGNtoRawMoves(pgn, true)}
             </div>
           </div>
         </div>

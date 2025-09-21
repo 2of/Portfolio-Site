@@ -7,6 +7,7 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import { ZuneTextBG } from "./ZuneText";
 import BlurArtBackground from "./BlurBg";
 import FeatherRevealPattern from "./TrackedReveal";
+import ParticleBackground from "./Particles";
 export const Background = () => {
   const location = useLocation();
   const [bgType, setBgType] = useState(() => getBgFromPath(location.pathname));
@@ -51,7 +52,7 @@ export const Background = () => {
         style={{ opacity: bgType === "shapes" ? 1 : 0 }}
       >
         {animatebg ? 
-      <FeatherRevealPattern/>:   <div
+      <BlurArtBackground speed={0.1}/>:   <div
         className={styles.regularbg}
         style={{ opacity: bgType === "default" || bgType === "bg" ? 1 : 0 }}
       />}

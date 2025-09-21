@@ -19,7 +19,7 @@ export const baseTheme = {
 };
 
 export const lightTheme = {
-  "--bg": "#f4f4f4ff",
+  "--bg": "rgba(231, 233, 225, 1)",
   "--bg-l1": "#e5e4e3",
   "--bg-l2": "#bababa",
   "--bg-l3": "#a1a09f",

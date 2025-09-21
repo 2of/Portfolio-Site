@@ -73,8 +73,9 @@ export const CataloguePage = () => {
             // title=?
             data={project.details}
             icon={getIcon("test")}
-            to={project.externalLink || getProjURL(project.name)}
+            to={project.details.externalLink || project.details.internalLink || getProjURL(project.name)}
             isExternal={project.externalLink || false}
+            
           />
           {/* test {project.externalLink && "external"} */}
         </GlassPushOverlay>

@@ -3,7 +3,7 @@
 let modelLoaded = false;
 
 
-export async function loadModel({ modelType = "undefined", shouldFail = false }) {
+export async function loadModel({ modelType = "undefined", shouldFail = true }) {
 
   // just weird lazt for now ... 
   return new Promise((resolve, reject) => {

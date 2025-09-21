@@ -22,6 +22,7 @@ import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
 import GlassPushOverlay from "../components/UI/GlassContainer";
 import FeatherRevealImage from "../components/Misc/FeatherImageMouseTracked";
 import { useIsMenuFloating, useIsNavHidden, useRoute } from "../contexts/RouteContext";
+import { StandardSlider } from "../components/UI/StandardSlider";
 
 export const JunkPage = () => {
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
@@ -31,6 +32,7 @@ export const JunkPage = () => {
   const shouldHideNav = useIsMenuFloating();
   const [currentPath, setCurrentPath] = useState([]);
   const [currpathPoint, setCurrPathPoint] = useState(0);
+  const [sliderVal, setsliderVal] = useState(20)
   const [selected, setSelected] = useState("apple");
   const [text, setText] = useState("blah blah");
   const pathname = useRoute();
@@ -204,6 +206,38 @@ Here is glass
             variant="icon"
           />
         </div>
+
+
+              <div className={styles.subChunk}>
+
+
+                <h2> SLiders! </h2>
+
+
+                <StandardSlider
+  value={sliderVal}
+  onChange={setsliderVal}
+  variant="thick"
+  style={{ backgroundColor: "lightblue" }}  // inline override
+  className="myCustomSlider"               // SCSS override
+/>
+
+<br/>
+
+<StandardSlider
+  min={0}
+  max={100}
+  value={sliderVal}
+  onChange={setsliderVal}
+  steps={[0, 20, 40, 60, 80, 100]} // slider will snap to these
+/>
+<br/>
+                <StandardSlider value={sliderVal} variant="thick" onChange={setsliderVal} />
+<br/>
+                <StandardSlider value={sliderVal} onChange={setsliderVal} />
+<br/>
+                
+              </div>
         
         <div className={styles.subChunk}>
           <h4>Text Fields</h4>

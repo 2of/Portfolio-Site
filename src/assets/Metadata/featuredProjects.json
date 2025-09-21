@@ -29,9 +29,32 @@
       "type": "file",
       "url": "/Writeups/GEO/text.json",
       "heroImage": "/assets/heroImages/geo.png",
-      "thumbbg": "/assets/heroImages/geo.png",
-      "bgimage": "/Writeups/GEO/hero.png",
+      "thumbbg": "/assets/heroImages/alternatethumb.png",
+      "bgimage": "/Writeups/GEO/alternatethumb.png",
       "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
+    }
+  },
+  {
+    "name": "chessEloEstimator",
+    "details": {
+      "icon": "chess",
+      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
+      "tags": [
+        "Machine Learning",
+        "LSTM",
+        "Large Data Processing",
+        "Model Analysis",
+        "CNN",
+        "Tensorflow"
+      ],
+
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
+      "file": "Chess1.json",
+      "internalLink" : "/newchess",
+      "bgimage": "/Writeups/ChessELOEstimator/classythumb.png",
+      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
+      "title": "Free Chess ELO Estimator"
     }
   },
   {
@@ -124,28 +147,6 @@
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/Chrome/thumb.png",
       "title": "I totally  wrote a Chrome Extension that was on the FrontPage of reddit"
-    }
-  },
-  {
-    "name": "chessEloEstimator",
-    "details": {
-      "icon": "chess",
-      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
-      "tags": [
-        "Machine Learning",
-        "LSTM",
-        "Large Data Processing",
-        "Model Analysis",
-        "CNN",
-        "Tensorflow"
-      ],
-
-      "type": "url",
-      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
-      "file": "Chess1.json",
-      "bgimage": "/Writeups/ChessELOEstimator/betterthumb.png",
-      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
-      "title": "Free Chess ELO Estimator"
     }
   }
 ]

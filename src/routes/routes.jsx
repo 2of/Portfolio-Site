@@ -29,7 +29,7 @@ const routes = [
     element: <CataloguePage />,
     icon: "Catalogue",
     mobileMenuBg: true,
-    bg: "shapes",
+    bg: "herobg",
   },
   {
     path: "/junk",
@@ -71,8 +71,8 @@ const routes = [
     label: "chess2",
     element: <NewChessPage />,
     icon: "chess",
-    hide: false,
-    bg: "shapes",
+    hide: true,
+    bg: "herobg",
         floatingNavMobile: false,
   },
   {
