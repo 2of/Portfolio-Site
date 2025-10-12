@@ -5,7 +5,10 @@
   flex-direction: column;
   gap: 0.75rem; /* 12px */
   max-width: 1200px;
+  // background-color: orange;
   margin: 0 auto;
+padding-top: 100px;
+  height: fit-content;
 }
 
 /* Typography */
@@ -48,7 +51,7 @@
 .jsonColumn {
   position: sticky;
   top: 1.25rem;
-  height: calc(100vh - 2.5rem);
+  // height: calc(100vh - 2.5rem);
   display: flex;
   flex-direction: column;
 }

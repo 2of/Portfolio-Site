@@ -32,6 +32,57 @@
     color: #444;
   }
 }
+/* Button.module.scss */
+.rounded {
+    display: flex;
+  gap: 0.6rem;
+  padding: 1rem;
+  position: absolute;
+  // bottom: 12px;           // a bit of padding from top of card
+  // left: 50%;           // center horizontally
+  // transform: translateX(-50%); // center the flex container
+  z-index: 10;     
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+
+  .icon,
+  .label {
+    padding: 0;
+    // width:20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center; // centers vertically
+    line-height: 1; // avoid weird vertical spacing
+  }
+}
+
+
+.rounded_label {
+     z-index: 300;
+    min-width: 60px;
+  display: flex;
+  gap: 0;
+ transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+ border-radius: 25px;
+
+ &:hover {
+    transform: scale(1.04);
+  }
+
+ p {
+        border-radius: 24px;
+        background-color: transparent;
+        padding: 8px 12px;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 0 1px var(--text-color);
+        }
+    }
+
+}
 
 .basic_Expand {
   display: flex;
@@ -165,3 +216,33 @@
   }
 }
 
+
+
+.featured { 
+  // background-color: orange;
+  // border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  overflow: hidden;
+  .icon { 
+    // background-color: orange;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 20rem;
+    opacity: 5%;
+
+  }
+
+  .label { 
+
+      position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+
+    &::before { 
+      content: ("→");
+    }
+  }
+}

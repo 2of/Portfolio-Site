@@ -16,30 +16,51 @@
   align-items: center;
   padding: 8px;
   position: absolute;
-  flex-direction: column;
-  left: 12px;
+
+  &.vertical {
+    flex-direction: column;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .dotContainer {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+
+  &.vertical {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    gap: 10px;
+  }
 }
 
 .dot {
   width: 10px;
   height: 10px;
-  background-color: var(--text-color);
+  background-color: var(--border-color);
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: #888;
   }
 
   &.active {
-    background-color: var(--accent-color);
+    background-color: var(--herobg);
+    outline: 1px solid var(--border-color);
     animation: popIn 0.3s ease;
   }
 }

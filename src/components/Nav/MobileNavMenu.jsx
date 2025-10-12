@@ -36,9 +36,9 @@ const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnima
   const miniNavItems = () => (
     <ul className={`${styles.navList} ${direction === "vertical" ? styles.vertical : ""}`}>
       {routes.map((route, i) => {
-        if (route.hide) return null;
+        if (route.hideMobile) return null;
         return (
-          <li key={i} className={`${styles.navItem} flatStyleShadow_NO_INTERACT`}>
+          <li key={i} className={`${styles.navItem} `}>
             <div
               onClick={(e) => { e.preventDefault(); handleLinkClick(route.path); }}
               onTouchStart={(e) => { e.preventDefault(); touchStartRef.current = e.timeStamp; }}

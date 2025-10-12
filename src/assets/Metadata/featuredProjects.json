@@ -51,7 +51,7 @@
       "type": "url",
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
       "file": "Chess1.json",
-      "internalLink" : "/newchess",
+      "internalLink" : "/ChessEloEsimator",
       "bgimage": "/Writeups/ChessELOEstimator/classythumb.png",
       "revealbgimage": "/Writeups/Chrome/thumbColour.png",
       "title": "Free Chess ELO Estimator"

@@ -149,10 +149,11 @@
 
     .titlePopup {
         position: absolute;
-
+z-index: 1000;
         width: 100%;
-        top: -1px;
+        top: var(--navHeightDESKTOP);
         display: flex;
+        display: none;
 
         height: 64px;
         align-items: center;
@@ -231,7 +232,7 @@
     }
 
     .contentSection {
-        background-color: orange;
+        // background-color: orange;
         // padding: 3rem;
         padding-bottom: 4rem;
         background-color: var(--bg);

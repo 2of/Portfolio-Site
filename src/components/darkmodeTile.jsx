@@ -6,7 +6,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import { FaExchangeAlt, FaMoon, FaSun } from "react-icons/fa";
 import useDeviceType from "../utils/DeviceType"
 
-
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 const Light = ({ followMouse, animate, random = true }) => {
     const lightRef = useRef(null);
@@ -88,18 +88,20 @@ const Light = ({ followMouse, animate, random = true }) => {
 
 
 export const DarkModeTile = ({grayscale = false}) => {
-  const { isDarkMode, toggleTheme } = useGlobalContext();
-  const [localstate, setLocalstate] = useState(isDarkMode);
+  // const { isDarkMode, toggleTheme } = useGlobalContext();
+
+ const { darkMode, toggleDarkMode } = useDarkMode();
+  const [localstate, setLocalstate] = useState(darkMode);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animdir, setAnimdir] = useState("none");
   const [isMouseOver, setIsMouseOver] = useState(false); // State to track mouse hover
 
   useEffect(() => {
-    if (localstate !== isDarkMode) {
+    if (localstate !== darkMode) {
       // Determine animation direction
-      if (localstate && !isDarkMode) {
+      if (localstate && !darkMode) {
         setAnimdir("dtol"); // Dark to Light
-      } else if (!localstate && isDarkMode) {
+      } else if (!localstate && darkMode) {
         setAnimdir("ltod"); // Light to Dark
       }
 
@@ -110,17 +112,17 @@ export const DarkModeTile = ({grayscale = false}) => {
       const animationDuration = 500; // 2s duration for the animation
       const timer = setTimeout(() => {
         setIsAnimating(false); // Stop animation
-        setLocalstate(isDarkMode); // Sync localstate after animation
+        setLocalstate(darkMode); // Sync localstate after animation
         setAnimdir("none"); // Reset animation direction
       }, animationDuration);
 
       return () => clearTimeout(timer); // Cleanup on unmount or state change
     }
-  }, [isDarkMode, localstate]);
+  }, [darkMode, localstate]);
 
   const handleClick = () => {
     if (animdir === "none") {
-      toggleTheme();
+      toggleDarkMode();
     }
   };
 
@@ -183,8 +185,8 @@ export const DarkModeTile = ({grayscale = false}) => {
         className={clsx(
           styles.container,
           styles.grayscale,
-          { [styles.day]: !isDarkMode }, // Add dark mode class if active
-          { [styles.night]: isDarkMode }
+          { [styles.day]: !darkMode }, // Add dark mode class if active
+          { [styles.night]: darkMode }
         )}
       >
        

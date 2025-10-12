@@ -6,7 +6,11 @@ import { CHESS_Board } from "../components/chess/CHESS_Board";
 import { useAlertMenu } from "../contexts/AlertMenuContext";
 import { Modal } from "../components/Modal";
 import { useProjects } from "../contexts/ContentContext";
-import { isValidPGN, parsePGNtoRawMoves, samplePGN } from "../components/chess/chessutils";
+import {
+  isValidPGN,
+  parsePGNtoRawMoves,
+  samplePGN,
+} from "../components/chess/chessutils";
 import { Article } from "../components/Article/Article";
 import { loadModel, predict } from "../utils/Model";
 import { StandardRadioButtons } from "../components/UI/StandardRadioButtons";
@@ -14,52 +18,68 @@ import getIcon from "../utils/Iconifier";
 import Loader from "../components/Loader";
 import { CHESS_Container } from "../components/chess/CHESS_Container";
 import { ChessTracker } from "../components/chess/gametracker";
+import { useModal } from "../contexts/ModalContext";
 export const NewChessPage = () => {
   const [pgn, setpgn] = useState("");
-  const [showmodal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("dense");
-const [game, setGame] = useState(new ChessTracker());
-
+  const [game, setGame] = useState(new ChessTracker());
 
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
   const [modelStatus, setModelStatus] = useState("Not loaded");
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
-//   const game = new ChessTracker();
-  const [version, setVersion] = useState(0); // dummy for chess being broken ish 
-
+  //   const game = new ChessTracker();
+  const [version, setVersion] = useState(0); // dummy for chess being broken ish
+  const { modalState, showModal, hideModal, modalVisible } = useModal();
   const handleOpenModal = () => {
-    setShowModal(true);
+    openModal();
   };
 
 
-const sampleBoard = [
-  ["r", "n", "b", "q", "k", "b", "n", "r"], // Rank 8 - Black back rank
-  ["p", "p", "p", "p", "p", "p", "p", "p"], // Rank 7 - Black pawns
-  [null, null, null, null, null, null, null, null], // Rank 6
-  [null, null, null, null, null, null, null, null], // Rank 5
-  [null, null, null, null, null, null, null, null], // Rank 4
-  [null, null, null, null, null, null, null, null], // Rank 3
-  ["P", "P", "P", "P", "P", "P", "P", "P"], // Rank 2 - White pawns
-  ["R", "N", "B", "Q", "K", "B", "N", "R"], // Rank 1 - White back rank
-];
-const handleLoadSampleClick = () => { 
-  setpgn(samplePGN);
-  updateClick(samplePGN); // pass it directly
-}
+  const openModal = () => { 
+showModal({
+      // title: "blah blah",
+      size : "large",
+      floatnav: true,
+      content: (
+        <Article
+          metadata={getArticleMetaData("chessEloEstimator")}
+          // style="modern"
+          // topDivideDouble={true}
+          // twoColumns={true}
+          // AsArticle={true}
+        />
+      ),
+    });
 
-const updateClick = (currentPGN = pgn) => {
-  if (!isValidPGN(currentPGN)) { 
-    showAlert({
-      title: "Your PGN sucks",
-      message:"From a formatting POV, check it's correct pls"
-    })
-    return
   }
+  const sampleBoard = [
+    ["r", "n", "b", "q", "k", "b", "n", "r"], // Rank 8 - Black back rank
+    ["p", "p", "p", "p", "p", "p", "p", "p"], // Rank 7 - Black pawns
+    [null, null, null, null, null, null, null, null], // Rank 6
+    [null, null, null, null, null, null, null, null], // Rank 5
+    [null, null, null, null, null, null, null, null], // Rank 4
+    [null, null, null, null, null, null, null, null], // Rank 3
+    ["P", "P", "P", "P", "P", "P", "P", "P"], // Rank 2 - White pawns
+    ["R", "N", "B", "Q", "K", "B", "N", "R"], // Rank 1 - White back rank
+  ];
+  const handleLoadSampleClick = () => {
+    setpgn(samplePGN);
+    updateClick(samplePGN); // pass it directly
+  };
 
-  const moves = parsePGNtoRawMoves(currentPGN);
-  setGame(new ChessTracker(moves));
-};
+  const updateClick = (currentPGN = pgn) => {
+    if (!isValidPGN(currentPGN)) {
+      showAlert({
+        title: "Your PGN sucks",
+        message: "From a formatting POV, check it's correct pls",
+      });
+      return;
+    }
+
+    const moves = parsePGNtoRawMoves(currentPGN);
+    setGame(new ChessTracker(moves));
+  };
   const triggerAlert = (title, desc) => {
     showAlert({
       title: title,
@@ -80,47 +100,32 @@ const updateClick = (currentPGN = pgn) => {
     }
   };
 
-const handleComputeClick = () => {
-  let issues = [];
+  const handleComputeClick = () => {
+    let issues = [];
 
-  if (!isValidPGN(pgn)) {
-    issues.push("Invalid PGN format");
-  }
+    if (!isValidPGN(pgn)) {
+      issues.push("Invalid PGN format");
+    }
 
-  issues.push("The model returned an error");
+    issues.push("The model returned an error");
 
-  if (issues.length > 0) {
-    const title = `Did not run Forward Pass`;
+    if (issues.length > 0) {
+      const title = `Did not run Forward Pass`;
 
-    // Use \n for plain alerts
-    const message = `There are ${issues.length} issue(s):\n\n- ${issues.join("\n- ")}`;
+      // Use \n for plain alerts
+      const message = `There are ${issues.length} issue(s):\n\n- ${issues.join(
+        "\n- "
+      )}`;
 
-    // If your modal renders HTML, replace \n with <br>:
-    // const message = `There are ${issues.length} issue(s):<br><br>- ${issues.join("<br>- ")}`;
+      // If your modal renders HTML, replace \n with <br>:
+      // const message = `There are ${issues.length} issue(s):<br><br>- ${issues.join("<br>- ")}`;
 
-    triggerAlert(title, message);
-  }
-};
+      triggerAlert(title, message);
+    }
+  };
 
   return (
     <>
-      {showmodal && (
-        <Modal
-          component={
-            <Article
-              metadata={getArticleMetaData("chessEloEstimator")}
-              // style="modern"
-              // topDivideDouble={true}
-              // twoColumns={true}
-              // AsArticle={true}
-            />
-          }
-          onClose={() => setShowModal(false)}
-          size="large"
-          title={"Project Features"}
-          isOpen={showmodal}
-        />
-      )}
 
       <CenteredContainer>
         <div className={styles.header}>
@@ -145,7 +150,7 @@ const handleComputeClick = () => {
 
         <div className={styles.twocol}>
           <div className={styles.gameArea}>
-            <CHESS_Container  key={version}  game={game}/>
+            <CHESS_Container key={version} game={game} />
           </div>
 
           <div className={styles.controlArea}>
@@ -157,25 +162,23 @@ const handleComputeClick = () => {
               placeholder="Paste PGN here"
               className={`flatStyleShadow_NO_INTERACT ${styles.Textarea}`}
             />
-<div className={styles.buttonRow}>
-            <StandardButton
-              label="Update"
-              tooltip="White prediction"
-          type="subtle"
-              callback={updateClick}
-            />
-       
-    <StandardButton
-              label="Load Sample"
-              tooltip="White prediction"
-            //   type="subtle"
-              callback={handleLoadSampleClick}
-          type="subtle"
-            >
-              Submit
-            </StandardButton>
+            <div className={styles.buttonRow}>
+              <StandardButton
+                label="Update"
+                tooltip="White prediction"
+                type="subtle"
+                callback={updateClick}
+              />
 
-
+              <StandardButton
+                label="Load Sample"
+                tooltip="White prediction"
+                //   type="subtle"
+                callback={handleLoadSampleClick}
+                type="subtle"
+              >
+                Submit
+              </StandardButton>
             </div>
             <div className={styles.divider} />
 
@@ -198,20 +201,17 @@ const handleComputeClick = () => {
                 selectedValue={selectedModel}
                 onChange={setSelectedModel}
                 layout="horizontal"
-               
               />
               <span className={styles.buttonRow}>
                 <StandardButton
                   label="Load Model"
-            
-          type="subtle"
+                  type="subtle"
                   callback={handleLoadModel}
                 />
                 <StandardButton
                   label={modelStatus === "Loaded" ? "" : "Compute"}
-
                   disable={modelStatus === "Loaded"}
-          type="subtle"
+                  type="subtle"
                   callback={handleComputeClick}
                 />
 

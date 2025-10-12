@@ -39,7 +39,7 @@ useEffect(() => {
   return (
     <ScrollableVerticalView  staggerStart={screenSize!== "sm"}>
       <Section
-        narrow
+        // narrow
         Header={() => <h2 className={sectionHeaderClass}>{title}</h2>}
       >
         <div className={styles.infoChunk}>
@@ -92,7 +92,7 @@ useEffect(() => {
         )
         .map(([sectionKey, content]) => (
           <Section
-            narrow
+            // narrow
             key={sectionKey}
             Header={() =>
               content.title ? (

@@ -1,121 +1,351 @@
-import React, { useState } from "react";
+// import React, { useState, useCallback, useMemo } from "react";
+// import { useScreenSize } from "../../contexts/ScreenSizeProvider";
+// import {
+//   useIsMenuFloatingDesktop,
+//   useIsMenuFloatingMobile,
+//   useRoute,
+// } from "../../contexts/RouteContext";
+// import DesktopNav from "./DesktopNav";
+// import MobileNavMenu from "./MobileNavMenu";
+// import MobileIcon from "./MobileIcon";
+// import { NavBg } from "./NavBg";
+// import getIcon from "../../utils/Iconifier";
+// import { useGlobalContext } from "../../contexts/GlobalContext";
+// import { DesktopFloatingNav } from "./DesktopFloatingNav";
+// import { DesktopNavFullWidth } from "./DesktopNavFullWidth";
+// import { useNavStack } from "../../contexts/NavStackContext";
+
+// // -------------------- DESKTOP WRAPPER --------------------
+// const DesktopWrapper = React.memo(() => {
+//   return <DesktopNav />;
+// });
+
+// // -------------------- MOBILE ICON WRAPPER --------------------
+// const MobileIconWrapper_old = React.memo(
+//   ({ menuOpenLabel = "Menu", menuCallback, isFloating }) => {
+//     const { navReplacementButtonStack } = useGlobalContext();
+
+//     const current = useMemo(() => {
+//       if (
+//         !navReplacementButtonStack ||
+//         navReplacementButtonStack.length === 0
+//       ) {
+//         return null;
+//       }
+//       return navReplacementButtonStack[navReplacementButtonStack.length - 1];
+//     }, [navReplacementButtonStack]);
+
+//     if (!current) {
+//       return (
+//         <MobileIcon
+//           label={menuOpenLabel}
+//           icon={getIcon("menu")}
+//           currentCallback={menuCallback}
+//           isFloating={isFloating}
+//         />
+//       );
+//     }
+
+//     return (
+//       <MobileIcon
+//         icon={getIcon(current.label) || getIcon("close")}
+//         label={current.label}
+//         currentCallback={current.callback}
+//         isFloating={isFloating}
+//       />
+//     );
+//   }
+// );
+
+
+// const MobileIconWrapper = React.memo(
+//   ({ menuOpenLabel = "Menu", menuCallback, isFloating }) => {
+//     const { navReplacementButtonStack } = useGlobalContext();
+// const {navstack, extraButtons} = useNavStack();
+
+
+
+
+
+
+
+//     const current = useMemo(() => {
+//       if (
+//         !navReplacementButtonStack ||
+//         navReplacementButtonStack.length === 0
+//       ) {
+//         return null;
+//       }
+//       return navReplacementButtonStack[navReplacementButtonStack.length - 1];
+//     }, [navReplacementButtonStack]);
+
+//     if (!current) {
+//       return (
+//         <MobileIcon
+//           label={menuOpenLabel}
+//           icon={getIcon("menu")}
+//           currentCallback={menuCallback}
+//           isFloating={isFloating}
+//         />
+//       );
+//     }
+
+//     return (
+//       <MobileIcon
+//         icon={getIcon(current.label) || getIcon("close")}
+//         label={current.label}
+//         currentCallback={current.callback}
+//         isFloating={isFloating}
+//       />
+//     );
+//   }
+// );
+
+
+
+// // -------------------- MOBILE WRAPPER --------------------
+// const MobileWrapper = React.memo(
+//   ({ floating, showMobileMenu, buttonCallback, navigateAwayCallback }) => {
+//     return (
+//       <>
+//         {!floating && (
+//           <NavBg menu={<MobileIconWrapper menuCallback={buttonCallback} />} buttons />
+//         )}
+
+//         {floating && <MobileIconWrapper menuCallback={buttonCallback} isFloating />}
+//         <MobileNavMenu
+//           isVisible={showMobileMenu}
+//           triggerCollapseAnimation={navigateAwayCallback}
+//         />
+//       </>
+//     );
+//   }
+// );
+
+// // -------------------- MAIN NAV WRAPPER --------------------
+// const NavWrapper = () => {
+//   const {
+//     pushNavReplacementButton,
+//     popNavReplacementButton,
+//   } = useGlobalContext();
+
+//   const screenSize = useScreenSize();
+//   const { currentRoute } = useRoute();
+//   const isMenuFloatingDesktop = useIsMenuFloatingDesktop();
+//   const isMenuFloatingMobile = useIsMenuFloatingMobile();
+
+//   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+//   // Callbacks stable across renders
+//   const handleClickBaseCallback = useCallback(() => {
+//     setShowMobileMenu((prev) => !prev);
+//     popNavReplacementButton();
+//   }, [popNavReplacementButton]);
+
+//   const handleNavigateAway = useCallback(() => {
+//     if (showMobileMenu) {
+//       setShowMobileMenu(false);
+//       popNavReplacementButton();
+//     }
+//   }, [showMobileMenu, popNavReplacementButton]);
+
+//   const menuOpenHandle = useCallback(
+//     (e) => {
+//       if (e) e.preventDefault();
+//       setShowMobileMenu((prev) => !prev);
+
+//       pushNavReplacementButton({
+//         callback: handleClickBaseCallback,
+//         label: "Close",
+//       });
+//     },
+//     [pushNavReplacementButton, handleClickBaseCallback]
+//   );
+
+//   return (
+//     <>
+//       {screenSize === "sm" ? (
+//         <MobileWrapper
+//           floating={isMenuFloatingMobile}
+//           showMobileMenu={showMobileMenu}
+//           buttonCallback={menuOpenHandle}
+//           navigateAwayCallback={handleNavigateAway}
+//         />
+//       ) : (
+//         <>
+//           {isMenuFloatingDesktop ? <DesktopFloatingNav /> : <DesktopNavFullWidth />}
+//         </>
+//       )}
+//     </>
+//   );
+// };
+
+// export default React.memo(NavWrapper);
+
+
+import React, { useState, useCallback, useMemo } from "react";
 import { useScreenSize } from "../../contexts/ScreenSizeProvider";
-import { useIsMenuFloating, useRoute } from "../../contexts/RouteContext";
+import {
+  useIsMenuFloatingDesktop,
+  useIsMenuFloatingMobile,
+  useRoute,
+} from "../../contexts/RouteContext";
 import DesktopNav from "./DesktopNav";
 import MobileNavMenu from "./MobileNavMenu";
 import MobileIcon from "./MobileIcon";
 import { NavBg } from "./NavBg";
 import getIcon from "../../utils/Iconifier";
 import { useGlobalContext } from "../../contexts/GlobalContext";
-const DesktopWrapper = () => {
+import { DesktopFloatingNav } from "./DesktopFloatingNav";
+import { DesktopNavFullWidth } from "./DesktopNavFullWidth";
+import { useNavStack } from "../../contexts/NavStackContext";
+
+// -------------------- DESKTOP WRAPPER --------------------
+const DesktopWrapper = React.memo(() => {
   return <DesktopNav />;
-};
+});
 
-const MobileWrapper = ({
-  floating,
-  showMobileMenu,
-  buttonCallback,
-  navigateAwayCallback,
-}) => {
-  return (
-    <>
-      {!floating && (
-        <NavBg
-          menu={<MobileIconWrapper menuCallback={buttonCallback} />}
-          buttons
+// -------------------- MOBILE ICON WRAPPER --------------------
+const MobileIconWrapper= React.memo(
+  ({ menuOpenLabel = "Menu", menuCallback, isFloating }) => {
+    const { navReplacementButtonStack } = useGlobalContext();
+
+
+
+    const {navstack} = useNavStack();
+
+
+    const current = useMemo(() => {
+      if (
+        !navstack ||
+        navstack.length === 0
+      ) {
+        return null;
+      }
+      return navstack[navstack.length - 1];
+    }, [navstack]);
+
+    if (!current) {
+      return (
+
+
+        
+    
+        <MobileIcon
+          label={menuOpenLabel}
+          icon={getIcon("menu")}
+          currentCallback={menuCallback}
+          isFloating={isFloating}
         />
-      )}
+   
+      );
+    }
 
-      {floating && <MobileIconWrapper menuCallback={buttonCallback}   isFloating  />}
-      <MobileNavMenu
-        isVisible={showMobileMenu}
-        triggerCollapseAnimation={navigateAwayCallback}
-      />
-    </>
-  );
-};
-
-const MobileIconWrapper = ({ menuOpenLabel = "Menu", menuCallback, isFloating }) => {
-  const { navReplacementButtonStack } = useGlobalContext();
-  const StackEmpty =
-    !navReplacementButtonStack || navReplacementButtonStack.length === 0;
-
-  if (StackEmpty) {
     return (
       <MobileIcon
-        label={menuOpenLabel}
-        icon={getIcon("menu")}
-        currentCallback={menuCallback}
+        icon={getIcon(current.label) || getIcon("close")}
+        label={current.label}
+        currentCallback={current.callback}
         isFloating={isFloating}
       />
     );
   }
-
-  let current = navReplacementButtonStack[navReplacementButtonStack.length - 1];
-
-  return (
-
-    <>
-    
-    
-        <MobileIcon
-      icon={getIcon(current.label) || getIcon("close")}
-      label={current.label}
-      currentCallback={current.callback}
-        isFloating={isFloating}
-    />
+);
 
 
-    </>
 
-  );
-};
 
-export const NavWrapper = () => {
-  const { pushNavReplacementButton, popNavReplacementButton } =
-    useGlobalContext();
+// -------------------- MOBILE WRAPPER --------------------
+const MobileWrapper = React.memo(
+  ({ floating, showMobileMenu, buttonCallback, navigateAwayCallback }) => {
+    return (
+      <>
+        {!floating && (
+          <NavBg menu={<MobileIconWrapper menuCallback={buttonCallback} />} buttons />
+        )}
+
+        {floating && <MobileIconWrapper menuCallback={buttonCallback} isFloating />}
+        <MobileNavMenu
+          isVisible={showMobileMenu}
+          triggerCollapseAnimation={navigateAwayCallback}
+        />
+      </>
+    );
+  }
+);
+
+// -------------------- MAIN NAV WRAPPER --------------------
+const NavWrapper = () => {
+  const {
+    pushNavReplacementButton,
+    popNavReplacementButton,
+  } = useGlobalContext();
+    const { navstack, pushNav,popNav} = useNavStack();
   const screenSize = useScreenSize();
-  const { navReplacementButtonStack } = useGlobalContext();
   const { currentRoute } = useRoute();
-  // If the route explicitly disables nav
-  const isFloating = useIsMenuFloating();
+  const isMenuFloatingDesktop = useIsMenuFloatingDesktop();
+  const isMenuFloatingMobile = useIsMenuFloatingMobile();
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const handleClickBaseCallback = () => {
+  // Callbacks stable across renders
+  const handleClickBaseCallback = useCallback(() => {
     setShowMobileMenu((prev) => !prev);
-    popNavReplacementButton();
-  };
+    // popNavReplacementButton();
+    popNav();
+  }, [popNav]);
 
-  const handleNavigateAway = () => {
+  const handleNavigateAway = useCallback(() => {
     if (showMobileMenu) {
       setShowMobileMenu(false);
       popNavReplacementButton();
     }
-  };
+  }, [showMobileMenu, popNavReplacementButton]);
 
-  const menuOpenHandle = (e) => {
-    if (e) e.preventDefault();
-    setShowMobileMenu((prev) => !prev);
+  const menuOpenHandle2 = useCallback(
+    (e) => {
+      if (e) e.preventDefault();
+      setShowMobileMenu((prev) => !prev);
 
-    pushNavReplacementButton({
-      callback: handleClickBaseCallback,
+      pushNavReplacementButton({
+        callback: handleClickBaseCallback,
+        label: "Close",
+      });
+    },
+    [pushNavReplacementButton, handleClickBaseCallback]
+  );
 
-      label: "Close",
-    });
-  };
+
+
+    const menuOpenHandle = useCallback(
+    (e) => {
+      if (e) e.preventDefault();
+      setShowMobileMenu((prev) => !prev);
+
+      pushNav({
+        callback: handleClickBaseCallback,
+        label: "Close",
+      });
+    },
+    [pushNav, handleClickBaseCallback]
+  );
 
   return (
     <>
       {screenSize === "sm" ? (
         <MobileWrapper
-          floating={isFloating}
+          floating={isMenuFloatingMobile}
           showMobileMenu={showMobileMenu}
           buttonCallback={menuOpenHandle}
           navigateAwayCallback={handleNavigateAway}
         />
       ) : (
-        <DesktopWrapper />
+        <>
+          {isMenuFloatingDesktop ? <DesktopFloatingNav /> : <DesktopNavFullWidth />}
+        </>
       )}
     </>
   );
 };
+
+export default React.memo(NavWrapper);

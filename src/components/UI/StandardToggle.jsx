@@ -2,7 +2,7 @@ import React from "react";
 import style from "./toggle.module.scss";
 
 const StandardToggle = ({
-  type = "box",
+  type = "box", // can now be 'box', 'pill', or 'largepill'
   callback = () => {},
   firsticon: FirstIcon,
   secondicon: SecondIcon,
@@ -17,9 +17,14 @@ const StandardToggle = ({
     }
   };
 
+  // Determine class based on type
+  let typeClass = style.box;
+  if (type === "pill") typeClass = style.pill;
+  else if (type === "largepill") typeClass = style.largepill;
+
   return (
     <div
-      className={`${type === "box" ? style.box : style.pill} ${style.toggleContainer}`}
+      className={`${typeClass} ${style.toggleContainer}`}
       onClick={handleClick}
     >
       <input

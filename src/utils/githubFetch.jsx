@@ -22,3 +22,21 @@ export async function getRecentRepos(username, count = 6) {
         return { error: 'Network error or invalid response' };
     }
 }
+
+
+export async function fetchGithubProfile(username = "2of") {
+  const url = `https://api.github.com/users/${username}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`GitHub API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+// Example:
+fetchGithubProfile("octocat")
+  .then(data => console.log(data))
+  .catch(err => console.error(err));

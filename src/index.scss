@@ -4,7 +4,12 @@
 @import './styles/interactions';
 
 
-
+html, body {
+  // height: 100%;
+  margin: 0;
+  background-color: var(--bg); // or a literal color like #0a0a0a
+  color: var(--text-primary);
+}
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -15,5 +20,5 @@ body {
   overflow: hidden;      // prevent scrollbars
   touch-action: none;    // prevent touch scrolling on mobile
   overscroll-behavior: none; // stop overscroll bounce
-  height: 100%;
+  // height: 100%;
 }

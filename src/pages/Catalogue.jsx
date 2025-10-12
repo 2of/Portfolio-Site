@@ -24,7 +24,8 @@ import LargeThumbCard from "../components/Cards/CardLarge";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
 import GlassPushOverlay from "../components/UI/GlassContainer";
 import SmallCard from "../components/Cards/SmallCard";
-
+import text from "../../public/assets/text/texts.json";
+import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 export const CataloguePage = () => {
   const { getAllMetaData,getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
@@ -34,6 +35,12 @@ export const CataloguePage = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [githubProjects, setGithubProjects] = useState([]);
+
+
+
+
+
+
 
   useEffect(() => {
     getRecentRepos("2of").then((repos) => {
@@ -146,16 +153,47 @@ export const CataloguePage = () => {
   const Header1 = () => (
     <div className={styles.MainHeader}>
       <AnimatedHeader
-        title={"Featured Work..."}
+        title={"Featured Projects"}
         icon={getIcon("star")}
         replacementText={"The cool stuff"}
         animate
-        subtitle={
-          "Small writeups for highlighted projects. Scroll further to see a raw list"
-        }
+        // subtitle={
+        //   "Small writeups for highlighted projects. Scroll further to see a raw list"
+        // }
       />
     </div>
   );
+
+
+
+
+
+const TextSectionHero = () => {
+  return (
+    <section className={styles.TextSectionHero}>
+      {/* Animated background layers */}
+      {/* <div className={styles.bgDecor}>
+        <div className={styles.gradientLayer} />
+        <div className={`${styles.shape} ${styles.shape1}`} />
+        <div className={`${styles.shape} ${styles.shape2}`} />
+        <div className={`${styles.shape} ${styles.shape3}`} />
+        <div className={`${styles.shape} ${styles.shape4}`} />
+      </div> */}
+
+      <TrackedGradientBG interactive={true} />
+
+      {/* Foreground text */}
+      <div className={styles.inner}>
+        <h1 className={styles.title}>{text.projHeader.projTitle}</h1>
+        <div className={styles.subtitleGroup}>
+          <p className={styles.subtitle}>{text.projHeader.projS1}</p>
+          <p className={styles.subtitle}>{text.projHeader.projS2}</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
   const StandardHeaderDesktop = ({ title, subtitle, icon }) => (
     <div className={styles.StandardHeaderDesktop}>
@@ -246,7 +284,14 @@ export const CataloguePage = () => {
   );
 
   const renderDesktopView = () => (
-    <ScrollableVerticalView staggerStart trackScrollPercent>
+    <ScrollableVerticalView  trackScrollPercent >
+
+      <Section> 
+    <TextSectionHero />
+
+      </Section>
+
+  
       {/* title={"new"} subtitle={"test"}/> */}
       <Section Header={() => <Header1 />}>
 
@@ -259,7 +304,7 @@ export const CataloguePage = () => {
         Header={() => (
           <StandardHeaderDesktop
             title={"Notable Uni Bits"}
-            subtitle={"It's ... mostly well documented"}
+            // subtitle={"It's ... mostly well documented"}
             icon={getIcon("school")}
           />
         )}
@@ -272,7 +317,7 @@ export const CataloguePage = () => {
         Header={() => (
           <StandardHeaderDesktop
             title={"Most Recent Github Commits"}
-            subtitle={"It's ... mostly well documented"}
+            // subtitle={"It's ... mostly well documented"}
             icon={getIcon("Github")}
           />
         )}
@@ -284,7 +329,7 @@ export const CataloguePage = () => {
         Header={() => (
           <StandardHeaderDesktop
             title={"Miscellaneous Bits"}
-            subtitle={"It's ... also somewhat well documented"}
+            // subtitle={"It's ... also somewhat well documented"}
             icon={getIcon("tools")}
           />
         )}

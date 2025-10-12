@@ -1,7 +1,7 @@
 .backgroundWrapper {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
   /* Ensure stacking context */
   display: block;
@@ -28,6 +28,79 @@
 
 /* Background variants */
 
+.linearbg {
+  background: linear-gradient(
+    135deg,
+    #ffb347 0%,   // soft peach
+    #ffcc33 50%,  // warm golden
+    #ff7e5f 100%  // coral-pink
+  );
+  background-size: 400% 400%;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+
+.pattern1 {
+  background-color: #ffb347; // soft peach base
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 204, 51, 0.2) 0px,
+      rgba(255, 204, 51, 0.2) 12px,
+      rgba(255, 126, 95, 0.08) 12px,
+      rgba(255, 126, 95, 0.08) 24px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 174, 66, 0.15) 0px,
+      rgba(255, 174, 66, 0.15) 12px,
+      rgba(255, 105, 97, 0.1) 12px,
+      rgba(255, 105, 97, 0.1) 24px
+    ),
+    linear-gradient(
+      135deg,
+      #ffe29f 0%,
+      #ffa99f 50%,
+      #ff719a 100%
+    ); // soft underlying gradient glow
+
+  background-size: 60px 60px, 60px 60px, 100% 100%;
+  background-blend-mode: overlay, overlay, normal;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+
+.pattern2 { 
+  
+  // Pattern layer
+position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  // Subtle dotted grid pattern
+  background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+  background-size: 12px 12px;
+  background-color: var(--bg);
+
+  // Diagonal fade overlay blending into solid background color
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      var(--bg) 80%
+    );
+    pointer-events: none;
+  }
+
+}
 .regularbg {
   background: var(--bg, #111);
   z-index: 1;
@@ -35,9 +108,16 @@
 
 .herobg {
   background:var(--herobg);
-  z-index: 2;
+  // z-index: 2;
 }
 
+.bg2 {
+  background:var(--bg-l1);
+  // z-index: 2;
+}
+.darkbg { 
+  background-color: var(--text-color);
+}
 
 
 .physicsShapes {

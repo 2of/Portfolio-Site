@@ -1,0 +1,228 @@
+.navContainer {
+    // background-color: red;
+// position: absolute;
+// display: none;
+
+overflow: hidden;
+
+
+
+}
+
+.bgcontainer { 
+    // background-color: red;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    transform: translatex(-12px);
+}
+
+ul {
+    list-style-type: none;
+}
+
+.float {
+  background-color: var(--bg);
+  position: absolute;
+  z-index: 500;
+  border-radius: 48px;
+  width: fit-content;
+  border: 1px solid var(--border-color);
+
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%); // 👈 centers it horizontally
+
+  padding: 2px 12px;
+
+  animation: dropAndBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.fullwidth {
+    background-color: var(--bg);
+    position: fixed;
+    width: 100vw;
+    z-index: 500;
+    height: var(--navHeightDESKTOP);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* New animation: Smooth slide and fade from the top */
+    animation: slideInFromTop 0.5s ease-out forwards;
+
+    .navList {
+        display: flex;
+        width: 100%;
+        max-width: var(--maxWidth);
+        gap: 12px;
+        height: var(--navHeightDesktop);
+    }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+//   background-color: orange;
+
+  li:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.logoContainer { 
+    z-index: 100;
+}
+
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 24px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  border: 1px solid var(--bg);
+    p {
+        border-radius: 24px;
+        background-color: #00000000;
+        padding: 8px 1px;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 0 1px var(--text-color);
+            // background-color: var(--herobg);
+        }
+    }
+
+    &:hover {
+        color: var(--hover-text-color);
+    }
+}
+
+.activeLink {
+    background-color: var(--herobg);
+    border: 1px solid var(--border-color);
+    * {
+        font-weight: 500;
+        text-decoration: underline;
+    }
+}
+
+.extrabuttonnav {
+  margin-left: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+//   background-color: red;
+  border-radius: 24px;
+//   padding: 0 12px;
+  height: 100%;
+}
+
+
+.navItem {
+    z-index: 300;
+    min-width: 60px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+
+    &:hover {
+        transform: scale(1.04);
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 0 12px;
+        height: 100%;
+        /* Adjusted height and padding to rely on .link for centering */
+    }
+}
+
+
+@keyframes wiggle {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+
+    15% {
+        transform: scaleX(0.9) scaleY(1.1);
+    }
+
+    30% {
+        transform: scaleX(1.1) scaleY(0.9);
+    }
+
+    45% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+
+    60% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+
+    75% {
+        transform: scaleX(0.98) scaleY(1.02);
+    }
+
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
+.wiggleIcon {
+    animation: wiggle 0.8s ease-in-out;
+    display: inline-block;
+    will-change: transform;
+}
+
+
+/* 1. Fade-in for the fullwidth navbar */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%); /* Start completely above its fixed position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at its fixed position */
+    }
+}
+
+@keyframes dropAndBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.94); // keep centering
+    filter: blur(6px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.02);
+    filter: blur(0px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  85% {
+    transform: translateX(-50%) scale(0.995);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+}

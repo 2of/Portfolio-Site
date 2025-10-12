@@ -4,6 +4,7 @@ import { useTooltip } from "../../contexts/tooltip";
 import getIcon from "../../utils/Iconifier";
 import styles from "./Button.module.scss";
 import { useScreenSize } from "../../contexts/ScreenSizeProvider";
+import { NudgeContainer } from "./NudgeContainer";
 
 const validTypes = [
   "drop",
@@ -13,7 +14,10 @@ const validTypes = [
   "withlabel",
   "basic_small",
   "article",
-  "subtle"
+  "subtle",
+  "rounded",
+  "rounded_label",
+  "featured"
 ];
 export const StandardButton = ({
   label = "no label",
@@ -26,6 +30,8 @@ export const StandardButton = ({
   headertitle = "",
   external = false,
   fillContainer = false,
+  nointeractEffects = false,
+
   styles: customStyles = {}, // <-- new prop for custom inline styles
 }) => {
   const screenSize = useScreenSize(); // 'sm' | 'md' | 'lg'
@@ -90,7 +96,12 @@ export const StandardButton = ({
 
     switch (safeType) {
       case "text-only":
-        return <>{Label}</>;
+        return (
+          <>
+            {Icon}
+            {Label}
+          </>
+        );
 
       case "link":
         return (
@@ -100,6 +111,24 @@ export const StandardButton = ({
           </>
         );
 
+      case "rounded":
+        return (
+          <>
+            {Icon}
+
+            {/* {Label} */}
+          </>
+        );
+     
+      case "featured":
+        return (
+          <>
+            {Label}
+            {Icon}
+     </>
+        );
+
+
       case "basic_Expand":
         return (
           <div className={styles.expandWrapper}>
@@ -107,7 +136,18 @@ export const StandardButton = ({
             {Icon}
           </div>
         );
+      case "rounded_label":
+        return (
+          <>
+            <p>
+              <span>
+               {Icon}  {Label}
+              </span>
+            </p>
 
+            {/* {Label} */}
+          </>
+        );
       case "article":
         return (
           <div className={styles.expandWrapper}>
@@ -146,13 +186,16 @@ export const StandardButton = ({
   };
 
   return (
+    // <NudgeContainer>
     <div
       onMouseMove={handleMouseMove}
       onTouchStart={handleTouchStart}
       onMouseLeave={hideTooltip}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`${setButtonClass()} standardMouseOverBounce`}
+      className={`${setButtonClass()} ${
+        !nointeractEffects && "standardMouseOverBounce"
+      }`}
       role="button"
       aria-disabled={disable}
       aria-label={label}
@@ -164,5 +207,6 @@ export const StandardButton = ({
         <span className={styles.externalCornerIcon}>{externalIcon}</span>
       )}
     </div>
+    // </NudgeContainer>
   );
 };

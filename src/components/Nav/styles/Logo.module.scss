@@ -1,0 +1,77 @@
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  height: 100%;
+
+  padding: 0px 1rem;
+  cursor: pointer;
+  border-radius: 4rem;
+  user-select: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+
+  }
+
+  &.clicked {
+    animation: bounceSpin 0.8s ease forwards;
+  }
+
+  .main {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: normal;
+  }
+
+  .main.small {
+    font-size: 1rem;
+    font-weight: 500;
+    // font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  .sub {
+    font-size: 1rem;
+    opacity: 0.75;
+    margin-left: 0.5rem;
+    font-weight: normal;
+  }
+
+
+
+  .sub.small {
+    font-size: 0.6rem;
+    opacity: 0.6;
+    margin-left: 0.25rem;
+    font-style: italic;
+    font-weight: 200;
+  }
+}
+
+// .icon { 
+//   height: 32px;
+//   // background-color: red;
+//   display: flex;
+//   align-items: center;
+//   svg { 
+//     height: 64px;
+//   }
+// }
+.text { 
+  display: flex;
+  flex-direction: column;
+}
+/* Click animation */
+@keyframes bounceSpin {
+  0% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.2) rotate(10deg); }
+  40% { transform: scale(0.9) rotate(-10deg); }
+  60% { transform: scale(1.1) rotate(5deg); }
+  80% { transform: scale(0.95) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}

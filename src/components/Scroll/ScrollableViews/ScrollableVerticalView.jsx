@@ -4,6 +4,7 @@ import styles from "./ScrollableVerticalView.module.scss";
 import ProgressBar from "../../UI/ProgressBar";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import useScreenSize from "../../../utils/screensize";
+import { useIsMenuFloatingDesktop, useIsMenuFloatingMobile } from "../../../contexts/RouteContext";
 export const Section = ({ Header, children, sticky = false, narrow }) => {
   const screenSize = useScreenSize()
   const headerClass = clsx(styles.sectionHeaderContainer, {
@@ -41,6 +42,9 @@ export const ScrollableVerticalView = ({
   const [direction, setDirection] = useState("None");
   const [scrollPercent, setScrollPercent] = useState(0);
   const { isDev } = useGlobalContext;
+  const isStaggeredForNav = useIsMenuFloatingDesktop();
+  const isMenuFloatingMobile = useIsMenuFloatingMobile();
+  const screenSize = useScreenSize();
   const MAX_SCROLL_VELOCITY = 3000;
 
   useEffect(() => {
@@ -87,6 +91,8 @@ export const ScrollableVerticalView = ({
   trackVelocity
     ? styles.scrollContainerVelocity
     : styles.scrollContainerBounce,
+  screenSize !== "sm" && !isStaggeredForNav && styles.paddedforNavBarDesktop,
+  screenSize === "sm" && isMenuFloatingMobile && styles.paddedforNavBarMobile,
   alignCenter && styles.alignCenter 
 );
 
@@ -140,6 +146,7 @@ export const ScrollableVerticalView = ({
         {staggerStart && <div className={styles.staggerSpacer} />}
         {enhancedChildren}
       </div>
+    
     </div>
   );
 };

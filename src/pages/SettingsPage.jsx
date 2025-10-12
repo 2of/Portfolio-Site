@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import { useProjects } from "../contexts/ContentContext";
 import ProgressBar from "../components/UI/ProgressBar";
-import styles from "./AboutPage.module.scss";
+import styles from "./SettingsPage.module.scss";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { StandardButton } from "../components/UI/StandardButton";
 import StandardToggle from "../components/UI/StandardToggle";
@@ -14,6 +14,7 @@ import useScreenSize from "../utils/screensize";
 import { Navigate } from "react-router-dom";
 import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
 import GlassPushOverlay from "../components/UI/GlassContainer";
+import { CenteredContainer } from "../components/Scroll/CenteredContainer";
 
 // settingsConfig.js
 const settingsConfig = [
@@ -38,7 +39,7 @@ const settingsConfig = [
     secondicon: "cross",
   },
   { type: "label", label: "Random Things Area" },
- 
+
   {
     type: "toggle",
     label: "Ridiculous Article Mode",
@@ -55,7 +56,6 @@ const settingsConfig = [
     firsticon: "projects",
     secondicon: "yeti",
   },
-  
 
   { type: "label", label: "Links" },
 
@@ -73,7 +73,7 @@ const settingsConfig = [
     icon: "editor",
     external: "https://2of.github.io/site/",
   },
- {
+  {
     type: "button",
     label: "See Junk Page",
     buttonLabel: "Go",
@@ -81,10 +81,14 @@ const settingsConfig = [
     route: "/junk",
   },
 
-
+  {
+    type: "button",
+    label: "Directory",
+    buttonLabel: "Open Directory",
+    icon: "dir",
+    route: "/dir",
+  },
 ];
-
-
 
 export const SettingsPage = () => {
   const {
@@ -106,10 +110,10 @@ export const SettingsPage = () => {
   const renderComponent = (row) => {
     switch (row.type) {
       case "toggle":
-        if (row.component === "DarkModeWrapper") //kinda being lazy here...
+        if (row.component === "DarkModeWrapper")
+          //kinda being lazy here...
           return <DarkModeWrapper type="box" />;
-        if (row.disabled)
-          return <StandardToggle type="box" disabled />;
+        if (row.disabled) return <StandardToggle type="box" disabled />;
         return (
           <StandardToggle
             type="box"
@@ -144,27 +148,24 @@ export const SettingsPage = () => {
   }));
 
   return (
-<ScrollableVerticalView alignCenter={screenSize!== "sm"}>
+    <>
+      {screenSize === "sm" ? (
+        <>
+          <ScrollableVerticalView alignCenter={screenSize !== "sm"}>
+            <RowView mobile={mobile} rows={mappedRows} />
+          </ScrollableVerticalView>
+          // <div className={styles.spacer} />
+        </>
+      ) : (
+        <CenteredContainer>
+          <div className={styles.content}>
+            {" "}
+            <RowView mobile={mobile} rows={mappedRows} />
+          </div>
+        </CenteredContainer>
+      )}
+    </>
 
-        {screenSize === "sm" ? (
-
-          <>
-          <div className={styles.spacer}/>
-
-
-           <RowView mobile={mobile} rows={mappedRows} />
-
-           </>
-        ) :    
-        <RowView mobile={mobile} rows={mappedRows} />
-
-
-}
-
-       
-
-
-
-    </ScrollableVerticalView>
+    // </ScrollableVerticalView>
   );
 };

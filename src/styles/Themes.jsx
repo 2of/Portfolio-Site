@@ -8,6 +8,11 @@ export const baseTheme = {
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
 
+
+
+  "--navHeightDESKTOP" : "5rem",
+
+    "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
@@ -16,35 +21,36 @@ export const baseTheme = {
 
   "--border-radius": "24px",
   "--blur-radius": "15px",
+  "--text-dark" : "#161616ff",
 };
 
 export const lightTheme = {
-  "--bg": "rgba(231, 233, 225, 1)",
-  "--bg-l1": "#e5e4e3",
-  "--bg-l2": "#bababa",
-  "--bg-l3": "#a1a09f",
-  "--bg-transparent": "#f8f7f6c1",
+  "--bg": "#d1cfc0",      // soft warm off-white
+  "--bg-l1": "rgba(206, 206, 206, 1)",       // gentle sage tint (slightly darker)
+  "--bg-l2": "rgba(187, 190, 174, 1)",       // mid warm grey-green
+  "--bg-l3": "rgba(156, 158, 144, 1)",       // deeper neutral olive
 
-  "--text-color": "#2E2E2E",
+  "--bg-transparent": "rgba(231, 233, 225, 0.8)",
+
+  "--text-color": "#1f1f1f",
   "--secondary-text": "#6C6C6C",
   "--card-bg": "#FFFFFF",
   "--border-color": "#474747",
   "--accent": "#d44742",
   "--accent-color": "#d44742",
   "--link": "#4A90E2",
-  "--herobg": "rgba(221, 224, 210, 1)",
+  "--herobg": "#ffb914ff",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
 
-  "--inverse-transparent": "#121212d3", // dark-bg-transparent
+  "--inverse-transparent": "#121212d3",
   "--inverse-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)",
 };
 
-
 export const darkTheme = {
-  "--bg": "#161616ff",
-  "--bg-l1": "#727272",
+  "--bg": "#1f1f1f",
+  "--bg-l1": "#3e3e3eff",
   "--bg-l2": "#302f2f",
   "--bg-l3": "#666464",
   "--bg-transparent": "#121212d3",
@@ -56,7 +62,7 @@ export const darkTheme = {
   "--accent": "#d44742",
   "--accent-color": "#d44742",
   "--link": "#003153",
-  "--herobg": "#111813ff",
+  "--herobg": "#688f73ff",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)",
 

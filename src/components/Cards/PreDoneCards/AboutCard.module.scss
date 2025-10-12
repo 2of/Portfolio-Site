@@ -1,0 +1,157 @@
+.aboutCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // pushes footer to bottom
+  height: 100%;
+  gap: 12px;
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  font-family: 'Inter', sans-serif;
+
+  /* HERO SECTION */
+  .hero {
+    position: relative;
+    width: 100%;
+    // height: 18rem; // tighter hero\
+    flex-grow: 1;
+    color: var(--text-color);
+    background-size: cover;
+    background-position: center;
+
+    .overlay {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+
+      .textBlock {
+        padding: 0.8rem 1rem; // tighter padding
+        text-align: left;
+        color: var(--bg);
+        z-index: 100;
+
+        .name {
+          font-size: 1.8rem;
+          font-weight: 700;
+          line-height: 1.2;
+          margin-bottom: 0.2rem;
+          color: var(--text-color);
+        }
+
+        .subtitle {
+          font-size: 0.95rem;
+          font-weight: 400;
+          opacity: 0.85;
+          margin-bottom: 0.4rem;
+        }
+
+        .qualifications {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.3rem;
+
+          .qualTag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 500;
+            // color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  /* BODY SECTION */
+  .body {
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+
+    .about {
+      font-size: 0.9rem;
+      line-height: 1.45; // slightly denser
+      // color: #333;
+      max-height: 5.5rem; // keeps it compact, overflow hidden optional
+      overflow: hidden;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+
+     .tag {
+  // background: #f0f0f0;
+  // color: #555;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: repeating-linear-gradient(
+      135deg,          // 135deg for left-leaning diagonal lines
+      var(--bg) 0px,
+      var(--bg) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    // optional: color: #fff;
+    // cursor: pointer;
+  }
+}
+    }
+  }
+
+  /* FOOTER STAYS AT BOTTOM */
+  .footer {
+    // width: 100%;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: flex-start;
+    // border-top: 1px solid #eee;
+    // background: #fafafa;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 6.5rem;
+
+      .overlay {
+        .textBlock {
+          .name {
+            font-size: 1.5rem;
+          }
+          .subtitle {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+
+    .body {
+      padding: 0.6rem 0.8rem;
+    }
+
+    .footer {
+      padding: 0.6rem 0.8rem;
+    }
+  }
+}

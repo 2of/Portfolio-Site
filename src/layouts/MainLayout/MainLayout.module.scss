@@ -20,3 +20,36 @@
 }
 
 
+.DesktopStandard { 
+  // background-color: red;
+    // padding-top: var(--navHeightDESKTOP);
+    // margin-top: 10000px;
+    // margin-top: 200px;
+    // background-color: magenta;
+// height: 100vh;
+}
+
+.DesktopFull { 
+  // background-color: orange;
+      margin-top: 0;
+}
+
+.MobileFullscreen { 
+  margin-top: 0;
+}
+
+.MobileNavBar { 
+  margin-top: var(--navHeight);
+}
+
+
+.fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;
+     transform: translateY(24px); }
+  to { opacity: 1;
+     transform: translateY(0px); }
+}

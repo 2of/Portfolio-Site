@@ -22,9 +22,14 @@ import {
   FaRegMoon,
   FaRegFileAlt,
   FaRegFile,
-  FaRegCircle
+  // FaArrowRight,
+  FaArrowCircleRight,
+  FaRegCircle,
+  FaCompress,
+  FaCompressAlt,
+  FaDirections
 } from "react-icons/fa"; 
-import { FaPencil } from "react-icons/fa6";
+import { FaPencil, FaSailboat } from "react-icons/fa6";
 
 const getIcon = (iconName = "default") => {
   const iconMap = {
@@ -50,6 +55,7 @@ const getIcon = (iconName = "default") => {
     back: <FaArrowCircleLeft />,
     next: <FaArrowRight />,
     up: <FaArrowUp />,
+    boat: <FaSailboat/>,
     uparrow: <FaArrowUp />,
     down: <FaChevronDown />,
     downarrow: <FaArrowDown />,
@@ -58,6 +64,7 @@ const getIcon = (iconName = "default") => {
     overflow: <FaBars />,
     menu: <FaBars />,
     expand: <FaExpandAlt />,
+    reduce: <FaCompressAlt/>,
     file: <FaRegFile />,         // Outline file
     github: <FaGithub />,
     linkedin: <FaLinkedin />,
@@ -91,7 +98,12 @@ const getIcon = (iconName = "default") => {
     tick: <FaCheck />,
     cross: <FaBan />,
     portfolio: <FaCode />,
-    tag: <FaTag />
+    tag: <FaTag />,
+    rightarrow: <FaArrowCircleRight/>,
+    right: <FaArrowRight />,
+    left: <FaArrowLeft />,
+    dir: <FaDirections/>
+
   };
 
   return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;

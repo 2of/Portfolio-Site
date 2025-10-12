@@ -16,7 +16,8 @@ const SmallCard = ({
   hoverAnimate = true,
 }) => {
   const { themeoverride } = useGlobalContext();
-  const styles = !themeoverride ? base_styles : ridiculous_styles;
+  // const styles = !themeoverride ? base_styles : ridiculous_styles;
+  const styles = base_styles
   const [isAnimateOpen, setIsAnimateOpen] = useState(false);
   const navigate = useNavigate();
 

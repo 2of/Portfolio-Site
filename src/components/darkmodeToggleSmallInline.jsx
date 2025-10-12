@@ -3,11 +3,16 @@ import { useGlobalContext } from '../contexts/GlobalContext';
 import style from './darkmodeToggleSmallInline.module.scss'; 
 import { FaMoon, FaSun } from 'react-icons/fa';
 
-const DarkModeToggle = ({mobile = true}) => {
+const DarkModeToggle = ({ size = "pill" }) => {
   const { isDarkMode, toggleTheme } = useGlobalContext();
 
+  // Determine class based on size prop
+  let sizeClass = style.pill;
+  if (size === "box") sizeClass = style.box;
+  else if (size === "largepill") sizeClass = style.largepill;
+
   return (
-    <div className={` ${mobile ? style.pill : style.box} ${style.darkmodeToggle}`} onClick={toggleTheme}>
+    <div className={`${sizeClass} ${style.darkmodeToggle}`} onClick={toggleTheme}>
       <input
         type="checkbox"
         className={style.toggleCheckbox}
@@ -15,10 +20,10 @@ const DarkModeToggle = ({mobile = true}) => {
         readOnly
       />
       <div className={style.toggleSlider}>
-        <span className={style.toggleIcon + " " + style.moonIcon}>
+        <span className={`${style.toggleIcon} ${style.moonIcon}`}>
           <FaMoon />
         </span>
-        <span className={style.toggleIcon + " " + style.sunIcon}>
+        <span className={`${style.toggleIcon} ${style.sunIcon}`}>
           <FaSun />
         </span>
       </div>

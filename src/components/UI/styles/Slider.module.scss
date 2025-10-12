@@ -1,19 +1,29 @@
 .wrapper {
     position: relative;
     width: 100%;
-    //   background-color: red;
     display: flex;
+    align-items: center;
 }
 
-/* Base slider track */
 .slider {
     appearance: none;
     width: 100%;
-    height: 1px;
-    background: #333;
-    border-radius: 3px;
+    height: 4px; /* Default track thickness increased for visibility */
+    background: transparent;
+    border-radius: 2px;
     outline: none;
     cursor: pointer;
+    margin: 10px 0; /* Add vertical spacing */
+
+    /* Dynamic Track Fill (Requires JS to set --slider-progress: X%) */
+    background-image: linear-gradient(
+        to right,
+        var(--text-color) var(--slider-progress, 0%), /* Filled part */
+        var(--border-color) var(--slider-progress, 0%) /* Unfilled part */
+    );
+    /* Fallback for browsers not supporting the gradient variable on the track: */
+    background-color: var(--border-color);
+
 
     /* Hide the native thumb */
     &::-webkit-slider-thumb {
@@ -40,71 +50,77 @@
     }
 }
 
-/* Your custom thumb */
+/* Your custom thumb (knob) */
 .customThumb {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    //   width: 20px;
-    height: 20px;
-    //   border-radius: 50%;
+    height: 24px;
+    min-width: 24px; /* Better hit area */
     border: 1px solid var(--text-color);
     background: var(--herobg);
-    color: var(--bg);
-    font-size: 10px;
-    padding: 2px 4px;
-    border-radius: 4px;
-    //   font-weight: bold;
+    color: var(--bg); /* Use var(--bg) for text color inside the knob */
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 6px; /* Smoother corner radius */
+    font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none; // input still receives drag
-    //   box-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
-}
-
-/* === Variants === */
-
-/* Dot variant: small, subtle track */
-.variant_dot {
-    height: 4px;
-    background: var(--text-color);
-    border-radius: 2px;
-}
-
-/* Thick variant: bold, chunky track */
-.variant_thick {
-    height: 12px;
-    background: linear-gradient(to right, var(--text-color), var(--border-color));
-    border-radius: 6px;
+    pointer-events: none;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .knobText {
     height: 100%;
     align-items: center;
     display: flex;
-    // background-color: red;
-    color: var(--text-color);
-    // display: flex;
+    color: var(--text-color); /* Use --text-color for the display text */
+    /* text-shadow: 0 0 1px rgba(0, 0, 0, 0.1); */
 }
 
-/* Container for the notches */
+
+.variant_dot {
+    height: 2px; /* Thinner track for subtlety */
+    border-radius: 1px;
+    background-image: linear-gradient(
+        to right,
+        var(--text-color) var(--slider-progress, 0%),
+        var(--border-color) var(--slider-progress, 0%)
+    );
+    background-color: var(--border-color);
+}
+
+.variant_thick {
+    height: 14px; /* Chunkier track */
+    border-radius: 7px;
+    background-image: linear-gradient(
+        to right,
+        var(--text-color) var(--slider-progress, 0%),
+        var(--border-color) var(--slider-progress, 0%)
+    );
+    background-color: var(--border-color);
+}
+
+.variant_statusdots { 
+    // transform: rotate(90deg);
+}
 .stepNotches {
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
-    height: 6px;
+    height: 1px; /* Vertically align with the slider track center */
     pointer-events: none;
 }
 
-/* Individual notch */
+/* Individual notch (subtler look) */
 .notch {
     position: absolute;
-    //   top: 25%;
     transform: translate(-50%, -50%);
-    width: 4px;
-    border-radius: 100px;
-    height: 10px;
-    background: var(--text-color);
-    //   border-radius: 1px;
+    width: 1px; /* Thin line for a modern look */
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 0;
 }

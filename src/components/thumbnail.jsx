@@ -62,6 +62,7 @@ alert("Clicked Thumbnail")
             </div>
 
             <div className={styles.content}>
+
               {tags.length > 0 && (
                 <ul className={styles.PillContainer}>
                   {tags.map((tool, i) => (
@@ -108,9 +109,9 @@ alert("Clicked Thumbnail")
           <div
             className={styles.mobile_fullscreen}
             style={containerStyle}
-            onClick={handleClick}
+            onClick={fullLinkCallBack}
           >
-            <h2 className={styles.title}>{details.title ?? "Untitled"}</h2>
+            <h2 className={styles.title}>{details.title ?? "Untitled"} {getIcon("rightarrow")} </h2>
             <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
 
             {tags.length > 0 && (
@@ -123,7 +124,7 @@ alert("Clicked Thumbnail")
               </ul>
             )}
 
-            <div className={styles.linkContainer}>
+            {/* <div className={styles.linkContainer}>
               {typeof fullLinkCallBack === "function" && (
                 <StandardButton
                   label="Open"
@@ -132,7 +133,7 @@ alert("Clicked Thumbnail")
                   callback={fullLinkCallBack}
                 />
               )}
-            </div>
+            </div> */}
           </div>
         );
 

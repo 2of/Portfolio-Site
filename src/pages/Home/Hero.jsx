@@ -82,7 +82,7 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
            
                 <div className={styles.HeroP}>
                     Scroll down
-                    <BouncyArrows direction="down"/>
+                    {/* <BouncyArrows direction="down"/> */}
                 </div>
 
                 {/* Social Links */}

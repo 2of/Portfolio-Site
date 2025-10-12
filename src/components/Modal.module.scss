@@ -15,9 +15,10 @@
       opacity 0.3s ease-in-out,
       visibility 0.3s ease-in-out;
     //   pointer-events: none;
+
       
     
-  z-index: 150;
+  // z-index: 150;
     &.visible {
       opacity: 1;
       visibility: visible;
@@ -35,7 +36,8 @@
     opacity: 0;
     z-index: 100;
     z-index: 100  ;
-    position: relative;
+        z-index: 999;
+    position: absolute;
     will-change: transform, opacity; // Optimizes animations
     border-radius: 12px;
     overflow: hidden;

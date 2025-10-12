@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./Article.module.scss";
 import { useProjects } from "../../contexts/ContentContext";
 import { useTooltip } from "../../contexts/tooltip";
@@ -14,54 +14,40 @@ import WigglyLine from "../Misc/WigglyLine";
 import StandardToggle from "../UI/StandardToggle";
 import { DarkModeWrapper } from "../UI/DarkModeWrapper";
 import useScreenSize from "../../utils/screensize";
+import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
 
-const StandardControls = ({ data, mobile = false }) => {
-  //   console.log("STANDARD", data);
+const StandardControls = React.memo(({ data, mobile = false }) => {
+  // Only consume context here, where it's needed
+  const { openShareSheet } = useGlobalContext();
 
-  const { themeOverride, toggleThemeOverride, openShareSheet } =
-    useGlobalContext();
+  const handleShare = useCallback(() => {
+    openShareSheet(
+      window.location.href,
+      "twitter",
+      data.shortDesc || data.subtitle || "Noah's Portfolio @ 2of.io",
+      data.title
+    );
+  }, [openShareSheet, data]); // Dependencies for useCallback
 
   return (
     <>
       <div className={`${styles.ToggleContainer} standardMouseOverBounce `}>
-        {" "}
-        {/* <DarkModeToggle mobile={false} /> */}
         <DarkModeWrapper />
       </div>
 
       <StandardButton
         label="Share"
         icon={getIcon("share")}
-        callback={() => {
-          openShareSheet(
-            window.location.href,
-            "twitter",
-            data.shortDesc || data.subtitle || "Noah's Portfolio @ 2of.io",
-            data.title
-          );
-        }}
+        callback={handleShare} // Use the memoized callback
         type="article"
         fillContainer={mobile}
       />
-      {useScreenSize !== "sm" && (
-        <> </>
-        // <div className={`${styles.ToggleContainer} standardMouseOverBounce `}>
-        //   {" "}
-        //   {/* <DarkModeToggle mobile={false} /> */}
-        //   <StandardToggle
-        //     type="box"
-        //     callback={() => togglePrefersColumnView}
-        //     checked={prefersCol}
-        //     firsticon={getIcon("columns")}
-        //     secondicon={getIcon("listview")}
-        //   />
-        // </div>
-      )}
+      {/* Removed the commented-out StandardToggle logic for cleaner code */}
     </>
   );
-};
+});
 
-export const TitleSectionPortable = ({ data, variant = "desktop", hiderows }) => {
+export const TitleSectionPortable = React.memo(({ data, variant = "desktop", hiderows }) => {
   const screenSize = useScreenSize();
   const isMobile = variant === "mobile"; // fix this — previously inverted
 
@@ -94,13 +80,16 @@ export const TitleSectionPortable = ({ data, variant = "desktop", hiderows }) =>
       <div className={styles.gradientBG} />
     </div>
   );
-};
-export const TitleSection = ({ data, tags, mobile = false,hiderows = false }) => {
+});
+
+export const TitleSection = React.memo(({ data, tags, mobile = false, hiderows = false }) => {
   return (
     <div className={styles.header}>
+
+
       <h1>{data.title}</h1>
       <h2>{data.subtitle}</h2>
- {tags && (
+      {tags && (
         <div className={styles.tagContainer}>
           <p> {getIcon("tag")} </p>
           {tags.map((tag, i) => (
@@ -108,7 +97,7 @@ export const TitleSection = ({ data, tags, mobile = false,hiderows = false }) =>
           ))}
         </div>
       )}
-          <div className={styles.aboutText}>
+      <div className={styles.aboutText}>
         <p>{data.author || "Unknown Author"}</p>
         <span className={styles.separator}>•</span>
         <p>{data.date || "Unknown Date"}</p>
@@ -118,33 +107,31 @@ export const TitleSection = ({ data, tags, mobile = false,hiderows = false }) =>
 
       {mobile && (
         <div className={styles.standardControlsContainer}>
-          {/* <span className={styles.separator}>•</span> */}
           <WigglyLine />
           <StandardControls data={data} mobile={mobile} />
         </div>
       )}
 
-      {!hiderows && ( 
-      <div className={styles.heroLinksContainer}>
-        <HeroLinks linkData={data.heroLinks} />
+      {!hiderows && (
+        <div className={styles.heroLinksContainer}>
+          <HeroLinks linkData={data.heroLinks} />
 
-        {!mobile && (
-          <>
-            <StandardControls data={data} />
-          </>
-        )}
-      </div>)}
+          {!mobile && (
+            <>
+              <StandardControls data={data} />
+            </>
+          )}
+        </div>
+      )}
 
-      {/* {mobile ? "YES" : "NO"} */}
-     
       <div className={styles.fullDivider}>
         <WigglyLine />
       </div>
     </div>
   );
-};
+});
 
-const HeroLinks = ({ linkData }) => {
+const HeroLinks = React.memo(({ linkData }) => {
   const navigate = useNavigate();
 
   const RenderItem = ({ item }) => {
@@ -185,8 +172,7 @@ const HeroLinks = ({ linkData }) => {
         ))}
     </>
   );
-};
-
+});
 export const Article = ({ metadata, fixeddata }) => {
   const { getArticle } = useProjects();
   const { showTooltip, hideTooltip } = useTooltip();
@@ -195,21 +181,39 @@ export const Article = ({ metadata, fixeddata }) => {
   const [bgModifiervalue, setbgModifiervalue] = useState(0);
   const containerRef = useRef(null);
   const iswip = metadata.wip;
+   const bgImageRef = useRef(null); 
+      const titlePopupRef = useRef(null); 
   const screenSize = useScreenSize();
   console.log("ARTICLE METADATA", metadata);
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && bgImageRef.current && titlePopupRef.current) {
+      const bgElement = bgImageRef.current;
+      const titlePopupElement = titlePopupRef.current;
+
       const handleScroll = () => {
         const scrollTop = containerRef.current.scrollTop;
         const fadeStart = 0;
         const fadeEnd = 500;
+        let bgModifiervalue;
+        
         if (scrollTop < fadeStart) {
-          setbgModifiervalue(0);
+          bgModifiervalue = 0;
         } else if (scrollTop > fadeEnd) {
-          setbgModifiervalue(1);
+          bgModifiervalue = 1;
         } else {
-          setbgModifiervalue((scrollTop - fadeStart) / (fadeEnd - fadeStart));
+          bgModifiervalue = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
         }
+        
+  
+        const opacity = 1 - bgModifiervalue - 0.1;
+        const transformScale = 1.2 - bgModifiervalue * 0.2;
+        
+        bgElement.style.opacity = opacity;
+        bgElement.style.transform = `scale(${transformScale})`;
+
+        // Title Popup Animation
+        const titleTransformY = -64 + (bgModifiervalue * 64);
+        titlePopupElement.style.transform = `translateY(${titleTransformY}px)`;
       };
 
       const container = containerRef.current;
@@ -218,7 +222,7 @@ export const Article = ({ metadata, fixeddata }) => {
 
       return () => container.removeEventListener("scroll", handleScroll);
     }
-  }, [data]);
+  }, [data]); // data is used in the image check, but stable after load
 
   useEffect(() => {
     const fetchData = async () => {
@@ -270,18 +274,16 @@ export const Article = ({ metadata, fixeddata }) => {
       }`}
       ref={containerRef}
     >
-      <div className={`${styles.bgImageContainer} `}>
+        <div className={`${styles.bgImageContainer} `}>
         <div
           className={styles.bgImage}
+          ref={bgImageRef} // 7. Attach ref for direct manipulation
           style={
             data?.heroImage
               ? {
                   backgroundImage: `url(${data.heroImage})`,
                   backgroundAttachment: "fixed",
-                     opacity: `${1 - (bgModifiervalue)-0.1}`,
-                  // filter: `blur(${bgModifiervalue * 8}px)`, // starts blurry and sharpens
-                  transform: `scale(${1.2 - bgModifiervalue * 0.2})`, // Adjust scale based on scrollOpacity
-                  // transition: "transform 0.1s ease-out, filter 0.1s ease-out", // Smooth transition
+                  // Dynamic styles removed from here, now in useEffect
                 }
               : {}
           }
@@ -289,28 +291,16 @@ export const Article = ({ metadata, fixeddata }) => {
       </div>
 
       {screenSize !== "sm" && (
-        <div
+      <div
           className={styles.titlePopup}
-          style={{
-            // opacity: bgModifiervalue, // fades in
-            // transform: `scale(${0.98 + bgModifiervalue * 0.02})`, // scales from 0.98 → 1
-            transform: `translateY(${-64 +  (  bgModifiervalue) * 64}px)`, // moves up slightly as it appears
-            // filter: `blur(${(1 - bgModifiervalue) * 8}px)`, // starts blurry and sharpens
-            // transition: 'opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease',
-          }}
+          ref={titlePopupRef} // ✅ Ref is attached
+          // 2. ✅ REMOVE the entire style prop block to allow the useEffect to control the CSS
         >
           <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
-
-            {/* <span className={styles.separator}>•</span> */}
-
-            {/* <DarkModeWrapper type="pill" /> */}
-          </div>  <div className={`${styles.TitleContainer} `}>
+          </div>  
+          <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
-            
-            {/* <span className={styles.separator}>•</span>
-
-            <DarkModeWrapper type="pill" /> */}
           </div>
         </div>
       )}

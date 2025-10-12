@@ -36,15 +36,36 @@ export const RouteProvider = ({ children }) => {
 export const useRoute = () => {
   const ctx = useContext(RouteContext);
   if (!ctx) throw new Error("useRoute must be used inside <RouteProvider>");
+  /// yeah so gotta have this ...
   return ctx;
 };
 
  
-export const useIsMenuFloating = () => {
+export const useIsMenuFloatingMobile = () => {
   const { currentRoute } = useRoute();
-  console.log("Current Route in useIsMenuFloating:", currentRoute);
-  return currentRoute?.floatingNavMobile ?? true;
+  return currentRoute?.fullscreenMobile ?? false;
 };
+export const useIsMenuFloatingDesktop = () => {
+  const { currentRoute } = useRoute();
+  return currentRoute?.fullscreenDesktop ?? false;
+};
+
+
+
+
+
+
+
+
+
+
+
+export const useIsDesktopPaded = () => {
+  const { currentRoute } = useRoute();
+  // console.log("Current Route in useIsMenuFloating:", currentRoute);
+  return !currentRoute?.fullscreenDesktop ?? false;
+};
+
 
 export const useIsNavHidden = () => {
   const { currentRoute } = useRoute();

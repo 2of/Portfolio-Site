@@ -74,7 +74,7 @@ const DesktopNav = () => {
                     key={route.path + (routeChangeAnimating ? "-anim" : "")}
                  
                   >
-                    {getIcon(route.icon ?? "home")}
+                    {getIcon(route.icon ?? "home")} {route.label}
                   </span>
                 </p>
               </Link>
@@ -82,7 +82,7 @@ const DesktopNav = () => {
           );
         })}
         <li className={styles.navItem}>
-          <DarkModeWrapper type="pill" />
+          <DarkModeWrapper type="largepill" />
         </li>
       </ul>
     </nav>

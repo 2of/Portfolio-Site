@@ -1,5 +1,6 @@
 .pagedScroll {
   height:var(--content-height);
+  height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -12,6 +13,7 @@
 
 .pagedSection {
   height:var(--content-height);
+  height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;

@@ -9,12 +9,26 @@ export const StandardSlider = ({
   className = "",
   value,
   onChange,
+  autoCalcStepsevery = null,
   steps = null,
+  interactive = true,
   ...props
 }) => {
   const [dragging, setDragging] = useState(false);
   const sliderRef = useRef(null);
 
+
+if (autoCalcStepsevery && !steps) {
+  const generatedSteps = [];
+  for (let i = min; i <= max; i += autoCalcStepsevery) {
+    generatedSteps.push(i);
+  }
+  // Ensure the max is included
+  if (generatedSteps[generatedSteps.length - 1] !== max) {
+    generatedSteps.push(max);
+  }
+  steps = generatedSteps;
+}
   const handleChange = (e) => {
     let newValue = Number(e.target.value);
 

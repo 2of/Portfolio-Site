@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import styles from "./styles/GlassContainer.module.scss";
 const GlassPushOverlay = ({
   children,
-  spiciness = 0.5, // 0 to 1, the intensity of the deform
+  spiciness = 0.7, // 0 to 1, the intensity of the deform
   showHover = true, // whether the effect shows on hover
-  randomcolour = false,
+  randomcolour = false, scaleFactor =1,
+  mouseEnterCallback,
+  mouseLeaveCallback,
+  id,
+  dim
 }) => {
   const containerRef = useRef(null);
   const glassRef = useRef(null);
-
+  const scale = useRef(1);
   const pointer = useRef({ x: 0.5, y: 0.5 });
   const virtual = useRef({ x: 0.5, y: 0.5 });
   const raf = useRef(null);
@@ -24,11 +28,14 @@ const GlassPushOverlay = ({
     const percentX = virtual.current.x - 0.5;
     const percentY = virtual.current.y - 0.5;
 
-    // Apply spiciness multiplier
+    // Rotation based on pointer
     const rotateX = percentY * -10 * spiciness;
     const rotateY = percentX * 10 * spiciness;
 
-    containerRef.current.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    // Smooth scaling
+    scale.current += ((isActive.current ? scaleFactor : 1) - scale.current) * 0.12;
+
+    containerRef.current.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale.current})`;
 
     const rect = containerRef.current.getBoundingClientRect();
     const glassX = pointer.current.x * rect.width;
@@ -37,13 +44,62 @@ const GlassPushOverlay = ({
     glassRef.current.style.opacity = 1;
     glassRef.current.style.transform = `translate(${glassX}px, ${glassY}px) translate(-50%, -50%)`;
 
-    if (isActive.current) {
+    if (isActive.current || scale.current !== 1) {
       raf.current = requestAnimationFrame(animate);
     }
   };
 
 
 
+
+const handleMouseEnter = (e) => {
+  if (!showHover) return;
+  if (!containerRef.current) return;
+  if (mouseEnterCallback) { mouseEnterCallback(id)}
+  const rect = containerRef.current.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  const y = (e.clientY - rect.top) / rect.height;
+
+  pointer.current = { x, y };
+  virtual.current = { x: 0.5, y: 0.5 };
+
+  // Get the current scale from the DOM to prevent jump
+  const style = window.getComputedStyle(containerRef.current);
+  const matrix = new WebKitCSSMatrix(style.transform); // works in most browsers
+  scale.current = matrix.a; // a = scaleX
+
+  containerRef.current.style.transition = "none";
+  isActive.current = true;
+  animate();
+};
+  const handleMouseMove = (e) => {
+    if (!showHover) return;
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    pointer.current = {
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    };
+  };
+
+  const handleMouseLeave = () => {
+    if (!containerRef.current) return;
+    isActive.current = false;
+    cancelAnimationFrame(raf.current);
+  if (mouseLeaveCallback) { mouseLeaveCallback(id)}
+    const el = containerRef.current;
+    el.style.transition = "transform 0.4s ease";
+    el.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg)`;
+
+    if (glassRef.current) {
+      glassRef.current.style.opacity = 0;
+    }
+  };
+
+  useEffect(() => {
+    return () => cancelAnimationFrame(raf.current);
+  }, []);
 const trackedGradient = (variant) => {
   switch (variant) {
     case "red":
@@ -98,52 +154,6 @@ const trackedGradient = (variant) => {
       return `radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 80%)`;
   }
 };
-
-  const handleMouseEnter = (e) => {
-    if (!showHover) return; // skip effect if disabled
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-
-    pointer.current = { x, y };
-    virtual.current = { x: 0.5, y: 0.5 };
-
-    containerRef.current.style.transition = "none";
-    isActive.current = true;
-    animate();
-  };
-
-  const handleMouseMove = (e) => {
-    if (!showHover) return;
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    pointer.current = {
-      x: (e.clientX - rect.left) / rect.width,
-      y: (e.clientY - rect.top) / rect.height,
-    };
-  };
-
-  const handleMouseLeave = () => {
-    if (!containerRef.current) return;
-    isActive.current = false;
-    cancelAnimationFrame(raf.current);
-
-    const el = containerRef.current;
-    el.style.transition = "transform 0.4s ease";
-    el.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg)`;
-
-    if (glassRef.current) {
-      glassRef.current.style.opacity = 0;
-    }
-  };
-
-  useEffect(() => {
-    return () => cancelAnimationFrame(raf.current);
-  }, []);
-
   return (
     <div
       className={styles.glassOverlay}

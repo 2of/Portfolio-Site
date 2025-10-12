@@ -11,6 +11,8 @@ import { SettingsPage } from "../pages/SettingsPage";
 import { PlaygroundPage } from "../components/Test/TestPages/TEST_Playground";
 import { EditorPage } from "../components/Editor/EditorPage";
 import { NewChessPage } from "../pages/NewChess";
+import TinderPage from "../pages/TinderPage";
+import { DirectoryPage } from "../pages/DirectoryPage";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -19,80 +21,112 @@ const routes = [
     path: "/",
     label: "home",
     icon: "home",
-    element: <HomePage />,
-    mobileMenuBg: true,
-    bg: "shapes",
+    hideDesktop: true,
+    bg:"pattern2",
+    
+    element: <TinderPage />,
+    fullscreenDesktop: true,
+    fullscreenMobile: true,
   },
   {
-    path: "/proj",
-    label: "projects",
+    path: "/projects",
+    label: "projects catalogue",
     element: <CataloguePage />,
     icon: "Catalogue",
-    mobileMenuBg: true,
-    bg: "herobg",
+    bg: "bg",
+    fullscreenMobile: true,
   },
   {
     path: "/junk",
-    label: "junk",
-    hide: true,
+    label: "Big old test page",
+    extratitle: "helloworld",
+    hideDesktop: true,
+      hideMobile: true,
     element: <JunkPage />,
+        fullscreenDesktop: true,
+    fullscreenMobile: true,
     icon: "junk",
-    mobileMenuBg: true,
-    floatingNavMobile: true,
-  },
-  {
-    path: "/chess",
-    label: "elo estimator",
-    element: <ChessPage />,
-    icon: "chess",
-    hide: true,
-    mobileMenuBg: true,
-    bg: "herobg"
+
 
   },
+  
   {
     path: "/proj/:projectId",
     label: "project details",
     element: <ProjectPage />,
     icon: "Catalogue",
-    hide: true,
+
+        hideDesktop: true,
+      hideMobile: true,
+
+
+     fullscreenMobile: true,
   },
   {
     path: "/about",
-    label: "About",
+    label: "about the author",
     element: <AboutPage />,
     icon: "about",
     hide: false,
-    bg: "shapes",
-        floatingNavMobile: false,
+    bg: "bg",
   },
-    {
-    path: "/newchess",
-    label: "chess2",
+  {
+    path: "/ChessEloEsimator",
+    label: "Chess Elo Estimator",
     element: <NewChessPage />,
     icon: "chess",
-    hide: true,
-    bg: "herobg",
-        floatingNavMobile: false,
+        hideDesktop: true,
+      hideMobile: true,
+    bg: "pattern1",
   },
   {
     path: "/settings",
-    label: "Preferences",
+    label: "preferences + extras",
     element: <SettingsPage />,
     icon: "settings",
-    hide: false,
     bg: "shapes",
-    floatingNavMobile: false,
   },
+  
   {
     path: "/editor",
-    label: "editor",
+    label: "Rich JSON Editor",
     element: <EditorPage />,
     icon: "smile",
-    hide: true,
-    bg: "bg",    floatingNavMobile: false,
-  }
-];
+        hideDesktop: true,
+      hideMobile: true,
 
+    bg: "bg",
+  },
+
+   {
+    path: "/dir",
+    label: "Dirr",
+    element: <DirectoryPage />,
+    icon: "dir",
+        hideDesktop: true,
+      hideMobile: true,
+
+    bg: "dots",
+  },{
+    path: "/OLD_CHESS_ESTIMATOR_FRONT_END",
+    label: "Depricated Chess",
+    element: <ChessPage />,
+    icon: "chess",
+    hideDesktop: true,
+      hideMobile: true,
+    bg: "shapes",
+  },{
+    path: "/OLD_HOME_PAGE",
+    label: "oldhome",
+    element: <HomePage />,
+    icon: "home",
+    hideDesktop: true,
+    hideMobile: true,
+        fullscreenDesktop: true,
+    fullscreenMobile: true,
+    bg: "shapes",
+  },
+
+];
 
 export default routes;

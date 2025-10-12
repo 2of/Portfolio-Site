@@ -1,0 +1,181 @@
+.linkedinCard {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  // border-radius: 0.75rem;
+  width: 100%;
+  height: 100%;
+  // max-width: 360px;
+  // box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #0a66c2;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+
+}
+
+/* Banner at the top */
+.banner {
+  width: 100%;
+  height: 40%;  // LinkedIn header height
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-bottom: 2px solid rgba(89, 89, 89, 0.658);
+}
+
+
+.psuedoButtons {
+  display: flex;         
+  // background-color: orange;     // arrange buttons in a row
+  justify-content: flex-end;  // push them to the right
+  gap: 0.5rem;                // spacing between buttons
+  // width: 50%;
+  // margin-left: 50%;                // fill parent container
+  height: 3rem;    
+  // margin-right: ;           // height of the button row (optional)
+  margin-top: 1rem;      
+  margin-right: 1.5rem;       // spacing from right edge 
+  
+  .buttonsmall {
+  width: 4rem;
+  height: 100%;
+  background-color: #547777;     // light gray for fake button
+  border-radius: 0.3rem;      // subtle rounded corners
+}
+
+.buttonlong {
+  flex: 1;                     // takes remaining space
+  max-width: 6rem;             // optional cap
+  height: 100%;
+  background-color: #97979797;      // slightly darker gray
+  border-radius: 0.3rem;
+}
+// optional spacing from above content
+}
+
+/* Small square buttons */
+
+
+.filler { 
+  background-color: rgb(230, 230, 230);
+  height: 100px;
+  // width: 90%;
+  border-radius: 4px;
+  // padding: 1rem;
+}
+
+/* Long rectangle button */
+
+/* Header containing profile photo & icon */
+.header {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  margin-top: -120px; // half of profile pic height to overlap banner
+  z-index: 2;
+  position: relative;
+}
+
+/* Profile picture overlapping banner */
+.photoContainer {
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  border: 3px solid white; // white border to match LinkedIn style
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.icon {
+  font-size: 1.75rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  // color: #0a66c2;
+  opacity: 0.85;
+}
+
+/* Info block */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.5rem 0;
+  text-align: left;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #555;
+    margin: 0;
+  }
+
+  .company {
+    font-size: 0.9rem;
+    color: #555;
+    opacity: 0.85;
+  }
+
+  .summary {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border-top: 1px solid #eee;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+
+  .linkText {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0a66c2;
+  }
+}
+
+// /* Responsive */
+// @media (max-width: 480px) {
+//   .linkedinCard {
+//     max-width: 100%;
+//   }
+
+//   .photoContainer {
+//     width: 56px;
+//     height: 56px;
+//   }
+
+//   .info h2 {
+//     font-size: 1.1rem;
+//   }
+
+//   .summary {
+//     font-size: 0.9rem;
+//   }
+// }

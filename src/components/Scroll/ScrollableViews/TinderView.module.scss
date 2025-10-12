@@ -1,0 +1,183 @@
+:root {
+  --anim-duration: 420ms;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+.tinderView {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+//   height: 100vh;
+//   padding: 1rem;
+}
+
+.stack {
+//   position: relative;
+  width: 100%;
+//   max-width: 400px;
+  height: 60vh;
+  max-height: 600px;
+  min-width: 500px;
+}
+
+.card {
+  position: absolute;
+  inset: 0;
+    cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border-color) ;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    
+  transition:
+    transform var(--anim-duration) var(--ease),
+    opacity var(--anim-duration) var(--ease),
+    filter var(--anim-duration) var(--ease);
+  will-change: transform, opacity, filter;
+
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+
+.fakeStack{
+    position: absolute;
+  inset: 0;
+    cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border-color) ;
+  border-radius: 12px;
+  overflow: hidden;
+  // box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    
+  transition:
+    transform var(--anim-duration) var(--ease),
+    opacity var(--anim-duration) var(--ease),
+    filter var(--anim-duration) var(--ease);
+  will-change: transform, opacity, filter;
+
+  font-size: 1.5rem;
+  text-align: center;
+
+  transform: scale(0.9) translateY(46px) ;
+
+}
+/* Underneath card */
+.next {
+  z-index: 1;
+//   transform:translateY(18px);
+  filter: brightness(0.96);
+}
+
+/* When revealed (top card swiping away) */
+.reveal {
+  // transform: scale(1) translateY(0);
+  filter: brightness(1);
+}
+
+/* Top card */
+.top {
+  z-index: 2;
+}
+
+/* Swipe-out animations */
+.swipeLeft {
+  transform: translateX(-10%) rotate(-10deg);
+  opacity: 0;
+}
+
+.swipeRight {
+  transform: translateX(120%) rotate(10deg);
+  opacity: 0;
+}
+.controls {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  bottom: 12px;           // a bit of padding from top of card
+  right: 12px;           // center horizontally
+//   transform: translateX(-50%); // center the flex container
+  z-index: 10;         // ensure it’s above the cards
+
+  button {
+    // padding: 1rem;
+    padding-bottom: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: none important;
+    border-radius: 48px;
+    color: var(--text-color);
+    aspect-ratio: 1 / 1 ;
+    border: 1px solid var(--border-color);
+    // background: rgba(255, 255, 255, 0.85);
+    // backdrop-filter: blur(5px);
+    transition: transform 0.2s ease, background 0.2s ease;
+    background-color: var(--bg-transparent);
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      background: var(--herobg);
+          // color: var(--bg);
+    }
+
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Empty message */
+.empty {
+  font-style: italic;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stack {
+    max-width: 90%;
+    height: 50vh;
+  }
+  .card {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack {
+    max-width: 95%;
+    height: 45vh;
+  }
+  .card {
+    font-size: 1rem;
+  }
+  .controls button {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.hint { 
+  display: flex;
+  gap: 0.6rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 12px;           // a bit of padding from top of card
+  left: 50%;           // center horizontally
+  transform: translateX(-50%); // center the flex container
+  z-index: 10;     
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+}

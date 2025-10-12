@@ -18,11 +18,18 @@ root {
   background-color: rebeccapurple;
 }
 
+
+ul {
+      padding-inline-start: 0px
+}
 /* Background Styling */
 body {
   background-color: var(--bg); /* Light or dark background */
   color: var(--text-color); /* Light or dark text */
-  font-family: "Newsreader", serif;
+font-family: 'Montserrat', sans-serif;
+ font-family: "Poppins", "Inter", sans-serif;
+   font-family: "Newsreader", "Inter", sans-serif;
+  
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: auto;
@@ -97,11 +104,11 @@ button:hover {
 // AboutPage.module.scss
 .GenericPageContainer {
   display: flex;
-  position: relative;
+  // position: relative;
   align-items: flex-start;
  
   flex-direction: column;
-  max-height: 100vh;
+  // max-height: 100vh;
   overflow:  hidden;
   // background-color: red;
   max-width: 1200px; // Limit the width for better readability
@@ -110,34 +117,34 @@ button:hover {
   // margin: 120px;
 
  &.scrollyCentered {
-    height: 100vh;
-    width: 100vw;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    padding-top: 10vh;
-        padding-bottom: 10vh;
-    box-sizing: border-box;
-    justify-content: flex-start;
-    align-items: center;
+    // height: 100vh;
+    // width: 100vw;
+    // overflow-y: auto;
+    // scroll-behavior: smooth;
+    // padding-top: 10vh;
+    //     padding-bottom: 10vh;
+    // box-sizing: border-box;
+    // justify-content: flex-start;
+    // align-items: center;
   }
 &.full { 
-  max-width: none;
-width: 100vw;
-height: 100vh;
-margin: 0;
-position: absolute;
-align-items: center;
+//   max-width: none;
+// width: 100vw;
+// height: 100vh;
+// margin: 0;
+// position: absolute;
+// align-items: center;
 }
   &.centered { 
-    // background-color: orange;
-    height: 100vh;
-//  background-color: red;
-    // background-color: red;
-    align-items: center;
-    // align-items: center;
-    justify-content: center;
-    overflow-y: scroll;
-    // margin: 10px;
+//     // background-color: orange;
+//     height: 100vh;
+// //  background-color: red;
+//     // background-color: red;
+//     align-items: center;
+//     // align-items: center;
+//     justify-content: center;
+//     overflow-y: scroll;
+//     // margin: 10px;
   }
   section {
     margin-bottom: 40px; // Add space between sections
@@ -277,7 +284,7 @@ h1 {
 
   // position: relative;
   overflow: hidden;
-  border: 1px solid rgb(51, 51, 51);
+  border: 1px solid var(--border-color);
   color: rgb(51, 51, 51);
 
   // box-shadow: rgb(51, 51, 51) 2px 2px 0 0;
@@ -317,11 +324,11 @@ backdrop-filter: blur(2px);
 }
 
 .doubleBorderRound { 
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--border-color);
   width: auto; /* Let it adapt based on content */
   // max-width: 100%; /* Allow full width, but cap at 100% of the screen */
   box-sizing: border-box; /* Ensure padding does not affect the overall width */
-  box-shadow: 0 0 0 2px var(--bg);
+  // box-shadow: 0 0 0 2px var(--border-color);
   background-color: var(--bg);
   border-radius: 12px;
   padding: 12px;

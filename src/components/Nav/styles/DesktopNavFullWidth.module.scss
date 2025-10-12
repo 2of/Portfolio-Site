@@ -1,0 +1,194 @@
+.navContainer {
+    background-color: var(--bg-transparent);
+    backdrop-filter: blur(4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 5;
+    height: var(--navHeightDESKTOP);
+    border-bottom: 1px solid var(--border-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Smooth slide + fade in */
+    animation: slideInFromTop 0.5s ease-out forwards;
+
+    .navList {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: var(--maxWidth);
+        gap: 12px;
+        height: var(--navHeightDESKTOP);
+        padding: 0 16px; // keeps links off the edges
+    }
+}
+
+.bgcontainer { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.logoContainer{
+    z-index: 100;
+//   height: 100%;
+//   background-color: red;
+}
+ul {
+    list-style-type: none;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 24px;
+    //   height: 100%;
+    cursor: pointer;
+    // border: 1px solid var(--bg);
+
+    p {
+        border-radius: 24px;
+        background-color: transparent;
+        padding: 8px 1px;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 0 1px var(--text-color);
+        }
+    }
+
+    &:hover {
+        color: var(--hover-text-color);
+    }
+}
+
+.activeLink {
+    background-color: var(--herobg);
+    border: 1px solid var(--border-color);
+
+    * {
+
+
+        font-weight: 500;
+        // text-decoration: underline;
+    }
+}
+
+.extrabuttonnav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    padding: 0 12px;
+    height: 100%;
+}
+
+.customFallback {
+    padding: 8px 8px;
+    background-color: var(--herobg);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+}
+
+.navItem {
+    z-index: 300;
+    min-width: 60px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+    // background-color: green;
+
+    &:hover {
+        transform: scale(1.04);
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //   height: 100%;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 0 12px;
+        height: 100%;
+    }
+}
+
+.SocialButtons { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px
+    // gap: 2px;
+    // gap: 1px;
+    // background-color: orange;
+}
+.rightnav { 
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+/* Animations */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.spacer {
+  flex-grow: 1; // expands to fill all available space
+  flex-shrink: 1;
+  flex-basis: 0; // ensures it starts at 0 width and only grows
+  background: none; // remove red if you don’t want it visible
+}
+
+@keyframes wiggle {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+
+    15% {
+        transform: scaleX(0.9) scaleY(1.1);
+    }
+
+    30% {
+        transform: scaleX(1.1) scaleY(0.9);
+    }
+
+    45% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+
+    60% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+
+    75% {
+        transform: scaleX(0.98) scaleY(1.02);
+    }
+
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
+.wiggleIcon {
+    animation: wiggle 0.8s ease-in-out;
+    display: inline-block;
+    will-change: transform;
+}

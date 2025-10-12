@@ -48,10 +48,10 @@ const wrapperProps = isExternal
 
 
       <div className={styles.header}>
-        <p className={styles.title}>
+        <span className={styles.title}>
           {data.icon && <span className={styles.icon}>{getIcon(data.icon)}</span>}
           {isExternal && <p>   {getIcon("external")}</p>} {data.title ?? "Untitled"}      
-        </p>
+        </span>
         
       </div>
 
