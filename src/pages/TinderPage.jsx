@@ -6,6 +6,9 @@ import { ShowcasecardStack } from "../assets/TextAssets/Showcase";
 import useScreenSize from "../utils/screensize";
 import { StandardSlider } from "../components/UI/StandardSlider";
 import PageDots from "../components/UI/PageDots";
+import { useNavStack } from "../contexts/NavStackContext";
+import getIcon from "../utils/Iconifier";
+import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 
 const TinderPage = () => {
   const screenSize = useScreenSize();
@@ -15,9 +18,18 @@ const TinderPage = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [prevCardIndex, setPrevCardIndex] = useState(null);
   const [animating, setAnimating] = useState(false);
-
+  const { navstack, pushNav, popNav, clearStack,removeButton, addButton,extraButtons,extraButtonsContains } = useNavStack();
   const inactivityTimer = useRef(null);
   const periodicTimer = useRef(null);
+
+  const [conductnext, setConductNext] = useState(0);
+
+  const triggerNext = () => {
+    // alert("TEST")
+    setConductNext(prev => prev + 1);
+  };
+
+
 
   const resetInactivityTimer = () => {
     clearTimeout(inactivityTimer.current);
@@ -32,6 +44,21 @@ const TinderPage = () => {
     }, 5000);
   };
 
+
+useEffect(() => {
+  if (screenSize === "sm") {
+    addButton({
+      id: "TINDERNAV",
+      callback: triggerNext,
+      label: "Close",
+      icon: getIcon("right"),
+    });
+  }
+
+  return () => {
+    removeButton({ id: "TINDERNAV" });
+  };
+}, [screenSize, addButton, removeButton]);
   useEffect(() => {
     const events = ["mousemove", "mousedown", "touchstart", "keydown"];
     events.forEach((evt) => window.addEventListener(evt, resetInactivityTimer));
@@ -64,6 +91,8 @@ const TinderPage = () => {
 
   return (
     <CenteredContainer>
+      {   screenSize === "sm" &&       <TrackedGradientBG/>}
+
       <div
         className={`${
           screenSize === "sm" ? styles.sidebyside_mobile : styles.sidebyside
@@ -75,6 +104,8 @@ const TinderPage = () => {
             onChange={handleCardChange}
             setActiveIndex={handleCardChange}
             setwiggle={wiggle}
+            showNext = {screenSize!=="sm"}
+            conductnext={conductnext}
           >
             {cardEntries.map(([key, { card }]) => (
               <React.Fragment key={key}>{card}</React.Fragment>
@@ -82,8 +113,11 @@ const TinderPage = () => {
           </TinderView>
         </div>
 
+
+{/* <button onClick={triggerNext}>test</button> */}
         {/* Left side — dynamic text */}
         <div className={styles.DescView}>
+
           <div className={styles.descContent}>
             {/* 1. Outgoing Text: Renders with styles.fadeOut during animation */}
             {animating && prevCardIndex !== null && (

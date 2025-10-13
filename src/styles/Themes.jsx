@@ -22,10 +22,12 @@ export const baseTheme = {
   "--border-radius": "24px",
   "--blur-radius": "15px",
   "--text-dark" : "#161616ff",
+  "--darkbg" : "#1f1f1fdd",
+  "--lighttext" : "#d1cfc0"
 };
 
 export const lightTheme = {
-  "--bg": "#d1cfc0",      // soft warm off-white
+  "--bg": "#e3e2dbff",      // soft warm off-white
   "--bg-l1": "rgba(206, 206, 206, 1)",       // gentle sage tint (slightly darker)
   "--bg-l2": "rgba(187, 190, 174, 1)",       // mid warm grey-green
   "--bg-l3": "rgba(156, 158, 144, 1)",       // deeper neutral olive
@@ -62,7 +64,7 @@ export const darkTheme = {
   "--accent": "#d44742",
   "--accent-color": "#d44742",
   "--link": "#003153",
-  "--herobg": "#688f73ff",
+  "--herobg": "#703535ff",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4)",
 

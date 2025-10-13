@@ -1,10 +1,11 @@
 .mobileIconContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  margin: 1rem;
   // padding: 0 8px;
-  
-  position: relative;
+  // background-color: red;
+  // position: relative;
 }
 
 .fixed {
@@ -12,20 +13,21 @@
   position: relative;
   width: 48px;
   height: unset;
+  // background-color: red;
 }
 
 .floating {
 
-  position: fixed;
-  top: 2rem;
-  left: 1rem;
-  height: 2rem;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 0 12px;
+  position: absolute;
+  top: 1rem;
+  // left: 0.5rem;
+  // height: 2rem;
+  // width: fit-content;
+  // display: flex;
+  // align-items: center;
+  // justify-content: flex-start;
+  // gap: 8px;
+  // padding: 0 12px;
   z-index: 999;
 }
 

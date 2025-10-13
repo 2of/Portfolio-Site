@@ -12,7 +12,9 @@ export const NavStackProvider = ({ children }) => {
   const pushNav = useCallback((navObj) => {
     setNavstack((prev) => [...prev, navObj]);
   }, []);
-
+  const clearStack = useCallback(() => { 
+    setNavstack([])
+  })
   const popNav = useCallback(() => {
     setNavstack((prev) => prev.slice(0, -1));
   }, []);
@@ -22,10 +24,22 @@ export const NavStackProvider = ({ children }) => {
   }, []);
 
   // --- extraButtons functions ---
-  const addButton = useCallback((buttonObj) => {
-    setExtraButtons((prev) => [...prev, buttonObj]);
-  }, []);
+const addButton = useCallback(
+  (buttonObj) => {
+    setExtraButtons((prev) => {
+      if (prev.some((btn) => btn.id === buttonObj.id)) {
+        return prev;
+      }
+      return [...prev, buttonObj];
+    });
+  },
+  [] // no deps — safe because we’re using functional setState
+);
 
+const extraButtonsContains = useCallback(
+  (id) => extraButtons?.some((btn) => btn.id === id) ?? false,
+  [extraButtons]
+);
   const removeButton = useCallback(({ id }) => {
     setExtraButtons((prev) => prev.filter((btn) => btn.id !== id));
   }, []);
@@ -40,11 +54,14 @@ export const NavStackProvider = ({ children }) => {
         navstack,
         pushNav,
         popNav,
+        clearStack,
+        
         removeNav,
         extraButtons,
         addButton,
         removeButton,
         clearButtons,
+        extraButtonsContains
       }}
     >
       {children}

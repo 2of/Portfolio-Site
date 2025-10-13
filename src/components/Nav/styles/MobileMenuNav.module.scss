@@ -1,12 +1,15 @@
 .bgCover {
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   width: 100vw;
+  // height: var(--content-height);
+  height: 100vh;
 
-  height: var(--content-height);
-  background-color: var(--bg);
-// background-color: red;
+  background-color: var(--bg-transparent); // semi-transparent
+
+  // -webkit-backdrop-filter: blur(12px); // for Safari
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
@@ -14,13 +17,13 @@
 
   &.show {
     opacity: 1;
-    // pointer-events: auto;
+    pointer-events: auto; 
   }
 
   &.hide {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    pointer-events: auto; // keep pointer events during fade out
+    pointer-events: auto;
   }
 }
 .miniNav {
@@ -47,14 +50,17 @@
   .headerText {
     padding: 24px;
     display: flex;
+
     flex-direction: column;
 font-weight: 900;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     color: var(--text-color);
 
     h2 { 
       font-weight: 800;
+      text-align: left;
+      font-size: 4rem;
     }
     &.animatingIn {
       animation: bounceIn 0.4s ease forwards;

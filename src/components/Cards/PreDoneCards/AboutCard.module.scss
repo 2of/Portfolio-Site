@@ -35,7 +35,7 @@
           font-size: 1.8rem;
           font-weight: 700;
           line-height: 1.2;
-          margin-bottom: 0.2rem;
+          // margin-bottom: 0.2rem;
           color: var(--text-color);
         }
 
@@ -72,15 +72,21 @@
     flex-direction: column;
     gap: 0.4rem;
     text-align: left;
-
-    .about {
-      font-size: 0.9rem;
-      line-height: 1.45; // slightly denser
-      // color: #333;
-      max-height: 5.5rem; // keeps it compact, overflow hidden optional
-      overflow: hidden;
-    }
-
+.spacer { 
+  background-color: var(--text-color);
+  // height: 1px;
+  margin: 0.4rem;
+  width: 60%;
+}
+.about {
+  font-size: 0.95rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; // number of lines
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  // border-radius: 12px;
+}
     h4 {
       font-size: 0.8rem;
       font-weight: 600;

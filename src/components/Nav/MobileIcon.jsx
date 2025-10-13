@@ -3,8 +3,7 @@ import clsx from "clsx";
 import styles from "./styles/MobileIcon.module.scss";
 import { StandardButton } from "../UI/StandardButton";
 import getIcon from "../../utils/Iconifier";
-
-const NavMenuIconMobile = ({ label, icon, currentCallback, isFloating = false }) => {
+export const NavMenuIconMobile = memo(({ label, icon, currentCallback, isFloating = false }) => {
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
@@ -12,33 +11,37 @@ const NavMenuIconMobile = ({ label, icon, currentCallback, isFloating = false })
   }, []);
 
   return (
-    
     <div
       className={clsx(
         styles.mobileIconContainer,
-        isFloating ? styles.floating : styles.fixed,
-        isFloating && ""
+        isFloating ? styles.floating : styles.fixed
       )}
-      // onClick={currentCallback}
     >
-
-        <StandardButton
-    icon={icon}
-    type="rounded"
-    label="menu"
-    callback={currentCallback}
-    
-    />
-      {/* <div className={clsx(styles.iconWrapper, animateIn && styles.popIn)}>
-        {icon}
-      </div>
-      {label && isFloating &&  (
-        <div className={clsx(styles.label, animateIn && styles.popIn)}>
-          {label}
-        </div>
-      )} */}
+      <StandardButton
+        icon={icon}
+        type="rounded"
+        label="menu"
+        callback={currentCallback}
+      />
     </div>
   );
-};
+});
 
-export default memo(NavMenuIconMobile);
+export const ExtraButtonNavMenuIconMobile = memo(({ label, icon, currentCallback, isFloating = false }) => {
+  const [animateIn, setAnimateIn] = useState(false);
+
+  useEffect(() => {
+    requestAnimationFrame(() => setAnimateIn(true));
+  }, []);
+
+  return (
+    <div className={clsx(styles.ExtramobileIconContainer, isFloating && "")}>
+      <StandardButton
+        icon={icon}
+        type="rounded"
+        label="menu"
+        callback={currentCallback}
+      />
+    </div>
+  );
+});

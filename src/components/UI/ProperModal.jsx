@@ -5,6 +5,7 @@ import { StandardButton } from "../UI/StandardButton";
 import useScreenSize from "../../utils/screensize";
 import { useModal } from "../../contexts/ModalContext";
 import getIcon from "../../utils/Iconifier";
+import TrackedGradientBG from "../Background/TrackedGradientBg";
 
 const ProperModal = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -49,15 +50,18 @@ const ProperModal = () => {
       }`}
       onClick={handleCloseAnimation}
     >
-      <div className={`${styles.modal} ${sizeClass}`} onClick={handleClick}>
-       <div
-  className={`${styles.topBar} ${modalState.floatnav ? styles.floatingnav : styles.fixednav}`}
->
 
-            {!modalState.floatingnav &&          <h2>{modalState.title || ""}</h2>}
- 
+
+      <div className={`${styles.modal} ${sizeClass}`} onClick={handleClick}>
+        <div
+          className={`${styles.topBar} ${
+            modalState.floatnav ? styles.floatingnav : styles.fixednav
+          }`}
+        >
+          {!modalState.floatingnav && <h2>{modalState.title || ""}</h2>}
+
           <div className={styles.spacer} />
-        {/* <h1>test {modalState.floatnav ? "TEST" : "SFSDFS"}</h1> */}
+          {/* <h1>test {modalState.floatnav ? "TEST" : "SFSDFS"}</h1> */}
           {/* Buttons from modalState */}
           {modalState.buttons?.length > 0 && (
             <div className={styles.buttons}>

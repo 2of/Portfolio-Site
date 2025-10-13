@@ -1,5 +1,5 @@
 .navContainer {
-    background-color: var(--bg-transparent);
+    background-color: var(--darkbg);
     backdrop-filter: blur(4px);
     position: fixed;
     top: 0;
@@ -8,7 +8,9 @@
     z-index: 5;
     height: var(--navHeightDESKTOP);
     border-bottom: 1px solid var(--border-color);
-
+    * {
+    color :var(--lighttext);
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +76,7 @@ ul {
 
     * {
 
+            color: var(--text-color);
 
         font-weight: 500;
         // text-decoration: underline;

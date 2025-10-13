@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./WelcomeCard.module.scss";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
+import useScreenSize from "../../../utils/screensize";
 
 const WelcomeCard = ({
   title = "Where Are you?",
@@ -9,7 +10,7 @@ const WelcomeCard = ({
   text1 = "Swipe for Goodies or use the Navigation to see even more"
 }) => {
   const [showHint, setShowHint] = useState(false);
-
+  const screenSize = useScreenSize();
   useEffect(() => {
     const timeout = setTimeout(() => setShowHint(true), 1000);
     const hide = setTimeout(() => setShowHint(false), 3500);
@@ -21,7 +22,8 @@ const WelcomeCard = ({
 
   return (
     <div className={`${styles.card} ${showHint ? styles.hint : ""}`}>
-      <TrackedGradientBG />
+      {/* <TrackedGradientBG /> */}
+      {screenSize !== "sm" && <TrackedGradientBG/>}
       <div className={styles.pattern}></div>
 
 

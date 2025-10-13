@@ -33,7 +33,7 @@ const routes = [
     label: "projects catalogue",
     element: <CataloguePage />,
     icon: "Catalogue",
-    bg: "bg",
+    bg: "dots",
     fullscreenMobile: true,
   },
   {
@@ -43,8 +43,8 @@ const routes = [
     hideDesktop: true,
       hideMobile: true,
     element: <JunkPage />,
-        fullscreenDesktop: true,
-    fullscreenMobile: true,
+        // fullscreenDesktop: true,
+    // fullscreenMobile: true,
     icon: "junk",
 
 
@@ -119,6 +119,16 @@ const routes = [
     path: "/OLD_HOME_PAGE",
     label: "oldhome",
     element: <HomePage />,
+    icon: "home",
+    hideDesktop: true,
+    hideMobile: true,
+        fullscreenDesktop: true,
+    fullscreenMobile: true,
+    bg: "shapes",
+  },{
+    path: "/playground",
+    label: "Playground Test",
+    element: <PlaygroundPage />,
     icon: "home",
     hideDesktop: true,
     hideMobile: true,

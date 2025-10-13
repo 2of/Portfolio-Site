@@ -3,6 +3,7 @@ import styles from "./AboutCard.module.scss";
 import { StandardButton } from "../../UI/StandardButton";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
+import { useModal } from "../../../contexts/ModalContext";
 
 const AboutCard = ({
   name = "Hi, I forgot to pass in my props",
@@ -14,7 +15,16 @@ const AboutCard = ({
   tags1,
   tags1title
 }) => {
-  console.log(tags1);
+  const { showModal } = useModal();
+
+  const openModalForDescr = ({content}) => { 
+    showModal({ 
+      title: "overflowtext",
+      content:  content,
+      size: "medium"
+    })
+
+  }
   return (
     <div className={styles.aboutCard}>
       <div
@@ -41,7 +51,10 @@ const AboutCard = ({
       </div>
 
       <div className={styles.body}>
-        <p className={styles.about}>{about}</p>
+
+        <div className={styles.spacer}/>
+        <p className={styles.about} onClick={() => openModalForDescr({ content: <><p style ={{ fontSize:"1rem"}}>Full Text:</p> <p style ={{ fontSize:"2rem"}}>{about}</p> </>})}>{about}</p>
+           <div className={styles.spacer}/>
 {tags1title && <h4>{tags1title} </h4>}
         {tags1 && (
           <div className={styles.tags}>

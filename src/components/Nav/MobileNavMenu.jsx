@@ -7,6 +7,7 @@ import { DarkModeTile } from "../../components/darkmodeTile";
 import WigglyLine from "../../components/Misc/WigglyLine";
 import useScreenSize from "../../utils/screensize";
 import routes from "../../routes/routes";
+import TrackedGradientBG from "../Background/TrackedGradientBg";
 
 const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnimation }) => {
   const screenSize = useScreenSize();
@@ -75,7 +76,9 @@ const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnima
           className={`${styles.bgCover} ${isVisible ? styles.show : styles.hide}`}
           onClick={triggerCollapseAnimation}
           onTouchStart={triggerCollapseAnimation}
-        />
+        >
+<TrackedGradientBG/>
+           </div>
       )}
 
       <div
@@ -91,7 +94,7 @@ const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnima
           <>
             <div className={`${styles.headerText} ${isVisible ? styles.animatingIn : styles.animatingOut}`}>
               <h2>Thanks for checking out my things</h2>
-              <p>The junk page is really just a testing spot. Feel free to flick me a pm</p>
+              {/* <p>The junk page is really just a testing spot. Feel free to flick me a pm</p> */}
               <div className={styles.dividerContainer}>
                 <WigglyLine />
               </div>

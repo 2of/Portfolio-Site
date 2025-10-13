@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import getIcon from "../../../utils/Iconifier";
-import NavMenuIconMobile from "../../Nav/MobileIcon"; // or wherever your file is
+import {NavMenuIconMobile} from "../../Nav/MobileIcon"; // or wherever your file is
 import MobileNavMenu from "../../Nav/MobileNavMenu";
 import DesktopNav from "../../Nav/DesktopNav";
 

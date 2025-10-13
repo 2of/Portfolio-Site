@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./TinderView.module.scss";
 import getIcon from "../../../utils/Iconifier";
 
-const TinderView = ({ children, setActiveIndex, setwiggle = false }) => {
+const TinderView = ({ children, setActiveIndex, setwiggle = false, showNext = true, conductnext}) => {
   const items = React.Children.toArray(children);
   const total = items.length;
 
@@ -18,7 +18,7 @@ const TinderView = ({ children, setActiveIndex, setwiggle = false }) => {
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [showHint, setShowHint] = useState(false);
-
+  const [trackparentswipe, settrackparentswipe] = useState(false)
   const startPos = useRef(null);
   const ANIM_DURATION = 450;
   const SWIPE_THRESHOLD = 120;
@@ -26,6 +26,16 @@ const BASE_SCALE = 0.96;      // resting scale for next card
 const BASE_Y = 18;            // resting Y offset for next card
 const MAX_LIFT = 6;  
 
+
+
+
+
+
+useEffect(() => {
+  if (conductnext > 0) {
+    handleSwipe("right");
+  }
+}, [conductnext]);
   useEffect(() => {
     let hintTimeout;
     if (setwiggle) {
@@ -139,7 +149,11 @@ const nextStyle = {
       </div>
 
 <div className={styles.fakeStack}/>
-      <div className={styles.controls}>
+
+
+{showNext && (
+
+<div className={styles.controls}>
         {/* <button onClick={() => handleSwipe("left")} disabled={animating}>
           {getIcon("left")}
         </button> */}
@@ -150,6 +164,10 @@ const nextStyle = {
           {getIcon("tag")}
         </button> */}
       </div>
+
+
+)}
+      
     </div>
   );
 };
