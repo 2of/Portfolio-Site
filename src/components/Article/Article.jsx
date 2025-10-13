@@ -25,7 +25,7 @@ const StandardControls = React.memo(({ data, mobile = false }) => {
       window.location.href,
       "twitter",
       data.shortDesc || data.subtitle || "Noah's Portfolio @ 2of.io",
-      data.title
+      data.title,
     );
   }, [openShareSheet, data]); // Dependencies for useCallback
 
@@ -47,89 +47,91 @@ const StandardControls = React.memo(({ data, mobile = false }) => {
   );
 });
 
-export const TitleSectionPortable = React.memo(({ data, variant = "desktop", hiderows }) => {
-  const screenSize = useScreenSize();
-  const isMobile = variant === "mobile"; // fix this — previously inverted
+export const TitleSectionPortable = React.memo(
+  ({ data, variant = "desktop", hiderows }) => {
+    const screenSize = useScreenSize();
+    const isMobile = variant === "mobile"; // fix this — previously inverted
 
-  return (
-    <div
-      className={`${styles.articleContainer} ${
-        isMobile ? styles.mobile : styles.desktop
-      }`}
-    >
-      <div className={styles.bgImageContainer}>
-        <div
-          className={styles.bgImage}
-          style={
-            data?.heroImage
-              ? {
-                  backgroundImage: `url(${data.heroImage})`,
-                  backgroundAttachment: "fixed",
-                  filter: "blur(4px)", // static default, or make it responsive
-                  transform: `scale(1.1)`,
-                }
-              : {}
-          }
-        />
-      </div>
-
-      <div className={styles.titleSection}>
-        <TitleSection data={data} mobile={isMobile} />
-      </div>
-
-      <div className={styles.gradientBG} />
-    </div>
-  );
-});
-
-export const TitleSection = React.memo(({ data, tags, mobile = false, hiderows = false }) => {
-  return (
-    <div className={styles.header}>
-
-
-      <h1>{data.title}</h1>
-      <h2>{data.subtitle}</h2>
-      {tags && (
-        <div className={styles.tagContainer}>
-          <p> {getIcon("tag")} </p>
-          {tags.map((tag, i) => (
-            <span key={i}>{tag}</span>
-          ))}
+    return (
+      <div
+        className={`${styles.articleContainer} ${
+          isMobile ? styles.mobile : styles.desktop
+        }`}
+      >
+        <div className={styles.bgImageContainer}>
+          <div
+            className={styles.bgImage}
+            style={
+              data?.heroImage
+                ? {
+                    backgroundImage: `url(${data.heroImage})`,
+                    backgroundAttachment: "fixed",
+                    filter: "blur(4px)", // static default, or make it responsive
+                    transform: `scale(1.1)`,
+                  }
+                : {}
+            }
+          />
         </div>
-      )}
-      <div className={styles.aboutText}>
-        <p>{data.author || "Unknown Author"}</p>
-        <span className={styles.separator}>•</span>
-        <p>{data.date || "Unknown Date"}</p>
-        <span className={styles.separator}>•</span>
-        <p>{data.extratext}</p>
-      </div>
 
-      {mobile && (
-        <div className={styles.standardControlsContainer}>
+        <div className={styles.titleSection}>
+          <TitleSection data={data} mobile={isMobile} />
+        </div>
+
+        <div className={styles.gradientBG} />
+      </div>
+    );
+  },
+);
+
+export const TitleSection = React.memo(
+  ({ data, tags, mobile = false, hiderows = false }) => {
+    return (
+      <div className={styles.header}>
+        <h1>{data.title}</h1>
+        <h2>{data.subtitle}</h2>
+        {tags && (
+          <div className={styles.tagContainer}>
+            <p> {getIcon("tag")} </p>
+            {tags.map((tag, i) => (
+              <span key={i}>{tag}</span>
+            ))}
+          </div>
+        )}
+        <div className={styles.aboutText}>
+          <p>{data.author || "Unknown Author"}</p>
+          <span className={styles.separator}>•</span>
+          <p>{data.date || "Unknown Date"}</p>
+          <span className={styles.separator}>•</span>
+          <p>{data.extratext}</p>
+        </div>
+
+        {mobile && (
+          <div className={styles.standardControlsContainer}>
+            <WigglyLine />
+            <StandardControls data={data} mobile={mobile} />
+          </div>
+        )}
+
+        {!hiderows && (
+          <div className={styles.heroLinksContainer}>
+            <HeroLinks linkData={data.heroLinks} />
+
+            {!mobile && (
+              <>
+                <StandardControls data={data} />
+              </>
+            )}
+          </div>
+        )}
+
+        <div className={styles.fullDivider}>
           <WigglyLine />
-          <StandardControls data={data} mobile={mobile} />
         </div>
-      )}
-
-      {!hiderows && (
-        <div className={styles.heroLinksContainer}>
-          <HeroLinks linkData={data.heroLinks} />
-
-          {!mobile && (
-            <>
-              <StandardControls data={data} />
-            </>
-          )}
-        </div>
-      )}
-
-      <div className={styles.fullDivider}>
-        <WigglyLine />
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
 const HeroLinks = React.memo(({ linkData }) => {
   const navigate = useNavigate();
@@ -181,10 +183,10 @@ export const Article = ({ metadata, fixeddata }) => {
   const [bgModifiervalue, setbgModifiervalue] = useState(0);
   const containerRef = useRef(null);
   const iswip = metadata.wip;
-   const bgImageRef = useRef(null); 
-      const titlePopupRef = useRef(null); 
+  const bgImageRef = useRef(null);
+  const titlePopupRef = useRef(null);
   const screenSize = useScreenSize();
-  console.log("ARTICLE METADATA", metadata);
+  // console.log("ARTICLE METADATA", metadata);
   useEffect(() => {
     if (containerRef.current && bgImageRef.current && titlePopupRef.current) {
       const bgElement = bgImageRef.current;
@@ -195,7 +197,7 @@ export const Article = ({ metadata, fixeddata }) => {
         const fadeStart = 0;
         const fadeEnd = 500;
         let bgModifiervalue;
-        
+
         if (scrollTop < fadeStart) {
           bgModifiervalue = 0;
         } else if (scrollTop > fadeEnd) {
@@ -203,16 +205,15 @@ export const Article = ({ metadata, fixeddata }) => {
         } else {
           bgModifiervalue = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
         }
-        
-  
+
         const opacity = 1 - bgModifiervalue - 0.1;
         const transformScale = 1.2 - bgModifiervalue * 0.2;
-        
+
         bgElement.style.opacity = opacity;
         bgElement.style.transform = `scale(${transformScale})`;
 
         // Title Popup Animation
-        const titleTransformY = -64 + (bgModifiervalue * 64);
+        const titleTransformY = -64 + bgModifiervalue * 64;
         titlePopupElement.style.transform = `translateY(${titleTransformY}px)`;
       };
 
@@ -274,7 +275,7 @@ export const Article = ({ metadata, fixeddata }) => {
       }`}
       ref={containerRef}
     >
-        <div className={`${styles.bgImageContainer} `}>
+      <div className={`${styles.bgImageContainer} `}>
         <div
           className={styles.bgImage}
           ref={bgImageRef} // 7. Attach ref for direct manipulation
@@ -291,20 +292,20 @@ export const Article = ({ metadata, fixeddata }) => {
       </div>
 
       {screenSize !== "sm" && (
-      <div
+        <div
           className={styles.titlePopup}
           ref={titlePopupRef} // ✅ Ref is attached
           // 2. ✅ REMOVE the entire style prop block to allow the useEffect to control the CSS
         >
           <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
-          </div>  
+          </div>
           <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
           </div>
         </div>
       )}
-      
+
       <div className={styles.titleSection}>
         <TitleSection
           data={data}

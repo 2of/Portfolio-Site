@@ -1,75 +1,133 @@
 .bgDecor {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-
-  .gradientLayer {
     position: absolute;
     inset: 0;
-    background: linear-gradient(270deg, #ff7e5f, #ffd36b, #ffaaff, #9be7ff);
-    background-size: 200% 200%;
-    filter: blur(80px);
+    overflow: hidden;
     z-index: 0;
-    transition: background-position 0.1s ease-out;
-    animation: gradientDrift 18s ease-in-out infinite alternate;
-  }
+    pointer-events: none;
 
-  .shape {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.5;
-    animation: floaty 16s ease-in-out infinite alternate;
-
-    &.shape1 {
-      width: 320px;
-      height: 320px;
-      background: #ff7e5f;
-      top: 10%;
-      left: 15%;
-      animation-delay: 0s;
+    .gradientLayer {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(270deg, #ff7e5f, #ffd36b, #ffaaff, #9be7ff);
+        background-size: 200% 200%;
+        filter: blur(80px);
+        z-index: 0;
+        transition: background-position 0.1s ease-out;
+        animation: gradientDrift 18s ease-in-out infinite alternate;
     }
 
-    &.shape2 {
-      width: 400px;
-      height: 400px;
-      background: #ffd36b;
-      bottom: 5%;
-      right: 10%;
-      animation-delay: 4s;
+    .gradientLayerDark {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(270deg, #ff7e5f, #37306b, #ff7e5f, #0f2027);
+
+        background-size: 200% 200%;
+        filter: blur(80px);
+        z-index: 0;
+        transition: background-position 0.1s ease-out;
+        animation: gradientDrift 18s ease-in-out infinite alternate;
     }
 
-    &.shape3 {
-      width: 260px;
-      height: 260px;
-      background: #ffaaff;
-      top: 40%;
-      right: 25%;
-      animation-delay: 8s;
-    }
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.5;
+        animation: floaty 16s ease-in-out infinite alternate;
 
-    &.shape4 {
-      width: 280px;
-      height: 280px;
-      background: #9be7ff;
-      bottom: 15%;
-      left: 25%;
-      animation-delay: 2s;
+        &.shape1 {
+            width: 320px;
+            height: 320px;
+            background: #ff7e5f;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        &.shape2 {
+            width: 400px;
+            height: 400px;
+            background: #ffd36b;
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        &.shape3 {
+            width: 260px;
+            height: 260px;
+            background: #ffaaff;
+            top: 40%;
+            right: 25%;
+            animation-delay: 8s;
+        }
+
+        &.shape4 {
+            width: 280px;
+            height: 280px;
+            background: #9be7ff;
+            bottom: 15%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        &.shape1D {
+            width: 320px;
+            height: 320px;
+            background: #944d8f;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        &.shape2D {
+            width: 400px;
+            height: 400px;
+            background: #5f878f;
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        &.shape3D {
+            width: 260px;
+            height: 260px;
+            background: #3c9d8a;
+            top: 40%;
+            right: 25%;
+            animation-delay: 8s;
+        }
+
+        &.shape4D {
+            width: 280px;
+            height: 280px;
+            background: #b8860b;
+            bottom: 15%;
+            left: 25%;
+            animation-delay: 2s;
+        }
     }
-  }
 }
 
 /* Blob floating animation */
 @keyframes floaty {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-60px) scale(1.1); }
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(-60px) scale(1.1);
+    }
 }
 
 /* Subtle gradient drift */
 @keyframes gradientDrift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

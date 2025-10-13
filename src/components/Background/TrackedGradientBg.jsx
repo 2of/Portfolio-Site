@@ -12,7 +12,7 @@ const TrackedGradientBG = ({ interactive = false }) => {
     // Update theme attribute on body
     document.documentElement.setAttribute(
       "data-theme",
-      darkMode ? "dark" : "light"
+      darkMode ? "dark" : "light",
     );
   }, [darkMode]);
 
@@ -26,7 +26,7 @@ const TrackedGradientBG = ({ interactive = false }) => {
       const delta = time - lastTime;
       lastTime = time;
 
-      angleRef.current += delta * 0.0003; 
+      angleRef.current += delta * 0.0003;
       const xPercent = 50 + Math.sin(angleRef.current) * 20;
       const yPercent = 50 + Math.cos(angleRef.current * 0.8) * 15;
 
@@ -40,11 +40,28 @@ const TrackedGradientBG = ({ interactive = false }) => {
 
   return (
     <div className={styles.bgDecor}>
-      <div ref={gradientRef} className={styles.gradientLayer} />
-      <div className={`${styles.shape} ${styles.shape1}`} />
-      <div className={`${styles.shape} ${styles.shape2}`} />
-      <div className={`${styles.shape} ${styles.shape3}`} />
-      <div className={`${styles.shape} ${styles.shape4}`} />
+      <div
+        ref={gradientRef}
+        className={` ${darkMode ? styles.gradientLayerDark : styles.gradientLayer}`}
+      />
+
+      {darkMode ? (
+        <>
+          {" "}
+          <div className={`${styles.shape} ${styles.shape1D}`} />
+          <div className={`${styles.shape} ${styles.shape2D}`} />
+          <div className={`${styles.shape} ${styles.shape3D}`} />
+          <div className={`${styles.shape} ${styles.shape4D}`} />
+        </>
+      ) : (
+        <>
+          {" "}
+          <div className={`${styles.shape} ${styles.shape1}`} />
+          <div className={`${styles.shape} ${styles.shape2}`} />
+          <div className={`${styles.shape} ${styles.shape3}`} />
+          <div className={`${styles.shape} ${styles.shape4}`} />
+        </>
+      )}
     </div>
   );
 };

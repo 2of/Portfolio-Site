@@ -9,7 +9,12 @@ import useScreenSize from "../../utils/screensize";
 import routes from "../../routes/routes";
 import TrackedGradientBG from "../Background/TrackedGradientBg";
 
-const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnimation }) => {
+const MobileNavMenu = ({
+  isCollapsed,
+  isVisible,
+  direction,
+  triggerCollapseAnimation,
+}) => {
   const screenSize = useScreenSize();
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,16 +40,27 @@ const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnima
   };
 
   const miniNavItems = () => (
-    <ul className={`${styles.navList} ${direction === "vertical" ? styles.vertical : ""}`}>
+    <ul
+      className={`${styles.navList} ${direction === "vertical" ? styles.vertical : ""}`}
+    >
       {routes.map((route, i) => {
         if (route.hideMobile) return null;
         return (
           <li key={i} className={`${styles.navItem} `}>
             <div
-              onClick={(e) => { e.preventDefault(); handleLinkClick(route.path); }}
-              onTouchStart={(e) => { e.preventDefault(); touchStartRef.current = e.timeStamp; }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(route.path);
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                touchStartRef.current = e.timeStamp;
+              }}
               onTouchEnd={(e) => {
-                if (touchStartRef.current && e.timeStamp - touchStartRef.current < 500) {
+                if (
+                  touchStartRef.current &&
+                  e.timeStamp - touchStartRef.current < 500
+                ) {
                   e.preventDefault();
                   handleLinkClick(route.path);
                 }
@@ -77,24 +93,29 @@ const MobileNavMenu = ({ isCollapsed, isVisible, direction, triggerCollapseAnima
           onClick={triggerCollapseAnimation}
           onTouchStart={triggerCollapseAnimation}
         >
-<TrackedGradientBG/>
-           </div>
+          <TrackedGradientBG />
+        </div>
       )}
 
       <div
         ref={navRef}
-        className={`${styles.miniNav} 
-          ${isCollapsed ? styles.collapsed : styles.expanded} 
-          ${direction === "vertical" ? styles.vertical : ""} 
+        className={`${styles.miniNav}
+          ${isCollapsed ? styles.collapsed : styles.expanded}
+          ${direction === "vertical" ? styles.vertical : ""}
           ${isVisible ? styles.animatingIn : styles.animatingOut}`}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}
       >
         {!isCollapsed && (
           <>
-            <div className={`${styles.headerText} ${isVisible ? styles.animatingIn : styles.animatingOut}`}>
+            <div
+              className={`${styles.headerText} ${isVisible ? styles.animatingIn : styles.animatingOut}`}
+            >
               <h2>Thanks for checking out my things</h2>
-              {/* <p>The junk page is really just a testing spot. Feel free to flick me a pm</p> */}
+              <p>
+                The junk page is really just a testing spot. Feel free to flick
+                me a pm
+              </p>
               <div className={styles.dividerContainer}>
                 <WigglyLine />
               </div>

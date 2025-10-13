@@ -26,8 +26,9 @@ import GlassPushOverlay from "../components/UI/GlassContainer";
 import SmallCard from "../components/Cards/SmallCard";
 import text from "../../public/assets/text/texts.json";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
+import { useModal } from "../contexts/ModalContext";
 export const CataloguePage = () => {
-  const { getAllMetaData,getMetadata } = useProjects();
+  const { getAllMetaData, getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
   const screenSize = useScreenSize();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,11 +37,7 @@ export const CataloguePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [githubProjects, setGithubProjects] = useState([]);
 
-
-
-
-
-
+  const { modalState, showModal, hideModal, modalVisible } = useModal();
 
   useEffect(() => {
     getRecentRepos("2of").then((repos) => {
@@ -65,6 +62,24 @@ export const CataloguePage = () => {
     setActivemetadata(null);
   };
 
+  const newhandleOpenModal = (metadata) => {
+    showModal({
+      // title: "blah blah",
+      size: "large",
+      floatnav: true,
+
+      content: (
+        <Article
+          metadata={metadata}
+          // style="modern"
+          // topDivideDouble={true}
+          // twoColumns={true}
+          // AsArticle={true}
+        />
+      ),
+    });
+  };
+
   const showcaseProjects = getMetadata({ which: "feat" });
   const uniProjects = getMetadata({ which: "uni" });
   const miscProjects = shortProjects.filter((p) => p.misccategory);
@@ -80,9 +95,12 @@ export const CataloguePage = () => {
             // title=?
             data={project.details}
             icon={getIcon("test")}
-            to={project.details.externalLink || project.details.internalLink || getProjURL(project.name)}
+            to={
+              project.details.externalLink ||
+              project.details.internalLink ||
+              getProjURL(project.name)
+            }
             isExternal={project.externalLink || false}
-            
           />
           {/* test {project.externalLink && "external"} */}
         </GlassPushOverlay>
@@ -96,7 +114,7 @@ export const CataloguePage = () => {
       <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
         <Thumbnail
           data={project}
-          fullLinkCallBack={() => handleOpenModal(project)}
+          fullLinkCallBack={() => newhandleOpenModal(project)}
           twoColumns={id === 0}
           fullLink={true}
           type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
@@ -111,40 +129,39 @@ export const CataloguePage = () => {
       <div className={styles.ProjectContainerDense}>
         {githubProjects.map((proj, id) => (
           <div key={id} className={`${styles.ProjectCell} ${styles.sm_25}`}>
-                <GlassPushOverlay>
-            <SmallCard
-              type="compact_thumb"
-              randomcolor={true}
-              data={{
-                title: proj.name,
-                subtitle: proj.description,
-                ext_url: proj.url,
-              }}
-              to={proj.url}
-              isExternal={true}
-              // fullLinkCallBack={() => navigate(proj.url)}
-              //   asFS={screenSize === "sm"}
-              // type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
-            />
-            {/* test {proj.url} */}
+            <GlassPushOverlay>
+              <SmallCard
+                type="compact_thumb"
+                randomcolor={true}
+                data={{
+                  title: proj.name,
+                  subtitle: proj.description,
+                  ext_url: proj.url,
+                }}
+                to={proj.url}
+                isExternal={true}
+                // fullLinkCallBack={() => navigate(proj.url)}
+                //   asFS={screenSize === "sm"}
+                // type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
+              />
+              {/* test {proj.url} */}
             </GlassPushOverlay>
           </div>
         ))}
-      <GlassPushOverlay>
-        <SmallCard
-          size="small"
-          randomcolor={true}
-          data={{
-            title: "See All Repos",
-            subtitle: "github.com/2of",
-         
-          }}
-          to={"www.github.com/2of"}
-          isExternal={true}
-          // fullLinkCallBack={() => navigate.to(project.url)}
-          //   asFS={screenSize === "sm"}
-          type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
-        />
+        <GlassPushOverlay>
+          <SmallCard
+            size="small"
+            randomcolor={true}
+            data={{
+              title: "See All Repos",
+              subtitle: "github.com/2of",
+            }}
+            to={"www.github.com/2of"}
+            isExternal={true}
+            // fullLinkCallBack={() => navigate.to(project.url)}
+            //   asFS={screenSize === "sm"}
+            type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
+          />
         </GlassPushOverlay>
       </div>
     );
@@ -164,15 +181,11 @@ export const CataloguePage = () => {
     </div>
   );
 
-
-
-
-
-const TextSectionHero = () => {
-  return (
-    <section className={styles.TextSectionHero}>
-      {/* Animated background layers */}
-      {/* <div className={styles.bgDecor}>
+  const TextSectionHero = () => {
+    return (
+      <section className={styles.TextSectionHero}>
+        {/* Animated background layers */}
+        {/* <div className={styles.bgDecor}>
         <div className={styles.gradientLayer} />
         <div className={`${styles.shape} ${styles.shape1}`} />
         <div className={`${styles.shape} ${styles.shape2}`} />
@@ -180,20 +193,19 @@ const TextSectionHero = () => {
         <div className={`${styles.shape} ${styles.shape4}`} />
       </div> */}
 
-      <TrackedGradientBG interactive={true} />
+        <TrackedGradientBG interactive={true} />
 
-      {/* Foreground text */}
-      <div className={styles.inner}>
-        <h1 className={styles.title}>{text.projHeader.projTitle}</h1>
-        <div className={styles.subtitleGroup}>
-          <p className={styles.subtitle}>{text.projHeader.projS1}</p>
-          <p className={styles.subtitle}>{text.projHeader.projS2}</p>
+        {/* Foreground text */}
+        <div className={styles.inner}>
+          <h1 className={styles.title}>{text.projHeader.projTitle}</h1>
+          <div className={styles.subtitleGroup}>
+            <p className={styles.subtitle}>{text.projHeader.projS1}</p>
+            <p className={styles.subtitle}>{text.projHeader.projS2}</p>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
-
+      </section>
+    );
+  };
 
   const StandardHeaderDesktop = ({ title, subtitle, icon }) => (
     <div className={styles.StandardHeaderDesktop}>
@@ -284,17 +296,13 @@ const TextSectionHero = () => {
   );
 
   const renderDesktopView = () => (
-    <ScrollableVerticalView  trackScrollPercent >
-
-      <Section> 
-    <TextSectionHero />
-
+    <ScrollableVerticalView trackScrollPercent>
+      <Section>
+        <TextSectionHero />
       </Section>
 
-  
       {/* title={"new"} subtitle={"test"}/> */}
       <Section Header={() => <Header1 />}>
-
         <div className={styles.LargeThumbGrid}>
           {showcaseProjects.map(renderCard)}
         </div>

@@ -16,36 +16,33 @@ export const Thumbnail = ({
   const details = data?.details ?? {};
   const tags = Array.isArray(details.tags) ? details.tags : [];
 
-const containerStyle =
-  details.bgimage && screenSize !== "sm"
-    ? {
-        backgroundImage: `url(${details.bgimage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }
-    : {};
-const handleClick = () => {
-  console.log(details.ext_url);
-console.log("SDFDSFDSF")
-alert("Clicked Thumbnail")
-  
-  const isExternal =
-    details.ext_url &&
-    (details.ext_url.startsWith("http") || details.ext_url.startsWith("www."));
+  const containerStyle =
+    details.bgimage && screenSize !== "sm"
+      ? {
+          backgroundImage: `url(${details.bgimage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }
+      : {};
+  const handleClick = () => {
+    const isExternal =
+      details.ext_url &&
+      (details.ext_url.startsWith("http") ||
+        details.ext_url.startsWith("www."));
 
-  if (isExternal) {
-    const fullUrl = details.ext_url.startsWith("www.")
-      ? `https://${details.ext_url}`
-      : details.ext_url;
-    window.open(fullUrl, "_blank");
-    return; // prevent fallback callback if external
-  }
+    if (isExternal) {
+      const fullUrl = details.ext_url.startsWith("www.")
+        ? `https://${details.ext_url}`
+        : details.ext_url;
+      window.open(fullUrl, "_blank");
+      return; // prevent fallback callback if external
+    }
 
-  // If screen is not small and a callback is defined, use it
-  if (typeof fullLinkCallBack === "function" && screenSize !== "sm") {
-    fullLinkCallBack();
-  }
-};
+    // If screen is not small and a callback is defined, use it
+    if (typeof fullLinkCallBack === "function" && screenSize !== "sm") {
+      fullLinkCallBack();
+    }
+  };
   const renderByType = () => {
     switch (type) {
       case "large_thumb":
@@ -62,7 +59,6 @@ alert("Clicked Thumbnail")
             </div>
 
             <div className={styles.content}>
-
               {tags.length > 0 && (
                 <ul className={styles.PillContainer}>
                   {tags.map((tool, i) => (
@@ -111,7 +107,9 @@ alert("Clicked Thumbnail")
             style={containerStyle}
             onClick={fullLinkCallBack}
           >
-            <h2 className={styles.title}>{details.title ?? "Untitled"} {getIcon("rightarrow")} </h2>
+            <h2 className={styles.title}>
+              {details.title ?? "Untitled"} {getIcon("rightarrow")}{" "}
+            </h2>
             <p className={styles.subtitle}>{details.subtitle ?? ""}</p>
 
             {tags.length > 0 && (
@@ -128,7 +126,7 @@ alert("Clicked Thumbnail")
               {typeof fullLinkCallBack === "function" && (
                 <StandardButton
                   label="Open"
-                 
+
                   type="basic_Expand"
                   callback={fullLinkCallBack}
                 />

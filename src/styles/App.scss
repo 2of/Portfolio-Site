@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  
+
   font-size: var(--font-size-base); /* Base font size */
   margin: 0;
 
@@ -14,7 +14,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
 }
 
-root { 
+root {
   background-color: rebeccapurple;
 }
 
@@ -29,7 +29,7 @@ body {
 font-family: 'Montserrat', sans-serif;
  font-family: "Poppins", "Inter", sans-serif;
    font-family: "Newsreader", "Inter", sans-serif;
-  
+
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: auto;
@@ -53,13 +53,13 @@ h1, h2, h3, h4, h5, h6, p, span {
 .glassButton {
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  
+
   border-radius: 8px;
-  
+
 
 }
 
-.imageCaption { 
+.imageCaption {
   font-size: 0.8rem;
   font-style: italic;
 }
@@ -106,7 +106,7 @@ button:hover {
   display: flex;
   // position: relative;
   align-items: flex-start;
- 
+
   flex-direction: column;
   // max-height: 100vh;
   overflow:  hidden;
@@ -127,7 +127,7 @@ button:hover {
     // justify-content: flex-start;
     // align-items: center;
   }
-&.full { 
+&.full {
 //   max-width: none;
 // width: 100vw;
 // height: 100vh;
@@ -135,7 +135,7 @@ button:hover {
 // position: absolute;
 // align-items: center;
 }
-  &.centered { 
+  &.centered {
 //     // background-color: orange;
 //     height: 100vh;
 // //  background-color: red;
@@ -171,12 +171,12 @@ button:hover {
       overflow-x: auto; // Allow horizontal scrolling for long code
     }
   }
-} 
+}
 
-.horizontalContainer { 
+.horizontalContainer {
   display: flex;
 
-  > * { 
+  > * {
     overflow: hidden;
     flex: 1;  // Ensures all children take up equal space
     width: auto; // Optional, but ensures width is determined by flex
@@ -193,7 +193,7 @@ button:hover {
 
 
 }
-  
+
 
 .flatStyleShadow {
     border-radius: 8px;
@@ -211,27 +211,27 @@ button:hover {
     background-color: var(--bg-transparent);
 backdrop-filter: blur(2px);
    // transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-* { 
+* {
   color: black;
 }
-  // &:hover { 
+  // &:hover {
   //     left: 4px;
   //     top: 2px;
   //     box-shadow: rgb(255, 255, 255) 0 0 0 0;
   // }
 }
-.codeEmbed { 
+.codeEmbed {
   // Add styles for code embed if needed
 }
 
-.ScrollSpacer { 
+.ScrollSpacer {
   height: 3rem;
 }
 
 h1 {
   font-size: 48px;
 }
-.flatStyleShadow_RADIO { 
+.flatStyleShadow_RADIO {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -294,11 +294,11 @@ h1 {
   // top: 0;
   background-color: var(--bg-transparent);
 backdrop-filter: blur(2px);
-  *{ 
+  *{
     color: var(--bg);
   }
 
-* { 
+* {
   color: var(--text-color);
 }
 
@@ -323,7 +323,7 @@ backdrop-filter: blur(2px);
   border: 1px solid var(--border-color);
 }
 
-.doubleBorderRound { 
+.doubleBorderRound {
   border: 1px solid var(--border-color);
   width: auto; /* Let it adapt based on content */
   // max-width: 100%; /* Allow full width, but cap at 100% of the screen */
@@ -335,14 +335,14 @@ backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  
+
+
 }
 
 
 
 
 //// INTERACTIONS
-/// 
-/// 
-/// 
+///
+///
+///

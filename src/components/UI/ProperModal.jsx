@@ -37,11 +37,12 @@ const ProperModal = () => {
     modalState.size === "large"
       ? styles.large
       : modalState.size === "medium"
-      ? styles.medium
-      : styles.small;
+        ? styles.medium
+        : styles.small;
 
   // Add fullscreen class if toggled
-  if (isFullScreen) sizeClass += ` ${styles.fullScreen}`;
+  if (isFullScreen || (screenSize === "sm" && modalState.size === "large"))
+    sizeClass += ` ${styles.fullScreen}`;
 
   return ReactDOM.createPortal(
     <div
@@ -50,8 +51,6 @@ const ProperModal = () => {
       }`}
       onClick={handleCloseAnimation}
     >
-
-
       <div className={`${styles.modal} ${sizeClass}`} onClick={handleClick}>
         <div
           className={`${styles.topBar} ${
@@ -77,7 +76,7 @@ const ProperModal = () => {
           )}
 
           {/* Fullscreen toggle only for large modals */}
-          {modalState.size === "large" && (
+          {modalState.size === "large" && screenSize !== "sm" && (
             <StandardButton
               label={isFullScreen ? "Exit Fullscreen" : "Fullscreen"}
               type="rounded"
@@ -100,7 +99,7 @@ const ProperModal = () => {
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 

@@ -165,7 +165,10 @@ const PhysicsShapes = () => {
         ctx.rotate(degToRad(s.rotation));
         ctx.globalAlpha = Math.max(s.alpha, 0);
         ctx.scale(scale, scale);
-        ctx.fillStyle = s.color.replace(/[\d\.]+\)$/g, `${Math.max(s.alpha, 0)})`);
+        ctx.fillStyle = s.color.replace(
+          /[\d\.]+\)$/g,
+          `${Math.max(s.alpha, 0)})`,
+        );
 
         switch (s.shape) {
           case "circle":
@@ -180,12 +183,21 @@ const PhysicsShapes = () => {
             let rot = 0;
             const step = Math.PI / spikes;
             ctx.beginPath();
-            ctx.moveTo(Math.cos(rot) * outerRadius, Math.sin(rot) * outerRadius);
+            ctx.moveTo(
+              Math.cos(rot) * outerRadius,
+              Math.sin(rot) * outerRadius,
+            );
             for (let i = 0; i < spikes; i++) {
               rot += step;
-              ctx.lineTo(Math.cos(rot) * innerRadius, Math.sin(rot) * innerRadius);
+              ctx.lineTo(
+                Math.cos(rot) * innerRadius,
+                Math.sin(rot) * innerRadius,
+              );
               rot += step;
-              ctx.lineTo(Math.cos(rot) * outerRadius, Math.sin(rot) * outerRadius);
+              ctx.lineTo(
+                Math.cos(rot) * outerRadius,
+                Math.sin(rot) * outerRadius,
+              );
             }
             ctx.closePath();
             ctx.fill();
@@ -281,8 +293,10 @@ const PhysicsShapes = () => {
           </label>
 
           <div className={styles.buttonGroup}>
-            <button onClick={() => setTriggerExplode(true)}>Explode & Respawn</button>
-            <button 
+            <button onClick={() => setTriggerExplode(true)}>
+              Explode & Respawn
+            </button>
+            <button
               onClick={() => setTriggerExplodeOnce(true)}
               disabled={hasExplodedOnce}
             >
