@@ -98,7 +98,7 @@ const TinderPage = () => {
 
   return (
     <CenteredContainer>
-      {screenSize === "sm" && <TrackedGradientBG />}
+      {/* {screenSize === "sm" && <TrackedGradientBG />} */}
       {/* <TrackedGradientBG />*/}
       {/* <ResponsiveGradient colorProfile={currentCardIndex %10}/> */}
       <div

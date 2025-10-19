@@ -29,7 +29,7 @@ const MobileNavMenu = ({
     if (isVisible) {
       setRendered(true); // mount menu for animation
     } else {
-      const timer = setTimeout(() => setRendered(false), 2000); // match CSS animation duration
+      const timer = setTimeout(() => setRendered(false), 500); // match CSS animation duration
       return () => clearTimeout(timer);
     }
   }, [isVisible]);
@@ -93,7 +93,7 @@ const MobileNavMenu = ({
           onClick={triggerCollapseAnimation}
           onTouchStart={triggerCollapseAnimation}
         >
-          <TrackedGradientBG />
+          {/* <TrackedGradientBG /> */}
         </div>
       )}
 
