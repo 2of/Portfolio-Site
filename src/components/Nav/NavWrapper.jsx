@@ -63,10 +63,16 @@ const MobileWrapper = React.memo(
     return (
       <>
         {!floating && (
-          <NavBg
+
+          <>
+
+             {/* <MobileIconWrapper menuCallback={buttonCallback} isFloating /> */}
+   <NavBg
             menu={<MobileIconWrapper menuCallback={buttonCallback} />}
             buttons
           />
+             </>
+       
         )}
 
         {floating && (

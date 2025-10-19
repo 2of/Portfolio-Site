@@ -1,17 +1,18 @@
 import React, { useRef, useEffect } from "react";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 const ParticleBackground = ({
-  bgColor = "rgba(7, 7, 7, 1)",
-  particleCount = 50,
+  particleCount = 18,
   maxDistance = 140,
-  speed = 2,
+  speed = 0.7,
 }) => {
   const canvasRef = useRef(null);
   const particles = [];
 
   // Utility functions
   const randomColor = () => `hsl(${Math.random() * 360}, 70%, 70%)`;
-
+  const { darkMode } = useDarkMode();
+  const bgColor = darkMode ? "rgba(7, 7, 7, 1)" : "rgba(41, 41, 41, 1)";
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -49,7 +50,7 @@ const ParticleBackground = ({
               particles[i].x,
               particles[i].y,
               particles[j].x,
-              particles[j].y
+              particles[j].y,
             );
             gradient.addColorStop(0, particles[i].color);
             gradient.addColorStop(1, particles[j].color);

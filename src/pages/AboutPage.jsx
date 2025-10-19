@@ -37,7 +37,7 @@ useEffect(() => {
   }`;
 
   return (
-    <ScrollableVerticalView  staggerStart={screenSize!== "sm"}>
+    <ScrollableVerticalView  trackScrollPercent staggerStart={screenSize!== "sm"}>
       <Section
         // narrow
         Header={() => <h2 className={sectionHeaderClass}>{title}</h2>}

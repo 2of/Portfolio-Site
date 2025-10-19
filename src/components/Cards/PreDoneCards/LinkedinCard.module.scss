@@ -47,7 +47,7 @@
 
 .buttonlong {
   flex: 1;                     // takes remaining space
-  max-width: 6rem;             // optional cap
+  max-width: 3rem;             // optional cap
   height: 100%;
   background-color: #97979797;      // slightly darker gray
   border-radius: 0.3rem;
@@ -60,7 +60,7 @@
 
 .filler { 
   background-color: rgb(230, 230, 230);
-  height: 100px;
+  height: 3rem;
   // width: 90%;
   border-radius: 4px;
   // padding: 1rem;

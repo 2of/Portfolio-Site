@@ -27,6 +27,7 @@ import SmallCard from "../components/Cards/SmallCard";
 import text from "../../public/assets/text/texts.json";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 import { useModal } from "../contexts/ModalContext";
+import { TitleCard } from "../components/Cards/TitleCard";
 export const CataloguePage = () => {
   const { getAllMetaData, getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
@@ -51,16 +52,6 @@ export const CataloguePage = () => {
       setIsLoading(false);
     });
   }, []);
-
-  const handleOpenModal = (metadata) => {
-    setIsModalOpen(true);
-    setActivemetadata(metadata);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setActivemetadata(null);
-  };
 
   const newhandleOpenModal = (metadata) => {
     showModal({
@@ -88,22 +79,30 @@ export const CataloguePage = () => {
     /// render thumb used for legacy (mobile view) currently. Cards for dektstop
     const bgImage = project.details?.thumbbg;
     return (
-      <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
+      <div
+        key={id}
+        bgImage={bgImage}
+        className={`${styles.ProjectCell} ${project.large && styles.doublewide}`}
+      >
         {/* <h1>test {screenSize}</h1> */}
-        <GlassPushOverlay>
+        {/* <GlassPushOverlay spiciness={0.5}> */}
+
+      
           <LargeThumbCard
             // title=?
             data={project.details}
             icon={getIcon("test")}
+            isdouble={project.large || false}
             to={
               project.details.externalLink ||
               project.details.internalLink ||
               getProjURL(project.name)
             }
+            swapsides={id % 2 == 0}
             isExternal={project.externalLink || false}
           />
           {/* test {project.externalLink && "external"} */}
-        </GlassPushOverlay>
+        {/* </GlassPushOverlay> */}
       </div>
     );
   };
@@ -168,17 +167,24 @@ export const CataloguePage = () => {
   };
 
   const Header1 = () => (
+
+   
     <div className={styles.MainHeader}>
+ <GlassPushOverlay spiciness={0} showShine>
+      
       <AnimatedHeader
         title={"Featured Projects"}
         icon={getIcon("star")}
         replacementText={"The cool stuff"}
         animate
-        // subtitle={
-        //   "Small writeups for highlighted projects. Scroll further to see a raw list"
-        // }
+        subtitle={
+          "Small writeups for highlighted projects. Scroll further to see a raw list"
+        }
       />
+
+      </GlassPushOverlay>
     </div>
+    // </GlassPushOverlay>
   );
 
   const TextSectionHero = () => {
@@ -193,7 +199,7 @@ export const CataloguePage = () => {
         <div className={`${styles.shape} ${styles.shape4}`} />
       </div> */}
 
-        <TrackedGradientBG interactive={true} />
+        {/* <TrackedGradientBG interactive={true} /> */}
 
         {/* Foreground text */}
         <div className={styles.inner}>
@@ -209,11 +215,16 @@ export const CataloguePage = () => {
 
   const StandardHeaderDesktop = ({ title, subtitle, icon }) => (
     <div className={styles.StandardHeaderDesktop}>
+
+       <GlassPushOverlay spiciness={0} showShine>
+      
       <AnimatedHeader title={title} icon={icon} subtitle={subtitle} />
       {/* <h1 className={styles.title}>
         {icon} {title}
       </h1>
       {subtitle && <p className={styles.subtitle}>{subtitle}</p>} */}
+    </GlassPushOverlay>
+    
     </div>
   );
 
@@ -297,18 +308,31 @@ export const CataloguePage = () => {
 
   const renderDesktopView = () => (
     <ScrollableVerticalView trackScrollPercent>
-      <Section>
+      <Section color="gradient">
         <TextSectionHero />
       </Section>
 
       {/* title={"new"} subtitle={"test"}/> */}
-      <Section Header={() => <Header1 />}>
+      <Section color="dark"
+     
+        > 
         <div className={styles.LargeThumbGrid}>
-          {showcaseProjects.map(renderCard)}
+          <div className={`${styles.doublewide} ${styles.ProjectCell}`}>
+            <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"}/>
+        </div>
+        
+          {showcaseProjects.slice(0, 4).map(renderCard)}
+        <div className={`${styles.doublewide} ${styles.fillwide} ${styles.ProjectCell}`}>
+            <TitleCard title={"It's a bit all over the place"} subtitle={"Feel free to have a look"}/>
+        </div>
+
+          {showcaseProjects.slice(4).map(renderCard)}
+             {/* <TitleCard title={"fin"} subtitle={""}/> */}
         </div>
       </Section>
 
-      <Section
+    <Section
+    color=""
         Header={() => (
           <StandardHeaderDesktop
             title={"Notable Uni Bits"}
@@ -322,6 +346,7 @@ export const CataloguePage = () => {
         </div>
       </Section>
       <Section
+      color="dark"
         Header={() => (
           <StandardHeaderDesktop
             title={"Most Recent Github Commits"}
@@ -329,6 +354,7 @@ export const CataloguePage = () => {
             icon={getIcon("Github")}
           />
         )}
+        
       >
         {isLoading ? <Loader /> : <RenderGithubs projs={githubProjects} />}
       </Section>

@@ -9,6 +9,7 @@ import PageDots from "../components/UI/PageDots";
 import { useNavStack } from "../contexts/NavStackContext";
 import getIcon from "../utils/Iconifier";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
+import ResponsiveGradient from "../components/Background/ResponsiveGradient";
 
 const TinderPage = () => {
   const screenSize = useScreenSize();
@@ -18,7 +19,16 @@ const TinderPage = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [prevCardIndex, setPrevCardIndex] = useState(null);
   const [animating, setAnimating] = useState(false);
-  const { navstack, pushNav, popNav, clearStack,removeButton, addButton,extraButtons,extraButtonsContains } = useNavStack();
+  const {
+    navstack,
+    pushNav,
+    popNav,
+    clearStack,
+    removeButton,
+    addButton,
+    extraButtons,
+    extraButtonsContains,
+  } = useNavStack();
   const inactivityTimer = useRef(null);
   const periodicTimer = useRef(null);
 
@@ -26,10 +36,8 @@ const TinderPage = () => {
 
   const triggerNext = () => {
     // alert("TEST")
-    setConductNext(prev => prev + 1);
+    setConductNext((prev) => prev + 1);
   };
-
-
 
   const resetInactivityTimer = () => {
     clearTimeout(inactivityTimer.current);
@@ -44,21 +52,20 @@ const TinderPage = () => {
     }, 5000);
   };
 
+  useEffect(() => {
+    if (screenSize === "sm") {
+      addButton({
+        id: "TINDERNAV",
+        callback: triggerNext,
+        label: "Close",
+        icon: getIcon("right"),
+      });
+    }
 
-useEffect(() => {
-  if (screenSize === "sm") {
-    addButton({
-      id: "TINDERNAV",
-      callback: triggerNext,
-      label: "Close",
-      icon: getIcon("right"),
-    });
-  }
-
-  return () => {
-    removeButton({ id: "TINDERNAV" });
-  };
-}, [screenSize, addButton, removeButton]);
+    return () => {
+      removeButton({ id: "TINDERNAV" });
+    };
+  }, [screenSize, addButton, removeButton]);
   useEffect(() => {
     const events = ["mousemove", "mousedown", "touchstart", "keydown"];
     events.forEach((evt) => window.addEventListener(evt, resetInactivityTimer));
@@ -66,7 +73,7 @@ useEffect(() => {
 
     return () => {
       events.forEach((evt) =>
-        window.removeEventListener(evt, resetInactivityTimer)
+        window.removeEventListener(evt, resetInactivityTimer),
       );
       clearTimeout(inactivityTimer.current);
       clearInterval(periodicTimer.current);
@@ -91,8 +98,9 @@ useEffect(() => {
 
   return (
     <CenteredContainer>
-      {   screenSize === "sm" &&       <TrackedGradientBG/>}
-
+      {screenSize === "sm" && <TrackedGradientBG />}
+      {/* <TrackedGradientBG />*/}
+      {/* <ResponsiveGradient colorProfile={currentCardIndex %10}/> */}
       <div
         className={`${
           screenSize === "sm" ? styles.sidebyside_mobile : styles.sidebyside
@@ -100,11 +108,12 @@ useEffect(() => {
       >
         {/* Right side — swipeable stack */}
         <div className={styles.StackView}>
+          
           <TinderView
             onChange={handleCardChange}
             setActiveIndex={handleCardChange}
             setwiggle={wiggle}
-            showNext = {screenSize!=="sm"}
+            showNext={screenSize !== "sm"}
             conductnext={conductnext}
           >
             {cardEntries.map(([key, { card }]) => (
@@ -113,16 +122,16 @@ useEffect(() => {
           </TinderView>
         </div>
 
-
-{/* <button onClick={triggerNext}>test</button> */}
+        {/* <button onClick={triggerNext}>test</button> */}
         {/* Left side — dynamic text */}
         <div className={styles.DescView}>
-
           <div className={styles.descContent}>
+
             {/* 1. Outgoing Text: Renders with styles.fadeOut during animation */}
             {animating && prevCardIndex !== null && (
               <div
                 key={prevCardIndex}
+                
                 className={`${styles.textBlock} ${styles.fadeOut}`}
               >
                 <h1>{prevTitle}</h1>
@@ -145,16 +154,16 @@ useEffect(() => {
             {/* Removed the unnecessary double <div className={styles.DescView}> wrapper */}
           </div>
 
-            <div className={styles.spacer}/>
-            <div className={styles.DotContainer}>
-              <PageDots
-                n_dots={cardKeys.length}
-                // min={0}
-                direction="horizontal"
-                currentPage={currentCardIndex}
-                disable={true}
-              />
-            </div>
+          <div className={styles.spacer} />
+          <div className={styles.DotContainer}>
+            <PageDots
+              n_dots={cardKeys.length}
+              // min={0}
+              direction="horizontal"
+              currentPage={currentCardIndex}
+              disable={true}
+            />
+          </div>
         </div>
       </div>
     </CenteredContainer>

@@ -1,17 +1,61 @@
-import { 
-  FaHome, FaUser, FaCog, FaCircleNotch, 
-  FaFileAlt, FaVideo, FaFilePdf, FaGithub, 
-  FaTimes, FaStar, FaMoon, FaArrowLeft, 
-  FaArrowRight, FaArrowCircleLeft, FaProjectDiagram, 
-  FaInfoCircle, FaEnvelope, FaToolbox, FaTasks, 
-  FaChevronCircleDown, FaChevronDown, FaChevronUp, FaChevronCircleUp,
-  FaQuestionCircle, FaBars, FaArrowUp, FaArrowDown, 
-  FaGrinBeamSweat, FaSmile, FaWrench, FaTheRedYeti,
-  FaLinkedin, FaCode, FaRegEnvelope, FaExpandAlt, FaSlidersH, FaCodeBranch,
-  FaFile, FaHandSpock, FaExternalLinkAlt, FaSun, FaWalking, FaChessKnight,
-  FaChess, FaDumbbell, FaFish, FaShareAlt, FaNewspaper, FaHandPointRight, FaAddressCard,
-  FaTwitter, FaFacebook, FaReddit, FaColumns, FaAlignCenter, 
-  FaInfo, FaGraduationCap,
+import {
+  FaHome,
+  FaUser,
+  FaCog,
+  FaCircleNotch,
+  FaFileAlt,
+  FaVideo,
+  FaFilePdf,
+  FaGithub,
+  FaTimes,
+  FaStar,
+  FaMoon,
+  FaArrowLeft,
+  FaArrowRight,
+  FaArrowCircleLeft,
+  FaProjectDiagram,
+  FaInfoCircle,
+  FaEnvelope,
+  FaToolbox,
+  FaTasks,
+  FaChevronCircleDown,
+  FaChevronDown,
+  FaChevronUp,
+  FaChevronCircleUp,
+  FaQuestionCircle,
+  FaBars,
+  FaArrowUp,
+  FaArrowDown,
+  FaGrinBeamSweat,
+  FaSmile,
+  FaWrench,
+  FaTheRedYeti,
+  FaLinkedin,
+  FaCode,
+  FaRegEnvelope,
+  FaExpandAlt,
+  FaSlidersH,
+  FaCodeBranch,
+  FaFile,
+  FaHandSpock,
+  FaExternalLinkAlt,
+  FaSun,
+  FaWalking,
+  FaChessKnight,
+  FaChess,
+  FaDumbbell,
+  FaFish,
+  FaShareAlt,
+  FaNewspaper,
+  FaHandPointRight,
+  FaAddressCard,
+  FaTwitter,
+  FaFacebook,
+  FaReddit,
+  FaColumns,
+  FaAlignCenter,
+  FaInfo,
+  FaGraduationCap,
   FaMap,
   FaSkullCrossbones,
   FaAward,
@@ -26,10 +70,11 @@ import {
   FaArrowCircleRight,
   FaRegCircle,
   FaCompress,
+  FaPaperclip,
   FaCompressAlt,
-  FaDirections
-} from "react-icons/fa"; 
-import { FaPencil, FaSailboat } from "react-icons/fa6";
+  FaDirections,
+} from "react-icons/fa";
+import { FaP, FaPencil, FaSailboat } from "react-icons/fa6";
 
 const getIcon = (iconName = "default") => {
   const iconMap = {
@@ -37,7 +82,7 @@ const getIcon = (iconName = "default") => {
     about: <FaInfoCircle />,
     user: <FaUser />,
     settings: <FaCog />,
-    article: <FaRegFileAlt />,  // Outline
+    article: <FaRegFileAlt />, // Outline
     video: <FaVideo />,
     academic: <FaFilePdf />,
     code: <FaGithub />,
@@ -47,15 +92,15 @@ const getIcon = (iconName = "default") => {
     email: <FaRegEnvelope />,
     tools: <FaToolbox />,
     tasks: <FaTasks />,
-    star: <FaRegStar />,         // Outline star
-    moon: <FaRegMoon />,         // Outline moon
+    star: <FaRegStar />, // Outline star
+    moon: <FaRegMoon />, // Outline moon
     close: <FaTimes />,
     cross: <FaBan />,
     return: <FaArrowLeft />,
     back: <FaArrowCircleLeft />,
     next: <FaArrowRight />,
     up: <FaArrowUp />,
-    boat: <FaSailboat/>,
+    boat: <FaSailboat />,
     uparrow: <FaArrowUp />,
     down: <FaChevronDown />,
     downarrow: <FaArrowDown />,
@@ -64,8 +109,8 @@ const getIcon = (iconName = "default") => {
     overflow: <FaBars />,
     menu: <FaBars />,
     expand: <FaExpandAlt />,
-    reduce: <FaCompressAlt/>,
-    file: <FaRegFile />,         // Outline file
+    reduce: <FaCompressAlt />,
+    file: <FaRegFile />, // Outline file
     github: <FaGithub />,
     linkedin: <FaLinkedin />,
     junk: <FaFish />,
@@ -73,7 +118,7 @@ const getIcon = (iconName = "default") => {
     chess: <FaChessKnight />,
     catalogue: <FaWalking />,
     thesis: <FaProjectDiagram />,
-    paper: <FaRegFile />,        // Outline file
+    paper: <FaRegFile />, // Outline file
     complete: <FaNewspaper />,
     share: <FaShareAlt />,
     external: <FaExternalLinkAlt />,
@@ -97,13 +142,13 @@ const getIcon = (iconName = "default") => {
     editor: <FaPencil />,
     tick: <FaCheck />,
     cross: <FaBan />,
+    article: <FaPaperclip />,
     portfolio: <FaCode />,
     tag: <FaTag />,
-    rightarrow: <FaArrowCircleRight/>,
+    rightarrow: <FaArrowCircleRight />,
     right: <FaArrowRight />,
     left: <FaArrowLeft />,
-    dir: <FaDirections/>
-
+    dir: <FaDirections />,
   };
 
   return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;

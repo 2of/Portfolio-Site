@@ -4,14 +4,20 @@ import { useParams } from "react-router-dom";
 import { useProjects } from "../contexts/ContentContext";
 // import ColumnWithSections from "../components/Column/ColumnWithSections";
 import { Article } from "../components/Article/Article";
+import { CenteredContainer } from "../components/Scroll/CenteredContainer";
+import { useNavStack } from "../contexts/NavStackContext";
 
 const ProjectPage = () => {
   const { getArticleMetaData } = useProjects();
   const { projectId } = useParams();
+    const {setNavBgTransparent,shouldNavBgBeTransparent } = useNavStack();
   
   const [metaData, setMetaData] = useState(null);
   const [state, setState] = useState("wait");
+  useEffect(() => {
 
+    setNavBgTransparent(true)
+  }, [])
   useEffect(() => {
     const _metadata = getArticleMetaData(projectId);
 
@@ -26,9 +32,14 @@ const ProjectPage = () => {
   }, [projectId, getArticleMetaData]);
 
   if (state === "MetaDataFailure") {
-    return <div className="GenericPageContainer centered">
-        <h2>Selected Project {projectId} Not Found</h2>
-    </div>;
+    return (
+
+
+      <CenteredContainer>
+        <h1>That's a 404 ! Selected Project: {projectId} Not Found</h1>
+
+      </CenteredContainer>
+    )
   }
 
   if (state !== "ready") {

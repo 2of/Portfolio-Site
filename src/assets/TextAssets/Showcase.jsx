@@ -58,8 +58,8 @@ export const ShowcasecardStack = {
           "Neural Net Design",
         ]}
        
-        image="/images/noahking.jpg"
-        cvLink="https://noahking.dev/cv"
+        // image="/images/noahking.jpg"
+        cvLink="https://github.com/2of/2of/blob/main/docs/CV_all.pdf"
       />
     ),
   },
@@ -132,13 +132,13 @@ export const ShowcasecardStack = {
     subtitle: "Perhaps my Master's project would entice you? I decided dealing with 150k images was a smart thesis to go with. We emulate GeoGuessr players by creating a (psuedo) ensemble of different machine learning approaches... it did noticably improve on the image distribution... but the issues are left to you to read... here... now...",
     card: (
       <ProjectCard
-        image="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d"
-        tags={["AI", "Open Source", "2025"]}
+        image="public/Writeups/GEO/thumb.gif"
+        tags={["AI", "Machine Learning", "Model Design" , "Heuristic Analyis", "Large Data Processing"]}
         title="Geolocalization of Street level Imagery with Machine Learning"
         subtitle="Master's Project @ UC 2025"
         description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
         authorString="by Noah King"
-        link="https://github.com/yourusername/georeasoner"
+
         icon={getIcon("projects")}
         id="geo"
         // background="linear-gradient(135deg, #0D1117, #161B22)"
@@ -156,7 +156,7 @@ export const ShowcasecardStack = {
         subtitle="LLM-driven GeoLocalization"
         description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
         authorString="by Noah King"
-        link="https://github.com/yourusername/georeasoner"
+        link="/ChessEloEsimator"
         icon={getIcon("projects")}
         id="chessEloEstimator"
         // background="linear-gradient(135deg, #0D1117, #161B22)"

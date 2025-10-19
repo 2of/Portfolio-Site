@@ -50,8 +50,12 @@ const ProperModal = () => {
         animatingOut ? styles.overlayAnimatingOut : ""
       }`}
       onClick={handleCloseAnimation}
+      
     >
+
+      
       <div className={`${styles.modal} ${sizeClass}`} onClick={handleClick}>
+        
         <div
           className={`${styles.topBar} ${
             modalState.floatnav ? styles.floatingnav : styles.fixednav

@@ -8,6 +8,7 @@ import ParticleBackground from "./Particles";
 import PhysicsShapes from "./PhysicsShapes";
 import art from "../../assets/Images/default_big.jpg";
 import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
+import ResponsiveGradient from "./ResponsiveGradient";
 
 
 // Inside the same file or import from another file
@@ -66,6 +67,8 @@ const renderBackground = () => {
      return <div className={styles.bg2} />;
     case "darkbg":
      return <div className={styles.darkbg} />;
+    case "shapes": 
+    return <PhysicsShapes/>
     
     case "herobg":
       return <div className={styles.herobg} />;
@@ -84,8 +87,8 @@ const renderBackground = () => {
       const imageUrl = sortedRoutes.find(r => location.pathname.startsWith(r.path))?.imageUrl;
       return <ImageBg url={imageUrl} />;
 
-    case "shapes":
-      return <PhysicsShapes />
+    case "ResGrad":
+      return <ResponsiveGradient />
     case "default":
     default:
       return <div className={styles.regularbg} />;

@@ -8,33 +8,31 @@ export const baseTheme = {
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
 
+  "--navHeightDESKTOP": "5rem",
 
-
-  "--navHeightDESKTOP" : "5rem",
-
-    "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
+  "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "82px",
-  "--maxWidth": "1400px",
+  "--maxWidth": "1480px",
 
   "--border-radius": "24px",
   "--blur-radius": "15px",
-  "--text-dark" : "#161616ff",
-  "--darkbg" : "#1f1f1fdd",
-  "--lighttext" : "#d1cfc0"
+  "--text-dark": "#2c3e50",
+  "--darkbg": "#0d1324dd",
+  "--lighttext": "#d1cfc0",
 };
 
 export const lightTheme = {
-  "--bg": "#e3e2dbff",      // soft warm off-white
-  "--bg-l1": "rgba(206, 206, 206, 1)",       // gentle sage tint (slightly darker)
-  "--bg-l2": "rgba(187, 190, 174, 1)",       // mid warm grey-green
-  "--bg-l3": "rgba(156, 158, 144, 1)",       // deeper neutral olive
+  "--bg": "#ecece9ff", // soft warm off-white
+  "--bg-l1": "rgba(206, 206, 206, 1)", // gentle sage tint (slightly darker)
+  "--bg-l2": "rgba(187, 190, 174, 1)", // mid warm grey-green
+  "--bg-l3": "rgba(156, 158, 144, 1)", // deeper neutral olive
 
   "--bg-transparent": "rgba(231, 233, 225, 0.8)",
 
-  "--text-color": "#1f1f1f",
+  "--text-color": "#2c3e50",
   "--secondary-text": "#6C6C6C",
   "--card-bg": "#FFFFFF",
   "--border-color": "#474747",
@@ -51,7 +49,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  "--bg": "#1f1f1f",
+  "--bg": "#101720",
   "--bg-l1": "#3e3e3eff",
   "--bg-l2": "#302f2f",
   "--bg-l3": "#666464",
@@ -71,20 +69,18 @@ export const darkTheme = {
   "--inverse-transparent": "#f8f7f6c1", // light-bg-transparent
   "--inverse-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
-};  
+};
 
-export const inlineNavHeight = { 
-
+export const inlineNavHeight = {
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "82px",
-}
+};
 
-export const hiddenNavHeight = { 
-
+export const hiddenNavHeight = {
   "--navHeight": "0rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "82px",
-}
+};

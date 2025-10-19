@@ -2,6 +2,7 @@
   {
     "name": "geo",
     "showcase": true,
+    "large": true,
     "uniWorkShowcase": false,
     "details": {
       "icon": "map",
@@ -24,6 +25,16 @@
         "Psuedo Model Ensemble",
         "Clustering Analysis"
       ],
+      "extralinks": [
+        {
+          "label": "Writeup",
+          "url": "/Writeups/GEO/text/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com"
+        }
+      ],
       "showcase": true,
       "uniWorkShowcase": false,
       "type": "file",
@@ -33,9 +44,24 @@
       "bgimage": "/Writeups/GEO/alternatethumb.png",
       "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
     }
+  },{
+    "name": "UILIB",
+       "large": true,
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/unnamed.jpg",
+      "title": "I built this website in react"
+    }
   },
   {
     "name": "chessEloEstimator",
+
     "details": {
       "icon": "chess",
       "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
@@ -51,10 +77,20 @@
       "type": "url",
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
       "file": "Chess1.json",
-      "internalLink" : "/ChessEloEsimator",
-      "bgimage": "/Writeups/ChessELOEstimator/classythumb.png",
+      "internalLink": "/ChessEloEsimator",
+      "bgimage": "/Writeups/ChessELOEstimator/ClassyThumb.png",
       "revealbgimage": "/Writeups/Chrome/thumbColour.png",
-      "title": "Free Chess ELO Estimator"
+      "title": "Free Chess ELO Estimator",
+      "extralinks": [
+        {
+          "label": "Writeup",
+          "url": "/Writeups/GEO/text/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com"
+        }
+      ]
     }
   },
   {
@@ -64,14 +100,14 @@
 
     "details": {
       "icon": "portfolio",
-      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+      "subtitle": "This site got busy, I made a UI lib out of it",
 
       "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
       "type": "file",
       "url": "/Writeups/PortfolioSite/text.json",
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
-      "title": "I turned my Portfolio Site into a UI Library"
+      "title": "Custom UI Library"
     }
   },
   {
@@ -79,14 +115,25 @@
     "details": {
       "icon": "portfolio",
       "subtitle": "Computer Vision Project @ UC ",
-      "tags": ["Computer Vision", "Tensorflow", "Python", "Neural Network Design", "OpenCV", "MediaPipe", "PyTorch", "Machine Learning", "PyAutoGUI"],
+      "tags": [
+        "Computer Vision",
+        "Tensorflow",
+        "Python",
+        "Neural Network Design",
+        "OpenCV",
+        "MediaPipe",
+        "PyTorch",
+        "Machine Learning",
+        "PyAutoGUI"
+      ],
       "type": "file",
       "url": "/Writeups/RGBHands/text.json",
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/RGBHands/thumb.png",
-      "title": "I created Neural Networks to recognize hand gestures from an RGB camera"
+      "title": "Neural Net + RGB Camera Abstract Interface"
     }
   },
+
 
   {
     "name": "portfoliosite",
@@ -101,6 +148,7 @@
       "title": "I made a bunch of chess bots using 'the wrong' Machine Learning approaches"
     }
   },
+
   {
     "name": "portfoliosite",
     "details": {
@@ -114,21 +162,7 @@
       "title": "I built a chess website where you can play against my terrible bots!"
     }
   },
-  {
-    "name": "UILIB",
-    "details": {
-      "icon": "portfolio",
-      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
-
-      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
-      "type": "file",
-      "url": "/Writeups/PortfolioSite/text.json",
-      "heroImage": "/assets/heroImages/geo.png",
-      "bgimage": "/Writeups/PortfolioSite/thumb.png",
-      "title": "Responsive Modern Portfolio Website (this one!)"
-    }
-  },
-
+  
   {
     "name": "Chrome",
     "details": {

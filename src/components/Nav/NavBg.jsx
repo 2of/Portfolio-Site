@@ -16,12 +16,10 @@ export const NavBg = ({ menu, buttons }) => {
   const handleToggleFill = () => {
     setFillActive((prev) => !prev);
   };
-console.log(currentRoute.path)
+
   return (
     <div className={styles.navBg}>
-      <div
-        className={`${styles.inner} ${!fillActive ? styles.fill : ""}`}
-      >
+      <div className={`${styles.inner} ${!fillActive ? styles.fill : ""}`}>
         {menu}
         {buttons}
 
@@ -30,11 +28,9 @@ console.log(currentRoute.path)
           Toggle Fill
         </button> */}
 
-        <span className={styles.title}>
-
-          .{currentRoute.path}
-        </span>
-
+       <span className={styles.title}>
+  {currentRoute?.path ?? ""}
+</span>
         <NavLogo />
       </div>
     </div>

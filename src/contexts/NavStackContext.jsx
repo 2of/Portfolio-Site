@@ -6,7 +6,26 @@ export const useNavStack = () => useContext(NavStackContext);
 
 export const NavStackProvider = ({ children }) => {
   const [navstack, setNavstack] = useState([]);
+
+const [shouldHideNavBgDesktop, setShouldHideNavBgDesktop] = useState(false);
+
   const [extraButtons, setExtraButtons] = useState([]);
+
+
+const shouldNavBgBeTransparent = () => {
+  return shouldHideNavBgDesktop;
+};
+
+const setNavBgTransparent = (value) => {
+  setShouldHideNavBgDesktop(value);
+};
+
+
+
+
+  // --- navbg funcs
+
+
 
   // --- navstack functions ---
   const pushNav = useCallback((navObj) => {
@@ -61,7 +80,9 @@ const extraButtonsContains = useCallback(
         addButton,
         removeButton,
         clearButtons,
-        extraButtonsContains
+        extraButtonsContains,
+        shouldNavBgBeTransparent,
+        setNavBgTransparent
       }}
     >
       {children}

@@ -1,0 +1,198 @@
+{
+  "name": "UILib",
+  "title": "I turned (This website) into a UI library",
+  "subtitle": "And it was on the NZ Reddit Frontpage (For an evening)",
+
+            "heroImage": "/Writeups/Chrome/bg.gif",
+  "heroLinks": [
+
+{
+      "title": "Source Code",
+      "type": "external_link",
+            "icon": "complete",
+      "to": "https://github.com/2of/No-More-Marketplace-Chrome"
+    }
+    ,
+    {
+      "title": "Reddit Post",
+            "type": "external_link",
+      "icon": "reddit",
+      "to": "https://old.reddit.com/r/newzealand/comments/108nfqn/i_got_annoyed_with_the_new_additions_to_the/"
+    }, {
+      "title": "Chrome Web Store",
+            "type": "external_link",
+      "icon": "map",
+      "to": "https://chromewebstore.google.com/detail/no-more-marketplace/febnmhgkigdhepahofkknlfhbegkplcb"
+    }
+  ],
+  "sections": [
+    {
+      "name": "What?",
+      "boost" : "true",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "To keep it short and sweet: When thewarehouse.co.nz rolled out and intermingled their 'marketplace' listings with products that are locally available, they did implement a filter to remove them, but it reset on each new query"
+
+        }, {
+          "type": "paragraph",
+          "text": "Sooo... Because this was mildly annoying, I wrote a Chrome Extension to fix the behaviour"
+           
+        },{
+          "type": "highlight",
+          "text": "I was mildly annoyed by the behaviour of the new site"
+           
+        },{
+          "type": "paragraph",
+          "text": "At some point the behaviour was fixed, meaning that this (Manifest V3 btw) extension is no longer necessary"
+           
+        },
+        {"type" : "link",
+    "label" : "Link to webstore",
+"to" : "https://chromewebstore.google.com/detail/no-more-marketplace/febnmhgkigdhepahofkknlfhbegkplcb?authuser=0&hl=en&pli=1"}
+
+
+      ]
+    },
+  {
+  "name": "Manifest V3 and How It Works?",
+  "items": [
+    {
+      "type": "paragraph",
+      "text": "It just so happened that I started toying around with this extension right as Google stopped allowing new *Manifest V2* submissions to the Chrome Web Store. So, naturally, I had to go and learn Manifest V3."
+    },
+    {
+      "type": "paragraph",
+      "text": "Originally, this extension used the chrome.webRequest API to intercept and modify outgoing requests to thewarehouse.co.nz. With webRequest.onBeforeRequest and the blocking permission, I could dynamically tweak the request URL and append query parameters based on user preferences (like filtering out marketplace or online-only products)."
+    },
+    {
+      "type": "paragraph",
+      "text": "But that’s not allowed anymore in Manifest V3 everything has to be defined up front as declarative rules. No more freeform request tampering at runtime."
+    },
+    {
+      "type": "paragraph",
+      "text": "So now it uses addOrReplaceParams rules to inject query parameters into requests, which does the same thing, just... a little less dynamically. Yes, I know ... super exciting and complex stuff."
+    }
+    
+  ]
+},{
+  "name": "Routing Rules : Param",
+    "boost" : "true",
+  "items": [
+
+    {"type":"paragraph",
+"text" : "Im kinda running out of things to fill this up with... here's the explicit parameters we add"},
+    {
+      "type": "grid",
+      "rows": [
+        {
+          "label": "hide_marketplace",
+          "value": "prefn1=marketplaceItem"
+        },
+        {
+          "label": "hide_marketplace",
+          "value": "prefv1=The Warehouse"
+        },
+        {
+          "label": "hide_online",
+          "value": "prefn1=channelType"
+        },
+        {
+          "label": "hide_online",
+          "value": "prefv1=Store"
+        },
+        {
+          "label": "both",
+          "value": "prefn1=channelType"
+        },
+        {
+          "label": "both",
+          "value": "prefv1=Store"
+        },
+        {
+          "label": "both",
+          "value": "prefn2=marketplaceItem"
+        },
+        {
+          "label": "both",
+          "value": "prefv2=The Warehouse"
+        }
+      ]
+    },
+{
+  "type": "paragraph",
+  "text": "And these parameters are added only when the URL matches the specified patterns for The Warehouse site, specifically when the URL contains either '/search' or '/c' paths on thewarehouse.co.nz domain."
+}
+  ]
+},
+    {
+      "name": "I also added a quick GUI",
+      "items": [
+        {
+          "type": "image",
+          "src": "/Writeups/Chrome/screenshot.png",
+          "alt": "The Gui (just a quick JS + HTML, no react or vue etc"
+        }
+      ]
+    },
+     {
+      "name": "Data Section",
+
+      "items": [
+        {
+  "type": "paragraph",
+  "text": "Here's some stats. Again this is a pretty small projecct"
+},{
+          "type": "data",
+          "datapoints": [
+            {
+              "overallLabel": "",
+              "type": "radial",
+              "data" : 
+              [{
+                "label": "Reddit Upvoters",
+              "upperBound": 1000,
+              "lowerBound": 0,
+              "value": 600},
+            
+            {
+                "label": "Number who installed" ,
+              "upperBound": 600,
+              "lowerBound": 0,
+              "value": 45},
+                  
+            {
+                "label": "Holdouts in 2025" ,
+              "upperBound": 600,
+              "lowerBound": 0,
+              "value": 33}
+            ]
+            }
+          ]
+        }
+      ]
+    } ,
+
+
+     {
+      "name": ".. This is about all",
+
+      "items": [
+        {
+  "type": "paragraph",
+  "text": "This is just a quick writeup for a deprecated project. Cheerio. Although I have caught someone recommending it in the wild, which was kinda cool"
+},
+ {
+  "type": "highlight",
+  "text": "The most interesting part is that I got kicked over to manifest V3 and all of my stackoverflow-ing was borked as a result"
+}
+      ]
+    } 
+    
+   
+  ],
+  "link": {
+    "text": "Back to projects",
+    "url": "/projects"
+  }
+}

@@ -34,6 +34,7 @@ import { useModal } from "../contexts/ModalContext";
 import { Article } from "../components/Article/Article";
 import { meta } from "@eslint/js";
 import { useNavStack } from "../contexts/NavStackContext";
+import ResponsiveGradient from "../components/Background/ResponsiveGradient";
 
 // const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
 export const JunkPage = () => {
@@ -243,7 +244,12 @@ export const JunkPage = () => {
           animate
         ></AnimatedHeader>
       </div>
+<div className={`${styles.chunk} ${styles.centered}`}>
 
+
+
+  <ResponsiveGradient/>
+</div>
       <div className={styles.chunk}>
         Here is glass
         <GlassPushOverlay>

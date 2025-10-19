@@ -4,6 +4,8 @@ import getIcon from "../../utils/Iconifier";
 import { useModal } from "../../contexts/ModalContext";
 import { Article } from "../Article/Article";
 import { useProjects } from "../../contexts/ContentContext";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useNavStack } from "../../contexts/NavStackContext";
 
 const ProjectCard = ({
   image,
@@ -19,6 +21,7 @@ const ProjectCard = ({
 }) => {
   const { showModal } = useModal();
 const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
+const navigate = useNavigate()
   const openModal = (articlename) => {
     showModal({
       // title: "blah blah",
@@ -35,6 +38,16 @@ const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
       ),
     });
   };
+
+  const handleclick = () => { 
+    if (link) { 
+navigate(link);
+    } else { 
+      openModal();
+    }
+
+
+  }
 
   const bgStyle =
     background === "standardbg"
@@ -69,7 +82,7 @@ const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
       <div className={styles.content}>
         <div className={styles.header}>
           <div className={styles.titleGroup}>
-            <h3 onClick={openModal}>
+            <h3 onClick={handleclick}>
               {title}
               {getIcon("right")}
             </h3>

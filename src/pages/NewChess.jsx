@@ -35,11 +35,10 @@ export const NewChessPage = () => {
     openModal();
   };
 
-
-  const openModal = () => { 
-showModal({
+  const openModal = () => {
+    showModal({
       // title: "blah blah",
-      size : "large",
+      size: "large",
       floatnav: true,
       content: (
         <Article
@@ -51,8 +50,7 @@ showModal({
         />
       ),
     });
-
-  }
+  };
   const sampleBoard = [
     ["r", "n", "b", "q", "k", "b", "n", "r"], // Rank 8 - Black back rank
     ["p", "p", "p", "p", "p", "p", "p", "p"], // Rank 7 - Black pawns
@@ -114,7 +112,7 @@ showModal({
 
       // Use \n for plain alerts
       const message = `There are ${issues.length} issue(s):\n\n- ${issues.join(
-        "\n- "
+        "\n- ",
       )}`;
 
       // If your modal renders HTML, replace \n with <br>:
@@ -126,7 +124,6 @@ showModal({
 
   return (
     <>
-
       <CenteredContainer>
         <div className={styles.header}>
           <h1>Chess Elo Estimator</h1>

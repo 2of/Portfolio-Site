@@ -7,7 +7,7 @@ import useScreenSize from "../../../utils/screensize";
 const WelcomeCard = ({
   title = "Where Are you?",
   intro = "This is Noah King's   handbuilt little portfolio website. (yeah, I seriosuly built everything here... on REACT...)",
-  text1 = "Swipe for Goodies or use the Navigation to see even more"
+  text1 = "Swipe for Goodies or use the Navigation to see even more",
 }) => {
   const [showHint, setShowHint] = useState(false);
   const screenSize = useScreenSize();
@@ -23,15 +23,13 @@ const WelcomeCard = ({
   return (
     <div className={`${styles.card} ${showHint ? styles.hint : ""}`}>
       {/* <TrackedGradientBG /> */}
-      {screenSize !== "sm" && <TrackedGradientBG/>}
+      {screenSize !== "sm" && <TrackedGradientBG />}
       <div className={styles.pattern}></div>
 
-
-      
-<h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>{title}</h1>
       <div className={styles.content}>
         <p className={styles.intro}>{intro}</p>
-            <p className={styles.text1}>{text1}</p>
+        <p className={styles.text1}>{text1}</p>
       </div>
 
       <div className={styles.footer}>

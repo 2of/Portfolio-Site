@@ -1,0 +1,136 @@
+{
+  "name": "RGBHands",
+  "title": "I created a Mouse input method, inclding gestures, using a single RGB camera and some Machine Learning",
+  "subtitle": "For MacOS, We match some gestures, but not 1:1",
+
+            "heroImage": "/Writeups/RGBHands/bg.png",
+  "heroLinks": [
+
+    
+    {
+      "title": "Report.pdf",
+            "type": "external_link",
+      "icon": "Report",
+      "to": "https://github.com/2of/University-Of-Canterbury-COSC428-2024/blob/main/report.pdf"
+    }, {
+      "title": "Github Repo",
+            "type": "external_link",
+      "icon": "map",
+      "to": "https://chromewebstore.google.com/detail/no-more-marketplace/febnmhgkigdhepahofkknlfhbegkplcb"
+    }
+  ],
+  "sections": [
+    {
+      "name": "In Brief?",
+      "boost" : "true",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Utilizing a single RGB Camera, we track the users hands in 3d space and map these inputs to mouse inputs"
+
+        }, {
+          "type": "paragraph",
+          "text": "We use MediaPipe Hands to get the 3d hands, we then train a small neural network to classify gestures, and finally we use a custom algorithm to map hand position to screen position"
+           
+        },{
+          "type": "highlight",
+          "text": "We calibrate the display manually;  essentially it works best using a usual laptop's webcam on a large display"
+           
+        }
+
+      ]
+    },
+
+{"name" : "Detection and Points",
+
+"items": [
+{
+  "type": "paragraph",
+          "text": "We use MediaPipe Hands to track the position of a hand in real time; we augment this with a Neural Network trained on the following points"
+           
+        }, 
+   {
+          "type": "image",
+          "src": "/Writeups/RGBHands/Points.png",
+          "alt": "Sample image showing lorem ipsum context."
+        },{
+  "type": "paragraph",
+          "text": "In the.. spirit? of dimensionality, we train on the relative angles between each of the points recorded by mediapipe hands in 2.5d space... essentially the intention was to capture a bit more of the nuance between movements... you'll see the results in the next section. "
+           
+        }, {
+          "type": "image",
+          "src": "/Writeups/RGBHands/data.png",
+          "alt": "Relative angles are normalized"
+        }
+
+]
+  },
+
+{
+  "name": "Detection Accuracy","boost" : "true",
+
+   
+  "items": [{
+          "type": "paragraph",
+          "text": "We calibrate the display manually;  essentially it works best using a usual laptop's webcam on a large display"
+           
+        }, 
+    {
+  "type": "grid",
+  "rows": [
+    {
+      "label": "Pinch",
+      "value": "77.27"
+    },
+    {
+      "label": "Point",
+      "value": "81.02"
+    },
+    {
+      "label": "Idle",
+      "value": "93.22"
+    },
+    {
+      "label": "2-Finger",
+      "value": "81.25"
+    },
+    {
+      "label": "Spread",
+      "value": "99.15"
+    },
+    {
+      "label": "Average",
+      "value": "86.382"
+    }
+  ]
+}
+
+   
+  ]
+},
+   
+
+
+
+     {
+      "name": ".. This is about all",
+
+      "items": [
+        {
+  "type": "paragraph",
+  "text": "This is wrapped in a pyautogui wrapper. The project additionally maps a relative vector as a perpendicular point form the plane formed by hands in mediapipe to 'push' a cursor abbout with some velocty..."
+},
+ {
+  "type": "highlight",
+  "text": "Check the repo for the writeup"
+}
+      ]
+    } 
+    
+   
+  ],
+  "link": {
+    "text": "Back to projects",
+    "url": "/projects"
+  }
+}

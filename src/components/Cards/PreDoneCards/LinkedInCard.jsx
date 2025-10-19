@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./LinkedinCard.module.scss";
 import { FaLinkedin } from "react-icons/fa";
 import { StandardButton } from "../../UI/StandardButton";
+import getIcon from "../../../utils/Iconifier";
 
 const LinkedinCard = ({ name, title, company, summary, profilePic, bannerPic, url }) => {
   return (
@@ -51,7 +52,7 @@ const LinkedinCard = ({ name, title, company, summary, profilePic, bannerPic, ur
                   label="View on LinkedIn"
                   tooltip="Open Linkedin Profile"
                   type="rounded_label"
-                  // icon={<FaGithub />}
+                  icon={getIcon("linkedin")}
                   link={url}
                 />
 

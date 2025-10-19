@@ -13,26 +13,24 @@ const AboutCard = ({
   heroImage,
   cvLink = "https://yourcvlink.com",
   tags1,
-  tags1title
+  tags1title,
 }) => {
   const { showModal } = useModal();
 
-  const openModalForDescr = ({content}) => { 
-    showModal({ 
+  const openModalForDescr = ({ content }) => {
+    showModal({
       title: "overflowtext",
-      content:  content,
-      size: "medium"
-    })
-
-  }
+      content: content,
+      size: "medium",
+    });
+  };
   return (
     <div className={styles.aboutCard}>
       <div
         className={styles.hero}
         // style={{ backgroundImage: `url(${heroImage})` }}
       >
-
-        <TrackedGradientBG/>
+        {/* <TrackedGradientBG />*/}
         <div className={styles.overlay}>
           <div className={styles.textBlock}>
             <h2 className={styles.name}>{name}</h2>
@@ -51,11 +49,24 @@ const AboutCard = ({
       </div>
 
       <div className={styles.body}>
-
-        <div className={styles.spacer}/>
-        <p className={styles.about} onClick={() => openModalForDescr({ content: <><p style ={{ fontSize:"1rem"}}>Full Text:</p> <p style ={{ fontSize:"2rem"}}>{about}</p> </>})}>{about}</p>
-           <div className={styles.spacer}/>
-{tags1title && <h4>{tags1title} </h4>}
+        <div className={styles.spacer} />
+        <p
+          className={styles.about}
+          onClick={() =>
+            openModalForDescr({
+              content: (
+                <>
+                  <p style={{ fontSize: "1rem" }}>Full Text:</p>{" "}
+                  <p style={{ fontSize: "1.5rem" }}>{about}</p>{" "}
+                </>
+              ),
+            })
+          }
+        >
+          {about}
+        </p>
+        <div className={styles.spacer} />
+        {tags1title && <h4>{tags1title} </h4>}
         {tags1 && (
           <div className={styles.tags}>
             {tags1.map((tag, i) => (
@@ -65,9 +76,6 @@ const AboutCard = ({
             ))}
           </div>
         )}
-
-
-
       </div>
 
       <div className={styles.footer}>

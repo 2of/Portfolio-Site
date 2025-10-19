@@ -2,11 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./TinderView.module.scss";
 import getIcon from "../../../utils/Iconifier";
 
-const TinderView = ({ children, setActiveIndex, setwiggle = false, showNext = true, conductnext}) => {
+const TinderView = ({
+  children,
+  setActiveIndex,
+  setwiggle = false,
+  showNext = true,
+  conductnext,
+}) => {
   const items = React.Children.toArray(children);
   const total = items.length;
 
-  
   if (total === 0) {
     return <div className={styles.empty}>No cards provided</div>;
   }
@@ -18,24 +23,18 @@ const TinderView = ({ children, setActiveIndex, setwiggle = false, showNext = tr
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [showHint, setShowHint] = useState(false);
-  const [trackparentswipe, settrackparentswipe] = useState(false)
   const startPos = useRef(null);
   const ANIM_DURATION = 450;
   const SWIPE_THRESHOLD = 120;
-const BASE_SCALE = 0.96;      // resting scale for next card
-const BASE_Y = 18;            // resting Y offset for next card
-const MAX_LIFT = 6;  
+  const BASE_SCALE = 0.96; // resting scale for next card
+  const BASE_Y = 18; // resting Y offset for next card
+  const MAX_LIFT = 6;
 
-
-
-
-
-
-useEffect(() => {
-  if (conductnext > 0) {
-    handleSwipe("right");
-  }
-}, [conductnext]);
+  useEffect(() => {
+    if (conductnext > 0) {
+      handleSwipe("right");
+    }
+  }, [conductnext]);
   useEffect(() => {
     let hintTimeout;
     if (setwiggle) {
@@ -95,27 +94,28 @@ useEffect(() => {
     transform: dragging
       ? `translateX(${offset.x}px) rotate(${offset.x / 20}deg)`
       : direction === "left"
-      ? "translateX(-150%) rotate(-10deg)"
-      : direction === "right"
-      ? "translateX(150%) rotate(10deg)"
-      : showHint
-      ? `translateX(-40px) rotate(-3deg) ` // hint swipe
-      : `translateX(0) rotate(${RESTING_TILT}deg)`,
+        ? "translateX(-150%) rotate(-10deg)"
+        : direction === "right"
+          ? "translateX(150%) rotate(10deg)"
+          : showHint
+            ? `translateX(-40px) rotate(-3deg) ` // hint swipe
+            : `translateX(0) rotate(${RESTING_TILT}deg)`,
     transition: dragging
       ? "none"
       : showHint
-      ? "transform 0.2s ease"
-      : "transform var(--anim-duration) var(--ease), opacity var(--anim-duration) var(--ease)",
+        ? "transform 0.2s ease"
+        : "transform var(--anim-duration) var(--ease), opacity var(--anim-duration) var(--ease)",
     opacity: direction ? 0 : 1,
   };
-const nextTransform = `translateY(${BASE_Y - Math.min(Math.abs(offset.x) / 15, MAX_LIFT)}px) scale(${Math.min(BASE_SCALE + Math.min(Math.abs(offset.x) / 2000, 0.02), 1)})`;
+  const nextTransform = `translateY(${BASE_Y - Math.min(Math.abs(offset.x) / 15, MAX_LIFT)}px) scale(${Math.min(BASE_SCALE + Math.min(Math.abs(offset.x) / 2000, 0.02), 1)})`;
 
-const nextStyle = {
-  transform: nextTransform,
-  transition: direction || !dragging
-    ? "transform var(--anim-duration) var(--ease), opacity var(--anim-duration) var(--ease)"
-    : "none",
-};
+  const nextStyle = {
+    transform: nextTransform,
+    transition:
+      direction || !dragging
+        ? "transform var(--anim-duration) var(--ease), opacity var(--anim-duration) var(--ease)"
+        : "none",
+  };
   // --- Show hint animation ---
   const triggerHint = () => {
     if (animating || dragging) return;
@@ -127,7 +127,11 @@ const nextStyle = {
     <div className={styles.tinderView}>
       <div className={styles.stack}>
         {/* Next card */}
-        <div key={next} className={`${styles.card} ${styles.next}`}   style={nextStyle} > 
+        <div
+          key={next}
+          className={`${styles.card} ${styles.next}`}
+          style={nextStyle}
+        >
           {items[next]}
         </div>
 
@@ -148,26 +152,15 @@ const nextStyle = {
         </div>
       </div>
 
-<div className={styles.fakeStack}/>
+      <div className={styles.fakeStack} />
 
-
-{showNext && (
-
-<div className={styles.controls}>
-        {/* <button onClick={() => handleSwipe("left")} disabled={animating}>
-          {getIcon("left")}
-        </button> */}
-        <button onClick={() => handleSwipe("right")} disabled={animating}>
-          {getIcon("right")}
-        </button>
-        {/* <button onClick={triggerHint} disabled={animating}>
-          {getIcon("tag")}
-        </button> */}
-      </div>
-
-
-)}
-      
+      {showNext && (
+        <div className={styles.controls}>
+          <button onClick={() => handleSwipe("right")} disabled={animating}>
+            {getIcon("right")}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

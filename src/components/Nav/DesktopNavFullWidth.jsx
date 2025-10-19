@@ -14,6 +14,7 @@ import { StandardButton } from "../UI/StandardButton";
 import { LinearGradient } from "@react-pdf/renderer";
 import FeatherRevealImage from "../Misc/FeatherImageMouseTracked";
 import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
+import { useNavStack } from "../../contexts/NavStackContext";
 
 export const DesktopNavFullWidth = () => {
   const screenSize = useScreenSize();
@@ -26,6 +27,7 @@ export const DesktopNavFullWidth = () => {
   const [activePath, setActivePath] = useState(location.pathname);
   const [wiggleTarget, setWiggleTarget] = useState(null);
   const { openShareSheet } = useGlobalContext();
+  const { setNavBgTransparent, shouldNavBgBeTransparent } = useNavStack();
 
   const handleShare = useCallback(() => {
     openShareSheet(
@@ -66,6 +68,9 @@ export const DesktopNavFullWidth = () => {
         ${styles.navContainer}
         ${!isMenuFloating ? styles.fullwidth : styles.float}
         ${getCurrentNavReplacementButton().label ? styles.onlyButton : ""}
+        
+        ${shouldNavBgBeTransparent() ? styles.transparentbg : styles.fullbg}
+        
       `}
     >
       {/* <div className={styles.bgcontainer}>
@@ -73,20 +78,26 @@ export const DesktopNavFullWidth = () => {
 
 
       </div> */}
-    
-      <ul className={styles.navList}>
-     <li className={`${styles.logoContainer} ${styles.link}`}>
-             <Link
-               to={"/"}
-               viewTransition
-               className={`${styles.link} }`}
-               // onMouseMove={(e) => showTooltip(route.label, e)}
-               // onMouseLeave={hideTooltip}
-             >
-               <Logo variant="small" />
-               {/* </p> */}
-             </Link>
-           </li>
+
+      <div className={styles.bgcontainer} />
+      <ul
+        className={`${styles.navList} 
+
+        
+        `}
+      >
+        <li className={`${styles.logoContainer} ${styles.link}`}>
+          <Link
+            to={"/"}
+            viewTransition
+            className={`${styles.link} }`}
+            // onMouseMove={(e) => showTooltip(route.label, e)}
+            // onMouseLeave={hideTooltip}
+          >
+            <Logo variant="small" />
+            {/* </p> */}
+          </Link>
+        </li>
 
         {visibleRoutes.map((route, i) => (
           <li
@@ -129,17 +140,10 @@ export const DesktopNavFullWidth = () => {
             </Link>
           </li>
         )}
-        
 
         <li className={styles.spacer}></li>
 
-       
-
         <ul className={styles.SocialButtons}>
-          
-
-
-
           <li className={` ${styles.rightnav}`}>
             <StandardButton
               label="Github"
@@ -163,12 +167,10 @@ export const DesktopNavFullWidth = () => {
               nointeractEffects={true}
             />
           </li>
-        
-          
-                    {/* <li>•</li> */}
-                    
-                    
-                    <li className={` ${styles.rightnav}`}>
+
+          {/* <li>•</li> */}
+
+          <li className={` ${styles.rightnav}`}>
             <StandardButton
               label="share"
               icon={getIcon("share")}
@@ -178,9 +180,8 @@ export const DesktopNavFullWidth = () => {
               nointeractEffects={true}
             />
           </li>
-          
         </ul>
-         <li className={`${styles.navItem} ${styles.rightnav}`}>
+        <li className={`${styles.navItem} ${styles.rightnav}`}>
           <DarkModeWrapper type="largepill" />
         </li>
       </ul>

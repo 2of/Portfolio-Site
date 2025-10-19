@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {  useIsMenuFloatingDesktop } from "../../contexts/RouteContext";
+import { useNavStack } from "../../contexts/NavStackContext";
 
 export const CenteredContainer = ({ children, style = {}, ...props }) => {
   const floatDown = useIsMenuFloatingDesktop();
+  const {setNavBgTransparent,shouldNavBgBeTransparent } = useNavStack();
 
+  useEffect(() => {
+
+    setNavBgTransparent(true)
+  }, [])
   const dynamicStyle = {
     display: "flex",
     justifyContent: "center",
