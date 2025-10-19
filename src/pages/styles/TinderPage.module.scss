@@ -103,6 +103,7 @@
   .StackView {
     flex: 0 0 84%;
     width: 100%;
+    max-width: 100vw;
     padding: 1rem;
     padding-top: 2.4rem;
   }
