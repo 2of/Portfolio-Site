@@ -9,6 +9,7 @@ import WelcomeCard from "../../components/Cards/PreDoneCards/WelcomeCard";
 import linkedinimage from "../../assets/linkedinbg.jpeg";
 import avatar1 from "../../assets/userimage.jpeg";
 import { LinkCard } from "../../components/Cards/PreDoneCards/Linkscard";
+
 export const ShowcasecardStack = {
   welcome: {
     title: "Howdy!",
@@ -132,7 +133,7 @@ export const ShowcasecardStack = {
     subtitle: "Perhaps my Master's project would entice you? I decided dealing with 150k images was a smart thesis to go with. We emulate GeoGuessr players by creating a (psuedo) ensemble of different machine learning approaches... it did noticably improve on the image distribution... but the issues are left to you to read... here... now...",
     card: (
       <ProjectCard
-        image="public/Writeups/GEO/thumb.gif"
+        image="/assets/heroImages/geo.png"
         tags={["AI", "Machine Learning", "Model Design" , "Heuristic Analyis", "Large Data Processing"]}
         title="Geolocalization of Street level Imagery with Machine Learning"
         subtitle="Master's Project @ UC 2025"
@@ -150,7 +151,7 @@ export const ShowcasecardStack = {
     subtitle: "I made this a while ago but finally got around to making a front end. The short of it is, Chess.com charge to estimate your ELO... so we should just use machine learning to do it for free. It's trained on 33m chess games... break down of the models are available on the page",
     card: (
       <ProjectCard
-        image="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d"
+        image={linkedinimage}
         tag="AI Project"
         title="Free Chess ELO Estimator"
         subtitle="LLM-driven GeoLocalization"

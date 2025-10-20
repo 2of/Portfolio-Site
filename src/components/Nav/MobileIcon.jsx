@@ -19,7 +19,7 @@ export const NavMenuIconMobile = memo(({ label, icon, currentCallback, isFloatin
     >
       <StandardButton
         icon={icon}
-        type="rounded"
+     type={isFloating ? "rounded" : "icon_only"}
         label="menu"
         callback={currentCallback}
       />

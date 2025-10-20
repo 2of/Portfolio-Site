@@ -154,7 +154,7 @@ export const SettingsPage = () => {
           <ScrollableVerticalView alignCenter={screenSize !== "sm"}>
             <RowView mobile={mobile} rows={mappedRows} />
           </ScrollableVerticalView>
-          // <div className={styles.spacer} />
+          <div className={styles.spacer} />
         </>
       ) : (
         <CenteredContainer>

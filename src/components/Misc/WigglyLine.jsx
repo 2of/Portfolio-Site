@@ -1,8 +1,9 @@
 import React from "react";
 import { useGlobalContext } from "../../contexts/GlobalContext";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 const WigglyLine = ({ fillAllSpace = true }) => {
-  const { isDarkMode } = useGlobalContext();
+  const { darkMode } = useDarkMode();
 
   const wiggleCount = 12;
   const singleWiggleWidth = 12;
@@ -19,7 +20,7 @@ const WigglyLine = ({ fillAllSpace = true }) => {
     path += ` Q${midX} ${controlY}, ${endX} ${amplitude}`;
   }
 
-  const strokeColor = isDarkMode ? "#ffffff" : "#000000";
+  const strokeColor = darkMode ? "#ffffff" : "#000000";
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${totalWidth}' height='${height}' viewBox='0 0 ${totalWidth} ${height}'><path d='${path}' fill='none' stroke='${strokeColor}' stroke-width='1.5'/></svg>`;
   const base64Svg = btoa(svg);
   const backgroundImage = `url("data:image/svg+xml;base64,${base64Svg}")`;

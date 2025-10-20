@@ -17,6 +17,7 @@ const validTypes = [
   "subtle",
   "rounded",
   "rounded_label",
+  "icon_only",
   "featured"
 ];
 export const StandardButton = ({
@@ -128,7 +129,17 @@ export const StandardButton = ({
      </>
         );
 
+ case "icon_only":
+        return (
 
+          <>
+  
+
+            {Icon}
+
+
+          </>
+        );
       case "basic_Expand":
         return (
           <div className={styles.expandWrapper}>

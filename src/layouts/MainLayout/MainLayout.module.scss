@@ -1,40 +1,55 @@
-// --- Base Content Container ---
 .ContentContainer {
-  opacity: 0; // Initial state: hidden
-  position: relative; 
-  
-  transform: translateY(10px); // Initial state: slightly offset downwards
-  
-  // Defines the smooth animation for opacity and position changes
+  opacity: 0;
+
+  transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
-  
   min-height: var(--content-height);
-  // height: fit-content;
-  margin-top: var(--navHeight); // Default margin for navigation bar
+
+  height: fit-content;
+  // min-height: 100vh;
+  margin-top: var(--navHeight);
+// height: 100vh;
+// padding: 0;
+
 }
 
-// --- Fade-In State (Activated by adding this class) ---
 .ContentContainer.fadeIn {
-  opacity: 1; // Final state: fully visible
-  transform: translateY(0); // Final state: normal position
+  opacity: 1;
+  transform: translateY(0);
+
 }
 
-// --- Layout Modifiers ---
 
 .DesktopStandard { 
+  // background-color: red;
+    // padding-top: var(--navHeightDESKTOP);
+    // margin-top: 10000px;
+    // margin-top: 200px;
+    // background-color: magenta;
+// height: 100vh;
 }
 
 .DesktopFull { 
-  // Overrides the default margin-top from .ContentContainer
-  margin-top: 0;
+  // background-color: orange;
+      margin-top: 0;
 }
 
 .MobileFullscreen { 
-  // Overrides the default margin-top from .ContentContainer
   margin-top: 0;
 }
 
 .MobileNavBar { 
-  // Explicitly sets the margin for mobile navbar clearance
   margin-top: var(--navHeight);
+}
+
+
+.fadeIn {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;
+     transform: translateY(24px); }
+  to { opacity: 1;
+     transform: translateY(0px); }
 }
