@@ -95,7 +95,7 @@ export const ShowcasecardStack = {
           
         ]}
         image="/images/noahking.jpg"
-        cvLink="https://noahking.dev/cv"
+        cvLink="https://github.com/2of/2of/blob/main/docs/CV_all.pdf"
       />
     ),
   },

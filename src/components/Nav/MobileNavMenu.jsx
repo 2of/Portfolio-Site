@@ -112,10 +112,10 @@ const MobileNavMenu = ({
               className={`${styles.headerText} ${isVisible ? styles.animatingIn : styles.animatingOut}`}
             >
               <h2>Thanks for checking out my things</h2>
-              <p>
+              {/* <p>
                 The junk page is really just a testing spot. Feel free to flick
                 me a pm
-              </p>
+              </p> */}
               <div className={styles.dividerContainer}>
                 <WigglyLine />
               </div>

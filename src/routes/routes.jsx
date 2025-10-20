@@ -14,6 +14,7 @@ import { NewChessPage } from "../pages/NewChess";
 import TinderPage from "../pages/TinderPage";
 import { DirectoryPage } from "../pages/DirectoryPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
+import { LandingPage } from "../pages/Landing";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -25,7 +26,7 @@ const routes = [
     hideDesktop: true,
     bg: "dots",
 
-    element: <TinderPage />,
+    element: <LandingPage />,
     fullscreenDesktop: true,
     fullscreenMobile: true,
   },
@@ -37,6 +38,7 @@ const routes = [
     bg: "bg",
     fullscreenMobile: true,
   },
+  
   {
     path: "/junk",
     label: "Big old test page",

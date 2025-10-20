@@ -1,0 +1,77 @@
+.ContentContainer {
+ /* <--- CRITICAL FIX */
+  /* ... other styles like height, etc. ... */
+}
+
+.mobilecontainer { 
+    // background-color: red;
+    height: calc(var(--content-height) - 5rem); // Now 100% of the positioned parent
+    width: 100%;  // Now 100% of the positioned parent
+    position: absolute;
+    padding: 1rem;
+    padding-bottom: 5rem;
+    display: flex;
+    bottom: 0;
+}
+
+.sidebyside { 
+    // background-color: red;
+    max-width: 1000px;
+    padding: 2rem;
+    width: 100%;
+    gap: 2rem;
+    display: flex;
+    .content { 
+        width: 80%;
+    }
+
+    .explainer { 
+        width: 20%;
+    }
+}
+
+
+.textBlock {
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+  transition: 
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.5s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+.ready {
+  opacity: 1;
+}
+
+.startTransparent {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95) rotate(-2deg);
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+
+.sidebyside .textBlock h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.sidebyside .textBlock p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  max-width: 420px;
+}
