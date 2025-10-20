@@ -1,25 +1,23 @@
-/* Import variables first */
-@import './styles/_variables.scss';
-@import './styles/transitions.scss';
-@import './styles/interactions';
-
-
-html, body {
-  // height: 100%;
+html, body, #root {
   margin: 0;
-    font-size: 16px;
-  background-color: var(--bg); // or a literal color like #0a0a0a
+  padding: 0;
+  height: 100%;
+  // width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
   color: var(--text-primary);
 }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
- 
 
- body, #root {
-  overflow: hidden;      // prevent scrollbars
-  touch-action: none;    // prevent touch scrolling on mobile
-  overscroll-behavior: none; // stop overscroll bounce
-  // height: 100%;
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* The fix */
+}
+
+/* Now, if you set */
+.element {
+  width: 100%;
+  padding: 20px; /* The 20px padding is included inside the 100% width */
 }

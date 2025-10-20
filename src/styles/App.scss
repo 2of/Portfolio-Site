@@ -1,47 +1,44 @@
-/* General Body Styling */
+/* General Body and HTML Element Styling */
 body {
-  background-color: var(--bg); /* Background color based on theme */
-  color: var(--text-color); /* Text color based on theme */
-
+  background-color: var(--bg);
+  color: var(--text-color); 
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-
-  font-size: var(--font-size-base); /* Base font size */
+  font-size: var(--font-size-base);
   margin: 0;
-
   padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+  font-family: "Poppins", "Inter", sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
 }
 
-root {
+
+:root {
   background-color: rebeccapurple;
 }
 
-
 ul {
-      padding-inline-start: 0px
-}
-/* Background Styling */
-body {
-  background-color: var(--bg); /* Light or dark background */
-  color: var(--text-color); /* Light or dark text */
-font-family: 'Montserrat', sans-serif;
- font-family: "Poppins", "Inter", sans-serif;
-   font-family: "Newsreader", "Inter", sans-serif;
-
-  max-width: 100vw;
-  overflow-x: hidden;
-  overflow-y: auto;
+  padding-inline-start: 0px;
 }
 
-/* Standardizing Text */
 h1, h2, h3, h4, h5, h6, p, span {
-  color: var(--text-color); /* Ensure text color is consistent */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
+h1, h2, h3 {
+  font-weight: 100;
+  font-family: "Newsreader", serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+/* --- Component Styles --- */
 .glass {
   background: var(--glass-bg);
   border-radius: var(--glass-border-radius);
@@ -50,51 +47,39 @@ h1, h2, h3, h4, h5, h6, p, span {
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: var(--glass-border);
 }
+
 .glassButton {
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.5);
-
   border-radius: 8px;
-
-
 }
 
 .imageCaption {
-  font-size: 0.8rem;
+  font-size: 12.8px; // 0.8rem = 12.8px
   font-style: italic;
-}
-
-h1, h2, h3 {
-  font-weight: 100;
-  font-family: "Newsreader", serif;
 }
 
 /* Links and Hover Effects */
 a {
-  color: var(--primary-color); /* Link color based on theme */
+  color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Standardizing Card-like Components */
 .card {
-  background-color: var(--card-bg); /* Light or dark card background */
-  border: 1px solid var(--border-color); /* Border color */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: var(--padding-medium);
-  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Additional Elements */
 button {
-  // background-color: var(--bg);
-  // color: var(--text-color);
   border: none;
-  background:none;
-  // border-radius: var(--border-radius);
+  background: none;
   padding: var(--padding-small) var(--padding-medium);
   cursor: pointer;
-  // transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -104,71 +89,44 @@ button:hover {
 // AboutPage.module.scss
 .Container {
   display: flex;
-  // position: relative;
   align-items: flex-start;
-
   flex-direction: column;
-  // max-height: 100vh;
-  overflow:  hidden;
-  // background-color: red;
-  max-width: 1200px; // Limit the width for better readability
-  margin: 0 auto; // Center the container
-  // padding: 20px; // Add padding around the entire container
-  // margin: 120px;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 
- &.scrollyCentered {
-    // height: 100vh;
-    // width: 100vw;
-    // overflow-y: auto;
-    // scroll-behavior: smooth;
-    // padding-top: 10vh;
-    //     padding-bottom: 10vh;
-    // box-sizing: border-box;
-    // justify-content: flex-start;
-    // align-items: center;
+  &.scrollyCentered {
   }
-&.full {
-//   max-width: none;
-// width: 100vw;
-// height: 100vh;
-// margin: 0;
-// position: absolute;
-// align-items: center;
-}
+
+  &.full {
+  }
+  
   &.centered {
-//     // background-color: orange;
-//     height: 100vh;
-// //  background-color: red;
-//     // background-color: red;
-//     align-items: center;
-//     // align-items: center;
-//     justify-content: center;
-//     overflow-y: scroll;
-//     // margin: 10px;
   }
+  
   section {
-    margin-bottom: 40px; // Add space between sections
+    margin-bottom: 40px; 
 
     h2 {
-      margin-bottom: 10px; // Space below h2 headings
+      margin-bottom: 10px;
     }
 
     h3 {
-      margin-bottom: 10px; // Space below h3 headings
+      margin-bottom: 10px;
     }
 
     h5 {
-      margin-bottom: 10px; // Space below h5 headings
+      margin-bottom: 10px;
     }
 
     p {
-      margin-bottom: 15px; // Space between paragraphs
+      margin-bottom: 15px;
     }
 
     pre {
-      margin-bottom: 20px; // Space below the code block
-      padding: 15px; // Add padding inside the code block
-      overflow-x: auto; // Allow horizontal scrolling for long code
+      margin-bottom: 20px;
+      padding: 15px;
+      overflow-x: auto;
     }
   }
 }
@@ -178,65 +136,50 @@ button:hover {
 
   > * {
     overflow: hidden;
-    flex: 1;  // Ensures all children take up equal space
-    width: auto; // Optional, but ensures width is determined by flex
+    flex: 1;
+    width: auto;
   }
 }
 
 .flatStyleSubtle {
   position: relative;
   overflow: hidden;
-  // border: 1px solid rgb(51, 51, 51);
   left: 0;
   top: 0;
-  // transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-
 }
 
 
 .flatStyleShadow {
-    border-radius: 8px;
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border-color);
   color: var(--text-color);
 
-  // box-shadow: var(--border-color) 1px 1px 0 0;
-
   left: 0;
   top: 0;
 
+  background-color: var(--bg-transparent);
+  backdrop-filter: blur(2px);
 
-    background-color: var(--bg-transparent);
-backdrop-filter: blur(2px);
-   // transition: left 0.2s ease-in-out, top 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-* {
-  color: black;
+  * {
+    color: black;
+  }
 }
-  // &:hover {
-  //     left: 4px;
-  //     top: 2px;
-  //     box-shadow: rgb(255, 255, 255) 0 0 0 0;
-  // }
-}
+
 .codeEmbed {
-  // Add styles for code embed if needed
 }
 
 .ScrollSpacer {
-  height: 3rem;
+  height: 48px; // 3rem = 48px
 }
 
-h1 {
-  font-size: 48px;
-}
 .flatStyleShadow_RADIO {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
-    border-radius: 4px;
+  border-radius: 4px;
   width: 20px;
   height: 20px;
   margin: 0 8px 0 0;
@@ -281,32 +224,20 @@ h1 {
 
 
 .flatStyleShadow_NO_INTERACT {
-
-  // position: relative;
   overflow: hidden;
   border: 1px solid var(--border-color);
   color: rgb(51, 51, 51);
-
-  // box-shadow: rgb(51, 51, 51) 2px 2px 0 0;
-
-    border-radius: 4px;
-  // left: 0;
-  // top: 0;
+  border-radius: 4px;
   background-color: var(--bg-transparent);
-backdrop-filter: blur(2px);
-  *{
-    color: var(--bg);
+  backdrop-filter: blur(2px);
+
+  * {
+    color: var(--text-color);
   }
-
-* {
-  color: var(--text-color);
-}
-
 }
 
 .disclaimer {
-  position:fixed;
-  // background-color: white;
+  position: fixed;
   bottom: 4px;
   left: 4px;
   gap: 4px;
@@ -325,24 +256,12 @@ backdrop-filter: blur(2px);
 
 .doubleBorderRound {
   border: 1px solid var(--border-color);
-  width: auto; /* Let it adapt based on content */
-  // max-width: 100%; /* Allow full width, but cap at 100% of the screen */
-  box-sizing: border-box; /* Ensure padding does not affect the overall width */
-  // box-shadow: 0 0 0 2px var(--border-color);
+  width: auto;
+  box-sizing: border-box;
   background-color: var(--bg);
   border-radius: 12px;
   padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 }
-
-
-
-
-//// INTERACTIONS
-///
-///
-///

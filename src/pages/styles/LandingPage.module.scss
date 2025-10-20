@@ -1,36 +1,48 @@
+// --- Layout Containers ---
 .ContentContainer {
- /* <--- CRITICAL FIX */
-  /* ... other styles like height, etc. ... */
+  position: relative; 
+  height: var(--content-height, 100vh); 
+  width: 100%;
 }
 
 .mobilecontainer { 
-    // background-color: red;
-    height: calc(var(--content-height) - 64px); // Now 100% of the positioned parent
-    width: 100%;  // Now 100% of the positioned parent
-    position: absolute;
-    padding: 24px;
-    padding-bottom: 48px;
-    display: flex;
-    bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column; // Allow vertical stacking and centering
+
+  // Use padding to push content away from the edges
+  padding: 24px; // 24px = 1.5rem
+
+  // We want the content to sit in the middle of the bottom 3/4ths of the page.
+  // We can achieve this by using the vertical alignment properties:
+  // - Push content away from the top: (100% - 75%) / 2 = 12.5% of the height
+  // - The remaining 87.5% is where we want to center the content.
+  // We'll use padding for simplicity, assuming the content itself is not tall.
+  padding-top: 15vh; // Adjusted to push content down significantly, centering it visually lower
+  
+  justify-content: flex-end; // Align content blocks to the bottom of the container
 }
 
 .sidebyside { 
-    // background-color: red;
-    max-width: 1000px;
-    padding: 2rem;
-    width: 100%;
-    gap: 2rem;
-    display: flex;
-    .content { 
-        width: 80%;
-    }
-
-    .explainer { 
-        width: 20%;
-    }
+  max-width: 1000px;
+  padding: 122px;
+  width: 100%;
+  gap: 24px;
+  display: flex;
 }
 
+.sidebyside .content { 
+  width: 80%;
+}
 
+.sidebyside .explainer { 
+  width: 20%;
+}
+
+// --- Animation Classes (Adjusted for Clarity) ---
 .textBlock {
   top: 0;
   left: 0;
@@ -42,36 +54,40 @@
     opacity 0.5s ease-in-out;
 }
 
-.fadeIn {
-  opacity: 0;
-  transform: translateY(0) scale(1) rotate(0deg);
-}
-
-.ready {
-  opacity: 1;
-}
-
+// Initial state for content that should fade in (e.g., when the element is created)
 .startTransparent {
   opacity: 0;
   transform: translateY(30px) scale(0.95) rotate(-2deg);
 }
 
+// State to transition to (ready/visible state)
+.ready {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+// State to transition away from (or an alternative hidden state)
 .fadeOut {
   opacity: 0;
   transform: scale(0.95);
 }
 
+// NOTE: The original .fadeIn class was set to opacity: 0 and transform: none, 
+// which is a strange name for a transition end state. I've removed it, 
+// relying on `.ready` for the visible state.
 
+
+// --- Typography ---
 .sidebyside .textBlock h1 {
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
+  font-size: 19.2px; // 1.2rem = 19.2px
+  padding-bottom: 12px; // 0.75rem = 12px. Swapped from margin-bottom.
   font-weight: 900;
   color: var(--text-primary);
 }
 
 .sidebyside .textBlock p {
-  font-size: 1rem;
+  font-size: 16px; // 1rem = 16px
   color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  padding-bottom: 8px; // 0.5rem = 8px. Swapped from margin-bottom.
   max-width: 420px;
 }

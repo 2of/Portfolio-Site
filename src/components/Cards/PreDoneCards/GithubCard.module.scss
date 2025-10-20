@@ -4,11 +4,11 @@
   justify-content: flex-start;
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
+  padding: 36px;
   background: linear-gradient(
     180deg,
-    #0d1117 0%,   // almost black top
-    #161b22 100%  // slightly lighter dark bottom
+    #0d1117 0%,
+    #161b22 100%
   );
   position: relative;
   transition: border-color 0.25s ease, transform 0.25s ease;
@@ -16,32 +16,32 @@
 }
 .bgIcon { 
   position: absolute;
-  font-size: 10rem;
+  font-size: 160px; // 10rem = 160px
   color: #ffffff;
   z-index: 0;
   pointer-events: none;
   transition: all 0.3s ease;
 
   &.L1 { 
-    bottom: -2rem;
-    right:1rem;
-    font-size: 12rem;
+    bottom: -32px; // -2rem = -32px
+    right: 16px; // 1rem = 16px
+    font-size: 192px; // 12rem = 192px
     transform: rotate(0) translate(0, 0);
     opacity: 0.08;
   }
 
   &.L2 { 
-    bottom: 1.5rem;
-    right: 8rem;
-    font-size: 12rem;
+    bottom: 24px; // 1.5rem = 24px
+    right: 128px; // 8rem = 128px
+    font-size: 192px; // 12rem = 192px
     transform: rotate(-20deg) translate(202px, -10px);
     opacity: 0.06;
   }
 
   &.L3 { 
-    bottom: 0.5rem;
-    right: 0.5rem;
-    font-size: 14rem;
+    bottom: 8px; // 0.5rem = 8px
+    right: 8px; // 0.5rem = 8px
+    font-size: 224px; // 14rem = 224px
     transform: rotate(-5deg) translate(-40%, 0);
     opacity: 0.05;
   }
@@ -50,29 +50,27 @@
 
 
 .icon { 
-  height: 4rem;
-  width: 4rem;
+  height: 64px; // 4rem = 64px
+  width: 64px; // 4rem = 64px
   color: rgb(202, 202, 202);
 }
-/* HEADER */
+
 .header {
   display: flex;
   z-index: 2;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 16px; // 1rem = 16px
   text-align: left;
 }
 
 .avatarSection {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px; // 1rem = 16px
 }
 
 .avatar {
-  // width: 96px;
-  // height: 96px;
   max-width: 60%;
   border-radius: 50%;
   align-self: 1/1;
@@ -93,7 +91,7 @@
   justify-content: center;
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 24px; // 1.5rem = 24px
     font-weight: 600;
     color: #f0f6fc;
     margin: 0;
@@ -101,19 +99,19 @@
 
   .handle {
     color: #8b949e;
-    font-size: 1rem;
-    margin: 0.25rem 0;
+    font-size: 16px; // 1rem = 16px
+    margin: 4px 0; // 0.25rem = 4px
   }
 
   .followButton {
     display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.35rem 0.75rem;
+    margin-top: 8px; // 0.5rem = 8px
+    padding: 5.6px 12px; // 0.35rem = 5.6px, 0.75rem = 12px
     border: 1px solid #30363d;
-    border-radius: 0.4rem;
+    border-radius: 6.4px; // 0.4rem = 6.4px
     background: #21262d;
     color: #c9d1d9;
-    font-size: 0.9rem;
+    font-size: 14.4px; // 0.9rem = 14.4px
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
 
@@ -124,21 +122,19 @@
   }
 }
 
-/* BIO */
 .bio {
-  margin-top: 1.25rem;
-  font-size: 1rem;
+  margin-top: 20px; // 1.25rem = 20px
+  font-size: 16px; // 1rem = 16px
   line-height: 1.5;
   color: #c9d1d9;
 }
 
-/* META (location + join date, etc.) */
 .meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-  font-size: 0.95rem;
+  gap: 16px; // 1rem = 16px
+  margin-top: 16px; // 1rem = 16px
+  font-size: 15.2px; // 0.95rem = 15.2px
   color: #8b949e;
   * { 
     color: rgb(188, 188, 188);
@@ -146,7 +142,7 @@
   .metaItem {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 6.4px; // 0.4rem = 6.4px
 
     svg {
       color: #8b949e;
@@ -156,14 +152,13 @@
   }
 }
 
-/* STATS SECTION */
 .stats {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 1.75rem;
-  font-size: 0.95rem;
+  gap: 24px; // 1.5rem = 24px
+  margin-top: 28px; // 1.75rem = 28px
+  font-size: 15.2px; // 0.95rem = 15.2px
   * { 
     color: rgb(188, 188, 188);
   }
@@ -171,7 +166,7 @@
   .stat {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px; // 0.5rem = 8px
     color: #ffffff;
 
     svg {
@@ -187,26 +182,25 @@
   }
 }
 
-/* REPO PREVIEW STYLE */
 .repoPreview {
-  margin-top: 2rem;
+  margin-top: 32px; // 2rem = 32px
   border-top: 1px solid #30363d;
-  padding-top: 1rem;
+  padding-top: 16px; // 1rem = 16px
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px; // 1rem = 16px
   * { 
     color: rgb(188, 188, 188);
   }
   .repo {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 4px; // 0.25rem = 4px
 
     .repoName {
       color: #58a6ff;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 16px; // 1rem = 16px
       text-decoration: none;
 
       &:hover {
@@ -216,33 +210,32 @@
 
     .repoDesc {
       color: #8b949e;
-      font-size: 0.9rem;
+      font-size: 14.4px; // 0.9rem = 14.4px
     }
 
     .repoLang {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
+      gap: 6.4px; // 0.4rem = 6.4px
+      font-size: 13.6px; // 0.85rem = 13.6px
       color: #8b949e;
 
       .langDot {
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: #f1e05a; // JS default color
+        background: #f1e05a;
       }
     }
   }
 }
 
-/* FOOTER LINKS */
 .footer {
-  margin-top: 2rem;
+  margin-top: 32px; // 2rem = 32px
   position: absolute;
-  bottom: 1rem;
+  bottom: 16px; // 1rem = 16px
   border-top: 1px solid #30363d;
-  padding-top: 1rem;
+  padding-top: 16px; // 1rem = 16px
     * { 
     color: rgb(188, 188, 188);
   }
@@ -252,7 +245,7 @@
 
   a {
     color: #58a6ff;
-    font-size: 0.9rem;
+    font-size: 14.4px; // 0.9rem = 14.4px
     text-decoration: none;
 
     &:hover {

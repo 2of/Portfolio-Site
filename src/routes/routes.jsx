@@ -26,7 +26,7 @@ const routes = [
     hideDesktop: true,
     bg: "dots",
 
-    element: <LandingPage />,
+    element: <TinderPage />,
     fullscreenDesktop: true,
     fullscreenMobile: true,
   },

@@ -1,7 +1,7 @@
 .dataContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px; // 0.5rem = 8px
 }
 
 .infoChunk {
@@ -10,7 +10,7 @@
   gap: 12px;
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 16px; // 1rem = 16px
   color: var(--text-color);
   width: 100%;
 }
@@ -20,9 +20,9 @@
   align-items: center;
   background-color: var(--text-color);
   color: var(--bg);
-  padding: 1rem;
+  padding: 16px;
   width: 100%;
-  max-width: var(--maxWidth); // ✅ fixed
+  max-width: var(--maxWidth);
 }
 
 .buttonContainer {
