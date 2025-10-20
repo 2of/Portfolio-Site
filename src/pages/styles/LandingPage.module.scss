@@ -5,11 +5,11 @@
 
 .mobilecontainer { 
     // background-color: red;
-    height: calc(var(--content-height) - 5rem); // Now 100% of the positioned parent
+    height: calc(var(--content-height) - 64px); // Now 100% of the positioned parent
     width: 100%;  // Now 100% of the positioned parent
     position: absolute;
-    padding: 1rem;
-    padding-bottom: 5rem;
+    padding: 24px;
+    padding-bottom: 48px;
     display: flex;
     bottom: 0;
 }
