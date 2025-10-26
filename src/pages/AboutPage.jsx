@@ -38,7 +38,7 @@ useEffect(() => {
 
   return (
     <ScrollableVerticalView  trackScrollPercent staggerStart={screenSize!== "sm"}>
-      <Section
+      <Section sticky={true}
         // narrow
         Header={() => <h2 className={sectionHeaderClass}>{title}</h2>}
       >
@@ -93,6 +93,7 @@ useEffect(() => {
         .map(([sectionKey, content]) => (
           <Section
             // narrow
+            sticky={true}
             key={sectionKey}
             Header={() =>
               content.title ? (

@@ -12,7 +12,7 @@ import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 import ResponsiveGradient from "../components/Background/ResponsiveGradient";
 
 export const LandingPage = () => {
- const screenSize = useScreenSize();
+  const screenSize = useScreenSize();
   const cardEntries = Object.entries(ShowcasecardStack);
 
   const [wiggle, setWiggle] = useState(false);
@@ -73,7 +73,7 @@ export const LandingPage = () => {
 
     return () => {
       events.forEach((evt) =>
-        window.removeEventListener(evt, resetInactivityTimer),
+        window.removeEventListener(evt, resetInactivityTimer)
       );
       clearTimeout(inactivityTimer.current);
       clearInterval(periodicTimer.current);
@@ -96,63 +96,47 @@ export const LandingPage = () => {
   const currentTitle = cardEntries[currentCardIndex]?.[1]?.title ?? "";
   const currentSubtitle = cardEntries[currentCardIndex]?.[1]?.subtitle ?? "";
 
-    if (screenSize === "sm") { 
+  if (screenSize === "sm") {
+    return (
+<div className={styles.mobilecontainer}>
+        
+        {/* <h1>test</h1> */}
+        <TinderView
+          onChange={handleCardChange}
+          setActiveIndex={handleCardChange}
+          setwiggle={wiggle}
+          showNext={screenSize !== "sm"}
+          conductnext={conductnext}
+        >
+          {cardEntries.map(([key, { card }]) => (
+            <React.Fragment key={key}>{card}</React.Fragment>
+          ))}
+        </TinderView>
+      </div>
+    );
+  } else {
+    return (
+      <CenteredContainer>
+        <div className={styles.sidebyside}>
+          <div className={styles.content}>
+            <TinderView
+              onChange={handleCardChange}
+              setActiveIndex={handleCardChange}
+              setwiggle={wiggle}
+              showNext={screenSize !== "sm"}
+              conductnext={conductnext}
+            >
+              {cardEntries.map(([key, { card }]) => (
+                <React.Fragment key={key}>{card}</React.Fragment>
+              ))}
+            </TinderView>
+          </div>
 
-        return ( 
-
-        <div className={styles.mobilecontainer}>
-                <TinderView
-            onChange={handleCardChange}
-            setActiveIndex={handleCardChange}
-            setwiggle={wiggle}
-            showNext={screenSize !== "sm"}
-            conductnext={conductnext}
-          >
-            {cardEntries.map(([key, { card }]) => (
-              <React.Fragment key={key}>{card}</React.Fragment>
-            ))}
-          </TinderView>
-        </div>
-        )
-
-    }
-
-
-
-
-    else { 
-
-        return ( 
-
-        <CenteredContainer>
-
-
-<div className={styles.sidebyside}>
-    <div className={styles.content}>
-   <TinderView
-            onChange={handleCardChange}
-            setActiveIndex={handleCardChange}
-            setwiggle={wiggle}
-            showNext={screenSize !== "sm"}
-            conductnext={conductnext}
-          >
-            {cardEntries.map(([key, { card }]) => (
-              <React.Fragment key={key}>{card}</React.Fragment>
-            ))}
-          </TinderView>
-
-    </div>
-
-
-
-<div className={styles.explainer}>
-
-
+          <div className={styles.explainer}>
             {/* 1. Outgoing Text: Renders with styles.fadeOut during animation */}
             {animating && prevCardIndex !== null && (
               <div
                 key={prevCardIndex}
-                
                 className={`${styles.textBlock} ${styles.fadeOut}`}
               >
                 <h1>{prevTitle}</h1>
@@ -171,25 +155,16 @@ export const LandingPage = () => {
               <h1>{currentTitle}</h1>
               <p>{currentSubtitle}</p>
             </div>
- <PageDots
+            <PageDots
               n_dots={cardKeys.length}
               // min={0}
-            //   direction="horizontal"
+              //   direction="horizontal"
               currentPage={currentCardIndex}
               disable={true}
             />
           </div>
-          
-
-</div>
-
-
-        </CenteredContainer>
-        )
-
-
-
-
-
-    }
+        </div>
+      </CenteredContainer>
+    );
+  }
 };

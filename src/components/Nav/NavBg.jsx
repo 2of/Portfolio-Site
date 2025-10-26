@@ -20,7 +20,13 @@ export const NavBg = ({ menu, buttons }) => {
   return (
     <div className={styles.navBg}>
       <div className={`${styles.inner} ${!fillActive ? styles.fill : ""}`}>
+        <div className={styles.menubutton}
+        >
         {menu}
+
+        </div>
+        
+
         {buttons}
 
         {/* Example toggle button */}

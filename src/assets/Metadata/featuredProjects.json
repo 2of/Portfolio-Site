@@ -165,6 +165,7 @@
   
   {
     "name": "Chrome",
+        "large": true,
     "details": {
       "icon": "award",
       "subtitle": "For about an afternoon, in New Zealand...",

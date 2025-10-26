@@ -7,7 +7,14 @@ export class ChessTracker {
     this.moves = [];
     if (moves.length > 0) this.setMoves(moves);
   }
+ getState() {
+    return JSON.stringify({ moves: this.moves });
+  }
 
+  static fromState(serialized) {
+    const { moves } = JSON.parse(serialized);
+    return new ChessTracker(moves);
+  }
   // Deep clone the chess.js board representation
   _cloneBoard(board) {
     return board.map(row => row.map(cell => cell ? { ...cell } : null));

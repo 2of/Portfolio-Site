@@ -19,11 +19,13 @@ import Loader from "../components/Loader";
 import { CHESS_Container } from "../components/chess/CHESS_Container";
 import { ChessTracker } from "../components/chess/gametracker";
 import { useModal } from "../contexts/ModalContext";
+import { ScrollableVerticalView, Section } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
 export const NewChessPage = () => {
   const [pgn, setpgn] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("dense");
-  const [game, setGame] = useState(new ChessTracker());
+const [game, setGame] = useState(() => new ChessTracker());
+
 
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
   const [modelStatus, setModelStatus] = useState("Not loaded");
@@ -122,10 +124,21 @@ export const NewChessPage = () => {
     }
   };
 
-  return (
-    <>
-      <CenteredContainer>
-        <div className={styles.header}>
+const BoardContent = ({ version, game, styles }) => { 
+    return ( // <-- ADD THE 'return' KEYWORD HERE
+      <div className={styles.gameArea}>
+        <CHESS_Container key={version} game={game} />
+      </div>
+    );
+  }
+
+
+const Header = ({styles}) => { 
+
+
+  return ( 
+
+   <div className={styles.header}>
           <h1>Chess Elo Estimator</h1>
 
           <span>Paste PGN → Select a Model → Load Model → Press predict</span>
@@ -145,11 +158,20 @@ export const NewChessPage = () => {
           </p>
         </div>
 
-        <div className={styles.twocol}>
-          <div className={styles.gameArea}>
-            <CHESS_Container key={version} game={game} />
-          </div>
 
+  )
+}
+  return (
+    <>
+    <ScrollableVerticalView  staggerStart trackScrollPercent>
+
+ <Section Header={() => (
+  <Header styles={styles}/>
+ )}>
+
+        <div className={styles.twocol}>
+
+<BoardContent game={game} styles={styles} />
           <div className={styles.controlArea}>
             <h4>Paste Your PGN Here</h4>
 
@@ -231,7 +253,10 @@ export const NewChessPage = () => {
             </div>
           </div>
         </div>
-      </CenteredContainer>
+
+
+        </Section>
+      </ScrollableVerticalView>
     </>
   );
 };

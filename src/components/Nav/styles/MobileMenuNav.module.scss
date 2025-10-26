@@ -6,9 +6,9 @@
     // height: var(--content-height);
     height: 100vh;
 
-    background-color: var(--bg); // semi-transparent
-
-    // -webkit-backdrop-filter: blur(12px); // for Safari
+    background-color: var(--bg-transparent); // semi-transparent
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(12px); // for Safari
 
     opacity: 0;
     pointer-events: none;

@@ -22,6 +22,7 @@ export const CenteredContainer = ({ children, style = {}, ...props }) => {
     minHeight: "100vh",
     boxSizing: "border-box",
     overflow: "scroll", // ✅ fixed lowercase key
+    overflowX: "hidden",
     ...( !floatDown && screenSize !== "sm" &&  {
       paddingTop: "calc(var(--navHeightDESKTOP) + 0px)"
     }),

@@ -15,6 +15,7 @@ import TinderPage from "../pages/TinderPage";
 import { DirectoryPage } from "../pages/DirectoryPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { LandingPage } from "../pages/Landing";
+import { ComponentPage } from "../pages/ComponentsPage";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -24,9 +25,9 @@ const routes = [
     label: "home",
     icon: "home",
     hideDesktop: true,
-    bg: "dots",
+    bg: "shapes",
 
-    element: <TinderPage />,
+    element: <LandingPage />,
     fullscreenDesktop: true,
     fullscreenMobile: true,
   },
@@ -40,7 +41,7 @@ const routes = [
   },
   
   {
-    path: "/junk",
+  path: "/junk",
     label: "Big old test page",
     extratitle: "helloworld",
     hideDesktop: true,
@@ -50,6 +51,20 @@ const routes = [
     // fullscreenMobile: true,
     icon: "junk",
   },
+
+    {
+    path: "/allcomponents",
+    label: "Component Catalogue",
+    extratitle: "helloworld",
+      bg:"shapes",
+    element: <ComponentPage />,
+        hideDesktop: true,
+    hideMobile: true,
+    // fullscreenDesktop: true,
+    // fullscreenMobile: true,
+    icon: "map",
+  },
+
 
   {
     path: "/proj/:projectId",

@@ -218,11 +218,11 @@ export const CataloguePage = () => {
 
        <GlassPushOverlay spiciness={0} showShine>
       
-      <AnimatedHeader title={title} icon={icon} subtitle={subtitle} />
-      {/* <h1 className={styles.title}>
+      {/* <AnimatedHeader title={title} icon={icon} subtitle={subtitle} /> */}
+       <h1 className={styles.title}>
         {icon} {title}
       </h1>
-      {subtitle && <p className={styles.subtitle}>{subtitle}</p>} */}
+      {subtitle && <p className={styles.subtitle}>{subtitle}</p>} 
     </GlassPushOverlay>
     
     </div>
@@ -308,7 +308,7 @@ export const CataloguePage = () => {
 
   const renderDesktopView = () => (
     <ScrollableVerticalView trackScrollPercent>
-      <Section color="gradient">
+      <Section color="gradient" sticky>
         <TextSectionHero />
       </Section>
 
@@ -331,12 +331,12 @@ export const CataloguePage = () => {
         </div>
       </Section>
 
-    <Section
+    <Section 
     color=""
         Header={() => (
           <StandardHeaderDesktop
             title={"Notable Uni Bits"}
-            // subtitle={"It's ... mostly well documented"}
+            subtitle={"It's ... mostly well documented"}
             icon={getIcon("school")}
           />
         )}
@@ -345,7 +345,7 @@ export const CataloguePage = () => {
           {uniProjects.map(renderCard)}
         </div>
       </Section>
-      <Section
+      <Section sticky
       color="dark"
         Header={() => (
           <StandardHeaderDesktop
@@ -359,11 +359,11 @@ export const CataloguePage = () => {
         {isLoading ? <Loader /> : <RenderGithubs projs={githubProjects} />}
       </Section>
 
-      <Section
+      <Section sticky
         Header={() => (
           <StandardHeaderDesktop
             title={"Miscellaneous Bits"}
-            // subtitle={"It's ... also somewhat well documented"}
+            subtitle={"It's ... also somewhat well documented"}
             icon={getIcon("tools")}
           />
         )}

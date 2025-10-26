@@ -20,4 +20,11 @@ html, body, #root {
 .element {
   width: 100%;
   padding: 20px; /* The 20px padding is included inside the 100% width */
+}/* In a global CSS file or <style> tag */
+html, body {
+    /* Prevents the viewport from showing a scrollbar 
+       due to minor, temporary shifts in content height */
+    overflow-y: hidden;
+    /* You may still need overflow-x: hidden to prevent horizontal issues */
+    overflow-x: hidden; 
 }

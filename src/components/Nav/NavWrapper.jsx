@@ -63,16 +63,14 @@ const MobileWrapper = React.memo(
     return (
       <>
         {!floating && (
-
           <>
-
-             {/* <MobileIconWrapper menuCallback={buttonCallback} isFloating /> */}
-   <NavBg
-            menu={<MobileIconWrapper menuCallback={buttonCallback} />}
-            buttons
-          />
-             </>
-       
+            {/* <MobileIconWrapper menuCallback={buttonCallback} isFloating /> */}
+            <NavBg
+              menu={<MobileIconWrapper menuCallback={buttonCallback} />}
+              buttons
+            />
+            
+          </>
         )}
 
         {floating && (
@@ -151,15 +149,12 @@ const NavWrapper = () => {
             navigateAwayCallback={handleNavigateAway}
           />
 
-          {extraButtons.length > 0 && isMenuFloatingDesktop && ( 
-
-<MobileExtraButtonsContainer items={extraButtons}/>
-
+          {extraButtons.length > 0 && isMenuFloatingDesktop && (
+            <MobileExtraButtonsContainer items={extraButtons} />
           )}
         </>
       ) : (
         <>
-        
           {isMenuFloatingDesktop ? (
             <DesktopFloatingNav />
           ) : (

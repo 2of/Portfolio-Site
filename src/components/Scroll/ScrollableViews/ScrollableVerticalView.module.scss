@@ -4,11 +4,15 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     max-width: 100vw;
-    overflow-x: hidden;
+    height: 100%;
+    overflow-x: hidden; // Keeps horizontal scroll hidden by default
 
     &.paddedforNavBarDesktop {
         padding-top: var(--navHeightDESKTOP);
-        overflow: scroll;
+        // FIX: Replaced 'overflow: scroll' to force vertical scroll
+        // and explicitly prevent horizontal scroll.
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     &.paddedforNavBarMobile {
@@ -23,7 +27,12 @@
 .scrollContainerVelocity {
     height: var(--content-height);
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    // padding-bottom: 20vh;
+    // -webkit-overflow-scrolling: touch;
+    // padding-bottom: 20vh;
+    &.padBottomForMobileFriendliness { 
+    padding-bottom: 20vh;
+}
 }
 
 .scrollContainerBounce {

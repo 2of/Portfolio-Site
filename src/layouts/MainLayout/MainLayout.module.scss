@@ -1,16 +1,10 @@
 .ContentContainer {
   opacity: 0;
-
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
-  min-height: var(--content-height);
-
-  height: fit-content;
-  // min-height: 100vh;
-  margin-top: var(--navHeight);
-// height: 100vh;
-// padding: 0;
-
+  
+  /* ADD THIS */
+  clip-path: inset(0); /* or inset(-100px) if 0 clips too much */
 }
 
 .ContentContainer.fadeIn {
@@ -36,10 +30,23 @@
 
 .MobileFullscreen { 
   margin-top: 0;
+  // background-color: red;
+  &.ContentContainer { 
+    // height:50vh;
+    // background-color: gray
+  }
 }
 
 .MobileNavBar { 
   margin-top: var(--navHeight);
+
+  &.ContentContainer { 
+    height:var(--content-height);
+    // position: fixed;
+    // background-color: gray;
+    // position: re;
+  }
+
 }
 
 
@@ -48,8 +55,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0;
-     transform: translateY(24px); }
-  to { opacity: 1;
-     transform: translateY(0px); }
+  from { 
+     opacity: 0;
+    //  transform: translateY(24px); 
+     clip-path: inset(-24px 0 0 0); /* Allows content to move below */
+  }
+  to { 
+     opacity: 1;
+     transform: translateY(0px); 
+     clip-path: inset(0);
+  }
 }

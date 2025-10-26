@@ -8,7 +8,7 @@ import { baseTheme } from "../../../styles/Themes";
 import { useIsMenuFloatingDesktop, useIsMenuFloatingMobile } from "../../../contexts/RouteContext";
 import { useNavStack } from "../../../contexts/NavStackContext";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
-export const Section = ({ Header, children, sticky = false, narrow,color="bg",index,isFirst }) => {
+export const Section = ({ Header, children, sticky, narrow,color="bg",index,isFirst }) => {
   const screenSize = useScreenSize()
   const headerClass = clsx(styles.sectionHeaderContainer, {
     [styles.stickyHeader]: sticky,
@@ -136,6 +136,7 @@ useEffect(() => {
 
  const containerClass = clsx(
   styles.scrollContainer,
+  screenSize === "sm" && styles.padBottomForMobileFriendliness,
   trackVelocity
     ? styles.scrollContainerVelocity
     : styles.scrollContainerBounce,
@@ -146,11 +147,11 @@ useEffect(() => {
 
 const enhancedChildren = React.Children.map(children, (child, index) => {
   if (!React.isValidElement(child)) return child;
-
+const originalSticky = child.props.sticky;
   const isSection = child.type?.name === "Section";
   return isSection
     ? React.cloneElement(child, {
-        sticky: true,
+        sticky: originalSticky,
         narrow: child.props.narrow,
         index,
         isFirst: index === 0, 

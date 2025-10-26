@@ -1,0 +1,27 @@
+.HeaderContainer { 
+    background-color: var(--bg);
+
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+
+    h2 { 
+        font-weight: 800;
+    }
+}
+
+.chunk { 
+    // background-color: red;
+    width: 100%;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 30;
+    display: flex;
+    gap: 12px;
+        border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+
+}

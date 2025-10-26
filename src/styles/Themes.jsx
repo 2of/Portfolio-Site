@@ -39,7 +39,7 @@ export const lightTheme = {
   "--accent": "#d44742",
   "--accent-color": "#d44742",
   "--link": "#4A90E2",
-  "--herobg": "#ffb914ff",
+  "--herobg": "#fbb672ff",
   "--drop-shadow":
     "0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
 

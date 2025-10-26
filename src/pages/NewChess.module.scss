@@ -6,10 +6,12 @@
   // transform: translateX(-50%);
   text-align: center;
   padding: 12px;
+  // background-color: var(--bg);
   // z-index: 100;
 
   h1 {
-    font-size: 2rem;
+font-size: clamp(3rem, 10vw + 1rem, 6rem);
+    font-weight: 900;
     margin: 0 0 0.25rem 0;
     color: var(--text-primary);
   }
@@ -20,15 +22,15 @@
   }
 }
 
-/* ================= Divider ================= */
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: var(--text-color);
-  margin: 1rem 0;
-}
+// /* ================= Divider ================= */
+// .divider {
+//   width: 100%;
+//   height: 1px;
+//   background-color: var(--text-color);
+//   margin: 1rem 0;
+// }
 
-/* ================= Two Column Layout ================= */
+
 .twocol {
   display: flex;
   justify-content: center;
@@ -36,15 +38,20 @@
   width: 100%;
   max-width: var(--maxWidth);
   gap: 2rem;
+  margin-bottom: 2rem;
+  height: fit-content;
   padding: 2rem 0;
+  // background-color: red;
   margin: 0 auto;
+
   flex-wrap: wrap;
 }
 
 /* ================= Game Area ================= */
 .gameArea {
-  flex: 1 1 70%;
-  max-width: 600px;
+  flex: 1 1 40%;
+  
+  // max-width: 600px;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
@@ -56,7 +63,8 @@
 /* ================= Control Area ================= */
 .controlArea {
   flex: 1 1 30%;
-  max-width: 250px;
+  // max-width: 250px;
+  padding: 1rem;
   aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
@@ -64,6 +72,7 @@
   align-items: stretch;
   text-align: left;
   gap: 1rem;
+  
   box-sizing: border-box;
 
   .ControlsSection {
@@ -98,9 +107,10 @@
   min-height: 120px;
   overflow-y: auto;
   padding: 0.5rem;
-  background-color: var(--herobg);
+  // background-color: var(--herobg);
   color: var(--text-primary);
-  border-radius: var(--border-radius);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
   box-sizing: border-box;
 }
 
@@ -131,30 +141,30 @@
   }
 }
 
-/* ================= Responsive Tweaks ================= */
-// @media (max-width: 768px) {
-//   .header {
-//     top: 80px;
+// /* ================= Responsive Tweaks ================= */
+// // @media (max-width: 768px) {
+// //   .header {
+// //     top: 80px;
 
-//     h1 {
-//       font-size: 1.5rem;
-//     }
+// //     h1 {
+// //       font-size: 1.5rem;
+// //     }
 
-//     span {
-//       font-size: 0.9rem;
-//     }
-//   }
+// //     span {
+// //       font-size: 0.9rem;
+// //     }
+// //   }
 
-//   .twocol {
-//     flex-direction: column;
-//     gap: 1.5rem;
-//     padding: 1rem 0;
-//   }
+// //   .twocol {
+// //     flex-direction: column;
+// //     gap: 1.5rem;
+// //     padding: 1rem 0;
+// //   }
 
-//   .gameArea,
-//   .controlArea {
-//     max-width: 90vw;
-//     aspect-ratio: auto;
-//   }
-// }
+// //   .gameArea,
+// //   .controlArea {
+// //     max-width: 90vw;
+// //     aspect-ratio: auto;
+// //   }
+// // }
 
