@@ -2,91 +2,71 @@
   display: flex;
   flex-direction: column;
   background: white;
-  // border-radius: 0.75rem;
   width: 100%;
   height: 100%;
-  // max-width: 360px;
-  // box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-decoration: none;
   color: #0a66c2;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-
+  position: relative;
+  border-radius: 0.75rem;
 }
 
-/* Banner at the top */
 .banner {
   width: 100%;
-  height: 40%;  // LinkedIn header height
+  height: 40%;
   background-size: cover;
   background-position: center;
   position: relative;
   border-bottom: 2px solid rgba(89, 89, 89, 0.658);
 }
 
-
 .psuedoButtons {
-  display: flex;         
-  // background-color: orange;     // arrange buttons in a row
-  justify-content: flex-end;  // push them to the right
-  gap: 0.5rem;                // spacing between buttons
-  // width: 50%;
-  // margin-left: 50%;                // fill parent container
-  height: 3rem;    
-  // margin-right: ;           // height of the button row (optional)
-  margin-top: 1rem;      
-  margin-right: 1.5rem;       // spacing from right edge 
-  
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  height: 3rem;
+  margin-top: 1rem;
+  margin-right: 1.5rem;
+
   .buttonsmall {
-  width: 4rem;
-  height: 100%;
-  background-color: #547777;     // light gray for fake button
-  border-radius: 0.3rem;      // subtle rounded corners
-}
+    width: 4rem;
+    height: 100%;
+    background-color: #547777;
+    border-radius: 0.3rem;
+  }
 
-.buttonlong {
-  flex: 1;                     // takes remaining space
-  max-width: 3rem;             // optional cap
-  height: 100%;
-  background-color: #97979797;      // slightly darker gray
-  border-radius: 0.3rem;
+  .buttonlong {
+    flex: 1;
+    max-width: 3rem;
+    height: 100%;
+    background-color: #97979797;
+    border-radius: 0.3rem;
+  }
 }
-// optional spacing from above content
-}
-
-/* Small square buttons */
-
 
 .filler { 
   background-color: rgb(230, 230, 230);
   height: 3rem;
-  // width: 90%;
   border-radius: 4px;
-  // padding: 1rem;
 }
 
-/* Long rectangle button */
-
-/* Header containing profile photo & icon */
 .header {
   display: flex;
   align-items: center;
-  text-align: left;
-  
   justify-content: space-between;
+  text-align: left;
   padding: 0 1.5rem;
-  margin-top: -120px; // half of profile pic height to overlap banner
+  margin-top: -120px;
   z-index: 2;
   position: relative;
 }
 
-/* Profile picture overlapping banner */
 .photoContainer {
   width: 144px;
   height: 144px;
   border-radius: 50%;
-  border: 3px solid white; // white border to match LinkedIn style
+  border: 3px solid white;
   overflow: hidden;
   flex-shrink: 0;
 
@@ -102,11 +82,9 @@
   position: absolute;
   top: 2rem;
   right: 2rem;
-  // color: #0a66c2;
   opacity: 0.85;
 }
 
-/* Info block */
 .info {
   display: flex;
   flex-direction: column;
@@ -142,7 +120,6 @@
   }
 }
 
-/* Footer */
 .footer {
   position: absolute;
   bottom: 0;
@@ -152,30 +129,81 @@
   border-top: 1px solid #eee;
   padding: 0.5rem 1.5rem;
   text-align: center;
+}
 
-  .linkText {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #0a66c2;
+/* Responsive design */
+@media (max-width: 768px) {
+  .photoContainer {
+    width: 96px;
+    height: 96px;
+  }
+
+  .header {
+    margin-top: -80px;
+  }
+
+  .info {
+    padding: 0.75rem 1rem 0;
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .summary {
+      font-size: 0.9rem;
+    }
+  }
+
+  .footer {
+    width: 70%;
+    padding: 0.5rem 1rem;
   }
 }
 
-// /* Responsive */
-// @media (max-width: 480px) {
-//   .linkedinCard {
-//     max-width: 100%;
-//   }
+@media (max-width: 480px) {
+  .linkedinCard {
+    border-radius: 0.5rem;
+  }
 
-//   .photoContainer {
-//     width: 56px;
-//     height: 56px;
-//   }
+  .banner {
+    height: 30%;
+  }
 
-//   .info h2 {
-//     font-size: 1.1rem;
-//   }
+  .psuedoButtons {
+    margin-top: 0.75rem;
+    margin-right: 1rem;
+    height: 2.5rem;
+  }
 
-//   .summary {
-//     font-size: 0.9rem;
-//   }
-// }
+  .photoContainer {
+    width: 72px;
+    height: 72px;
+  }
+
+  .header {
+    margin-top: -60px;
+    padding: 0 1rem;
+  }
+
+  .info {
+    padding: 0.75rem 1rem;
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    .title,
+    .company,
+    .summary {
+      font-size: 0.85rem;
+    }
+  }
+
+  .footer {
+    position: relative;
+    margin: 1rem auto 0;
+    width: 90%;
+    border: none;
+    padding: 0.5rem;
+  }
+}

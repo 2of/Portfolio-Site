@@ -103,7 +103,7 @@ const TinderView = ({
     transition: dragging
       ? "none"
       : showHint
-        ? "transform 0.2s ease"
+        ? "transform 2s ease"
         : "transform var(--anim-duration) var(--ease), opacity var(--anim-duration) var(--ease)",
     opacity: direction ? 0 : 1,
   };

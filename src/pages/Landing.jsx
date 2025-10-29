@@ -10,6 +10,7 @@ import { useNavStack } from "../contexts/NavStackContext";
 import getIcon from "../utils/Iconifier";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 import ResponsiveGradient from "../components/Background/ResponsiveGradient";
+import { QuickLinksThing } from "../components/Misc/QuickLinksThing";
 
 export const LandingPage = () => {
   const screenSize = useScreenSize();
@@ -117,6 +118,11 @@ export const LandingPage = () => {
   } else {
     return (
       <CenteredContainer>
+        {/* <div style={styles.quicklinkscontainer}>
+        <QuickLinksThing/>
+
+        </div> */}
+
         <div className={styles.sidebyside}>
           <div className={styles.content}>
             <TinderView

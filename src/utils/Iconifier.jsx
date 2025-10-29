@@ -65,6 +65,7 @@ import {
   FaRegStar,
   FaRegMoon,
   FaRegFileAlt,
+  FaAcquisitionsIncorporated,
   FaRegFile,
   // FaArrowRight,
   FaArrowCircleRight,
@@ -73,6 +74,7 @@ import {
   FaPaperclip,
   FaCompressAlt,
   FaDirections,
+  FaBriefcase,
 } from "react-icons/fa";
 import { FaP, FaPencil, FaSailboat } from "react-icons/fa6";
 
@@ -144,6 +146,7 @@ const getIcon = (iconName = "default") => {
     cross: <FaBan />,
     article: <FaPaperclip />,
     portfolio: <FaCode />,
+    resume: <FaBriefcase/>,
     tag: <FaTag />,
     rightarrow: <FaArrowCircleRight />,
     right: <FaArrowRight />,

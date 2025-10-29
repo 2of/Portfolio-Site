@@ -11,13 +11,14 @@
   
   
   // background-color: red;
-  padding: 6rem 1rem 4rem 1rem;
+  padding: 6rem 1rem 10vh 1rem;
 }
 
 .sidebyside {
   max-width: 1000px;
   padding: 1rem 4rem;
   height: 60vh;
+  max-height: 800px;
   width: 100%;
   gap: 24px;
   display: flex;

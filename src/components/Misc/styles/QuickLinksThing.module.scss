@@ -1,0 +1,105 @@
+.quickLinksThing {
+  --ql-gap-compact: 0rem;
+  --ql-gap-expanded: 64px;
+  --ql-padding-compact: 0.35rem;
+  --ql-padding-expanded: 1rem 4rem 1rem 1rem;
+  --ql-radius: 999px;
+
+  display: inline-flex;
+  gap: var(--ql-gap-compact);
+  align-items: center;
+  padding: var(--ql-padding-compact);
+  border-radius: var(--ql-radius);
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px) saturate(150%);
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
+
+  transition: 
+    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease;
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.35rem;
+    border-radius: 12px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 1.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .label {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      white-space: nowrap;
+      opacity: 0;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-color);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform: translateY(-50%) translateX(-8px);
+    }
+
+    &:hover, &:focus-within {
+      opacity: 1;
+
+      .label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+  }
+
+  &.expanded {
+    gap: var(--ql-gap-expanded);
+    padding: var(--ql-padding-expanded);
+
+    .link {
+      opacity: 1;
+
+      .label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    &:hover .link:not(:hover) {
+      opacity: 0.65;
+    }
+  }
+
+  // Staggered transitions
+  @for $i from 1 through 10 {
+    .link:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 50}ms;
+
+      .label {
+        transition-delay: #{($i - 1) * 60}ms;
+      }
+    }
+  }
+
+  .link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb),0.15);
+  }
+}

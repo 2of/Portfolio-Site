@@ -14,6 +14,7 @@ import { NudgeContainer } from "../UI/NudgeContainer";
 import FeatherRevealImage from "../Misc/FeatherImageMouseTracked";
 import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
 import { useIsMenuFloatingDesktop } from "../../contexts/RouteContext";
+import { QuickLinksThing } from "../Misc/QuickLinksThing";
 
 export const DesktopFloatingNav = () => {
   const screenSize = useScreenSize();
@@ -110,6 +111,11 @@ export const DesktopFloatingNav = () => {
             </li>
           );
         })}
+
+        <li>
+
+        <QuickLinksThing/>
+        </li>
 
         <li className={`${styles.navItem} ${styles.extrabuttonnav}`}>
           <DarkModeWrapper type="largepill" />

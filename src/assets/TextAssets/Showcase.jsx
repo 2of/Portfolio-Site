@@ -146,24 +146,24 @@ export const ShowcasecardStack = {
       />
     ),
   },
-  chess: {
-    title: "Too cheap for Chess.com",
-    subtitle: "I made this a while ago but finally got around to making a front end. The short of it is, Chess.com charge to estimate your ELO... so we should just use machine learning to do it for free. It's trained on 33m chess games... break down of the models are available on the page",
-    card: (
-      <ProjectCard
-        image={linkedinimage}
-        tag="AI Project"
-        title="Free Chess ELO Estimator"
-        subtitle="LLM-driven GeoLocalization"
-        description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
-        authorString="by Noah King"
-        link="/ChessEloEsimator"
-        icon={getIcon("projects")}
-        id="chessEloEstimator"
-        // background="linear-gradient(135deg, #0D1117, #161B22)"
-      />
-    ),
-  },
+  // chess: {
+  //   title: "Too cheap for Chess.com",
+  //   subtitle: "I made this a while ago but finally got around to making a front end. The short of it is, Chess.com charge to estimate your ELO... so we should just use machine learning to do it for free. It's trained on 33m chess games... break down of the models are available on the page",
+  //   card: (
+  //     <ProjectCard
+  //       image={linkedinimage}
+  //       tag="AI Project"
+  //       title="Free Chess ELO Estimator"
+  //       subtitle="LLM-driven GeoLocalization"
+  //       description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
+  //       authorString="by Noah King"
+  //       link="/ChessEloEsimator"
+  //       icon={getIcon("projects")}
+  //       id="chessEloEstimator"
+  //       // background="linear-gradient(135deg, #0D1117, #161B22)"
+  //     />
+  //   ),
+  // },
   links1: {
     title: "...",
     subtitle: "Anyway thanks for checking out my stack of things. Check out projects or about to learn more. Im open to all forms of collaboration. I can give advice (on things in here if you need? although coming ot my portfolio for it is weird) ... Also I made that darkmode toggle when I was first learning react and I thought it was cool.. so I bought it over ",

@@ -25,7 +25,7 @@ const routes = [
     label: "home",
     icon: "home",
     hideDesktop: true,
-    bg: "shapes",
+    bg: "pattern2",
 
     element: <LandingPage />,
     fullscreenDesktop: true,
@@ -33,7 +33,7 @@ const routes = [
   },
   {
     path: "/projects",
-    label: "projects catalogue",
+    label: "projects",
     element: <CataloguePage />,
     icon: "Catalogue",
     bg: "bg",
@@ -79,7 +79,7 @@ const routes = [
   },
   {
     path: "/about",
-    label: "about the author",
+    label: "about",
     element: <AboutPage />,
     icon: "about",
     hide: false,
@@ -106,7 +106,7 @@ const routes = [
   },
   {
     path: "/settings",
-    label: "preferences + extras",
+    label: "preferences + more",
     element: <SettingsPage />,
     icon: "settings",
     bg: "dots",
