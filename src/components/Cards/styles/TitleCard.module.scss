@@ -1,5 +1,6 @@
 /* --- Base Styling --- */
-.titleCard { // Changed to camelCase or similar to fit JS object properties better, though kebab-case works with bracket notation
+.titleCard {
+    // Changed to camelCase or similar to fit JS object properties better, though kebab-case works with bracket notation
     // Base properties for all variants
     display: flex;
     flex-direction: column;
@@ -9,9 +10,9 @@
     align-items: center;
     position: relative;
     justify-content: center;
-   border-radius: 8px;
-  overflow: hidden;
-//   background-color: red;
+    border-radius: 12px;
+    overflow: hidden;
+    //   background-color: red;
     height: 100%;
     width: 100%;
     justify-content: center;
@@ -22,38 +23,34 @@
         z-index: 2;
         // font-size: 2.2rem;
         // margin: 0 0 8px 0;
-        
+
         color: var(--text-color);
-        font-weight: 900;
+        font-weight: 200;
+        font-style: italic;
     }
 
     &__subtitle {
-                z-index: 2;
+        z-index: 2;
         font-size: 1.1rem;
         margin: 0;
         color: var(--text-color);
     }
 }
 
-
-.bgContainer { 
+.bgContainer {
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index:2;
+    z-index: 2;
 }
 /* --- Variant 1: Regular (Default) --- */
 .titleCard--regular {
- 
     // align-items: flex-start;
-    // max-width: 400px; 
+    // max-width: 400px;
 }
 
 /* --- Variant 2: Angled --- */
 .titleCard--angled {
-    
-
-  
     .titleCard__title,
     .titleCard__subtitle {
         transform: skewX(4deg) rotate(-3deg);
@@ -76,12 +73,12 @@
         flex: 3;
         font-size: 1.8rem;
     }
-    
+
     .titleCard__subtitle {
         flex: 2;
         text-align: right;
         font-style: italic;
         padding-left: 20px;
-        color: #2980b9; 
+        color: #2980b9;
     }
 }

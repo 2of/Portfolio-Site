@@ -12,7 +12,7 @@ export function ThemeProvider({ theme, children }) {
 
 export function useTheme(varName) {
   const [value, setValue] = useState(
-    getComputedStyle(document.documentElement).getPropertyValue(varName).trim()
+    getComputedStyle(document.documentElement).getPropertyValue(varName).trim(),
   );
 
   useEffect(() => {
@@ -33,4 +33,3 @@ export function useTheme(varName) {
 
   return value;
 }
-

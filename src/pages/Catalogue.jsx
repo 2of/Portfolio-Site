@@ -28,6 +28,8 @@ import text from "../../public/assets/text/texts.json";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 import { useModal } from "../contexts/ModalContext";
 import { TitleCard } from "../components/Cards/TitleCard";
+import { RichTabShowCaseView } from "../components/Containers/RichTabShowcaseView";
+import { RichTabData } from "../assets/TextAssets/ShowCaseTabRich";
 export const CataloguePage = () => {
   const { getAllMetaData, getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
@@ -87,21 +89,20 @@ export const CataloguePage = () => {
         {/* <h1>test {screenSize}</h1> */}
         {/* <GlassPushOverlay spiciness={0.5}> */}
 
-      
-          <LargeThumbCard
-            // title=?
-            data={project.details}
-            icon={getIcon("test")}
-            isdouble={project.large || false}
-            to={
-              project.details.externalLink ||
-              project.details.internalLink ||
-              getProjURL(project.name)
-            }
-            swapsides={id % 2 == 0}
-            isExternal={project.externalLink || false}
-          />
-          {/* test {project.externalLink && "external"} */}
+        <LargeThumbCard
+          // title=?
+          data={project.details}
+          icon={getIcon("test")}
+          isdouble={project.large || false}
+          to={
+            project.details.externalLink ||
+            project.details.internalLink ||
+            getProjURL(project.name)
+          }
+          swapsides={id % 2 == 0}
+          isExternal={project.externalLink || false}
+        />
+        {/* test {project.externalLink && "external"} */}
         {/* </GlassPushOverlay> */}
       </div>
     );
@@ -167,11 +168,8 @@ export const CataloguePage = () => {
   };
 
   const Header1 = () => (
-
-   
     <div className={styles.MainHeader}>
- <GlassPushOverlay spiciness={0} showShine>
-      
+      {/* <GlassPushOverlay spiciness={0} showShine>*/}
       <AnimatedHeader
         title={"Featured Projects"}
         icon={getIcon("star")}
@@ -181,8 +179,7 @@ export const CataloguePage = () => {
           "Small writeups for highlighted projects. Scroll further to see a raw list"
         }
       />
-
-      </GlassPushOverlay>
+      {/* </GlassPushOverlay>*/}
     </div>
     // </GlassPushOverlay>
   );
@@ -215,16 +212,13 @@ export const CataloguePage = () => {
 
   const StandardHeaderDesktop = ({ title, subtitle, icon }) => (
     <div className={styles.StandardHeaderDesktop}>
-
-       <GlassPushOverlay spiciness={0} showShine>
-      
-      {/* <AnimatedHeader title={title} icon={icon} subtitle={subtitle} /> */}
-       <h1 className={styles.title}>
-        {icon} {title}
-      </h1>
-      {subtitle && <p className={styles.subtitle}>{subtitle}</p>} 
-    </GlassPushOverlay>
-    
+      <GlassPushOverlay spiciness={0} showShine>
+        {/* <AnimatedHeader title={title} icon={icon} subtitle={subtitle} /> */}
+        <h1 className={styles.title}>
+          {icon} {title}
+        </h1>
+        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+      </GlassPushOverlay>
     </div>
   );
 
@@ -313,26 +307,25 @@ export const CataloguePage = () => {
       </Section>
 
       {/* title={"new"} subtitle={"test"}/> */}
-      <Section color="dark"
-     
-        > 
-        <div className={styles.LargeThumbGrid}>
+      <Section color="">
+        {/* <div className={styles.LargeThumbGrid}>
           <div className={`${styles.doublewide} ${styles.ProjectCell}`}>
             <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"}/>
         </div>
-        
+
           {showcaseProjects.slice(0, 4).map(renderCard)}
         <div className={`${styles.doublewide} ${styles.fillwide} ${styles.ProjectCell}`}>
             <TitleCard title={"It's a bit all over the place"} subtitle={"Feel free to have a look"}/>
         </div>
 
           {showcaseProjects.slice(4).map(renderCard)}
-             {/* <TitleCard title={"fin"} subtitle={""}/> */}
-        </div>
+
+        </div>*/}
+        <RichTabShowCaseView data={RichTabData} />;
       </Section>
 
-    <Section 
-    color=""
+      <Section
+        color=""
         Header={() => (
           <StandardHeaderDesktop
             title={"Notable Uni Bits"}
@@ -345,8 +338,9 @@ export const CataloguePage = () => {
           {uniProjects.map(renderCard)}
         </div>
       </Section>
-      <Section sticky
-      color="dark"
+      <Section
+        sticky
+        color="dark"
         Header={() => (
           <StandardHeaderDesktop
             title={"Most Recent Github Commits"}
@@ -354,12 +348,12 @@ export const CataloguePage = () => {
             icon={getIcon("Github")}
           />
         )}
-        
       >
         {isLoading ? <Loader /> : <RenderGithubs projs={githubProjects} />}
       </Section>
 
-      <Section sticky
+      <Section
+        sticky
         Header={() => (
           <StandardHeaderDesktop
             title={"Miscellaneous Bits"}

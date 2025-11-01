@@ -16,6 +16,7 @@ import {
 import { ThemeProvider } from "./ThemeProvider";
 import { ModalMenuProvider } from "./ModalContext";
 import { NavStackProvider } from "./NavStackContext";
+import { AppThemeProvider } from "./ThemeContext";
 function InnerThemeWrapper({ children }) {
   const { darkMode: isDark } = useDarkMode();
   const floatingNav = useIsMenuFloatingDesktop();
@@ -58,11 +59,13 @@ export const ContextWrapper = ({ children }) => {
             <RouteProvider>
               <TooltipProvider>
                 <ModalMenuProvider>
-                  <AlertMenuProvider>
-                    <ScreenSizeProvider>
-                      <InnerThemeWrapper>{children}</InnerThemeWrapper>
-                    </ScreenSizeProvider>
-                  </AlertMenuProvider>
+                  <AppThemeProvider>
+                    <AlertMenuProvider>
+                      <ScreenSizeProvider>
+                        <InnerThemeWrapper>{children}</InnerThemeWrapper>
+                      </ScreenSizeProvider>
+                    </AlertMenuProvider>
+                  </AppThemeProvider>
                 </ModalMenuProvider>
               </TooltipProvider>
             </RouteProvider>

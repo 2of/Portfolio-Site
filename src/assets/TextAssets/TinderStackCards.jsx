@@ -9,6 +9,7 @@ import WelcomeCard from "../../components/Cards/PreDoneCards/WelcomeCard";
 import linkedinimage from "../../assets/linkedinbg.jpeg";
 import avatar1 from "../../assets/userimage.jpeg";
 import { LinkCard } from "../../components/Cards/PreDoneCards/Linkscard";
+import GeoCard from "../../components/Cards/PreDoneCards/GeoCard";
 
 export const ShowcasecardStack = {
   welcome: {
@@ -20,7 +21,8 @@ export const ShowcasecardStack = {
 
   intro: {
     title: "The short of it is... I know my stuff",
-    subtitle: "There's projects here that show web, full stack development, machine learning design and implementation (and all the data processing that comes with that)... as well as odds and ends like verison control, sql... I make things when not making them feels like work...",
+    subtitle:
+      "There's projects here that show web, full stack development, machine learning design and implementation (and all the data processing that comes with that)... as well as odds and ends like verison control, sql... I make things when not making them feels like work...",
     card: (
       <AboutCard
         name="Hi, I'm Noah"
@@ -30,9 +32,8 @@ export const ShowcasecardStack = {
           "BSc Computer Science – University of Canterbury",
           "Master of Artificial Intelligence – University of Canterbury",
         ]}
-
-                heroImage={linkedinimage}
-          tags1title = "This is what I Do"
+        heroImage={linkedinimage}
+        tags1title="This is what I Do"
         tags1={[
           "python",
           "C/ ++",
@@ -58,28 +59,28 @@ export const ShowcasecardStack = {
           "Heuristic Model Analysis",
           "Neural Net Design",
         ]}
-       
         // image="/images/noahking.jpg"
         cvLink="https://github.com/2of/2of/blob/main/docs/CV_all.pdf"
       />
     ),
   },
-   IT: {
+  IT: {
     title: "Yeah.. I've done a bunch of IT work too ",
-    subtitle: "I've done IT work everywhere from Homes to small Businesses to Education to Major  Supermarkets to 100k+ Seat Government Organizations.. I've been around... And TBH im pretty good at it. ",
+    subtitle:
+      "I've done IT work everywhere from Homes to small Businesses to Education to Major  Supermarkets to 100k+ Seat Government Organizations.. I've been around... And TBH im pretty good at it. ",
     card: (
       <AboutCard
         name="Work History, What I've Done"
         subtitle="I've done a bunch of IT work..."
         about="I'm  a reaosnably experienced IT support Engineer (Service Desk Analyst, IT guy... whatever term goes for you!)
         I cut my teeth installing TV's and Computers for New Zealand's analogy to Geek Squad and then as a full time IT Tech for Education and <100 seat businesses.
-        
+
         I've recently been a Tier 2 Support Engineer (not a protected term in NZ) for a major public service IT conversion project"
         // qualifications={[
         //   "BSc Computer Science – University of Canterbury",
         //   "Master of Artificial Intelligence – University of Canterbury",
         // ]}
-        tags1title = "This is what I've done"
+        tags1title="This is what I've done"
         tags1={[
           "Network Administration",
           "Network Design + Business Case Analysis",
@@ -92,8 +93,7 @@ export const ShowcasecardStack = {
           "Hardware Repair",
           "Apple MDM",
           "Win Server",
-          "Azure Appliance (deployment, integration)"
-          
+          "Azure Appliance (deployment, integration)",
         ]}
         image="/images/noahking.jpg"
         cvLink="https://github.com/2of/2of/blob/main/docs/CV_all.pdf"
@@ -103,7 +103,8 @@ export const ShowcasecardStack = {
 
   project: {
     title: "Github stuff",
-    subtitle: "You should follow me on Github. I post code there. Sometimes it's big, cool projects leveraging Machine Learning and so on ... and sometimes it's just powershell scripts for migrating distribution lists between tenants or vba to convert decades of all-over-the-place email addresses into a coherrent new convention",
+    subtitle:
+      "You should follow me on Github. I post code there. Sometimes it's big, cool projects leveraging Machine Learning and so on ... and sometimes it's just powershell scripts for migrating distribution lists between tenants or vba to convert decades of all-over-the-place email addresses into a coherrent new convention",
     card: (
       <GithubCard
         username="2of"
@@ -115,7 +116,8 @@ export const ShowcasecardStack = {
   },
   LinkedIn: {
     title: "Professional Networking?",
-    subtitle: "Add me on linkedin. I'm not a big social media poster, but please feel absolutely free to flick me a pm on linkedin. Im open to everything from job offers (I like those) to tea & biscuits ",
+    subtitle:
+      "Add me on linkedin. I'm not a big social media poster, but please feel absolutely free to flick me a pm on linkedin. Im open to everything from job offers (I like those) to tea & biscuits ",
     card: (
       <LinkedinCard
         name="Noah King"
@@ -130,19 +132,25 @@ export const ShowcasecardStack = {
   },
   Mastesproj: {
     title: "Here's my mini thesis",
-    subtitle: "Perhaps my Master's project would entice you? I decided dealing with 150k images was a smart thesis to go with. We emulate GeoGuessr players by creating a (psuedo) ensemble of different machine learning approaches... it did noticably improve on the image distribution... but the issues are left to you to read... here... now...",
+    subtitle:
+      "Perhaps my Master's project would entice you? I decided dealing with 150k images was a smart thesis to go with. We emulate GeoGuessr players by creating a (psuedo) ensemble of different machine learning approaches... it did noticably improve on the image distribution... but the issues are left to you to read... here... now...",
     card: (
-      <ProjectCard
-        image="/assets/heroImages/geo.png"
-        tags={["AI", "Machine Learning", "Model Design" , "Heuristic Analyis", "Large Data Processing"]}
-        title="Geolocalization of Street level Imagery with Machine Learning"
-        subtitle="Master's Project @ UC 2025"
-        description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
-        authorString="by Noah King"
-
-        icon={getIcon("projects")}
-        id="geo"
-        // background="linear-gradient(135deg, #0D1117, #161B22)"
+      <GeoCard
+      // image="/assets/heroImages/geo.png"
+      // tags={[
+      //   "AI",
+      //   "Machine Learning",
+      //   "Model Design",
+      //   "Heuristic Analyis",
+      //   "Large Data Processing",
+      // ]}
+      // title="Geolocalization of Street level Imagery with Machine Learning"
+      // subtitle="Master's Project @ UC 2025"
+      // description="A city-scale model combining satellite imagery and LLM reasoning to predict geographic coordinates."
+      // authorString="by Noah King"
+      // icon={getIcon("projects")}
+      // id="geo"
+      // // background="linear-gradient(135deg, #0D1117, #161B22)"
       />
     ),
   },
@@ -166,7 +174,8 @@ export const ShowcasecardStack = {
   // },
   links1: {
     title: "...",
-    subtitle: "Anyway thanks for checking out my stack of things. Check out projects or about to learn more. Im open to all forms of collaboration. I can give advice (on things in here if you need? although coming ot my portfolio for it is weird) ... Also I made that darkmode toggle when I was first learning react and I thought it was cool.. so I bought it over ",
-    card: <LinkCard />,
+    subtitle:
+      "Anyway thanks for checking out my stack of things. Check out projects or about to learn more. Im open to all forms of collaboration. I can give advice (on things in here if you need? although coming ot my portfolio for it is weird) ... Also I made that darkmode toggle when I was first learning react and I thought it was cool.. so I bought it over ",
+    card: <GeoCard />,
   },
 };

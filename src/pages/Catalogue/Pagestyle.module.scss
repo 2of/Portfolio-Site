@@ -1,0 +1,25 @@
+.LargeThumbGrid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    /* padding: 12px; // Swapped from gap: elements are now padded inside the grid */
+    grid-auto-flow: dense;
+
+    .ProjectCell {
+        min-height: 10rem;
+        &.twobytwo {
+            grid-column: span 2;
+            min-height: 25rem;
+            grid-row: span 2;
+            /* background-color: red; */
+        }
+        &.doublewide {
+            grid-column: span 2;
+
+            @media (min-width: 900px) {
+                grid-column: span 3;
+            }
+        }
+    }
+}

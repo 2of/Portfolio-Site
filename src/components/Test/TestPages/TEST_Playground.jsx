@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import getIcon from "../../../utils/Iconifier";
-import {NavMenuIconMobile} from "../../Nav/MobileIcon"; // or wherever your file is
+import { NavMenuIconMobile } from "../../Nav/MobileIcon"; // or wherever your file is
 import MobileNavMenu from "../../Nav/MobileNavMenu";
 import DesktopNav from "../../Nav/DesktopNav";
-
+import { RichTabShowCaseView } from "../../Containers/RichTabShowcaseView";
+import LinkedinCard from "../../Cards/PreDoneCards/LinkedInCard";
+import GithubCard from "../../Cards/PreDoneCards/GithubCard";
+import { RichTabData } from "../../../assets/TextAssets/ShowCaseTabRich";
 // Move testVariants outside the component to memoize the functions/icons
 const testVariants = [
   {
@@ -64,12 +67,68 @@ export const PlaygroundPage = () => {
 
   const { label, icon, bgColor, callback } = testVariants[index];
 
+  const DummyCard = ({ text }) => (
+    <div
+      style={{ padding: "1rem", border: "1px solid #ccc", borderRadius: "8px" }}
+    >
+      <h3>{text}</h3>
+      <p>This is a dummy card for demonstration purposes.</p>
+    </div>
+  );
+
+  const tabData = [
+    {
+      name: "AI Assistant",
+      tabdata: {
+        icon: "school",
+        title: " Machine Learning Street Level GeoLocalization Model(s)",
+        subtitle: "Master's Project",
+        description:
+          "GeoLocalization Model (think GeoGuessr Bot) for street level imagery trained using a derived dataset from fine tuned object detection models, OCR, Colour space to a 1.3km accuracy from a 20km random, non uniform, distribution ",
+        links: [
+          { to: "https://openai.com", label: "Learn More", icon: "link" },
+          { to: "#", label: "Try Demo", icon: "play" },
+        ],
+      },
+      richdata: <LinkedinCard text="AI Assistant Overview" />,
+    },
+    {
+      name: "Analytics Dashboard",
+      tabdata: {
+        icon: "chart",
+        title: "Portfolio REACT site",
+        subtitle: "Web + Front End",
+        description:
+          "That's this website, actually, It's written more or less from scratch in React with SCSS",
+        links: [
+          { to: "#", label: "2of.io", icon: "book" },
+          { to: "#", label: "Repo", icon: "dashboard" },
+        ],
+      },
+      richdata: <DummyCard text="Analytics Overview" />,
+    },
+    {
+      name: "Third thing",
+      tabdata: {
+        icon: "chart",
+        title: "thrd thingd",
+        subtitle: "things",
+        description:
+          "A powerful dashboard thatovides data insights in real-time.ovides data insights in real-time.ovides data insights in real-time. provides data insights in real-time.",
+        links: [
+          { to: "#", label: "View Docs", icon: "book" },
+          { to: "#", label: "Open Dashboard", icon: "dashboard" },
+        ],
+      },
+      richdata: <DummyCard text="Analytics Overview" />,
+    },
+  ];
+
   return (
     <div style={{ padding: "2rem" }}>
       <h1>Playground</h1>
-
-
-    <DesktopNav/>
+      <RichTabShowCaseView data={RichTabData} />;
+      {/* <DesktopNav />
       <section>
         <h2>NavMenuIconMobile Test</h2>
         <NavMenuIconMobile
@@ -91,10 +150,13 @@ export const PlaygroundPage = () => {
           Cycle Variant
         </button>
       </section>
-
       <section style={{ marginTop: "3rem" }}>
         <h2>MobileNavMenu Test</h2>
-        <button onClick={openMenu} disabled={isVisible} style={{ marginRight: 10 }}>
+        <button
+          onClick={openMenu}
+          disabled={isVisible}
+          style={{ marginRight: 10 }}
+        >
           Open Menu
         </button>
         <button onClick={closeMenu} disabled={!isVisible}>
@@ -109,7 +171,7 @@ export const PlaygroundPage = () => {
           direction={direction}
           triggerCollapseAnimation={closeMenu}
         />
-      </section>
+      </section>*/}
     </div>
   );
 };

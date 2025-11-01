@@ -39,6 +39,7 @@ import {
   ScrollableVerticalView,
   Section,
 } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import { Divider } from "../components/UI/Divider";
 
 export const ComponentPage = () => {
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
@@ -50,8 +51,6 @@ export const ComponentPage = () => {
   const shouldHideNav = useIsMenuFloatingDesktop();
   const [currentPath, setCurrentPath] = useState([]);
   const [currpathPoint, setCurrPathPoint] = useState(0);
-
-
 
   const pathname = useRoute();
   const { pushNav, addButton, navstack, popNav, extraButtons } = useNavStack();
@@ -102,7 +101,6 @@ export const ComponentPage = () => {
       ),
     });
   };
-
 
   const handleReplaceMainButton = () => {
     addButton({
@@ -172,6 +170,47 @@ export const ComponentPage = () => {
     );
   };
 
+  const DividerSection = () => {
+    return (
+      <Section
+        sticky={true}
+        Header={() => (
+          <GenericHeader
+            text={
+              "Divider is a simple component that adds a horizontal line to the layout"
+            }
+          />
+        )}
+      >
+        <div className={styles.chunk}>
+          // Default - Pure gradient fade (no center element)
+          <Divider variant="default" spacing="medium" />
+          // Dashed - Clean dashed line only
+          <Divider variant="dashed" spacing="small" />
+          // Dotted - Micro dots with tiny center dot
+          <Divider variant="dotted" spacing="medium" />
+          // Gradient - Smooth color fade (no center)
+          <Divider variant="gradient" spacing="large" />
+          // Ornamental - Subtle diamonds + dot cluster
+          <Divider variant="ornamental" spacing="medium" />
+          // Thick - Bold single line
+          <Divider variant="thick" spacing="small" />
+          // Minimal - Ultra-subtle line
+          <Divider variant="minimal" spacing="medium" />
+          // Double - Parallel lines (no center)
+          <Divider variant="double" spacing="large" />
+          // Wave - Flowing dash pattern
+          <Divider variant="wave" spacing="medium" />
+          // Center - Clean lines with single vertical accent bar
+          <Divider variant="center" spacing="medium" />
+          // With animation (works with any variant)
+          <Divider variant="gradient" animated spacing="large" />
+          <Divider variant="ornamental" animated spacing="medium" />
+        </div>
+      </Section>
+    );
+  };
+
   const AlertSection = () => {
     return (
       <Section
@@ -199,7 +238,7 @@ export const ComponentPage = () => {
       </Section>
     );
   };
-  const CollapsableSection = () => { 
+  const CollapsableSection = () => {
     return (
       <Section
         sticky={true}
@@ -207,33 +246,31 @@ export const ComponentPage = () => {
 
         Header={() => <GenericHeader text={"Collapsables"} />}
       >
-      <div className={styles.chunk}>
-        <h3>Collapsable Sections</h3>
-        <StandardCollapsableRow title="Basic Section" defaultOpen={false}>
-          <div style={{ padding: "1rem", background: "#f8f8f8" }}>
-            This is the content of a basic collapsable section
-          </div>
-        </StandardCollapsableRow>
+        <div className={styles.chunk}>
+          <h3>Collapsable Sections</h3>
+          <StandardCollapsableRow title="Basic Section" defaultOpen={false}>
+            <div style={{ padding: "1rem", background: "#f8f8f8" }}>
+              This is the content of a basic collapsable section
+            </div>
+          </StandardCollapsableRow>
 
-        <StandardCollapsableRow
-          key={1}
-          title={"Advanced Section"}
-          buttons={[
-            { label: "delete", callback: () => console.log("Delete") },
-            { label: "arrowUp", callback: () => console.log("Move up") },
-            { label: getIcon("smile"), callback: () => console.log("Smile") },
-          ]}
-        >
-          <div style={{ padding: "1rem", background: "#f8f8f8" }}>
-            This section has action buttons
-          </div>
-        </StandardCollapsableRow>
-      </div>
-
-
+          <StandardCollapsableRow
+            key={1}
+            title={"Advanced Section"}
+            buttons={[
+              { label: "delete", callback: () => console.log("Delete") },
+              { label: "arrowUp", callback: () => console.log("Move up") },
+              { label: getIcon("smile"), callback: () => console.log("Smile") },
+            ]}
+          >
+            <div style={{ padding: "1rem", background: "#f8f8f8" }}>
+              This section has action buttons
+            </div>
+          </StandardCollapsableRow>
+        </div>
       </Section>
-    )
-  }
+    );
+  };
 
   const ModalSection = () => {
     return (
@@ -299,9 +336,7 @@ export const ComponentPage = () => {
   };
 
   const SliderSection = () => {
-
-      const [sliderVal, setsliderVal] = useState(20);
-
+    const [sliderVal, setsliderVal] = useState(20);
 
     return (
       <Section
@@ -312,7 +347,6 @@ export const ComponentPage = () => {
       >
         <div className={styles.chunk}>
           <h2> SLiders! </h2>
-
           <StandardSlider
             value={sliderVal}
             onChange={setsliderVal}
@@ -320,10 +354,8 @@ export const ComponentPage = () => {
             style={{ backgroundColor: "lightblue" }} // inline override
             className="myCustomSlider" // SCSS override
           />
-
-          <br />    
+          <br />
           steps defined manually
-
           <StandardSlider
             min={0}
             max={100}
@@ -331,18 +363,16 @@ export const ComponentPage = () => {
             onChange={setsliderVal}
             steps={[0, 20, 40, 60, 80, 100]} // slider will snap to these
           />
-    steps defined automatically w/ prop autoCalcStepsEvery = n
-
+          steps defined automatically w/ prop autoCalcStepsEvery = n
           <StandardSlider
             min={0}
             max={100}
             value={sliderVal}
             onChange={setsliderVal}
-  autoCalcStepsevery={2}
+            autoCalcStepsevery={2}
           />
-                    <br />
-
-                    n = 1
+          <br />
+          n = 1
           <StandardSlider
             min={0}
             max={100}
@@ -361,30 +391,21 @@ export const ComponentPage = () => {
           <StandardSlider value={sliderVal} onChange={setsliderVal} />
           <br />
         </div>
-
-      
       </Section>
     );
   };
 
-
-  const TextInputSection = () => { 
-  const [text, setText] = useState("Hello World");
-    return ( 
-
+  const TextInputSection = () => {
+    const [text, setText] = useState("Hello World");
+    return (
       <Section
         sticky={true}
         // color="dark"
 
-        Header={() => (
-          <GenericHeader
-            text={
-              "Text Fields..."
-            }
-          />
-        )}>
-  <div className={styles.chunk}>
-     There are a few variants of text fields  'type = default'
+        Header={() => <GenericHeader text={"Text Fields..."} />}
+      >
+        <div className={styles.chunk}>
+          There are a few variants of text fields 'type = default'
           <StandardTextField
             name="bio"
             label="Bio (Default)"
@@ -393,7 +414,6 @@ export const ComponentPage = () => {
             placeholder="Tell us a little about yourself..."
             type="default"
           />
-
           you can define multiline and rows n ' type = flat'
           <StandardTextField
             name="bio"
@@ -405,7 +425,6 @@ export const ComponentPage = () => {
             placeholder="Tell us a little about yourself..."
             type="flat"
           />
-
           type = header
           <StandardTextField
             name="title"
@@ -416,27 +435,21 @@ export const ComponentPage = () => {
             type="header"
           />
         </div>
-            
-        </Section>
-    )
+      </Section>
+    );
+  };
 
+  const DropDownSection = () => {
+    const [selected, setSelected] = useState("apple");
 
-  }
-
-
-  const DropDownSection = () => { 
-
-
-      const [selected, setSelected] = useState("apple");
-
-   return (
+    return (
       <Section
         sticky={true}
         // color="dark"
 
         Header={() => <GenericHeader text={"Dropdowns"} />}
       >
-      <div className={styles.chunk}>
+        <div className={styles.chunk}>
           <h4>Dropdown</h4>
           <StandardDropdown
             label="Select a fruit"
@@ -451,31 +464,27 @@ export const ComponentPage = () => {
             variant="icon"
           />
         </div>
-
-
       </Section>
-   )
+    );
+  };
 
-  }
-
-  const DataDisplaySection = () =>{ 
-
-    const [val,setval] = useState(50)
-    const [upper, setupper ] = useState(100)
+  const DataDisplaySection = () => {
+    const [val, setval] = useState(50);
+    const [upper, setupper] = useState(100);
 
     return (
       <Section
         sticky={true}
         // color="dark"
 
-        Header={() => <GenericHeader text={"Progress bars are used for data display etc"} />}
+        Header={() => (
+          <GenericHeader text={"Progress bars are used for data display etc"} />
+        )}
       >
-              <div className={styles.chunk}>
-
-
+        <div className={styles.chunk}>
           <h4>Progress Bars</h4>
-         <p> define as animated? showval? showbounds? </p>
-         <br/>
+          <p> define as animated? showval? showbounds? </p>
+          <br />
           <ProgressBar
             style="linear"
             animated
@@ -485,7 +494,7 @@ export const ComponentPage = () => {
             showVal
             // showBounds
           />
-              <ProgressBar
+          <ProgressBar
             style="linear"
             animated
             val={val}
@@ -494,7 +503,6 @@ export const ComponentPage = () => {
             // showVal
             showBounds
           />
-
           There's also round styles
           <ProgressBar
             style="round"
@@ -514,30 +522,27 @@ export const ComponentPage = () => {
             showVal
             showBounds
           />
-<p>Use the slider to change the prog bars</p>
-            Value:
-                  <StandardSlider
-                 min={0}
+          <p>Use the slider to change the prog bars</p>
+          Value:
+          <StandardSlider
+            min={0}
             max={100}
             value={val}
             onChange={setval}
-//   autoCalcStepsevery={2}
+            //   autoCalcStepsevery={2}
           />
           Upper bound:
-   <StandardSlider
-                 min={0}
+          <StandardSlider
+            min={0}
             max={400}
             value={upper}
             onChange={setupper}
-//   autoCalcStepsevery={2}
+            //   autoCalcStepsevery={2}
           />
-
-
-
         </div>
-    </Section>
-)
-  }
+      </Section>
+    );
+  };
   const ShareSection = () => {
     return (
       <Section
@@ -560,7 +565,7 @@ export const ComponentPage = () => {
                 "https://example.com",
                 "twitter",
                 "Testing description",
-                "Test title"
+                "Test title",
               )
             }
           >
@@ -579,42 +584,32 @@ export const ComponentPage = () => {
   };
 
   const RadialMenuSection = () => {
-    return ( 
-
- <Section
+    return (
+      <Section
         sticky={true}
         // color="dark"
 
-        Header={() => (
-          <GenericHeader
-            text={
-              "Radial Mens are fun?"
-            }
-          />
-        )}
+        Header={() => <GenericHeader text={"Radial Mens are fun?"} />}
       >
-  <div className={`${styles.chunk} ${styles.centered}`}>
-        <h3>Radial Menu</h3>
-        <RadialMenu
-          data={skills}
-          isRoot={true}
-          currentPath={currentPath}
-          setCurrentPath={setCurrentPath}
-          initialRadius={150}
-        />
-        <p>
-          The above is rendered using recursive component rendering from the
-          following JSON
-        </p>
-        <pre>
-          <code>{JSON.stringify(skills, null, 2)}</code>
-        </pre>
-      </div>
-
-
-</Section>
-
-    )
+        <div className={`${styles.chunk} ${styles.centered}`}>
+          <h3>Radial Menu</h3>
+          <RadialMenu
+            data={skills}
+            isRoot={true}
+            currentPath={currentPath}
+            setCurrentPath={setCurrentPath}
+            initialRadius={150}
+          />
+          <p>
+            The above is rendered using recursive component rendering from the
+            following JSON
+          </p>
+          <pre>
+            <code>{JSON.stringify(skills, null, 2)}</code>
+          </pre>
+        </div>
+      </Section>
+    );
   };
 
   const GlassSection = () => {};
@@ -625,15 +620,16 @@ export const ComponentPage = () => {
       {/* <IntroSection/> */}
       <NavSection />
       <ModalSection />
+      <DividerSection />
       <AlertSection />
       <ShareSection />
       <SliderSection />
-      <TextInputSection/>
+      <TextInputSection />
       <ImageInteractionsSection />
-      <CollapsableSection/>
-      <DataDisplaySection/>
-      <DropDownSection/>
-      <RadialMenuSection/>
+      <CollapsableSection />
+      <DataDisplaySection />
+      <DropDownSection />
+      <RadialMenuSection />
     </ScrollableVerticalView>
   );
 };

@@ -5,57 +5,70 @@ import ProgressBar from "../../UI/ProgressBar";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import useScreenSize from "../../../utils/screensize";
 import { baseTheme } from "../../../styles/Themes";
-import { useIsMenuFloatingDesktop, useIsMenuFloatingMobile } from "../../../contexts/RouteContext";
+import {
+  useIsMenuFloatingDesktop,
+  useIsMenuFloatingMobile,
+} from "../../../contexts/RouteContext";
 import { useNavStack } from "../../../contexts/NavStackContext";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
-export const Section = ({ Header, children, sticky, narrow,color="bg",index,isFirst }) => {
-  const screenSize = useScreenSize()
+import { useAppTheme } from "../../../contexts/ThemeContext";
+
+export const Section = ({
+  Header,
+  children,
+  sticky,
+  narrow,
+  color = "bg",
+  index,
+  isFirst,
+}) => {
+  const { getColor } = useAppTheme();
+  const screenSize = useScreenSize();
   const headerClass = clsx(styles.sectionHeaderContainer, {
     [styles.stickyHeader]: sticky,
     [styles.narrow]: narrow,
-
   });
 
   const contentClass = clsx(styles.sectionContent, {
     [styles.narrow]: narrow,
-});
+  });
 
-
-
-
-  const displaycolor = () => { 
-    if (color) { 
-      if (color === "bg") return ""
-      if (color === "dark" ) return baseTheme["--darkbg"]
-      if (color === "accent" ) return 2
+  const displaycolor = () => {
+    if (color) {
+      if (color === "bg") return "";
+      if (color === "l2") return getColor("--bg-l2");
+      if (color === "l1") return getColor("--bg-l1");
+      if (color === "l3") return getColor("--bg-l3");
+      if (color === "dark") return baseTheme["--darkbg"];
+      if (color === "accent") return 2;
     }
-    return color
-    }
-  
+    return color;
+  };
+
   return (
-<section 
-  className={`${styles.section} ${isFirst && styles.growFirst} ${screenSize!=="sm" && styles.desktop}`} 
-  style={{ background:displaycolor()}}
->
+    <section
+      className={`${styles.section} ${isFirst && styles.growFirst} ${screenSize !== "sm" && styles.desktop}`}
+      style={{ background: displaycolor() }}
+    >
+      {/* <h1>tewst {isFirst ? "YES" : " NO" }</h1> */}
+      {displaycolor() === "gradient" && (
+        <div className={styles.sectionGradContainer}>
+          {/* <h1>test</h1> */}
 
-{/* <h1>tewst {isFirst ? "YES" : " NO" }</h1> */}
-    {displaycolor() === "gradient" &&  
-
-    <div className={styles.sectionGradContainer}>
-      {/* <h1>test</h1> */}
-
-<TrackedGradientBG/>
-    </div>}
-      <div className={styles.sectionContent}>
-      {Header && (
-        <div className={headerClass}>
-          <div className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}>
-            <Header />
-          </div>
+          <TrackedGradientBG />
         </div>
       )}
-      <div className={contentClass}>{children}</div>
-
+      <div className={styles.sectionContent}>
+        {Header && (
+          <div className={headerClass}>
+            <div
+              className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}
+            >
+              <Header />
+            </div>
+          </div>
+        )}
+        <div className={contentClass}>{children}</div>
       </div>
     </section>
   );
@@ -66,7 +79,7 @@ export const ScrollableVerticalView = ({
   trackVelocity = true,
   trackScrollPercent,
   staggerStart = false,
-  alignCenter = false
+  alignCenter = false,
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
@@ -78,22 +91,19 @@ export const ScrollableVerticalView = ({
   const screenSize = useScreenSize();
   const MAX_SCROLL_VELOCITY = 3000;
 
-  const {setNavBgTransparent,shouldNavBgBeTransparent } = useNavStack();
+  const { setNavBgTransparent, shouldNavBgBeTransparent } = useNavStack();
 
+  useEffect(() => {
+    // console.log(scrollPerscent)
 
-useEffect(() => {
-  // console.log(scrollPerscent)
-  
-  if (scrollPercent > 0.4) {
-    // console.log("1")
-    setNavBgTransparent(true);
-  } else {
-        // console.log("2")
-    setNavBgTransparent(false);
-  }
-}, [scrollPercent]);
-
-
+    if (scrollPercent > 0.4) {
+      // console.log("1")
+      setNavBgTransparent(true);
+    } else {
+      // console.log("2")
+      setNavBgTransparent(false);
+    }
+  }, [scrollPercent]);
 
   useEffect(() => {
     if (!trackVelocity && !trackScrollPercent) return;
@@ -134,31 +144,30 @@ useEffect(() => {
     return () => el?.removeEventListener("scroll", handleScroll);
   }, [trackVelocity, trackScrollPercent]);
 
- const containerClass = clsx(
-  styles.scrollContainer,
-  screenSize === "sm" && styles.padBottomForMobileFriendliness,
-  trackVelocity
-    ? styles.scrollContainerVelocity
-    : styles.scrollContainerBounce,
-  screenSize !== "sm" && !isStaggeredForNav && styles.paddedforNavBarDesktop,
-  screenSize === "sm" && isMenuFloatingMobile && styles.paddedforNavBarMobile,
-  alignCenter && styles.alignCenter 
-);
+  const containerClass = clsx(
+    styles.scrollContainer,
+    screenSize === "sm" && styles.padBottomForMobileFriendliness,
+    trackVelocity
+      ? styles.scrollContainerVelocity
+      : styles.scrollContainerBounce,
+    screenSize !== "sm" && !isStaggeredForNav && styles.paddedforNavBarDesktop,
+    screenSize === "sm" && isMenuFloatingMobile && styles.paddedforNavBarMobile,
+    alignCenter && styles.alignCenter,
+  );
 
-const enhancedChildren = React.Children.map(children, (child, index) => {
-  if (!React.isValidElement(child)) return child;
-const originalSticky = child.props.sticky;
-  const isSection = child.type?.name === "Section";
-  return isSection
-    ? React.cloneElement(child, {
-        sticky: originalSticky,
-        narrow: child.props.narrow,
-        index,
-        isFirst: index === 0, 
-      })
-    : child;
-});
-
+  const enhancedChildren = React.Children.map(children, (child, index) => {
+    if (!React.isValidElement(child)) return child;
+    const originalSticky = child.props.sticky;
+    const isSection = child.type?.name === "Section";
+    return isSection
+      ? React.cloneElement(child, {
+          sticky: originalSticky,
+          narrow: child.props.narrow,
+          index,
+          isFirst: index === 0,
+        })
+      : child;
+  });
 
   return (
     <div ref={scrollRef} className={containerClass}>
@@ -176,8 +185,6 @@ const originalSticky = child.props.sticky;
         </div>
       )}
 
-
-
       {trackScrollPercent && (
         <div className={styles.progressBarOverlay}>
           <ProgressBar
@@ -191,16 +198,15 @@ const originalSticky = child.props.sticky;
           {/* {scrollPercent} */}
         </div>
       )}
-      <div 
-      className={clsx(
-    styles.contentColumn,
-    alignCenter && styles.alignCenter
-  )}
-  >
+      <div
+        className={clsx(
+          styles.contentColumn,
+          alignCenter && styles.alignCenter,
+        )}
+      >
         {staggerStart && <div className={styles.staggerSpacer} />}
         {enhancedChildren}
       </div>
-    
     </div>
   );
 };

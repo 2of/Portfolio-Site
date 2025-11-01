@@ -16,6 +16,7 @@ import { DirectoryPage } from "../pages/DirectoryPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { LandingPage } from "../pages/Landing";
 import { ComponentPage } from "../pages/ComponentsPage";
+import { CataloguePage_UP } from "../pages/Catalogue/CataloguePage";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -39,9 +40,9 @@ const routes = [
     bg: "bg",
     fullscreenMobile: true,
   },
-  
+
   {
-  path: "/junk",
+    path: "/junk",
     label: "Big old test page",
     extratitle: "helloworld",
     hideDesktop: true,
@@ -52,19 +53,18 @@ const routes = [
     icon: "junk",
   },
 
-    {
+  {
     path: "/allcomponents",
     label: "Component Catalogue",
     extratitle: "helloworld",
-      bg:"shapes",
+    bg: "shapes",
     element: <ComponentPage />,
-        hideDesktop: true,
+    hideDesktop: true,
     hideMobile: true,
     // fullscreenDesktop: true,
     // fullscreenMobile: true,
     icon: "map",
   },
-
 
   {
     path: "/proj/:projectId",
@@ -85,7 +85,7 @@ const routes = [
     hide: false,
     bg: "dots",
   },
-    {
+  {
     path: "/404",
     label: "404",
     element: <NotFoundPage />,
@@ -93,7 +93,7 @@ const routes = [
     hide: false,
     bg: "shapes",
     hideDesktop: true,
-    hideMobile: true
+    hideMobile: true,
   },
   {
     path: "/ChessEloEsimator",
@@ -121,6 +121,14 @@ const routes = [
     hideMobile: true,
 
     bg: "bg",
+  },
+  {
+    path: "/asdf",
+    label: "Rich asdf Editor",
+    element: <CataloguePage_UP />,
+    icon: "smile",
+
+    bg: "dots",
   },
 
   {
@@ -162,7 +170,7 @@ const routes = [
     hideMobile: true,
     fullscreenDesktop: true,
     fullscreenMobile: true,
-    bg: "shapes",
+    bg: "bg",
   },
 ];
 

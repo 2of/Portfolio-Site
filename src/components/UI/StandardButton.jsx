@@ -16,9 +16,10 @@ const validTypes = [
   "article",
   "subtle",
   "rounded",
+  "rounded_catalogue_card_end",
   "rounded_label",
   "icon_only",
-  "featured"
+  "featured",
 ];
 export const StandardButton = ({
   label = "no label",
@@ -120,26 +121,25 @@ export const StandardButton = ({
             {/* {Label} */}
           </>
         );
-     
+      case "rounded_catalogue_card_end":
+        return (
+          <>
+            {Icon}
+
+            {/* {Label} */}
+          </>
+        );
+
       case "featured":
         return (
           <>
             {Label}
             {Icon}
-     </>
-        );
-
- case "icon_only":
-        return (
-
-          <>
-  
-
-            {Icon}
-
-
           </>
         );
+
+      case "icon_only":
+        return <>{Icon}</>;
       case "basic_Expand":
         return (
           <div className={styles.expandWrapper}>
@@ -152,7 +152,7 @@ export const StandardButton = ({
           <>
             <p>
               <span>
-               {Icon}  {Label}
+                {Icon} {Label}
               </span>
             </p>
 

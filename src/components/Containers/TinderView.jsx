@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./TinderView.module.scss";
-import getIcon from "../../../utils/Iconifier";
+import getIcon from "../../utils/Iconifier";
 
 const TinderView = ({
   children,

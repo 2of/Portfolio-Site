@@ -1,7 +1,53 @@
 [
   {
+    "name": "geo",
+    "showcase": true,
+    "large": true,
+    "uniWorkShowcase": false,
+    "details": {
+      "icon": "map",
+      "subtitle": "Master of Artifical Intelligence Thesis (Condensed)",
+      "tags": [
+        "Machine Learning",
+        "Tensorflow",
+        "Transfer Learning",
+        "Regression Analysis",
+        "Model Analysis",
+        "Pytorch",
+        "Object Detection",
+        "Embeddings",
+        "Large Data Processing",
+        "Heuristic Analysis",
+        "Attention Models",
+        "Convolutional Neural Networks",
+        "Neural Networks",
+        "Cooking my GPU",
+        "Psuedo Model Ensemble",
+        "Clustering Analysis"
+      ],
+      "extralinks": [
+        {
+          "label": "Writeup",
+          "url": "/Writeups/GEO/text/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com"
+        }
+      ],
+      "showcase": true,
+      "uniWorkShowcase": false,
+      "type": "file",
+      "url": "/Writeups/GEO/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "thumbbg": "/assets/heroImages/alternatethumb.png",
+      "bgimage": "/Writeups/GEO/alternatethumb.png",
+      "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
+    }
+  },
+  {
     "name": "UILIB",
-    "large": false,
+    "large": true,
     "details": {
       "icon": "portfolio",
       "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
@@ -11,8 +57,31 @@
       "url": "/Writeups/PortfolioSite/text.json",
       "heroImage": "/assets/heroImages/geo.png",
       "bgimage": "/Writeups/PortfolioSite/unnamed.jpg",
-      "title": "I built this website in react",
-      "mainTag": "REACT JS Lib",
+      "title": "I built this website in react"
+    }
+  },
+  {
+    "name": "chessEloEstimator",
+
+    "details": {
+      "icon": "chess",
+      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
+      "tags": [
+        "Machine Learning",
+        "LSTM",
+        "Large Data Processing",
+        "Model Analysis",
+        "CNN",
+        "Tensorflow"
+      ],
+
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
+      "file": "Chess1.json",
+      "internalLink": "/ChessEloEsimator",
+      "bgimage": "/Writeups/ChessELOEstimator/ClassyThumb.png",
+      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
+      "title": "Free Chess ELO Estimator",
       "extralinks": [
         {
           "label": "Writeup",
@@ -25,7 +94,23 @@
       ]
     }
   },
+  {
+    "name": "portfoliosite",
+    "showcase": true,
+    "uniWorkShowcase": false,
 
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "This site got busy, I made a UI lib out of it",
+
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "Custom UI Library"
+    }
+  },
   {
     "name": "RGBHands",
     "details": {
@@ -42,7 +127,6 @@
         "Machine Learning",
         "PyAutoGUI"
       ],
-      "mainTag": "Computer Vision",
       "type": "file",
       "url": "/Writeups/RGBHands/text.json",
       "heroImage": "/assets/heroImages/geo.png",
@@ -55,10 +139,8 @@
     "name": "portfoliosite",
     "details": {
       "icon": "portfolio",
-      "categoryText": "Web, React, JS, Node",
       "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
       "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
-      "mainTag": "Machine Learning and Large Data Handling",
       "type": "file",
       "url": "/Writeups/PortfolioSite/text.json",
       "heroImage": "/assets/heroImages/geo.png",
@@ -68,12 +150,11 @@
   },
 
   {
-    "name": "chessSite",
+    "name": "portfoliosite",
     "details": {
       "icon": "portfolio",
       "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
       "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
-      "mainTag": "Machine Learning & React JS & Node",
       "type": "file",
       "url": "/Writeups/PortfolioSite/text.json",
       "heroImage": "/assets/heroImages/geo.png",
@@ -84,7 +165,7 @@
 
   {
     "name": "Chrome",
-
+    "large": true,
     "details": {
       "icon": "award",
       "subtitle": "For about an afternoon, in New Zealand...",
@@ -94,7 +175,7 @@
         "Javascript",
         "Social Media Outrage I guess"
       ],
-      "mainTag": "Chromium, Manifest V3",
+
       "type": "file",
       "url": "/Writeups/Chrome/text.json",
       "file": "",

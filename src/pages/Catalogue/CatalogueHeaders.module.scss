@@ -1,0 +1,48 @@
+.LargeTextHeader {
+    /* width: 100%; */
+    display: flex;
+    /* background-color: var(--bg); */
+    gap: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    p {
+        /* background-color: red; */
+        font-size: clamp(5rem, 2rem, 1rem);
+        font-family: "Newsreader", serif;
+
+        color: var(--text-color);
+
+        font-style: italic;
+
+        font-weight: 300;
+
+        &.highlight {
+            color: var(--accent-color);
+            font-style: normal;
+        }
+    }
+}
+
+.RegularHeader {
+    /* width: 100%; */
+    display: flex;
+
+    /* background-color: var(--bg); */
+    gap: 1rem;
+    p {
+        /* background-color: red; */
+        font-size: clamp(3rem, 2rem, 1rem);
+        font-family: "Newsreader", serif;
+
+        color: var(--text-color);
+
+        font-style: italic;
+
+        font-weight: 300;
+
+        &.highlight {
+            color: var(--accent-color);
+            font-style: normal;
+        }
+    }
+}

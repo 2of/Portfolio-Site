@@ -1,0 +1,33 @@
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; // Still a good practice, but not strictly needed for clipping
+    /* cursor: ew-resize; */
+}
+
+.baseImage {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+// Overlay image is positioned absolute over the base image
+.overlayImageClip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    // Key: The visibility is controlled entirely by the inline clip-path style
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background-color: black;
+    pointer-events: none;
+    z-index: 10;
+    transform: translateX(-50%);
+}

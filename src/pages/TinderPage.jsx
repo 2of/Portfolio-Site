@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import TinderView from "../components/Scroll/ScrollableViews/TinderView";
+import TinderView from "../components/Containers/TinderView";
 import styles from "./styles/TinderPage.module.scss";
 import { CenteredContainer } from "../components/Scroll/CenteredContainer";
-import { ShowcasecardStack } from "../assets/TextAssets/Showcase";
+import { ShowcasecardStack } from "../assets/TextAssets/TinderStackCards";
 import useScreenSize from "../utils/screensize";
 import { StandardSlider } from "../components/UI/StandardSlider";
 import PageDots from "../components/UI/PageDots";
@@ -108,7 +108,6 @@ const TinderPage = () => {
       >
         {/* Right side — swipeable stack */}
         <div className={styles.StackView}>
-          
           <TinderView
             onChange={handleCardChange}
             setActiveIndex={handleCardChange}
@@ -126,12 +125,10 @@ const TinderPage = () => {
         {/* Left side — dynamic text */}
         <div className={styles.DescView}>
           <div className={styles.descContent}>
-
             {/* 1. Outgoing Text: Renders with styles.fadeOut during animation */}
             {animating && prevCardIndex !== null && (
               <div
                 key={prevCardIndex}
-                
                 className={`${styles.textBlock} ${styles.fadeOut}`}
               >
                 <h1>{prevTitle}</h1>

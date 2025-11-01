@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import TinderView from "../components/Scroll/ScrollableViews/TinderView";
+import TinderView from "../components/Containers/TinderView";
 import styles from "./styles/LandingPage.module.scss";
 import { CenteredContainer } from "../components/Scroll/CenteredContainer";
-import { ShowcasecardStack } from "../assets/TextAssets/Showcase";
+import { ShowcasecardStack } from "../assets/TextAssets/TinderStackCards";
 import useScreenSize from "../utils/screensize";
 import { StandardSlider } from "../components/UI/StandardSlider";
 import PageDots from "../components/UI/PageDots";
@@ -74,7 +74,7 @@ export const LandingPage = () => {
 
     return () => {
       events.forEach((evt) =>
-        window.removeEventListener(evt, resetInactivityTimer)
+        window.removeEventListener(evt, resetInactivityTimer),
       );
       clearTimeout(inactivityTimer.current);
       clearInterval(periodicTimer.current);
@@ -99,8 +99,7 @@ export const LandingPage = () => {
 
   if (screenSize === "sm") {
     return (
-<div className={styles.mobilecontainer}>
-        
+      <div className={styles.mobilecontainer}>
         {/* <h1>test</h1> */}
         <TinderView
           onChange={handleCardChange}

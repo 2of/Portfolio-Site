@@ -4,18 +4,20 @@
     "externalLink": "https://github.com/2of/University-Of-Canterbury-DATA420-2024/tree/main",
     "details": {
       "subtitle": "A demonstration of the Possible Article Format",
+      "icon": "weather",
       "tags": [
         "Machine Learning",
         "Computer Vision",
         "Python",
         "Image Processing"
       ],
+      "mainTag": "Large Data & Machine Learning",
       "title": "Massive Data for weather analysis"
     }
   },
   {
     "name": "NodeJSServer",
-     "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "externalLink": "https://github.com/2of/SENG365-2020-Server",
     "details": {
       "subtitle": "A demonstration of the Possible Article Format",
       "tags": [
@@ -24,12 +26,13 @@
         "Python",
         "Image Processing"
       ],
+      "mainTag": "Node, SQL, Vue Front End, Backend",
       "title": "NodeJS Server for Petition Website"
     }
   },
   {
     "name": "HTTPDownloader",
-     "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "externalLink": "https://github.com/2of/SENG365-2020-Server",
     "details": {
       "subtitle": "A demonstration of the Possible Article Format",
       "tags": [
@@ -38,7 +41,7 @@
         "Race Conditions, Semaphores and Mutexes",
         "Memory Management"
       ],
-
+      "mainTag": "C, Memory Management, Low Level Programming",
       "title": "C HTTP 1.0 File Downloader from Scratch"
     }
   },
@@ -55,6 +58,8 @@
         "Python",
         "Image Processing"
       ],
+      "icon": "code",
+      "mainTag": "Massive Data Processing [Spark, Scala w/ ML",
       "type": "url",
 
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
@@ -80,12 +85,13 @@
         "Keras",
         "TensorFlow"
       ],
+      "mainTag": "Regression Models and Statistics",
       "type": "url",
 
       "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
       "file": "Chess1.json",
 
-      "title": "Regression Models and Statistics"
+      "title": "Stats and Analysis Compilation"
     }
   },
   {
@@ -101,8 +107,7 @@
         "Python",
         "Image Processing"
       ],
-
-
+      "mainTag": "Computer Vision & Machine Learning",
       "type": "file",
       "url": "/Writeups/RGBHands/text.json",
       "title": "Hand tracked User Interface using a single RGB camera and Machine Learning"

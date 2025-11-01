@@ -56,6 +56,57 @@
         line-height: 1; // avoid weird vertical spacing
     }
 }
+.rounded_catalogue_card_end {
+    display: flex;
+    gap: 0.6rem;
+    padding: 1rem;
+    position: absolute;
+    z-index: 10;
+    background-color: var(--bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition:
+        background-color 0.5s ease,
+        border-color 0.5s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease;
+
+    // Base subtle elevation
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+    // Interactive hover
+    &:hover {
+        /* background-color: var(--accent-color); */
+        border-color: var(--accent-border, var(--accent-color));
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+        .icon {
+            transform: scale(1.6);
+            transition: transform 0.4s cubic-bezier(0.25, 1.2, 0.5, 1);
+        }
+
+        .label {
+            transform: translateX(2px);
+            opacity: 0.9;
+            transition:
+                transform 0.3s ease-out,
+                opacity 0.3s ease-out;
+        }
+    }
+
+    .icon,
+    .label {
+        padding: 0;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
+    }
+}
 
 .rounded_label {
     z-index: 300;
@@ -199,11 +250,14 @@
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-
+    transition: background-color 0.3s ease;
     gap: 12px;
     justify-content: center;
     display: flex;
-
+    &:hover {
+        cursor: pointer;
+        background-color: var(--bg);
+    }
     svg {
         display: flex;
         align-items: center;
