@@ -1,37 +1,47 @@
 import React from "react";
 import styles from "./PortfolioSiteCard.module.scss";
+import image1 from "../../../assets/Images/PortfolioShowCaseImages/DarkProjSS.png";
+import image2 from "../../../assets/Images/PortfolioShowCaseImages/LightArticleSS.png";
+import image3 from "../../../assets/Images/PortfolioShowCaseImages/LightHomess.png";
+import image4 from "../../../assets/Images/PortfolioShowCaseImages/DarkPh1.png";
+import image5 from "../../../assets/Images/PortfolioShowCaseImages/LightPh1.png";
+import {StandardButton} from "../../UI/StandardButton"
 import ImageSplit from "../../Misc/ImageSplit";
-import image1 from "../../../assets/Images/default.png";
-import image2 from "../../../assets/Images/NewYork.png";
+import imageDarkFeat from "../../../assets/Images/PortfolioShowCaseImages/feat_dark.png";
+import imageLightFeat from "../../../assets/Images/PortfolioShowCaseImages/feat_light.png";
 
+import phimageDarkFeat from "../../../assets/Images/PortfolioShowCaseImages/DarkPhMenu.png";
+import phimageLightFeat from "../../../assets/Images/PortfolioShowCaseImages/LightPhMenu.png";
+import TrackedGradientBG from "../../Background/TrackedGradientBg";
+import getIcon from "../../../utils/Iconifier";
 export const PortfolioSiteCard = () => {
-  // Define tags for the project
-  const tags = ["React", "CSS Modules", "Portfolio", "Web Development"];
+  const tags = [
+    "React",
+    "SCSS",
+    "Custom Markup Language",
+    "Custom Hooks and so on",
+    "Wrappers for Chess, Tensorflow",
+  ];
 
   return (
     <div className={styles.card}>
-      <header className={styles.cardHeader}>
+      <div className={styles.cardHeader}>
         <h2 className={styles.title}>Portfolio Site</h2>
         <p className={styles.subtitle}>
-          A personal portfolio showcasing projects, skills, and experience.
+          There's actually heaps here, Hosting is free afterall...
         </p>
-      </header>
+      </div>
+
+      <div className={styles.bgcontainer}>
+        <TrackedGradientBG />
+      </div>
 
       <div className={styles.cardBody}>
         <p className={styles.description}>
-          This portfolio site is built with React and styled using CSS Modules.
-          It demonstrates my web development skills, responsive design
-          abilities, and project presentation techniques. The site features
-          interactive components, image galleries, and a clean modern UI.
+        Fyi that's this website...
         </p>
 
-        {/* Image showcase */}
-        <ImageSplit image1={image1} image2={image2} />
-      </div>
-
-      {/* Tags section */}
-      <footer className={styles.cardFooter}>
-        <h4 className={styles.tagsTitle}>Tech Stack & Keywords:</h4>
+        <h4 className={styles.tagsTitle}>Under The hood:</h4>
         <div className={styles.tagsContainer}>
           {tags.map((tag, index) => (
             <span key={index} className={styles.tag}>
@@ -39,7 +49,37 @@ export const PortfolioSiteCard = () => {
             </span>
           ))}
         </div>
-      </footer>
+        <h4 className={styles.tagsTitle}>Links</h4>
+        <div className={styles.ButtonContainer}>
+          <StandardButton label="2of.io" type="rounded_label"        icon={getIcon("right")}link="https://2of.io" />
+                 <StandardButton
+              label="Open Writeup"
+              type="rounded_label"
+              icon={getIcon("article")}
+            />  <StandardButton
+              label="UI Library"
+              type="rounded_label"
+              icon={getIcon("github")}
+            />
+
+<StandardButton
+              label="Code"
+              type="rounded_label"
+              icon={getIcon("github")}
+            />
+            
+        </div>
+      </div>
+
+      <div className={styles.ImagesContainer}>
+        <div className={`${styles.FloatingImage} ${styles.sub1}`}>
+          <ImageSplit image1={imageDarkFeat} image2={imageLightFeat} />
+        </div>
+
+        <div className={`${styles.FloatingImage} ${styles.sub2}`}>
+          <ImageSplit image1={phimageDarkFeat} image2={phimageLightFeat} />
+        </div>
+      </div>
     </div>
   );
 };

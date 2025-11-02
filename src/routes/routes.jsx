@@ -32,11 +32,25 @@ const routes = [
     fullscreenDesktop: true,
     fullscreenMobile: true,
   },
-  {
+
+    {
     path: "/projects",
+    label: "project catalogue",
+    element: <CataloguePage_UP />,
+    icon: "projects",
+
+        fullscreenMobile: true,
+
+    bg: "pattern2",
+  },
+  
+  {
+    path: "/projects_old",
     label: "projects",
     element: <CataloguePage />,
     icon: "Catalogue",
+        hideDesktop: true,
+    hideMobile: true,
     bg: "bg",
     fullscreenMobile: true,
   },
@@ -122,14 +136,7 @@ const routes = [
 
     bg: "bg",
   },
-  {
-    path: "/asdf",
-    label: "Rich asdf Editor",
-    element: <CataloguePage_UP />,
-    icon: "smile",
 
-    bg: "dots",
-  },
 
   {
     path: "/dir",

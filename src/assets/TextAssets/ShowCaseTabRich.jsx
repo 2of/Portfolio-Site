@@ -1,4 +1,6 @@
 import ParticleBackground from "../../components/Background/Particles";
+import AboutCard from "../../components/Cards/PreDoneCards/AboutCard";
+import EloCard from "../../components/Cards/PreDoneCards/EloCard";
 import GeoCard from "../../components/Cards/PreDoneCards/GeoCard";
 import LinkedinCard from "../../components/Cards/PreDoneCards/LinkedInCard";
 import { PortfolioSiteCard } from "../../components/Cards/PreDoneCards/PortfolioSiteCard";
@@ -52,18 +54,18 @@ export const RichTabData = [
     richdata: <PortfolioSiteCard />,
   },
   {
-    name: "Third thing",
+    name: "Elo Estimator",
     tabdata: {
       icon: "chart",
-      title: "thrd thingd",
-      subtitle: "things",
+      title: "A free version of the Chess.com Elo Estimation tool",
+      subtitle: "Machine Learning + Large Data",
       description:
-        "A powerful dashboard thatovides data insights in real-time.ovides data insights in real-time.ovides data insights in real-time. provides data insights in real-time.",
+        "300gb of lichess games later and we have some rudimentary models...",
       links: [
         { to: "#", label: "View Docs", icon: "book" },
         { to: "#", label: "Open Dashboard", icon: "dashboard" },
       ],
     },
-    richdata: <ParticleBackground text="Analytics Overview" />,
+    richdata: <EloCard text="Analytics Overview" />,
   },
 ];

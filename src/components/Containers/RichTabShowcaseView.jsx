@@ -25,7 +25,7 @@ export const RichTabShowCaseView = ({ data }) => {
   }) => {
     return (
       <div
-        className={`${styles.tab} ${isActive ? styles.active : ""}`}
+        className={`${styles.tab} shadowL2 ${isActive ? styles.active : ""}`}
         onClick={() => handleTabClick(index)}
       >
         <h4 className={styles.subtitle}>
@@ -68,7 +68,7 @@ export const RichTabShowCaseView = ({ data }) => {
         ))}
       </div>
 
-      <div className={styles.contentWrapper}>
+      <div className={`${styles.contentWrapper} shadowL2 `}>
         {prevTab !== null && (
           <div className={`${styles.content} ${styles.fadeOut}`}>
             {data[prevTab].richdata}

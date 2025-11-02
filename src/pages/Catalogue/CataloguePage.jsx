@@ -21,7 +21,9 @@ import LargeThumbCard from "../../components/Cards/CardLarge";
 import Loader from "../../components/Loader";
 import {
   CatalogueLargeTextHeader,
+  CatalogueMainHeaderMobile,
   CatalogueRegularTextHeader,
+  CatalogueStandardHeaderMobile,
 } from "./CatalogueHeaders";
 import { TitleCard } from "../../components/Cards/TitleCard";
 import {
@@ -29,6 +31,10 @@ import {
   CatalogueCardLarge,
 } from "../../components/Cards/CatalogueCards";
 import { Divider } from "../../components/UI/Divider";
+import { PagedScrollContainer } from "../../components/Scroll/ScrollableViews/TikTokView";
+import { BouncyArrows } from "../../components/UI/bouncyArrows";
+import { Thumbnail } from "../../components/thumbnail";
+import { Article } from "../../components/Article/Article";
 
 export const CataloguePage_UP = () => {
   const { getAllMetaData, getMetadata } = useProjects();
@@ -61,6 +67,22 @@ export const CataloguePage_UP = () => {
       content: <Article metadata={metadata} />,
     });
   };
+
+  const renderMobileCard = (project, id, mobile) => {
+      const bgImage = project.details?.thumbbg;
+    
+        return (
+          <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
+            <Thumbnail
+              data={project}
+              fullLinkCallBack={() => handleModalOpen(project)}
+              twoColumns={id === 0}
+              fullLink={true}
+              type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
+              index={id}
+            />
+          </div>
+        );}
 
   const renderCard = (
     project,
@@ -119,23 +141,42 @@ export const CataloguePage_UP = () => {
   };
 
   const MobileView = () => {
-    return <h1>mobiketest</h1>;
+
+  return ( 
+
+    
+<PagedScrollContainer staggerStart borders>
+
+
+      <div sectionHeight="half" key="standard-header-1">
+        <CatalogueMainHeaderMobile />
+      </div>
+      {showcaseProjects.map((project, i) => (
+        <div key={`showcase-${i}`} bgImage={project.details?.bgimage}>
+          {renderMobileCard(project, i)}
+        </div>
+      ))}
+      <div sectionHeight="half" key="standard-header-1">
+        <CatalogueStandardHeaderMobile
+          title="Notable Uni Work"
+          subtitle={"It's pretty well documented"}
+          customComponent={<BouncyArrows direction="down" />}
+          showArrows
+        />
+      </div>
+      {/* <StandardHeaderMobile title="Title"/> */}
+      {uniProjects.map((project, i) => (
+        <div key={`uni-${i}`} bgImage={project.details?.bgimage}>
+          {renderMobileCard(project, i)}
+        </div>
+      ))}
+    </PagedScrollContainer>)
   };
 
   const DesktopView = () => {
     return (
       <ScrollableVerticalView trackScrollPercent staggerStart>
-        <Section>
-          <Divider variant="double" />
-        </Section>
-
-        <Section sticky>
-          <CatalogueHeroSection text={text} />
-        </Section>
-
-        <Section>
-          <Divider variant="double" />
-        </Section>
+        <Section>{/* <Divider variant="double" />*/}</Section>
 
         <Section
           color=""
@@ -150,8 +191,18 @@ export const CataloguePage_UP = () => {
         <Section>
           <Divider variant="double" />
         </Section>
+
+        <Section >
+          <CatalogueHeroSection text={text} />
+        </Section>
+
+        <Section>
+          <Divider variant="double" />
+        </Section>
+
         <Section
           color="l1"
+      
           Header={() => (
             <CatalogueRegularTextHeader
               text1="a few more "
@@ -171,6 +222,7 @@ export const CataloguePage_UP = () => {
         </Section>
 
         <Section>
+          
           <Divider variant="double" />
         </Section>
 
@@ -191,7 +243,7 @@ export const CataloguePage_UP = () => {
         </Section>
 
         <Section
-          sticky
+          
           color="l1"
           Header={() => (
             <CatalogueRegularTextHeader

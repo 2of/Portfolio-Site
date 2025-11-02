@@ -10,6 +10,7 @@ import linkedinimage from "../../assets/linkedinbg.jpeg";
 import avatar1 from "../../assets/userimage.jpeg";
 import { LinkCard } from "../../components/Cards/PreDoneCards/Linkscard";
 import GeoCard from "../../components/Cards/PreDoneCards/GeoCard";
+import { PortfolioSiteCard } from "../../components/Cards/PreDoneCards/PortfolioSiteCard";
 
 export const ShowcasecardStack = {
   welcome: {
@@ -176,6 +177,6 @@ export const ShowcasecardStack = {
     title: "...",
     subtitle:
       "Anyway thanks for checking out my stack of things. Check out projects or about to learn more. Im open to all forms of collaboration. I can give advice (on things in here if you need? although coming ot my portfolio for it is weird) ... Also I made that darkmode toggle when I was first learning react and I thought it was cool.. so I bought it over ",
-    card: <GeoCard />,
+    card: <PortfolioSiteCard />,
   },
 };

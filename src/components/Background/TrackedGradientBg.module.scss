@@ -5,129 +5,264 @@
     z-index: 0;
     pointer-events: none;
 
+    // Light theme - Vibrant technical palette
     .gradientLayer {
         position: absolute;
         inset: 0;
-        background: linear-gradient(270deg, #ff7e5f, #ffd36b, #ffaaff, #9be7ff);
-        background-size: 200% 200%;
-        filter: blur(80px);
+        background: linear-gradient(
+            135deg,
+            #e3f2fd 0%,
+            #f3e5f5 20%,
+            #fff3e0 40%,
+            #e8f5e9 60%,
+            #fce4ec 80%,
+            #e1f5fe 100%
+        );
+        background-size: 400% 400%;
+        filter: blur(110px);
+        opacity: 0.5;
         z-index: 0;
-        transition: background-position 0.1s ease-out;
-        animation: gradientDrift 18s ease-in-out infinite alternate;
+        animation: technicalDrift 25s ease-in-out infinite;
     }
 
+    // Dark theme - Rich neon spectrum
     .gradientLayerDark {
         position: absolute;
         inset: 0;
-        background: linear-gradient(270deg, #ff7e5f, #37306b, #ff7e5f, #0f2027);
-
-        background-size: 200% 200%;
-        filter: blur(80px);
+        background: linear-gradient(
+            135deg,
+            #0a1929 0%,
+            #1a1a3e 15%,
+            #1e293b 30%,
+            #1a3a2e 45%,
+            #2d1b3d 60%,
+            #1e3a5f 75%,
+            #1a2942 90%,
+            #0a1929 100%
+        );
+        background-size: 400% 400%;
+        filter: blur(100px);
+        opacity: 0.7;
         z-index: 0;
-        transition: background-position 0.1s ease-out;
-        animation: gradientDrift 18s ease-in-out infinite alternate;
+        animation: technicalDrift 30s ease-in-out infinite;
     }
 
     .shape {
         position: absolute;
         border-radius: 50%;
-        filter: blur(60px);
-        opacity: 0.5;
-        animation: floaty 16s ease-in-out infinite alternate;
+        filter: blur(75px);
+        opacity: 0.4;
+        mix-blend-mode: soft-light;
+        animation: technicalFloat 20s ease-in-out infinite;
 
+        // Light theme shapes - Colorful technical markers
         &.shape1 {
-            width: 320px;
-            height: 320px;
-            background: #ff7e5f;
-            top: 10%;
-            left: 15%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, #64b5f6 0%, #42a5f5 50%, #1e88e5 100%);
+            top: 8%;
+            left: 12%;
             animation-delay: 0s;
         }
 
         &.shape2 {
-            width: 400px;
-            height: 400px;
-            background: #ffd36b;
-            bottom: 5%;
-            right: 10%;
-            animation-delay: 4s;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #ffb74d 0%, #ffa726 50%, #ff9800 100%);
+            bottom: 8%;
+            right: 15%;
+            animation-delay: 5s;
         }
 
         &.shape3 {
-            width: 260px;
-            height: 260px;
-            background: #ffaaff;
-            top: 40%;
-            right: 25%;
-            animation-delay: 8s;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ba68c8 0%, #ab47bc 50%, #9c27b0 100%);
+            top: 45%;
+            right: 20%;
+            animation-delay: 10s;
         }
 
         &.shape4 {
-            width: 280px;
-            height: 280px;
-            background: #9be7ff;
-            bottom: 15%;
-            left: 25%;
-            animation-delay: 2s;
-        }
-
-        &.shape1D {
             width: 320px;
             height: 320px;
-            background: #944d8f;
-            top: 10%;
-            left: 15%;
+            background: radial-gradient(circle, #81c784 0%, #66bb6a 50%, #4caf50 100%);
+            bottom: 20%;
+            left: 18%;
+            animation-delay: 3s;
+        }
+
+        &.shape5 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, #f06292 0%, #ec407a 50%, #e91e63 100%);
+            top: 25%;
+            left: 45%;
+            animation-delay: 7s;
+        }
+
+        &.shape6 {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, #4dd0e1 0%, #26c6da 50%, #00bcd4 100%);
+            bottom: 35%;
+            right: 8%;
+            animation-delay: 12s;
+        }
+
+        // Dark theme shapes - Neon glow spectrum
+        &.shape1D {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, #6bb6ff 0%, #4a9fe8 50%, #3d8dd9 100%);
+            top: 8%;
+            left: 12%;
             animation-delay: 0s;
+            opacity: 0.3;
+            filter: blur(85px);
+            box-shadow: 0 0 80px rgba(107, 182, 255, 0.3);
         }
 
         &.shape2D {
-            width: 400px;
-            height: 400px;
-            background: #5f878f;
-            bottom: 5%;
-            right: 10%;
-            animation-delay: 4s;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #ffb86c 0%, #ff9f5a 50%, #ff8c42 100%);
+            bottom: 8%;
+            right: 15%;
+            animation-delay: 5s;
+            opacity: 0.25;
+            filter: blur(90px);
+            box-shadow: 0 0 90px rgba(255, 184, 108, 0.25);
         }
 
         &.shape3D {
-            width: 260px;
-            height: 260px;
-            background: #3c9d8a;
-            top: 40%;
-            right: 25%;
-            animation-delay: 8s;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #c792ea 0%, #b77edb 50%, #a86ccc 100%);
+            top: 45%;
+            right: 20%;
+            animation-delay: 10s;
+            opacity: 0.28;
+            filter: blur(80px);
+            box-shadow: 0 0 70px rgba(199, 146, 234, 0.28);
         }
 
         &.shape4D {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #7ce38b 0%, #5dd879 50%, #42cc68 100%);
+            bottom: 20%;
+            left: 18%;
+            animation-delay: 3s;
+            opacity: 0.26;
+            filter: blur(85px);
+            box-shadow: 0 0 75px rgba(124, 227, 139, 0.26);
+        }
+
+        &.shape5D {
             width: 280px;
             height: 280px;
-            background: #b8860b;
-            bottom: 15%;
-            left: 25%;
-            animation-delay: 2s;
+            background: radial-gradient(circle, #ff6b9d 0%, #ff4d87 50%, #ff3370 100%);
+            top: 25%;
+            left: 45%;
+            animation-delay: 7s;
+            opacity: 0.24;
+            filter: blur(78px);
+            box-shadow: 0 0 70px rgba(255, 107, 157, 0.24);
+        }
+
+        &.shape6D {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, #4dd4e8 0%, #2ec9de 50%, #1cbfd4 100%);
+            bottom: 35%;
+            right: 8%;
+            animation-delay: 12s;
+            opacity: 0.27;
+            filter: blur(88px);
+            box-shadow: 0 0 85px rgba(77, 212, 232, 0.27);
         }
     }
+
+    // Technical grid overlay for light theme
+    .technicalGrid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(91, 157, 209, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(91, 157, 209, 0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
+        opacity: 0.5;
+    }
+
+    // Blueprint guide lines for dark theme
+    .blueprintLines {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(107, 182, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(107, 182, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: 1;
+        opacity: 0.35;
+        animation: gridPulse 8s ease-in-out infinite;
+    }
 }
 
-/* Blob floating animation */
-@keyframes floaty {
-    0% {
-        transform: translateY(0) scale(1);
+/* Smooth technical floating with more movement */
+@keyframes technicalFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
     }
-    100% {
-        transform: translateY(-60px) scale(1.1);
+    20% {
+        transform: translate(25px, -35px) scale(1.06) rotate(3deg);
+    }
+    40% {
+        transform: translate(-15px, -65px) scale(1.1) rotate(-2deg);
+    }
+    60% {
+        transform: translate(30px, -80px) scale(1.08) rotate(2.5deg);
+    }
+    80% {
+        transform: translate(-20px, -50px) scale(1.07) rotate(-1.5deg);
     }
 }
 
-/* Subtle gradient drift */
-@keyframes gradientDrift {
+/* Dynamic gradient movement */
+@keyframes technicalDrift {
     0% {
         background-position: 0% 50%;
+        opacity: 0.5;
+    }
+    20% {
+        background-position: 30% 70%;
+        opacity: 0.6;
+    }
+    40% {
+        background-position: 70% 80%;
+        opacity: 0.55;
+    }
+    60% {
+        background-position: 100% 50%;
+        opacity: 0.6;
+    }
+    80% {
+        background-position: 60% 30%;
+        opacity: 0.55;
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+}
+
+/* Subtle grid pulse */
+@keyframes gridPulse {
+    0%, 100% {
+        opacity: 0.3;
     }
     50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+        opacity: 0.45;
     }
 }

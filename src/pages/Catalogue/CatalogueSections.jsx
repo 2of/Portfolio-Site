@@ -74,7 +74,8 @@ export const CatalogueGithubSection = ({
           title: "See All Repos",
           subtitle: "github.com/2of",
         }}
-        to={"www.github.com/2of"}
+        to="https://www.github.com/2of"
+               EntireCardClickable
         isExternal={true}
         // fullLinkCallBack={() => navigate.to(project.url)}
         //   asFS={screenSize === "sm"}

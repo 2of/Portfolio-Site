@@ -196,15 +196,14 @@ const GeoCard = () => {
         {" "}
         <div className={styles.top}>
           <h3>
-            Machine Learning for Geolocalization of street level imagery using
+            Machine Learning for CityScale Geolocalization 
             {/* Machine Learning, Transfer learning, Clustering Analysis, Attention
           Models and Deep Learning*/}
           </h3>
-          <p className={styles.subtitle}>Call it a GuoGuessr Bot</p>
+          <p className={styles.subtitle}>Call it a GeoGuessr Bot</p>
           {/* <div className={styles.description}>This is a GeoCard component.</div>*/}
-        </div>
-        <div className={styles.bottom}>
-          <div className={styles.tagsContainer}>
+       
+       <div className={styles.tagsContainer}>
             {tags.map((tagi, i) => {
               return (
                 <p className={styles.tag} key={i}>
@@ -213,23 +212,31 @@ const GeoCard = () => {
               );
             })}
           </div>
+
+           
           <div className={styles.buttonsContainer}>
             <StandardButton
               label="Open Writeup"
-              type="subtle"
+              type="modern"
               icon={getIcon("article")}
             />
             <StandardButton
               label="Open Thesis"
-              type="subtle"
+              type="modern"
               icon={getIcon("article")}
             />
             <StandardButton
               label="Code Repo"
-              type="subtle"
+              type="modern"
               icon={getIcon("github")}
             />
           </div>
+
+        </div>
+
+
+        <div className={styles.bottom}>
+         
         </div>
       </div>
     </div>

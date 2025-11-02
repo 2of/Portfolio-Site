@@ -1,11 +1,23 @@
+/* Shadow Level 1 — tight & crisp (buttons, inputs, small elements) */
 .shadowL1 {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(2px);
 }
 
+/* Shadow Level 2 — medium depth (cards, panels) */
 .shadowL2 {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        0 2px 4px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
 }
 
+/* Shadow Level 3 — large, soft (modals, floating containers) */
 .shadowL3 {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2),
+        0 6px 12px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(12px);
 }

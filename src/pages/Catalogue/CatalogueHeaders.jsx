@@ -56,6 +56,7 @@
 //     </div>
 //   </div>
 // );
+import { BouncyArrows } from "../../components/UI/bouncyArrows";
 import styles from "./CatalogueHeaders.module.scss";
 
 export const CatalogueLargeTextHeader = ({ text1, highlight, text2 }) => {
@@ -77,3 +78,58 @@ export const CatalogueRegularTextHeader = ({ text1, highlight, text2 }) => {
     </span>
   );
 };
+
+
+
+export const CatalogueMainHeaderMobile = () => {
+    return (
+      <div className={styles.MainHeaderMobileWrapper}>
+        <div className={styles.ArcSVGWrapper}>
+          <svg viewBox="0 0 300 100" className={styles.CurvedTextSVG}>
+            <defs>
+              <path
+                id="curve"
+                d="M 10,90 A 140,90 0 0,1 290,90"
+                fill="transparent"
+              />
+            </defs>
+            <text width="100%" className={styles.CurvedText}>
+              <textPath
+                xlinkHref="#curve"
+                startOffset="50%"
+                textAnchor="middle"
+              >
+                ★ Featured Work ★
+              </textPath>
+            </text>
+          </svg>
+        </div>
+
+        <p className={styles.heroSubtitle}>A selection. Scroll to explore.</p>
+
+        <BouncyArrows numArrows={3} direction="down" speed="normal" />
+      </div>
+    );
+  };
+
+
+export const CatalogueStandardHeaderMobile = ({
+      title,
+      subtitle,
+      customComponent,
+      bgImage,
+    }) => (
+      <div className={styles.StandardHeaderMobileWrapper}>
+        {bgImage && (
+          <div
+            className={styles.headerBg}
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+        )}
+        <div className={styles.StandardHeaderMobile}>
+          <h2 className={styles.title}>{title}</h2>
+          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+          {customComponent}
+        </div>
+      </div>
+    );

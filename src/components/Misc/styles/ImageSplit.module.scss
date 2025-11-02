@@ -1,33 +1,31 @@
 .container {
     position: relative;
     width: 100%;
-    overflow: hidden; // Still a good practice, but not strictly needed for clipping
-    /* cursor: ew-resize; */
+    height: 500px;
+    overflow: hidden;
 }
 
-.baseImage {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-// Overlay image is positioned absolute over the base image
-.overlayImageClip {
+.image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    // Key: The visibility is controlled entirely by the inline clip-path style
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
 }
 
-.slider {
+.divider {
     position: absolute;
     top: 0;
+    width: 2px;
     height: 100%;
-    width: 1px;
-    background-color: black;
+
+    /* background-color: white; */
+    background-color: var(--border-color);
+    /* border-left: 1px solid var(--border-color); */
+    /* border-top: none; */
+    /* border-bottom: 1px solid var(--bg); */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
     pointer-events: none;
-    z-index: 10;
-    transform: translateX(-50%);
 }

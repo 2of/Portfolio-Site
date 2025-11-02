@@ -1,66 +1,90 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./styles/ImageSplit.module.scss";
 
-const ImageSplit = ({ image1, image2 }) => {
+const ImageSplit = ({ image1, image2 }, showDivider = false) => {
   const containerRef = useRef(null);
-  const lastXRef = useRef(null); // Store last cursor position
+  const lastXRef = useRef(null);
   const [cursorX, setCursorX] = useState(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  const animationRef = useRef(null);
+  const [actualSplitX, setActualSplitX] = useState(null);
+  const smoothAnimRef = useRef(null);
 
-  // Set initial width and update on resize
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
+        const width = containerRef.current.offsetWidth;
+        setContainerWidth(width);
+        if (actualSplitX === null) {
+          setActualSplitX(width / 2);
+        }
       }
     };
-
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+  }, [actualSplitX]);
+
+  // Smooth interpolation effect for divider
+  useEffect(() => {
+    const targetX = cursorX !== null ? cursorX : containerWidth / 2;
+
+    const smoothMove = () => {
+      setActualSplitX((current) => {
+        if (current === null) return targetX;
+        const diff = targetX - current;
+        const speed = 0.2;
+        if (Math.abs(diff) < 0.5) return targetX;
+        return current + diff * speed;
+      });
+      smoothAnimRef.current = requestAnimationFrame(smoothMove);
+    };
+
+    smoothMove();
+
+    return () => {
+      if (smoothAnimRef.current) cancelAnimationFrame(smoothAnimRef.current);
+    };
+  }, [cursorX, containerWidth]);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     setCursorX(x);
-    lastXRef.current = x; // Remember last position
+    lastXRef.current = x;
   };
 
   const handleMouseLeave = () => {
-    // Keep last position instead of resetting
     setCursorX(lastXRef.current);
   };
 
-  // Default to 50% split if no movement or width hasn't loaded
-  const splitX = cursorX !== null ? cursorX : containerWidth / 2;
+  const splitX = actualSplitX !== null ? actualSplitX : containerWidth / 2;
   const clipRightPercentage =
     containerWidth > 0 ? 100 - (splitX / containerWidth) * 100 : 50;
-
-  // Clip-path inset
-  const clipPathStyle = `inset(0% ${clipRightPercentage}% 0% 0%)`;
+  const clipPathStyle = { clipPath: `inset(0% ${clipRightPercentage}% 0% 0%)` };
 
   return (
     <div
       ref={containerRef}
       className={styles.container}
+      style={{ cursor: "ew-resize" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Base Image */}
-      <img src={image1} alt="Base" className={styles.baseImage} />
-
-      {/* Overlay Image */}
+      <img src={image1} alt="Base" className={styles.image} />
       <img
         src={image2}
         alt="Overlay"
-        className={styles.overlayImageClip}
-        style={{ clipPath: clipPathStyle }}
+        className={styles.image}
+        style={clipPathStyle}
       />
-
-      {/* Slider */}
-      <div className={styles.slider} style={{ left: `${splitX}px` }} />
+      {showDivider && (
+        <div
+          className={styles.divider}
+          style={{ left: `${splitX}px`, transform: "translateX(-2px)" }}
+        />
+      )}
     </div>
   );
 };

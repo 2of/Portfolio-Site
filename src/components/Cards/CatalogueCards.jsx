@@ -29,6 +29,8 @@ export const CatalogueCardCompact = ({
     }
   };
   const createNavigationCallback = (url) => {
+    console.log(url)
+    console.log("SDFSDFSFSD")
     return (event) => {
       if (event) event.stopPropagation();
       if (
@@ -44,9 +46,15 @@ export const CatalogueCardCompact = ({
     };
   };
   return (
-    <div
-      className={`${styles.CatalogueCardCompact} ${EntireCardClickable ? styles.EntireCardClickable : ""}`}
-    >
+<div
+  onClick={EntireCardClickable ? createNavigationCallback(to) : undefined}
+  className={`${styles.CatalogueCardCompact} shadowL2 ${
+    EntireCardClickable ? styles.EntireCardClickable : ""
+  }`}
+>
+
+
+
       {/* <img src={imageSrc} alt={title} />*/}
       <div className={styles.CatalogueCardContent}>
         {data.mainTag && (
@@ -135,7 +143,7 @@ export const CatalogueCardLarge = ({
   const tags = data.tags || [];
   return (
     <div
-      className={`${styles.CatalogueCardLarge} ${
+      className={`${styles.CatalogueCardLarge} shadowL2 ${
         EntireCardClickable ? styles.EntireCardClickable : ""
       }`}
       onClick={EntireCardClickable ? handleClick : undefined}

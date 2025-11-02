@@ -20,7 +20,7 @@
 }
 
 .staggerSpacer {
-    height: 3vh;
+    height: 10vh;
     flex-shrink: 0;
 }
 
@@ -30,9 +30,9 @@
     // padding-bottom: 20vh;
     // -webkit-overflow-scrolling: touch;
     // padding-bottom: 20vh;
-    &.padBottomForMobileFriendliness {
-        padding-bottom: 20vh;
-    }
+    &.padBottomForMobileFriendliness { 
+    padding-bottom: 20vh;
+}
 }
 
 .scrollContainerBounce {
@@ -56,12 +56,13 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-
+    
     min-width: 60vw;
 }
 
-.sectionBG {
-    /* background-color: orange; */
+
+.sectionBG { 
+    background-color: orange;
 }
 .section {
     position: relative;
@@ -69,8 +70,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-y: auto;
-    &.desktop {
+    
+    &.desktop { 
         padding: 32px; // 2rem = 32px
     }
 
@@ -108,6 +109,8 @@
         }
     }
 
+
+      
     &.narrow {
         width: calc(768px + 80px); // 5rem = 80px
         display: flex;
@@ -116,8 +119,8 @@
     }
 }
 .growFirst {
-    margin-top: calc(-1 * var(--navHeightDESKTOP));
-    padding-top: var(--navHeightDESKTOP);
+  margin-top: calc(-1 * var(--navHeightDESKTOP));
+  padding-top: var(--navHeightDESKTOP);
 }
 
 .stickyHeader {

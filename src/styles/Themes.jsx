@@ -17,83 +17,107 @@ export const baseTheme = {
   "--mobileTopNavSafeArea": "82px",
   "--maxWidth": "1480px",
 
-  "--border-radius": "24px",
-  "--blur-radius": "15px",
+  "--border-radius": "2px",
+  "--blur-radius": "12px",
   "--text-dark": "#2c3e50",
   "--darkbg": "#0d1324dd",
   "--lighttext": "#d1cfc0",
 };
 
 export const lightTheme = {
-  "--bg": "#FDFCF7", // pristine cream paper
-  "--bg-l1": "#F7F5ED", // soft ivory
-  "--bg-l2": "#F1EEE3", // gentle aged tone
-  "--bg-l3": "#EBE7D9", // vintage cream
-  "--bg-transparent": "rgba(253, 252, 247, 0.88)",
+  // Technical drawing paper - crisp blueprints
+  "--bg": "#F8FAFB", // clean drafting vellum
+  "--bg-l1": "#F0F4F8", // tracing paper overlay
+  "--bg-l2": "#E6EDF3", // layered drafts
+  "--bg-l3": "#D9E4ED", // blueprint edge
+  "--bg-transparent": "rgba(248, 250, 251, 0.92)",
 
-  // Text - lighter blue ink (like gel pen)
-  "--text-color": "#2C5278", // medium blue ink
-  "--secondary-text": "#5B7C9B", // light faded ink
+  // Technical pen strokes - precise and elegant
+  "--text-color": "#1E3A52", // fine liner black-blue
+  "--secondary-text": "#64748B", // light pencil marks
 
-  // Surfaces
-  "--card-bg": "#FFFFFF", // bright white page
-  "--border-color": "#A3BDD8", // very light blue ruling
+  // Drafting surfaces
+  "--card-bg": "#FFFFFF", // clean paper sheet
+  "--border-color": "#CBD9E6", // grid lines, subtle
+  
+  // Blueprint grid system
+  "--grid-color": "#E0EBF5", // light technical grid
+  "--guide-color": "#A8C5DD", // construction guides
+  "--dimension-line": "#7BA5C9", // dimension/measurement lines
 
-  // Accent - bright blue ink
-  "--accent": "#3D7AC7", // vibrant blue ink
-  "--accent-color": "#3D7AC7",
+  // Technical blue - architect's pen
+  "--accent": "#5B9DD1", // soft technical blue
+  "--accent-color": "#5B9DD1",
 
-  // Interactive
-  "--link": "#2C5278", // matching medium blue
+  // Interactive technical marks
+  "--link": "#4A86B8", // deeper technical blue
+  "--hover-accent": "#6BA8D9", // highlighted measurement
 
-  // Hero/Feature areas
-  "--herobg": "#EEE9DD", // subtle paper texture
+  // Featured sections - frosted tracing paper
+  "--herobg": "#EDF6FC", // light blueprint wash
+  "--feature-bg": "#E3F2FD", // technical overlay
+  
+  // Precise, architectural shadows
+  "--drop-shadow": 
+    "0 1px 2px rgba(30, 58, 82, 0.04), 0 2px 4px rgba(30, 58, 82, 0.02)",
+  "--card-shadow": 
+    "0 2px 4px rgba(30, 58, 82, 0.06), 0 4px 8px rgba(30, 58, 82, 0.03)",
+  "--elevated-shadow":
+    "0 4px 12px rgba(30, 58, 82, 0.08), 0 2px 6px rgba(30, 58, 82, 0.04)",
 
-  // Shadows - very subtle
-  "--drop-shadow":
-    "0 2px 6px rgba(44, 82, 120, 0.06), 0 1px 2px rgba(44, 82, 120, 0.03)",
-
-  // Inverse elements
-  "--inverse-transparent": "rgba(44, 82, 120, 0.82)",
-  "--inverse-shadow":
-    "0 5px 14px rgba(44, 82, 120, 0.35), 0 2px 4px rgba(44, 82, 120, 0.18)",
+  // Inverse for overlays
+  "--inverse-transparent": "rgba(30, 58, 82, 0.88)",
+  "--inverse-shadow": 
+    "0 8px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08)",
 };
 
 export const darkTheme = {
-  // Background layers - rich, deep progression
-  "--bg": "rgba(7, 7, 7, 1)", // deep blue-black, modern and sophisticated
-  "--bg-l1": "#1A1F26", // slightly lighter slate
-  "--bg-l2": "#252B35", // elevated surfaces
-  "--bg-l3": "#2F3540", // highest elevation
-  "--bg-transparent": "rgba(15, 20, 25, 0.92)",
+  // Deep cosmic workspace - architect's midnight studio
+  "--bg": "#0B0F16", // deep space black
+  "--bg-l1": "#151A23", // drafting table surface
+  "--bg-l2": "#1F2531", // elevated drawing boards
+  "--bg-l3": "#2A3140", // highest workspace
+  "--bg-transparent": "rgba(11, 15, 22, 0.95)",
 
-  // Text - warm and comfortable for dark mode
-  "--text-color": "#E8E6E3", // soft off-white, easy on eyes
-  "--secondary-text": "#9CA3AF", // balanced grey with good contrast
+  // Luminous technical text - glowing blueprints
+  "--text-color": "#E8EDF2", // bright drafting clarity
+  "--secondary-text": "#8FA3B8", // subtle annotations
 
-  // Surfaces
-  "--card-bg": "#1C2128", // subtle distinction from background
-  "--border-color": "#30363D", // visible but not harsh
+  // Workshop surfaces
+  "--card-bg": "#13181F", // matte drafting surface
+  "--border-color": "#2D3848", // defined edges
+  
+  // Technical grid - glowing in darkness
+  "--grid-color": "#1F2836", // subtle dark grid
+  "--guide-color": "#3A4556", // construction guides
+  "--dimension-line": "#4A6078", // measurement lines
 
-  // Accent - slightly brighter for dark backgrounds
-  "--accent": "#EF5350", // vibrant coral-red that pops
-  "--accent-color": "#EF5350",
+  // Luminous technical blue - neon drafting light
+  "--accent": "#6BB6FF", // bright architect's blue
+  "--accent-color": "#6BB6FF",
 
-  // Interactive
-  "--link": "#60A5FA", // bright blue that's readable on dark
+  // Interactive glowing marks
+  "--link": "#7EC4FF", // highlighted technical blue
+  "--hover-accent": "#5AA8F0", // focused measurement
 
-  // Hero/Feature areas
-  "--herobg": "#8B3A3A", // deep burgundy with richness
+  // Featured areas - illuminated drafting zones
+  "--herobg": "#1A2332", // dark blueprint base
+  "--feature-bg": "#1C2738", // technical focus area
+  
+  // Dramatic studio lighting shadows
+  "--drop-shadow": 
+    "0 2px 8px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25)",
+  "--card-shadow": 
+    "0 4px 16px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35)",
+  "--elevated-shadow":
+    "0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(107, 182, 255, 0.08)",
 
-  // Shadows - dramatic depth for dark mode
-  "--drop-shadow":
-    "0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3)",
-
-  // Light mode elements
-  "--inverse-transparent": "rgba(250, 250, 249, 0.88)",
-  "--inverse-shadow":
-    "0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)",
+  // Light overlay for modals
+  "--inverse-transparent": "rgba(248, 250, 251, 0.92)",
+  "--inverse-shadow": 
+    "0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)",
 };
+
 export const inlineNavHeight = {
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",

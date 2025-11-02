@@ -20,6 +20,8 @@ const validTypes = [
   "rounded_label",
   "icon_only",
   "featured",
+  "rounded_tag",
+  "modern"
 ];
 export const StandardButton = ({
   label = "no label",
@@ -112,6 +114,7 @@ export const StandardButton = ({
             {Label}
           </>
         );
+
 
       case "rounded":
         return (
