@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useProjects } from "../contexts/ContentContext";
 // import ColumnWithSections from "../components/Column/ColumnWithSections";
 import { Article } from "../components/Article/Article";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
 import { useNavStack } from "../contexts/NavStackContext";
 
 const ProjectPage = () => {

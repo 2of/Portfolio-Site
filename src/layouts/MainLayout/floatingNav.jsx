@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import routes from "../../routes/routes";
 import styles from "./floatingNav.module.scss";
-import DarkModeToggle from "../../components/darkmodeToggleSmallInline";
+import DarkModeToggle from "../../components/UI/darkmodeToggleSmallInline.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";
 import getIcon from "../../utils/Iconifier";
-import { DarkModeTile } from "../../components/darkmodeTile";
+import { DarkModeTile } from "../../components/UI/darkmodeTile.jsx";
 import { TooltipProvider, useTooltip } from "../../contexts/tooltip";
 
 // THE FS NAV ONLY. Handles small but is not displayed on small screens

@@ -5,13 +5,13 @@ import base_styles from "./styles/CardLarge.module.scss";
 import ridiculous_styles from "./styles/CardLarge_Ridiculous.module.scss";
 import { cardPropShape } from "./PropTypes";
 import getIcon from "../../utils/Iconifier";
-import { ImageLoader } from "../ImageLoader";
+import { ImageLoader } from "../UI/ImageLoader.jsx";
 import FeatherRevealImage from "../Misc/FeatherImageMouseTracked";
 import { useGlobalContext } from "../../contexts/GlobalContext";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import TrackedGradientBG from "../Background/TrackedGradientBg";
 import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
-import GlassPushOverlay from "../UI/GlassContainer";
+import GlassPushOverlay from "../UI/InteractionContainers/GlassContainer.jsx";
 import PhysicsShapes from "../Background/PhysicsShapes";
 
 const LargeThumbCard = ({

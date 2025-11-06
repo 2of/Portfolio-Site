@@ -1,6 +1,6 @@
 import { CatalogueCardCompact } from "../../components/Cards/CatalogueCards";
 import SmallCard from "../../components/Cards/SmallCard";
-import GlassPushOverlay from "../../components/UI/GlassContainer";
+import GlassPushOverlay from "../../components/UI/InteractionContainers/GlassContainer.jsx";
 import styles from "./CatalogueSections.module.scss";
 
 export const CatalogueHeroSection = ({ text }) => {

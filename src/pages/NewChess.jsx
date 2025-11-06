@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
-import { StandardButton } from "../components/UI/StandardButton";
-import styles from "./NewChess.module.scss";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
+import styles from "./styles/NewChess.module.scss";
 import { CHESS_Board } from "../components/chess/CHESS_Board";
 import { useAlertMenu } from "../contexts/AlertMenuContext";
-import { Modal } from "../components/Modal";
+import { Modal } from "../components/UI/StandardLib/Modal.jsx";
 import { useProjects } from "../contexts/ContentContext";
 import {
   isValidPGN,
@@ -13,13 +13,13 @@ import {
 } from "../components/chess/chessutils";
 import { Article } from "../components/Article/Article";
 import { loadModel, predict } from "../utils/Model";
-import { StandardRadioButtons } from "../components/UI/StandardRadioButtons";
+import { StandardRadioButtons } from "../components/UI/StandardLib/StandardRadioButtons.jsx";
 import getIcon from "../utils/Iconifier";
-import Loader from "../components/Loader";
+import Loader from "../components/UI/StandardLib/Loader.jsx";
 import { CHESS_Container } from "../components/chess/CHESS_Container";
 import { ChessTracker } from "../components/chess/gametracker";
 import { useModal } from "../contexts/ModalContext";
-import { ScrollableVerticalView, Section } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import { ScrollableVerticalView, Section } from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 export const NewChessPage = () => {
   const [pgn, setpgn] = useState("");
   const [loading, setLoading] = useState(false);

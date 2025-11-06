@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import routes from "../../routes/routes";
 import styles from "./styles/DesktopNav.module.scss";
-import DarkModeToggle from "../../components/darkmodeToggleSmallInline";
+import DarkModeToggle from "../UI/darkmodeToggleSmallInline.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";
 import getIcon from "../../utils/Iconifier";

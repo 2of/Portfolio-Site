@@ -56,7 +56,7 @@
 //     </div>
 //   </div>
 // );
-import { BouncyArrows } from "../../components/UI/bouncyArrows";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
 import styles from "./CatalogueHeaders.module.scss";
 
 export const CatalogueLargeTextHeader = ({ text1, highlight, text2 }) => {

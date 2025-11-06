@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TextPath.module.scss';
+import styles from './styles/TextPath.module.scss';
 
 const TextOnPath = ({
   position,

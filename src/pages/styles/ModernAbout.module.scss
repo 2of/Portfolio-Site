@@ -1,0 +1,41 @@
+.buttonContainer {
+display: flex;
+gap: 1rem;}
+
+
+.infoChunk {
+display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+}
+
+.longflex {
+  display: flex;
+  gap: 1.5rem;        // spacing between tiles and arrow
+  align-items: center;
+
+  .heightfull {
+    display: flex;
+    align-items: center;
+    justify-content: center; // horizontal center inside its flex slot
+    height: auto;          // allow arrow to shrink/grow naturally
+  }
+}
+
+.sectionHeaderClass {
+  margin-top: calc(4rem + 96px);
+  margin-bottom: calc(4rem + 96px);
+  //background-color: var(--bg);
+  z-index: 100;
+//background-color: lavenderblush;
+height: 100%;}
+
+.title {      font-size: clamp(5rem, 2rem, 1rem);
+  font-family: "Newsreader", serif;
+
+  color: var(--text-color);
+
+  font-style: italic;
+
+  font-weight: 300;}

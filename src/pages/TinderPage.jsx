@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import TinderView from "../components/Containers/TinderView";
 import styles from "./styles/TinderPage.module.scss";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
 import { ShowcasecardStack } from "../assets/TextAssets/TinderStackCards";
 import useScreenSize from "../utils/screensize";
-import { StandardSlider } from "../components/UI/StandardSlider";
-import PageDots from "../components/UI/PageDots";
+import { StandardSlider } from "../components/UI/StandardLib/StandardSlider.jsx";
+import PageDots from "../components/UI/StandardLib/PageDots.jsx";
 import { useNavStack } from "../contexts/NavStackContext";
 import getIcon from "../utils/Iconifier";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";

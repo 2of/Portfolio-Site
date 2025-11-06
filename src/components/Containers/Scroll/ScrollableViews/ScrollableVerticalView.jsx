@@ -1,0 +1,222 @@
+import React, { useRef, useEffect, useState } from "react";
+import clsx from "clsx";
+import styles from "./ScrollableVerticalView.module.scss";
+import ProgressBar from "../../../UI/StandardLib/ProgressBar.jsx";
+import { useGlobalContext } from "../../../../contexts/GlobalContext.jsx";
+import useScreenSize from "../../../../utils/screensize.js";
+import { baseTheme } from "../../../../styles/Themes.jsx";
+import {
+  useIsMenuFloatingDesktop,
+  useIsMenuFloatingMobile,
+} from "../../../../contexts/RouteContext.jsx";
+import { useNavStack } from "../../../../contexts/NavStackContext.jsx";
+import TrackedGradientBG from "../../../Background/TrackedGradientBg.jsx";
+import { useAppTheme } from "../../../../contexts/ThemeContext.jsx";
+import Particles from "../../../Background/Particles.jsx";
+
+export const Section = ({
+  Header,
+  children,
+  sticky,
+  narrow,
+  color = "bg",
+  index,
+  isFirst,
+}) => {
+  const { getColor } = useAppTheme();
+  const screenSize = useScreenSize();
+  const headerClass = clsx(styles.sectionHeaderContainer, {
+    [styles.stickyHeader]: sticky,
+    [styles.narrow]: narrow,
+  });
+
+  const contentClass = clsx(styles.sectionContent, {
+    [styles.narrow]: narrow,
+  });
+
+  const displaycolor = () => {
+    if (color) {
+      if (color === "bg") return "";
+      if (color === "l2") return getColor("--bg-l2");
+      if (color === "l1") return getColor("--bg-l1");
+      if (color === "l3") return getColor("--bg-l3");
+      if (color === "dark") return baseTheme["--darkbg"];
+
+      if (color === "accent") return 2;
+    }
+    return color;
+  };
+
+  return (
+    <section
+      className={`${styles.section} ${isFirst && styles.growFirst} ${screenSize !== "sm" && styles.desktop}`}
+      style={{ background: displaycolor() }}
+    >
+      {/* <h1>tewst {isFirst ? "YES" : " NO" }</h1> */}
+      {displaycolor() === "gradient" && (
+        <div className={styles.sectionGradContainer}>
+          {/* <h1>test</h1> */}
+
+          <TrackedGradientBG />
+        </div>
+      )}
+
+        {displaycolor() === "particles" && (
+            <div className={styles.sectionGradContainer}>
+                {/* <h1>test</h1> */}
+
+                <Particles />
+            </div>
+        )}
+      <div className={styles.sectionContent}>
+        {Header && (
+          <div className={headerClass}>
+            <div
+              className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}
+            >
+              <Header />
+            </div>
+          </div>
+        )}
+        <div className={contentClass}>{children}</div>
+      </div>
+    </section>
+  );
+};
+
+export const ScrollableVerticalView = ({
+  children,
+  trackVelocity = true,
+  trackScrollPercent,
+  staggerStart = false,
+  alignCenter = false,
+}) => {
+  const scrollRef = useRef(null);
+  const [normalizedVelocity, setNormalizedVelocity] = useState(0);
+  const [direction, setDirection] = useState("None");
+  const [scrollPercent, setScrollPercent] = useState(0);
+  const { isDev } = useGlobalContext;
+  const isStaggeredForNav = useIsMenuFloatingDesktop();
+  const isMenuFloatingMobile = useIsMenuFloatingMobile();
+  const screenSize = useScreenSize();
+  const MAX_SCROLL_VELOCITY = 3000;
+
+  const { setNavBgTransparent, shouldNavBgBeTransparent } = useNavStack();
+
+  useEffect(() => {
+    // console.log(scrollPerscent)
+
+    if (scrollPercent > 0.4) {
+      // console.log("1")
+      setNavBgTransparent(true);
+    } else {
+      // console.log("2")
+      setNavBgTransparent(false);
+    }
+  }, [scrollPercent]);
+
+  useEffect(() => {
+    if (!trackVelocity && !trackScrollPercent) return;
+
+    let lastScrollTop = 0;
+    let lastTime = performance.now();
+
+    const handleScroll = () => {
+      if (!scrollRef.current) return;
+
+      const el = scrollRef.current;
+      const scrollTop = el.scrollTop;
+      const now = performance.now();
+      const deltaY = scrollTop - lastScrollTop;
+      const deltaTime = now - lastTime || 1;
+
+      if (trackVelocity) {
+        const rawVelocity = (deltaY / deltaTime) * 1000;
+        const absVelocity = Math.abs(rawVelocity);
+        const clamped = Math.min(absVelocity / MAX_SCROLL_VELOCITY, 1);
+
+        setNormalizedVelocity(clamped.toFixed(2));
+        setDirection(deltaY > 0 ? "Down" : deltaY < 0 ? "Up" : "None");
+        lastScrollTop = scrollTop;
+        lastTime = now;
+      }
+
+      if (trackScrollPercent) {
+        const scrollHeight = el.scrollHeight - el.clientHeight;
+        const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        setScrollPercent(Math.min(Math.max(percent, 0), 100).toFixed(1));
+      }
+    };
+
+    const el = scrollRef.current;
+    el?.addEventListener("scroll", handleScroll);
+
+    return () => el?.removeEventListener("scroll", handleScroll);
+  }, [trackVelocity, trackScrollPercent]);
+
+  const containerClass = clsx(
+    styles.scrollContainer,
+    screenSize === "sm" && styles.padBottomForMobileFriendliness,
+    trackVelocity
+      ? styles.scrollContainerVelocity
+      : styles.scrollContainerBounce,
+    screenSize !== "sm" && !isStaggeredForNav && styles.paddedforNavBarDesktop,
+    screenSize === "sm" && isMenuFloatingMobile && styles.paddedforNavBarMobile,
+    alignCenter && styles.alignCenter,
+  );
+
+  const enhancedChildren = React.Children.map(children, (child, index) => {
+    if (!React.isValidElement(child)) return child;
+    const originalSticky = child.props.sticky;
+    const isSection = child.type?.name === "Section";
+    return isSection
+      ? React.cloneElement(child, {
+          sticky: originalSticky,
+          narrow: child.props.narrow,
+          index,
+          isFirst: index === 0,
+        })
+      : child;
+  });
+
+  return (
+    <div ref={scrollRef} className={containerClass}>
+      {isDev && (trackVelocity || trackScrollPercent) && (
+        <div className={styles.velocityInfo}>
+          {trackVelocity && (
+            <>
+              Velocity: {normalizedVelocity} | Direction: {direction}
+            </>
+          )}
+          {trackVelocity && trackScrollPercent && (
+            <span style={{ margin: "0 0.5rem" }}>|</span>
+          )}
+          {trackScrollPercent && <>Scrolled: {scrollPercent}%</>}
+        </div>
+      )}
+
+      {trackScrollPercent && (
+        <div className={styles.progressBarOverlay}>
+          <ProgressBar
+            lowerBound={0}
+            upperBound={100}
+            style={"marker"}
+            val={scrollPercent}
+            mappedtoinput
+          />
+          {/* <h1>test</h1> */}
+          {/* {scrollPercent} */}
+        </div>
+      )}
+      <div
+        className={clsx(
+          styles.contentColumn,
+          alignCenter && styles.alignCenter,
+        )}
+      >
+        {staggerStart && <div className={styles.staggerSpacer} />}
+        {enhancedChildren}
+      </div>
+    </div>
+  );
+};

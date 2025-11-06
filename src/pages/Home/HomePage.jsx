@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import useScreenSize from "../../utils/screensize";
-import { PagedScrollContainer } from "../../components/Scroll/ScrollableViews/TikTokView";
+import { PagedScrollContainer } from "../../components/Containers/Scroll/ScrollableViews/TikTokView";
 import { HeroCell } from "./Hero";
 import otherart from "../../assets/HomeParallaxResources/1.png"
 import { AboutCell } from "./About";
 import AboutBG from "../../assets/images/stars.gif"
-import { Modal } from "../../components/Modal";
+import { Modal } from "../../components/UI/StandardLib/Modal.jsx";
 import { FooterCell } from "./Footer";
 import { NewAboutCell } from "./NewAbout";
 import { useProjects } from "../../contexts/ContentContext";
-import { CenteredSmallerScrollElementContainer } from "../../components/Scroll/ScrollableViews/CenteredSmallerScrollElementContainer";
+import { CenteredSmallerScrollElementContainer } from "../../components/Containers/Scroll/ScrollableViews/CenteredSmallerScrollElementContainer";
 import { Article } from "../../components/Article/Article";
 import { Link } from "react-router-dom";
-import { LandingPageScrollContainer } from "../../components/Scroll/ScrollableViews/LandingPageScrollContainer";
+import { LandingPageScrollContainer } from "../../components/Containers/Scroll/ScrollableViews/LandingPageScrollContainer";
 export const HomePage = () => {
   const screenSize = useScreenSize();
     const { getArticle,getArticleMetaData } = useProjects();

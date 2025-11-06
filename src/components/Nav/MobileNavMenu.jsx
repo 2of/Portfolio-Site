@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles/MobileMenuNav.module.scss";
 import { useTooltip } from "../../contexts/tooltip";
 import getIcon from "../../utils/Iconifier";
-import { DarkModeTile } from "../../components/darkmodeTile";
+import { DarkModeTile } from "../UI/darkmodeTile.jsx";
 import WigglyLine from "../../components/Misc/WigglyLine";
 import useScreenSize from "../../utils/screensize";
 import routes from "../../routes/routes";

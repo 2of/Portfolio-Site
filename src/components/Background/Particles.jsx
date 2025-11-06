@@ -4,7 +4,7 @@ import { useDarkMode } from "../../contexts/DarkModeContext";
 const ParticleBackground = ({
   particleCount = 18,
   maxDistance = 140,
-  speed = 0.7,
+  speed = 0.2,
 }) => {
   const canvasRef = useRef(null);
   const particles = [];
@@ -109,7 +109,7 @@ const ParticleBackground = ({
     <canvas
       ref={canvasRef}
       style={{
-        position: "fixed",
+        // position: "fixed",
         top: 0,
         left: 0,
         width: "100%",

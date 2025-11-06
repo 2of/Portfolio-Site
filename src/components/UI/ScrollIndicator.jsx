@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BouncyArrows } from "./bouncyArrows";
+import { BouncyArrows } from "./DiscreteComponents/bouncyArrows.jsx";
 import styles from "./styles/ScrollIndicator.module.scss";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 

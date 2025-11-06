@@ -1,6 +1,6 @@
 import React from "react";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
-import { StandardButton } from "../components/UI/StandardButton";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
 import getIcon from "../utils/Iconifier";
 import { useModal } from "../contexts/ModalContext";
 

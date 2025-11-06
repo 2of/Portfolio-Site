@@ -4,7 +4,7 @@ import text from "../../../public/assets/text/texts.json";
 import {
   ScrollableVerticalView,
   Section,
-} from "../../components/Scroll/ScrollableViews/ScrollableVerticalView";
+} from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import { useProjects } from "../../contexts/ContentContext";
 import { getProjURL } from "../../utils/getURL";
 import { useScreenSize } from "../../contexts/ScreenSizeProvider";
@@ -18,7 +18,7 @@ import { RichTabShowCaseView } from "../../components/Containers/RichTabShowcase
 import { RichTabData } from "../../assets/TextAssets/ShowCaseTabRich";
 import getIcon from "../../utils/Iconifier";
 import LargeThumbCard from "../../components/Cards/CardLarge";
-import Loader from "../../components/Loader";
+import Loader from "../../components/UI/StandardLib/Loader.jsx";
 import {
   CatalogueLargeTextHeader,
   CatalogueMainHeaderMobile,
@@ -31,9 +31,9 @@ import {
   CatalogueCardLarge,
 } from "../../components/Cards/CatalogueCards";
 import { Divider } from "../../components/UI/Divider";
-import { PagedScrollContainer } from "../../components/Scroll/ScrollableViews/TikTokView";
-import { BouncyArrows } from "../../components/UI/bouncyArrows";
-import { Thumbnail } from "../../components/thumbnail";
+import { PagedScrollContainer } from "../../components/Containers/Scroll/ScrollableViews/TikTokView";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
+import { Thumbnail } from "../../components/UI/thumbnail.jsx";
 import { Article } from "../../components/Article/Article";
 
 export const CataloguePage_UP = () => {
@@ -147,10 +147,10 @@ export const CataloguePage_UP = () => {
     
 <PagedScrollContainer staggerStart borders>
 
-
-      <div sectionHeight="half" key="standard-header-1">
+    <div sectionHeight="half" key="standard-header-1">
         <CatalogueMainHeaderMobile />
-      </div>
+        {/*<h1>test</h1>*/}
+    </div>
       {showcaseProjects.map((project, i) => (
         <div key={`showcase-${i}`} bgImage={project.details?.bgimage}>
           {renderMobileCard(project, i)}

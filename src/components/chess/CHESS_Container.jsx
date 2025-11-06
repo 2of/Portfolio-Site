@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CHESS_Board } from "./CHESS_Board";
-import { StandardSlider } from "../UI/StandardSlider";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardSlider } from "../UI/StandardLib/StandardSlider.jsx";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 
 
 export const CHESS_Container = ({ game }) => {

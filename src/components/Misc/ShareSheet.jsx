@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import styles from "./ShareDialog.module.scss";
-import { StandardButton } from "../UI/StandardButton";
+import styles from "./styles/ShareDialog.module.scss";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../utils/Iconifier";
 import useScreenSize from "../../utils/screensize";
 import { useGlobalContext } from "../../contexts/GlobalContext";

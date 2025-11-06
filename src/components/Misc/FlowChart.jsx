@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import styles from "./Flowchart.module.scss";
+import styles from "./styles/FlowChart.module.scss";
 
 const Flowchart = ({ data, width = 400, height = 600 }) => {
   const canvasRef = useRef(null);

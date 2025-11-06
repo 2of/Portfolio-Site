@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { itemTypes, ProcureItem } from "./Items";
-import { StandardDropdown } from "../UI/StandardDropDown";
-import { StandardButton } from "../UI/StandardButton";
-import { StandardCollapsableRow } from "../UI/CollapsableSection";
-import { StandardTextField } from "../UI/StandardTextField";
-import StandardToggle  from "../UI/StandardToggle";
+import { StandardDropdown } from "../UI/StandardLib/StandardDropDown.jsx";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
+import { StandardCollapsableRow } from "../UI/StandardLib/CollapsableSection.jsx";
+import { StandardTextField } from "../UI/StandardLib/StandardTextField.jsx";
+import StandardToggle  from "../UI/StandardLib/StandardToggle.jsx";
 import getIcon from "../../utils/Iconifier";
 
 export const SectionEditor = ({ section, onChange }) => {

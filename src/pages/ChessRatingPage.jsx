@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import styles from "./ChessPage.module.scss";
+import styles from "./styles/ChessPage.module.scss";
 import { loadModel, predict } from "../utils/Model";
-import { StandardButton } from "../components/UI/StandardButton";
-import { StandardRadioButtons } from "../components/UI/StandardRadioButtons";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
+import { StandardRadioButtons } from "../components/UI/StandardLib/StandardRadioButtons.jsx";
 import getIcon from "../utils/Iconifier";
 import FlowChartComponent from "../components/Misc/FlowChart";
 // import ColumnWithSections from "../components/Column/ColumnWithSections";
-import { Modal } from "../components/Modal";
+import { Modal } from "../components/UI/StandardLib/Modal.jsx";
 import { useProjects } from "../contexts/ContentContext";
 import { Article } from "../components/Article/Article";
 

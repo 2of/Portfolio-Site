@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from "react";
 import clsx from "clsx";
 import styles from "./styles/MobileIcon.module.scss";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../utils/Iconifier";
 export const NavMenuIconMobile = memo(({ label, icon, currentCallback, isFloating = false }) => {
   const [animateIn, setAnimateIn] = useState(false);

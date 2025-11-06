@@ -1,6 +1,6 @@
 // ItemForms/ParagraphItem.jsx
 import React from "react";
-import { StandardTextField } from "../../UI/StandardTextField";
+import { StandardTextField } from "../../UI/StandardLib/StandardTextField.jsx";
 export const ParagraphItem = ({ item, onChange }) => {
   return (
     <StandardTextField

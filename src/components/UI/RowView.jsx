@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./RowView.module.scss";
+import styles from "./styles/RowView.module.scss";
 import clsx from "clsx";
 
 /**

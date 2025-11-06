@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styles from "./styles/editor.module.scss";
 import HeaderForm from "./HeaderForm";
 import { TitleSectionPortable, Article } from "../Article/Article";
-import { StandardCollapsableRow } from "../UI/CollapsableSection";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardCollapsableRow } from "../UI/StandardLib/CollapsableSection.jsx";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../utils/Iconifier";
 import { SectionEditor } from "./SectionsEditor";
 import { useEffect } from "react";
 import WigglyLine from "../Misc/WigglyLine";
-import { Modal } from "../Modal";
+import { Modal } from "../UI/StandardLib/Modal.jsx";
 import { useAlertMenu } from "../../contexts/AlertMenuContext";
 import useScreenSize from "../../utils/screensize";
 export const EditorPage = () => {

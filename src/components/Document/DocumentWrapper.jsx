@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useProjects } from "../../contexts/ContentContext";
-import Loader from "../Loader";
+import Loader from "../UI/StandardLib/Loader.jsx";
 import { HeaderDesktopDoc } from "./HeaderDesktopDoc";
 import { meta } from "@eslint/js";
 

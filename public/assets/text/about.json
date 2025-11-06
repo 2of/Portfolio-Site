@@ -1,10 +1,10 @@
 {
   "title": "welcome",
-  "subtitle": "This is a little website I made",
-  "description": "Short and sweet, the other pages are for flair",
-  "areatitle": "Here's the things you pm me about",
+  "subtitle": "I'm Noah and this is my Portfolio Catalogue Site",
+  "description": "The site is written from scratch",
+  "areatitle": "Here's some Links to get started",
   "web": {
-    "title": "Firstly, actually I put a lot of time into this site, Let's talk about Web...",
+    "title": "What's up with this website?",
     "subtitle": "Aside from REACT's inbuilt stuff, some icon libs and react-router-dom this is all done from scratch",
     "paragraph1": "So, there's about 90% of a full UI framework in here too, sans padding, margin predone things like you'd find in bootstrap and others.",
     "paragraph2": "There's also a full writeup, using the inbuilt fancy-pants article renderer thingie (that I made, thingie is totally valid)",

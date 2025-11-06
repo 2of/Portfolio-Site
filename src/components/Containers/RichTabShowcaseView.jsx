@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./RichTabShowcaseView.module.scss";
+import styles from "./Styles/RichTabShowcaseView.module.scss";
 import getIcon from "../../utils/Iconifier";
 
 export const RichTabShowCaseView = ({ data }) => {

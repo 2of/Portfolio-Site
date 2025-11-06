@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles/HeaderForm.module.scss";
-import { StandardTextField } from "../UI/StandardTextField";
-import { StandardButton } from "../UI/StandardButton";
-import { StandardDropdown } from "../UI/StandardDropDown";
+import { StandardTextField } from "../UI/StandardLib/StandardTextField.jsx";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
+import { StandardDropdown } from "../UI/StandardLib/StandardDropDown.jsx";
 import getIcon from "../../utils/Iconifier";
 
 const iconOptions = [

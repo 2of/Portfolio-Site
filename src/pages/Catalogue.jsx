@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import styles from "./Catalogue.module.scss";
+import styles from "./styles/Catalogue.module.scss";
 
 import {
   ScrollableVerticalView,
   Section,
-} from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+} from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import { useProjects } from "../contexts/ContentContext";
 
 import { getProjURL } from "../utils/getURL";
 
-import { Thumbnail } from "../components/thumbnail";
+import { Thumbnail } from "../components/UI/thumbnail.jsx";
 // import useScreenSize from "../utils/screensize";
 import { useScreenSize } from "../contexts/ScreenSizeProvider";
-import { Modal } from "../components/Modal";
+import { Modal } from "../components/UI/StandardLib/Modal.jsx";
 import { Article } from "../components/Article/Article";
-import { PagedScrollContainer } from "../components/Scroll/ScrollableViews/TikTokView";
-import { BouncyArrows } from "../components/UI/bouncyArrows";
+import { PagedScrollContainer } from "../components/Containers/Scroll/ScrollableViews/TikTokView";
+import { BouncyArrows } from "../components/UI/DiscreteComponents/bouncyArrows.jsx";
 import { getRecentRepos } from "../utils/githubFetch";
 import { useEffect } from "react";
-import Loader from "../components/Loader";
+import Loader from "../components/UI/StandardLib/Loader.jsx";
 import getIcon from "../utils/Iconifier";
 import LargeThumbCard from "../components/Cards/CardLarge";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
-import GlassPushOverlay from "../components/UI/GlassContainer";
+import GlassPushOverlay from "../components/UI/InteractionContainers/GlassContainer.jsx";
 import SmallCard from "../components/Cards/SmallCard";
 import text from "../../public/assets/text/texts.json";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
@@ -308,19 +308,23 @@ export const CataloguePage = () => {
 
       {/* title={"new"} subtitle={"test"}/> */}
       <Section color="">
-        {/* <div className={styles.LargeThumbGrid}>
+        <div className={styles.LargeThumbGrid}>
           <div className={`${styles.doublewide} ${styles.ProjectCell}`}>
-            <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"}/>
-        </div>
+            <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"} />
+          </div>
 
           {showcaseProjects.slice(0, 4).map(renderCard)}
-        <div className={`${styles.doublewide} ${styles.fillwide} ${styles.ProjectCell}`}>
-            <TitleCard title={"It's a bit all over the place"} subtitle={"Feel free to have a look"}/>
-        </div>
+          <div
+            className={`${styles.doublewide} ${styles.fillwide} ${styles.ProjectCell}`}
+          >
+            <TitleCard
+              title={"It's a bit all over the place"}
+              subtitle={"Feel free to have a look"}
+            />
+          </div>
 
           {showcaseProjects.slice(4).map(renderCard)}
-
-        </div>*/}
+        </div>
         <RichTabShowCaseView data={RichTabData} />;
       </Section>
 

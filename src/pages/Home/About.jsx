@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./About.module.scss";
 import mansvg from "../../assets/svgs/DrawKit_Vector_Illustrations_Podcast.svg";
-import { StandardButton } from "../../components/UI/StandardButton";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../utils/Iconifier";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 

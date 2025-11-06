@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import base_styles from "./styles/SmallCard.module.scss";
 
 import getIcon from "../../utils/Iconifier";
-import { ImageLoader } from "../ImageLoader";
+import { ImageLoader } from "../UI/ImageLoader.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 
 const SmallCard = ({

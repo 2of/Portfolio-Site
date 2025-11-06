@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../routes/routes";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
-import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
+import { ScrollableVerticalView } from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import RowView from "../components/UI/RowView";
 import getIcon from "../utils/Iconifier";
 import useScreenSize from "../utils/screensize";
-import { StandardButton } from "../components/UI/StandardButton";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
 
 export const DirectoryPage = () => {
   const navigate = useNavigate();

@@ -16,10 +16,10 @@ export const Logo = ({ variant = "large" }) => {
       onClick={handleClick}
     >
       <span className={`${styles.main} ${!isLarge ? styles.small : ""}`}>
-        2of.io
+       lunchbreak
       </span>
       <span className={`${styles.sub} ${!isLarge ? styles.small : ""}`}>
-        noah's site
+        nking
       </span>
     </div>
   );

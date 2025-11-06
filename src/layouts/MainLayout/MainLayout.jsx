@@ -5,9 +5,9 @@ import { useGlobalContext } from "../../contexts/GlobalContext";
 import Background from "../../components/Background/background";
 import { useScreenSize } from "../../contexts/ScreenSizeProvider";
 import { useAlertMenu } from "../../contexts/AlertMenuContext";
-import Alert from "../../components/UI/Alert";
+import Alert from "../../components/UI/StandardLib/Alert.jsx";
 import { ScrollIndicator } from "../../components/UI/ScrollIndicator";
-import { Disclaimer } from "../../components/disclaimer";
+import { Disclaimer } from "../../components/UI/disclaimer.jsx";
 import NavWrapper from "../../components/Nav/NavWrapper";
 import { Outlet } from "react-router-dom";
 import ShareDialog from "../../components/Misc/ShareSheet";
@@ -16,7 +16,7 @@ import {
   useIsMenuFloatingMobile,
 } from "../../contexts/RouteContext";
 import { useModal } from "../../contexts/ModalContext";
-import ProperModal from "../../components/UI/ProperModal";
+import ProperModal from "../../components/UI/StandardLib/ProperModal.jsx";
 
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./LinkedinCard.module.scss";
 import { FaLinkedin } from "react-icons/fa";
-import { StandardButton } from "../../UI/StandardButton";
+import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../../utils/Iconifier";
 
 const LinkedinCard = ({ name, title, company, summary, profilePic, bannerPic, url }) => {

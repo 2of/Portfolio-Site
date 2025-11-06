@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./GeoCard.module.scss";
 // Make sure you import the image correctly
 import newyorkimage from "../../../assets/Images/NewYork.png";
-import { StandardButton } from "../../UI/StandardButton";
+import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../../utils/Iconifier";
 import { style } from "framer-motion/m";
 const tags = [

@@ -48,4 +48,114 @@
 }
 
 
+.MainHeaderMobileWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  color: var(--primary-color);
 
+  .ArcSVGWrapper {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .CurvedTextSVG {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      pointer-events: none;
+
+      .CurvedText {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        font-weight: 600;
+        //letter-spacing: 0.1em;
+
+        fill: var(--text-color);
+        text-transform: uppercase;
+        animation: curveFadeIn 1.4s ease forwards;
+        opacity: 0;
+      }
+    }
+  }
+
+  .heroSubtitle {
+    font-size: clamp(1.2rem, 2vw, 1rem);
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    opacity: 0.8;
+  }
+
+  // You can define base spacing and arrow animations below
+  :global(.BouncyArrows) {
+    margin-top: auto;
+  }
+
+  @keyframes curveFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.StandardHeaderMobileWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+
+  .headerBg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .StandardHeaderMobile {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    gap: 0.6rem;
+
+    .title {
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+  }
+}

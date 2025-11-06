@@ -25,7 +25,40 @@
       ]
     }
   },
+  {
+    "name": "chessEloEstimator",
 
+    "details": {
+      "icon": "chess",
+      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
+      "tags": [
+        "Machine Learning",
+        "LSTM",
+        "Large Data Processing",
+        "Model Analysis",
+        "CNN",
+        "Tensorflow"
+      ],
+
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
+      "file": "Chess1.json",
+      "internalLink": "/ChessEloEstimator",
+      "bgimage": "/Writeups/ChessELOEstimator/ClassyThumb.png",
+      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
+      "title": "Free Chess ELO Estimator",
+      "extralinks": [
+        {
+          "label": "Writeup",
+          "url": "/Writeups/GEO/text/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com"
+        }
+      ]
+    }
+  },
   {
     "name": "RGBHands",
     "details": {

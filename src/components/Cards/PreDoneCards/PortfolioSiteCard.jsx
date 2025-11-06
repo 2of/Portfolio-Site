@@ -5,7 +5,7 @@ import image2 from "../../../assets/Images/PortfolioShowCaseImages/LightArticleS
 import image3 from "../../../assets/Images/PortfolioShowCaseImages/LightHomess.png";
 import image4 from "../../../assets/Images/PortfolioShowCaseImages/DarkPh1.png";
 import image5 from "../../../assets/Images/PortfolioShowCaseImages/LightPh1.png";
-import {StandardButton} from "../../UI/StandardButton"
+import {StandardButton} from "../../UI/StandardLib/StandardButton.jsx"
 import ImageSplit from "../../Misc/ImageSplit";
 import imageDarkFeat from "../../../assets/Images/PortfolioShowCaseImages/feat_dark.png";
 import imageLightFeat from "../../../assets/Images/PortfolioShowCaseImages/feat_light.png";
@@ -37,9 +37,30 @@ export const PortfolioSiteCard = () => {
       </div>
 
       <div className={styles.cardBody}>
-        <p className={styles.description}>
-        Fyi that's this website...
-        </p>
+
+          <div className={styles.ButtonContainer}>
+              <StandardButton label="2of.io" type="rounded_label"        icon={getIcon("right")}link="https://2of.io" />
+              <StandardButton
+                  label="Open Writeup"
+                  type="rounded_label"
+                  icon={getIcon("article")}
+              />  <StandardButton
+              label="UI Library"
+              type="rounded_label"
+              icon={getIcon("github")}
+          />
+
+              <StandardButton
+                  label="Code"
+                  type="rounded_label"
+                  icon={getIcon("github")}
+              />
+
+          </div>
+
+
+
+
 
         <h4 className={styles.tagsTitle}>Under The hood:</h4>
         <div className={styles.tagsContainer}>
@@ -50,28 +71,10 @@ export const PortfolioSiteCard = () => {
           ))}
         </div>
         <h4 className={styles.tagsTitle}>Links</h4>
-        <div className={styles.ButtonContainer}>
-          <StandardButton label="2of.io" type="rounded_label"        icon={getIcon("right")}link="https://2of.io" />
-                 <StandardButton
-              label="Open Writeup"
-              type="rounded_label"
-              icon={getIcon("article")}
-            />  <StandardButton
-              label="UI Library"
-              type="rounded_label"
-              icon={getIcon("github")}
-            />
 
-<StandardButton
-              label="Code"
-              type="rounded_label"
-              icon={getIcon("github")}
-            />
-            
-        </div>
       </div>
 
-      <div className={styles.ImagesContainer}>
+      {/*<div className={styles.ImagesContainer}>*/}
         <div className={`${styles.FloatingImage} ${styles.sub1}`}>
           <ImageSplit image1={imageDarkFeat} image2={imageLightFeat} />
         </div>
@@ -79,7 +82,7 @@ export const PortfolioSiteCard = () => {
         <div className={`${styles.FloatingImage} ${styles.sub2}`}>
           <ImageSplit image1={phimageDarkFeat} image2={phimageLightFeat} />
         </div>
-      </div>
+      {/*</div>*/}
     </div>
   );
 };

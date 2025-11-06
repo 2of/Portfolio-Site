@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useProjects } from "../contexts/ContentContext";
-import ProgressBar from "../components/UI/ProgressBar";
-import styles from "./AboutPage.module.scss";
+import ProgressBar from "../components/UI/StandardLib/ProgressBar.jsx";
+import styles from "./styles/AboutPage.module.scss";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { StandardChips } from "../components/UI/Chips";
 import {
   Section,
   ScrollableVerticalView,
-} from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+} from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import useScreenSize from "../utils/screensize";
-import { StandardButton } from "../components/UI/StandardButton";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
 import getIcon from "../utils/Iconifier";
 
 export const AboutPage = () => {
@@ -25,7 +25,6 @@ useEffect(() => {
   };
   load();
 }, [getPageData]);
-
 
 
   if (!about) return <p>Loading...</p>;

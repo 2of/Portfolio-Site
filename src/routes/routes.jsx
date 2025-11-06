@@ -17,6 +17,7 @@ import { NotFoundPage } from "../pages/NotFoundPage";
 import { LandingPage } from "../pages/Landing";
 import { ComponentPage } from "../pages/ComponentsPage";
 import { CataloguePage_UP } from "../pages/Catalogue/CataloguePage";
+import {ModernAbout} from "../pages/ModernAbout.jsx";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -99,6 +100,14 @@ const routes = [
     hide: false,
     bg: "dots",
   },
+    {
+        path: "/about2",
+        label: "newabout",
+        element: <ModernAbout />,
+        icon: "about",
+        hide: false,
+        bg: "pattern2",
+    },
   {
     path: "/404",
     label: "404",

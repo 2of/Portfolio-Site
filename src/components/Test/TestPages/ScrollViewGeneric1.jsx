@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 
-import { ScrollableVerticalView } from "../../Scroll/ScrollableViews/ScrollableVerticalView";
-import { PagedScrollContainer } from "../../Scroll/ScrollableViews/TikTokView";
+import { ScrollableVerticalView } from "../../Containers/Scroll/ScrollableViews/ScrollableVerticalView";
+import { PagedScrollContainer } from "../../Containers/Scroll/ScrollableViews/TikTokView";
 
 export const TEST_ScrollViewGeneric = () => {
   const [usePaged, setUsePaged] = useState(false);

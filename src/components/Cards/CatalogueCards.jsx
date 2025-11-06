@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/CatalogueCard.module.scss";
 import { useNavigate } from "react-router-dom";
 import getIcon from "../../utils/Iconifier";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 
 export const CatalogueCardCompact = ({
   data = {},
@@ -29,8 +29,8 @@ export const CatalogueCardCompact = ({
     }
   };
   const createNavigationCallback = (url) => {
-    console.log(url)
-    console.log("SDFSDFSFSD")
+    console.log(url);
+    console.log("SDFSDFSFSD");
     return (event) => {
       if (event) event.stopPropagation();
       if (
@@ -46,15 +46,12 @@ export const CatalogueCardCompact = ({
     };
   };
   return (
-<div
-  onClick={EntireCardClickable ? createNavigationCallback(to) : undefined}
-  className={`${styles.CatalogueCardCompact} shadowL2 ${
-    EntireCardClickable ? styles.EntireCardClickable : ""
-  }`}
->
-
-
-
+    <div
+      onClick={EntireCardClickable ? createNavigationCallback(to) : undefined}
+      className={`${styles.CatalogueCardCompact} shadowL2 ${
+        EntireCardClickable ? styles.EntireCardClickable : ""
+      }`}
+    >
       {/* <img src={imageSrc} alt={title} />*/}
       <div className={styles.CatalogueCardContent}>
         {data.mainTag && (
@@ -177,7 +174,7 @@ export const CatalogueCardLarge = ({
             ))}
           </div>
         )}
-
+        {/*<h1> {to && to} </h1>*/}
         {!EntireCardClickable && (
           <div className={styles.buttonRow}>
             {data.extralinks &&

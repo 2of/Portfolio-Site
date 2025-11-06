@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AboutCard.module.scss";
-import { StandardButton } from "../../UI/StandardButton";
+import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
 import { useModal } from "../../../contexts/ModalContext";

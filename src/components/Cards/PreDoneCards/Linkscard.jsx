@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./LinksCard.module.scss";
 import { FaEnvelope, FaGithub, FaProjectDiagram, FaUser } from "react-icons/fa";
-import { StandardButton } from "../../UI/StandardButton";
+import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { FaUpwork } from "react-icons/fa6";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
 import FeatherTwoLayer from "../../Misc/FeatherTwoLayer";
-import { DarkModeTile } from "../../darkmodeTile";
+import { DarkModeTile } from "../../UI/darkmodeTile.jsx";
 import art from "../../../assets/Images/HTC_Heritage Library_Flying HighElement 5.png";
 export const LinkCard = ({ links2 }) => {
   //   if (!links || links.length === 0) return null;

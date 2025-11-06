@@ -1,20 +1,20 @@
 import React, { useState, useEffect, Component } from "react";
 import { useProjects } from "../contexts/ContentContext";
-import ProgressBar from "../components/UI/ProgressBar";
-import styles from "./SettingsPage.module.scss";
+import ProgressBar from "../components/UI/StandardLib/ProgressBar.jsx";
+import styles from "./styles/SettingsPage.module.scss";
 import { useGlobalContext } from "../contexts/GlobalContext";
-import { StandardButton } from "../components/UI/StandardButton";
-import StandardToggle from "../components/UI/StandardToggle";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
+import StandardToggle from "../components/UI/StandardLib/StandardToggle.jsx";
 import { useNavigate } from "react-router-dom";
 import getIcon from "../utils/Iconifier";
 import { DarkModeWrapper } from "../components/UI/DarkModeWrapper";
 import RowView from "../components/UI/RowView";
-import DarkModeToggle from "../components/darkmodeToggleSmallInline";
+import DarkModeToggle from "../components/UI/darkmodeToggleSmallInline.jsx";
 import useScreenSize from "../utils/screensize";
 import { Navigate } from "react-router-dom";
-import { ScrollableVerticalView } from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
-import GlassPushOverlay from "../components/UI/GlassContainer";
-import { CenteredContainer } from "../components/Scroll/CenteredContainer";
+import { ScrollableVerticalView } from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
+import GlassPushOverlay from "../components/UI/InteractionContainers/GlassContainer.jsx";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer";
 
 // settingsConfig.js
 const settingsConfig = [

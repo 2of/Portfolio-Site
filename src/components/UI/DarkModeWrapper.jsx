@@ -1,5 +1,5 @@
 import React from "react";
-import StandardToggle from "./StandardToggle";
+import StandardToggle from "./StandardLib/StandardToggle.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import { FaMoon, FaSun } from "react-icons/fa";
 import getIcon from "../../utils/Iconifier";

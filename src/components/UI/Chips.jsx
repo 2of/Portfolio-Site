@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Chips.module.scss';
+import styles from './StandardLib/Styles/Chips.module.scss';
 
 export const StandardChips = ({
   items = [],

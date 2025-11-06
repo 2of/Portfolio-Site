@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Hero.module.scss"; // Ensure correct SCSS import
 import dogsvg from "../../assets/svgs/DrawKit_Vector_Illustrations_Dog call.svg"; // Import the image properly
-import { StandardButton } from "../../components/UI/StandardButton";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
 import otherart from "../../assets/HomeParallaxResources/1.png"
 import getIcon from "../../utils/Iconifier";
-import { BouncyArrows } from "../../components/UI/bouncyArrows";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 // import birdpng from "../../assets/sbg"
 export const HeroCell = ({sz, featureButtonCallback}) => {

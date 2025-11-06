@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./GithubCard.module.scss";
 import { FaGithub, FaMapMarkerAlt, FaUsers, FaCalendarAlt, FaBook } from "react-icons/fa";
-import { StandardButton } from "../../UI/StandardButton";
+import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { fetchGithubProfile } from "../../../utils/githubFetch";
-import Loader from "../../Loader";
+import Loader from "../../UI/StandardLib/Loader.jsx";
 import getIcon from "../../../utils/Iconifier";
 
 const GithubCard = ({ username }) => {

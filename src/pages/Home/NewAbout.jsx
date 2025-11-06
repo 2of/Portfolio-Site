@@ -4,7 +4,7 @@ import img2 from "../../assets/HomeParallaxResources/9.png";
 import img3 from "../../assets/HomeParallaxResources/6.png";
 import bg from "../../assets/HomeParallaxResources/bg.png";
 import styles from "./styles/newAbout.module.scss";
-import { BouncyArrows } from "../../components/UI/bouncyArrows";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
 import getIcon from "../../utils/Iconifier";
 
 export const aboutText = {

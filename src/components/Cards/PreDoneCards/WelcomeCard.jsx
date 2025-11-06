@@ -5,40 +5,47 @@ import TrackedGradientBG from "../../Background/TrackedGradientBg";
 import useScreenSize from "../../../utils/screensize";
 
 const WelcomeCard = ({
-  title = "Where Are you?",
-  intro = "This is Noah King's   handbuilt little portfolio website. (yeah, I seriosuly built everything here... on REACT...)",
-  text1 = "Swipe for Goodies or use the Navigation to see even more",
-}) => {
-  const [showHint, setShowHint] = useState(false);
-  const screenSize = useScreenSize();
-  useEffect(() => {
-    const timeout = setTimeout(() => setShowHint(true), 1000);
-    const hide = setTimeout(() => setShowHint(false), 3500);
-    return () => {
-      clearTimeout(timeout);
-      clearTimeout(hide);
-    };
-  }, []);
+                         title = (
+                             <>
+                                 <p>Welcome</p>
+                                 <p className={styles.highlight}>More text</p>
+                             </>
+                         ),
+                         intro = "This is Noah King's handbuilt little portfolio website. (yeah, I seriously built everything here... in REACT...)",
+                         text1 = "Swipe for goodies or use the navigation to see even more.",
+                     }) => {
+    const [showHint, setShowHint] = useState(false);
+    const screenSize = useScreenSize();
 
-  return (
-    <div className={`${styles.card} ${showHint ? styles.hint : ""}`}>
-      {/* <TrackedGradientBG /> */}
-      {screenSize !== "sm" && <TrackedGradientBG />}
-      <div className={styles.pattern}></div>
+    useEffect(() => {
+        const timeout = setTimeout(() => setShowHint(true), 1000);
+        const hide = setTimeout(() => setShowHint(false), 3500);
+        return () => {
+            clearTimeout(timeout);
+            clearTimeout(hide);
+        };
+    }, []);
 
-      <h1 className={styles.title}>{title}</h1>
-      <div className={styles.content}>
-        <p className={styles.intro}>{intro}</p>
-        <p className={styles.text1}>{text1}</p>
-      </div>
+    return (
+        <div className={`${styles.card} ${showHint ? styles.hint : ""}`}>
+            {/* Background (hidden on small screens) */}
+            {screenSize !== "sm" && <TrackedGradientBG />}
+            <div className={styles.pattern}></div>
 
-      <div className={styles.footer}>
-        <FaArrowLeft className={styles.arrow} />
-        <span>swipe</span>
-        <FaArrowRight className={styles.arrow} />
-      </div>
-    </div>
-  );
+            <h1 className={styles.title}>{title}</h1>
+
+            <div className={styles.content}>
+                <p className={styles.intro}>{intro}</p>
+                <p className={styles.text1}>{text1}</p>
+            </div>
+
+            <div className={styles.footer}>
+                <FaArrowLeft className={styles.arrow} />
+                <span>swipe</span>
+                <FaArrowRight className={styles.arrow} />
+            </div>
+        </div>
+    );
 };
 
 export default WelcomeCard;

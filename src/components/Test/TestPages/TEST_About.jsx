@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useProjects } from "../../../contexts/ContentContext";
-import ProgressBar from "../../UI/ProgressBar";
+import ProgressBar from "../../UI/StandardLib/ProgressBar.jsx";
 import styles from "./TestAboutPage.module.scss";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { StandardChips } from "../../UI/Chips";
-import { Section } from "../../Scroll/ScrollableViews/ScrollableVerticalView";
-import { ScrollableVerticalView } from "../../Scroll/ScrollableViews/ScrollableVerticalView";
+import { Section } from "../../Containers/Scroll/ScrollableViews/ScrollableVerticalView";
+import { ScrollableVerticalView } from "../../Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import useScreenSize from "../../../utils/screensize";
 
 export const TEST_AboutPage = () => {

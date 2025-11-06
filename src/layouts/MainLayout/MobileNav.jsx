@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import routes from "../../routes/routes";
 import styles from "./mobileNav.module.scss";
-import DarkModeToggle from "../../components/darkmodeToggleSmallInline";
+import DarkModeToggle from "../../components/UI/darkmodeToggleSmallInline.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";
 import getIcon from "../../utils/Iconifier";
 import { useTooltip } from "../../contexts/tooltip";
-import { DarkModeTile } from "../../components/darkmodeTile";
+import { DarkModeTile } from "../../components/UI/darkmodeTile.jsx";
 import WigglyLine from "../../components/Misc/WigglyLine";
 import { ZuneTextBG } from "../../components/Background/ZuneText";
 

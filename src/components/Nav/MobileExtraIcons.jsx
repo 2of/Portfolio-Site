@@ -1,5 +1,5 @@
 import React from "react";
-import { StandardButton } from "../UI/StandardButton";
+import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../utils/Iconifier";
 
 export const MobileExtraButtonsContainer = ({ items = [] }) => {

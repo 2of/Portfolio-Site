@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useProjects } from "../contexts/ContentContext";
 import styles from "./styles/ComponentPage.module.scss";
-import { RadialMenu } from "../components/RadialMenu";
-import { DarkModeTile } from "../components/darkmodeTile";
+import { RadialMenu } from "../components/UI/RadialMenu.jsx";
+import { DarkModeTile } from "../components/UI/darkmodeTile.jsx";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import TextOnPath from "../components/Misc/TextPath";
 import FlowChartComponent from "../components/Misc/FlowChart";
@@ -10,26 +10,26 @@ import WigglyLine from "../components/Misc/WigglyLine";
 import image from "../assets/images/default.png";
 import image2 from "../assets/images/default_other.jpeg";
 import { DarkModeWrapper } from "../components/UI/DarkModeWrapper";
-import ProgressBar from "../components/UI/ProgressBar";
+import ProgressBar from "../components/UI/StandardLib/ProgressBar.jsx";
 
 import ImageHandle from "../components/Handlers/ImageHandle";
-import Loader from "../components/Loader";
-import { StandardDropdown } from "../components/UI/StandardDropDown";
-import { StandardTextField } from "../components/UI/StandardTextField";
-import { StandardCollapsableRow } from "../components/UI/CollapsableSection";
+import Loader from "../components/UI/StandardLib/Loader.jsx";
+import { StandardDropdown } from "../components/UI/StandardLib/StandardDropDown.jsx";
+import { StandardTextField } from "../components/UI/StandardLib/StandardTextField.jsx";
+import { StandardCollapsableRow } from "../components/UI/StandardLib/CollapsableSection.jsx";
 import getIcon from "../utils/Iconifier";
 import { useAlertMenu } from "../contexts/AlertMenuContext";
 import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
-import GlassPushOverlay from "../components/UI/GlassContainer";
+import GlassPushOverlay from "../components/UI/InteractionContainers/GlassContainer.jsx";
 import FeatherRevealImage from "../components/Misc/FeatherImageMouseTracked";
 import {
   useIsMenuFloatingDesktop,
   useIsNavHidden,
   useRoute,
 } from "../contexts/RouteContext";
-import { StandardSlider } from "../components/UI/StandardSlider";
+import { StandardSlider } from "../components/UI/StandardLib/StandardSlider.jsx";
 import FeatherTwoLayer from "../components/Misc/FeatherTwoLayer";
-import { StandardButton } from "../components/UI/StandardButton";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
 import { useModal } from "../contexts/ModalContext";
 import { Article } from "../components/Article/Article";
 import { meta } from "@eslint/js";
@@ -38,7 +38,7 @@ import ResponsiveGradient from "../components/Background/ResponsiveGradient";
 import {
   ScrollableVerticalView,
   Section,
-} from "../components/Scroll/ScrollableViews/ScrollableVerticalView";
+} from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import { Divider } from "../components/UI/Divider";
 
 export const ComponentPage = () => {

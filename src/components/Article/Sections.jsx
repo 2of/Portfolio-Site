@@ -1,7 +1,7 @@
 // SectionComponents.js
 import React from "react";
 import { useState } from "react";
-import ProgressBar from "../UI/ProgressBar";
+import ProgressBar from "../UI/StandardLib/ProgressBar.jsx";
 import { classNames } from "@react-pdf-viewer/core";
 import clsx from "clsx";
 import ImageHandle from "../Handlers/ImageHandle";
