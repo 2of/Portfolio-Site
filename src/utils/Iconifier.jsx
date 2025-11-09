@@ -8,6 +8,7 @@ import {
   FaFilePdf,
   FaGithub,
   FaTimes,
+  FaInternetExplorer,
   FaStar,
   FaMoon,
   FaArrowLeft,
@@ -22,6 +23,7 @@ import {
   FaChevronCircleDown,
   FaCloud,
   FaChevronDown,
+  
   FaChevronUp,
   FaChevronCircleUp,
   FaQuestionCircle,
@@ -77,6 +79,10 @@ import {
   FaCompressAlt,
   FaDirections,
   FaBriefcase,
+  FaDatabase,
+  FaAsterisk,
+  FaChartArea,
+  FaSitemap,
 } from "react-icons/fa";
 import { FaP, FaPencil, FaSailboat } from "react-icons/fa6";
 
@@ -156,6 +162,11 @@ const getIcon = (iconName = "default") => {
     right: <FaArrowRight />,
     left: <FaArrowLeft />,
     dir: <FaDirections />,
+    web: <FaInternetExplorer/>,
+    data: <FaDatabase/>,
+    ai: <FaAsterisk/>,
+    datanalysis: <FaChartArea/>,
+    it: <FaSitemap/>
   };
 
   return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;

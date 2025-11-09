@@ -175,10 +175,21 @@ export const CataloguePage_UP = () => {
 
   const DesktopView = () => {
     return (
-      <ScrollableVerticalView trackScrollPercent staggerStart>
+      <ScrollableVerticalView trackScrollPercent >
         <Section>{/* <Divider variant="double" />*/}</Section>
+          <Section>
+              <Divider variant="double" />
+          </Section>
 
-        <Section
+          <Section >
+              <CatalogueHeroSection text={text} />
+          </Section>
+
+          <Section>
+              <Divider variant="double" />
+          </Section>
+
+          <Section
           color=""
           // sticky={true}
           Header={() => (
@@ -188,13 +199,8 @@ export const CataloguePage_UP = () => {
           <RichTabShowCaseView data={RichTabData} />
         </Section>
 
-        <Section>
-          <Divider variant="double" />
-        </Section>
 
-        <Section >
-          <CatalogueHeroSection text={text} />
-        </Section>
+
 
         <Section>
           <Divider variant="double" />

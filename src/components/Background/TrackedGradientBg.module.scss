@@ -4,7 +4,9 @@
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
-
+  &.showbg{
+    background-color: var(--border-color);
+  }
     // Light theme - Vibrant technical palette
     .gradientLayer {
         position: absolute;

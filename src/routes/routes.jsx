@@ -106,6 +106,7 @@ const routes = [
         element: <ModernAbout />,
         icon: "about",
         hide: false,
+        fullscreenMobile: true,
         bg: "pattern2",
     },
   {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./TrackedGradientBG.module.scss";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 
-const TrackedGradientBG = ({ interactive = false }) => {
+const TrackedGradientBG = ({showbg = true,  interactive = false }) => {
   const gradientRef = useRef(null);
   const animationRef = useRef(null);
   const angleRef = useRef(0);
@@ -39,7 +39,7 @@ const TrackedGradientBG = ({ interactive = false }) => {
   }, []);
 
   return (
-    <div className={styles.bgDecor}>
+    <div className={`${styles.bgDecor} showbg && ${styles.showbg}`}>
       <div
         ref={gradientRef}
         className={` ${darkMode ? styles.gradientLayerDark : styles.gradientLayer}`}
