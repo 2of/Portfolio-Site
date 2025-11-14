@@ -1,12 +1,12 @@
 .HeaderContainer { 
-    background-color: var(--bg);
+    background-color: var(--bg-l2);
 
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    //border-radius: 8px;
+    border: 1px solid var(--bg-l1);
     padding: 1rem;
 
     h2 { 
-        font-weight: 800;
+        //font-weight: 800;
     }
 }
 

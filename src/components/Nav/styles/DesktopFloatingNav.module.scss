@@ -9,8 +9,8 @@ overflow: hidden;
 
 }
 
-.bgcontainer { 
-    // background-color: red;
+.bgcontainer {
+     background-color: red;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -23,7 +23,7 @@ ul {
 }
 
 .float {
-  background-color: var(--bg);
+  background-color: var(--bg-transparent);
   position: absolute;
   z-index: 500;
   border-radius: 48px;
@@ -31,6 +31,7 @@ ul {
   border: 1px solid var(--border-color);
 
   left: 50%;
+  backdrop-filter: blur(4px);
   bottom: 2rem;
   transform: translateX(-50%); // 👈 centers it horizontally
 
@@ -73,7 +74,7 @@ ul {
   }
 }
 
-.logoContainer { 
+.logoContainer {
     z-index: 100;
 }
 
@@ -115,7 +116,7 @@ ul {
 }
 
 .extrabuttonnav {
-  margin-left: auto; 
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: center;

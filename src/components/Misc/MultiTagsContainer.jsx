@@ -41,4 +41,4 @@ return (
 )
 
 }
-export default MultiTagsContainer;
+export { MultiTagsContainer, SkillSection };

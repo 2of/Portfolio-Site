@@ -1,0 +1,193 @@
+.StandardTabContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  //background: var(--bg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.bottom {
+    flex-direction: column-reverse;
+  }
+
+  .tabList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    perspective: 800px; /* for subtle 3D */
+  }
+
+  .tabContent {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* === VARIANTS === */
+
+/* 1. Default — clean rounded chips with Apple-like hover/active */
+.default {
+  .tabButton {
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.04);
+    font-size: 0.95rem;
+    transition: all 0.25s cubic-bezier(0.3, 1, 0.4, 1);
+    transform: translateZ(0);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    &.active {
+      transform: translateY(-2px) scale(1.07);
+      background: var(--primary);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+  }
+}
+
+/* 2. Outline — bordered Apple-style */
+.outline {
+  .tabButton {
+    padding: 0.65rem 1.3rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    background: transparent;
+    transition: all 0.25s cubic-bezier(0.3, 1, 0.4, 1);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &.active {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+  }
+}
+
+/* 3. Minimal — flat text Apple-style with underline pulse */
+.minimal {
+  .tabList {
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .tabButton {
+    position: relative;
+    padding: 0.7rem 1.1rem;
+    background: transparent;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.25s cubic-bezier(0.3, 1, 0.4, 1);
+
+    &:hover {
+      transform: translateY(-1px) scale(1.02);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    &.active {
+      font-weight: 300;
+      transform: translateY(-1px) scale(1.03);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    /* subtle underline pulse */
+    &.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 15%;
+      width: 70%;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--primary);
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleX(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* 4. Mobile — Safari-style pill tabs with Apple-style lift */
+.mobile {
+  .tabList {
+    background: var(--bg-L1);
+    border-radius: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background-color: var(--bg-transparent);
+    gap: 0.8rem;
+    padding: 4px;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    margin: 1rem auto;
+    width: fit-content;
+    //box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.4),
+    //0 2px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .tabContent {
+    //background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tabButton {
+    flex: 1 1 auto;
+    //font-size: 1.5rem;
+    border-radius: 44px;
+    font-style: italic;
+    min-width: 90px;
+    color: var(--text-color);
+
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.3, 1, 0.4, 1);
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid var(--border-color);
+      background: var(--bg-L2);
+      color: var(--text-color);
+      //background: red;
+      transform:  scale(1.03);
+    }
+
+    &.active {
+      background: var(--herobg);
+      border: 1px solid var(--text-color);
+      transform: scale(1.05);
+
+      //box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

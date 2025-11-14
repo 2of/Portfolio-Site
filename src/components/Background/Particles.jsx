@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useDarkMode } from "../../contexts/DarkModeContext";
+import {useAppTheme} from "../../contexts/ThemeContext.jsx";
 
 const ParticleBackground = ({
   particleCount = 18,
@@ -12,7 +13,7 @@ const ParticleBackground = ({
   // Utility functions
   const randomColor = () => `hsl(${Math.random() * 360}, 70%, 70%)`;
   const { darkMode } = useDarkMode();
-  const bgColor = darkMode ? "rgba(7, 7, 7, 1)" : "rgba(41, 41, 41, 1)";
+  const bgColor = darkMode ? "rgba(7, 7, 7, 1)" : "rgb(211,211,211)";
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");

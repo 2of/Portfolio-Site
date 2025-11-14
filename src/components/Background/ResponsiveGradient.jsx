@@ -69,12 +69,12 @@ const ResponsiveGradient = ({
 
   return (
     <>
-      <button
-        className={styles.controlButton}
-        onClick={() => setRecolor(!recolor)}
-      >
-        {recolor ? 'Random Colors' : 'Recolor to Base'}
-      </button>
+      {/*<button*/}
+      {/*  className={styles.controlButton}*/}
+      {/*  onClick={() => setRecolor(!recolor)}*/}
+      {/*>*/}
+      {/*  {recolor ? 'Random Colors' : 'Recolor to Base'}*/}
+      {/*</button>*/}
 
       <div className={styles.animatedBackground} ref={containerRef}></div>
     </>

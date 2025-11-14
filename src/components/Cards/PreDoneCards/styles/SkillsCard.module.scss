@@ -1,0 +1,102 @@
+.cardContainer {
+  width: 100%;
+  height: auto;
+  //padding: 1rem;            // padding around the whole card for breathing room
+  box-sizing: border-box;
+}
+
+//.skillsTitle {
+//  font-size: 1.6rem;
+//  font-weight: 700;
+//  color: var(--text-color);
+//  margin-bottom: 0.75rem;
+//  text-align: center;
+//  border-bottom: 1px solid var(--border-color);
+//  width: fit-content;
+//  padding-bottom: 0.25rem;
+//  margin-left: auto;
+//  margin-right: auto;        // center underlines
+//}
+
+.skillsContainer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: auto;
+  grid-template-rows: repeat(2, auto);
+  //gap: 0.1rem;
+  //padding: 0 1rem;
+  //margin:1rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .skillSectionContainer {
+    scroll-snap-align: start;
+    width: clamp(190px, 240px, 500px); // responsive width per card
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //padding: 0.25rem;
+    //margin: 0.5rem;
+    //background-color: red;
+    padding: 0.5rem;
+  }
+}
+
+
+.embedTitleSection {
+
+  display: flex;
+  flex-direction: column  ;
+
+  gap: 1rem;
+}
+
+/// I just hard coded these as lazt
+/* Optional: larger screens */
+@media (min-width: 420px) {
+  .skillSectionContainer {
+    width: clamp(220px, 30%, 500px);
+  }
+}
+
+@media (min-width: 768px) {
+  .skillsTitle {
+    font-size: 1.8rem;
+  }
+
+  .skillSectionContainer {
+    width: clamp(240px, 28%, 500px);
+
+  }
+}
+
+.embedTitle {
+
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: underline;
+}
+.scrolltext {
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+
+

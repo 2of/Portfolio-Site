@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./AboutCard.module.scss";
+import styles from "./styles/AboutCard.module.scss";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import TrackedGradientBG from "../../Background/TrackedGradientBg";
@@ -82,7 +82,7 @@ const AboutCard = ({
         <StandardButton
           label="View CV"
           tooltip="Open my CV"
-          type="rounded_label"
+          type="modern_unfilled"
           icon={<FaExternalLinkAlt />}
           link={cvLink}
         />

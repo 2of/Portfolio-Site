@@ -22,7 +22,10 @@
     align-items: flex-start;
     gap: 1.15rem;
   }
-
+  &.blur {
+    backdrop-filter: blur(4px);
+    background-color: var(--bg-transparent);
+  }
   .iconWrapper {
     position: relative;
     flex-shrink: 0;

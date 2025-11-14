@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./GithubCard.module.scss";
+import styles from "./styles/GithubCard.module.scss";
 import { FaGithub, FaMapMarkerAlt, FaUsers, FaCalendarAlt, FaBook } from "react-icons/fa";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { fetchGithubProfile } from "../../../utils/githubFetch";
@@ -143,7 +143,7 @@ const GithubCard = ({ username }) => {
         <StandardButton
           label="View on GitHub"
           tooltip="Open GitHub Profile"
-          type="rounded_label"
+          type="modern_unfilled"
           icon={<FaGithub />}
           link={html_url}
         />

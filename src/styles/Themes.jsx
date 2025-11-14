@@ -47,7 +47,7 @@ export const lightTheme = {
 
   // Technical blue - architect's pen
   "--accent": "#5B9DD1", // soft technical blue
-  "--accent-color": "#5B9DD1",
+  "--accent-color": "#e84b2c",
 
   // Interactive technical marks
   "--link": "#4A86B8", // deeper technical blue

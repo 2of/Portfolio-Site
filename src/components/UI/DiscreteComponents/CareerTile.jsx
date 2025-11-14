@@ -1,9 +1,86 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBriefcase } from "react-icons/fa";
 import styles from "./styles/CareerTile.module.scss";
-
+import {Article} from "../../Article/Article.jsx";
+import {useModal} from "../../../contexts/ModalContext.jsx";
+import getIcon from "../../../utils/Iconifier.jsx";
 const SHOW_DELAY = 200; // ms before showing the clone
 const HIDE_DELAY = 200; // ms before hiding the clone (lets user move between elements)
+
+
+
+
+
+
+ const BasicTile = ({
+                              position = "Software Engineer",
+                              company = "Tech Innovators Inc.",
+                              duration = "Jan 2021 - Present",
+                              location = "Remote",
+                              doing = [
+                                  "Developed and maintained full-stack web applications.",
+                                  "Collaborated with cross-functional teams to deliver high-quality products.",
+                              ],
+                              techStack = ["React", "Node.js", "AWS"],
+                              icon = null,
+
+                          }) => {
+    return (
+
+        <div className={styles.content}>
+
+
+
+        <div className={styles.BasicTileContent}>
+
+            <div className={styles.iconContainer}>
+                {icon && icon || getIcon("code")}
+
+            </div>
+            <div className={styles.titleRow}>
+                <h3 className={styles.position}>{position}</h3>
+            </div>
+
+            <div className={styles.meta}>
+                <span className={styles.company}>{company}</span>
+
+            </div>
+
+            <div className={styles.meta}>
+
+                {location && (
+                    <>
+
+                        <span className={styles.location}>{location}</span>
+                    </>
+                )}
+            </div>
+
+
+            <span className={styles.duration}>{duration}</span>
+
+            <ul className={styles.responsibilities}>
+                {doing.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+
+            <div className={styles.techStack}>
+                {techStack.map((tech, index) => (
+                    <span key={index} className={styles.techItem}>
+          {tech}
+        </span>
+                ))}
+            </div>
+        </div>
+    </div>
+
+
+);
+};
+
+
+
 
 const CareerTile = ({
                         position = "Software Engineer",
@@ -16,15 +93,35 @@ const CareerTile = ({
                         ],
                         techStack = ["React", "Node.js", "AWS"],
                         icon = null,
+    blur = true,
+    openasmodal = false,
                     }) => {
     const [hovered, setHovered] = useState(false); // whether clone is mounted
     const [animateIn, setAnimateIn] = useState(false); // whether clone's "FullReveal" animation/state is active
     const [coords, setCoords] = useState(null);
-
+    const { modalState, showModal, hideModal, modalVisible } = useModal();
     const tileRef = useRef(null);
     const showTimer = useRef(null);
     const hideTimer = useRef(null);
+    const openModal = () => {
 
+
+
+    }
+
+    const handleModalOpen = () => {
+        // alert("EST")
+        showModal({
+            // title: "blah blah",
+            size: "large",
+            floatnav: true,
+            content: (
+
+               <BasicTile/>
+
+            ),
+        });
+    }
     // cleanup timers on unmount
     useEffect(() => {
         return () => {
@@ -148,11 +245,18 @@ const CareerTile = ({
             {/* Base tile (compact) — still handles enter/leave */}
             <div
                 ref={tileRef}
-                className={`${styles.tile} ${hovered ? styles.ignorePointer : ""}`}
-                onMouseEnter={handleBaseMouseEnter}
-                onMouseLeave={handleBaseMouseLeave}
+                className={[
+                    styles.tile,
+                    blur ? styles.blur : "",
+                    hovered ? styles.ignorePointer : ""
+                ].join(" ")}
+
+                onMouseEnter={!openasmodal ? handleBaseMouseEnter : undefined}
+                onMouseLeave={!openasmodal ? handleBaseMouseLeave : undefined}
+                onClick={openModal ? handleModalOpen : undefined}
             >
-                <div className={styles.content}>
+
+            <div className={styles.content}>
                     <div className={styles.iconWrapper}>
                         <div className={styles.iconGlow}></div>
                         <div className={styles.iconRelative}>

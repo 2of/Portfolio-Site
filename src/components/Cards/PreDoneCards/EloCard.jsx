@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./EloCard.module.scss";
+import styles from "./styles/EloCard.module.scss";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../../utils/Iconifier";
 import ParticleBackground from "../../Background/Particles";
@@ -58,7 +58,7 @@ const EloCard = () => {
               key={link.label}
               label={link.label}
               icon={link.icon}
-              type="rounded_label"
+              type="rounded_catalogue_card_end_with_label"
               link={link.to}
             />
           ))}

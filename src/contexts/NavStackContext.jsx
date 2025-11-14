@@ -44,9 +44,12 @@ const setNavBgTransparent = (value) => {
 
   // --- extraButtons functions ---
 const addButton = useCallback(
+
   (buttonObj) => {
     setExtraButtons((prev) => {
       if (prev.some((btn) => btn.id === buttonObj.id)) {
+          console.log("ADDED A BUTTON", buttonObj);
+
         return prev;
       }
       return [...prev, buttonObj];

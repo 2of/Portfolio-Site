@@ -6,21 +6,21 @@
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%); /* Only translate X-axis for centering */
-  background-color: var(--bg);
+  //background-color: var(--bg);
 
   border-radius: var(--border-radius);
-  
 
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.3s ease;
 
   border: 1px solid var(--border-color);
-  width: auto; 
-  max-width: 100%; 
+  width: auto;
+  max-width: 100%;
   box-sizing: border-box;
 
- 
- &:hover { 
+
+ &:hover {
     transform: translateX(-50%) scale(1.12);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
  }
@@ -32,31 +32,31 @@
 
   .activeLink {
     background-color: var(--accent-color);
-    * { 
+    * {
       color: var(--text-color);
-     
+
     }
-  
+
   }
-  
-  &.float { 
+
+  &.float {
     /* Add styles for float if needed */
     .activeLink {
       background: none;
       // text-decoration: underline;
 
-      
+
       // background-color: var(--accent-color);
-      * { 
+      * {
         color: var(--accent-color);
         // text-decoration: underline;
-       
+
       }
-    
+
     }
   }
 
-  &.sm { 
+  &.sm {
     background-color: var(  --bg);
     // backdrop-filter: blur(var(--blur-radius));
     overflow: hidden;
@@ -72,14 +72,14 @@
     height: var(--nav-height); // iphone safe ?!??!
   }
 
-  &.rightAlignFloat { 
+  &.rightAlignFloat {
     left: 5%;
     top: 5%;
     height: fit-content;
     border-radius: 0;
     transition: left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
-    .navList { 
+    .navList {
       flex-direction: column;
     }
   }
@@ -110,7 +110,7 @@
     filter: blur(4px);
     // ?box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Larger shadow for depth */
   }
-  
+
 }
 .navList {
   display: flex;
@@ -132,12 +132,12 @@ justify-content: center;
   // height: 36px;
   // background-color: red;
 
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.3s ease;
   // justify-content: center;
-  &:hover { 
+  &:hover {
     transform: translateY(-2px) scale(1.2);
-    
+
   }
 }
 
@@ -154,7 +154,7 @@ justify-content: center;
 
   flex-direction: column;
 }
-.routeItem { 
+.routeItem {
  display: flex;
   align-items: center;
   // gap: 0.5rem;
@@ -179,7 +179,7 @@ justify-content: center;
 }
 
 
-.sm { 
+.sm {
   // background-color: red;
   border: none;
   box-shadow: none;
@@ -187,25 +187,25 @@ justify-content: center;
 
   // background-color: red;
   // height: 12000px;
-    .navList { 
+    .navList {
       // background-color: red;
       display: flex;
       align-items: center;
       justify-content: center;
-      
-      .link { 
+
+      .link {
         font-size: 24px;
 
       }
-      .activeLink { 
+      .activeLink {
         font-size: 24px
 
-        
+
       }
-     
+
     }
 
-   &.onlyButton { 
+   &.onlyButton {
     // background-color: green;
     // padding-left: 0;
     width: 48px;
@@ -218,25 +218,25 @@ justify-content: center;
     padding-top: 6px;
     border: 1px solid black;
 
- 
+
     // border-radius: 12px;
     // border: none;
     .navItem { display: none;}
     .menuButton { display: none;}
-    .navContainer { 
+    .navContainer {
       display: flex;
       align-items: center;
       flex-direction: column;
-      
 
-    
 
-     
+
+
+
 
     }
 
-    
-    .visibleButton { 
+
+    .visibleButton {
       background:none;
       // font-size: 40px;
       // width: 100px;
@@ -247,7 +247,7 @@ justify-content: center;
       font-weight: 100;
       padding: 6px;
       font-style: italic;
-      
+
     }
 
 
@@ -256,7 +256,7 @@ justify-content: center;
    &.expandedMenu{
     height: 50vh;
    }
-   
+
 }
 .expandMenuPlatter {
   opacity: 0;
@@ -267,7 +267,7 @@ justify-content: center;
 
   height: 50%;
   // overflow: scroll;
-  
+
   display: grid;
   list-style-type: none;
   grid-template-columns: repeat(3, 1fr); // Three equal columns
@@ -276,7 +276,7 @@ justify-content: center;
   .expandednavitem {
     display: flex;
     border: 1px solid var(--text-color);
-    border-radius: 8px; 
+    border-radius: 8px;
     overflow: hidden;
 
     align-items: center;
@@ -326,7 +326,7 @@ justify-content: center;
   gap: 2px;
 
   position: relative; // Ensure the pseudo-element positions correctly
-  
+
   // Apply the pseudo-element only to miniactiveLink
   &::after {
     content: ""; // Create an empty pseudo-element
@@ -353,15 +353,15 @@ justify-content: center;
   }
 }
 
-.expandedMenu { 
-  * .menuButton { 
-    * { 
+.expandedMenu {
+  * .menuButton {
+    * {
       // transition: all 3s ease;
      }
-    .miniLinkIcon { 
+    .miniLinkIcon {
       transform: rotate(180deg);
     }
-   } 
+   }
 
   }
 

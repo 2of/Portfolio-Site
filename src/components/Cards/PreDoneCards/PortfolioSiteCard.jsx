@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./PortfolioSiteCard.module.scss";
+import styles from "./styles/PortfolioSiteCard.module.scss";
 import image1 from "../../../assets/Images/PortfolioShowCaseImages/DarkProjSS.png";
 import image2 from "../../../assets/Images/PortfolioShowCaseImages/LightArticleSS.png";
 import image3 from "../../../assets/Images/PortfolioShowCaseImages/LightHomess.png";
@@ -39,20 +39,26 @@ export const PortfolioSiteCard = () => {
       <div className={styles.cardBody}>
 
           <div className={styles.ButtonContainer}>
-              <StandardButton label="2of.io" type="rounded_label"        icon={getIcon("right")}link="https://2of.io" />
+              <StandardButton label="2of.io" type="rounded_catalogue_card_end_with_label"        icon={getIcon("right")}link="https://2of.io" />
               <StandardButton
                   label="Open Writeup"
-                  type="rounded_label"
+                  type="rounded_catalogue_card_end_with_label"
                   icon={getIcon("article")}
               />  <StandardButton
               label="UI Library"
-              type="rounded_label"
+              type="rounded_catalogue_card_end_with_label"
               icon={getIcon("github")}
           />
+              <StandardButton
+                  label="All Components"
+                  type="rounded_catalogue_card_end_with_label"
+                  icon={getIcon("github")}
+                  link={"/allcomponents"}
+              />
 
               <StandardButton
                   label="Code"
-                  type="rounded_label"
+                  type="rounded_catalogue_card_end_with_label"
                   icon={getIcon("github")}
               />
 

@@ -6,8 +6,9 @@
     height: calc(var(--navHeightDESKTOP));
     // padding-top: 2rem;
     z-index: 5;
+  background-color: var(--navBackground);
 
-    // background-color: red;
+     //background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,14 +17,14 @@
     transition: all 0.3s;
 
     &.fullbg {
-        background-color: none;
+        //background-color: none;
         //   background-color: red;
     }
 
     &.transparentbg {
-        //background-color: var(--bg-transparent);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg);
+        //backdrop-filter: blur(12px);
+        border-bottom: 2px solid var(--border-color);
     }
 
     .navList {
@@ -38,7 +39,7 @@
         border-radius: 48px;
         transition: all 0.4s;
 
-        // Blur always applied — makes it consistent
+
 
         &.showbg {
             background-color: var(

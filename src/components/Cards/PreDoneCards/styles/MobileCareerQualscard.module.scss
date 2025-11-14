@@ -1,0 +1,19 @@
+.container {
+  background-color: orangered;
+}
+
+
+
+.pageContainer {
+height: 100vh;
+  margin-bottom: 30%;
+padding-top: 30%;
+display: flex;
+
+}
+
+.careerstack { display: flex;
+flex-direction: column;
+gap: 1rem;
+//background-color: red;
+}

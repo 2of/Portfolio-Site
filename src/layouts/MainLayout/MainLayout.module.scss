@@ -33,6 +33,9 @@
   // background-color: red;
   &.ContentContainer { 
     // height:50vh;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
     // background-color: gray
   }
 }

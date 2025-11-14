@@ -52,11 +52,11 @@
 
   .fillBar {
     position: absolute;
-    top: -4px;
+    top: -3px;
     height: 8px;
     width: calc(var(--fill-percent, 0) * 1%);
     background-color: var(--bg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--text-color);
     border-radius: 2px;
 
     z-index: 1;

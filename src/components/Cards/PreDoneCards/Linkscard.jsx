@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./LinksCard.module.scss";
+import styles from "./styles/LinksCard.module.scss";
 import { FaEnvelope, FaGithub, FaProjectDiagram, FaUser } from "react-icons/fa";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import { FaUpwork } from "react-icons/fa6";

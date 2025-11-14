@@ -175,19 +175,19 @@ export const CataloguePage_UP = () => {
 
   const DesktopView = () => {
     return (
-      <ScrollableVerticalView trackScrollPercent >
+      <ScrollableVerticalView trackScrollPercent staggerStart >
         <Section>{/* <Divider variant="double" />*/}</Section>
-          <Section>
-              <Divider variant="double" />
-          </Section>
+          {/*<Section>*/}
+          {/*    <Divider variant="double" />*/}
+          {/*</Section>*/}
 
-          <Section >
-              <CatalogueHeroSection text={text} />
-          </Section>
+          {/*/!*<Section >*!/*/}
+          {/*    <CatalogueHeroSection text={text} />*/}
+          {/*</Section>*/}
 
-          <Section>
-              <Divider variant="double" />
-          </Section>
+          {/*<Section>*/}
+          {/*    <Divider variant="double" />*/}
+          {/*</Section>*/}
 
           <Section
           color=""
@@ -207,7 +207,7 @@ export const CataloguePage_UP = () => {
         </Section>
 
         <Section
-          color="l1"
+          color=""
       
           Header={() => (
             <CatalogueRegularTextHeader

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./GeoCard.module.scss";
+import styles from "./styles/GeoCard.module.scss";
 // Make sure you import the image correctly
 import newyorkimage from "../../../assets/Images/NewYork.png";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
@@ -217,17 +217,17 @@ const GeoCard = () => {
           <div className={styles.buttonsContainer}>
             <StandardButton
               label="Open Writeup"
-              type="modern"
+              type="rounded_catalogue_card_end_with_label"
               icon={getIcon("article")}
             />
             <StandardButton
               label="Open Thesis"
-              type="modern"
+              type="rounded_catalogue_card_end_with_label"
               icon={getIcon("article")}
             />
             <StandardButton
               label="Code Repo"
-              type="modern"
+              type="rounded_catalogue_card_end_with_label"
               icon={getIcon("github")}
             />
           </div>

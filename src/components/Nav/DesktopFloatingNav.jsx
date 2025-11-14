@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import routes from "../../routes/routes";
-import styles from "./styles/DesktopLongNav.module.scss";
+import styles from "./styles/DesktopFloatingNav.module.scss";
 import DarkModeToggle from "../UI/darkmodeToggleSmallInline.jsx";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import useScreenSize from "../../utils/screensize";

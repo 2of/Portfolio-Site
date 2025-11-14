@@ -8,6 +8,7 @@ const TinderView = ({
   setwiggle = false,
   showNext = true,
   conductnext,
+
 }) => {
   const items = React.Children.toArray(children);
   const total = items.length;

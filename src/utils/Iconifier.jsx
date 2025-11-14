@@ -112,7 +112,7 @@ const getIcon = (iconName = "default") => {
     up: <FaArrowUp />,
     boat: <FaSailboat />,
     uparrow: <FaArrowUp />,
-    down: <FaChevronDown />,
+    down: <FaArrowDown />,
     downarrow: <FaArrowDown />,
     chevdown: <FaChevronCircleDown />,
     chevup: <FaChevronCircleUp />,

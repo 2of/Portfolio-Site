@@ -149,7 +149,7 @@ const NavWrapper = () => {
             navigateAwayCallback={handleNavigateAway}
           />
 
-          {extraButtons.length > 0 && isMenuFloatingDesktop && (
+          {extraButtons.length > 0  && (
             <MobileExtraButtonsContainer items={extraButtons} />
           )}
         </>

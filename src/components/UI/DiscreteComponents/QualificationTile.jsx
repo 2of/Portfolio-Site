@@ -9,10 +9,11 @@ const QualificationTile = ({
                                year = "2020",
                                field = "Computer Science",
                                gpatag = null,
+    blur = true,
     icon = null
                            }) => {
     return (
-        <div className={`${styles.tile} group`}>
+        <div className={`${styles.tile} group ${ blur && styles.blur}`}>
             <div className={styles.content}>
                 {/* Award icon */}
                 <div className={styles.iconWrapper}>

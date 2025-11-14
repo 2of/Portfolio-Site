@@ -40,6 +40,7 @@ import {
   Section,
 } from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import { Divider } from "../components/UI/Divider";
+import {StandardTab} from "../components/UI/StandardTab.jsx";
 
 export const ComponentPage = () => {
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
@@ -299,6 +300,62 @@ export const ComponentPage = () => {
     );
   };
 
+const TabSection = () => {
+        const tabs = {
+            Overview: () => (
+                <div>
+                    <h3>Overview</h3>
+                    <p>
+                        Tabs group related content into smaller, more focused views.
+                        This tab gives a general summary of your content or app section.
+                    </p>
+                </div>
+            ),
+            Details: () => (
+                <div>
+                    <h3>Details</h3>
+                    <p>
+                        Use this space for specifics — settings, fine-tuning, or extra information
+                        that doesn’t belong in the main view.
+                    </p>
+                </div>
+            ),
+            Settings: () => (
+                <div>
+                    <h3>Settings</h3>
+                    <p>
+                        This tab could host configurable preferences, toggles, or personalization
+                        options for the user.
+                    </p>
+                </div>
+            ),
+        };
+
+        return (
+            <Section
+                sticky={true}
+                Header={() => (
+                    <GenericHeader text="Tabs are used as follows:" />
+                )}
+            >
+                <StandardTab
+                    tabs={tabs}
+                    variant="mobile"
+                    tabPosition="bottom"
+                />
+                <StandardTab
+                    tabs={tabs}
+                    variant="outline"
+                    tabPosition="bottom"
+                />
+                <StandardTab
+                    tabs={tabs}
+                    variant="minimal"
+                    tabPosition="top"
+                />
+            </Section>
+        );
+    };
   const ImageInteractionsSection = () => {
     return (
       <Section
@@ -620,6 +677,7 @@ export const ComponentPage = () => {
       {/* <IntroSection/> */}
       <NavSection />
       <ModalSection />
+        <TabSection/>
       <DividerSection />
       <AlertSection />
       <ShareSection />

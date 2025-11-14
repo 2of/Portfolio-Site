@@ -60,6 +60,7 @@ const TinderPage = () => {
         label: "Close",
         icon: getIcon("right"),
       });
+
     }
 
     return () => {
