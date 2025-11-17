@@ -47,7 +47,7 @@ export const RichTabData = [
       description:
         "That's this website, actually, It's written more or less from scratch in React with SCSS",
       links: [
-        { to: "#", label: "2of.io", icon: "book" },
+        { to: "#", label: "thingies.dev", icon: "book" },
         { to: "#", label: "Repo", icon: "dashboard" },
       ],
     },

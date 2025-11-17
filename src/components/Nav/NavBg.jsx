@@ -4,7 +4,7 @@ import { useRoute } from "../../contexts/RouteContext";
 const NavLogo = () => {
   return (
     <div className={styles.logo}>
-      <span>2of.io</span>
+      <span>thingies.dev</span>
       <span>Noah's site</span>
     </div>
   );

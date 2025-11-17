@@ -24,7 +24,7 @@ const StandardControls = React.memo(({ data, mobile = false }) => {
     openShareSheet(
       window.location.href,
       "twitter",
-      data.shortDesc || data.subtitle || "Noah's Portfolio @ 2of.io",
+      data.shortDesc || data.subtitle || "Noah's Portfolio @ thingies.dev",
       data.title,
     );
   }, [openShareSheet, data]); // Dependencies for useCallback

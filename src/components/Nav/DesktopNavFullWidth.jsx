@@ -33,7 +33,7 @@ export const DesktopNavFullWidth = () => {
     openShareSheet(
       window.location.href,
       "twitter",
-      "Noah's Portfolio @ 2of.io",
+      "Noah's Portfolio @ thingies.dev",
       "hello"
     );
   }, [openShareSheet]); // Dependencies for useCallback

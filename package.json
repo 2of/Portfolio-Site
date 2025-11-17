@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://2of.io",
+  "homepage": "https://thingies.dev",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

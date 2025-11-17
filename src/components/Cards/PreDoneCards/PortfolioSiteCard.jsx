@@ -39,7 +39,7 @@ export const PortfolioSiteCard = () => {
       <div className={styles.cardBody}>
 
           <div className={styles.ButtonContainer}>
-              <StandardButton label="2of.io" type="rounded_catalogue_card_end_with_label"        icon={getIcon("right")}link="https://2of.io" />
+              <StandardButton label="thingies.dev" type="rounded_catalogue_card_end_with_label"        icon={getIcon("right")}link="https://thingies.dev" />
               <StandardButton
                   label="Open Writeup"
                   type="rounded_catalogue_card_end_with_label"

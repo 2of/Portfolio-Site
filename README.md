@@ -8,8 +8,8 @@
 Welcome to my portfolio site — a project that started out simple but spiraled into something a lot more complex (in a fun way). It's still a **work in progress**, but it's **live**, it's **React-based**, and it's already hosting articles and tools.
 
 ### 🔗 Check it out:
-🌐 **Live site:** [2of.io](https://2of.io)  
-📄 **Example article:** [2of.io/#/proj/geo](https://2of.io/#/proj/geo)
+🌐 **Live site:** [thingies.dev](https://thingies.dev)  
+📄 **Example article:** [thingies.dev/#/proj/geo](https://thingies.dev/#/proj/geo)
 
 ---
 

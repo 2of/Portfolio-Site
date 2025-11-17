@@ -38,7 +38,7 @@ export const HeroCell = ({sz, featureButtonCallback}) => {
             </p><p>See below for a featured project and my CV.
 
 
-                            </p><p>Also 2of.io is far cooler on mobile...
+                            </p><p>Also thingies.dev is far cooler on mobile...
 
 
                     </p>
