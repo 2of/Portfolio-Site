@@ -127,7 +127,7 @@ export const SettingsPage = () => {
         return (
           <StandardButton
             label={row.buttonLabel}
-            type="article"
+            type="basic_small"
             icon={getIcon(row.icon)}
             callback={() => {
               if (row.route) navigate(row.route);

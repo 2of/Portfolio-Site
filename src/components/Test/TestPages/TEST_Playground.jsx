@@ -7,6 +7,7 @@ import { RichTabShowCaseView } from "../../Containers/RichTabShowcaseView";
 import LinkedinCard from "../../Cards/PreDoneCards/LinkedInCard";
 import GithubCard from "../../Cards/PreDoneCards/GithubCard";
 import { RichTabData } from "../../../assets/TextAssets/ShowCaseTabRich";
+import { useProjects } from "../../../contexts/ContentContext";
 // Move testVariants outside the component to memoize the functions/icons
 const testVariants = [
   {
@@ -42,7 +43,16 @@ export const PlaygroundPage = () => {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [direction, setDirection] = useState("vertical");
+  const {getSectionMetaData} = useProjects();
 
+  const testSectionClick = () => { 
+    // alert("TEST")
+// console.log(getSectionMetaData({ sectionName: "test" }));
+console.log(getSectionMetaData("featured"))
+
+
+
+  }
   const next = () => {
     setIndex((prev) => (prev + 1) % testVariants.length);
   };
@@ -127,7 +137,9 @@ export const PlaygroundPage = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <h1>Playground</h1>
-      <RichTabShowCaseView data={RichTabData} />;
+
+      <button onClick={()=> testSectionClick()}>CLICKY</button>
+      {/* <RichTabShowCaseView data={RichTabData} />; */}
       {/* <DesktopNav />
       <section>
         <h2>NavMenuIconMobile Test</h2>

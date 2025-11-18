@@ -1,0 +1,517 @@
+[
+  {
+    "name": "geo",
+    "showcase": true,
+    "uniWorkShowcase": false,
+    "details": {
+      "icon": "map",
+      "subtitle": "Master of Artifical Intelligence Thesis (Condensed)",
+      "tags": [
+        "Machine Learning",
+        "Tensorflow",
+        "Transfer Learning",
+        "Regression Analysis",
+        "Model Analysis",
+        "Pytorch",
+        "Object Detection",
+        "Embeddings",
+        "Large Data Processing",
+        "Heuristic Analysis",
+        "Attention Models",
+        "Convolutional Neural Networks",
+        "Neural Networks",
+        "Cooking my GPU",
+        "Psuedo Model Ensemble",
+        "Clustering Analysis"
+      ],
+      "showcase": true,
+      "uniWorkShowcase": false,
+      "type": "file",
+      "url": "/Writeups/GEO/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "thumbbg": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/GEO/hero.png",
+      "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
+    }
+  },
+  {
+    "name": "portfoliosite",
+    "showcase": true,
+    "uniWorkShowcase": false,
+
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I built this website in REACT"
+    }
+  },
+ {
+  "name": "UILIB",
+  "large": false,
+  "details": {
+    "icon": "portfolio",
+    "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+
+    "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+    "type": "file",
+    "url": "/Writeups/PortfolioSite/text.json",
+    "heroImage": "/assets/heroImages/geo.png",
+    "bgimage": "/Writeups/PortfolioSite/unnamed.jpg",
+    "title": "I built this website in react",
+    "mainTag": "REACT JS Lib",
+    "extralinks": [
+      {
+        "label": "Writeup",
+        "url": "/Writeups/GEO/text/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com"
+      }
+    ]
+  }
+},
+  {
+    "name": "chessEloEstimator",
+
+    "details": {
+      "icon": "chess",
+      "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
+      "tags": [
+        "Machine Learning",
+        "LSTM",
+        "Large Data Processing",
+        "Model Analysis",
+        "CNN",
+        "Tensorflow"
+      ],
+
+      "type": "url",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Writeups/ChessEloEstimator/Main_Text.json",
+      "file": "Chess1.json",
+      "internalLink": "/ChessEloEstimator",
+      "bgimage": "/Writeups/ChessELOEstimator/ClassyThumb.png",
+      "revealbgimage": "/Writeups/Chrome/thumbColour.png",
+      "title": "Free Chess ELO Estimator",
+      "extralinks": [
+        {
+          "label": "Writeup",
+          "url": "/Writeups/GEO/text/"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com"
+        }
+      ]
+    }
+  },
+  {
+    "name": "RGBHands",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Computer Vision Project @ UC ",
+      "tags": [
+        "Computer Vision",
+        "Tensorflow",
+        "Python",
+        "Neural Network Design",
+        "OpenCV",
+        "MediaPipe",
+        "PyTorch",
+        "Machine Learning",
+        "PyAutoGUI"
+      ],
+      "mainTag": "Computer Vision",
+      "type": "file",
+      "url": "/Writeups/RGBHands/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/RGBHands/thumb.png",
+      "title": "Neural Net + RGB Camera Abstract Interface"
+    }
+  },
+
+  {
+    "name": "chessbots",
+    "details": {
+      "icon": "portfolio",
+      "categoryText": "Web, React, JS, Node",
+      "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "mainTag": "Machine Learning and Large Data Handling",
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I made a bunch of chess bots using 'the wrong' Machine Learning approaches"
+    }
+  },
+
+  {
+    "name": "chessSite",
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "mainTag": "Machine Learning & React JS & Node",
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I built a chess website where you can play against my terrible bots!"
+    }
+  },
+
+  {
+    "name": "Chrome",
+
+    "details": {
+      "icon": "award",
+      "subtitle": "For about an afternoon, in New Zealand...",
+      "tags": [
+        "Manifest V3",
+        "Web",
+        "Javascript",
+        "Social Media Outrage I guess"
+      ],
+      "mainTag": "Chromium, Manifest V3",
+      "type": "file",
+      "url": "/Writeups/Chrome/text.json",
+      "file": "",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/Chrome/thumb.png",
+      "title": "I totally  wrote a Chrome Extension that was on the FrontPage of reddit"
+    }
+  },
+
+
+  {
+    "name": "chesshostedsite",
+    "showcase": true,
+    "uniWorkShowcase": false,
+
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "Chess bots ususally do state search or reasoning... I just did CNN's and other irrelevant methods for fun",
+      "mainTag": "Machine Learning and Large Data Handling",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "I built a chess website where you can play against my terrible bots!"
+    }
+  },
+  {
+    "name": "UILIB",
+    "showcase": true,
+    "uniWorkShowcase": false,
+
+    "details": {
+      "icon": "portfolio",
+      "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+      "mainTag": "Web, React, CSS Etc",
+      "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
+      "type": "file",
+      "url": "/Writeups/PortfolioSite/text.json",
+      "heroImage": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/PortfolioSite/thumb.jpg",
+      "title": "UI Library Derived from this Website"
+    }
+  },
+
+
+  {
+    "name": "Weather",
+    "showcase": false,
+    "wip": true,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "Massive Data for weather analysis"
+    }
+  },
+  {
+    "name": "NodeJsServer",
+    "showcase": false,
+    "wip": true,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "NodeJS Server for Petition Website"
+    }
+  },
+  {
+    "name": "CDler",
+    "showcase": false,
+    "wip": true,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "type": "url",
+"ext_url" : "www.bing.com",
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "C HTTP 1.0 File Downloader from Scratch"
+    }
+  },
+  {
+    "name": "1msong",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+      "title": "1 Million Song Dataset Prediction and Recommendation Model"
+    }
+  },
+  {
+    "name": "regModels",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "It's easier to clump these together",
+      "tags": [
+        "R",
+        "Machine Learning",
+        "Big Data Processing",
+        "Regression Analysis",
+        "Data Processing",
+        "Model Heuristics and Selection",
+        "Python",
+        "Keras",
+        "TensorFlow"
+      ],
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "Regression Models and Statistics"
+    }
+  },
+
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+ 
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format | Loaded externally",
+      "tags": ["This", "Is", "A", "Sample"],
+      "type": "url",
+   "external": true,
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "External: JSON article Template Overview"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format | Loaded From Public",
+      "tags": ["This", "Is", "A", "Sample"],
+      "type": "file",
+      "url": "/Writeups/template.json",
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "Local: JSON article Template Overview"
+    }
+  },
+  {
+    "name": "redditComment",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+    "details": {
+      "subtitle": "A weird personal question, but we asked the question 'is X political discussion board 'smarter' than Y",
+      "tags": ["Fog Index", "Machine Learning", "Grammatical Analysis", "Infographics"],
+      "type": "file",
+      "mainTag": "Large Data Processing ",
+      "icon": "weather",
+      "url": "/Writeups/template.json",
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "Analysis of Reddit Comment Sentiment across Boards"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format | Loaded From Public",
+      "tags": ["This", "Is", "A", "Sample"],
+      "type": "file",
+      "url": "/Writeups/template.json",
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "Yes, Seriously, Heres' my Scratch Profile from 17 or so years ago"
+    }
+  },
+  {
+    "name": "weather",
+    "externalLink": "https://github.com/2of/University-Of-Canterbury-DATA420-2024/tree/main",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "icon": "weather",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "mainTag": "Large Data & Machine Learning",
+      "title": "Massive Data for weather analysis"
+    }
+  },
+  {
+    "name": "NodeJSServer",
+    "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "mainTag": "Node, SQL, Vue Front End, Backend",
+      "title": "NodeJS Server for Petition Website"
+    }
+  },
+  {
+    "name": "HTTPDownloader",
+    "externalLink": "https://github.com/2of/SENG365-2020-Server",
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "C",
+        "Low Level Programming",
+        "Race Conditions, Semaphores and Mutexes",
+        "Memory Management"
+      ],
+      "mainTag": "C, Memory Management, Low Level Programming",
+      "title": "C HTTP 1.0 File Downloader from Scratch"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "icon": "code",
+      "mainTag": "Massive Data Processing [Spark, Scala w/ ML",
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+      "title": "1 Million Song Dataset Prediction and Recommendation Model"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "It's easier to clump these together",
+      "tags": [
+        "R",
+        "Machine Learning",
+        "Big Data Processing",
+        "Regression Analysis",
+        "Data Processing",
+        "Model Heuristics and Selection",
+        "Python",
+        "Keras",
+        "TensorFlow"
+      ],
+      "mainTag": "Regression Models and Statistics",
+      "type": "url",
+
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+      "file": "Chess1.json",
+
+      "title": "Stats and Analysis Compilation"
+    }
+  },
+  {
+    "name": "schemaOverview",
+    "showcase": false,
+    "uniWorkShowcase": true,
+    "misccategory": false,
+    "details": {
+      "subtitle": "A demonstration of the Possible Article Format",
+      "tags": [
+        "Machine Learning",
+        "Computer Vision",
+        "Python",
+        "Image Processing"
+      ],
+      "mainTag": "Computer Vision & Machine Learning",
+      "type": "file",
+      "url": "/Writeups/RGBHands/text.json",
+      "title": "Hand tracked User Interface using a single RGB camera and Machine Learning"
+    }
+  }
+]

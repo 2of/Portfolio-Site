@@ -3,6 +3,13 @@ import metadata from "../assets/ProjectText/metadata.json";
 import uniMetadata from "../assets/Metadata/uniProjects.json";
 import featMetadata from "../assets/Metadata/featuredProjects.json";
 
+import AllMetaData from "../../public/metadata/ProjectsMetadata.json"
+import Sections from "../../public/metadata/ProjectsSections.json"
+
+
+
+
+
 
 import NestSkills from "../assets/About/NestedSkills.json";
 // import AboutData from "../assets/about/about.json";
@@ -97,6 +104,24 @@ export const ProjectProvider = ({ children }) => {
   };
 
 
+
+  //okay i built in waaayyyy too much legacy code.
+const getSectionMetaData = (sectionName) => {
+    if (!Sections[sectionName]) { return []
+    }
+
+    const ids = Sections[sectionName]; // ["geo", "portfolio", ...]
+
+    return AllMetaData.filter(project =>
+        ids.includes(project.name)
+    );
+};
+
+
+const sections = () => { 
+  return Sections
+}
+
   const getMetadata = ({which}) => { 
     //accepts 'uni', 'showcase', 'all' as props
     switch (which) {
@@ -124,6 +149,7 @@ export const ProjectProvider = ({ children }) => {
         getSkills,
         getPageData,
         getMetadata,
+        getSectionMetaData
       }}
     >
       {children}

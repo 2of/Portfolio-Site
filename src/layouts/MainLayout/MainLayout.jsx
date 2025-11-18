@@ -115,7 +115,7 @@ const MainLayout = () => {
       <NavWrapper />
     
       <main className={styles.mainContent} onClick={handleMainClick}>
-   
+      {/*<Disclaimer title="WARNING" text={"Well not a warning, my domain just expired and I had to push this build... it's BROKEN "}/>*/}
 
         {screenSize === "sm" ? (
           <MobileLayout

@@ -50,37 +50,37 @@
 }
 
 .sub1 {
-  //margin-left: 1rem;]
   position: absolute;
-  bottom: 30%;
-  //left: 50%;
-  right: 30%;
-  min-width: 500px;
-  //transform: translateX(50%);
-  z-index:20;
-  //aspect-ratio: 1 / 1;
-
-  //background-color: #9599ff;
-
-  &:hover {
-    transform: translateY(-2rem)  scale(1.1);
-  }
-}
-
-.sub2 {
-  position: relative;
-  z-index: 20;
-  bottom: 30%;
-  height: 130px;
+  //bottom: -50%;
+  bottom: -10%;
+  right: 0;
+  height: 60%;
+  //width: clamp(100px, 40vw, 700px);
   aspect-ratio: 1 / 1;
-  width: 500px; // Add this - aspect-ratio will calculate height
-  margin: 200px;
-  background-color: red;
+  * {
+    //outline: 1px solid green;
+    height: 100%;
 
-  &:hover {
-    transform: translateY(-2rem) scale(1.1);
+  }  z-index: 1;
+}
+.sub2 {
+  position: absolute;
+  bottom: -20%;
+  left: 0%;
+  height: 60%;
+  //width: clamp(100px, 40vw, 700px);
+  aspect-ratio: 1 / 1;
+  * {
+  //outline: 1px solid green;
+  height: 100%;
+
+  }  z-index: 2;
+
+  &.mobile  {
+    opacity: 0.2;
   }
 }
+
 
 .cardBody {
   z-index: 2;
@@ -88,6 +88,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  height: 100%;
 
   .description {
     // optional width or text styling
@@ -118,4 +120,7 @@
 .ButtonContainer {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

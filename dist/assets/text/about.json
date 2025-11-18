@@ -1,10 +1,111 @@
 {
   "title": "welcome",
-  "subtitle": "This is a little website I made",
-  "description": "Short and sweet, the other pages are for flair",
-  "areatitle": "Here's the things you pm me about",
+  "subtitle": "I'm Noah and this is my Portfolio Catalogue Site",
+  "description": "The site is written from scratch",
+  "areatitle": "Here's some Links to get started",
+  "career"  : [
+
+
+    {
+      "position" :  "Senior SDA / It Project Support",
+      "company"  : "TeWhatuOra  - Heaoth New Zealand",
+      "duration" : "March 2024 - Current",
+      "location" : "Remote" ,
+      "doing" : ["Supporting Significant tenancy migration"],
+      "coreskills" : ["AD", "Microsoft Stack Management"]
+
+
+
+
+    }, {
+      "position" :  "Contract IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "",
+      "location" : "" ,
+      "doing" : ["Supporting Significant tenancy migration"],
+      "coreskills" : ["AD", "Microsoft Stack Management"]
+
+
+
+    }, {
+      "position" :  "IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "",
+      "location" : "test" ,
+
+      "doing" : ["Supporting Significant tenancy migration"],
+      "coreskills" : ["AD", "Microsoft Stack Management"]
+
+
+
+    }
+  , {
+      "position" :  "Tech Solutions Specialsit",
+      "company"  : "Noel Leeming Group LTD",
+      "duration" : "",
+      "location" : "" ,
+
+      "doing" : ["Supporting Significant tenancy migration"],
+      "coreskills" : ["AD", "Microsoft Stack Management"]
+
+
+
+    }
+  ],
+
+  "qualifications": [
+    {
+      "title": "Bachelor Of Science",
+      "field": "Computer Science",
+      "gpatag": "",
+      "where": "University of Canterbury",
+      "year": 2020
+    },
+    {
+      "title": "Master  Of Artificial Intelligence",
+      "field": "Computer Science",
+      "gpatag": "Merit",
+      "where": "University of Canterbury",
+      "year": 2025
+    }
+
+  ],
+
+  "fullskills": [
+    {
+      "header": "Web Development",
+      "icon" : "Web",
+      "skills": ["REACT","JS","Node","Vue","Full Stack Web DEV","SQL","MongoDB","Rest"]
+    },
+    {
+      "header": "Languages",
+            "icon" : "code",
+      "skills": ["Python","Java","C/C++", "JS","Kotlin"]
+    },
+    {
+      "header": "Data Science / ML Frameworks",
+            "icon" : "data",
+      "skills": ["TensorFlow","Pytorch","R","Pandas","SparkScala","Hadoop"]
+    },
+    {
+      "header": "ML & AI",
+            "icon" : "ai",
+      "skills": ["Machine Learning", "Neural Network Design", "Heuristic Analysis", "Fine-Tuning"]
+    },
+    {
+      "header": "Data Analysis",
+            "icon" : "datanalysis",
+      "skills": ["Data Analysis", "Regression Analysis", "Large Data Processing","Map/Reduce"]
+    },
+    {
+      "header": "IT / Cloud Administration",
+            "icon" : "IT",
+      "skills": ["Microsoft Cloud Admin", "EXO & OnPrem", "Ad, Entra", "MS & Linux Servers"]
+    }
+  ],
+
   "web": {
-    "title": "Firstly, actually I put a lot of time into this site, Let's talk about Web...",
+    "title": "What's up with this website?",
     "subtitle": "Aside from REACT's inbuilt stuff, some icon libs and react-router-dom this is all done from scratch",
     "paragraph1": "So, there's about 90% of a full UI framework in here too, sans padding, margin predone things like you'd find in bootstrap and others.",
     "paragraph2": "There's also a full writeup, using the inbuilt fancy-pants article renderer thingie (that I made, thingie is totally valid)",

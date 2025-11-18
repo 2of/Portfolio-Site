@@ -30,6 +30,7 @@ import {
 import { StandardSlider } from "../components/UI/StandardLib/StandardSlider.jsx";
 import FeatherTwoLayer from "../components/Misc/FeatherTwoLayer";
 import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
+import StandardToggle from "../components/UI/StandardLib/StandardToggle.jsx";
 import { useModal } from "../contexts/ModalContext";
 import { Article } from "../components/Article/Article";
 import { meta } from "@eslint/js";
@@ -122,7 +123,6 @@ export const ComponentPage = () => {
     return (
       <Section
         sticky={true}
-        sticky
         Header={() => <GenericHeader text={"Welcome 🔨👷🏻‍♂️"} />}
       >
         <p>
@@ -139,7 +139,6 @@ export const ComponentPage = () => {
       <Section
         sticky={true}
         // color="dark"
-        sticky
         Header={() => (
           <GenericHeader
             text={
@@ -356,6 +355,174 @@ const TabSection = () => {
             </Section>
         );
     };
+
+  const ToggleShowcaseSection = () => {
+    const toggleVariants = [
+      {
+        type: "box",
+        name: "Legacy Box",
+        description: "Original block toggle with wiggle animation.",
+      },
+      {
+        type: "pill",
+        name: "Legacy Pill",
+        description: "Compact pill switch used around the app.",
+      },
+      {
+        type: "largepill",
+        name: "Legacy Large Pill",
+        description: "Extra padding + sliding knob treatment.",
+      },
+      {
+        type: "modern",
+        name: "Modern",
+        description: "Default themed toggle with gradients + depth.",
+      },
+      {
+        type: "modern_unfilled",
+        name: "Modern Unfilled",
+        description: "Outline-only track with floating knob.",
+      },
+      {
+        type: "minimal",
+        name: "Minimal",
+        description: "Hairline track + floating knob for tight UI.",
+      },
+      {
+        type: "outline",
+        name: "Outline",
+        description: "Dashed border + pill knob for high contrast.",
+      },
+      {
+        type: "glass",
+        name: "Glass",
+        description: "Frosted glass track with blur + lighting.",
+      },
+      {
+        type: "neon",
+        name: "Neon",
+        description: "Dark track with animated glow pulse.",
+      },
+      {
+        type: "basic_small",
+        name: "Basic Small",
+        description: "Matches the basic_small StandardButton aesthetic.",
+      },
+      {
+        type: "utility",
+        name: "Utility",
+        description: "Compact utilitarian switch for dense layouts.",
+      },
+      {
+        type: "soft",
+        name: "Soft",
+        description: "Rounded, pillowy styling with subtle shadows.",
+      },
+    ];
+
+    const [variantValues, setVariantValues] = useState(() =>
+      toggleVariants.reduce((acc, variant) => {
+        acc[variant.type] = variant.type === "box";
+        return acc;
+      }, {})
+    );
+
+    const handleToggleChange =
+      (type) =>
+      (nextValue = false) => {
+        setVariantValues((prev) => ({
+          ...prev,
+          [type]: Boolean(nextValue),
+        }));
+      };
+
+    return (
+      <Section
+        sticky={true}
+        Header={() => (
+          <GenericHeader text={"StandardToggle Variants & Legacy Styles"} />
+        )}
+      >
+        <div className={styles.chunk}>
+          <p>
+            Every StandardToggle variant, including all legacy styles, rendered
+            side-by-side. Click any toggle to flip its local state and preview
+            the animation and hover behaviours.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1.5rem",
+              width: "100%",
+            }}
+          >
+            {toggleVariants.map(({ type, name, description }) => (
+              <div
+                key={type}
+                style={{
+                  border: "1px solid var(--border-color)",
+                  borderRadius: "12px",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.85rem",
+                  background: "var(--bg-l1)",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.25rem",
+                  }}
+                >
+                  <h4 style={{ margin: 0 }}>{name}</h4>
+                  <p
+                    style={{
+                      margin: 0,
+                      color: "var(--secondary-text)",
+                      fontSize: "0.85rem",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {description}
+                  </p>
+                </div>
+                <StandardToggle
+                  type={type}
+                  checked={Boolean(variantValues[type])}
+                  callback={handleToggleChange(type)}
+                  firsticon="🌙"
+                  secondicon="☀️"
+                  ariaLabel={`${name} toggle`}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: "0.8rem",
+                    color: "var(--secondary-text)",
+                  }}
+                >
+                  <span>State:</span>
+                  <strong
+                    style={{
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    {variantValues[type] ? "On" : "Off"}
+                  </strong>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+    );
+  };
   const ImageInteractionsSection = () => {
     return (
       <Section
@@ -392,61 +559,178 @@ const TabSection = () => {
     );
   };
 
-  const SliderSection = () => {
-    const [sliderVal, setsliderVal] = useState(20);
+  const SliderShowcaseSection = () => {
+    const sliderVariants = [
+      {
+        type: "dot",
+        name: "Dot Track (Legacy)",
+        description: "The original thin slider, refreshed with better touch targets.",
+        min: 0,
+        max: 100,
+      },
+      {
+        type: "thick",
+        name: "Thick",
+        description: "Chunky progress bar aesthetic for dashboards.",
+        min: 0,
+        max: 100,
+      },
+      {
+        type: "soft",
+        name: "Soft",
+        description: "Rounded pastel track with gentle shadowing.",
+        min: 0,
+        max: 100,
+      },
+      {
+        type: "segmented",
+        name: "Segmented",
+        description: "Snaps to named steps; ideal for tiered controls.",
+        min: 0,
+        max: 5,
+        steps: [0, 1, 2, 3, 4, 5],
+      },
+      {
+        type: "glass",
+        name: "Glass",
+        description: "Frosted glass slider with a luminous knob.",
+        min: 0,
+        max: 100,
+      },
+      {
+        type: "minimal",
+        name: "Minimal",
+        description: "Ultra-thin track with a micro value chip.",
+        min: 0,
+        max: 100,
+      },
+      {
+        type: "basic_small",
+        name: "Basic Small",
+        description: "Slider styled to match the basic_small button + toggle.",
+        min: 0,
+        max: 120,
+      },
+      {
+        type: "progress",
+        name: "Progress (Display only)",
+        description: "Read-only streaming state, no thumb bubble.",
+        min: 0,
+        max: 100,
+        interactive: false,
+        showValueBubble: false,
+      },
+    ];
+
+    const [sliderValues, setSliderValues] = useState(() =>
+      sliderVariants.reduce((acc, variant) => {
+        const midpoint = (variant.min + variant.max) / 2;
+        acc[variant.type] =
+          variant.type === "progress" ? variant.max * 0.65 : Math.round(midpoint);
+        return acc;
+      }, {}),
+    );
+
+    const handleSliderChange = (type) => (nextValue) => {
+      setSliderValues((prev) => ({
+        ...prev,
+        [type]: nextValue,
+      }));
+    };
 
     return (
       <Section
         sticky={true}
-        // color="dark"
-
-        Header={() => <GenericHeader text={"Welcome 🔨👷🏻‍♂️"} />}
+        Header={() => (
+          <GenericHeader text={"StandardSlider Variants & Touch-Friendly Styles"} />
+        )}
       >
         <div className={styles.chunk}>
-          <h2> SLiders! </h2>
-          <StandardSlider
-            value={sliderVal}
-            onChange={setsliderVal}
-            variant="thick"
-            style={{ backgroundColor: "lightblue" }} // inline override
-            className="myCustomSlider" // SCSS override
-          />
-          <br />
-          steps defined manually
-          <StandardSlider
-            min={0}
-            max={100}
-            value={sliderVal}
-            onChange={setsliderVal}
-            steps={[0, 20, 40, 60, 80, 100]} // slider will snap to these
-          />
-          steps defined automatically w/ prop autoCalcStepsEvery = n
-          <StandardSlider
-            min={0}
-            max={100}
-            value={sliderVal}
-            onChange={setsliderVal}
-            autoCalcStepsevery={2}
-          />
-          <br />
-          n = 1
-          <StandardSlider
-            min={0}
-            max={100}
-            value={sliderVal}
-            onChange={setsliderVal}
-            autoCalcStepsevery={1}
-          />
-          <br />
-          Thick variant
-          <StandardSlider
-            value={sliderVal}
-            variant="thick"
-            onChange={setsliderVal}
-          />
-          <br />
-          <StandardSlider value={sliderVal} onChange={setsliderVal} />
-          <br />
+          <p>
+            Enhanced slider variants with improved touch targets, step snapping,
+            and theming parity with the rest of the UI library. Tap or drag any
+            slider to feel the new track physics and value chip.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1.5rem",
+              width: "100%",
+            }}
+          >
+            {sliderVariants.map(
+              ({
+                type,
+                name,
+                description,
+                min,
+                max,
+                steps,
+                interactive = true,
+                showValueBubble = true,
+              }) => (
+                <div
+                  key={type}
+                  style={{
+                    border: "1px solid var(--border-color)",
+                    borderRadius: "12px",
+                    padding: "1.25rem",
+                    background: "var(--bg-l1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.85rem",
+                  }}
+                >
+                  <div>
+                    <h4 style={{ margin: 0 }}>{name}</h4>
+                    <p
+                      style={{
+                        margin: "0.35rem 0 0",
+                        color: "var(--secondary-text)",
+                        fontSize: "0.85rem",
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      {description}
+                    </p>
+                  </div>
+                  <StandardSlider
+                    min={min}
+                    max={max}
+                    variant={type}
+                    value={sliderValues[type]}
+                    onChange={handleSliderChange(type)}
+                    steps={steps}
+                    interactive={interactive}
+                    showValueBubble={showValueBubble}
+                    aria-label={`${name} slider`}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      fontSize: "0.8rem",
+                      color: "var(--secondary-text)",
+                    }}
+                  >
+                    <span>
+                      Range: {min} – {max}
+                    </span>
+                    <strong
+                      style={{
+                        letterSpacing: "0.05em",
+                        fontVariantNumeric: "tabular-nums",
+                      }}
+                    >
+                      {Math.round(sliderValues[type])}
+                    </strong>
+                  </div>
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </Section>
     );
@@ -678,10 +962,11 @@ const TabSection = () => {
       <NavSection />
       <ModalSection />
         <TabSection/>
+      <ToggleShowcaseSection />
       <DividerSection />
       <AlertSection />
       <ShareSection />
-      <SliderSection />
+      <SliderShowcaseSection />
       <TextInputSection />
       <ImageInteractionsSection />
       <CollapsableSection />

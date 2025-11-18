@@ -46,7 +46,7 @@ export const RichTabShowCaseView = ({ data }) => {
       const timeout = setTimeout(() => {
         setPrevTab(null);
         setIsAnimating(false);
-      }, 400); // match the CSS animation duration
+      }, 500); // match the CSS animation duration
       return () => clearTimeout(timeout);
     }
   }, [isAnimating]);

@@ -128,7 +128,9 @@ export const PagedScrollContainer = ({ children, borders, totalSections, conduct
                             ref={sectionRefs.current[i]}
                             key={i}
                             className={`${styles.pagedSection} ${
-                                sectionHeight === "half" ? styles.halfSection : ""
+                                sectionHeight === "half" ? styles.halfSection : ""}
+                                ${
+                            sectionHeight === "quarter" ? styles.quarterSection : ""}
                             } ${borders ? styles.bottomBorder : ""}`}
                         >
                             {bgImage && (

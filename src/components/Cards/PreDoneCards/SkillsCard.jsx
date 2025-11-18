@@ -19,6 +19,8 @@ const SkillsCard = ({ title = "Skills", fullskills }) => {
                 </div>
                 {fullskills.map((skill, index) => (
                     <div className={styles.skillSectionContainer}>
+
+
                         <SkillSection key={index} chunk={skill} />
                     </div>
 

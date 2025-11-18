@@ -37,7 +37,7 @@ export const StandardButton = ({
   external = false,
   fillContainer = false,
   nointeractEffects = false,
-
+  forcedarkmode = false,
   styles: customStyles = {}, // <-- new prop for custom inline styles
 }) => {
   const screenSize = useScreenSize(); // 'sm' | 'md' | 'lg'
@@ -54,7 +54,8 @@ export const StandardButton = ({
     const disabledClass = disable ? styles.disabled : "";
     const fillClass = fillContainer ? styles.fillContainer : "";
     const mobileClass = isMobile ? styles.mobile : "";
-    return `${baseClass} ${typeClass} ${disabledClass} ${fillClass} ${mobileClass}`.trim();
+    const darkModeClass = forcedarkmode ? styles.forcedarkmode : "";
+    return `${baseClass} ${typeClass} ${disabledClass} ${fillClass} ${mobileClass} ${darkModeClass}`.trim();
   };
 
   const handleClick = () => {

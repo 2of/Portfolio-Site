@@ -6,7 +6,7 @@
     height: 100px;
     /* padding: 2.5rem; */
     border-radius: 24px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: auto;
 }
 
@@ -30,19 +30,22 @@
     gap: 1.25rem;
     position: relative;
     cursor: pointer;
+    will-change: background-color, border-color, transform;
     transition:
-        background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        border-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 
     &:hover {
         background-color: var(--bg-l2);
         border-color: var(--text);
+        transform: translateY(-2px);
     }
 
     &.active {
         background-color: var(--bg-l1);
         border-color: var(--accent-color);
+        transform: translateY(-1px);
 
         .text h3 {
             color: var(--accent-color);
@@ -53,7 +56,7 @@
 .icon {
     font-size: 2rem;
     flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     position: relative;
     z-index: 1;
 }
@@ -82,14 +85,14 @@
         font-weight: 300;
         margin-bottom: 0.5rem;
         color: var(--text-color);
-        transition: color 0.3s ease;
+        transition: color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     p {
         font-size: 0.9rem;
         line-height: 1.5;
         color: var(--subtext-color);
-        transition: color 0.3s ease;
+        transition: color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 }
 
@@ -106,12 +109,12 @@
     /* border-top: 1px solid var(--border-color); */
     gap: 2px;
     transition:
-        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        padding 0.4s ease;
+        max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        padding 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 
     a {
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     &.show {
@@ -139,40 +142,41 @@
     top: 0;
     left: 0;
     width: 100%;
+    will-change: opacity, transform;
     transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
+        opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     opacity: 1;
 }
 
 .fadeIn {
     opacity: 0;
-    animation: fadeIn 0.4s forwards;
+    animation: fadeIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .fadeOut {
     opacity: 1;
-    animation: fadeOut 0.4s forwards;
+    animation: fadeOut 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px) scale(0.98);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 @keyframes fadeOut {
     from {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
     to {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-8px) scale(0.98);
     }
 }

@@ -1,17 +1,17 @@
 .container {
   position: relative;
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  height: 100%;
 }
 
 .image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: auto;
   height: 100%;
-  object-fit: cover;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
   user-select: none;
 }
 
@@ -21,5 +21,4 @@
   width: 2px;
   height: 100%;
   background-color: var(--border-color);
-  pointer-events: none;
 }

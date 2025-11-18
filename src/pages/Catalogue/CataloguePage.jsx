@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Pagestyle.module.scss";
 import text from "../../../public/assets/text/texts.json";
-import {
-  ScrollableVerticalView,
-  Section,
-} from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
+import { ScrollableVerticalView, Section } from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
 import { useProjects } from "../../contexts/ContentContext";
 import { getProjURL } from "../../utils/getURL";
 import { useScreenSize } from "../../contexts/ScreenSizeProvider";
@@ -18,7 +15,7 @@ import { RichTabShowCaseView } from "../../components/Containers/RichTabShowcase
 import { RichTabData } from "../../assets/TextAssets/ShowCaseTabRich";
 import getIcon from "../../utils/Iconifier";
 import LargeThumbCard from "../../components/Cards/CardLarge";
-import Loader from "../../components/UI/StandardLib/Loader.jsx";
+import Loader from "../../components/UI/StandardLib/Loader";
 import {
   CatalogueLargeTextHeader,
   CatalogueMainHeaderMobile,
@@ -32,20 +29,38 @@ import {
 } from "../../components/Cards/CatalogueCards";
 import { Divider } from "../../components/UI/Divider";
 import { PagedScrollContainer } from "../../components/Containers/Scroll/ScrollableViews/TikTokView";
-import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
-import { Thumbnail } from "../../components/UI/thumbnail.jsx";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows";
+import { Thumbnail } from "../../components/UI/thumbnail";
 import { Article } from "../../components/Article/Article";
 
 export const CataloguePage_UP = () => {
-  const { getAllMetaData, getMetadata } = useProjects();
+  const { getAllMetaData, getMetadata,getSectionMetaData } = useProjects();
   const shortProjects = getAllMetaData();
   const screenSize = useScreenSize();
   const { modalState, showModal, hideModal, modalVisible } = useModal();
   const [isLoading, setIsLoading] = useState(true);
   const [githubProjects, setGithubProjects] = useState([]);
-  const showcaseProjects = getMetadata({ which: "feat" });
+  const showcaseProjects = getSectionMetaData({ which: "feat" });
   const uniProjects = getMetadata({ which: "uni" });
   const miscProjects = shortProjects.filter((p) => p.misccategory);
+
+
+
+
+
+
+
+
+
+
+
+  const MobileProjSection1 = getSectionMetaData("featured");
+  const block2 = getSectionMetaData("block2");
+    const block1 = getSectionMetaData("block1");
+    console.log("BLOCK!", block1);
+    const uniprojects = getSectionMetaData("uniProjects");
+
+
 
   useEffect(() => {
     getRecentRepos("2of").then((repos) => {
@@ -147,49 +162,60 @@ export const CataloguePage_UP = () => {
     
 <PagedScrollContainer staggerStart borders>
 
-    <div sectionHeight="half" key="standard-header-1">
-        <CatalogueMainHeaderMobile />
-        {/*<h1>test</h1>*/}
-    </div>
-      {showcaseProjects.map((project, i) => (
+
+      <div sectionHeight="full" key="standard-header-1">
+
+
+              {/*<h2>test</h2>*/}
+              <CatalogueMainHeaderMobile />
+          {/*</div>*/}
+
+      </div>
+      {MobileProjSection1.map((project, i) => (
         <div key={`showcase-${i}`} bgImage={project.details?.bgimage}>
           {renderMobileCard(project, i)}
         </div>
       ))}
       <div sectionHeight="half" key="standard-header-1">
         <CatalogueStandardHeaderMobile
-          title="Notable Uni Work"
+          title="Some other projects..."
           subtitle={"It's pretty well documented"}
           customComponent={<BouncyArrows direction="down" />}
           showArrows
         />
       </div>
       {/* <StandardHeaderMobile title="Title"/> */}
-      {uniProjects.map((project, i) => (
-        <div key={`uni-${i}`} bgImage={project.details?.bgimage}>
+      {block1.map((project, i) => (
+        <div sectionHeight="half"   key={`uni-${i}`} bgImage={project.details?.bgimage}>
           {renderMobileCard(project, i)}
         </div>
       ))}
+
+    <div sectionHeight="quarter" key="standard-header-1">
+        <CatalogueStandardHeaderMobile
+            title="Notable Uni Work"
+            subtitle={"It's pretty well documented"}
+            customComponent={<BouncyArrows direction="down" />}
+            showArrows
+        />
+    </div>
+    {/* <StandardHeaderMobile title="Title"/> */}
+    {uniprojects.map((project, i) => (
+        <div sectionHeight="half"   key={`uni-${i}`} bgImage={project.details?.bgimage}>
+            {renderMobileCard(project, i)}
+        </div>
+    ))}
+
+
     </PagedScrollContainer>)
   };
 
   const DesktopView = () => {
     return (
-      <ScrollableVerticalView trackScrollPercent staggerStart >
+      <ScrollableVerticalView trackScrollPercent staggerStart>
         <Section>{/* <Divider variant="double" />*/}</Section>
-          {/*<Section>*/}
-          {/*    <Divider variant="double" />*/}
-          {/*</Section>*/}
 
-          {/*/!*<Section >*!/*/}
-          {/*    <CatalogueHeroSection text={text} />*/}
-          {/*</Section>*/}
-
-          {/*<Section>*/}
-          {/*    <Divider variant="double" />*/}
-          {/*</Section>*/}
-
-          <Section
+        <Section
           color=""
           // sticky={true}
           Header={() => (
@@ -199,15 +225,20 @@ export const CataloguePage_UP = () => {
           <RichTabShowCaseView data={RichTabData} />
         </Section>
 
+        {/*<Section>*/}
+        {/*  <Divider variant="double" />*/}
+        {/*</Section>*/}
 
+        {/*<Section >*/}
+        {/*  <CatalogueHeroSection text={text} />*/}
+        {/*</Section>*/}
 
-
-        <Section>
-          <Divider variant="double" />
-        </Section>
+        {/*<Section>*/}
+        {/*  <Divider variant="double" />*/}
+        {/*</Section>*/}
 
         <Section
-          color=""
+          // color="l1"
       
           Header={() => (
             <CatalogueRegularTextHeader
@@ -218,19 +249,22 @@ export const CataloguePage_UP = () => {
           )}
         >
           <div className={styles.LargeThumbGrid}>
-            {showcaseProjects.slice(0, 3).map(renderCard)}
-            <div className={`${styles.ProjectCell} ${styles.twobytwo}`}>
-              <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"} />
-            </div>
+            {block1.slice(0, 3).map(renderCard)}
+            {/*<div className={`${styles.ProjectCell} ${styles.twobytwo}`}>*/}
+            {/*  <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"} />*/}
+            {/*</div>*/}
 
-            {showcaseProjects.slice(3).map(renderCard)}
+            {block1.slice(3).map(renderCard)}
+
+
+              {block2.slice(3).map(renderCard)}
           </div>
         </Section>
 
-        <Section>
-          
-          <Divider variant="double" />
-        </Section>
+        {/*<Section>*/}
+        {/*  */}
+        {/*  <Divider variant="double" />*/}
+        {/*</Section>*/}
 
         <Section
           color=""

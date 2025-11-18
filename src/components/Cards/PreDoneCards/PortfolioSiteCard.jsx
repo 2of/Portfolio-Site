@@ -32,9 +32,9 @@ export const PortfolioSiteCard = () => {
         </p>
       </div>
 
-      <div className={styles.bgcontainer}>
-        <TrackedGradientBG />
-      </div>
+      {/*<div className={styles.bgcontainer}>*/}
+      {/*  <TrackedGradientBG />*/}
+      {/*</div>*/}
 
       <div className={styles.cardBody}>
 

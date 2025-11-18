@@ -249,7 +249,7 @@ button:hover {
 
 .disclaimer {
     position: fixed;
-    bottom: 4px;
+    border-top-color: 4px;
     left: 4px;
     gap: 4px;
     display: flex;
@@ -262,7 +262,8 @@ button:hover {
     background-color: var(--bg-transparent);
     backdrop-filter: blur(4px);
     border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--accent-color);
+
 }
 
 .doubleBorderRound {

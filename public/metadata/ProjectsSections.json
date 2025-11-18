@@ -1,0 +1,13 @@
+
+
+
+
+
+{
+    "featured" : ["geo", "portfoliosite", "chessEloEstimator"],
+    "block1" : ["Chrome","RGBHands","UILIB","chessbots","redditComment"],
+    "block2" : ["chessbots","chesshostedsite"],
+  "uniProjects" : ["Weather","Weather","CDler","1msong","regModels","weather","NodeJsServer"
+
+  ]
+}

@@ -8,7 +8,7 @@ export const baseTheme = {
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
 
-  "--navHeightDESKTOP": "5rem",
+  "--navHeightDESKTOP": "4rem",
 
   "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
   "--navHeight": "4rem",
@@ -25,97 +25,97 @@ export const baseTheme = {
 };
 
 export const lightTheme = {
-  // Technical drawing paper - crisp blueprints
-  "--bg": "#F8FAFB", // clean drafting vellum
-  "--bg-l1": "#F0F4F8", // tracing paper overlay
-  "--bg-l2": "#E6EDF3", // layered drafts
-  "--bg-l3": "#D9E4ED", // blueprint edge
-  "--bg-transparent": "rgba(248, 250, 251, 0.92)",
+  // Technical drawing paper - crisp blueprints with bold refinement
+  "--bg": "#F8FAFC", // pristine drafting vellum with crisp clarity
+  "--bg-l1": "#EFF4F9", // tracing paper overlay with bold blue presence
+  "--bg-l2": "#E1ECF5", // layered drafts with strong definition
+  "--bg-l3": "#D0E0ED", // blueprint edge with bold contrast
+  "--bg-transparent": "rgba(248, 250, 252, 0.96)",
 
-  // Technical pen strokes - precise and elegant
-  "--text-color": "#1E3A52", // fine liner black-blue
-  "--secondary-text": "#64748B", // light pencil marks
+  // Technical pen strokes - bold and precise with strong contrast
+  "--text-color": "#0F1E35", // bold fine liner black-blue with intensity
+  "--secondary-text": "#4A5A6F", // refined pencil marks with clarity
 
-  // Drafting surfaces
-  "--card-bg": "#FFFFFF", // clean paper sheet
-  "--border-color": "#CBD9E6", // grid lines, subtle
+  // Drafting surfaces - enhanced purity with bold definition
+  "--card-bg": "#FFFFFF", // immaculate paper sheet
+  "--border-color": "#B8CCE0", // bold grid lines with strong presence
   
-  // Blueprint grid system
-  "--grid-color": "#E0EBF5", // light technical grid
-  "--guide-color": "#A8C5DD", // construction guides
-  "--dimension-line": "#7BA5C9", // dimension/measurement lines
+  // Blueprint grid system - bold and sophisticated
+  "--grid-color": "#DEE8F2", // strong technical grid
+  "--guide-color": "#9FC4E0", // bold construction guides
+  "--dimension-line": "#5A9BC7", // strong dimension/measurement lines
 
-  // Technical blue - architect's pen
-  "--accent": "#5B9DD1", // soft technical blue
-  "--accent-color": "#e84b2c",
+  // Technical blue - architect's pen with bold vibrancy
+  "--accent": "#2E7FC8", // bold technical blue with intensity
+  "--accent-color": "#FF5240", // vibrant coral accent with bold contrast
 
-  // Interactive technical marks
-  "--link": "#4A86B8", // deeper technical blue
-  "--hover-accent": "#6BA8D9", // highlighted measurement
+  // Interactive technical marks - bold and engaging
+  "--link": "#1E6BA8", // deep technical blue with bold richness
+  "--hover-accent": "#3D8FD9", // luminous highlighted measurement
 
-  // Featured sections - frosted tracing paper
-  "--herobg": "#EDF6FC", // light blueprint wash
-  "--feature-bg": "#E3F2FD", // technical overlay
+  // Featured sections - bold tracing paper
+  "--herobg": "#E6F3FF", // strong blueprint wash with presence
+  "--feature-bg": "#D9EDFF", // bold technical overlay
   
-  // Precise, architectural shadows
+  // Precise, architectural shadows with bold depth
   "--drop-shadow": 
-    "0 1px 2px rgba(30, 58, 82, 0.04), 0 2px 4px rgba(30, 58, 82, 0.02)",
+    "0 3px 6px rgba(15, 30, 53, 0.08), 0 1px 3px rgba(15, 30, 53, 0.06), 0 0 1px rgba(15, 30, 53, 0.04)",
   "--card-shadow": 
-    "0 2px 4px rgba(30, 58, 82, 0.06), 0 4px 8px rgba(30, 58, 82, 0.03)",
+    "0 6px 16px rgba(15, 30, 53, 0.12), 0 3px 8px rgba(15, 30, 53, 0.08), 0 1px 3px rgba(15, 30, 53, 0.06)",
   "--elevated-shadow":
-    "0 4px 12px rgba(30, 58, 82, 0.08), 0 2px 6px rgba(30, 58, 82, 0.04)",
+    "0 12px 32px rgba(15, 30, 53, 0.16), 0 6px 16px rgba(15, 30, 53, 0.12), 0 3px 8px rgba(15, 30, 53, 0.08)",
 
-  // Inverse for overlays
-  "--inverse-transparent": "rgba(30, 58, 82, 0.88)",
+  // Inverse for overlays - bold refined depth
+  "--inverse-transparent": "rgba(15, 30, 53, 0.94)",
   "--inverse-shadow": 
-    "0 8px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08)",
+    "0 16px 40px rgba(0, 0, 0, 0.20), 0 8px 20px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.12)",
 };
 
 export const darkTheme = {
-  // Deep cosmic workspace - architect's midnight studio
-  "--bg": "#0B0F16", // deep space black
-  "--bg-l1": "#151A23", // drafting table surface
-  "--bg-l2": "#1F2531", // elevated drawing boards
-  "--bg-l3": "#2A3140", // highest workspace
-  "--bg-transparent": "rgba(11, 15, 22, 0.95)",
+  // Deep cosmic workspace - architect's midnight studio with bold refinement
+  "--bg": "#080B10", // bold deep space black with strong blue undertone
+  "--bg-l1": "#0F141A", // bold drafting table surface
+  "--bg-l2": "#18202C", // elevated drawing boards with bold depth
+  "--bg-l3": "#212A3A", // highest workspace with strong contrast
+  "--bg-transparent": "rgba(8, 11, 16, 0.98)",
 
-  // Luminous technical text - glowing blueprints
-  "--text-color": "#E8EDF2", // bright drafting clarity
-  "--secondary-text": "#8FA3B8", // subtle annotations
+  // Luminous technical text - bold glowing blueprints
+  "--text-color": "#F5F9FC", // brilliant drafting clarity with bold presence
+  "--secondary-text": "#A8BDD2", // refined annotations with clarity
 
-  // Workshop surfaces
-  "--card-bg": "#13181F", // matte drafting surface
-  "--border-color": "#2D3848", // defined edges
+  // Workshop surfaces - bold sophistication
+  "--card-bg": "#0D1117", // bold matte drafting surface
+  "--border-color": "#364152", // strong defined edges
   
-  // Technical grid - glowing in darkness
-  "--grid-color": "#1F2836", // subtle dark grid
-  "--guide-color": "#3A4556", // construction guides
-  "--dimension-line": "#4A6078", // measurement lines
+  // Technical grid - bold glowing in darkness
+  "--grid-color": "#151C28", // strong subtle dark grid
+  "--guide-color": "#455268", // bold construction guides
+  "--dimension-line": "#5A6F8A", // strong measurement lines
 
-  // Luminous technical blue - neon drafting light
-  "--accent": "#6BB6FF", // bright architect's blue
-  "--accent-color": "#6BB6FF",
+  // Luminous technical blue - bold neon drafting light
+  "--accent": "#4AA3FF", // bold vibrant architect's blue
+  "--accent-color": "#4AA3FF",
 
-  // Interactive glowing marks
-  "--link": "#7EC4FF", // highlighted technical blue
-  "--hover-accent": "#5AA8F0", // focused measurement
+  // Interactive glowing marks - bold and engaging
+  "--link": "#5CB5FF", // bold luminous highlighted technical blue
+  "--hover-accent": "#3A93F0", // focused measurement with bold intensity
 
-  // Featured areas - illuminated drafting zones
-  "--herobg": "#1A2332", // dark blueprint base
-  "--feature-bg": "#1C2738", // technical focus area
+  // Featured areas - bold illuminated drafting zones
+  "--herobg": "#131A24", // bold dark blueprint base
+  "--feature-bg": "#162030", // strong technical focus area
   
-  // Dramatic studio lighting shadows
+  // Dramatic studio lighting shadows with bold depth
   "--drop-shadow": 
-    "0 2px 8px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25)",
+    "0 6px 16px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3)",
   "--card-shadow": 
-    "0 4px 16px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35)",
+    "0 12px 32px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.4)",
   "--elevated-shadow":
-    "0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(107, 182, 255, 0.08)",
+    "0 20px 60px rgba(0, 0, 0, 0.7), 0 10px 32px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(74, 163, 255, 0.18)",
 
-  // Light overlay for modals
-  "--inverse-transparent": "rgba(248, 250, 251, 0.92)",
+  // Light overlay for modals - bold refined elegance
+  "--inverse-transparent": "rgba(248, 250, 252, 0.97)",
   "--inverse-shadow": 
-    "0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)",
+    "0 12px 32px rgba(0, 0, 0, 0.16), 0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.08)",
 };
 
 export const inlineNavHeight = {

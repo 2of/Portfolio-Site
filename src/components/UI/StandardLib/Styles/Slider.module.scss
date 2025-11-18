@@ -1,126 +1,259 @@
 .wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.isDisabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.isDragging .customThumb {
+  transform: translate(-50%, calc(-100% - 14px)) scale(1.04);
 }
 
 .slider {
-    appearance: none;
-    width: 100%;
-    height: 4px; /* Default track thickness increased for visibility */
-    background: transparent;
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-    margin: 10px 0; /* Add vertical spacing */
-
-    /* Dynamic Track Fill (Requires JS to set --slider-progress: X%) */
-    background-image: linear-gradient(
-        to right,
-        var(--text-color) var(--slider-progress, 0%), /* Filled part */
-        var(--border-color) var(--slider-progress, 0%) /* Unfilled part */
-    );
-    /* Fallback for browsers not supporting the gradient variable on the track: */
-    background-color: var(--border-color);
-
-
-    /* Hide the native thumb */
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 0;
-        height: 0;
-        background: transparent;
-        border: none;
-    }
-
-    &::-moz-range-thumb {
-        width: 0;
-        height: 0;
-        background: transparent;
-        border: none;
-    }
-
-    &::-ms-thumb {
-        width: 0;
-        height: 0;
-        background: transparent;
-        border: none;
-    }
+  --track-height: 4px;
+  --thumb-size: 32px;
+  --thumb-offset: calc(var(--thumb-size) / 2);
+  --track-fill: var(--accent-color, var(--text-color));
+  --track-bg: var(--border-color);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--thumb-size);
+  background: transparent;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  touch-action: none;
+  position: relative;
+  padding: 0;
+  transition: filter 0.2s ease;
 }
 
-/* Your custom thumb (knob) */
+.sliderDisabled {
+  cursor: not-allowed;
+  filter: grayscale(0.4);
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: var(--track-height);
+  border-radius: var(--track-height);
+  background: linear-gradient(
+      to right,
+      var(--track-fill) var(--slider-progress, 0%),
+      var(--track-bg) var(--slider-progress, 0%)
+    );
+  transition: background 0.3s ease;
+}
+
+.slider::-moz-range-track {
+  height: var(--track-height);
+  border-radius: var(--track-height);
+  background: var(--track-bg);
+}
+
+.slider::-moz-range-progress {
+  height: var(--track-height);
+  border-radius: var(--track-height);
+  background: var(--track-fill);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: grab;
+}
+
+.slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+.slider::-moz-range-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: grab;
+}
+
 .customThumb {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 24px;
-    min-width: 24px; /* Better hit area */
-    border: 1px solid var(--text-color);
-    background: var(--herobg);
-    color: var(--bg); /* Use var(--bg) for text color inside the knob */
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 6px; /* Smoother corner radius */
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 10px));
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.65rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  pointer-events: none;
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.thumbActive {
+  transform: translate(-50%, calc(-110% - 16px)) scale(1.02);
+  box-shadow:
+    0 16px 30px rgba(15, 23, 42, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .knobText {
-    height: 100%;
-    align-items: center;
-    display: flex;
-    color: var(--text-color); /* Use --text-color for the display text */
-    /* text-shadow: 0 0 1px rgba(0, 0, 0, 0.1); */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
+.stepNotches {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.notch {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 12px;
+  background: var(--border-color);
+  border-radius: 999px;
+  opacity: 0.6;
+}
+
+/* -------------------------
+   Variants
+   ------------------------- */
 
 .variant_dot {
-    height: 2px; /* Thinner track for subtlety */
-    border-radius: 1px;
-    background-image: linear-gradient(
-        to right,
-        var(--text-color) var(--slider-progress, 0%),
-        var(--border-color) var(--slider-progress, 0%)
-    );
-    background-color: var(--border-color);
+  --track-height: 4px;
+  --thumb-size: 32px;
+  --track-fill: var(--accent-color);
 }
 
 .variant_thick {
-    height: 14px; /* Chunkier track */
-    border-radius: 7px;
-    background-image: linear-gradient(
-        to right,
-        var(--text-color) var(--slider-progress, 0%),
-        var(--border-color) var(--slider-progress, 0%)
+  --track-height: 14px;
+  --thumb-size: 40px;
+  --track-fill: var(--text-color);
+}
+
+.variant_soft {
+  --track-height: 10px;
+  --thumb-size: 34px;
+  --track-fill: var(--bg-l3);
+  --track-bg: var(--bg-l2);
+}
+
+.variant_glass {
+  --track-height: 12px;
+  --thumb-size: 38px;
+  --track-fill: rgba(74, 163, 255, 0.75);
+  --track-bg: rgba(255, 255, 255, 0.2);
+}
+
+[data-variant="glass"] .customThumb {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #0b1628;
+  backdrop-filter: blur(12px);
+}
+
+.variant_segmented {
+  --track-height: 8px;
+  --thumb-size: 34px;
+  --track-fill: var(--accent-color);
+}
+
+[data-variant="segmented"] .stepNotches .notch {
+  height: 18px;
+  background: var(--text-color);
+  opacity: 0.35;
+}
+
+.variant_minimal {
+  --track-height: 2px;
+  --thumb-size: 28px;
+  --track-fill: var(--text-color);
+}
+
+[data-variant="minimal"] .customThumb {
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+
+.variant_basic_small {
+  --track-height: 12px;
+  --thumb-size: 40px;
+  --track-fill: var(--text-color);
+  --track-bg: var(--bg);
+}
+
+[data-variant="basic_small"] {
+  padding: 1.75rem 1.25rem 1.25rem;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--bg);
+  box-shadow: 4px 4px 0 0 var(--border-color);
+}
+
+.variant_basic_small::-webkit-slider-runnable-track {
+  background: linear-gradient(
+      to right,
+      var(--text-color) var(--slider-progress, 0%),
+      rgba(0, 0, 0, 0.08) var(--slider-progress, 0%)
     );
-    background-color: var(--border-color);
 }
 
-.variant_statusdots { 
-    // transform: rotate(90deg);
-}
-.stepNotches {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px; /* Vertically align with the slider track center */
-    pointer-events: none;
+[data-variant="basic_small"] .customThumb {
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
 }
 
-/* Individual notch (subtler look) */
-.notch {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 1px; /* Thin line for a modern look */
-    height: 6px;
-    background: var(--border-color);
-    border-radius: 0;
+[data-variant="basic_small"] .customThumb::after {
+  content: "slider";
+  text-transform: uppercase;
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  margin-left: 0.35rem;
+  color: var(--secondary-text);
+}
+
+.variant_progress {
+  --track-height: 16px;
+  --thumb-size: 0px;
+  --thumb-offset: 0px;
+  --track-fill: var(--accent-color);
+}
+
+[data-variant="progress"] .customThumb {
+  display: none;
+}
+
+[data-variant="progress"] .slider {
+  cursor: progress;
 }

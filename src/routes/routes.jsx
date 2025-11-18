@@ -27,7 +27,7 @@ const routes = [
     label: "home",
     icon: "home",
     hideDesktop: true,
-    bg: "pattern2",
+    bg: "particles",
 
     element: <LandingPage />,
     fullscreenDesktop: true,
@@ -109,7 +109,7 @@ const routes = [
         icon: "about",
         hide: false,
         fullscreenMobile: true,
-        // bg: "shapes",
+        bg: "particles",
     },
   {
     path: "/404",
