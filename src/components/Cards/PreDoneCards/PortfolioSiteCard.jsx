@@ -76,18 +76,18 @@ export const PortfolioSiteCard = () => {
             </span>
           ))}
         </div>
-        <h4 className={styles.tagsTitle}>Links</h4>
+        {/*<h4 className={styles.tagsTitle}>Links</h4>*/}
 
       </div>
 
       {/*<div className={styles.ImagesContainer}>*/}
-        <div className={`${styles.FloatingImage} ${styles.sub1}`}>
-          <ImageSplit image1={imageDarkFeat} image2={imageLightFeat} />
-        </div>
+      {/*  <div className={`${styles.FloatingImage} ${styles.sub1}`}>*/}
+      {/*    <ImageSplit image1={imageDarkFeat} image2={imageLightFeat} />*/}
+      {/*  </div>*/}
 
-        <div className={`${styles.FloatingImage} ${styles.sub2}`}>
-          <ImageSplit image1={phimageDarkFeat} image2={phimageLightFeat} />
-        </div>
+      {/*  <div className={`${styles.FloatingImage} ${styles.sub2}`}>*/}
+      {/*    <ImageSplit image1={phimageDarkFeat} image2={phimageLightFeat} />*/}
+      {/*  </div>*/}
       {/*</div>*/}
     </div>
   );

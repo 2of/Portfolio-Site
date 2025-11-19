@@ -386,6 +386,26 @@
       "title": "Analysis of Reddit Comment Sentiment across Boards"
     }
   },
+
+  {
+    "name": "color",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+
+    "details": {
+      "subtitle": "Just a means to pull out the most prominent average colour in an image",
+      "tags": ["K-means clustering", "React"],
+      "type": "url",
+      "mainTag": "Large Data Processing ",
+      "icon": "weather",
+      "externalLink": "https://2of.github.io/Colour-Extractor-Image-Web/",
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "K-Means for image prominent colour extraction tool"
+    }
+  },
+
+
   {
     "name": "schemaOverview",
     "showcase": false,

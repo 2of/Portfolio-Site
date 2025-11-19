@@ -29,8 +29,6 @@ export const CatalogueCardCompact = ({
     }
   };
   const createNavigationCallback = (url) => {
-    console.log(url);
-    console.log("SDFSDFSFSD");
     return (event) => {
       if (event) event.stopPropagation();
       if (

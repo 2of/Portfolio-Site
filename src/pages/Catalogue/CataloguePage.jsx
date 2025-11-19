@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, Fragment} from "react";
 import styles from "./Pagestyle.module.scss";
 import text from "../../../public/assets/text/texts.json";
 import { ScrollableVerticalView, Section } from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
@@ -32,6 +32,8 @@ import { PagedScrollContainer } from "../../components/Containers/Scroll/Scrolla
 import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows";
 import { Thumbnail } from "../../components/UI/thumbnail";
 import { Article } from "../../components/Article/Article";
+import {StandardButton} from "../../components/UI/StandardLib/StandardButton.jsx";
+import {useNavigate} from "react-router-dom";
 
 export const CataloguePage_UP = () => {
   const { getAllMetaData, getMetadata,getSectionMetaData } = useProjects();
@@ -51,7 +53,7 @@ export const CataloguePage_UP = () => {
 
 
 
-
+  const navigate = useNavigate();
 
 
   const MobileProjSection1 = getSectionMetaData("featured");
@@ -59,7 +61,7 @@ export const CataloguePage_UP = () => {
     const block1 = getSectionMetaData("block1");
     console.log("BLOCK!", block1);
     const uniprojects = getSectionMetaData("uniProjects");
-
+    const tools = getSectionMetaData("tools");
 
 
   useEffect(() => {
@@ -225,9 +227,56 @@ export const CataloguePage_UP = () => {
           <RichTabShowCaseView data={RichTabData} />
         </Section>
 
-        {/*<Section>*/}
-        {/*  <Divider variant="double" />*/}
-        {/*</Section>*/}
+        <Section>
+
+            <>
+            <h4>fyi I am in the process of filling out the following sections</h4>
+<span>
+
+    <p>
+
+        so the contents of the following are all a WIP, a summary of how the articles are defined and created is available
+    </p>
+ <StandardButton
+     label="Open Article Format Page"
+     type="article"
+     icon={getIcon("article")}
+     callback={() => navigate("/proj/portfoliosite")}
+ />
+
+     <StandardButton
+         label="Sample of the Structure for Articles"
+         type="article"
+         icon={getIcon("article")}
+         callback={() => {
+             window.open(
+                 "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/GEO/text.json",
+                 "_blank"
+             );
+         }}
+
+     />
+
+     <StandardButton
+         label="The real (LIVE) Metadata"
+         type="article"
+         icon={getIcon("article")}
+         callback={() => {
+             window.open(
+                 "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/GEO/text.json",
+                 "_blank"
+             );
+         }}
+     />
+    <p>  Wait this is *entirely* on the front end? </p>
+
+
+       <p>  .... well sorta... github pages is host-enough. There IS support for loading in external artciles following my format</p>
+
+</span>
+            </>
+
+        </Section>
 
         {/*<Section >*/}
         {/*  <CatalogueHeroSection text={text} />*/}
@@ -265,6 +314,21 @@ export const CataloguePage_UP = () => {
         {/*  */}
         {/*  <Divider variant="double" />*/}
         {/*</Section>*/}
+          <Section
+              color=""
+              Header={() => (
+                  <CatalogueRegularTextHeader text1="custom" highlight="tools" />
+              )}
+          >
+              <div className={styles.LargeThumbGrid}>
+                  {tools.map((project, id) =>
+                      renderCard(project, id, {
+                          compact: true,
+                          EntireCardClickable: true,
+                      }),
+                  )}
+              </div>
+          </Section>
 
         <Section
           color=""
