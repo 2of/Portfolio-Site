@@ -66,7 +66,7 @@ export const DesktopFloatingNav = () => {
 
         <li className={styles.logoContainer}>
           <Link
-            to={"/"}
+            to={"/home"}
             viewTransition
             className={`${styles.link}     }`}
             // onMouseMove={(e) => showTooltip(route.label, e)}

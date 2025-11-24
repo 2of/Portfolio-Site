@@ -9,6 +9,7 @@ import PhysicsShapes from "./PhysicsShapes";
 import art from "../../assets/Images/default_big.jpg";
 import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
 import ResponsiveGradient from "./ResponsiveGradient";
+import MovingImagesBackground from "./MovingImages.jsx";
 
 
 // Inside the same file or import from another file
@@ -69,7 +70,8 @@ const renderBackground = () => {
      return <div className={styles.darkbg} />;
     case "shapes": 
     return <PhysicsShapes/>
-    
+    case "imagemove":
+          return <MovingImagesBackground images={[art,art,art,art]}/>
     case "herobg":
       return <div className={styles.herobg} />;
     case "particles":

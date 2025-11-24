@@ -355,7 +355,268 @@ const TabSection = () => {
             </Section>
         );
     };
+    const ButtonShowcaseSection = () => {
+        const buttonVariants = [
+            {
+                type: "drop",
+                name: "Drop",
+                description: "Dropdown-style with animated chevron flip on hover.",
+                icon: "▼",
+                label: "Options",
+            },
+            {
+                type: "link",
+                name: "Link",
+                description: "Hyperlink-styled with sliding arrow reveal.",
+                icon: "🔗",
+                label: "Learn More",
+            },
+            {
+                type: "text-only",
+                name: "Text Only",
+                description: "Minimal text button with no background or border.",
+                icon: null,
+                label: "Cancel",
+            },
+            {
+                type: "basic_Expand",
+                name: "Basic Expand",
+                description: "Wide uppercase button with letter spacing.",
+                icon: "→",
+                label: "Continue",
+            },
+            {
+                type: "withlabel",
+                name: "With Label",
+                description: "Icon + text with ripple effect and rotating icon.",
+                icon: "⚡",
+                label: "Quick Action",
+            },
+            {
+                type: "basic_small",
+                name: "Basic Small",
+                description: "Compact with retro box-shadow on hover.",
+                icon: "✓",
+                label: "Confirm",
+            },
+            {
+                type: "article",
+                name: "Article",
+                description: "Content-style button for reading contexts.",
+                icon: "📄",
+                label: "Read More",
+            },
+            {
+                type: "subtle",
+                name: "Subtle",
+                description: "Minimal interaction with gentle hover state.",
+                icon: "•",
+                label: "Details",
+            },
+            {
+                type: "rounded",
+                name: "Rounded",
+                description: "Floating pill with spinning icon animation.",
+                icon: "★",
+                label: "Featured",
+            },
+            {
+                type: "rounded_catalogue_card_end",
+                name: "Catalogue Card",
+                description: "Positioned button with scaling icon effect.",
+                icon: "→",
+                label: null,
+            },
+            {
+                type: "rounded_catalogue_card_end_with_label",
+                name: "Catalogue Card + Label",
+                description: "Card button with label and icon scale.",
+                icon: "👁",
+                label: "View",
+            },
+            {
+                type: "rounded_label",
+                name: "Rounded Label",
+                description: "Chip/badge style with hover outline.",
+                icon: null,
+                label: "Tag",
+            },
+            {
+                type: "icon_only",
+                name: "Icon Only",
+                description: "Compact square icon button with playful rotation.",
+                icon: "❤",
+                label: null,
+            },
+            {
+                type: "featured",
+                name: "Featured",
+                description: "Hero-style with large decorative icon background.",
+                icon: "🎯",
+                label: "Get Started",
+            },
+            {
+                type: "rounded_tag",
+                name: "Rounded Tag",
+                description: "Pill button with sweep animation and spinning icon.",
+                icon: "🏷",
+                label: "New",
+            },
+            {
+                type: "modern",
+                name: "Modern",
+                description: "Glass morphism with frosted backdrop blur.",
+                icon: "✨",
+                label: "Create",
+            },
+            {
+                type: "modern_unfilled",
+                name: "Modern Unfilled",
+                description: "Outlined glass style with hover border emphasis.",
+                icon: "○",
+                label: "Explore",
+            },
+            {
+                type: "code",
+                name: "Code",
+                description: "Animated clip-path fill with dual layers.",
+                icon: "<//>",
+                label: "Deploy",
+            },
+            {
+                type: "code_hover",
+                name: "Code Hover",
+                description: "Slide-fill with glitch effect and tilt.",
+                icon: "{...}",
+                label: "Execute",
+            },
+            {
+                type: "code_small",
+                name: "Code Small",
+                description: "Compact code style with circular ripple fill.",
+                icon: "</>",
+                label: "Run",
+            },
+        ];
 
+        const [clickCounts, setClickCounts] = useState(() =>
+            buttonVariants.reduce((acc, variant) => {
+                acc[variant.type] = 0;
+                return acc;
+            }, {})
+        );
+
+        const handleButtonClick = (type) => {
+            setClickCounts((prev) => ({
+                ...prev,
+                [type]: prev[type] + 1,
+            }));
+        };
+
+        return (
+            <Section
+                sticky={true}
+                Header={() => (
+                    <GenericHeader text={"StandardButton Variants & Styles"} />
+                )}
+            >
+                <div className={styles.chunk}>
+                    <p>
+                        Every StandardButton variant showcased side-by-side. Click any button
+                        to increment its counter and preview all hover, active, and animated
+                        states in action.
+                    </p>
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                            gap: "1.5rem",
+                            width: "100%",
+                        }}
+                    >
+                        {buttonVariants.map(({ type, name, description, icon, label }) => (
+                            <div
+                                key={type}
+                                style={{
+                                    border: "1px solid var(--border-color)",
+                                    borderRadius: "12px",
+                                    padding: "1.5rem",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "1rem",
+                                    background: "var(--bg-l1)",
+                                    position: "relative",
+                                    minHeight: "180px",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        gap: "0.35rem",
+                                    }}
+                                >
+                                    <h4 style={{ margin: 0, fontSize: "1rem" }}>{name}</h4>
+                                    <p
+                                        style={{
+                                            margin: 0,
+                                            color: "var(--secondary-text)",
+                                            fontSize: "0.85rem",
+                                            lineHeight: 1.5,
+                                        }}
+                                    >
+                                        {description}
+                                    </p>
+                                </div>
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        minHeight: "60px",
+                                        flex: 1,
+                                    }}
+                                >
+                                    <StandardButton
+                                        type={type}
+                                        label={label}
+                                        icon={icon}
+                                        onClick={() => handleButtonClick(type)}
+                                        ariaLabel={`${name} button example`}
+                                    />
+                                </div>
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        fontSize: "0.8rem",
+                                        color: "var(--secondary-text)",
+                                        paddingTop: "0.5rem",
+                                        borderTop: "1px solid var(--border-color)",
+                                    }}
+                                >
+                                    <span>Clicks:</span>
+                                    <strong
+                                        style={{
+                                            fontSize: "1rem",
+                                            fontWeight: 600,
+                                            color: "var(--text-color)",
+                                            fontFamily: "monospace",
+                                        }}
+                                    >
+                                        {clickCounts[type]}
+                                    </strong>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+        );
+    };
   const ToggleShowcaseSection = () => {
     const toggleVariants = [
       {
@@ -963,6 +1224,7 @@ const TabSection = () => {
       <ModalSection />
         <TabSection/>
       <ToggleShowcaseSection />
+        <ButtonShowcaseSection/>
       <DividerSection />
       <AlertSection />
       <ShareSection />

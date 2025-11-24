@@ -11,6 +11,8 @@ import getIcon from "../utils/Iconifier";
 import TrackedGradientBG from "../components/Background/TrackedGradientBg";
 import ResponsiveGradient from "../components/Background/ResponsiveGradient";
 import { QuickLinksThing } from "../components/Misc/QuickLinksThing";
+import {StandardButton} from "../components/UI/StandardLib/StandardButton.jsx";
+import {useNavigate} from "react-router-dom";
 
 export const LandingPage = () => {
   const screenSize = useScreenSize();
@@ -96,7 +98,7 @@ export const LandingPage = () => {
     prevCardIndex !== null ? cardEntries[prevCardIndex]?.[1]?.subtitle : "";
   const currentTitle = cardEntries[currentCardIndex]?.[1]?.title ?? "";
   const currentSubtitle = cardEntries[currentCardIndex]?.[1]?.subtitle ?? "";
-
+const navigate = useNavigate();
   if (screenSize === "sm") {
     return (
       <div className={styles.mobilecontainer}>
@@ -116,7 +118,14 @@ export const LandingPage = () => {
     );
   } else {
     return (
-      <CenteredContainer>
+
+        <>
+
+
+            <div className={styles.fixedbuttonscontainer}>
+                    <StandardButton label={"open onepage"} type={"code_small"} icon={ getIcon("home")} callback={() => navigate("/")}/>
+            </div>
+        <CenteredContainer>
         {/* <div style={styles.quicklinkscontainer}>
         <QuickLinksThing/>
 
@@ -170,6 +179,9 @@ export const LandingPage = () => {
           </div>
         </div>
       </CenteredContainer>
+
+
+        </>
     );
   }
 };

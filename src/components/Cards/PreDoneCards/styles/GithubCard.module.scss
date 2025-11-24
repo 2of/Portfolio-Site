@@ -231,14 +231,16 @@
 }
 
 .footer {
-  margin-top: 32px; // 2rem = 32px
+  //margin-top: 32px; // 2rem = 32px
+  left: 0;
   position: absolute;
-  bottom: 16px; // 1rem = 16px
-  border-top: 1px solid #30363d;
-  padding-top: 16px; // 1rem = 16px
-    * { 
-    color: rgb(188, 188, 188);
-  }
+  bottom: 0;
+  //background-color: red;
+  //border-top: 1px solid #30363d;
+  //background-color: #30363d;
+  margin: 0;
+  padding: 0.5rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

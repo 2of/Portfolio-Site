@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles/GeoCard.module.scss";
-// Make sure you import the image correctly
+
 import newyorkimage from "../../../assets/Images/NewYork.png";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../../utils/Iconifier";
 import { style } from "framer-motion/m";
+import {useNavigate} from "react-router-dom";
+import {useGlobalContext} from "../../../contexts/GlobalContext.jsx";
 const tags = [
   "Machine Learning",
   "Tensorflow",
@@ -79,6 +81,8 @@ const Pin = ({ id, x, y, size, color, onRemove, toRemove, isMidPin }) => {
 const GeoCard = () => {
   const [pins, setPins] = useState([]);
 
+  const navigate = useNavigate();
+  const {getLink} = useGlobalContext()
   const movePins = () => {
     setPins((prevPins) =>
       prevPins.map((p) => ({
@@ -217,18 +221,22 @@ const GeoCard = () => {
           <div className={styles.buttonsContainer}>
             <StandardButton
               label="Open Writeup"
-              type="rounded_catalogue_card_end_with_label"
+              type="rounded_label"
               icon={getIcon("article")}
+              callback={() =>  navigate("/proj/geo")}
             />
             <StandardButton
               label="Open Thesis"
-              type="rounded_catalogue_card_end_with_label"
-              icon={getIcon("article")}
+              type="rounded_label"
+              icon={getIcon("school")}
+              link = {getLink("geothesis")}
             />
             <StandardButton
               label="Code Repo"
-              type="rounded_catalogue_card_end_with_label"
+              type="rounded_label"
+              link = {getLink("georepo")}
               icon={getIcon("github")}
+              callback={() => {} }
             />
           </div>
 

@@ -8,7 +8,7 @@ export const baseTheme = {
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
 
-  "--navHeightDESKTOP": "4rem",
+  "--navHeightDESKTOP": "6rem",
 
   "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
   "--navHeight": "4rem",
@@ -38,7 +38,7 @@ export const lightTheme = {
 
   // Drafting surfaces - enhanced purity with bold definition
   "--card-bg": "#FFFFFF", // immaculate paper sheet
-  "--border-color": "#B8CCE0", // bold grid lines with strong presence
+  "--border-color": "#5f6873", // bold grid lines with strong presence
   
   // Blueprint grid system - bold and sophisticated
   "--grid-color": "#DEE8F2", // strong technical grid
@@ -49,6 +49,7 @@ export const lightTheme = {
   "--accent": "#2E7FC8", // bold technical blue with intensity
   "--accent-color": "#FF5240", // vibrant coral accent with bold contrast
 
+    "--accent-color-transparent" :"rgba(255,82,64,0.50)",
   // Interactive technical marks - bold and engaging
   "--link": "#1E6BA8", // deep technical blue with bold richness
   "--hover-accent": "#3D8FD9", // luminous highlighted measurement
@@ -95,7 +96,7 @@ export const darkTheme = {
   // Luminous technical blue - bold neon drafting light
   "--accent": "#4AA3FF", // bold vibrant architect's blue
   "--accent-color": "#4AA3FF",
-
+    "--accent-color-transparent" :"rgba(16,33,51,0.50)",
   // Interactive glowing marks - bold and engaging
   "--link": "#5CB5FF", // bold luminous highlighted technical blue
   "--hover-accent": "#3A93F0", // focused measurement with bold intensity

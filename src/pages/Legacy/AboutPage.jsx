@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useProjects } from "../contexts/ContentContext";
-import ProgressBar from "../components/UI/StandardLib/ProgressBar.jsx";
-import styles from "./styles/AboutPage.module.scss";
-import { useGlobalContext } from "../contexts/GlobalContext";
-import { StandardChips } from "../components/UI/Chips";
+import { useProjects } from "../../contexts/ContentContext.jsx";
+import ProgressBar from "../../components/UI/StandardLib/ProgressBar.jsx";
+import styles from "../styles/AboutPage.module.scss";
+import { useGlobalContext } from "../../contexts/GlobalContext.jsx";
+import { StandardChips } from "../../components/UI/Chips.jsx";
 import {
   Section,
   ScrollableVerticalView,
-} from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
-import useScreenSize from "../utils/screensize";
-import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
-import getIcon from "../utils/Iconifier";
+} from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView.jsx";
+import useScreenSize from "../../utils/screensize.js";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
+import getIcon from "../../utils/Iconifier.jsx";
 
 export const AboutPage = () => {
   const screenSize = useScreenSize();

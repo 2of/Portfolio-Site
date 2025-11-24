@@ -143,7 +143,7 @@ const GithubCard = ({ username }) => {
         <StandardButton
           label="View on GitHub"
           tooltip="Open GitHub Profile"
-          type="modern_unfilled"
+          type="rounded_label"
           icon={<FaGithub />}
           link={html_url}
         />

@@ -82,7 +82,7 @@ const AboutCard = ({
         <StandardButton
           label="View CV"
           tooltip="Open my CV"
-          type="modern_unfilled"
+          type="rounded_label"
           icon={<FaExternalLinkAlt />}
           link={cvLink}
         />

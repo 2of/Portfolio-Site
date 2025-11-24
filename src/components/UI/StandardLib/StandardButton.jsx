@@ -23,7 +23,10 @@ const validTypes = [
   "featured",
   "rounded_tag",
   "modern",
-    "modern_unfilled"
+    "modern_unfilled",
+    "code",
+    "code_hover","code_small",
+
 ];
 export const StandardButton = ({
   label = "no label",
@@ -118,8 +121,25 @@ export const StandardButton = ({
           </>
         );
 
+        case "code":
+            return (
+                <>
 
-      case "rounded":
+                    <div className={styles.l1}>
+                        {Icon}
+                     {Label}
+                    </div>
+                    <div className={styles.l2}>
+                        {Icon}
+                        {Label}
+
+                    </div>
+                </>
+            );
+
+
+
+        case "rounded":
         return (
           <>
             {Icon}
@@ -190,7 +210,14 @@ export const StandardButton = ({
             {Icon}
           </div>
         );
+        case "code_small":
+            return (
+               <>
+                   {Icon}
+                    {Label}
 
+             </>
+            );
       case "drop":
       default:
         return (

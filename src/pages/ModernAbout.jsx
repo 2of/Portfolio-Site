@@ -184,6 +184,9 @@ export const ModernAbout = () => {
 
 
     const DesktopView = () => (
+
+
+
         <ScrollableVerticalView trackScrollPercent >
 
 

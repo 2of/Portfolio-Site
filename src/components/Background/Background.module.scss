@@ -83,7 +83,7 @@ position: relative;
   overflow: hidden;
 
   // Subtle dotted grid pattern
-  background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--bg-l3) 1px, transparent 1px);
   background-size: 12px 12px;
   background-color: var(--bg);
 

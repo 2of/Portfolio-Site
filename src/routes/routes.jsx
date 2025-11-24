@@ -1,23 +1,24 @@
 // routes/routes.js
 import PageWrapper from "../layouts/PageWrapper";
 
-import { ChessPage } from "../pages/ChessRatingPage";
+import { ChessPage } from "../pages/Legacy/ChessRatingPage_Legacy.jsx";
 import { HomePage } from "../pages/Home/HomePage";
-import { JunkPage } from "../pages/JunkPage";
-import { CataloguePage } from "../pages/Catalogue";
+import { JunkPage_Legacy } from "../pages/Legacy/JunkPage_Legacy.jsx";
+import { CataloguePage } from "../pages/Legacy/Catalogue_Legacy.jsx";
 import { ProjectPage } from "../pages/ProjectPage";
-import { AboutPage } from "../pages/AboutPage";
+import { AboutPage } from "../pages/Legacy/AboutPage.jsx";
 import { SettingsPage } from "../pages/SettingsPage";
 import { PlaygroundPage } from "../components/Test/TestPages/TEST_Playground";
 import { EditorPage } from "../components/Editor/EditorPage";
 import { NewChessPage } from "../pages/NewChess";
-import TinderPage from "../pages/TinderPage";
+
 import { DirectoryPage } from "../pages/DirectoryPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { LandingPage } from "../pages/Landing";
 import { ComponentPage } from "../pages/ComponentsPage";
 import { CataloguePage_UP } from "../pages/Catalogue/CataloguePage";
 import {ModernAbout} from "../pages/ModernAbout.jsx";
+import {SimpleLandingPage} from "../pages/SimpleLandingPage.jsx";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -26,13 +27,28 @@ const routes = [
     path: "/",
     label: "home",
     icon: "home",
-    hideDesktop: true,
-    bg: "particles",
-
-    element: <LandingPage />,
+      hideDesktop: true,
+      hideMobile: true,
+    bg: "pattern2",
+      dontshowNav : true,
+    element: <SimpleLandingPage />,
     fullscreenDesktop: true,
     fullscreenMobile: true,
-  },
+  },  {
+        path: "/home",
+        label: "home",
+        icon: "home",
+        hideDesktop: true,
+        // hideMobile: true,
+        bg: "pattern2",
+
+        element: <LandingPage />,
+        fullscreenDesktop: true,
+        // dontshowNav : true,
+        fullscreenMobile: true,
+    },
+
+
 
     {
     path: "/projects",
@@ -44,7 +60,7 @@ const routes = [
 
     bg: "pattern2",
   },
-  
+
   {
     path: "/projects_old",
     label: "projects",
@@ -62,7 +78,7 @@ const routes = [
     extratitle: "helloworld",
     hideDesktop: true,
     hideMobile: true,
-    element: <JunkPage />,
+    element: <JunkPage_Legacy />,
     // fullscreenDesktop: true,
     // fullscreenMobile: true,
     icon: "junk",
@@ -109,7 +125,7 @@ const routes = [
         icon: "about",
         hide: false,
         fullscreenMobile: true,
-        bg: "particles",
+        // bg: "particles",
     },
   {
     path: "/404",
@@ -121,6 +137,7 @@ const routes = [
     hideDesktop: true,
     hideMobile: true,
   },
+
   {
     path: "/ChessEloEsimator",
     label: "Chess Elo Estimator",
@@ -132,7 +149,7 @@ const routes = [
   },
   {
     path: "/settings",
-    label: "preferences + more",
+    label: "more",
     element: <SettingsPage />,
     icon: "settings",
     bg: "dots",

@@ -1,198 +1,191 @@
 .navContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: calc(var(--navHeightDESKTOP));
-    // padding-top: 2rem;
-    z-index: 5;
-  background-color: var(--navBackground);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(var(--navHeightDESKTOP));
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideInFromTop 0.5s ease-out forwards;
+  transition: all 0.3s;
 
-     //background-color: red;
+  .navList {
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    animation: slideInFromTop 0.5s ease-out forwards;
-    transition: all 0.3s;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: calc(var(--maxWidth) + 4rem);
+    padding: 0rem 1rem;
+    gap: 12px;
+    border-radius: 48px;
+    transition: all 0.4s;
+    background-color: none;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    margin: 0rem 1rem;
 
     &.fullbg {
-        //background-color: none;
-        //   background-color: red;
+      background-color: var(--bg);
+      // backdrop-filter: blur(10px); // Included in your initial snippet, keeping it commented out
+
+      // REVISED SHADOW: Looks like a 1px red border around the whole element.
+      // 0px offset-x, 0px offset-y, 0px blur-radius, 1px spread-radius, color
+      box-shadow: 0 0 0 1px var(--border-color),
+      0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    ;
+
     }
 
     &.transparentbg {
-        background-color: var(--bg);
-        //backdrop-filter: blur(12px);
-        border-bottom: 2px solid var(--border-color);
+      // Smooth bottom "border" using box-shadow
+      //box-shadow: 0 1px 0 0 var(--border-color);
     }
-
-    .navList {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        max-width: calc(var(--maxWidth) + 4rem);
-        // height: var(--navHeightDESKTOP);
-        padding: 1rem;
-        gap: 12px;
-        border-radius: 48px;
-        transition: all 0.4s;
-
-
-
-        &.showbg {
-            background-color: var(
-                --bg-transparent
-            ); // must be semi-transparent!
-            outline: 1px solid var(--border-color);
-            backdrop-filter: blur(8px);
-        }
-    }
+  }
 }
 
 .logoContainer {
-    z-index: 100;
+  z-index: 100;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 24px;
+  cursor: pointer;
+
+  p {
     border-radius: 24px;
-    cursor: pointer;
-
-    p {
-        border-radius: 24px;
-        background-color: transparent;
-        padding: 8px 1px;
-        transition: box-shadow 0.3s ease;
-
-        &:hover {
-            box-shadow: 0 0 0 1px var(--text-color);
-        }
-    }
+    background-color: transparent;
+    padding: 8px 1px;
+    transition: box-shadow 0.3s ease;
 
     &:hover {
-        color: var(--hover-text-color);
+      box-shadow: 0 0 0 1px var(--text-color);
     }
+  }
+
+  &:hover {
+    color: var(--hover-text-color);
+  }
 }
 
 .activeLink {
-    background-color: var(--accent-color);
-    border: 1px solid var(--border-color);
+  background-color: var(--accent-color);
+  // Removed border.
 
-    * {
-        color: var(--bg);
-        font-weight: 500;
-    }
+  * {
+    color: var(--bg);
+    font-weight: 500;
+  }
 }
 
 .extrabuttonnav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 12px;
-    border-radius: 24px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 12px;
+  border-radius: 24px;
 }
 
 .customFallback {
-    padding: 8px;
-    background-color: var(--herobg);
-    border: 1px solid var(--border-color);
-    border-radius: 25px;
+  padding: 8px;
+  background-color: var(--herobg);
+  // Removed border.
+  box-shadow: 0 0 0 1px var(--border-color); // Replaced border with box-shadow
+  border-radius: 25px;
 }
 
 .navItem {
-    z-index: 300;
-    min-width: 60px;
+  z-index: 300;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  span {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition:
-        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.3s ease;
-
-    &:hover {
-        transform: scale(1.04);
-    }
-
-    span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        padding: 0 12px;
-        height: 100%;
-    }
+    gap: 4px;
+    padding: 0 12px;
+    height: 100%;
+  }
 }
 
 .SocialButtons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .rightnav {
-    display: flex;
-    align-items: center;
-    gap: 100px;
+  display: flex;
+  align-items: center;
+  gap: 100px;
 }
 
 .spacer {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    background: none;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  background: none;
 }
 
-/* Animations */
 @keyframes slideInFromTop {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes wiggle {
-    0% {
-        transform: scaleX(1) scaleY(1);
-    }
-    15% {
-        transform: scaleX(0.9) scaleY(1.1);
-    }
-    30% {
-        transform: scaleX(1.1) scaleY(0.9);
-    }
-    45% {
-        transform: scaleX(0.95) scaleY(1.05);
-    }
-    60% {
-        transform: scaleX(1.05) scaleY(0.95);
-    }
-    75% {
-        transform: scaleX(0.98) scaleY(1.02);
-    }
-    100% {
-        transform: scaleX(1) scaleY(1);
-    }
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  15% {
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  30% {
+    transform: scaleX(1.1) scaleY(0.9);
+  }
+  45% {
+    transform: scaleX(0.95) scaleY(1.05);
+  }
+  60% {
+    transform: scaleX(1.05) scaleY(0.95);
+  }
+  75% {
+    transform: scaleX(0.98) scaleY(1.02);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
 }
 
 .wiggleIcon {
-    animation: wiggle 0.8s ease-in-out;
-    display: inline-block;
-    will-change: transform;
+  animation: wiggle 0.8s ease-in-out;
+  display: inline-block;
+  will-change: transform;
 }

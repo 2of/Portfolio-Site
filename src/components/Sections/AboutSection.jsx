@@ -43,21 +43,21 @@ export const AboutSection = ({
             type="rounded_catalogue_card_end_with_label"
             icon={getIcon("resume")}
             link={getLink("resume")}
-            external
+            // external
         />
         <StandardButton
             label="Github"
-            type="rounded_catalogue_card_end_with_label"
+            type="rounded_label"
             icon={getIcon("github")}
             link={getLink("github")}
-            external
+            // external
         />
         <StandardButton
             label="LinkedIn"
-            type="rounded_catalogue_card_end_with_label"
+            type="rounded_label"
             icon={getIcon("linkedin")}
             link={getLink("linkedin")}
-            external
+            // external
         />
       </span>
         </ImageWithStaggeredComponents>

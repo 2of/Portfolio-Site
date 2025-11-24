@@ -11,12 +11,13 @@ import WigglyLine from "../Misc/WigglyLine";
 import { Modal } from "../UI/StandardLib/Modal.jsx";
 import { useAlertMenu } from "../../contexts/AlertMenuContext";
 import useScreenSize from "../../utils/screensize";
+import {useModal} from "../../contexts/ModalContext.jsx";
 export const EditorPage = () => {
 
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
   const screenSize = useScreenSize();
   const [hasShownWarning, sethasShownWarning] = useState(false)
-
+    const { modalState, showModal, hideModal, modalVisible } = useModal();
 
     const triggerAlert = () => {
       if (hasShownWarning) return;
@@ -28,6 +29,11 @@ export const EditorPage = () => {
     sethasShownWarning(1)
   };
 
+  //
+  // const showModal = () => {
+  //
+  //
+  // }
 
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -72,6 +78,18 @@ useEffect(() => {
         setIsModalOpen(true);
  }
 
+
+    const newOpenModal = () => {
+     // alert("TEST")
+        showModal({
+            // title: "blah blah",
+            size: "large",
+            floatnav: true,
+            content: (
+                <Article fixeddata={article}/>
+            ),
+        });
+    };
   const handleCloseRender = () => {
     setIsModalOpen(false);
 
@@ -141,7 +159,7 @@ useEffect(() => {
         <div className={styles.contentColumn}>
           <h1>Article ✍️  Editor 🕵🏻‍♀️</h1>
 
-          <p className={styles.subtitle}>Exists purely because I am lazy</p>
+          <p className={styles.subtitle}>Exists purely because I am lazy, use this page to construct articles for my site </p>
 
 
           {/* Header Section */}
@@ -163,8 +181,8 @@ useEffect(() => {
 
           
             <span> Currently  {article.sections.length} section </span>
-            <WigglyLine/>          <StandardButton  fillContainer type="basic_Expand" label="Preview" callback={handleShowRender}/>
-              <StandardButton  fillContainer type="basic_Expand" label = "+ Section" callback={handleAddSection}/>
+            <WigglyLine/>          <StandardButton  fillContainer type="rounded_catalogue_card_end_with_label" label="Preview" callback={newOpenModal}/>
+              <StandardButton  fillContainer type="rounded_catalogue_card_end_with_label" label = "+ Section" callback={handleAddSection}/>
           </div>
           {article.sections.map((section, i) => (
             <StandardCollapsableRow
@@ -201,7 +219,8 @@ useEffect(() => {
         {/* Right Column - JSON */}
         <div className={styles.jsonColumn}>
           <div className={styles.jsonBox}>
-            <h4>🧾 JSON Output</h4>
+            <h4>|| JSON Output || </h4>
+              <p>Please just copy / paste</p>
             <pre className={styles.jsonOutput}>
               {JSON.stringify(article, null, 2)}
             </pre>

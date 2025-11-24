@@ -9,11 +9,11 @@ import Loader from "../../components/UI/StandardLib/Loader.jsx";
 import { TEST_AboutPage } from "../../components/Test/TestPages/TEST_About";
 import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
 import { DarkModeWrapper } from "../../components/UI/DarkModeWrapper";
-import { ChessPage } from "../../pages/ChessRatingPage";
+import { ChessPage } from "../../pages/Legacy/ChessRatingPage_Legacy.jsx";
 import { AboutCell } from "../../pages/Home/About";
 import { NewAboutCell } from "../../pages/Home/NewAbout";
 import { NewChessPage } from "../../pages/NewChess";
-import TinderPage from "../../pages/TinderPage";
+// import TinderPage from "../../pages/TinderPage";
 const DummyCard = ({ text }) => (
   <div
     style={{ padding: "1rem", border: "1px solid #ccc", borderRadius: "8px" }}

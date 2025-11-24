@@ -199,11 +199,30 @@
     }
   }
 
-  .footer {
-    position: relative;
-    margin: 1rem auto 0;
-    width: 90%;
-    border: none;
-    padding: 0.5rem;
+
+}
+.footer {
+  //margin-top: 32px; // 2rem = 32px
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  //background-color: red;
+  //border-top: 1px solid #30363d;
+  //background-color: #30363d;
+margin: 0;
+  padding: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    color: #58a6ff;
+    font-size: 14.4px; // 0.9rem = 14.4px
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

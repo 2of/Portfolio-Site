@@ -33,6 +33,10 @@ export const RouteProvider = ({ children }) => {
   );
 };
 
+
+
+/// its a bit lazy to hammer hooks in here tooo
+
 export const useRoute = () => {
   const ctx = useContext(RouteContext);
   if (!ctx) throw new Error("useRoute must be used inside <RouteProvider>");
@@ -52,6 +56,10 @@ export const useIsMenuFloatingDesktop = () => {
 
 
 
+export const useHideNav = () => {
+    const { currentRoute } = useRoute();
+    return currentRoute?.dontshowNav ?? false;
+};
 
 
 

@@ -110,18 +110,23 @@ const CareerTile = ({
     }
 
     const handleModalOpen = () => {
-        // alert("EST")
         showModal({
-            // title: "blah blah",
             size: "large",
             floatnav: true,
             content: (
-
-               <BasicTile/>
-
+                <BasicTile
+                    position={position}
+                    company={company}
+                    duration={duration}
+                    location={location}
+                    doing={doing}
+                    techStack={techStack}
+                    icon={icon}
+                />
             ),
         });
-    }
+    };
+
     // cleanup timers on unmount
     useEffect(() => {
         return () => {

@@ -3,7 +3,7 @@ import { useScreenSize } from "../../contexts/ScreenSizeProvider";
 import {
   useIsMenuFloatingDesktop,
   useIsMenuFloatingMobile,
-  useRoute,
+  useRoute,useHideNav
 } from "../../contexts/RouteContext";
 import DesktopNav from "./DesktopNav";
 import MobileNavMenu from "./MobileNavMenu";
@@ -15,6 +15,7 @@ import { DesktopFloatingNav } from "./DesktopFloatingNav";
 import { DesktopNavFullWidth } from "./DesktopNavFullWidth";
 import { useNavStack } from "../../contexts/NavStackContext";
 import { MobileExtraButtonsContainer } from "./MobileExtraIcons";
+import FloatingNav from "../../layouts/MainLayout/floatingNav.jsx";
 
 // -------------------- DESKTOP WRAPPER --------------------
 const DesktopWrapper = React.memo(() => {
@@ -94,7 +95,7 @@ const NavWrapper = () => {
   const { currentRoute } = useRoute();
   const isMenuFloatingDesktop = useIsMenuFloatingDesktop();
   const isMenuFloatingMobile = useIsMenuFloatingMobile();
-
+const navhidden = useHideNav();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   // Callbacks stable across renders
@@ -138,6 +139,10 @@ const NavWrapper = () => {
     [pushNav, handleClickBaseCallback]
   );
 
+
+  if (navhidden) {
+      return
+  }
   return (
     <>
       {screenSize === "sm" ? (
@@ -157,6 +162,7 @@ const NavWrapper = () => {
         <>
           {isMenuFloatingDesktop ? (
             <DesktopFloatingNav />
+              // <FloatingNav/>
           ) : (
             <DesktopNavFullWidth />
           )}

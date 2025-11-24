@@ -1,35 +1,35 @@
 import React, { useState } from "react";
-import styles from "./styles/Catalogue.module.scss";
+import styles from "../styles/Catalogue.module.scss";
 
 import {
   ScrollableVerticalView,
   Section,
-} from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
-import { useProjects } from "../contexts/ContentContext";
+} from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView.jsx";
+import { useProjects } from "../../contexts/ContentContext.jsx";
 
-import { getProjURL } from "../utils/getURL";
+import { getProjURL } from "../../utils/getURL.js";
 
-import { Thumbnail } from "../components/UI/thumbnail.jsx";
+import { Thumbnail } from "../../components/UI/thumbnail.jsx";
 // import useScreenSize from "../utils/screensize";
-import { useScreenSize } from "../contexts/ScreenSizeProvider";
-import { Modal } from "../components/UI/StandardLib/Modal.jsx";
-import { Article } from "../components/Article/Article";
-import { PagedScrollContainer } from "../components/Containers/Scroll/ScrollableViews/TikTokView";
-import { BouncyArrows } from "../components/UI/DiscreteComponents/bouncyArrows.jsx";
-import { getRecentRepos } from "../utils/githubFetch";
+import { useScreenSize } from "../../contexts/ScreenSizeProvider.jsx";
+import { Modal } from "../../components/UI/StandardLib/Modal.jsx";
+import { Article } from "../../components/Article/Article.jsx";
+import { PagedScrollContainer } from "../../components/Containers/Scroll/ScrollableViews/TikTokView.jsx";
+import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows.jsx";
+import { getRecentRepos } from "../../utils/githubFetch.jsx";
 import { useEffect } from "react";
-import Loader from "../components/UI/StandardLib/Loader.jsx";
-import getIcon from "../utils/Iconifier";
-import LargeThumbCard from "../components/Cards/CardLarge";
-import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
-import GlassPushOverlay from "../components/UI/InteractionContainers/GlassContainer.jsx";
-import SmallCard from "../components/Cards/SmallCard";
-import text from "../../public/assets/text/texts.json";
-import TrackedGradientBG from "../components/Background/TrackedGradientBg";
-import { useModal } from "../contexts/ModalContext";
-import { TitleCard } from "../components/Cards/TitleCard";
-import { RichTabShowCaseView } from "../components/Containers/RichTabShowcaseView";
-import { RichTabData } from "../assets/TextAssets/ShowCaseTabRich";
+import Loader from "../../components/UI/StandardLib/Loader.jsx";
+import getIcon from "../../utils/Iconifier.jsx";
+import LargeThumbCard from "../../components/Cards/CardLarge.jsx";
+import { AnimatedHeader } from "../../components/UI/TypeWriterHeader.jsx";
+import GlassPushOverlay from "../../components/UI/InteractionContainers/GlassContainer.jsx";
+import SmallCard from "../../components/Cards/SmallCard.jsx";
+import text from "../../../public/assets/text/texts.json";
+import TrackedGradientBG from "../../components/Background/TrackedGradientBg.jsx";
+import { useModal } from "../../contexts/ModalContext.jsx";
+import { TitleCard } from "../../components/Cards/TitleCard.jsx";
+import { RichTabShowCaseView } from "../../components/Containers/RichTabShowcaseView.jsx";
+import { RichTabData } from "../../assets/TextAssets/ShowCaseTabRich.jsx";
 export const CataloguePage = () => {
   const { getAllMetaData, getMetadata } = useProjects();
   const shortProjects = getAllMetaData();

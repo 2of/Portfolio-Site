@@ -132,7 +132,7 @@ export const Logo = ({ variant = "large", alwaysTrack = false }) => {
                 <div
                     style={{
                         fontSize: isLarge ? "1.5rem" : "1rem",
-                        fontWeight: "bold",
+                        // fontWeight: "bold",
                         display: "flex",
                         position: "relative",
                         letterSpacing: tracking ? "0.05em" : "0",

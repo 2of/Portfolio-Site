@@ -226,58 +226,87 @@ export const CataloguePage_UP = () => {
         >
           <RichTabShowCaseView data={RichTabData} />
         </Section>
+          <Section>
 
+              <Divider variant="Thick" />
+          </Section>
         <Section>
 
             <>
-            <h4>fyi I am in the process of filling out the following sections</h4>
-<span>
+                <div className={styles.articleTools}>
+                    <h4 className={styles.heading}>
+                        fyi I am in the process of filling out the following sections
+                    </h4>
 
-    <p>
-
-        so the contents of the following are all a WIP, a summary of how the articles are defined and created is available
-    </p>
- <StandardButton
-     label="Open Article Format Page"
-     type="article"
-     icon={getIcon("article")}
-     callback={() => navigate("/proj/portfoliosite")}
- />
-
-     <StandardButton
-         label="Sample of the Structure for Articles"
-         type="article"
-         icon={getIcon("article")}
-         callback={() => {
-             window.open(
-                 "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/GEO/text.json",
-                 "_blank"
-             );
-         }}
-
-     />
-
-     <StandardButton
-         label="The real (LIVE) Metadata"
-         type="article"
-         icon={getIcon("article")}
-         callback={() => {
-             window.open(
-                 "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/GEO/text.json",
-                 "_blank"
-             );
-         }}
-     />
-    <p>  Wait this is *entirely* on the front end? </p>
+                    <div className={styles.intro}>
+                        <p>
+                            so the contents of the following are all a WIP, a summary of how the
+                            articles are defined and created is available
+                        </p>
+                    </div>
 
 
-       <p>  .... well sorta... github pages is host-enough. There IS support for loading in external artciles following my format</p>
+                    <div className={styles.buttonRow}>
+                        <StandardButton
+                            className={styles.button}
+                            label="Open Article Format Page"
+                            type="rounded_catalogue_card_end_with_label"
+                            icon={getIcon("article")}
+                            callback={() => navigate("/proj/portfoliosite")}
+                        />
 
-</span>
+                        <StandardButton
+                            className={styles.button}
+                            label="Sample of the Structure for Articles"
+                            type="rounded_catalogue_card_end_with_label"
+                            icon={getIcon("article")}
+                            callback={() =>
+                                window.open(
+                                    "https://github.com/2of/Portfolio-Site/blob/main/public/Writeups/GEO/text.json",
+                                    "_blank"
+                                )
+                            }
+                        />
+
+                        <StandardButton
+                            className={styles.button}
+                            label="The real (LIVE) Metadata"
+                            type="rounded_catalogue_card_end_with_label"
+                            icon={getIcon("article")}
+                            callback={() =>
+                                window.open(
+                                    "https://github.com/2of/Portfolio-Site/tree/main/public/metadata",
+                                    "_blank"
+                                )
+                            }
+                        />
+
+                        <StandardButton
+                            className={styles.button}
+                            label="Open the Rich Editor"
+                            type="rounded_catalogue_card_end_with_label"
+                            icon={getIcon("editor")}
+                            callback={() => navigate("/editor")}
+                        />
+                    </div>
+
+                    <div className={styles.notes}>
+                        <p>Wait this is *entirely* on the front end?</p>
+                        <p>
+                            .... well sorta... github pages is host-enough. There IS support for
+                            loading in external articles following my format
+                        </p>
+                    </div>
+                </div>
+
             </>
 
-        </Section>
 
+        </Section>
+          <Section>
+
+              <Divider variant="Thick" />
+          </Section>
         {/*<Section >*/}
         {/*  <CatalogueHeroSection text={text} />*/}
         {/*</Section>*/}
@@ -310,10 +339,10 @@ export const CataloguePage_UP = () => {
           </div>
         </Section>
 
-        {/*<Section>*/}
-        {/*  */}
-        {/*  <Divider variant="double" />*/}
-        {/*</Section>*/}
+        <Section>
+
+          <Divider variant="double" />
+        </Section>
           <Section
               color=""
               Header={() => (

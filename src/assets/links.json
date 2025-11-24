@@ -2,6 +2,11 @@
     "linkedin" : "https://www.linkedin.com/in/nking11111/",
     "resume" : "https://github.com/2of/2of/blob/main/docs/CV_all.pdf",
     "github" : "https://github.com/2of",
-    "mail" : "nhking4@gmail.com"
+    "mail" : "nhking4@gmail.com",
+  "siteRepo" : "https://github.com/2of/Portfolio-site",
+  "uilibrepo" : "https://github.com/2of/2-of-every-component-lib",
+  "portfoliorepo": "https://github.com/2of/Portfolio-site",
+  "geothesis": "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model/blob/main/THESIS_mini.pdf",
+  "georepo" : "https://github.com/2of/Deep-Learning-City-Scale-GeoLocalization-Model"
 
 }

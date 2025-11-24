@@ -182,7 +182,8 @@ export const Article = ({ metadata, fixeddata }) => {
   const [data, setData] = useState({});
   const [bgModifiervalue, setbgModifiervalue] = useState(0);
   const containerRef = useRef(null);
-  const iswip = metadata.wip;
+    const iswip = metadata?.wip || false;
+
   const bgImageRef = useRef(null);
   const titlePopupRef = useRef(null);
   const screenSize = useScreenSize();
@@ -309,7 +310,8 @@ export const Article = ({ metadata, fixeddata }) => {
       <div className={styles.titleSection}>
         <TitleSection
           data={data}
-          tags={metadata.details.tags}
+          tags={metadata?.details?.tags}
+
           mobile={screenSize === "sm"}
           // hiderows = {bgModifiervalue}
         />

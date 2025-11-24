@@ -8,11 +8,16 @@
 
     {
       "position" :  "Senior SDA / It Project Support",
-      "company"  : "TeWhatuOra  - Heaoth New Zealand",
+      "company"  : "TeWhatuOra  - Health New Zealand",
       "duration" : "March 2024 - Current",
-      "location" : "Remote" ,
-      "doing" : ["Supporting Significant tenancy migration"],
-      "coreskills" : ["AD", "Microsoft Stack Management"]
+      "location" : "Remote - Contract" ,
+      "doing" : ["Supporting Significant tenancy migration",
+      "Shaping Mobile and Support Guides for adhoc & self driven programs",
+      "End User Support and Escalations",
+      "Triaging Queries, Phone and Remote Support",
+      "Troubleshooting Complex Tenancy Issues in a data critical environment"],
+      "coreskills" : ["AD", "M365", "Intune Device Management", "Network Support / VPN / ETC","End user support",
+      "Exchange Online, On Prem", "Contract work through DTSL Ltd"]
 
 
 
@@ -20,33 +25,50 @@
     }, {
       "position" :  "Contract IT Specialist",
       "company"  : "PCMedia LTD",
-      "duration" : "",
-      "location" : "" ,
-      "doing" : ["Supporting Significant tenancy migration"],
-      "coreskills" : ["AD", "Microsoft Stack Management"]
+      "duration" : "2023-2024",
+      "location" : "Renote & Nelson NZ" ,
+      "doing" : ["Medium Seat MSP support", "Network Deployment & Design", "Education IT support", "Education IT design", "Client Onboarding and tenancy Migrations",
+
+      "Ad-hoc and contract whilst studying towards my Masters", "IT Health Checks for generating leads"],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+      "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions"]
 
 
 
     }, {
       "position" :  "IT Specialist",
       "company"  : "PCMedia LTD",
-      "duration" : "",
-      "location" : "test" ,
+      "duration" : "2022-2023",
+      "location" : "North Otago & South Canterbury, NZ" ,
 
-      "doing" : ["Supporting Significant tenancy migration"],
-      "coreskills" : ["AD", "Microsoft Stack Management"]
+      "doing" : ["Small Business IT support and deployment", "Education IT support", "Education IT Deployment",
+
+      "Onsite support for Supermarket, and other 'no down time' clients' through contracts",
+      "Onsite warranty support for HP, Lenovo and Dell",
+      "Google Admin support / policy design for education",
+      "IT audits for client onboarding",
+      "Networking: Design and deployed reliable networks at 'mission critical' high bandwidth times given very limited resource (edu exams)",
+        "Network design, support and implementation"
+      ],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+        "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions", "Hardware repair", "Building out custom computers for clients, repairing client comptuers and making do with limited edu funding"]
+
 
 
 
     }
   , {
       "position" :  "Tech Solutions Specialsit",
-      "company"  : "Noel Leeming Group LTD",
-      "duration" : "",
-      "location" : "" ,
+      "company"  : "Noel Leeming Grooup",
+      "duration" : "2019-2022",
+      "location" : "South Canterbury & CHCH" ,
 
-      "doing" : ["Supporting Significant tenancy migration"],
-      "coreskills" : ["AD", "Microsoft Stack Management"]
+      "doing" : ["Installed AV, TVs into client's homes", "Set up consumer laptops and other IT equipment both inhome and at an instore kiosk",
+      "Achieved a Minimal Revisit rate", "Consistently a region topping achiever as a salesperson", "This role was sales + 'tech solutions' where the latter started over a year into the role"],
+      "coreskills" : ["TV & Soundbar Installation ", "Security Camera Installation (Residential)" , "Laptop, SmartPhone setup and data transfer from 'everything' to 'everything",
+        "Self Directed Client Work", "Meeting Sales KPIs"]
 
 
 

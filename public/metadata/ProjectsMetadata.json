@@ -404,6 +404,23 @@
       "title": "K-Means for image prominent colour extraction tool"
     }
   },
+  {
+    "name": "EXOCopy",
+    "showcase": false,
+    "uniWorkShowcase": false,
+    "misccategory": true,
+
+    "details": {
+      "subtitle": "Just injetcts a copy button to keep IT admins sane",
+      "tags": ["JS","ManifestV3"],
+      "type": "url",
+      "mainTag": "Chrome Extension",
+      "icon": "weather",
+      "externalLink": "https://2of.github.io/Colour-Extractor-Image-Web/",
+      "bgimage": "/Writeups/GEO/thumb.gif",
+      "title": "Exchange Online Portal Copy Button Chrome Extension"
+    }
+  },
 
 
   {

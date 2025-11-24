@@ -127,7 +127,7 @@ export const SettingsPage = () => {
         return (
           <StandardButton
             label={row.buttonLabel}
-            type="basic_small"
+            type="rounded_catalogue_card_end_with_label"
             icon={getIcon(row.icon)}
             callback={() => {
               if (row.route) navigate(row.route);

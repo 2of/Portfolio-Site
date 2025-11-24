@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./styles/FeatherTwoLayer.module.scss";
 import { useTheme } from "../../contexts/ThemeProvider";
+import {useAppTheme} from "../../contexts/ThemeContext.jsx";
 
 
 const FeatherTwoLayer = ({
@@ -13,10 +14,14 @@ const FeatherTwoLayer = ({
   const canvasRef = useRef(null);
 
   // 🎨 Theme variables
-  const bg = useTheme("--bg");
-  const textColor = useTheme("--bg-l1");
-  const borderColor = useTheme("--border-color");
 
+    const { getColor } = useAppTheme();
+
+
+  const bg = getColor("--bg");
+  const textColor =  getColor("--bg-l2");
+  // const borderColor = getColor("--border-color");
+    // console.log("HELLO HERE THEY AREA" , bg, textColor, borderColor);
   // Base layer style = background color
   const baseLayerStyle = {
     backgroundColor: bg,

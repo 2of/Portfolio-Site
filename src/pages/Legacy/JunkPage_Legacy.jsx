@@ -1,43 +1,43 @@
 import React, { useState } from "react";
-import { useProjects } from "../contexts/ContentContext";
-import styles from "./styles/JunkPage.module.scss";
-import { RadialMenu } from "../components/UI/RadialMenu.jsx";
-import { DarkModeTile } from "../components/UI/darkmodeTile.jsx";
-import { useGlobalContext } from "../contexts/GlobalContext";
-import TextOnPath from "../components/Misc/TextPath";
-import FlowChartComponent from "../components/Misc/FlowChart";
-import WigglyLine from "../components/Misc/WigglyLine";
-import image from "../assets/images/default.png";
-import image2 from "../assets/images/default_other.jpeg";
-import { DarkModeWrapper } from "../components/UI/DarkModeWrapper";
-import ProgressBar from "../components/UI/StandardLib/ProgressBar.jsx";
+import { useProjects } from "../../contexts/ContentContext.jsx";
+import styles from "../styles/JunkPage.module.scss";
+import { RadialMenu } from "../../components/UI/RadialMenu.jsx";
+import { DarkModeTile } from "../../components/UI/darkmodeTile.jsx";
+import { useGlobalContext } from "../../contexts/GlobalContext.jsx";
+import TextOnPath from "../../components/Misc/TextPath.jsx";
+import FlowChartComponent from "../../components/Misc/FlowChart.jsx";
+import WigglyLine from "../../components/Misc/WigglyLine.jsx";
+import image from "../../assets/Images/default.png";
+import image2 from "../../assets/Images/default_other.jpeg";
+import { DarkModeWrapper } from "../../components/UI/DarkModeWrapper.jsx";
+import ProgressBar from "../../components/UI/StandardLib/ProgressBar.jsx";
 
-import ImageHandle from "../components/Handlers/ImageHandle";
-import Loader from "../components/UI/StandardLib/Loader.jsx";
-import { StandardDropdown } from "../components/UI/StandardLib/StandardDropDown.jsx";
-import { StandardTextField } from "../components/UI/StandardLib/StandardTextField.jsx";
-import { StandardCollapsableRow } from "../components/UI/StandardLib/CollapsableSection.jsx";
-import getIcon from "../utils/Iconifier";
-import { useAlertMenu } from "../contexts/AlertMenuContext";
-import { AnimatedHeader } from "../components/UI/TypeWriterHeader";
-import GlassPushOverlay from "../components/UI/InteractionContainers/GlassContainer.jsx";
-import FeatherRevealImage from "../components/Misc/FeatherImageMouseTracked";
+import ImageHandle from "../../components/Handlers/ImageHandle.jsx";
+import Loader from "../../components/UI/StandardLib/Loader.jsx";
+import { StandardDropdown } from "../../components/UI/StandardLib/StandardDropDown.jsx";
+import { StandardTextField } from "../../components/UI/StandardLib/StandardTextField.jsx";
+import { StandardCollapsableRow } from "../../components/UI/StandardLib/CollapsableSection.jsx";
+import getIcon from "../../utils/Iconifier.jsx";
+import { useAlertMenu } from "../../contexts/AlertMenuContext.jsx";
+import { AnimatedHeader } from "../../components/UI/TypeWriterHeader.jsx";
+import GlassPushOverlay from "../../components/UI/InteractionContainers/GlassContainer.jsx";
+import FeatherRevealImage from "../../components/Misc/FeatherImageMouseTracked.jsx";
 import {
   useIsMenuFloatingDesktop,
   useIsNavHidden,
   useRoute,
-} from "../contexts/RouteContext";
-import { StandardSlider } from "../components/UI/StandardLib/StandardSlider.jsx";
-import FeatherTwoLayer from "../components/Misc/FeatherTwoLayer";
-import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
-import { useModal } from "../contexts/ModalContext";
-import { Article } from "../components/Article/Article";
+} from "../../contexts/RouteContext.jsx";
+import { StandardSlider } from "../../components/UI/StandardLib/StandardSlider.jsx";
+import FeatherTwoLayer from "../../components/Misc/FeatherTwoLayer.jsx";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
+import { useModal } from "../../contexts/ModalContext.jsx";
+import { Article } from "../../components/Article/Article.jsx";
 import { meta } from "@eslint/js";
-import { useNavStack } from "../contexts/NavStackContext";
-import ResponsiveGradient from "../components/Background/ResponsiveGradient";
+import { useNavStack } from "../../contexts/NavStackContext.jsx";
+import ResponsiveGradient from "../../components/Background/ResponsiveGradient.jsx";
 
 // const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
-export const JunkPage = () => {
+export const JunkPage_Legacy = () => {
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
   const { modalState, showModal, hideModal, modalVisible } = useModal();
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
@@ -507,7 +507,7 @@ export const JunkPage = () => {
       <div className={styles.chunk}>
         <h3>IFrame Test</h3>
         <iframe
-          src="/"
+          src="/public"
           width="100%"
           height="500px"
           style={{ border: "none" }}

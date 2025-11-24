@@ -5,15 +5,21 @@
   gap: 1rem;
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  //padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.bgcontainer {
+.bgContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .cardHeader {
@@ -31,57 +37,6 @@
   }
 }
 
-.ImagesContainer {
-  position: absolute;
-
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  //height: 40%;
-  transform: translateY(5%);
-  background-color: red; // remove or replace later
-
-}
-
-.FloatingImage {
-  transition: all 0.3s ease;
-  height: 100px;
-}
-
-.sub1 {
-  position: absolute;
-  //bottom: -50%;
-  bottom: -10%;
-  right: 0;
-  height: 60%;
-  //width: clamp(100px, 40vw, 700px);
-  aspect-ratio: 1 / 1;
-  * {
-    //outline: 1px solid green;
-    height: 100%;
-
-  }  z-index: 1;
-}
-.sub2 {
-  position: absolute;
-  bottom: -20%;
-  left: 0%;
-  height: 60%;
-  //width: clamp(100px, 40vw, 700px);
-  aspect-ratio: 1 / 1;
-  * {
-  //outline: 1px solid green;
-  height: 100%;
-
-  }  z-index: 2;
-
-  &.mobile  {
-    opacity: 0.2;
-  }
-}
-
-
 .cardBody {
   z-index: 2;
   display: flex;
@@ -92,7 +47,6 @@
   height: 100%;
 
   .description {
-    // optional width or text styling
   }
 }
 
@@ -123,4 +77,34 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.bgImage {
+  position: absolute;
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+  filter: blur(12px);
+  opacity: 0.85;
+  z-index: 1;
+
+  &:nth-child(1) {
+    top: -10%;
+    left: -10%;
+    transform: rotate(-15deg) scale(1.1);
+    z-index: 2;
+  }
+
+  &:nth-child(2) {
+    bottom: -10%;
+    right: -10%;
+    transform: rotate(15deg) scale(1.1);
+    z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 }

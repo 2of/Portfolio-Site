@@ -11,180 +11,146 @@ import { DarkModeWrapper } from "../UI/DarkModeWrapper";
 import { Logo } from "./Logo";
 import { useIsMenuFloatingDesktop } from "../../contexts/RouteContext";
 import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
-import { LinearGradient } from "@react-pdf/renderer";
-import FeatherRevealImage from "../Misc/FeatherImageMouseTracked";
-import FeatherTwoLayer from "../Misc/FeatherTwoLayer";
 import { useNavStack } from "../../contexts/NavStackContext";
 
 export const DesktopNavFullWidth = () => {
-  const screenSize = useScreenSize();
-  const { getCurrentNavReplacementButton } = useGlobalContext();
-  const isMenuFloating = useIsMenuFloatingDesktop();
-  const location = useLocation();
-  const { showTooltip, hideTooltip } = useTooltip();
-  const [isSnapped, setIsSnapped] = useState(true);
-  const [routeChangeAnimating, setRouteChangeAnimating] = useState(false);
-  const [activePath, setActivePath] = useState(location.pathname);
-  const [wiggleTarget, setWiggleTarget] = useState(null);
-  const { openShareSheet } = useGlobalContext();
-  const { setNavBgTransparent, shouldNavBgBeTransparent } = useNavStack();
+    const screenSize = useScreenSize();
+    const { getCurrentNavReplacementButton, getLink, openShareSheet } = useGlobalContext();
+    const isMenuFloating = useIsMenuFloatingDesktop();
+    const location = useLocation();
+    const { showTooltip, hideTooltip } = useTooltip();
+    const [activePath, setActivePath] = useState(location.pathname);
+    const [routeChangeAnimating, setRouteChangeAnimating] = useState(false);
+    const { shouldNavBgBeTransparent } = useNavStack();
 
-  const handleShare = useCallback(() => {
-    openShareSheet(
-      window.location.href,
-      "twitter",
-      "Noah's Portfolio @ thingies.dev",
-      "hello"
+    const handleShare = useCallback(() => {
+        openShareSheet(
+            window.location.href,
+            "twitter",
+            "Noah's Portfolio @ thingies.dev",
+            "hello"
+        );
+    }, [openShareSheet]);
+
+    useEffect(() => {
+        if (location.pathname !== activePath) {
+            setActivePath(location.pathname);
+            setRouteChangeAnimating(true);
+
+            const timer = setTimeout(() => {
+                setRouteChangeAnimating(false);
+            }, 700);
+
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname, activePath]);
+
+    if (screenSize === "sm") return null;
+
+    const visibleRoutes = routes.filter((route) => !route.hideDesktop);
+    const pathVisibleInNav = visibleRoutes.some(
+        (route) => route.path === location.pathname
     );
-  }, [openShareSheet]); // Dependencies for useCallback
-  // Detect route change for animation triggers
-  useEffect(() => {
-    if (location.pathname !== activePath) {
-      setWiggleTarget(location.pathname);
-      setActivePath(location.pathname);
-      setRouteChangeAnimating(true);
 
-      const timer = setTimeout(() => {
-        setWiggleTarget(null);
-        setRouteChangeAnimating(false);
-      }, 700);
-
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname, activePath]);
-
-  if (screenSize === "sm") return null; // Hide on small screens
-
-  // Only visible routes in nav
-  const visibleRoutes = routes.filter((route) => !route.hideDesktop);
-  const { getLink } = useGlobalContext();
-  const pathVisibleInNav = visibleRoutes.some(
-    (route) => route.path === location.pathname
-  );
-
-  return (
-    <nav
-      className={`
+    return (
+        <nav
+            className={`
         ${styles.navContainer}
         ${!isMenuFloating ? styles.fullwidth : styles.float}
         ${getCurrentNavReplacementButton().label ? styles.onlyButton : ""}
-        
-        ${shouldNavBgBeTransparent() ? styles.transparentbg : styles.fullbg}
-        
       `}
-    >
-      {/* <div className={styles.bgcontainer}>
-  <FeatherTwoLayer alwaysListen/>
-
-
-      </div> */}
-
-      <div className={styles.bgcontainer} />
-      <ul
-        className={`${styles.navList} 
-
-        
+        >
+            <ul
+                className={`${styles.navList} 
+        ${!shouldNavBgBeTransparent() ? styles.transparentbg : styles.fullbg}
         `}
-      >
-        <li className={`${styles.logoContainer} ${styles.link}`}>
-          <Link
-            to={"/"}
-            viewTransition
-            className={`${styles.link} }`}
-            // onMouseMove={(e) => showTooltip(route.label, e)}
-            // onMouseLeave={hideTooltip}
-          >
-            <Logo variant="small" />
-            {/* </p> */}
-          </Link>
-        </li>
-
-        {visibleRoutes.map((route, i) => (
-          <li
-            key={i}
-            className={`${styles.navItem} ${
-              routeChangeAnimating
-                ? location.pathname === route.path
-                  ? styles.wiggleIcon
-                  : styles.boopIcon
-                : ""
-            }`}
-          >
-            <Link
-              to={route.path}
-              className={`${styles.link} ${
-                location.pathname === route.path ? styles.activeLink : ""
-              }`}
-              // onMouseMove={(e) => showTooltip(route.label, e)}
-              // onMouseLeave={hideTooltip}
             >
-              <p className={styles.routeItem}>
+                <li className={`${styles.logoContainer} ${styles.link}`}>
+                    <Link
+                        to={"/home"}
+                        viewTransition
+                        className={`${styles.link}`}
+                    >
+                        <Logo variant="small" />
+                    </Link>
+                </li>
+
+                {visibleRoutes.map((route, i) => (
+                    <li
+                        key={i}
+                        className={`${styles.navItem} ${
+                            routeChangeAnimating && location.pathname === route.path
+                                ? styles.wiggleIcon
+                                : ""
+                        }`}
+                    >
+                        <Link
+                            to={route.path}
+                            className={`${styles.link} ${
+                                location.pathname === route.path ? styles.activeLink : ""
+                            }`}
+                        >
+                            <p className={styles.routeItem}>
                 <span key={route.path + (routeChangeAnimating ? "-anim" : "")}>
                   {getIcon(route.icon ?? "home")}
-                  {route.label}
+                    {route.label}
                 </span>
-              </p>
-            </Link>
-          </li>
-        ))}
+                            </p>
+                        </Link>
+                    </li>
+                ))}
 
-        {/* Fallback for hidden or unknown routes */}
-        {!pathVisibleInNav && (
-          <li className={`${styles.customFallback}`}>
-            <Link>
-              <p className={styles.routeItem}>
-                --
-                {/* {getIcon("portfolio")} */}
-                {location.pathname}
-              </p>
-            </Link>
-          </li>
-        )}
+                {!pathVisibleInNav && (
+                    <li className={`${styles.customFallback}`}>
+                        <Link>
+                            <p className={styles.routeItem}>
+                                --
+                                {location.pathname}
+                            </p>
+                        </Link>
+                    </li>
+                )}
 
-        <li className={styles.spacer}></li>
+                <li className={styles.spacer}></li>
 
-        <ul className={styles.SocialButtons}>
-          <li className={` ${styles.rightnav}`}>
-            <StandardButton
-              label="Github"
-              tooltip="Navigate to resume"
-              type="rounded_label"
-              icon={getIcon("github")}
-              link={getLink("github")}
-              // external={true}
-              nointeractEffects={true}
-            />
-          </li>
-          <li className={` ${styles.rightnav}`}>
-            <StandardButton
-              label="LinkedIn"
-              tooltip="Navigate to LinkedIn"
-              type="rounded_label"
-              highlight={false}
-              icon={getIcon("linkedin")}
-              link={getLink("linkedin")}
-              // external={true}
-              nointeractEffects={true}
-            />
-          </li>
+                <ul className={styles.SocialButtons}>
+                    <li className={` ${styles.rightnav}`}>
+                        <StandardButton
+                            label="Github"
+                            tooltip="Navigate to resume"
+                            type="rounded_label"
+                            icon={getIcon("github")}
+                            link={getLink("github")}
+                            nointeractEffects={true}
+                        />
+                    </li>
+                    <li className={` ${styles.rightnav}`}>
+                        <StandardButton
+                            label="LinkedIn"
+                            tooltip="Navigate to LinkedIn"
+                            type="rounded_label"
+                            highlight={false}
+                            icon={getIcon("linkedin")}
+                            link={getLink("linkedin")}
+                            nointeractEffects={true}
+                        />
+                    </li>
 
-          {/* <li>•</li> */}
-
-          <li className={` ${styles.rightnav}`}>
-            <StandardButton
-              label="share"
-              icon={getIcon("share")}
-              callback={handleShare} // Use the memoized callback
-              type="rounded_label"
-              fillContainer={false}
-              nointeractEffects={true}
-            />
-          </li>
-        </ul>
-        <li className={`${styles.navItem} ${styles.rightnav}`}>
-          <DarkModeWrapper type="largepill" />
-        </li>
-      </ul>
-    </nav>
-  );
+                    <li className={` ${styles.rightnav}`}>
+                        <StandardButton
+                            label="share"
+                            icon={getIcon("share")}
+                            callback={handleShare}
+                            type="rounded_label"
+                            fillContainer={false}
+                            nointeractEffects={true}
+                        />
+                    </li>
+                </ul>
+                <li className={`${styles.navItem} ${styles.rightnav}`}>
+                    <DarkModeWrapper type="largepill" />
+                </li>
+            </ul>
+        </nav>
+    );
 };

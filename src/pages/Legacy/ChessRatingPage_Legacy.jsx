@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import styles from "./styles/ChessPage.module.scss";
-import { loadModel, predict } from "../utils/Model";
-import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
-import { StandardRadioButtons } from "../components/UI/StandardLib/StandardRadioButtons.jsx";
-import getIcon from "../utils/Iconifier";
-import FlowChartComponent from "../components/Misc/FlowChart";
+import styles from "../styles/ChessPage.module.scss";
+import { loadModel, predict } from "../../utils/Model.js";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
+import { StandardRadioButtons } from "../../components/UI/StandardLib/StandardRadioButtons.jsx";
+import getIcon from "../../utils/Iconifier.jsx";
+import FlowChartComponent from "../../components/Misc/FlowChart.jsx";
 // import ColumnWithSections from "../components/Column/ColumnWithSections";
-import { Modal } from "../components/UI/StandardLib/Modal.jsx";
-import { useProjects } from "../contexts/ContentContext";
-import { Article } from "../components/Article/Article";
+import { Modal } from "../../components/UI/StandardLib/Modal.jsx";
+import { useProjects } from "../../contexts/ContentContext.jsx";
+import { Article } from "../../components/Article/Article.jsx";
 
 
 export const ChessPage = () => {

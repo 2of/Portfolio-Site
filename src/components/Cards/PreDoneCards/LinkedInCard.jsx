@@ -51,7 +51,7 @@ const LinkedinCard = ({ name, title, company, summary, profilePic, bannerPic, ur
          <StandardButton
                   label="View on LinkedIn"
                   tooltip="Open Linkedin Profile"
-                  type="rounded_catalogue_card_end_with_label"
+                  type="rounded_label"
                   icon={getIcon("linkedin")}
                   link={url}
                 />

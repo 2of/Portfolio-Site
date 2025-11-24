@@ -38,7 +38,7 @@ export const ExtraButtonNavMenuIconMobile = memo(({ label, icon, currentCallback
     <div className={clsx(styles.ExtramobileIconContainer, isFloating && "")}>
       <StandardButton
         icon={icon}
-        type="rounded"
+        // type="rounded"
         label="menu"
         callback={currentCallback}
       />
