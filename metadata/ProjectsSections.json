@@ -4,8 +4,8 @@
 
 
 {
-    "featured" : ["geo", "portfoliosite", "chessEloEstimator"],
-    "block1" : ["Chrome","RGBHands","UILIB","chessbots","redditComment"],
+    "featured" : ["geo", "portfoliosite", "MonitorMinder"],
+    "block1" : ["chessEloEstimator","Chrome","RGBHands","UILIB","chessbots","redditComment","MonitorMinder"],
     "block2" : ["chessbots","chesshostedsite"],
   "tools" : ["color","EXOCopy"],
   "uniProjects" : ["Weather","Weather","CDler","1msong","regModels","weather","NodeJsServer"

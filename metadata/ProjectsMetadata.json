@@ -35,8 +35,38 @@
     }
   },
   {
-    "name": "portfoliosite",
+    "name": "MonitorMinder",
     "showcase": true,
+    "uniWorkShowcase": false,
+    "details": {
+      "icon": "map",
+      "subtitle": "Change MacOS desktop components based on Monitor Setups",
+      "tags": [
+      "Swift", "JSON", "SwiftUI", "MacAppStore"
+      ],
+      "showcase": true,
+      "uniWorkShowcase": false,
+   "external": true,
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+
+      "heroImage": "/assets/heroImages/geo.png",
+      "thumbbg": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/GEO/hero.png",
+      "title": "MacOS Monitor Minder. WFH Companion!",
+      "linkref": "monitormindersite",
+        "extralinks": [
+        {
+          "label": "Code",
+
+          "refURL" : "monitorminderrepo"
+        }
+      ]
+    }
+  },
+  
+  {
+    "name": "portfoliosite",
+  
     "uniWorkShowcase": false,
 
     "details": {
@@ -53,26 +83,22 @@
   },
  {
   "name": "UILIB",
-  "large": false,
   "details": {
     "icon": "portfolio",
-    "subtitle": "I wrote like 75% of a framework for it. It's this site, There's a bunch of fun stuff and it's just hosted on github pages",
+    "subtitle": "I wrote like 75% of a framework for this site and turned it into it's own Library of handy widgets, hooks,  components, styles, providers and custom contexts",
 
     "tags": ["REACT", "JS", "SCSS", "Custom Markup", "Responsive Design"],
     "type": "file",
     "url": "/Writeups/PortfolioSite/text.json",
     "heroImage": "/assets/heroImages/geo.png",
     "bgimage": "/Writeups/PortfolioSite/unnamed.jpg",
-    "title": "I built this website in react",
+    "title": "2ofEveryFramework - Custom REACT Lib",
     "mainTag": "REACT JS Lib",
     "extralinks": [
-      {
-        "label": "Writeup",
-        "url": "/Writeups/GEO/text/"
-      },
+
       {
         "label": "Code",
-        "url": "https://github.com"
+        "refURL": "UILibRepo"
       }
     ]
   }
@@ -80,6 +106,7 @@
   {
     "name": "chessEloEstimator",
 
+   
     "details": {
       "icon": "chess",
       "subtitle": "Free version of the chess.com ELO estimation tool using Machine Learning",
@@ -100,13 +127,10 @@
       "revealbgimage": "/Writeups/Chrome/thumbColour.png",
       "title": "Free Chess ELO Estimator",
       "extralinks": [
-        {
-          "label": "Writeup",
-          "url": "/Writeups/GEO/text/"
-        },
+  
         {
           "label": "Code",
-          "url": "https://github.com"
+          "refURL" :"EloEstimatorRepo"
         }
       ]
     }
@@ -115,7 +139,7 @@
     "name": "RGBHands",
     "details": {
       "icon": "portfolio",
-      "subtitle": "Computer Vision Project @ UC ",
+      "subtitle": "Computer Visasdfion Project @ UC ",
       "tags": [
         "Computer Vision",
         "Tensorflow",
@@ -138,6 +162,7 @@
 
   {
     "name": "chessbots",
+    
     "details": {
       "icon": "portfolio",
       "categoryText": "Web, React, JS, Node",
@@ -372,7 +397,7 @@
   },
   {
     "name": "redditComment",
-    "showcase": false,
+
     "uniWorkShowcase": false,
     "misccategory": true,
     "details": {
@@ -397,7 +422,7 @@
       "subtitle": "Just a means to pull out the most prominent average colour in an image",
       "tags": ["K-means clustering", "React"],
       "type": "url",
-      "mainTag": "Large Data Processing ",
+      "mainTag": "Web Tool",
       "icon": "weather",
       "externalLink": "https://2of.github.io/Colour-Extractor-Image-Web/",
       "bgimage": "/Writeups/GEO/thumb.gif",
@@ -414,9 +439,9 @@
       "subtitle": "Just injetcts a copy button to keep IT admins sane",
       "tags": ["JS","ManifestV3"],
       "type": "url",
-      "mainTag": "Chrome Extension",
+      "mainTag": "Chrome Extension - IT Quality of Life",
       "icon": "weather",
-      "externalLink": "https://2of.github.io/Colour-Extractor-Image-Web/",
+      "externalLink": "https://chromewebstore.google.com/detail/Exchange%20Online%20Delegate%20and%20User%20Copy%20Button/nifeaobdncccphbgiponfcmokphmgjne",
       "bgimage": "/Writeups/GEO/thumb.gif",
       "title": "Exchange Online Portal Copy Button Chrome Extension"
     }
