@@ -126,13 +126,16 @@
         }
     }
 }
+
 .contentWrapper {
     position: relative;
     width: 100%;
-    /* border: 1px solid var(--border-color); */
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    /* height: 100%; */
-    /* background-color: red; */
+    overflow: hidden;
+    /* Fix border clipping */
+    background-color: var(--bg);
+    /* Ensure background matches */
 }
 
 .content {
@@ -149,34 +152,117 @@
     opacity: 1;
 }
 
+/* --- FADE --- */
 .fadeIn {
     opacity: 0;
-    animation: fadeIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation: fadeIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .fadeOut {
     opacity: 1;
-    animation: fadeOut 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation: fadeOut 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(8px) scale(0.98);
+        transform: translateY(8px);
     }
+
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
 @keyframes fadeOut {
     from {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
+
     to {
         opacity: 0;
-        transform: translateY(-8px) scale(0.98);
+        transform: translateY(-8px);
     }
+}
+
+/* --- SCALE --- */
+.scaleIn {
+    opacity: 0;
+    animation: scaleIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.scaleOut {
+    opacity: 1;
+    animation: scaleOut 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+/* --- SLIDE --- */
+.slideIn {
+    opacity: 0;
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.slideOut {
+    opacity: 1;
+    animation: slideOut 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+/* --- NONE --- */
+.noneIn {
+    opacity: 1;
+}
+
+.noneOut {
+    opacity: 0;
+    display: none;
 }

@@ -12,7 +12,7 @@ import {
   FaStar,
   FaMoon,
   FaArrowLeft,
-    FaPlusCircle,
+  FaPlusCircle,
   FaArrowRight,
   FaArrowCircleLeft,
   FaProjectDiagram,
@@ -23,7 +23,7 @@ import {
   FaChevronCircleDown,
   FaCloud,
   FaChevronDown,
-  
+
   FaChevronUp,
   FaChevronCircleUp,
   FaQuestionCircle,
@@ -83,6 +83,9 @@ import {
   FaAsterisk,
   FaChartArea,
   FaSitemap,
+  FaSwift,
+  FaApple,
+  FaGooglePlay,
 } from "react-icons/fa";
 import { FaP, FaPencil, FaSailboat } from "react-icons/fa6";
 
@@ -156,17 +159,20 @@ const getIcon = (iconName = "default") => {
     article: <FaPaperclip />,
     portfolio: <FaCode />,
     resume: <FaBriefcase />,
-      plus: <FaPlusCircle />,
+    plus: <FaPlusCircle />,
     tag: <FaTag />,
     rightarrow: <FaArrowCircleRight />,
     right: <FaArrowRight />,
     left: <FaArrowLeft />,
     dir: <FaDirections />,
-    web: <FaInternetExplorer/>,
-    data: <FaDatabase/>,
-    ai: <FaAsterisk/>,
-    datanalysis: <FaChartArea/>,
-    it: <FaSitemap/>
+    web: <FaInternetExplorer />,
+    data: <FaDatabase />,
+    ai: <FaAsterisk />,
+    datanalysis: <FaChartArea />,
+    it: <FaSitemap />,
+    switft: <FaSwift />,
+    apple: <FaApple />,
+    googleplay: <FaGooglePlay />,
   };
 
   return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;

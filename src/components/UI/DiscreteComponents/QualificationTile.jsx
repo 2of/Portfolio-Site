@@ -4,16 +4,16 @@ import styles from './styles/QualificationTile.module.scss';
 import getIcon from "../../../utils/Iconifier.jsx";
 
 const QualificationTile = ({
-                               title = "Bachelor of Science",
-                               institution = "University of Excellence",
-                               year = "2020",
-                               field = "Computer Science",
-                               gpatag = null,
+    title = "Bachelor of Science",
+    institution = "University of Excellence",
+    year = "2020",
+    field = "Computer Science",
+    gpatag = null,
     blur = true,
     icon = null
-                           }) => {
+}) => {
     return (
-        <div className={`${styles.tile} group ${ blur && styles.blur}`}>
+        <div className={`${styles.tile} group ${blur && styles.blur}`}>
             <div className={styles.content}>
                 {/* Award icon */}
                 <div className={styles.iconWrapper}>
@@ -37,14 +37,14 @@ const QualificationTile = ({
                     </div>
 
                     <span className={styles.field}>
-            {field}
+                        {field}
                         {gpatag && (
                             <>
                                 <span className={styles.dot}>•</span>
                                 <span className={styles.gpa}>{gpatag}</span>
                             </>
                         )}
-          </span>
+                    </span>
 
                     <div className={styles.meta}>
                         <span>{institution}</span>

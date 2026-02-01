@@ -543,7 +543,7 @@
     }
 
     .icon {
-      transform:  scale(1.15);
+      transform: scale(1.15);
     }
   }
 
@@ -798,6 +798,7 @@
 // ============================================
 // CODE VARIANTS (Monospace, developer-focused)
 // ============================================
+
 .code {
   position: relative;
   display: inline-flex;
@@ -866,6 +867,7 @@
   }
 
   &:hover {
+
     /* --- Animate external icon in --- */
     .externalCornerIcon {
       font-size: 0.75rem;
@@ -875,12 +877,10 @@
     }
 
     .l2 {
-      clip-path: polygon(
-                      0 0,
-                      0 100%,
-                      105% 100%,
-                      100% 0
-      );
+      clip-path: polygon(0 0,
+          0 100%,
+          105% 100%,
+          100% 0);
     }
   }
 
@@ -949,9 +949,19 @@
 }
 
 @keyframes glitch {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  75% { transform: translateX(2px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  75% {
+    transform: translateX(2px);
+  }
 }
 
 .code_small {
@@ -997,13 +1007,9 @@
   color: var(--bg);
 }
 
-.code_small:hover {
+.code_small:hover {}
 
-}
-
-.code_small:active {
-
-}
+.code_small:active {}
 
 // ============================================
 // UTILITY CLASSES
@@ -1021,5 +1027,142 @@
   svg {
     font-size: inherit;
     color: inherit;
+  }
+}
+
+// ============================================
+// APP STORE VARIANTS
+// ============================================
+
+.AppStore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-l3); // Darker/Contrast background
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  min-width: 140px;
+
+  .icon {
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+  }
+
+  .textColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+  }
+
+  .subLabel {
+    font-size: 0.65rem;
+    font-weight: 400;
+    opacity: 0.8;
+    color: var(--text-color);
+  }
+
+  .mainLabel {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-color);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
+    background-color: var(--bg-l2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+}
+
+.ShinyAppStore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, var(--bg-l2) 0%, var(--bg-l3) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 150px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  .icon {
+    font-size: 1.8rem;
+    z-index: 2;
+    color: var(--accent-color);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .textColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+    z-index: 2;
+  }
+
+  .subLabel {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--subtext-color, var(--text-color));
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  .mainLabel {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text-color);
+  }
+
+  // Shine effect
+  .shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0) 0%,
+        var(--bg) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    opacity: 0.1;
+    transform: skewX(-25deg);
+    transition: left 0.7s ease;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--bg-l1) 0%, var(--bg-l2) 100%);
+
+    .shine {
+      left: 200%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.98);
   }
 }

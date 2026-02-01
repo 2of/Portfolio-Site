@@ -1,61 +1,44 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import { FaBriefcase } from "react-icons/fa";
 import styles from "./styles/CareerTile.module.scss";
-import {Article} from "../../Article/Article.jsx";
-import {useModal} from "../../../contexts/ModalContext.jsx";
-import getIcon from "../../../utils/Iconifier.jsx";
-const SHOW_DELAY = 200; // ms before showing the clone
-const HIDE_DELAY = 200; // ms before hiding the clone (lets user move between elements)
+import { useModal } from "../../../contexts/ModalContext.jsx";
 
+const SHOW_DELAY = 200; // Snappy but deliberate
+const HIDE_DELAY = 300; // Forgiving for mouse movement
 
+const BasicTile = ({
+    position,
+    company = "Tech Innovators Inc.",
+    duration = "Jan 2021 - Present",
+    location = "Remote",
+    doing = [
+        "Developed and maintained full-stack web applications.",
+        "Collaborated with cross-functional teams to deliver high-quality products.",
+    ],
+    techStack = ["React", "Node.js", "AWS"],
+    icon = null,
 
-
-
-
- const BasicTile = ({
-                              position = "Software Engineer",
-                              company = "Tech Innovators Inc.",
-                              duration = "Jan 2021 - Present",
-                              location = "Remote",
-                              doing = [
-                                  "Developed and maintained full-stack web applications.",
-                                  "Collaborated with cross-functional teams to deliver high-quality products.",
-                              ],
-                              techStack = ["React", "Node.js", "AWS"],
-                              icon = null,
-
-                          }) => {
+}) => {
     return (
-
-        <div className={styles.content}>
-
-
-
         <div className={styles.BasicTileContent}>
-
-            <div className={styles.iconContainer}>
-                {icon && icon || getIcon("code")}
-
-            </div>
-            <div className={styles.titleRow}>
-                <h3 className={styles.position}>{position}</h3>
-            </div>
+            {position && (
+                <div className={styles.titleRow}>
+                    <h3 className={styles.position}>{position}</h3>
+                </div>
+            )}
 
             <div className={styles.meta}>
                 <span className={styles.company}>{company}</span>
-
             </div>
 
             <div className={styles.meta}>
-
                 {location && (
                     <>
-
                         <span className={styles.location}>{location}</span>
                     </>
                 )}
             </div>
-
 
             <span className={styles.duration}>{duration}</span>
 
@@ -68,54 +51,47 @@ const HIDE_DELAY = 200; // ms before hiding the clone (lets user move between el
             <div className={styles.techStack}>
                 {techStack.map((tech, index) => (
                     <span key={index} className={styles.techItem}>
-          {tech}
-        </span>
+                        {tech}
+                    </span>
                 ))}
             </div>
         </div>
-    </div>
-
-
-);
+    );
 };
 
-
-
-
-const CareerTile = ({
-                        position = "Software Engineer",
-                        company = "Tech Innovators Inc.",
-                        duration = "Jan 2021 - Present",
-                        location = "Remote",
-                        doing = [
-                            "Developed and maintained full-stack web applications.",
-                            "Collaborated with cross-functional teams to deliver high-quality products.",
-                        ],
-                        techStack = ["React", "Node.js", "AWS"],
-                        icon = null,
+const CareerTileWithHoverDesktop = ({
+    position = "",
+    company = "Tech Innovators Inc.",
+    duration = "Jan 2021 - Present",
+    location = "Remote",
+    doing = [
+        "Developed and maintained full-stack web applications.",
+        "Collaborated with cross-functional teams to deliver high-quality products.",
+    ],
+    techStack = ["React", "Node.js", "AWS"],
+    icon = null,
     blur = true,
     openasmodal = false,
-                    }) => {
-    const [hovered, setHovered] = useState(false); // whether clone is mounted
-    const [animateIn, setAnimateIn] = useState(false); // whether clone's "FullReveal" animation/state is active
+    alwaysexpand = false,
+}) => {
+    const [hovered, setHovered] = useState(false);
+    const [animateIn, setAnimateIn] = useState(false);
     const [coords, setCoords] = useState(null);
-    const { modalState, showModal, hideModal, modalVisible } = useModal();
+    const [isMeasuring, setIsMeasuring] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    const { showModal } = useModal();
     const tileRef = useRef(null);
+    const cloneRef = useRef(null);
     const showTimer = useRef(null);
     const hideTimer = useRef(null);
-    const openModal = () => {
-
-
-
-    }
 
     const handleModalOpen = () => {
         showModal({
             size: "large",
-            floatnav: true,
+            title: position,
             content: (
                 <BasicTile
-                    position={position}
                     company={company}
                     duration={duration}
                     location={location}
@@ -127,87 +103,138 @@ const CareerTile = ({
         });
     };
 
-    // cleanup timers on unmount
+    // Manage animation state for interaction locking
     useEffect(() => {
+        let timer;
+        if (animateIn) {
+            setIsAnimating(true);
+            timer = setTimeout(() => {
+                setIsAnimating(false);
+            }, 550); // Slightly longer than CSS transition (500ms) to be safe
+        } else {
+            setIsAnimating(false);
+        }
+        return () => clearTimeout(timer);
+    }, [animateIn]);
+
+    // Close on scroll or resize to prevent detachment/glitches
+    useEffect(() => {
+        const handleScrollOrResize = () => {
+            if (hovered) {
+                setHovered(false);
+                setAnimateIn(false);
+                setCoords(null);
+            }
+        };
+
+        window.addEventListener("scroll", handleScrollOrResize, { passive: true });
+        window.addEventListener("resize", handleScrollOrResize, { passive: true });
+
         return () => {
+            window.removeEventListener("scroll", handleScrollOrResize);
+            window.removeEventListener("resize", handleScrollOrResize);
             clearTimeout(showTimer.current);
             clearTimeout(hideTimer.current);
         };
-    }, []);
+    }, [hovered]);
+
+    // Measurement and Positioning Logic
+    useLayoutEffect(() => {
+        if (hovered && isMeasuring && cloneRef.current && tileRef.current) {
+            const rect = tileRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const PADDING = 24;
+
+            // 1. Measure content height
+            const contentHeight = cloneRef.current.scrollHeight;
+
+            // 2. Calculate max available height
+            const maxAvailableHeight = viewportHeight - (2 * PADDING);
+
+            // 3. Determine target height
+            let targetHeight = Math.min(contentHeight, maxAvailableHeight);
+
+            // 4. Calculate yOffset to fit in viewport
+            const idealBottom = rect.top + targetHeight;
+            const maxBottom = viewportHeight - PADDING;
+
+            let yOffset = 0;
+
+            if (idealBottom > maxBottom) {
+                yOffset = maxBottom - idealBottom;
+            }
+
+            const finalTop = rect.top + yOffset;
+            const minTop = PADDING;
+
+            if (finalTop < minTop) {
+                const correction = minTop - finalTop;
+                yOffset += correction;
+                targetHeight = maxBottom - minTop;
+            }
+
+            // Apply calculated coordinates
+            setCoords(prev => ({
+                ...prev,
+                yOffset,
+                maxCloneHeight: targetHeight
+            }));
+
+            // Done measuring, ready to animate
+            setIsMeasuring(false);
+
+            // Trigger animation in next frame
+            requestAnimationFrame(() => {
+                setAnimateIn(true);
+            });
+        }
+    }, [hovered, isMeasuring]);
 
     const scheduleShowClone = () => {
+        if (alwaysexpand) return;
+
         clearTimeout(showTimer.current);
-        // If we already plan to hide, cancel it — user moved back quickly
         clearTimeout(hideTimer.current);
 
         showTimer.current = setTimeout(() => {
             if (!tileRef.current) return;
             const rect = tileRef.current.getBoundingClientRect();
+
+            // Initial state: Measuring mode
             setCoords({
-                top: rect.top + window.scrollY,
-                left: rect.left + window.scrollX,
+                top: rect.top,
+                left: rect.left,
                 width: rect.width,
                 height: rect.height,
+                yOffset: 0,
+                maxCloneHeight: 2000 // Unconstrained for measurement
             });
+            setIsMeasuring(true);
             setHovered(true);
-
-            // allow a rAF to let the element mount then trigger animateIn for CSS transitions
-            requestAnimationFrame(() => setAnimateIn(true));
         }, SHOW_DELAY);
     };
 
-    const cancelShow = () => {
-        clearTimeout(showTimer.current);
-    };
-
     const scheduleHideClone = () => {
+        if (alwaysexpand) return;
+
         clearTimeout(hideTimer.current);
 
-        // start hide animation
+        clearTimeout(showTimer.current);
+
         setAnimateIn(false);
 
-        // only unmount after HIDE_DELAY (let CSS fade/scale-out finish)
         hideTimer.current = setTimeout(() => {
             setHovered(false);
-            // ensure animateIn is false after hiding
-            setAnimateIn(false);
+            setIsMeasuring(false);
+            setCoords(null);
         }, HIDE_DELAY);
-    };
-
-    // base tile handlers
-    const handleBaseMouseEnter = () => {
-        scheduleShowClone();
-    };
-
-    const handleBaseMouseLeave = () => {
-        // if the clone is not yet visible (we were in SHOW_DELAY), cancel showing
-        if (!hovered) {
-            cancelShow();
-            return;
-        }
-        // if clone visible, begin hiding (but clone's mouseenter can cancel hide)
-        scheduleHideClone();
-    };
-
-    // clone handlers — these are crucial to keep clone visible while cursor over it
-    const handleCloneMouseEnter = () => {
-        // cancel any pending hide (user moved into the clone)
-        clearTimeout(hideTimer.current);
-        // ensure it's fully revealed
-        requestAnimationFrame(() => setAnimateIn(true));
-    };
-
-    const handleCloneMouseLeave = () => {
-        // user left the clone — schedule hide
-        scheduleHideClone();
     };
 
     const TileContent = (
         <div className={styles.content} aria-hidden={false}>
             <div className={styles.iconWrapper}>
-                <div className={styles.iconGlow}></div>
-                <div className={styles.iconRelative}>
-                    {icon ? <div className={styles.jobIcon}>{icon}</div> : <FaBriefcase className={styles.jobIcon} />}
+                <div className={styles.jobIcon}>
+                    {icon ? icon : <FaBriefcase />}
                 </div>
             </div>
 
@@ -228,26 +255,38 @@ const CareerTile = ({
 
                 <span className={styles.duration}>{duration}</span>
 
-                <ul className={styles.responsibilities}>
-                    {doing.map((item, index) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </ul>
+                <div className={`${styles.expandableContent} ${alwaysexpand ? styles.alwaysVisible : ''}`}>
+                    <ul className={styles.responsibilities}>
+                        {doing.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
 
-                <div className={styles.techStack}>
-                    {techStack.map((tech, index) => (
-                        <span key={index} className={styles.techItem}>
-              {tech}
-            </span>
-                    ))}
+                    <div className={styles.techStack}>
+                        {techStack.map((tech, index) => (
+                            <span key={index} className={styles.techItem}>
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 
+    if (alwaysexpand) {
+        return (
+            <div
+                className={`${styles.tile} ${styles.alwaysExpanded} ${blur ? styles.blur : ""}`}
+                onClick={openasmodal ? handleModalOpen : undefined}
+            >
+                {TileContent}
+            </div>
+        );
+    }
+
     return (
         <>
-            {/* Base tile (compact) — still handles enter/leave */}
             <div
                 ref={tileRef}
                 className={[
@@ -256,57 +295,38 @@ const CareerTile = ({
                     hovered ? styles.ignorePointer : ""
                 ].join(" ")}
 
-                onMouseEnter={!openasmodal ? handleBaseMouseEnter : undefined}
-                onMouseLeave={!openasmodal ? handleBaseMouseLeave : undefined}
-                onClick={openModal ? handleModalOpen : undefined}
+                onMouseEnter={!openasmodal ? scheduleShowClone : undefined}
+                onMouseLeave={!openasmodal ? scheduleHideClone : undefined}
+                onClick={openasmodal ? handleModalOpen : undefined}
             >
-
-            <div className={styles.content}>
-                    <div className={styles.iconWrapper}>
-                        <div className={styles.iconGlow}></div>
-                        <div className={styles.iconRelative}>
-                            {icon ? <div className={styles.jobIcon}>{icon}</div> : <FaBriefcase className={styles.jobIcon} />}
-                        </div>
-                    </div>
-
-                    <div className={styles.textContent}>
-                        <div className={styles.titleRow}>
-                            <h3 className={styles.position}>{position}</h3>
-                        </div>
-
-                        <div className={styles.meta}>
-                            <span className={styles.company}>{company}</span>
-
-                            {location && (
-                                <>
-                                    <span className={styles.dot}>•</span>
-                                    <span className={styles.location}>{location}</span>
-                                </>
-                            )}
-                        </div>
-
-                        <span className={styles.duration}>{duration}</span>
-                    </div>
-                </div>
+                {TileContent}
             </div>
 
-            {/* Floating hover clone (mounted after show delay) */}
-            {hovered && coords && (
+            {hovered && coords && createPortal(
                 <div
-                    className={`${styles.hoverClone} ${animateIn ? styles.FullReveal : ""}`}
+                    ref={cloneRef}
+                    className={`${styles.hoverClone} ${animateIn ? styles.FullReveal : ""} ${isAnimating ? styles.animating : ""}`}
                     style={{
                         top: `${coords.top}px`,
                         left: `${coords.left}px`,
                         width: `${coords.width}px`,
+                        '--base-height': `${coords.height}px`,
+                        '--max-clone-height': `${coords.maxCloneHeight}px`,
+                        '--y-offset': `${coords.yOffset}px`,
+                        // Hide during measurement to prevent jumping
+                        visibility: isMeasuring ? 'hidden' : 'visible',
+                        // Prevent interaction during measurement
+                        pointerEvents: isMeasuring ? 'none' : 'auto'
                     }}
-                    onMouseEnter={handleCloneMouseEnter}
-                    onMouseLeave={handleCloneMouseLeave}
+                    onMouseEnter={() => { clearTimeout(hideTimer.current); if (!isMeasuring) setAnimateIn(true); }}
+                    onMouseLeave={scheduleHideClone}
                 >
                     {TileContent}
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );
 };
 
-export default CareerTile;
+export default CareerTileWithHoverDesktop;

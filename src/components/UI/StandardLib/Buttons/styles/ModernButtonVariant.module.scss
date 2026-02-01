@@ -1,0 +1,105 @@
+.modern {
+    padding: 0.875rem 1.5rem;
+    background: var(--accent-gradient, linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+
+    &:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.5);
+        outline-offset: 2px;
+    }
+
+    /* Theme modifiers */
+    &.light {
+        --accent-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    }
+
+    &.dark {
+        --accent-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    }
+
+    /* Fixed mode overrides */
+    &.fixedWhiteMode {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)) !important;
+        color: #fff !important;
+
+        .icon,
+        .label {
+            color: #fff !important;
+        }
+    }
+
+    &.fixedDarkMode {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)) !important;
+        color: #fff !important;
+
+        .icon,
+        .label {
+            color: #fff !important;
+        }
+    }
+
+    .label {
+        color: white;
+    }
+
+    .icon {
+        color: white;
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .externalCornerIcon {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transform: translateY(2px) scale(0.9);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    &:hover {
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        transform: translateY(-2px);
+
+        .icon {
+            transform: scale(1.1);
+        }
+
+        .externalCornerIcon {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &.primary {
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+
+        &:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+    }
+}

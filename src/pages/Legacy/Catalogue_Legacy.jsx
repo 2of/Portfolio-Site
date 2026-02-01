@@ -29,7 +29,7 @@ import TrackedGradientBG from "../../components/Background/TrackedGradientBg.jsx
 import { useModal } from "../../contexts/ModalContext.jsx";
 import { TitleCard } from "../../components/Cards/TitleCard.jsx";
 import { RichTabShowCaseView } from "../../components/Containers/RichTabShowcaseView.jsx";
-import { RichTabData } from "../../assets/TextAssets/ShowCaseTabRich.jsx";
+import { useRichTabData } from "../../assets/TextAssets/ShowCaseTabRich.jsx";
 export const CataloguePage = () => {
   const { getAllMetaData, getMetadata } = useProjects();
   const shortProjects = getAllMetaData();
@@ -41,6 +41,7 @@ export const CataloguePage = () => {
   const [githubProjects, setGithubProjects] = useState([]);
 
   const { modalState, showModal, hideModal, modalVisible } = useModal();
+  const richTabData = useRichTabData();
 
   useEffect(() => {
     getRecentRepos("2of").then((repos) => {
@@ -64,10 +65,10 @@ export const CataloguePage = () => {
       content: (
         <Article
           metadata={metadata}
-          // style="modern"
-          // topDivideDouble={true}
-          // twoColumns={true}
-          // AsArticle={true}
+        // style="modern"
+        // topDivideDouble={true}
+        // twoColumns={true}
+        // AsArticle={true}
         />
       ),
     });
@@ -140,9 +141,9 @@ export const CataloguePage = () => {
                 }}
                 to={proj.url}
                 isExternal={true}
-                // fullLinkCallBack={() => navigate(proj.url)}
-                //   asFS={screenSize === "sm"}
-                // type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
+              // fullLinkCallBack={() => navigate(proj.url)}
+              //   asFS={screenSize === "sm"}
+              // type={screenSize === "sm" ? "mobile_compact" : "compact_thumb"}
               />
               {/* test {proj.url} */}
             </GlassPushOverlay>
@@ -325,7 +326,7 @@ export const CataloguePage = () => {
 
           {showcaseProjects.slice(4).map(renderCard)}
         </div>
-        <RichTabShowCaseView data={RichTabData} />;
+        <RichTabShowCaseView data={richTabData} />;
       </Section>
 
       <Section

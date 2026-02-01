@@ -1,0 +1,199 @@
+/* ================================================== */
+/* HERO CARD - CODE PROFILE STYLE                     */
+/* ================================================== */
+
+.cardWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%; // Fill parent container
+    min-height: 500px;
+    // border: 1px solid var(--border-color);
+    background-color: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    padding: 4rem 1rem;
+    gap: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    // IDE Header - Sophisticated & Clean
+    &::before {
+        content: 'profile_view.tsx';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 36px; // Slightly taller
+        background-color: var(--bg-l1); // Lighter/Different shade
+        border-bottom: 1px solid var(--border-color);
+        font-family: var(--monospace-font, monospace);
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        color: var(--subtext-color);
+        z-index: 10;
+        text-transform: lowercase;
+        opacity: 0.8;
+
+        // Window controls (dots)
+
+        // background-position: 12px center, 26px center, 40px center;
+    }
+
+    // Layout Directions
+    &.right {
+        flex-direction: row;
+    }
+
+    &.left {
+        flex-direction: row-reverse;
+    }
+
+    &:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-color: var(--accent-color);
+    }
+
+    @media (max-width: 900px) {
+        flex-direction: column !important;
+        height: auto;
+    }
+
+    // Ensure direct children (like ImageGallery) take up space
+    > :global(.galleryWrapper) {
+        flex: 1;
+        height: 100%;
+        border-right: 1px solid var(--border-color);
+    }
+}
+
+/* ================================================== */
+/* CONTENT SECTION                                    */
+/* ================================================== */
+
+.contentContainer {
+    flex: 1;
+    padding: 3rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem; // Increased gap for better breathing room
+    position: relative;
+    z-index: 2;
+    // background-color: var(--bg); // Keep transparent/handled by wrapper for now
+
+    // Subtle top gradient for depth instead of line numbers
+    background: linear-gradient(to bottom,
+            var(--bg) 0%,
+            var(--bg) 100%);
+}
+
+/* ================================================== */
+/* TYPOGRAPHY                                         */
+/* ================================================== */
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color);
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--monospace-font, monospace);
+    margin: 0;
+
+    &::before {
+        content: '// ';
+        color: var(--subtext-color);
+        opacity: 0.6;
+    }
+}
+
+.title {
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--text-color);
+    margin: 0;
+    font-family: var(--monospace-font, monospace);
+    letter-spacing: -0.02em;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--subtext-color);
+    margin: 0.5rem 0 0 0;
+    max-width: 600px;
+    font-family: var(--monospace-font, monospace);
+}
+
+/* ================================================== */
+/* ICONS & BUTTONS                                    */
+/* ================================================== */
+
+.iconRow {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.buttonContainer {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ================================================== */
+/* IMAGE / GALLERY SECTION                            */
+/* ================================================== */
+
+// We need to target the ImageGallery component or the container it sits in
+// In HeroCard.jsx, ImageGallery is a direct child of cardWrapper alongside contentContainer
+// But ImageGallery itself might need styling or the wrapper around it.
+// HeroCard.jsx doesn't wrap ImageGallery in a div, it's a direct child.
+// We can target it via :global or if ImageGallery accepts a class.
+// Assuming ImageGallery renders a div, we might need to target it via child selector or similar.
+// However, looking at HeroCard.jsx, it just renders <ImageGallery ... />.
+// Let's assume ImageGallery takes up space. We might want to wrap it in a container in JSX if needed,
+// but for now let's style the layout assuming it's a flex child.
+
+// If we need to style the "image side" specifically:
+// Since ImageGallery is imported, we might not have a class on it from here unless we pass one.
+// But we can style the > :not(.contentContainer) if needed, or just rely on flex.
+
+// Border handling is now done via the gallery wrapper or parent layout logic
+// to ensure clean separation regardless of content order.
+// If we need specific borders on contentContainer, we can add them here,
+// but for now, let's keep it clean.
+
+/* ================================================== */
+/* BACKGROUND COMPONENT                               */
+/* ================================================== */
+
+.background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}

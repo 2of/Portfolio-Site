@@ -1,0 +1,269 @@
+.externalCornerIcon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.5rem;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.6;
+
+  svg {
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+
+.code {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', 'Monaco', monospace;
+  font-size: 1.5rem;
+  font-weight: 200;
+  width: 100%;
+  color: var(--text-color);
+  //   background-color: orange;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-color, #667eea);
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  /* Theme modifiers */
+  &.light {
+    --text-color: #000;
+    --bg-color: #fff;
+  }
+
+  &.dark {
+    --text-color: #fff;
+    --bg-color: #000;
+  }
+
+
+
+  /* Common children styling */
+  .l1,
+  .l2 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    .icon {
+      font-size: 0.85em;
+    }
+
+    .label {
+      font-size: 1em;
+    }
+  }
+
+  .l1 {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+
+  .l2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+
+    background-color: var(--text-color);
+    /* overlay background = main text color */
+    color: var(--bg-color, var(--bg));
+    /* inverted text color */
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+    transition: clip-path 0.3s ease;
+
+    * {
+      color: inherit;
+      /* all children inherit inverted color */
+    }
+  }
+
+  .externalCornerIcon {
+    opacity: 0;
+    transform: translateY(4px) scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: transform, opacity;
+  }
+
+
+  &:hover {
+    .externalCornerIcon {
+
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      // font-size: 0.75rem;
+      color: var(--bg);
+      // color: red;
+      z-index: 2;
+      /* ensure hover icon matches inverted theme */
+    }
+
+    .l2 {
+      clip-path: polygon(0 0, 0 100%, 105% 100%, 100% 0);
+      color: var(--bg)
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ============================================
+// CODE SMALL VARIANT
+// ============================================
+.code_small {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 1rem;
+  font-family: 'Courier New', 'Monaco', monospace;
+  font-weight: 200;
+  color: var(--text-color);
+  overflow: hidden;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-color, #667eea);
+    outline-offset: 2px;
+  }
+
+  /* Theme modifiers */
+  &.light {
+    --text-color: #000;
+    --bg-color: #fff;
+  }
+
+  &.dark {
+    --text-color: #fff;
+    --bg-color: #000;
+  }
+
+
+
+  /* Common children styling */
+  .l1,
+  .l2 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    .icon {
+      font-size: 0.85em;
+    }
+
+    .label {
+      font-size: 1em;
+    }
+  }
+
+  .l1 {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    color: var(--text-color);
+  }
+
+  .l2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 103%;
+    height: 100%;
+    background-color: var(--text-color);
+    /* overlay background = main text color */
+    color: var(--bg-color, var(--bg));
+    /* inverted text color */
+    z-index: 2;
+    padding: 0.35rem 0.75rem;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+    transition: clip-path 0.3s ease;
+
+    * {
+      color: inherit;
+      /* all children inherit inverted color */
+    }
+  }
+
+  .externalCornerIcon {
+    opacity: 0;
+    transform: translateY(4px) scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: transform, opacity;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 0.5rem;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .externalCornerIcon {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      color: var(--bg-color, var(--bg));
+      /* ensure hover icon matches inverted theme */
+    }
+
+    .l2 {
+      clip-path: polygon(0 0, 0 100%, 105% 100%, 100% 0);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Fixed mode overrides - Top Level */
+.fixedWhiteMode {
+  --text-color: #000 !important;
+  --bg-color: #fff !important;
+
+  .l2 {
+    background-color: #000 !important;
+    /* inverted: use text color as bg */
+    color: #fff !important;
+    /* inverted: use bg color as text */
+  }
+}
+
+.fixedDarkMode {
+  --text-color: #fff !important;
+  --bg-color: #000 !important;
+
+  .l2 {
+    background-color: #fff !important;
+    /* inverted: use text color as bg */
+    color: #000 !important;
+    /* inverted: use bg color as text */
+  }
+}

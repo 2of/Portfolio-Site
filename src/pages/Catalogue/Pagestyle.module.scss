@@ -1,27 +1,80 @@
 .LargeThumbGrid {
+  display: grid;
+  width: 100%;
+  /* Robust column sizing */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* Strict row sizing for Bento/Masonry feel */
+  grid-auto-rows: 300px;
+  gap: 24px;
+  grid-auto-flow: dense;
+  padding-bottom: 4rem;
+
     display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: masonry;
+  .ProjectCell {
+    /* Remove border-radius and overflow here to let the card component handle it */
+    /* border-radius: 16px; */
+    /* overflow: hidden; */
+    transition: transform 0.3s ease;
+    height: 100%;
     width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 12px;
-    /* padding: 12px; // Swapped from gap: elements are now padded inside the grid */
-    grid-auto-flow: dense;
 
-    .ProjectCell {
-        min-height: 10rem;
-        &.twobytwo {
-            grid-column: span 2;
-            min-height: 25rem;
-            grid-row: span 2;
-            /* background-color: red; */
-        }
-        &.doublewide {
-            grid-column: span 2;
+    /* Default is 1x1 */
 
-            @media (min-width: 900px) {
-                grid-column: span 3;
-            }
-        }
+    &.wide {
+      grid-column: span 1;
+
+      @media (min-width: 700px) {
+        grid-column: span 2;
+      }
     }
+
+    &.tall {
+      grid-row: span 1;
+
+      @media (min-width: 700px) {
+        grid-row: span 2;
+      }
+    }
+
+    &.big {
+      grid-column: span 1;
+      grid-row: span 1;
+
+      @media (min-width: 700px) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+
+    /* Legacy support if needed, or just for specific overrides */
+    &.twobytwo {
+      grid-column: span 1;
+      grid-row: span 1;
+
+      @media (min-width: 700px) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+  }
+}
+
+.RegularCellGrid { 
+  display: grid;
+  width: 100%;
+  /* Robust column sizing */
+  grid-template-columns: repeat(auto-fit, minmax(320px, fr));
+  /* Strict row sizing for Bento/Masonry feel */
+  grid-auto-rows: 300px;
+  gap: 24px;
+  grid-auto-flow: dense;
+  padding-bottom: 4rem;
+
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 2fr));
+  grid-template-rows: masonry;
 }
 
 .articleTools {

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import styles from "./Pagestyle.module.scss";
 import text from "../../../public/assets/text/texts.json";
 import { ScrollableVerticalView, Section } from "../../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
@@ -12,7 +12,7 @@ import {
   CatalogueHeroSection,
 } from "./CatalogueSections";
 import { RichTabShowCaseView } from "../../components/Containers/RichTabShowcaseView";
-import { RichTabData } from "../../assets/TextAssets/ShowCaseTabRich";
+import { useRichTabData } from "../../assets/TextAssets/ShowCaseTabRich";
 import getIcon from "../../utils/Iconifier";
 import LargeThumbCard from "../../components/Cards/CardLarge";
 import Loader from "../../components/UI/StandardLib/Loader";
@@ -32,11 +32,13 @@ import { PagedScrollContainer } from "../../components/Containers/Scroll/Scrolla
 import { BouncyArrows } from "../../components/UI/DiscreteComponents/bouncyArrows";
 import { Thumbnail } from "../../components/UI/thumbnail";
 import { Article } from "../../components/Article/Article";
-import {StandardButton} from "../../components/UI/StandardLib/StandardButton.jsx";
-import {useNavigate} from "react-router-dom";
+import { StandardButton } from "../../components/UI/StandardLib/StandardButton.jsx";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../contexts/GlobalContext.jsx";
+import { ModernButton } from "../../components/UI/StandardLib/Buttons/Button.jsx";
 
 export const CataloguePage_UP = () => {
-  const { getAllMetaData, getMetadata,getSectionMetaData } = useProjects();
+  const { getAllMetaData, getMetadata, getSectionMetaData } = useProjects();
   const shortProjects = getAllMetaData();
   const screenSize = useScreenSize();
   const { modalState, showModal, hideModal, modalVisible } = useModal();
@@ -54,14 +56,15 @@ export const CataloguePage_UP = () => {
 
 
   const navigate = useNavigate();
+  const richTabData = useRichTabData();
 
 
   const MobileProjSection1 = getSectionMetaData("featured");
   const block2 = getSectionMetaData("block2");
-    const block1 = getSectionMetaData("block1");
-    console.log("BLOCK!", block1);
-    const uniprojects = getSectionMetaData("uniProjects");
-    const tools = getSectionMetaData("tools");
+  const block1 = getSectionMetaData("block1");
+  console.log("BLOCK!", block1);
+  const uniprojects = getSectionMetaData("uniProjects");
+  const tools = getSectionMetaData("tools");
 
 
   useEffect(() => {
@@ -86,130 +89,142 @@ export const CataloguePage_UP = () => {
   };
 
   const renderMobileCard = (project, id, mobile) => {
-      const bgImage = project.details?.thumbbg;
-    
-        return (
-          <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
-            <Thumbnail
-              data={project}
-              fullLinkCallBack={() => handleModalOpen(project)}
-              twoColumns={id === 0}
-              fullLink={true}
-              type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
-              index={id}
-            />
-          </div>
-        );}
+    const bgImage = project.details?.thumbbg;
+
+    return (
+      <div key={id} bgImage={bgImage} className={`${styles.ProjectCell} `}>
+        <Thumbnail
+          data={project}
+          fullLinkCallBack={() => handleModalOpen(project)}
+          twoColumns={id === 0}
+          fullLink={true}
+          type={screenSize === "sm" ? "mobile_fullscreen" : "large_thumb"}
+          index={id}
+        />
+      </div>
+    );
+  }
 
   const renderCard = (
     project,
     id,
-    { compact = false, EntireCardClickable = false } = {},
+    { compact = false, EntireCardClickable = false, variant = "normal" } = {},
   ) => {
     const bgImage = project.details?.thumbbg;
 
+    // Map variant to style class
+    let variantClass = "";
+    if (variant === "wide") variantClass = styles.wide;
+    if (variant === "tall") variantClass = styles.tall;
+    if (variant === "big") variantClass = styles.big;
+    if (variant === "twobytwo") variantClass = styles.twobytwo; // Keep legacy if needed
+
+    // If project.large is explicitly set in data, force big/wide behavior if not overridden
+    if (project.large && variant === "normal") {
+      variantClass = styles.wide; // Default to wide for "large" projects if no specific variant passed
+    }
+
+    // Determine which card component to use
+    // Use Compact if explicitly requested OR if it's a normal (1x1) cell
+    const useCompact = compact || variant === "normal";
+    const {getLink} = useGlobalContext();
     return (
-      <>
-        {compact ? (
-          <div
-            key={id}
-            bgImage={bgImage}
-            className={`${styles.ProjectCell} ${project.large && styles.doublewide}`}
-          >
-            <CatalogueCardCompact
-              data={project.details}
-              icon={getIcon("test")}
-              isdouble={project.large || false}
-              to={
-                project.details.externalLink ||
-                project.details.internalLink ||
-                getProjURL(project.name)
-              }
-              swapsides={id % 2 === 0}
-              EntireCardClickable={EntireCardClickable}
-              compact={compact}
-              isExternal={project.externalLink || false}
-            />
-          </div>
+      <div
+        key={id}
+        bgImage={bgImage}
+        className={`${styles.ProjectCell} ${variantClass}`}
+      >
+        {useCompact ? (
+          <CatalogueCardCompact
+            data={project.details}
+            icon={getIcon("test")}
+            isdouble={variant === "wide" || variant === "big"}
+            to={
+              project.details.externalLink ||
+              project.details.internalLink ||
+              getProjURL(project.name)
+            }
+            swapsides={id % 2 === 0}
+            EntireCardClickable={EntireCardClickable}
+            compact={compact}
+            isExternal={project.externalLink || project.details.external  || false}
+          />
         ) : (
-          <div
-            key={id}
-            bgImage={bgImage}
-            className={`${styles.ProjectCell} ${styles.twobytwo}`}
-          >
-            <CatalogueCardLarge
-              data={project.details}
-              icon={getIcon("test")}
-              isdouble={project.large || false}
-              to={
-                project.details.externalLink ||
-                project.details.internalLink ||
-                getProjURL(project.name)
-              }
-              swapsides={id % 2 === 0}
-              EntireCardClickable={EntireCardClickable}
-              compact={compact}
-              isExternal={project.externalLink || false}
-            />
-          </div>
+          <CatalogueCardLarge
+            data={project.details}
+            icon={getIcon("test")}
+            isdouble={variant === "wide" || variant === "big"}
+            to={
+              // project.details.externalLink ||
+              // project.details.internalLink ||
+              getLink(project.details.linkref) || 
+              // getProjURL(project.name)
+              "https://www.google.com"
+              
+            }
+            swapsides={id % 2 === 0}
+            EntireCardClickable={EntireCardClickable}
+            compact={compact}
+            isExternal={project.externalLink ||  project.details.external  ||  false}
+          />
         )}
-      </>
+      </div>
     );
   };
 
   const MobileView = () => {
 
-  return ( 
-
-    
-<PagedScrollContainer staggerStart borders>
+    return (
 
 
-      <div sectionHeight="full" key="standard-header-1">
+      <PagedScrollContainer staggerStart borders>
 
 
-              {/*<h2>test</h2>*/}
-              <CatalogueMainHeaderMobile />
+        <div sectionHeight="full" key="standard-header-1">
+
+
+          {/*<h2>test</h2>*/}
+          <CatalogueMainHeaderMobile />
           {/*</div>*/}
 
-      </div>
-      {MobileProjSection1.map((project, i) => (
-        <div key={`showcase-${i}`} bgImage={project.details?.bgimage}>
-          {renderMobileCard(project, i)}
         </div>
-      ))}
-      <div sectionHeight="half" key="standard-header-1">
-        <CatalogueStandardHeaderMobile
-          title="Some other projects..."
-          subtitle={"It's pretty well documented"}
-          customComponent={<BouncyArrows direction="down" />}
-          showArrows
-        />
-      </div>
-      {/* <StandardHeaderMobile title="Title"/> */}
-      {block1.map((project, i) => (
-        <div sectionHeight="half"   key={`uni-${i}`} bgImage={project.details?.bgimage}>
-          {renderMobileCard(project, i)}
+        {MobileProjSection1.map((project, i) => (
+          <div key={`showcase-${i}`} bgImage={project.details?.bgimage}>
+            {renderMobileCard(project, i)}
+          </div>
+        ))}
+        <div sectionHeight="half" key="standard-header-1">
+          <CatalogueStandardHeaderMobile
+            title="Some other projects..."
+            subtitle={"It's pretty well documented"}
+            customComponent={<BouncyArrows direction="down" />}
+            showArrows
+          />
         </div>
-      ))}
+        {/* <StandardHeaderMobile title="Title"/> */}
+        {block1.map((project, i) => (
+          <div sectionHeight="half" key={`uni-${i}`} bgImage={project.details?.bgimage}>
+            {renderMobileCard(project, i)}
+          </div>
+        ))}
 
-    <div sectionHeight="quarter" key="standard-header-1">
-        <CatalogueStandardHeaderMobile
+        <div sectionHeight="quarter" key="standard-header-1">
+          <CatalogueStandardHeaderMobile
             title="Notable Uni Work"
             subtitle={"It's pretty well documented"}
             customComponent={<BouncyArrows direction="down" />}
             showArrows
-        />
-    </div>
-    {/* <StandardHeaderMobile title="Title"/> */}
-    {uniprojects.map((project, i) => (
-        <div sectionHeight="half"   key={`uni-${i}`} bgImage={project.details?.bgimage}>
-            {renderMobileCard(project, i)}
+          />
         </div>
-    ))}
+        {/* <StandardHeaderMobile title="Title"/> */}
+        {uniprojects.map((project, i) => (
+          <div sectionHeight="half" key={`uni-${i}`} bgImage={project.details?.bgimage}>
+            {renderMobileCard(project, i)}
+          </div>
+        ))}
 
 
-    </PagedScrollContainer>)
+      </PagedScrollContainer>)
   };
 
   const DesktopView = () => {
@@ -224,13 +239,25 @@ export const CataloguePage_UP = () => {
             <CatalogueLargeTextHeader text1="featured" highlight="projects" />
           )}
         >
-          <RichTabShowCaseView data={RichTabData} />
+          <RichTabShowCaseView data={richTabData} />
         </Section>
-          <Section>
+        <Section>
 
               <Divider variant="Thick" />
           </Section>
-        <Section>
+        <Section
+        
+        
+        
+          Header={() => (
+            <CatalogueRegularTextHeader
+              text1="an"
+              highlight="important"
+              text2="note"
+            />
+          )}
+          
+          >
 
             <>
                 <div className={styles.articleTools}>
@@ -247,18 +274,18 @@ export const CataloguePage_UP = () => {
 
 
                     <div className={styles.buttonRow}>
-                        <StandardButton
+                        <ModernButton
                             className={styles.button}
                             label="Open Article Format Page"
-                            type="rounded_catalogue_card_end_with_label"
+                  variant="dev"
                             icon={getIcon("article")}
                             callback={() => navigate("/proj/portfoliosite")}
                         />
 
-                        <StandardButton
+                        <ModernButton
                             className={styles.button}
                             label="Sample of the Structure for Articles"
-                            type="rounded_catalogue_card_end_with_label"
+               variant="dev"
                             icon={getIcon("article")}
                             callback={() =>
                                 window.open(
@@ -268,10 +295,10 @@ export const CataloguePage_UP = () => {
                             }
                         />
 
-                        <StandardButton
+                        <ModernButton
                             className={styles.button}
                             label="The real (LIVE) Metadata"
-                            type="rounded_catalogue_card_end_with_label"
+                     variant="dev"
                             icon={getIcon("article")}
                             callback={() =>
                                 window.open(
@@ -281,10 +308,10 @@ export const CataloguePage_UP = () => {
                             }
                         />
 
-                        <StandardButton
+                        <ModernButton
                             className={styles.button}
                             label="Open the Rich Editor"
-                            type="rounded_catalogue_card_end_with_label"
+                            variant="dev"
                             icon={getIcon("editor")}
                             callback={() => navigate("/editor")}
                         />
@@ -303,10 +330,10 @@ export const CataloguePage_UP = () => {
 
 
         </Section>
-          <Section>
+        <Section>
 
-              <Divider variant="Thick" />
-          </Section>
+          <Divider variant="Thick" />
+        </Section>
         {/*<Section >*/}
         {/*  <CatalogueHeroSection text={text} />*/}
         {/*</Section>*/}
@@ -317,7 +344,7 @@ export const CataloguePage_UP = () => {
 
         <Section
           // color="l1"
-      
+
           Header={() => (
             <CatalogueRegularTextHeader
               text1="a few more "
@@ -327,15 +354,26 @@ export const CataloguePage_UP = () => {
           )}
         >
           <div className={styles.LargeThumbGrid}>
-            {block1.slice(0, 3).map(renderCard)}
-            {/*<div className={`${styles.ProjectCell} ${styles.twobytwo}`}>*/}
-            {/*  <TitleCard title={"Showcase Projects"} subtitle={"Mostly web"} />*/}
-            {/*</div>*/}
+            {/* {block1.slice(0, 3).map((p, i) => renderCard(p, i, { variant: i === 0 ? "big" : "normal" }))} */}
+            {/* // empty here */}
+            
 
-            {block1.slice(3).map(renderCard)}
+            {block1.map((p, i) => {
+              // Create a pattern: Big, Normal, Normal, Wide, Normal...
+              // This is just a simple e              let variant = "normal";
+              // return (<h1>test {p.showcase && "yrdy"}</h1>)
+      let variant = "normal";
+
+if (p.showcase) variant = "big";
+else if (p.large) variant = "wide";
+// else if (i % 3 === 0) variant = "tall";
+
+return renderCard(p, i + 3, { variant });
+
+            })}
 
 
-              {block2.slice(3).map(renderCard)}
+            {block2.slice(3).map((p, i) => renderCard(p, i + 100, { variant: "normal" }))}
           </div>
         </Section>
 
@@ -343,21 +381,22 @@ export const CataloguePage_UP = () => {
 
           <Divider variant="double" />
         </Section>
-          <Section
-              color=""
-              Header={() => (
-                  <CatalogueRegularTextHeader text1="custom" highlight="tools" />
-              )}
-          >
-              <div className={styles.LargeThumbGrid}>
-                  {tools.map((project, id) =>
-                      renderCard(project, id, {
-                          compact: true,
-                          EntireCardClickable: true,
-                      }),
-                  )}
-              </div>
-          </Section>
+        <Section
+          color=""
+          Header={() => (
+            <CatalogueRegularTextHeader text1="custom tools" highlight="and"  text2="what not
+            "/>
+          )}
+        >
+          <div className={styles.RegularCellGrid}>
+            {tools.map((project, id) =>
+              renderCard(project, id, {
+                compact: true,
+                EntireCardClickable: true,
+              }),
+            )}
+          </div>
+        </Section>
 
         <Section
           color=""
@@ -376,7 +415,7 @@ export const CataloguePage_UP = () => {
         </Section>
 
         <Section
-          
+
           color="l1"
           Header={() => (
             <CatalogueRegularTextHeader

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import useScreenSize from "../utils/screensize.js";
 import {
     ScrollableVerticalView,
@@ -16,28 +16,30 @@ import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx"
 import getIcon from "../utils/Iconifier.jsx";
 import someimage from "../assets/Images/default_big.jpg"
 import Parallax2 from "../assets/HomeParallaxResources/6.png"
-    ""
+""
 import {
     ImageWithStaggeredComponents
 } from "../components/UI/DiscreteComponents/PictureWIthComponentsStaggeredAroundCircle.jsx";
 import QualificationTile from "../components/UI/DiscreteComponents/QualificationTile.jsx";
-import CareerTile from "../components/UI/DiscreteComponents/CareerTile.jsx";
+import CareerTileWithHoverDesktop from "../components/UI/DiscreteComponents/CareerTile.jsx";
 import { Divider } from "../components/UI/Divider.jsx";
 import { PagedScrollContainer } from "../components/Containers/Scroll/ScrollableViews/TikTokView.jsx";
-import {  AboutSection } from "../components/Sections/AboutSection.jsx";
-import {MultiTagsContainer} from "../components/Misc/MultiTagsContainer.jsx";
+import { AboutSection } from "../components/Sections/AboutSection.jsx";
+import { MultiTagsContainer } from "../components/Misc/MultiTagsContainer.jsx";
 import SkillsCard from "../components/Cards/PreDoneCards/SkillsCard.jsx";
-import {AboutCardWithImageMobile} from "../components/Cards/PreDoneCards/AboutCardWithImageMobile.jsx";
-import {MobileCareerQualscard} from "../components/Cards/PreDoneCards/MobileCareerQualscard.jsx";
-import {useNavStack} from "../contexts/NavStackContext.jsx";
+import { AboutCardWithImageMobile } from "../components/Cards/PreDoneCards/AboutCardWithImageMobile.jsx";
+import { MobileSection_CareerQuals } from "../components/Cards/PreDoneCards/MobileSection_CareerQuals.jsx";
+import { useNavStack } from "../contexts/NavStackContext.jsx";
+import StandardToggle from "../components/UI/StandardLib/StandardToggle.jsx";
 export const ModernAbout = () => {
     const { getLink } = useGlobalContext(); // if unused, consider removing
     const { getPageData } = useProjects();
+    const [expandCareerTiles, setExpandCareerTiles] = useState(false);
 
     const [about, setAbout] = useState(null);
     const screenSize = useScreenSize();
-    const [scrollToNextMobileSection,setscrollToNextMobileSection] = useState(0)
-    const [scrollToPrevMobileSection,setscrollToPrevMobileSection] = useState(0)
+    const [scrollToNextMobileSection, setscrollToNextMobileSection] = useState(0)
+    const [scrollToPrevMobileSection, setscrollToPrevMobileSection] = useState(0)
 
     const {
         navstack,
@@ -145,7 +147,7 @@ export const ModernAbout = () => {
 
                 <div sectionHeight="full" key="standard-header-2" bgImage={Parallax2}>
                     {/*<h1>test2</h1>*/}
-                    <MobileCareerQualscard career={career} quals={qualifications} />
+                    <MobileSection_CareerQuals career={career} quals={qualifications} />
                 </div>
 
                 <div sectionHeight="full" key="standard-header-3" >
@@ -190,7 +192,17 @@ export const ModernAbout = () => {
         <ScrollableVerticalView trackScrollPercent >
 
 
-            <Section >
+            <Section
+            // color="gradient"
+
+            // Header={() => (
+            //     <CatalogueLargeTextHeader
+            //         text1="career "
+            //         highlight="so far"
+
+            //     />
+            // )}
+            >
 
                 <div className={styles.sectionHeaderClass}>
 
@@ -204,14 +216,24 @@ export const ModernAbout = () => {
                 </div>
             </Section>
             <Section
-                color="l1"
-            // Header={() => (
-            //     <CatalogueLargeTextHeader text1="about " highlight="me " text2="...?" />
-            // )}
+                // color="gradient"
+                // Header={() => (
+                //     <CatalogueLargeTextHeader text1="about " highlight="me " text2="...?" />
+                // )}
+
+
+                Header={() => (
+                    <CatalogueRegularTextHeader
+                        text1="quals "
+                        highlight="&"
+                        text2="career"
+                    />
+                )}
+
             >
 
 
-                <h2>Quals</h2>
+
                 <div className={styles.longflex}>
 
 
@@ -246,8 +268,40 @@ export const ModernAbout = () => {
 
 
                 </div>
+                {/* 
 
-                <h2>Career so far...</h2>
+            </Section>
+            <Section
+                // color="gradient"
+                // Header={() => (
+                //     <CatalogueLargeTextHeader text1="about " highlight="me " text2="...?" />
+                // )}
+
+
+                Header={() => (
+                    <CatalogueRegularTextHeader
+                        text1="career "
+                        highlight="so far"
+
+                    />
+                )}
+
+            > */}
+
+                <div className={styles.toggleRow}>
+
+
+                    <span className={styles.rightchunk}>
+                        <h4>expand all</h4>
+                        <StandardToggle
+                            type="checkbox"
+                            checked={expandCareerTiles}
+                            callback={(value) => setExpandCareerTiles(value)}
+
+                        />
+                    </span>
+
+                </div>
                 <div className={styles.tilegrid}>
 
 
@@ -258,13 +312,14 @@ export const ModernAbout = () => {
 
 
 
-                            <CareerTile
+                            <CareerTileWithHoverDesktop
                                 position={c.position}
                                 company={c.company}
                                 duration={c.duration}
                                 location={c.location}
                                 doing={c.doing}
                                 techStack={c.coreskills}
+                                alwaysexpand={expandCareerTiles}
 
 
                             />
@@ -284,8 +339,25 @@ export const ModernAbout = () => {
 
                 </div>
 
+            </Section>
+            <Section
+                // color="gradient"
+                // Header={() => (
+                //     <CatalogueLargeTextHeader text1="about " highlight="me " text2="...?" />
+                // )}
 
-                <h2>Things I can do</h2>
+
+                Header={() => (
+                    <CatalogueRegularTextHeader
+                        text1="things that"
+                        highlight="i can"
+                        text2="do"
+
+                    />
+                )}
+
+            >
+
 
                 <MultiTagsContainer fullskills={fullskills} />
 

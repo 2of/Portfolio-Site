@@ -99,11 +99,13 @@
 
   .content {
     //height: 100%;
-    //position: relative;
+    position: relative;
     will-change: transform, opacity;
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.4s ease-in-out;
+//background-color: yellow;
+    flex-grow: 1;
   }
 
   &.small {
@@ -126,6 +128,8 @@
     width: 100%;
     max-width: var(--maxWidth);
     height: 90%;
+
+
   }
   &.fullScreen {
     width: 100vw !important;

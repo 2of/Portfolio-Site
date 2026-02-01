@@ -10,7 +10,7 @@ const GlassPushOverlay = ({
   mouseEnterCallback,
   mouseLeaveCallback,
   showShine = false, // Rename to match casing convention
-  showDeform = true, // NEW PROP: Controls rotation and scale
+  showDeform = true, 
   id,
 }) => {
   const containerRef = useRef(null);

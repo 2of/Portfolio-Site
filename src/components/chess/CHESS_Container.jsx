@@ -56,7 +56,7 @@ export const CHESS_Container = ({ game }) => {
           max={totalMoves}
           value={sliderVal}
           variant="thick"
-     
+
           onChange={setSliderVal}
           disabled={controlsDisabled}
         />
@@ -68,8 +68,8 @@ export const CHESS_Container = ({ game }) => {
         />
       </div>
 
-       
-    
+
+
     </div>
   );
 };

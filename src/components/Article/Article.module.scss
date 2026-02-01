@@ -1,11 +1,11 @@
-.LoaderStatusContainer { 
+.LoaderStatusContainer {
     // background-color: red;
     height: 100%;
     width: 100%;
 }
 
 
-.WIPalert { 
+.WIPalert {
     background-color: var(--bg);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -13,42 +13,43 @@
 }
 
 .tagContainer {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;         // vertically center items
-  gap: 0.5rem;
-//   background-color: red;
-
-  // Optional padding if you want a little breathing room
-  // padding: 0.5rem 1rem;
-
-  p {
+    width: 100%;
     display: flex;
-    align-items: center;
-    gap: 0.25rem;
+    flex-wrap: wrap;
+    align-items: center; // vertically center items
+    gap: 0.5rem;
+    //   background-color: red;
 
-    svg {
-      width: 1rem;
-      height: 1rem;
-      flex-shrink: 0;
+    // Optional padding if you want a little breathing room
+    // padding: 0.5rem 1rem;
+
+    p {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+            flex-shrink: 0;
+        }
     }
-  }
 
-  span {
-    display: inline-flex;
-    align-items: center;       // centers the text vertically
-    background-color: var(--bg);
-    color: var(--text-color);
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    white-space: nowrap;
-  }
+    span {
+        display: inline-flex;
+        align-items: center; // centers the text vertically
+        background-color: var(--bg);
+        color: var(--text-color);
+        padding: 0.25rem 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        font-size: 0.875rem;
+        white-space: nowrap;
+    }
 }
+
 .desktop {
-// background-color: red;
+    // background-color: red;
 
     &.articleContainer {
         overflow-y: auto;
@@ -59,47 +60,49 @@
         flex-direction: column;
         align-items: center;
         overflow-x: hidden;
+
         * {
             // border: 1px solid pink;
         }
     }
 
-.hide { 
-  opacity: 0;
-  transform: translateY(-10px) scale(0.95);
-  filter: blur(2px);
-  pointer-events: none; // optional: prevent clicks when hidden
-}
+    .hide {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        filter: blur(2px);
+        pointer-events: none; // optional: prevent clicks when hidden
+    }
 
-.show { 
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-  background-color: var(--bg);
-  pointer-events: auto;
-}
-.titleSection {
-  max-width: 1400px;
-  margin-top: 30vh;   // starts 30% down the viewport
-  width: 100%;
+    .show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        background-color: var(--bg);
+        pointer-events: auto;
+    }
 
-//   position: sticky;
-  top: 0;             // lock to very top when scrolling up
-//   z-index: 53;
-  background: inherit;
+    .titleSection {
+        max-width: 1400px;
+        margin-top: 30vh; // starts 30% down the viewport
+        width: 100%;
+
+        //   position: sticky;
+        top: 0; // lock to very top when scrolling up
+        //   z-index: 53;
+        background: inherit;
 
         .header {
             padding: 16px 24px;
             display: flex;
             flex-direction: column;
-            gap: 12px;  
+            gap: 12px;
 
             h1 {
                 font-weight: 300;
                 margin: 0;
                 line-height: 1.2;
-  font-size: clamp(3rem, 10vw + 1rem, 4rem);
-    //   font-weight: 900;
+                font-size: clamp(3rem, 10vw + 1rem, 4rem);
+                //   font-weight: 900;
                 letter-spacing: -0.025em;
                 z-index: 3;
             }
@@ -131,27 +134,27 @@
                     color: #ccc;
                 }
             }
-         
+
             .heroLinksContainer {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 12px;
                 align-items: center;
                 justify-content: flex-start;
- transition: opacity 0.3s ease-in-out; // smooth fade
+                transition: opacity 0.3s ease-in-out; // smooth fade
 
                 .ToggleContainer {
                     align-self: stretch;
                 }
 
-                
+
             }
         }
     }
 
     .titlePopup {
         position: absolute;
-z-index: 1000;
+        z-index: 1000;
         width: 100%;
         top: var(--navHeightDESKTOP);
         display: flex;
@@ -196,20 +199,20 @@ z-index: 1000;
         }
     }
 
-    .bgImageContainer { 
-  position: absolute;
-  width: 100vw;
-         overflow: hidden;
-         height: 100vh;
-    z-index: -1;
+    .bgImageContainer {
+        position: absolute;
+        width: 100vw;
+        overflow: hidden;
+        height: 100vh;
+        z-index: -1;
     }
 
     .bgImage {
         // background-color: red;
         height: 100%;
         width: 100%;
- 
-    
+
+
     }
 
     .gradientBG {
@@ -282,21 +285,22 @@ z-index: 1000;
         }
     }
 
-           .standardControlsContainer { 
-                // background-color: green;
-                display: flex;
-                height: 40px;
-                display: flex;
-                // background-color: red;
-                align-items: center;
+    .standardControlsContainer {
+        // background-color: green;
+        display: flex;
+        height: 40px;
+        display: flex;
+        // background-color: red;
+        align-items: center;
 
-                gap: 12px;
-                justify-content: flex-end;
-            }
+        gap: 12px;
+        justify-content: flex-end;
+    }
 
-            .ToggleContainer { 
-                height: 100%;
-            }
+    .ToggleContainer {
+        height: 100%;
+    }
+
     .titleSection {
         max-width: 1400px;
         margin-top: 30vh;

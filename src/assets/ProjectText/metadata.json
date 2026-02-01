@@ -34,6 +34,27 @@
       "title": "Machine Learning for Neighbourhood-Scale GeoLocalization of Street Level Imagery from Local Image Features"
     }
   },
+    {
+    "name": "MonitorMinder",
+    "showcase": true,
+    "uniWorkShowcase": false,
+    "details": {
+      "icon": "map",
+      "subtitle": "Change MacOS desktop components based on Monitor Setups",
+      "tags": [
+      "Swift", "JSON", "SwiftUI", "MacAppStore"
+      ],
+      "showcase": true,
+      "uniWorkShowcase": false,
+   "external": true,
+      "url": "https://raw.githubusercontent.com/2of/portfolio_website_content/refs/heads/main/Sample.json",
+
+      "heroImage": "/assets/heroImages/geo.png",
+      "thumbbg": "/assets/heroImages/geo.png",
+      "bgimage": "/Writeups/GEO/hero.png",
+      "title": "MacOS Monitor Minder. WFH Companion!"
+    }
+  },
   {
     "name": "portfoliosite",
     "showcase": true,
@@ -53,7 +74,7 @@
   },
   {
     "name": "RGBHands",
-    "showcase": true,
+
     "uniWorkShowcase": false,
 
     "details": {

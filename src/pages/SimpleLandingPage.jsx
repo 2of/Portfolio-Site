@@ -1,18 +1,19 @@
 import react from "react";
-import {CenteredContainer} from "../components/Containers/Scroll/CenteredContainer.jsx";
-import {StandardButton} from "../components/UI/StandardLib/StandardButton.jsx";
+import { CenteredContainer } from "../components/Containers/Scroll/CenteredContainer.jsx";
+import { StandardButton } from "../components/UI/StandardLib/StandardButton.jsx";
 
 import styles from "./styles/SimpleLandingPage.module.scss";
-import {useNavigate} from "react-router-dom";
-import {useGlobalContext} from "../contexts/GlobalContext.jsx";
-import {useDarkMode} from "../contexts/DarkModeContext.jsx";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../contexts/GlobalContext.jsx";
+import { useDarkMode } from "../contexts/DarkModeContext.jsx";
 import getIcon from "../utils/Iconifier.jsx";
-import {Article} from "../components/Article/Article.jsx";
+import { Article } from "../components/Article/Article.jsx";
 import React from "react";
-import {useModal} from "../contexts/ModalContext.jsx";
-import {LandingPage} from "./Landing.jsx";
-import {SiteInfoCard} from "../components/Cards/PreDoneCards/SiteInfoCard.jsx";
+import { useModal } from "../contexts/ModalContext.jsx";
+import { LandingPage } from "./Landing.jsx";
+import { SiteInfoCard } from "../components/Cards/PreDoneCards/SiteInfoCard.jsx";
 import useScreenSize from "../utils/screensize.js";
+import { ModernButton } from "../components/UI/StandardLib/Buttons/Button.jsx";
 export const SimpleLandingPage = () => {
     const navigate = useNavigate();
     const { getLink } = useGlobalContext();
@@ -28,7 +29,7 @@ export const SimpleLandingPage = () => {
             size: "medium",
             floatnav: false,
             content: (
-               <SiteInfoCard/>
+                <SiteInfoCard />
             ),
         });
     };
@@ -41,12 +42,12 @@ export const SimpleLandingPage = () => {
         <CenteredContainer>
 
             <div className={wrapperClass}>
-                <StandardButton
+                {/* <StandardButton
                     label="open rich homepage"
                     type={btnType}
                     icon={getIcon("home")}
                     callback={() => navigate("/home")}
-                />
+                /> */}
 
                 <StandardButton
                     label="info about"
@@ -62,9 +63,9 @@ export const SimpleLandingPage = () => {
 
 
 
-        <h1 className={styles.title}>
-        <p>Hello</p> <p className={styles.highlight}>There</p>
-        </h1>
+            <h1 className={styles.title}>
+                <p>Hello</p> <p className={styles.highlight}>There</p>
+            </h1>
 
             <p className={styles.blurb}>
                 You've found my little portfolio site.... I'm Noah, I'm a         <span className={styles.highlight}>Master of Artificial Intelligence</span>{' '}grad looking for{' '}
@@ -78,13 +79,13 @@ export const SimpleLandingPage = () => {
             <div className={styles.ButtonContainer}>
 
 
-                <StandardButton label={".about"} type={"code"} callback={() => navigate("/about")}/>
-                <StandardButton label={".projects"} type={"code"}callback={() => navigate("/projects")} />
+                <ModernButton label={".about"} variant={"code"} callback={() => navigate("/about")} />
+                <ModernButton label={".projects"} variant={"code"} callback={() => navigate("/projects")} />
 
-                <StandardButton label={".resume"} type={"code"}external link={getLink("resume")}/>
-                <StandardButton label={".linkedin"} type={"code"}  external  link={getLink("linkedin")} />
-                <StandardButton label={".github"} type={"code"}    external  link={getLink("github")}/>
-                <StandardButton label={!darkMode ? ".dark" : ".light"} type={"code"}     callback={() => toggleDarkMode()}/>
+                <ModernButton label={".resume"} variant={"code"} external link={getLink("resume")} />
+                <ModernButton label={".linkedin"} variant={"code"} external link={getLink("linkedin")} />
+                <ModernButton label={".github"} variant={"code"} external link={getLink("github")} />
+                <ModernButton label={!darkMode ? ".dark" : ".light"} variant={"code"} callback={() => toggleDarkMode()} />
                 {/*<StandardButton label={"meta"} type={"code"} />*/}
             </div>
 

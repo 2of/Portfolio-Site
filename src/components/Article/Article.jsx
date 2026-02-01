@@ -39,7 +39,7 @@ const StandardControls = React.memo(({ data, mobile = false }) => {
         label="Share"
         icon={getIcon("share")}
         callback={handleShare} // Use the memoized callback
-        type="article"
+        type="code_small"
         fillContainer={mobile}
       />
       {/* Removed the commented-out StandardToggle logic for cleaner code */}
@@ -54,9 +54,8 @@ export const TitleSectionPortable = React.memo(
 
     return (
       <div
-        className={`${styles.articleContainer} ${
-          isMobile ? styles.mobile : styles.desktop
-        }`}
+        className={`${styles.articleContainer} ${isMobile ? styles.mobile : styles.desktop
+          }`}
       >
         <div className={styles.bgImageContainer}>
           <div
@@ -64,11 +63,11 @@ export const TitleSectionPortable = React.memo(
             style={
               data?.heroImage
                 ? {
-                    backgroundImage: `url(${data.heroImage})`,
-                    backgroundAttachment: "fixed",
-                    filter: "blur(4px)", // static default, or make it responsive
-                    transform: `scale(1.1)`,
-                  }
+                  backgroundImage: `url(${data.heroImage})`,
+                  backgroundAttachment: "fixed",
+                  filter: "blur(4px)", // static default, or make it responsive
+                  transform: `scale(1.1)`,
+                }
                 : {}
             }
           />
@@ -143,7 +142,7 @@ const HeroLinks = React.memo(({ linkData }) => {
           <StandardButton
             label={item.title}
             icon={getIcon(item.icon)}
-            type="article"
+            type="code_small"
             external={true}
             callback={() => window.open(item.to, "_blank")}
             fillContainer={true}
@@ -182,7 +181,7 @@ export const Article = ({ metadata, fixeddata }) => {
   const [data, setData] = useState({});
   const [bgModifiervalue, setbgModifiervalue] = useState(0);
   const containerRef = useRef(null);
-    const iswip = metadata?.wip || false;
+  const iswip = metadata?.wip || false;
 
   const bgImageRef = useRef(null);
   const titlePopupRef = useRef(null);
@@ -271,9 +270,8 @@ export const Article = ({ metadata, fixeddata }) => {
 
   return (
     <div
-      className={`${styles.articleContainer} ${
-        screenSize === "sm" ? styles.mobile : styles.desktop
-      }`}
+      className={`${styles.articleContainer} ${screenSize === "sm" ? styles.mobile : styles.desktop
+        }`}
       ref={containerRef}
     >
       <div className={`${styles.bgImageContainer} `}>
@@ -283,10 +281,10 @@ export const Article = ({ metadata, fixeddata }) => {
           style={
             data?.heroImage
               ? {
-                  backgroundImage: `url(${data.heroImage})`,
-                  backgroundAttachment: "fixed",
-                  // Dynamic styles removed from here, now in useEffect
-                }
+                backgroundImage: `url(${data.heroImage})`,
+                backgroundAttachment: "fixed",
+                // Dynamic styles removed from here, now in useEffect
+              }
               : {}
           }
         />
@@ -296,7 +294,7 @@ export const Article = ({ metadata, fixeddata }) => {
         <div
           className={styles.titlePopup}
           ref={titlePopupRef} // ✅ Ref is attached
-          // 2. ✅ REMOVE the entire style prop block to allow the useEffect to control the CSS
+        // 2. ✅ REMOVE the entire style prop block to allow the useEffect to control the CSS
         >
           <div className={`${styles.TitleContainer} `}>
             <p>{data.title}</p>
@@ -313,7 +311,7 @@ export const Article = ({ metadata, fixeddata }) => {
           tags={metadata?.details?.tags}
 
           mobile={screenSize === "sm"}
-          // hiderows = {bgModifiervalue}
+        // hiderows = {bgModifiervalue}
         />
       </div>
 
@@ -324,9 +322,9 @@ export const Article = ({ metadata, fixeddata }) => {
       )}
       <div
         className={styles.gradientBG}
-        // style={{
-        //   transform: `translateY(${1.2 - bgModifiervalue * 42}px)`,
-        // }}
+      // style={{
+      //   transform: `translateY(${1.2 - bgModifiervalue * 42}px)`,
+      // }}
       />
       <div className={styles.contentSection}>
         <ArticleContent data={data} />

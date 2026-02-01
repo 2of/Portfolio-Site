@@ -1,13 +1,14 @@
 import react from 'react'
-import {StandardTab} from "../../UI/StandardTab.jsx";
+import { StandardTab } from "../../UI/StandardTab.jsx";
 import React from "react";
 
-import styles from "./styles/MobileCareerQualscard.module.scss";
+import styles from "./styles/MobileSection_CareerQuals.module.scss";
 import CareerTile from "../../UI/DiscreteComponents/CareerTile.jsx";
 import QualificationTile from "../../UI/DiscreteComponents/QualificationTile.jsx";
 import getIcon from "../../../utils/Iconifier.jsx";
+import MobileCareerTile from "../../UI/DiscreteComponents/MobileCareerTile.jsx";
 
-export const MobileCareerQualscard = ({career,quals}) => {
+export const MobileSection_CareerQuals= ({ career, quals }) => {
 
 
     const tabs = {
@@ -53,7 +54,7 @@ export const MobileCareerQualscard = ({career,quals}) => {
 
 
 
-                        <CareerTile
+                        <MobileCareerTile
                             position={c.position}
                             company={c.company}
                             duration={c.duration}
@@ -81,9 +82,9 @@ export const MobileCareerQualscard = ({career,quals}) => {
 
 
 
-        <StandardTab tabs={tabs} variant={"mobile"} tabPosition={ "bottom"}>
+            <StandardTab tabs={tabs} variant={"mobile"} tabPosition={"bottom"}>
 
-        </StandardTab>
+            </StandardTab>
         </div>
     )
 

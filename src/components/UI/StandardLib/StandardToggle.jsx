@@ -20,11 +20,13 @@ const modernVariantMap = {
   basic_small: style.variantBasicSmall,
   utility: style.variantUtility,
   soft: style.variantSoft,
+  dev: style.variantDev,
+  checkbox: style.variantCheckbox,
 };
 
 const StandardToggle = ({
   type = "box",
-  callback = () => {},
+  callback = () => { },
   firsticon: FirstIcon,
   secondicon: SecondIcon,
   checked = false,

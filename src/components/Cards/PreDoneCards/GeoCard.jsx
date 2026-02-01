@@ -5,8 +5,9 @@ import newyorkimage from "../../../assets/Images/NewYork.png";
 import { StandardButton } from "../../UI/StandardLib/StandardButton.jsx";
 import getIcon from "../../../utils/Iconifier";
 import { style } from "framer-motion/m";
-import {useNavigate} from "react-router-dom";
-import {useGlobalContext} from "../../../contexts/GlobalContext.jsx";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../../contexts/GlobalContext.jsx";
+import { ModernButton } from "../../UI/StandardLib/Buttons/Button.jsx";
 const tags = [
   "Machine Learning",
   "Tensorflow",
@@ -82,7 +83,7 @@ const GeoCard = () => {
   const [pins, setPins] = useState([]);
 
   const navigate = useNavigate();
-  const {getLink} = useGlobalContext()
+  const { getLink } = useGlobalContext()
   const movePins = () => {
     setPins((prevPins) =>
       prevPins.map((p) => ({
@@ -192,22 +193,22 @@ const GeoCard = () => {
         {pins.map((p) => (
           <Pin key={p.id} {...p} onRemove={removePin} />
         ))}
-        {/* {MidPin()} {/* Render the mid pin */}*/}
+        {/* {MidPin()} {/* Render the mid pin */}
       </div>
       <div className={styles.gradientbg} />
 
       <div className={styles.content}>
         {" "}
         <div className={styles.top}>
-          <h3>
-            Machine Learning for CityScale Geolocalization 
+          <h3 className={styles.title}>
+            Machine Learning for CityScale Geolocalization
             {/* Machine Learning, Transfer learning, Clustering Analysis, Attention
           Models and Deep Learning*/}
           </h3>
           <p className={styles.subtitle}>Call it a GeoGuessr Bot</p>
           {/* <div className={styles.description}>This is a GeoCard component.</div>*/}
-       
-       <div className={styles.tagsContainer}>
+
+          <div className={styles.tagsContainer}>
             {tags.map((tagi, i) => {
               return (
                 <p className={styles.tag} key={i}>
@@ -217,26 +218,29 @@ const GeoCard = () => {
             })}
           </div>
 
-           
+
           <div className={styles.buttonsContainer}>
-            <StandardButton
+            <ModernButton
               label="Open Writeup"
-              type="rounded_label"
+              variant="code_small"
               icon={getIcon("article")}
-              callback={() =>  navigate("/proj/geo")}
+              fixeddarkmode
+              callback={() => navigate("/proj/geo")}
             />
-            <StandardButton
+            <ModernButton
               label="Open Thesis"
-              type="rounded_label"
+              variant="code_small"
               icon={getIcon("school")}
-              link = {getLink("geothesis")}
+              fixeddarkmode
+              link={getLink("geothesis")}
             />
-            <StandardButton
+            <ModernButton
               label="Code Repo"
-              type="rounded_label"
-              link = {getLink("georepo")}
+              variant="code_small"
+              link={getLink("georepo")}
               icon={getIcon("github")}
-              callback={() => {} }
+              fixeddarkmode
+              callback={() => { }}
             />
           </div>
 
@@ -244,7 +248,7 @@ const GeoCard = () => {
 
 
         <div className={styles.bottom}>
-         
+
         </div>
       </div>
     </div>

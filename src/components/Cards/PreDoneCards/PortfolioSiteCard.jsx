@@ -5,6 +5,7 @@ import TrackedGradientBG from "../../Background/TrackedGradientBg";
 import getIcon from "../../../utils/Iconifier";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../../contexts/GlobalContext.jsx";
+import { ModernButton } from "../../UI/StandardLib/Buttons/Button.jsx";
 
 export const PortfolioSiteCard = () => {
     const navigate = useNavigate();
@@ -36,9 +37,9 @@ export const PortfolioSiteCard = () => {
             {/* Body */}
             <div className={styles.cardBody}>
                 <div className={styles.ButtonContainer}>
-                    <StandardButton
+                    <ModernButton
                         label="thingies.dev"
-                        type="rounded_catalogue_card_end_with_label"
+                        variant="rounded"
                         icon={getIcon("right")}
                         link="https://thingies.dev"
                     />

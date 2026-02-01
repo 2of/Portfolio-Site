@@ -20,19 +20,25 @@ import { CHESS_Container } from "../components/chess/CHESS_Container";
 import { ChessTracker } from "../components/chess/gametracker";
 import { useModal } from "../contexts/ModalContext";
 import { ScrollableVerticalView, Section } from "../components/Containers/Scroll/ScrollableViews/ScrollableVerticalView";
+
+// Moved outside to prevent re-creation on every render
+const BoardContent = ({ game }) => (
+  <div className={styles.gameArea}>
+    <CHESS_Container game={game} />
+  </div>
+);
+
 export const NewChessPage = () => {
   const [pgn, setpgn] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState("dense");
-const [game, setGame] = useState(() => new ChessTracker());
-
+  const [game, setGame] = useState(() => new ChessTracker());
+  const [modelStatus, setModelStatus] = useState("Not loaded");
 
   const { alertState, showAlert, hideAlert, alertVisible } = useAlertMenu();
-  const [modelStatus, setModelStatus] = useState("Not loaded");
   const { getArticle, getListOfArticles, getArticleMetaData } = useProjects();
-  //   const game = new ChessTracker();
-  const [version, setVersion] = useState(0); // dummy for chess being broken ish
   const { modalState, showModal, hideModal, modalVisible } = useModal();
+
   const handleOpenModal = () => {
     openModal();
   };
@@ -45,10 +51,10 @@ const [game, setGame] = useState(() => new ChessTracker());
       content: (
         <Article
           metadata={getArticleMetaData("chessEloEstimator")}
-          // style="modern"
-          // topDivideDouble={true}
-          // twoColumns={true}
-          // AsArticle={true}
+        // style="modern"
+        // topDivideDouble={true}
+        // twoColumns={true}
+        // AsArticle={true}
         />
       ),
     });
@@ -120,139 +126,131 @@ const [game, setGame] = useState(() => new ChessTracker());
       // If your modal renders HTML, replace \n with <br>:
       // const message = `There are ${issues.length} issue(s):<br><br>- ${issues.join("<br>- ")}`;
 
+
       triggerAlert(title, message);
     }
   };
 
-const BoardContent = ({ version, game, styles }) => { 
-    return ( // <-- ADD THE 'return' KEYWORD HERE
-      <div className={styles.gameArea}>
-        <CHESS_Container key={version} game={game} />
+  const Header = ({ styles }) => {
+
+
+    return (
+
+      <div className={styles.header}>
+        <h1>Chess Elo Estimator</h1>
+
+        <span>Paste PGN → Select a Model → Load Model → Press predict</span>
+        <p>
+          This page loads tensorflow models trained on ~33 million chess games
+          to estimate ELO. See the Link Link Link Read about it{" "}
+          <a
+            onClick={handleOpenModal}
+            style={{
+              color: "var(--primary-color)", // or any accent color
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
+          >
+            here
+          </a>
+        </p>
       </div>
-    );
+
+
+    )
   }
-
-
-const Header = ({styles}) => { 
-
-
-  return ( 
-
-   <div className={styles.header}>
-          <h1>Chess Elo Estimator</h1>
-
-          <span>Paste PGN → Select a Model → Load Model → Press predict</span>
-          <p>
-            This page loads tensorflow models trained on ~33 million chess games
-            to estimate ELO. See the Link Link Link Read about it{" "}
-            <a
-              onClick={handleOpenModal}
-              style={{
-                color: "var(--primary-color)", // or any accent color
-                cursor: "pointer",
-                textDecoration: "underline",
-              }}
-            >
-              here
-            </a>
-          </p>
-        </div>
-
-
-  )
-}
   return (
     <>
-    <ScrollableVerticalView  staggerStart trackScrollPercent>
+      <ScrollableVerticalView staggerStart trackScrollPercent>
 
- <Section Header={() => (
-  <Header styles={styles}/>
- )}>
+        <Section Header={() => (
+          <Header styles={styles} />
+        )}>
 
-        <div className={styles.twocol}>
+          <div className={styles.twocol}>
 
-<BoardContent game={game} styles={styles} />
-          <div className={styles.controlArea}>
-            <h4>Paste Your PGN Here</h4>
+            <BoardContent game={game} styles={styles} />
+            <div className={styles.controlArea}>
+              <h4>Paste Your PGN Here</h4>
 
-            <textarea
-              value={pgn}
-              onChange={(e) => setpgn(e.target.value)}
-              placeholder="Paste PGN here"
-              className={`flatStyleShadow_NO_INTERACT ${styles.Textarea}`}
-            />
-            <div className={styles.buttonRow}>
-              <StandardButton
-                label="Update"
-                tooltip="White prediction"
-                type="subtle"
-                callback={updateClick}
+              <textarea
+                value={pgn}
+                onChange={(e) => setpgn(e.target.value)}
+                placeholder="Paste PGN here"
+                className={`flatStyleShadow_NO_INTERACT ${styles.Textarea}`}
               />
-
-              <StandardButton
-                label="Load Sample"
-                tooltip="White prediction"
-                //   type="subtle"
-                callback={handleLoadSampleClick}
-                type="subtle"
-              >
-                Submit
-              </StandardButton>
-            </div>
-            <div className={styles.divider} />
-
-            <div className={styles.ControlsSection}>
-              {loading && (
-                <div className={styles.loadingOverlay}>
-                  <Loader />
-                </div>
-              )}
-              {/* <div className={styles.modelStatus}>Model Status: {modelStatus}</div> */}
-              <h4>Select a Model</h4>
-              {/* <p>Select a Model</p> */}
-              <StandardRadioButtons
-                //   label="Model"
-                options={[
-                  { label: "CNN", value: "cnn" },
-                  { label: "RNN", value: "rnn" },
-                  { label: "Dense", value: "dense" },
-                ]}
-                selectedValue={selectedModel}
-                onChange={setSelectedModel}
-                layout="horizontal"
-              />
-              <span className={styles.buttonRow}>
+              <div className={styles.buttonRow}>
                 <StandardButton
-                  label="Load Model"
+                  label="Update"
+                  tooltip="White prediction"
                   type="subtle"
-                  callback={handleLoadModel}
-                />
-                <StandardButton
-                  label={modelStatus === "Loaded" ? "" : "Compute"}
-                  disable={modelStatus === "Loaded"}
-                  type="subtle"
-                  callback={handleComputeClick}
+                  callback={updateClick}
                 />
 
+                <StandardButton
+                  label="Load Sample"
+                  tooltip="White prediction"
+                  //   type="subtle"
+                  callback={handleLoadSampleClick}
+                  type="subtle"
+                >
+                  Submit
+                </StandardButton>
+              </div>
+              <div className={styles.divider} />
+
+              <div className={styles.ControlsSection}>
+                {loading && (
+                  <div className={styles.loadingOverlay}>
+                    <Loader />
+                  </div>
+                )}
                 {/* <div className={styles.modelStatus}>Model Status: {modelStatus}</div> */}
+                <h4>Select a Model</h4>
+                {/* <p>Select a Model</p> */}
+                <StandardRadioButtons
+                  //   label="Model"
+                  options={[
+                    { label: "CNN", value: "cnn" },
+                    { label: "RNN", value: "rnn" },
+                    { label: "Dense", value: "dense" },
+                  ]}
+                  selectedValue={selectedModel}
+                  onChange={setSelectedModel}
+                  layout="horizontal"
+                />
+                <span className={styles.buttonRow}>
+                  <StandardButton
+                    label="Load Model"
+                    type="subtle"
+                    callback={handleLoadModel}
+                  />
+                  <StandardButton
+                    label={modelStatus === "Loaded" ? "" : "Compute"}
+                    disable={modelStatus === "Loaded"}
+                    type="subtle"
+                    callback={handleComputeClick}
+                  />
+
+                  {/* <div className={styles.modelStatus}>Model Status: {modelStatus}</div> */}
+                </span>
+                <div className={styles.modelStatus}>{modelStatus}</div>
+              </div>
+              <div className={styles.divider} />
+              {/* <h4>And Voila</h4> */}
+
+              <span className={styles.buttonRow}>
+                <h5>Estimated ELOs </h5>
+                <span className={styles.estimation}>White: ????</span>
+                <span className={styles.estimation}>Black: ????</span>
               </span>
-              <div className={styles.modelStatus}>{modelStatus}</div>
-            </div>
-            <div className={styles.divider} />
-            {/* <h4>And Voila</h4> */}
+              <div className={styles.divider} />
 
-            <span className={styles.buttonRow}>
-              <h5>Estimated ELOs </h5>
-              <span className={styles.estimation}>White: ????</span>
-              <span className={styles.estimation}>Black: ????</span>
-            </span>
-            <div className={styles.divider} />
-
-            <div className={styles.movesList}>
-              {pgn === "" ? "No moves yet" : parsePGNtoRawMoves(pgn, true)}
+              <div className={styles.movesList}>
+                {pgn === "" ? "No moves yet" : parsePGNtoRawMoves(pgn, true)}
+              </div>
             </div>
           </div>
-        </div>
 
 
         </Section>

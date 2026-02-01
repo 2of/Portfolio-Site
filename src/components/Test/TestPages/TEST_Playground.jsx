@@ -6,8 +6,9 @@ import DesktopNav from "../../Nav/DesktopNav";
 import { RichTabShowCaseView } from "../../Containers/RichTabShowcaseView";
 import LinkedinCard from "../../Cards/PreDoneCards/LinkedInCard";
 import GithubCard from "../../Cards/PreDoneCards/GithubCard";
-import { RichTabData } from "../../../assets/TextAssets/ShowCaseTabRich";
+// import { RichTabData } from "../../../assets/TextAssets/ShowCaseTabRich";
 import { useProjects } from "../../../contexts/ContentContext";
+import { ModernButton } from "../../UI/StandardLib/Buttons/Button";
 // Move testVariants outside the component to memoize the functions/icons
 const testVariants = [
   {
@@ -43,12 +44,12 @@ export const PlaygroundPage = () => {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [direction, setDirection] = useState("vertical");
-  const {getSectionMetaData} = useProjects();
+  const { getSectionMetaData } = useProjects();
 
-  const testSectionClick = () => { 
+  const testSectionClick = () => {
     // alert("TEST")
-// console.log(getSectionMetaData({ sectionName: "test" }));
-console.log(getSectionMetaData("featured"))
+    // console.log(getSectionMetaData({ sectionName: "test" }));
+    console.log(getSectionMetaData("featured"))
 
 
 
@@ -138,7 +139,39 @@ console.log(getSectionMetaData("featured"))
     <div style={{ padding: "2rem" }}>
       <h1>Playground</h1>
 
-      <button onClick={()=> testSectionClick()}>CLICKY</button>
+      <h2>Code Variants</h2>
+      <ModernButton variant="code" icon={getIcon("apple")} label="code" tooltip="Favorite" />
+      <ModernButton variant="code" icon={getIcon("apple")} fixeddarkmode label="code dark" tooltip="Favorite" />
+      <ModernButton variant="code_small" icon={getIcon("apple")} fixedwhitemode label="code small" tooltip="Favorite" />
+
+      <h2>New Variants</h2>
+      <ModernButton variant="rounded" icon={getIcon("star")} label="Rounded" tooltip="Rounded button" />
+      <ModernButton variant="icon_only" icon={getIcon("heart")} tooltip="Icon only" />
+      <ModernButton variant="featured" icon={getIcon("rocket")} label="Featured Button" tooltip="Featured" />
+      <ModernButton variant="rounded_tag" icon={getIcon("tag")} label="Tag" tooltip="Tag button" />
+      <ModernButton variant="modern" icon={getIcon("sparkles")} label="Modern" tooltip="Modern button" />
+
+      <h2>Fixed Modes</h2>
+      <ModernButton variant="rounded" icon={getIcon("sun")} label="Light Mode" fixedwhitemode tooltip="Fixed white" />
+      <ModernButton variant="rounded_tag" icon={getIcon("moon")} label="Dark Mode" fixeddarkmode tooltip="Fixed dark" />
+
+      <h2>External Links</h2>
+      <ModernButton variant="code" icon={getIcon("link")} label="External Code" external tooltip="External link" />
+      <ModernButton variant="rounded" icon={getIcon("globe")} label="External Rounded" external tooltip="External link" />
+      <ModernButton variant="icon_only" icon={getIcon("external")} external tooltip="External icon" />
+      <ModernButton variant="featured" icon={getIcon("star")} label="External Featured" external tooltip="External link" />
+      <ModernButton variant="rounded_tag" icon={getIcon("tag")} label="External Tag" external tooltip="External link" />
+      <ModernButton variant="modern" icon={getIcon("rocket")} label="External Modern" external tooltip="External link" />
+
+      <h2>DevStyle Variants</h2>
+      <ModernButton variant="dev" icon={getIcon("code")} label="Dev Standard" tooltip="Dev Standard" />
+      <ModernButton variant="dev_simple" icon={getIcon("terminal")} label="Dev Simple" tooltip="Dev Simple" />
+      <ModernButton variant="dev_highlight" icon={getIcon("sparkles")} label="Dev Highlight" tooltip="Dev Highlight" />
+
+      <h2>Other Variants</h2>
+      <ModernButton variant="default" icon={getIcon("apple")} label="test" tooltip="Favorite" />
+      <ModernButton variant="link" icon={getIcon("apple")} label="test" tooltip="Favorite" />
+      <button onClick={() => testSectionClick()}>CLICKY</button>
       {/* <RichTabShowCaseView data={RichTabData} />; */}
       {/* <DesktopNav />
       <section>

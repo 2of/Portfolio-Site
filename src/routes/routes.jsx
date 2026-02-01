@@ -17,8 +17,8 @@ import { NotFoundPage } from "../pages/NotFoundPage";
 import { LandingPage } from "../pages/Landing";
 import { ComponentPage } from "../pages/ComponentsPage";
 import { CataloguePage_UP } from "../pages/Catalogue/CataloguePage";
-import {ModernAbout} from "../pages/ModernAbout.jsx";
-import {SimpleLandingPage} from "../pages/SimpleLandingPage.jsx";
+import { ModernAbout } from "../pages/ModernAbout.jsx";
+import { SimpleLandingPage } from "../pages/SimpleLandingPage.jsx";
 // import { NewHomePage2 } from "../pages/NewHome/NewHome";
 // import { LandingPage } from "../pages/NEWHomePage/LandingPage";
 
@@ -27,36 +27,36 @@ const routes = [
     path: "/",
     label: "home",
     icon: "home",
-      hideDesktop: true,
-      hideMobile: true,
+    hideDesktop: true,
+    // hideMobile: true,
     bg: "pattern2",
-      dontshowNav : true,
+    dontshowNav: true,
     element: <SimpleLandingPage />,
     fullscreenDesktop: true,
     fullscreenMobile: true,
-  },  {
-        path: "/home",
-        label: "home",
-        icon: "home",
-        hideDesktop: true,
-        // hideMobile: true,
-        bg: "pattern2",
+  }, {
+    path: "/oldhome",
+    label: "home",
+    icon: "home",
+    hideDesktop: true,
+    hideMobile: true,
+    bg: "pattern2",
 
-        element: <LandingPage />,
-        fullscreenDesktop: true,
-        // dontshowNav : true,
-        fullscreenMobile: true,
-    },
+    element: <LandingPage />,
+    fullscreenDesktop: true,
+    // dontshowNav : true,
+    fullscreenMobile: true,
+  },
 
 
 
-    {
+  {
     path: "/projects",
     label: "project catalogue",
     element: <CataloguePage_UP />,
     icon: "projects",
 
-        fullscreenMobile: true,
+    fullscreenMobile: true,
 
     bg: "pattern2",
   },
@@ -66,7 +66,7 @@ const routes = [
     label: "projects",
     element: <CataloguePage />,
     icon: "Catalogue",
-        hideDesktop: true,
+    hideDesktop: true,
     hideMobile: true,
     bg: "bg",
     fullscreenMobile: true,
@@ -114,19 +114,19 @@ const routes = [
     element: <AboutPage />,
     icon: "about",
     hide: false,
-      hideDesktop: true,
-      hideMobile: true,
+    hideDesktop: true,
+    hideMobile: true,
     bg: "dots",
   },
-    {
-        path: "/about",
-        label: "about",
-        element: <ModernAbout />,
-        icon: "about",
-        hide: false,
-        fullscreenMobile: true,
-        // bg: "particles",
-    },
+  {
+    path: "/about",
+    label: "about",
+    element: <ModernAbout />,
+    icon: "about",
+    hide: false,
+    fullscreenMobile: true,
+     bg: "pattern2",
+  },
   {
     path: "/404",
     label: "404",
@@ -139,7 +139,7 @@ const routes = [
   },
 
   {
-    path: "/ChessEloEsimator",
+    path: "/ChessEloEstimator",
     label: "Chess Elo Estimator",
     element: <NewChessPage />,
     icon: "chess",

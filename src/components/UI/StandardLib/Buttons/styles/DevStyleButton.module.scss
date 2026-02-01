@@ -1,0 +1,84 @@
+.DevStyleButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: var(--monospace-font, monospace);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    text-decoration: none;
+    background-color: var(--bg-l1);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+
+
+
+
+    /* Icon styling */
+    :global(.icon) {
+        width: 1.1em;
+        height: 1.1em;
+        color: var(--accent-color);
+        transition: transform 0.2s ease;
+    }
+
+    /* Hover Effects */
+    &:hover {
+        background-color: var(--bg-l2);
+        border-color: var(--accent-color);
+        // transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        :global(.icon) {
+            transform: scale(1.1);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    /* === VARIANTS === */
+
+    /* Simple: No background, just border and text */
+    &.simple {
+        background-color: transparent;
+        border-color: transparent;
+        padding: 0.5rem 0.75rem;
+
+        &:hover {
+            background-color: var(--bg-l1);
+            border-color: var(--border-color);
+        }
+    }
+
+    /* Highlight: Accent background */
+    &.highlight {
+        background-color: var(--accent-color);
+        color: var(--bg); // Assuming dark text on accent color
+        border-color: var(--accent-color);
+
+        :global(.icon) {
+            color: var(--bg);
+        }
+
+        &:hover {
+            filter: brightness(1.1);
+            border-color: var(--accent-color);
+        }
+    }
+
+
+        &.endcard  { 
+        border-radius: 8px 8px 13px 8px;
+    }
+
+}

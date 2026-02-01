@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import routes from "../../routes/routes";
@@ -12,6 +13,7 @@ import { Logo } from "./Logo";
 import { useIsMenuFloatingDesktop } from "../../contexts/RouteContext";
 import { StandardButton } from "../UI/StandardLib/StandardButton.jsx";
 import { useNavStack } from "../../contexts/NavStackContext";
+import { ModernButton } from "../UI/StandardLib/Buttons/Button.jsx";
 
 export const DesktopNavFullWidth = () => {
     const screenSize = useScreenSize();
@@ -67,7 +69,7 @@ export const DesktopNavFullWidth = () => {
             >
                 <li className={`${styles.logoContainer} ${styles.link}`}>
                     <Link
-                        to={"/home"}
+                        to={"/"}
                         viewTransition
                         className={`${styles.link}`}
                     >
@@ -78,23 +80,21 @@ export const DesktopNavFullWidth = () => {
                 {visibleRoutes.map((route, i) => (
                     <li
                         key={i}
-                        className={`${styles.navItem} ${
-                            routeChangeAnimating && location.pathname === route.path
-                                ? styles.wiggleIcon
-                                : ""
-                        }`}
+                        className={`${styles.navItem} ${routeChangeAnimating && location.pathname === route.path
+                            ? styles.wiggleIcon
+                            : ""
+                            }`}
                     >
                         <Link
                             to={route.path}
-                            className={`${styles.link} ${
-                                location.pathname === route.path ? styles.activeLink : ""
-                            }`}
+                            className={`${styles.link} ${location.pathname === route.path ? styles.activeLink : ""
+                                }`}
                         >
                             <p className={styles.routeItem}>
-                <span key={route.path + (routeChangeAnimating ? "-anim" : "")}>
-                  {getIcon(route.icon ?? "home")}
-                    {route.label}
-                </span>
+                                <span key={route.path + (routeChangeAnimating ? "-anim" : "")}>
+                                    {getIcon(route.icon ?? "home")}
+                                    {route.label}
+                                </span>
                             </p>
                         </Link>
                     </li>
@@ -115,20 +115,20 @@ export const DesktopNavFullWidth = () => {
 
                 <ul className={styles.SocialButtons}>
                     <li className={` ${styles.rightnav}`}>
-                        <StandardButton
+                        <ModernButton
                             label="Github"
                             tooltip="Navigate to resume"
-                            type="rounded_label"
+                              variant="code_small"
                             icon={getIcon("github")}
                             link={getLink("github")}
                             nointeractEffects={true}
                         />
                     </li>
                     <li className={` ${styles.rightnav}`}>
-                        <StandardButton
+                        <ModernButton
                             label="LinkedIn"
                             tooltip="Navigate to LinkedIn"
-                            type="rounded_label"
+                            variant="code_small"
                             highlight={false}
                             icon={getIcon("linkedin")}
                             link={getLink("linkedin")}
@@ -137,11 +137,11 @@ export const DesktopNavFullWidth = () => {
                     </li>
 
                     <li className={` ${styles.rightnav}`}>
-                        <StandardButton
+                        <ModernButton
                             label="share"
                             icon={getIcon("share")}
                             callback={handleShare}
-                            type="rounded_label"
+                            variant="code_small"
                             fillContainer={false}
                             nointeractEffects={true}
                         />

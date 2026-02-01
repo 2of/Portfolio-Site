@@ -17,7 +17,7 @@ export const SiteInfoCard = () => {
     const handleNavAway = () => {
 
         hideModal();
-        navigate("/home");
+        navigate("/oldhome");
     }
     return (
         <div className={styles.siteInfoCard}>

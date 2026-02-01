@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./TrackedGradientBG.module.scss";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 
-const TrackedGradientBG = ({showbg = true,  interactive = false }) => {
+const TrackedGradientBG = ({ showbg = true, interactive = false }) => {
   const gradientRef = useRef(null);
   const animationRef = useRef(null);
   const angleRef = useRef(0);
@@ -60,6 +60,7 @@ const TrackedGradientBG = ({showbg = true,  interactive = false }) => {
           <div className={`${styles.shape} ${styles.shape2}`} />
           <div className={`${styles.shape} ${styles.shape3}`} />
           <div className={`${styles.shape} ${styles.shape4}`} />
+          <div className={styles.diagonalLines} />
         </>
       )}
     </div>

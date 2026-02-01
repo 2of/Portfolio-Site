@@ -1,11 +1,13 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./styles/StandardTab.module.scss";
 
 export const StandardTab = ({
-                                tabPosition = "top",
-                                variant = "default",
-                                tabs = {},
-                            }) => {
+    tabPosition = "top",
+    variant = "default",
+    transition = "fadeUp", // options: fadeUp, slideHorizontal, pop, blur, flip
+    tabs = {},
+}) => {
     const tabKeys = Object.keys(tabs);
     const [activeTab, setActiveTab] = useState(tabKeys[0]);
     const [indicatorStyle, setIndicatorStyle] = useState({});
@@ -25,20 +27,21 @@ export const StandardTab = ({
 
     const ActiveComponent = tabs[activeTab];
 
+    // Map prop to style class
+    const transitionClass = styles[transition] || styles.fadeUp;
+
     return (
         <div
-            className={`${styles.StandardTabContainer} ${
-                tabPosition === "bottom" ? styles.bottom : styles.top
-            } ${styles[variant]}`}
+            className={`${styles.StandardTabContainer} ${tabPosition === "bottom" ? styles.bottom : styles.top
+                } ${styles[variant]} `}
         >
             <div className={styles.tabList}>
                 {Object.keys(tabs).map((title) => (
                     <button
                         key={title}
                         ref={(el) => (tabRefs.current[title] = el)}
-                        className={`${styles.tabButton} ${
-                            activeTab === title ? styles.active : ""
-                        }`}
+                        className={`${styles.tabButton} ${activeTab === title ? styles.active : ""
+                            } `}
                         onClick={() => setActiveTab(title)}
                     >
                         {title}
@@ -47,9 +50,11 @@ export const StandardTab = ({
 
             </div>
 
-            <div className={styles.tabContent}>
+            <div key={activeTab} className={`${styles.tabContent} ${transitionClass} `}>
                 {ActiveComponent ? <ActiveComponent /> : null}
             </div>
         </div>
     );
 };
+
+

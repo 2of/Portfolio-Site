@@ -1,7 +1,7 @@
 .multiTagsWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; // center title & grid
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
 }
@@ -17,17 +17,17 @@
 /* Main skills container */
 .skillsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   width: 100%;
   box-sizing: border-box;
 
   &.asFullScreen {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(2, 1fr); /* 2 visible rows */
-    grid-auto-columns: minmax(260px, 1fr);
-    gap: 1rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-columns: minmax(280px, 1fr);
+    gap: 1.5rem;
 
     overflow-x: auto;
     overflow-y: hidden;
@@ -38,7 +38,6 @@
     margin: 12rem 1rem;
     padding-bottom: 1rem;
 
-    /* Subtle horizontal scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) transparent;
 
@@ -57,66 +56,95 @@
 
     .skillSection {
       scroll-snap-align: start;
-      height: auto; /* natural height per row */
+      height: auto;
     }
   }
 }
 
-/* Individual skill category section */
+/* Individual skill category section - Window Theme */
 .skillSection {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
   border: 1px solid var(--border-color);
-  padding: 1.25rem 1rem;
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  background: var(--bg-l1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   height: 100%;
   box-sizing: border-box;
-  backdrop-filter: blur(10px);
+  overflow: hidden;
 
   &:hover {
-    background: var(--bg);
-    border-color: var(--text-color);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-color);
+
+    .windowHeader {
+      background: var(--bg-l2);
+      border-bottom-color: var(--accent-color);
+    }
   }
 }
 
-/* Section header */
-.header {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.9rem;
-  color: var(--text-color);
-  text-decoration: none;
+/* Window Header */
+.windowHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.25rem;
+  gap: 1rem;
+  transition: all 0.3s ease;
 }
 
-/* Container for skills inside each section */
+
+
+.headerTitle {
+  font-family: var(--monospace-font, monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.9;
+
+  svg {
+    color: var(--accent-color);
+  }
+}
+
+/* Window Content */
+.windowContent {
+  padding: 1.25rem;
+  background: var(--bg-l1);
+  flex: 1;
+}
+
+/* Skills Grid */
 .skillsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
-/* Individual skill tags */
+/* Individual skill tags - Code Token Style */
 .skillItem {
-  border: 1px dashed var(--border-color);
-  padding: 0.4rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  transition: all 0.25s ease;
+  font-family: var(--monospace-font, monospace);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  color: var(--secondary-text);
+  transition: all 0.2s ease;
   cursor: default;
   user-select: none;
 
   &:hover {
-    border-color: var(--text-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  &:active {
-    transform: scale(0.98);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateY(-1px);
   }
 }

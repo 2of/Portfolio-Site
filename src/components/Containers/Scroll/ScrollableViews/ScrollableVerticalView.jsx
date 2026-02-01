@@ -61,13 +61,13 @@ export const Section = ({
         </div>
       )}
 
-        {displaycolor() === "particles" && (
-            <div className={styles.sectionGradContainer}>
-                {/* <h1>test</h1> */}
+      {displaycolor() === "particles" && (
+        <div className={styles.sectionGradContainer}>
+          {/* <h1>test</h1> */}
 
-                <Particles />
-            </div>
-        )}
+          <Particles />
+        </div>
+      )}
       <div className={styles.sectionContent}>
         {Header && (
           <div className={headerClass}>
@@ -171,11 +171,11 @@ export const ScrollableVerticalView = ({
     const isSection = child.type?.name === "Section";
     return isSection
       ? React.cloneElement(child, {
-          sticky: originalSticky,
-          narrow: child.props.narrow,
-          index,
-          isFirst: index === 0,
-        })
+        sticky: originalSticky,
+        narrow: child.props.narrow,
+        index,
+        isFirst: index === 0,
+      })
       : child;
   });
 

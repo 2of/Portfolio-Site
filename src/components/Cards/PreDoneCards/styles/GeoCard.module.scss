@@ -1,26 +1,70 @@
+/* ================================================== */
+/* GEO CARD - TECH MAP STYLE                          */
+/* ================================================== */
+
 .cardcontainer {
-    /* background-color: orange; */
-    height: 100%;
     position: relative;
     width: 100%;
-  flex-direction: column;
-    /* background-color: var(--bg); */
+    height: 100%;
+    min-height: 500px;
     border: 1px solid var(--border-color);
+    background-color: var(--bg);
+    border-radius: 8px;
     overflow: hidden;
-  display: flex;
-    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    // Tech Header Overlay
+    &::before {
+        content: 'geo_analysis.py';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 16px;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: var(--monospace-font, monospace);
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        z-index: 20;
+    }
+
+    &:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        border-color: var(--accent-color);
+    }
 }
 
+/* ================================================== */
+/* MAP AREA                                           */
+/* ================================================== */
+
 .maparea {
-    /* height: 10vw; */
-    //height: 50%;
-  flex-grow: 1;
-    /* position: absolute; */
-    /* border-radius: 12px; */
-    overflow: hidden;
+    flex: 1;
     width: 100%;
-    //border-bottom: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+
+    // Darken map slightly for better contrast with pins
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.2);
+        pointer-events: none;
+    }
 }
+
+/* ================================================== */
+/* PINS                                               */
+/* ================================================== */
 
 .pin {
     position: absolute;
@@ -29,6 +73,7 @@
     transform-origin: center bottom;
     animation: popIn 0.3s ease forwards;
     cursor: pointer;
+    z-index: 10;
 }
 
 /* Circle head */
@@ -40,99 +85,61 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    /* border-radius: 12px; */
-    /* background-color: var(--bg-transparent); */
     backdrop-filter: blur(2px);
-    border: 5px solid var(--accent-color);
+    background-color: var(--accent-color); // Solid color for visibility
+    border: 2px solid white; // White border for contrast
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Pointy bottom */
 .pin::after {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -6px; // Adjust to connect with circle
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 11px solid transparent;
-    border-right: 11px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
     border-top: 10px solid var(--accent-color);
-}
-
-/* GeoCard.module.scss */
-.pin,
-.mainpin {
-    position: absolute;
-    transition:
-        left 0.5s ease,
-        top 0.5s ease; /* Add smooth transitions for position */
-    border-radius: 50%;
-    box-shadow: #ff4d4f;
-    /* background-color: */
-    background-color: rgba(90, 120, 60, 0.3);
-    backdrop-filter: blur(2px);
-    border: 9px solid var(--accent-color);
-}
-
-.mainpin::after {
-    content: "";
-    position: absolute;
-    bottom: -22px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-top: 18px solid var(--accent-color);
 }
 
 .pulse {
     position: absolute;
-    bottom: -12px;
+    top: 50%;
     left: 50%;
     width: 40px;
-    height: 12px;
+    height: 40px;
     border-radius: 50%;
-    background-color: var(--pin-color, #ff4d4f);
-
-    transform: translateX(-50%) scale(0.5);
-    opacity: 0.6;
-    box-shadow: 0 0 0 rgba(255, 77, 79, 0.4);
-    animation: pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    z-index: 0;
+    background-color: var(--accent-color);
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    z-index: -1;
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
-        transform: translateX(-50%) scale(0.5);
-        opacity: 0.6;
-        box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.5);
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.5;
     }
-    60% {
-        transform: translateX(-50%) scale(1.4);
-        opacity: 0.3;
-        box-shadow: 0 0 0 10px rgba(255, 77, 79, 0.1);
-    }
+
     100% {
-        transform: translateX(-50%) scale(1.8);
+        transform: translate(-50%, -50%) scale(2.5);
         opacity: 0;
-        box-shadow: 0 0 0 15px rgba(255, 77, 79, 0);
     }
 }
 
 @keyframes popIn {
     0% {
-        transform: scale(0) translateY(20px);
+        transform: scale(0) translateY(10px);
         opacity: 0;
     }
-    80% {
-        transform: scale(1.2) translateY(-3px);
-        opacity: 1;
-    }
+
     100% {
         transform: scale(1) translateY(0);
+        opacity: 1;
     }
 }
 
@@ -141,6 +148,7 @@
         transform: scale(1);
         opacity: 1;
     }
+
     100% {
         transform: scale(0);
         opacity: 0;
@@ -151,148 +159,103 @@
     animation: popOut 0.25s ease forwards;
 }
 
-.flowingLine {
-    animation: dashMove 1s linear infinite;
-}
+/* ================================================== */
+/* CONTENT SECTION                                    */
+/* ================================================== */
 
-@keyframes dashMove {
-    to {
-        stroke-dashoffset: -20; // Move the dashes along the line
-    }
-}
-
-.gradientbg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-  display: none;
-    background: radial-gradient(
-        ellipse 140% 120% at top left,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.88) 25%,
-        rgba(0, 0, 0, 0.75) 40%,
-        rgba(0, 0, 0, 0.5) 55%,
-        rgba(0, 0, 0, 0.25) 70%,
-        rgba(0, 0, 0, 0.08) 85%,
-        rgba(0, 0, 0, 0) 100%
-    );
-}
 .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9); // Light mode default
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    //position: absolute;
-    top: 1rem;
-  background-color: var(--text-color);
+    gap: 1rem;
+    z-index: 30;
+    transition: transform 0.3s ease;
 
-    left: 2rem;
-    z-index: 2;
-    //height: 100%;
-  padding: 1rem;
-    //width: calc(100% - 2rem);
-    align-items: ce;
-    padding-top: 1rem;
-    align-items: flex-end;
-    justify-content: end; /* ensures top + bottom separation */
-    //margin: 0 auto;
+    // Dark mode support via variable if available, or just use theme vars
+    background: var(--bg-transparent, rgba(255, 255, 255, 0.9));
 
-    /* --- TYPOGRAPHY --- */
-    h3 {
-        position: relative;
-        font-weight: 300;
-        text-align: start;
-        line-height: 1.3;
-        // text-align: center;
-        color: var(--bg);
-        font-size: clamp(2rem, 3rem, 4rem);
-        // margin-bottom: 0.75rem;
+    // Glassy tech look
+    @media (prefers-color-scheme: dark) {
+        background: rgba(10, 10, 15, 0.85);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+}
 
-    .subtitle {
-        font-size: clamp(1.2rem, 2vw, 2rem);
-        font-weight: 300;
-        // margin-top: 0.5rem;
-        text-align: center;
-        display: flex;
-        // align-items: center;
-        // justify-content: center;
-        // background-color: red;
-        width: 100%;
-        font-family: "Newsreader", serif;
-        font-style: italic;
-        text-align: left;
-      color: var(--bg);
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+h3 {
+    font-family: var(--monospace-font, monospace);
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: green;
+}
+
+.subtitle {
+    font-family: var(--monospace-font, monospace);
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+        content: '>';
+        font-weight: bold;
     }
+}
 
-    .top {
-        // background-color: red;
-        display: flex;
-        gap: 1rem;
-        flex-direction: column;
+.title { 
+    color: white;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    // Removed max-height and mask for cleaner, static layout
+
+    .tag {
+        font-family: var(--monospace-font, monospace);
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+        background: var(--bg-l1);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        color: var(--subtext-color);
+        white-space: nowrap;
     }
+}
 
-    /* --- LOWER FLEX SECTION --- */
-    .bottom {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-        width: 100%;
-        margin-top: auto; /* push to bottom */
-    }
+.buttonsContainer {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
 
-    .tagsContainer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+/* ================================================== */
+/* HOVER INTERACTIONS                                 */
+/* ================================================== */
 
-        .tag {
-            padding: 0.3rem 0.75rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-          color: var(--bg);
-            border-radius: 999px; /* pill shape */
-            border: 1px solid var(--border-color);
-          //background: var(--bg-l);
-            transition: all 0.25s ease;
-
-        }
-    }
-
-    /* --- BUTTONS --- */
-    .buttonsContainer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        width: 100%;
-      //background-color: orange;
-
-        button {
-            flex: 1 1 auto;
-            min-width: 130px;
-            padding: 0.75rem 1rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-          color: var(--bg);
-            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
-
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-
-            &:hover {
-                transform: translateY(-2px);
-                background: linear-gradient(135deg, #000 0%, #222 100%);
-                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-            }
-
-            &:active {
-                transform: translateY(0);
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-            }
-        }
-    }
+.cardcontainer:hover {
+    // Removed tag expansion
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
 }

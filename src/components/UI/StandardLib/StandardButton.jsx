@@ -17,16 +17,16 @@ const validTypes = [
   "subtle",
   "rounded",
   "rounded_catalogue_card_end",
-    "rounded_catalogue_card_end_with_label",
+  "rounded_catalogue_card_end_with_label",
   "rounded_label",
   "icon_only",
   "featured",
   "rounded_tag",
   "modern",
-    "modern_unfilled",
-    "code",
-    "code_hover","code_small",
-
+  "modern_unfilled",
+  "code",
+  "code_hover", "code_small",
+  "AppStore", "ShinyAppStore"
 ];
 export const StandardButton = ({
   label = "no label",
@@ -121,25 +121,25 @@ export const StandardButton = ({
           </>
         );
 
-        case "code":
-            return (
-                <>
+      case "code":
+        return (
+          <>
 
-                    <div className={styles.l1}>
-                        {Icon}
-                     {Label}
-                    </div>
-                    <div className={styles.l2}>
-                        {Icon}
-                        {Label}
+            <div className={styles.l1}>
+              {Icon}
+              {Label}
+            </div>
+            <div className={styles.l2}>
+              {Icon}
+              {Label}
 
-                    </div>
-                </>
-            );
+            </div>
+          </>
+        );
 
 
 
-        case "rounded":
+      case "rounded":
         return (
           <>
             {Icon}
@@ -210,14 +210,35 @@ export const StandardButton = ({
             {Icon}
           </div>
         );
-        case "code_small":
-            return (
-               <>
-                   {Icon}
-                    {Label}
+      case "code_small":
+        return (
+          <>
+            {Icon}
+            {Label}
 
-             </>
-            );
+          </>
+        );
+      case "AppStore":
+        return (
+          <>
+            {Icon}
+            <div className={styles.textColumn}>
+              <span className={styles.subLabel}>Download on the</span>
+              <span className={styles.mainLabel}>{Label}</span>
+            </div>
+          </>
+        );
+      case "ShinyAppStore":
+        return (
+          <>
+            <div className={styles.shine}></div>
+            {Icon}
+            <div className={styles.textColumn}>
+              <span className={styles.subLabel}>Get it on</span>
+              <span className={styles.mainLabel}>{Label}</span>
+            </div>
+          </>
+        );
       case "drop":
       default:
         return (
@@ -237,9 +258,8 @@ export const StandardButton = ({
       onMouseLeave={hideTooltip}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`${setButtonClass()} ${
-        !nointeractEffects && "standardMouseOverBounce"
-      }`}
+      className={`${setButtonClass()} ${!nointeractEffects && "standardMouseOverBounce"
+        }`}
       role="button"
       aria-disabled={disable}
       aria-label={label}
